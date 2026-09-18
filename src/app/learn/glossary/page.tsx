@@ -15,7 +15,6 @@ export default function GlossaryPage() {
       .sort((a, b) => a.term.localeCompare(b.term));
   }, [search]);
 
-  // Group by first letter
   const grouped = useMemo(() => {
     const groups: Record<string, GlossaryTerm[]> = {};
     for (const term of filtered) {
@@ -28,13 +27,13 @@ export default function GlossaryPage() {
 
   return (
     <>
-      <Link href="/learn" className="text-secondary" style={{ fontSize: "0.85rem", fontWeight: 700, display: "inline-block", marginBottom: "1rem" }}>
-        ← Back to Dashboard
+      <Link href="/learn" className="learn-back">
+        Back to Dashboard
       </Link>
 
       <p className="eyebrow">Dev Glossary</p>
-      <h1 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", marginBottom: "1rem" }}>Developer Dictionary</h1>
-      <p className="lead text-secondary" style={{ marginBottom: "2rem" }}>
+      <h1 className="learn-page-title">Developer Dictionary</h1>
+      <p className="lead text-secondary glossary-intro">
         Every technical term you need to know. English definition first, Indonesian translation for understanding.
       </p>
 
@@ -44,7 +43,6 @@ export default function GlossaryPage() {
         placeholder="Search terms..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        style={{ position: "relative", backgroundImage: "none" }}
       />
 
       {filtered.length === 0 ? (
@@ -56,7 +54,7 @@ export default function GlossaryPage() {
         <div className="glossary-list">
           {Object.entries(grouped).map(([letter, terms]) => (
             <div key={letter}>
-              <h2 style={{ fontSize: "1.5rem", color: "var(--interface-blue)", marginBottom: "0.5rem", marginTop: "1.5rem" }}>{letter}</h2>
+              <h2 className="glossary-letter">{letter}</h2>
               {terms.map((t) => (
                 <div key={t.term} className="glossary-item">
                   <span className="term">{t.term}<span className="term-cat">{t.category}</span></span>

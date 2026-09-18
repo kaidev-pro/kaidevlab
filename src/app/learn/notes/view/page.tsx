@@ -17,8 +17,8 @@ function NoteDetailContent() {
   if (!note) {
     return (
       <>
-        <Link href="/learn/notes" className="text-secondary" style={{ fontSize: "0.85rem", fontWeight: 700, display: "inline-block", marginBottom: "1rem" }}>
-          ← Back to Lab Notes
+        <Link href="/learn/notes" className="learn-back">
+          Back to Lab Notes
         </Link>
         <div className="empty-state">
           <h3>Note not found</h3>
@@ -30,21 +30,19 @@ function NoteDetailContent() {
 
   return (
     <>
-      <Link href="/learn/notes" className="text-secondary" style={{ fontSize: "0.85rem", fontWeight: 700, display: "inline-block", marginBottom: "1rem" }}>
-        ← Back to Lab Notes
+      <Link href="/learn/notes" className="learn-back">
+        Back to Lab Notes
       </Link>
 
-      <p className="note-track" style={{ color: "var(--interface-blue)", fontSize: "0.68rem", fontWeight: 900, letterSpacing: "0.12em", textTransform: "uppercase" }}>
-        {note.track}
-      </p>
-      <h1 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", marginBottom: "0.5rem" }}>{note.title}</h1>
-      <p className="text-secondary" style={{ fontSize: "0.85rem", fontWeight: 700, marginBottom: "2rem" }}>
+      <p className="note-track">{note.track}</p>
+      <h1 className="note-view-title">{note.title}</h1>
+      <p className="note-view-date">
         {new Date(note.createdAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
       </p>
 
-      <div style={{ maxWidth: "700px" }}>
+      <div className="note-view-content">
         {note.content.split("\n").map((line, i) => (
-          <p key={i} className="text-secondary" style={{ lineHeight: 1.72, fontSize: "0.98rem", marginBottom: "0.8rem" }}>
+          <p key={i} className="text-secondary note-view-line">
             {line || "\u00A0"}
           </p>
         ))}

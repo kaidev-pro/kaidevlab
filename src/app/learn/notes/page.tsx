@@ -10,17 +10,17 @@ export default function LabNotesPage() {
 
   return (
     <>
-      <Link href="/learn" className="text-secondary" style={{ fontSize: "0.85rem", fontWeight: 700, display: "inline-block", marginBottom: "1rem" }}>
-        ← Back to Dashboard
+      <Link href="/learn" className="learn-back">
+        Back to Dashboard
       </Link>
 
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem" }}>
+      <div className="learn-page-header">
         <div>
           <p className="eyebrow">Learning Journal</p>
-          <h1 style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>Lab Notes</h1>
+          <h1 className="learn-page-title">Lab Notes</h1>
         </div>
         <Link href="/learn/notes/new" className="learn-btn is-primary">
-          + New Note
+          New Note
         </Link>
       </div>
 
@@ -28,8 +28,8 @@ export default function LabNotesPage() {
         <div className="empty-state">
           <h3>No lab notes yet</h3>
           <p>Start writing your learning journal in English. Every note you write helps you practice technical writing — a key skill for remote jobs.</p>
-          <Link href="/learn/notes/new" className="learn-btn is-primary" style={{ marginTop: "1rem" }}>
-            Write your first note →
+          <Link href="/learn/notes/new" className="learn-btn is-primary learn-empty-action">
+            Write your first note
           </Link>
         </div>
       ) : (
@@ -40,7 +40,7 @@ export default function LabNotesPage() {
               <h3>{note.title}</h3>
               <p className="note-excerpt">{note.content}</p>
               <p className="note-date">{new Date(note.createdAt).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}</p>
-              <div style={{ display: "flex", gap: "0.5rem", marginTop: "0.8rem" }}>
+              <div className="labnote-actions">
                 <Link href={`/learn/notes/view?id=${note.id}`} className="learn-btn">Read</Link>
                 <button className="learn-btn is-danger" onClick={() => deleteLabNote(note.id)}>Delete</button>
               </div>

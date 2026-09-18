@@ -27,14 +27,14 @@ export default function NewLabNotePage() {
   if (saved) {
     return (
       <>
-        <Link href="/learn/notes" className="text-secondary" style={{ fontSize: "0.85rem", fontWeight: 700, display: "inline-block", marginBottom: "1rem" }}>
-          ← Back to Lab Notes
+        <Link href="/learn/notes" className="learn-back">
+          Back to Lab Notes
         </Link>
         <div className="empty-state">
-          <h3>✅ Note Saved!</h3>
+          <h3>Note Saved</h3>
           <p>Your lab note has been saved. Keep writing in English to practice your technical writing skills.</p>
-          <Link href="/learn/notes" className="learn-btn is-primary" style={{ marginTop: "1rem" }}>
-            View all notes →
+          <Link href="/learn/notes" className="learn-btn is-primary learn-empty-action">
+            View all notes
           </Link>
         </div>
       </>
@@ -43,15 +43,15 @@ export default function NewLabNotePage() {
 
   return (
     <>
-      <Link href="/learn/notes" className="text-secondary" style={{ fontSize: "0.85rem", fontWeight: 700, display: "inline-block", marginBottom: "1rem" }}>
-        ← Back to Lab Notes
+      <Link href="/learn/notes" className="learn-back">
+        Back to Lab Notes
       </Link>
 
       <p className="eyebrow">New Lab Note</p>
-      <h1 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", marginBottom: "2rem" }}>Write a Note</h1>
+      <h1 className="learn-page-title">Write a Note</h1>
 
-      <div className="labnote-prompt" style={{ maxWidth: "700px" }}>
-        <p className="text-secondary" style={{ fontSize: "0.88rem", marginBottom: "1rem" }}>
+      <div className="labnote-form labnote-form-wide">
+        <p className="text-secondary labnote-hint">
           Write in English to practice your technical writing. Even short notes help — 3-5 sentences is enough.
         </p>
 
@@ -68,16 +68,15 @@ export default function NewLabNotePage() {
             ))}
           </select>
           <textarea
+            className="labnote-textarea-lg"
             placeholder="Write your note in English here..."
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            style={{ minHeight: "200px" }}
           />
           <button
             className="learn-btn is-primary"
             onClick={handleSave}
             disabled={!title.trim() || !content.trim()}
-            style={{ opacity: !title.trim() || !content.trim() ? 0.5 : 1 }}
           >
             Save Note
           </button>

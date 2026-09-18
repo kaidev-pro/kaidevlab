@@ -12,7 +12,6 @@ export default function DailyChallengePage() {
 
   if (!mounted) return <p className="text-secondary">Loading...</p>;
 
-  // Determine today's challenge
   const completedCount = progress.dailyChallengesCompleted.length;
   const todayIdx = completedCount < dailyChallenges.length ? completedCount : 0;
   const challenge = dailyChallenges[todayIdx];
@@ -20,17 +19,17 @@ export default function DailyChallengePage() {
 
   return (
     <>
-      <Link href="/learn" className="text-secondary" style={{ fontSize: "0.85rem", fontWeight: 700, display: "inline-block", marginBottom: "1rem" }}>
-        ← Back to Dashboard
+      <Link href="/learn" className="learn-back">
+        Back to Dashboard
       </Link>
 
       <div className="challenge-box">
-        <p className="challenge-day">Day {challenge.day} · {challenge.difficulty}</p>
+        <p className="challenge-day">Day {challenge.day} — {challenge.difficulty}</p>
         <h2>{challenge.title}</h2>
         <p className="challenge-desc">{challenge.description}</p>
 
         <div className="challenge-streak">
-          🔥 Daily streak: {progress.dailyStreak} days · Solved: {progress.dailyChallengesCompleted.length}/{dailyChallenges.length}
+          Daily streak: {progress.dailyStreak} days — Solved: {progress.dailyChallengesCompleted.length}/{dailyChallenges.length}
         </div>
 
         {!isCompleted ? (
@@ -42,7 +41,7 @@ export default function DailyChallengePage() {
 
             <div className="practice-actions">
               <button className="learn-btn" onClick={() => setShowHint(!showHint)}>
-                💡 Hint
+                Hint
               </button>
               <button className="learn-btn" onClick={() => setShowSolution(!showSolution)}>
                 {showSolution ? "Hide Solution" : "Show Solution"}
@@ -50,53 +49,51 @@ export default function DailyChallengePage() {
             </div>
 
             {showHint && (
-              <div className="practice-hint is-visible">💡 {challenge.hint}</div>
+              <div className="practice-hint is-visible">
+                {challenge.hint}
+              </div>
             )}
 
             {showSolution && (
-              <div className="code-block" style={{ marginTop: "0.8rem" }}>
+              <div className="code-block challenge-solution-block">
                 <span className="code-label">solution</span>
                 <pre><code>{challenge.solution}</code></pre>
               </div>
             )}
 
-            <div style={{ marginTop: "1.5rem" }}>
+            <div className="challenge-actions">
               <button
                 className="learn-btn is-primary"
                 onClick={() => completeDailyChallenge(challenge.id)}
               >
-                ✓ Mark as Solved
+                Mark as Solved
               </button>
             </div>
           </>
         ) : (
-          <p style={{ color: "var(--success)", fontWeight: 800, fontSize: "1rem" }}>
-            ✅ You solved today&apos;s challenge! Come back tomorrow for the next one.
+          <p className="challenge-solved-text">
+            You solved today&apos;s challenge. Come back tomorrow for the next one.
           </p>
         )}
       </div>
 
-      {/* All Challenges */}
-      <div style={{ marginTop: "2.5rem" }}>
+      <div className="learn-section">
         <p className="eyebrow">All Challenges</p>
-        <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", marginBottom: "1rem" }}>
-          Challenge history
-        </h2>
+        <h2 className="learn-section-title">Challenge history</h2>
         <div className="module-list">
           {dailyChallenges.map((ch, i) => {
             const done = progress.dailyChallengesCompleted.includes(ch.id);
             const isToday = i === todayIdx;
             const status = done ? "is-done" : isToday ? "is-active" : "is-locked";
+            const statusIcon = done ? "Done" : isToday ? "Now" : String(i + 1).padStart(2, "0");
             return (
-              <div key={ch.id} className={`module-item ${status}`} style={{ cursor: "default" }}>
-                <div className={`module-status ${status}`}>
-                  {done ? "✓" : isToday ? "★" : "○"}
-                </div>
+              <div key={ch.id} className={`module-item ${status} is-static`}>
+                <div className={`module-status ${status}`}>{statusIcon}</div>
                 <div className="module-info">
                   <h3>Day {ch.day}: {ch.title}</h3>
                   <div className="module-meta">
-                    <span>⏱ {ch.difficulty}</span>
-                    <span>📚 {ch.relatedModule}</span>
+                    <span>{ch.difficulty}</span>
+                    <span>{ch.relatedModule}</span>
                   </div>
                 </div>
               </div>

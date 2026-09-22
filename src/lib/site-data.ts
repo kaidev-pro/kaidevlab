@@ -71,6 +71,20 @@ export const projects: ProjectPreview[] = [
     coverPosition: "center 24%",
   },
   {
+    slug: "fe-study-hub",
+    name: "FE Cognitive Gym",
+    category: "Interactive Education Hub",
+    group: "Education",
+    status: "Live · Interactive System",
+    role: "Full-stack engineering, learning system, CBT simulator",
+    summary:
+      "A cognitive study gym for Japan’s Fundamental Information Technology Engineer Examination (基本情報技術者試験) featuring 100 high-yield flashcards, CBT simulator, pseudocode tracer, and offline PWA mode.",
+    logo: "/brand/kaidevlab-logo-dark.webp",
+    tone: "education",
+    signals: ["100 Flashcards", "CBT Simulator", "Offline PWA"],
+    liveUrl: "/learn",
+  },
+  {
     slug: "dragon-kings-last-contract",
     name: "The Dragon King’s Last Contract",
     category: "AI Film Experiment",
@@ -87,5 +101,7 @@ export const projects: ProjectPreview[] = [
   },
 ];
 
-export const featuredProjects = projects.filter((project) => project.group === "Products" || project.group === "AI Systems");
+export const featuredProjects = projects.filter(
+  (project) => project.group === "Products" || project.group === "AI Systems" || project.group === "Education"
+);
 export const creativeProjects = projects.filter((project) => project.group === "Creative");

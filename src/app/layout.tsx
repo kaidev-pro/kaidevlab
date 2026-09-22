@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "FE Study Hub",
+    title: "Kaidevlab",
   },
   alternates: { canonical: "/" },
   openGraph: {

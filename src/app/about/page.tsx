@@ -29,6 +29,7 @@ export default function About() {
           <div className="actions">
             <a className="primary" href="/contact/">Start a Conversation</a>
             <a className="secondary" href="/work/">Explore My Work</a>
+            <a className="secondary" href="/resume.pdf" target="_blank" rel="noreferrer">Download CV / Resume</a>
           </div>
         </div>
       </section>
@@ -45,8 +46,9 @@ export default function About() {
           <p className="eyebrow">Current Focus</p>
           <ul className="focus-list">
             <li><strong>8Agents</strong><span>AI-assisted business transformation for UMKM.</span></li>
-            <li><strong>Kaidevlab</strong><span>Personal brand and living portfolio.</span></li>
-            <li><strong>Blue Vengeance</strong><span>Original long-form manhwa in pre-production.</span></li>
+            <li><strong>FE Cognitive Gym</strong><span>Interactive study hub &amp; CBT simulator for Japan’s FE certification (基本情報).</span></li>
+            <li><strong>Kaidevlab</strong><span>Personal brand and living creative technology lab.</span></li>
+            <li><strong>Blue Vengeance</strong><span>Original long-form anime/manhwa in pre-production.</span></li>
             <li><strong>Visual production</strong><span>Editing, motion, and AI-assisted filmmaking.</span></li>
           </ul>
         </article>

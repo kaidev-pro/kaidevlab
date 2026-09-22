@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Code, Mail, MessageCircle } from "lucide-react";
+import { Code, FileText, Mail, MessageCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contact — Kaidevlab",
@@ -27,6 +27,13 @@ const contactOptions = [
     description: "Explore public repositories, experiments, and developer-tool work.",
     label: "Open GitHub",
     href: "https://github.com/kaidev-pro",
+  },
+  {
+    icon: FileText,
+    title: "Resume / CV",
+    description: "Download verified engineering background, product milestones, and technical capabilities.",
+    label: "Download Resume",
+    href: "/resume.pdf",
   },
 ] as const;
 

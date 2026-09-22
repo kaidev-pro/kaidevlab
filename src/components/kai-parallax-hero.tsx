@@ -129,7 +129,9 @@ export function KaiParallaxHero() {
           <a className="primary" href="#work">Explore My Work</a>
           <a className="secondary" href="#about">Meet Kai</a>
         </div>
-        <p className="meta">Based in Japan · Building independently</p>
+        <p className="meta">
+          Based in Japan · Building independently · <a href="https://x.com/Kiminoheroo" target="_blank" rel="noreferrer" style={{ color: "var(--brand-primary)", textDecoration: "underline", textUnderlineOffset: "3px" }}>@Kiminoheroo on X ↗</a>
+        </p>
       </div>
     </div>
   );

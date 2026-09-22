@@ -15,27 +15,16 @@ const projects = {
     limitations: ["Still building deeper reliability dashboards", "Some delivery workflows remain founder-reviewed before automation expands"],
     next: ["Improve founder review UX", "Expand monitoring and audit surfaces", "Refine analysis templates for more UMKM intake types"]
   },
-  "8router": {
-    title: "8Router", category: "Developer Tool", status: "Beta · Active Development", role: "Architecture, routing logic, product direction, developer experience", logo: "/logos/8router-mark.svg", liveUrl: "https://8router.8agents.xyz", year: "2026", stack: ["Gateway architecture", "OpenAI-compatible API", "Provider routing", "Fallback", "Credentials"],
-    summary: "An OpenAI-compatible gateway for routing, fallback, credentials, and multi-provider AI access.",
-    problem: "AI apps often depend on one provider or require repetitive integration work across model APIs, credentials, fallback behavior, and routing rules.",
-    goals: ["Provide one OpenAI-compatible entry point", "Support routing and fallback across providers", "Make credentials and provider access easier to manage"],
-    features: ["OpenAI-compatible interface", "Multi-provider routing", "Fallback behavior", "Credential management concepts", "Developer-first configuration"],
-    approach: "8Router is designed as a gateway layer: apps talk to one API shape while routing logic handles provider selection and resilience behind the scenes.",
-    challenges: ["Keeping compatibility predictable", "Designing safe fallback behavior", "Documenting routing rules clearly for developers"],
-    limitations: ["Beta status; API behavior can still evolve", "Some provider-specific features need careful normalization"],
-    next: ["Strengthen docs", "Add more routing examples", "Improve observability and failure reporting"]
-  },
-  "nihongogate": {
-    title: "NihongoGate", category: "Education Product", status: "Active Development", role: "Product engineering, learning design, content structure", logo: "/logos/nihongogate-64.svg", liveUrl: "https://nihongogate.kaidevlab.com", year: "2026", stack: ["Next.js", "Learning paths", "Japanese", "SSW", "Content architecture"],
-    summary: "A Japanese and SSW learning platform built around structured, practical learning workflows.",
-    problem: "Learners need structured guidance that connects language study, practical routines, and real preparation goals instead of isolated lessons.",
-    goals: ["Make Japanese learning feel structured", "Support practical SSW preparation", "Create a clear study path for independent learners"],
-    features: ["Learning-path structure", "Practical study categories", "Content-first architecture", "Room for future practice tools"],
-    approach: "NihongoGate focuses on clarity and progression: learners should know where they are, what to study next, and why each section matters.",
-    challenges: ["Keeping language content accurate", "Balancing product UI with educational depth", "Designing for future localization and content growth"],
-    limitations: ["Practice tooling is still expanding", "Content depth will grow over time"],
-    next: ["Add more structured modules", "Improve content taxonomy", "Plan interactive practice features"]
+  "fe-study-hub": {
+    title: "FE Cognitive Gym", category: "Interactive Education Hub", status: "Live · Interactive System", role: "Full-stack engineering, learning system, CBT simulator, active recall engine", logo: "/brand/kaidevlab-logo-dark.webp", liveUrl: "/learn", year: "2026", stack: ["Next.js", "React 19", "Tailwind CSS", "Web Audio API", "Web Speech TTS", "Offline PWA", "Service Worker"],
+    summary: "A cognitive study gym for Japan’s Fundamental Information Technology Engineer Examination (基本情報技術者試験) featuring 100 high-yield flashcards, CBT simulator with digital certificates, pseudocode tracer, and offline PWA mode.",
+    problem: "Preparing for Japan's national FE certification typically involves 600+ page textbooks dense with technical kanji and abstract pseudocode, leading to cognitive overload, slow recall, and study burnout during daily transit.",
+    goals: ["Create an active recall drill with native Japanese TTS and furigana toggles", "Simulate the authentic 22.5-minute CBT exam with live scoring and digital certificates", "Build an interactive pseudocode tracer to demystify trace tables for 科目B", "Deliver an installable offline PWA (電車モード) for studying inside commuter trains without signal"],
+    features: ["100 High-Yield Flashcards (64 Technology, 16 Management, 20 Strategy)", "Active recall drill with Kitami-shiki visual analogies & differentiator keywords", "Furigana toggle and native Japanese Text-to-Speech audio pronunciation", "CBT Mock Exam simulator with 22.5-minute countdown and question navigation matrix", "Automated scoring, category breakdown, and printable Digital Passing Certificate (合格証明書)", "Interactive Pseudocode Step-Tracer with real-time trace tables for 4 FE algorithms", "4 Interactive calculators (Availability, MTBF/MTTR, Effective Memory Access Time, BEP)", "PWA with Service Worker offline caching (電車モード) and install prompt"],
+    approach: "Built with Next.js and React 19 as a high-performance, distraction-free study gym. All audio synthesis and state management run client-side for zero latency and complete offline capability.",
+    challenges: ["Balancing authentic past-exam rigor with accessible visual analogies", "Designing a responsive, distraction-free CBT simulator on mobile viewports", "Reliable offline caching of audio and assets in crowded transit environments"],
+    limitations: ["Currently curated to 100 high-yield terminology cards and 15 past-exam questions", "Additional past exam question banks will be expanded iteratively"],
+    next: ["Expand question bank for subsequent exam seasons", "Add custom user-created flashcard decks", "Implement spaced repetition interval algorithms based on review history"]
   },
   "rakusaku": {
     title: "Rakusaku", category: "Digital Commerce Prototype", status: "Prototype · Payment Integration Pending", role: "Commerce architecture, brand, UX, prototype direction", logo: "/logos/rakusaku-128.webp", liveUrl: "https://rakusaku.com", year: "2026", stack: ["Commerce UX", "Catalog structure", "Brand system", "Frontend prototype"],

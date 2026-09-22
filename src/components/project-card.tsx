@@ -46,8 +46,16 @@ export function ProjectCard({
         <div className="project-meta-row">
           <span className="status-pill">{project.status}</span>
           <div className="project-actions">
-            <a href={`/work/${project.slug}/`}>View Project</a>
-            {project.liveUrl ? <a href={project.liveUrl} target="_blank" rel="noreferrer">Live Site</a> : null}
+            <a href={`/work/${project.slug}/`}>Overview</a>
+            {project.liveUrl ? (
+              <a
+                href={project.liveUrl}
+                target={project.liveUrl.startsWith("http") ? "_blank" : undefined}
+                rel={project.liveUrl.startsWith("http") ? "noreferrer" : undefined}
+              >
+                {project.liveUrl.startsWith("/") ? "Launch Hub" : "Live Site"}
+              </a>
+            ) : null}
           </div>
         </div>
       </div>

@@ -4,8 +4,8 @@ import { useMemo, useState } from "react";
 import { ProjectCard } from "@/components/project-card";
 import { projects, type ProjectGroup } from "@/lib/site-data";
 
-const filters = ["All", "Products", "AI Systems", "Developer Tools", "Education", "Creative", "Experiments"] as const;
-type Filter = "All" | ProjectGroup;
+const filters = ["All", "Products", "AI Systems", "Education", "Creative", "Experiments"] as const;
+type Filter = "All" | (typeof filters)[number];
 
 export default function Work() {
   const [activeFilter, setActiveFilter] = useState<Filter>("All");
@@ -18,9 +18,9 @@ export default function Work() {
     <main className="page-shell work-page">
       <header className="page-hero compact-page-hero">
         <p className="eyebrow">Work</p>
-        <h1>Products, systems, tools, education, and creative experiments.</h1>
+        <h1>Products, systems, education, and creative experiments.</h1>
         <p className="lead">
-          Every project keeps its current status visible—from active systems and beta tools to prototypes, archives, and pre-production worlds.
+          Every project keeps its current status visible—from live platforms and business systems to commerce prototypes and pre-production worlds.
         </p>
       </header>
 

@@ -13,7 +13,7 @@ export interface StudyProgress {
 
 const STORAGE_KEY = "kaidevlab_fe_study_progress_v1";
 
-const DEFAULT_PROGRESS: StudyProgress = {
+export const DEFAULT_PROGRESS: StudyProgress = {
   masteredCardIds: [],
   reviewCardIds: [],
   streak: 0,

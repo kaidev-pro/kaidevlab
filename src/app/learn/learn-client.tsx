@@ -29,6 +29,7 @@ import {
   loadStudyProgress,
   recordCardReview,
   CardRating,
+  DEFAULT_PROGRESS,
 } from "@/lib/fe-study-storage";
 import { FlashcardView } from "@/components/fe-study/flashcard-view";
 import { StudyProgressCard } from "@/components/fe-study/study-progress-card";
@@ -85,7 +86,7 @@ const ROADMAP_MODULES: RoadmapItem[] = [
 ];
 
 export function LearnClient() {
-  const [progress, setProgress] = useState<StudyProgress | null>(null);
+  const [progress, setProgress] = useState<StudyProgress>(DEFAULT_PROGRESS);
   const [activeTab, setActiveTab] = useState<HubTab>("flashcards");
   const [activeMode, setActiveMode] = useState<StudyMode | null>(null);
   const [singleCardDrill, setSingleCardDrill] = useState<FECard | null>(null);
@@ -210,13 +211,6 @@ export function LearnClient() {
     setSessionCompleted(false);
   };
 
-  if (!progress) {
-    return (
-      <div className="min-h-[50vh] flex items-center justify-center">
-        <div className="text-center text-[var(--text-secondary)] text-sm">Memuat Study Hub...</div>
-      </div>
-    );
-  }
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 py-8 md:py-12 flex flex-col gap-10">

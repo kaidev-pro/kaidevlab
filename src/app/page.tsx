@@ -4,6 +4,7 @@ import Image from "next/image";
 import { KaiParallaxHero } from "@/components/kai-parallax-hero";
 import { ProjectCard } from "@/components/project-card";
 import { creativeProjects, featuredProjects } from "@/lib/site-data";
+import { FeLiveWidget } from "@/components/fe-study/fe-live-widget";
 
 const capabilities = [
   {
@@ -28,8 +29,8 @@ const capabilities = [
   },
 ];
 
-const building = ["8Agents", "Kaidevlab redesign", "Rakusaku"];
-const exploring = ["Manhwa production", "Visual storytelling", "AI-assisted filmmaking", "Product storytelling", "Video editing"];
+const building = ["8Agents", "Kaidevlab redesign", "Rakusaku", "FE Study Hub"];
+const exploring = ["FE Exam Prep (基本情報技術者試験) 🇯🇵", "Manhwa production", "Visual storytelling", "AI-assisted filmmaking", "Product storytelling", "Video editing"];
 
 export default function Home() {
   const blueVengeance = creativeProjects.find((project) => project.slug === "blue-vengeance");
@@ -93,8 +94,22 @@ export default function Home() {
           </article>
           <article className="now-card">
             <div className="now-card-title"><Sparkles size={20} /><h3>Learning / Exploring</h3></div>
-            <ul>{exploring.map((item) => <li key={item}><span />{item}</li>)}</ul>
+            <ul>
+              {exploring.map((item) => (
+                <li key={item}>
+                  <span />
+                  {item.includes("FE Exam") ? (
+                    <a href="/learn" className="hover:text-[var(--brand-primary)] underline decoration-[var(--border)] transition-colors font-medium">
+                      {item} →
+                    </a>
+                  ) : (
+                    item
+                  )}
+                </li>
+              ))}
+            </ul>
           </article>
+          <FeLiveWidget />
         </div>
       </section>
 

@@ -5,18 +5,18 @@ import Image from "next/image";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const navItems = [
-  ["Work", "/#work"],
-  ["Creative Lab", "/#creative"],
-  ["Lab Notes", "/#notes"],
-  ["About", "/#about"],
-  ["Contact", "/contact/"],
-] as const;
-
 export function SiteHeader() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const navItems = [
+    ["Work", "/#work"],
+    ["Learn", "/learn"],
+    ["Lab Notes", "/#notes"],
+    ["About", "/#about"],
+    ["Contact", "/contact/"],
+  ] as const;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -70,7 +70,7 @@ export function SiteHeader() {
         >
           {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
         </button>
-        <a className="talk desktop-talk" href="/contact/">Let’s Talk</a>
+        <a className="talk desktop-talk" href="/contact/">Let's Talk</a>
         <button
           className="icon-button menu-toggle"
           type="button"
@@ -86,7 +86,7 @@ export function SiteHeader() {
         {navItems.map(([label, href]) => (
           <a href={href} key={href} onClick={() => setMenuOpen(false)}>{label}</a>
         ))}
-        <a className="mobile-talk" href="/contact/" onClick={() => setMenuOpen(false)}>Let’s Talk</a>
+        <a className="mobile-talk" href="/contact/" onClick={() => setMenuOpen(false)}>Let's Talk</a>
       </nav>
     </header>
   );

@@ -19,7 +19,9 @@ import {
   Bookmark,
   Check,
   X,
-  Search
+  Search,
+  Download,
+  Smartphone,
 } from "lucide-react";
 import { FE_CARDS, FECard } from "@/data/fe-study-data";
 import {
@@ -52,33 +54,33 @@ const ROADMAP_MODULES: RoadmapItem[] = [
     id: "flashcards",
     title: "Flashcard Drill (科目A)",
     badge: "Active",
-    desc: "Active recall istilah IT Jepang & Inggris, furigana toggle, dan analogi visual Kitami-shiki.",
-    target: "Pondasi Terminologi Ujian FE",
+    desc: "Active recall 100 istilah IT Jepang & Inggris, furigana toggle, audio TTS, dan analogi visual Kitami-shiki.",
+    target: "Pondasi Terminologi Ujian FE (100 Kartu)",
     status: "active",
   },
   {
     id: "quiz",
     title: "Simulasi 過去問 (Kakomon)",
-    badge: "Planned",
-    desc: "Latihan soal 4 opsi pilihan ganda dari bank soal tahun-tahun sebelumnya dengan countdown 90 menit & penjelasan opsi (解説).",
-    target: "Latihan Ujian 科目A (60 Soal)",
-    status: "planned",
+    badge: "Active",
+    desc: "Simulator CBT 15 soal otentik dengan timer 22,5 menit, matriks navigator nomor, flag review, dan sertifikat kelulusan.",
+    target: "Simulasi Ujian CBT Resmi",
+    status: "active",
   },
   {
     id: "tracer",
     title: "Pseudocode Step-Tracer",
-    badge: "Planned",
-    desc: "Interactive debugger baris demi baris untuk melatih trace table (トレース表) dan algoritma sorting / binary search khas FE.",
-    target: "Kunci Kelulusan 科目B (20 Soal)",
-    status: "planned",
+    badge: "Active",
+    desc: "Interactive debugger baris demi baris untuk melatih trace table (トレース表) dan 4 algoritma khas ujian FE.",
+    target: "Kunci Kelulusan 科目B",
+    status: "active",
   },
   {
     id: "cheatsheet",
     title: "Formula & Architecture",
-    badge: "Planned",
-    desc: "Ringkasan cepat rumus konversi biner/hexadecimal, subnetting IP, RAID 0/1/5, dan formula throughput CPU.",
-    target: "Quick Reference Rumus Hitungan",
-    status: "planned",
+    badge: "Active",
+    desc: "4 kalkulator interaktif (Ketersediaan, MTBF, Akses Memori, BEP) dan tabel subnetting IPv4.",
+    target: "Kalkulator Rumus Hitungan",
+    status: "active",
   },
 ];
 
@@ -91,11 +93,45 @@ export function LearnClient() {
   const [sessionCompleted, setSessionCompleted] = useState(false);
   const [sessionReviewedCount, setSessionReviewedCount] = useState(0);
   const [roadmapModal, setRoadmapModal] = useState<RoadmapItem | null>(null);
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [isInstalled, setIsInstalled] = useState(false);
+
+  // PWA Install prompt listener
+  useEffect(() => {
+    const handleBeforeInstall = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+
+    const handleAppInstalled = () => {
+      setIsInstalled(true);
+      setDeferredPrompt(null);
+    };
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstall);
+    window.addEventListener("appinstalled", handleAppInstalled);
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstall);
+      window.removeEventListener("appinstalled", handleAppInstalled);
+    };
+  }, []);
+
+  const handleInstallPwa = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === "accepted") {
+      setIsInstalled(true);
+    }
+    setDeferredPrompt(null);
+  };
 
   // Load progress from localStorage once mounted
   useEffect(() => {
     setProgress(loadStudyProgress());
   }, []);
+
 
   const refreshProgress = useCallback(() => {
     setProgress(loadStudyProgress());
@@ -267,6 +303,25 @@ export function LearnClient() {
               Platform belajar mandiri untuk persiapan ujian nasional Jepang <b>FE (基本情報技術者試験)</b> dan syarat ganti visa <b>技人国</b>. 
               Dirancang berbasis ilmu psikologi kognitif: <i>Active Recall</i>, <i>Chunking</i>, audio sintetis, dan analogi visual ala Kitami-shiki.
             </p>
+
+            {/* Offline & PWA Bar */}
+            <div className="flex flex-wrap items-center gap-2.5 pt-1">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-500 text-xs font-semibold">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                Mode Kereta Offline Ready (電車モード) 🚅
+              </span>
+
+              {deferredPrompt && !isInstalled && (
+                <button
+                  type="button"
+                  onClick={handleInstallPwa}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white text-xs font-bold shadow-sm transition-all"
+                >
+                  <Download size={13} />
+                  <span>Install App ke HP</span>
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Module Navigation Tabs (All 4 Live Modules) */}

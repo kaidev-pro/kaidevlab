@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cinzel, Inter } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { PwaRegister } from "@/components/pwa-register";
 import "./globals.css";
 
 const inter = Inter({ variable: "--font-body", subsets: ["latin"] });
@@ -12,7 +13,13 @@ export const metadata: Metadata = {
   title: "Kaidevlab — Kai’s Creative Technology Lab",
   description:
     "Kaidevlab is the personal creative technology lab of Kai, featuring AI products, developer tools, learning platforms, original stories, and visual experiments.",
-  icons: { icon: "/favicon.ico" },
+  manifest: "/manifest.json",
+  icons: { icon: "/favicon.ico", apple: "/brand/kaidevlab-logo-dark.png" },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "FE Study Hub",
+  },
   alternates: { canonical: "/" },
   openGraph: {
     title: "Kaidevlab — Kai’s Creative Technology Lab",
@@ -45,6 +52,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${cinzel.variable}`}>
       <head>
         <meta name="referrer" content="strict-origin-when-cross-origin" />
+        <meta name="theme-color" content="#061126" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <script
           dangerouslySetInnerHTML={{
             __html: `(() => {try {const saved = localStorage.getItem('theme'); const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; document.documentElement.dataset.theme = saved || system || 'light';} catch (_) {document.documentElement.dataset.theme = 'light';}})();`,
@@ -53,6 +63,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body>
+        <PwaRegister />
         <div className="noise-overlay" aria-hidden="true" />
         <SiteHeader />
         {children}
@@ -61,3 +72,4 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     </html>
   );
 }
+

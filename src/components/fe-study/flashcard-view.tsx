@@ -475,8 +475,8 @@ export function FlashcardView({
                     </span>
                     <span className="opacity-70 flex items-center gap-1">
                       <Hand size={12} className="sm:hidden" />
-                      <span className="sm:hidden">Tap / Swipe balik ↻</span>
-                      <span className="hidden sm:inline">Swipe / Spasi untuk balik ↵</span>
+                      <span className="sm:hidden">Tap kartu atau swipe ↻</span>
+                      <span className="hidden sm:inline">Swipe atau Spasi untuk balik ↵</span>
                     </span>
                   </div>
                 </div>
@@ -608,7 +608,7 @@ export function FlashcardView({
             >
               <RotateCcw size={14} />
               <span>Balik Kartu</span>
-              <span className="hidden sm:inline">(Spasi)</span>
+              <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono bg-white/20 text-white/90">Space</kbd>
             </button>
 
             <button

@@ -41,6 +41,148 @@ import { QuizView } from "@/components/fe-study/quiz-view";
 import { TracerView } from "@/components/fe-study/tracer-view";
 import { CheatsheetView } from "@/components/fe-study/cheatsheet-view";
 import { RubyTerm } from "@/components/fe-study/ruby-term";
+import { useLanguage } from "@/lib/i18n/context";
+
+const LEARN_I18N = {
+  id: {
+    back: "Keluar Sesi",
+    backShort: "Keluar",
+    modeQuick10: "⚡ Quick 10 Drill (5 Menit)",
+    modeTech: "🛠️ テクノロジ系",
+    modeMgmt: "📊 マネジメント系",
+    modeStrat: "📈 ストラテジ系",
+    modeVocab: "設問・重要用語 (Vocab & Kanji)",
+    modeReview: "🔄 Review Soal Sulit",
+    modeStarred: "⭐ Drill Kartu Favorit",
+    modeAll: "📚 Semua Kartu FE",
+    eyebrow: "Japan IT Certification Drill · 基本情報技術者試験",
+    title: "FE Cognitive Gym & Study Hub",
+    trainMode: "Mode Kereta Offline Ready (電車モード) 🚅",
+    installApp: "Install App ke HP",
+    tabFlashcards: "🗂️ Flashcards",
+    tabQuiz: "📝 過去問 (Kakomon Quiz)",
+    tabTracer: "💻 Pseudocode Tracer (科目B)",
+    tabCheatsheet: "⚡ Formula Cheatsheet",
+    searchTitle: "Kamus Cepat & Pencarian Istilah FE",
+    searchSubtitle: "129 Istilah Tersedia (99 Konsep IT + 30 Kosakata Sakti Soal)",
+    searchPlaceholder: "Cari arti & istilah FE (contoh: SQL, 公開鍵, RAID, ACID, Lock, Subnet, OSI)...",
+    searchFound: "Ditemukan",
+    searchTermsFor: "istilah untuk",
+    searchClose: "Tutup Hasil ×",
+    searchEmpty: "Tidak ada istilah yang cocok. Coba kata kunci lain atau browse kategori di bawah.",
+    drillThisCard: "Drill Kartu Ini →",
+    dailyEyebrow: "Rekomendasi Harian (Zero Friction)",
+    dailyTitle: "Daily Quick Drill: 10 Kartu (5 Menit)",
+    dailyDesc: "Acak 10 istilah penting dari seluruh materi ujian. Dilengkapi efek suara empuk dan kontrol swipe jempol untuk belajar di kereta atau waktu santai.",
+    dailyBtn: "Mulai 10 Kartu Sekarang",
+    modulesEyebrow: "Kurikulum Resmi IPA",
+    modulesTitle: "Pilih Modul Pembelajaran",
+    techDesc: "Arsitektur komputer, enkripsi (公開鍵), SQL Injection, Virtual Memory, Subnet Mask, dan basis data.",
+    mgmtDesc: "Manajemen proyek, Critical Path (PERT), WBS (Work Breakdown Structure), dan SLA / ITIL service.",
+    stratDesc: "Analisis SWOT, Balanced Scorecard (BSC), Hak Cipta IT Jepang, serta kontrak Haken vs Ukeoi.",
+    vocabDesc: "30 kosakata kunci & kanji penentu soal ujian FE (改ざん, 否認防止, 脆弱性, 適切でない, 整合性, 冗長化, 閾値).",
+    startDrill: "Mulai Drill",
+    startDrillVocab: "Mulai Drill (30 Kartu)",
+    drillStarred: "Drill Kartu Favorit",
+    reviewDifficult: "Review Kartu Sulit",
+    drillAll: "Drill Seluruh Materi (129 Kartu)",
+    tipTitle: "Tips Belajar Efektif:",
+    tipDesc: "Otak mengingat 3x lebih kuat saat kamu berusaha menebak dulu sebelum membalik kartu (Active Recall).",
+    tipRef: "Rujukan: Make It Stick (Brown et al.)",
+  },
+  ja: {
+    back: "セッション終了",
+    backShort: "終了",
+    modeQuick10: "⚡ Quick 10 ドリル (5分)",
+    modeTech: "🛠️ テクノロジ系",
+    modeMgmt: "📊 マネジメント系",
+    modeStrat: "📈 ストラテジ系",
+    modeVocab: "設問・重要用語 (Vocab & Kanji)",
+    modeReview: "🔄 復習・苦手カード",
+    modeStarred: "⭐ お気に入りカード",
+    modeAll: "📚 全FEカード",
+    eyebrow: "国家試験・基本情報技術者試験 学習ドリル",
+    title: "FE Cognitive Gym & 学習ハブ",
+    trainMode: "オフライン電車モード対応 (電車モード) 🚅",
+    installApp: "ホーム画面に追加",
+    tabFlashcards: "🗂️ フラッシュカード",
+    tabQuiz: "📝 過去問 (CBT模試)",
+    tabTracer: "💻 擬似言語トレーサー (科目B)",
+    tabCheatsheet: "⚡ 公式＆計算ツール",
+    searchTitle: "FE用語クイック検索・辞書",
+    searchSubtitle: "129用語収録（IT専門概念99 + 頻出試験用語30）",
+    searchPlaceholder: "FE用語を検索（例: SQL, 公開鍵, RAID, ACID, Lock, Subnet, OSI）...",
+    searchFound: "検索結果",
+    searchTermsFor: "件該当：",
+    searchClose: "検索を閉じる ×",
+    searchEmpty: "該当する用語がありません。別のキーワードまたはカテゴリ一覧から選択してください。",
+    drillThisCard: "この単語をドリル →",
+    dailyEyebrow: "毎日の学習習慣（ゼロフリクション）",
+    dailyTitle: "デイリークイックドリル: 10枚 (5分)",
+    dailyDesc: "全試験範囲から重要10用語をランダム出題。音声フィードバックと快適なスワイプ操作で通勤電車でもサクサク学習。",
+    dailyBtn: "今すぐ10枚ドリルを開始",
+    modulesEyebrow: "IPA公式シラバス準拠",
+    modulesTitle: "学習モジュールを選択",
+    techDesc: "コンピュータ構成、暗号化（公開鍵）、SQLインジェクション、仮想メモリ、サブネット、データベース。",
+    mgmtDesc: "プロジェクト管理、クリティカルパス（PERT法）、WBS、ITILサービスマネジメント。",
+    stratDesc: "SWOT分析、バランススコアカード（BSC）、著作権・知的財産法、派遣と請負の違い。",
+    vocabDesc: "試験で合否を分ける重要漢字・出題用語30選（改ざん、否認防止、脆弱性、適切でない、整合性、冗長化、閾値）。",
+    startDrill: "ドリル開始",
+    startDrillVocab: "ドリル開始 (30枚)",
+    drillStarred: "お気に入りカード",
+    reviewDifficult: "苦手カード復習",
+    drillAll: "全出題範囲ドリル (129枚)",
+    tipTitle: "効果的な学習のコツ:",
+    tipDesc: "答えを見る前に自力で思い出す練習（アクティブリコール）を行うことで、記憶の定着率は3倍向上します。",
+    tipRef: "参考文献: 『Make It Stick（学び方の科学）』",
+  },
+  en: {
+    back: "Exit Session",
+    backShort: "Exit",
+    modeQuick10: "⚡ Quick 10 Drill (5 Min)",
+    modeTech: "🛠️ Technology",
+    modeMgmt: "📊 Management",
+    modeStrat: "📈 Strategy & Legal",
+    modeVocab: "設問・重要用語 (Vocab & Kanji)",
+    modeReview: "🔄 Review Weak Cards",
+    modeStarred: "⭐ Starred Cards Drill",
+    modeAll: "📚 All FE Cards",
+    eyebrow: "Japan IT Certification Drill · Fundamental IT Engineer Examination",
+    title: "FE Cognitive Gym & Study Hub",
+    trainMode: "Offline Commuter Mode Ready (電車モード) 🚅",
+    installApp: "Install App to Device",
+    tabFlashcards: "🗂️ Flashcards",
+    tabQuiz: "📝 Past Exams (Kakomon CBT)",
+    tabTracer: "💻 Pseudocode Tracer (Section B)",
+    tabCheatsheet: "⚡ Formula Cheatsheet",
+    searchTitle: "Quick Search & FE IT Dictionary",
+    searchSubtitle: "129 Terms Available (99 IT Concepts + 30 Exam Vocabulary)",
+    searchPlaceholder: "Search FE terms (e.g. SQL, Public Key, RAID, ACID, Lock, Subnet, OSI)...",
+    searchFound: "Found",
+    searchTermsFor: "terms for",
+    searchClose: "Close Results ×",
+    searchEmpty: "No matching terms found. Try another keyword or browse the categories below.",
+    drillThisCard: "Drill This Card →",
+    dailyEyebrow: "Daily Habit (Zero Friction)",
+    dailyTitle: "Daily Quick Drill: 10 Cards (5 Min)",
+    dailyDesc: "Random 10 high-yield exam terms. Features sound effects and smooth thumb swipe controls for quick transit study.",
+    dailyBtn: "Start 10 Cards Now",
+    modulesEyebrow: "Official IPA Syllabus",
+    modulesTitle: "Select Study Module",
+    techDesc: "Computer architecture, cryptography (Public Key), SQL Injection, Virtual Memory, Subnet Mask, and databases.",
+    mgmtDesc: "Project management, Critical Path (PERT), WBS, and SLA / ITIL service management.",
+    stratDesc: "SWOT analysis, Balanced Scorecard (BSC), Japanese IT copyright law, and Haken vs Ukeoi contracts.",
+    vocabDesc: "30 high-yield exam indicator terms & kanji (改ざん, 否認防止, 脆弱性, 適切でない, 整合性, 冗長化, 閾値).",
+    startDrill: "Start Drill",
+    startDrillVocab: "Start Drill (30 Cards)",
+    drillStarred: "Starred Cards",
+    reviewDifficult: "Review Difficult Cards",
+    drillAll: "Drill All Cards (129 Cards)",
+    tipTitle: "Effective Study Tip:",
+    tipDesc: "Your brain retains concepts 3x longer when you force yourself to recall before flipping the card (Active Recall).",
+    tipRef: "Reference: Make It Stick (Brown et al.)",
+  }
+};
 
 type StudyMode = "all" | "quick10" | "technology" | "management" | "strategy" | "vocab" | "review" | "starred";
 type HubTab = "flashcards" | "quiz" | "tracer" | "cheatsheet";
@@ -90,6 +232,8 @@ const ROADMAP_MODULES: RoadmapItem[] = [
 ];
 
 export function LearnClient() {
+  const { locale } = useLanguage();
+  const txt = LEARN_I18N[locale] || LEARN_I18N.id;
   const [progress, setProgress] = useState<StudyProgress>(DEFAULT_PROGRESS);
   const [activeTab, setActiveTab] = useState<HubTab>("flashcards");
   const [activeMode, setActiveMode] = useState<StudyMode | null>(null);
@@ -260,17 +404,18 @@ export function LearnClient() {
               onClick={handleBackToMenu}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[var(--border)] hover:border-[var(--brand-primary)] text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors shrink-0"
             >
-              <ArrowLeft size={14} /> <span className="hidden sm:inline">Keluar Sesi</span><span className="sm:hidden">Keluar</span>
+              <ArrowLeft size={14} /> <span className="hidden sm:inline">{txt.back}</span><span className="sm:hidden">{txt.backShort}</span>
             </button>
 
             <span className="text-xs uppercase font-bold tracking-wider text-[var(--brand-primary)] truncate text-right">
-              {activeMode === "quick10" && "⚡ Quick 10 Drill (5 Menit)"}
-              {activeMode === "technology" && "🛠️ テクノロジ系"}
-              {activeMode === "management" && "📊 マネジメント系"}
-              {activeMode === "strategy" && "📈 ストラテジ系"}
-              {activeMode === "review" && "🔄 Review Soal Sulit"}
-              {activeMode === "starred" && "⭐ Drill Kartu Favorit"}
-              {activeMode === "all" && "📚 Semua Kartu FE"}
+              {activeMode === "quick10" && txt.modeQuick10}
+              {activeMode === "technology" && txt.modeTech}
+              {activeMode === "management" && txt.modeMgmt}
+              {activeMode === "strategy" && txt.modeStrat}
+              {activeMode === "vocab" && txt.modeVocab}
+              {activeMode === "review" && txt.modeReview}
+              {activeMode === "starred" && txt.modeStarred}
+              {activeMode === "all" && txt.modeAll}
             </span>
           </div>
 
@@ -309,24 +454,36 @@ export function LearnClient() {
             <div className="flex items-center gap-2">
               <span className="eyebrow inline-flex items-center gap-1.5">
                 <GraduationCap size={15} />
-                Japan IT Certification Drill · 基本情報技術者試験
+                {txt.eyebrow}
               </span>
             </div>
 
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] font-serif">
-              FE Cognitive Gym & Study Hub
+              {txt.title}
             </h1>
 
-            <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-              Platform belajar mandiri untuk persiapan ujian nasional Jepang <b>FE (基本情報技術者試験)</b> dan syarat ganti visa <b>技人国</b>. 
-              Dirancang berbasis ilmu psikologi kognitif: <i>Active Recall</i>, <i>Chunking</i>, audio sintetis, dan analogi visual ala Kitami-shiki.
-            </p>
+            {locale === "ja" ? (
+              <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                国家試験<b>「基本情報技術者試験（FE）」</b>および<b>技人国ビザ</b>取得のための自習型認知学習ジム。
+                認知科学（<i>アクティブリコール</i>、<i>チャンキング</i>、キタミ式直感アナロジー、Web Speech音声合成）に基づき設計されています。
+              </p>
+            ) : locale === "en" ? (
+              <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                Self-study cognitive gym for Japan’s national <b>Fundamental IT Engineer Examination (FE)</b> and <b>Engineer visa</b> qualification. 
+                Engineered with cognitive science: <i>Active Recall</i>, <i>Chunking</i>, Japanese TTS audio, and Kitami-style intuitive visual analogies.
+              </p>
+            ) : (
+              <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                Platform belajar mandiri untuk persiapan ujian nasional Jepang <b>FE (基本情報技術者試験)</b> dan syarat ganti visa <b>技人国</b>. 
+                Dirancang berbasis ilmu psikologi kognitif: <i>Active Recall</i>, <i>Chunking</i>, audio sintetis, dan analogi visual ala Kitami-shiki.
+              </p>
+            )}
 
             {/* Offline & PWA Bar */}
             <div className="flex flex-wrap items-center gap-2.5 pt-1">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-500 text-xs font-semibold">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                Mode Kereta Offline Ready (電車モード) 🚅
+                {txt.trainMode}
               </span>
 
               {deferredPrompt && !isInstalled && (
@@ -336,7 +493,7 @@ export function LearnClient() {
                   className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white text-xs font-bold shadow-sm transition-all"
                 >
                   <Download size={13} />
-                  <span>Install App ke HP</span>
+                  <span>{txt.installApp}</span>
                 </button>
               )}
             </div>
@@ -355,7 +512,7 @@ export function LearnClient() {
                 }`}
               >
                 <Layers size={14} />
-                <span>🗂️ Flashcards</span>
+                <span>{txt.tabFlashcards}</span>
               </button>
 
               <button
@@ -368,7 +525,7 @@ export function LearnClient() {
                 }`}
               >
                 <FileQuestion size={14} />
-                <span>📝 過去問 (Kakomon Quiz)</span>
+                <span>{txt.tabQuiz}</span>
               </button>
 
               <button
@@ -381,7 +538,7 @@ export function LearnClient() {
                 }`}
               >
                 <Terminal size={14} />
-                <span>💻 Pseudocode Tracer (科目B)</span>
+                <span>{txt.tabTracer}</span>
               </button>
 
               <button
@@ -394,7 +551,7 @@ export function LearnClient() {
                 }`}
               >
                 <Bookmark size={14} />
-                <span>⚡ Formula Cheatsheet</span>
+                <span>{txt.tabCheatsheet}</span>
               </button>
             </div>
           </div>
@@ -406,10 +563,10 @@ export function LearnClient() {
             <div className="flex items-center justify-between">
               <span className="text-xs uppercase font-bold tracking-wider text-[var(--brand-primary)] flex items-center gap-1.5">
                 <Search size={14} />
-                Kamus Cepat & Pencarian Istilah FE
+                {txt.searchTitle}
               </span>
               <span className="text-[11px] text-[var(--text-secondary)]">
-                129 Istilah Tersedia (99 Konsep IT + 30 Kosakata Sakti Soal)
+                {txt.searchSubtitle}
               </span>
             </div>
 
@@ -422,7 +579,7 @@ export function LearnClient() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Cari arti & istilah FE (contoh: SQL, 公開鍵, RAID, ACID, Lock, Subnet, OSI)..."
+                placeholder={txt.searchPlaceholder}
                 className="w-full pl-11 pr-10 py-3.5 rounded-2xl border-2 border-[var(--border)] focus:border-[var(--brand-primary)] bg-[var(--surface)] text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]/60 focus:outline-none shadow-[var(--shadow)] transition-all"
               />
               {searchQuery && (
@@ -441,20 +598,20 @@ export function LearnClient() {
               <div className="p-5 rounded-2xl border border-[var(--brand-primary)]/40 bg-[var(--surface)] shadow-lg flex flex-col gap-3">
                 <div className="flex items-center justify-between text-xs font-semibold text-[var(--text-secondary)] pb-2 border-b border-[var(--border)]">
                   <span>
-                    Ditemukan <b className="text-[var(--brand-primary)]">{searchResults.length}</b> istilah untuk &ldquo;{searchQuery}&rdquo;
+                    {txt.searchFound} <b className="text-[var(--brand-primary)]">{searchResults.length}</b> {txt.searchTermsFor} &ldquo;{searchQuery}&rdquo;
                   </span>
                   <button
                     type="button"
                     onClick={() => setSearchQuery("")}
                     className="text-xs text-[var(--brand-primary)] hover:underline font-bold"
                   >
-                    Tutup Hasil ×
+                    {txt.searchClose}
                   </button>
                 </div>
 
                 {searchResults.length === 0 ? (
                   <div className="py-6 text-center text-xs text-[var(--text-secondary)]">
-                    Tidak ada istilah yang cocok. Coba kata kunci lain atau browse kategori di bawah.
+                    {txt.searchEmpty}
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[380px] overflow-y-auto pr-1">
@@ -482,7 +639,7 @@ export function LearnClient() {
                             onClick={() => handleStartSingleCard(card)}
                             className="inline-flex items-center gap-1 text-xs font-bold text-[var(--brand-primary)] hover:underline"
                           >
-                            Drill Kartu Ini →
+                            {txt.drillThisCard}
                           </button>
                         </div>
                       </div>
@@ -499,14 +656,14 @@ export function LearnClient() {
               <div className="flex items-center gap-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-amber-500 flex items-center gap-1">
                   <Flame size={14} className="fill-amber-500 animate-pulse" />
-                  Rekomendasi Harian (Zero Friction)
+                  {txt.dailyEyebrow}
                 </span>
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] font-sans">
-                Daily Quick Drill: 10 Kartu (5 Menit)
+                {txt.dailyTitle}
               </h3>
               <p className="text-sm text-[var(--text-secondary)]">
-                Acak 10 istilah penting dari seluruh materi ujian. Dilengkapi efek suara empuk dan kontrol swipe jempol untuk belajar di kereta atau waktu santai.
+                {txt.dailyDesc}
               </p>
             </div>
 
@@ -515,7 +672,7 @@ export function LearnClient() {
               onClick={() => handleStartSession("quick10")}
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white text-sm font-bold tracking-wide shadow-md hover:shadow-lg transition-all active:scale-98 whitespace-nowrap"
             >
-              <Zap size={16} /> Mulai 10 Kartu Sekarang
+              <Zap size={16} /> {txt.dailyBtn}
             </button>
           </div>
 
@@ -526,10 +683,10 @@ export function LearnClient() {
           <div className="flex flex-col gap-4">
             <div>
               <p className="text-xs uppercase font-bold tracking-widest text-[var(--brand-primary)]">
-                Kurikulum Resmi IPA
+                {txt.modulesEyebrow}
               </p>
               <h3 className="text-2xl font-bold text-[var(--text-primary)] font-sans mt-0.5">
-                Pilih Modul Pembelajaran
+                {txt.modulesTitle}
               </h3>
             </div>
 
@@ -547,11 +704,11 @@ export function LearnClient() {
                     テクノロジ系 (Technology)
                   </h4>
                   <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                    Arsitektur komputer, enkripsi (公開鍵), SQL Injection, Virtual Memory, Subnet Mask, dan basis data.
+                    {txt.techDesc}
                   </p>
                 </div>
                 <div className="flex items-center justify-between text-xs font-semibold text-blue-500 pt-2 border-t border-[var(--border)]">
-                  <span>Mulai Drill</span>
+                  <span>{txt.startDrill}</span>
                   <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
@@ -569,11 +726,11 @@ export function LearnClient() {
                     マネジメント系 (Management)
                   </h4>
                   <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                    Manajemen proyek, Critical Path (PERT), WBS (Work Breakdown Structure), dan SLA / ITIL service.
+                    {txt.mgmtDesc}
                   </p>
                 </div>
                 <div className="flex items-center justify-between text-xs font-semibold text-emerald-500 pt-2 border-t border-[var(--border)]">
-                  <span>Mulai Drill</span>
+                  <span>{txt.startDrill}</span>
                   <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
@@ -591,11 +748,11 @@ export function LearnClient() {
                     ストラテジ系 (Strategy & Legal)
                   </h4>
                   <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                    Analisis SWOT, Balanced Scorecard (BSC), Hak Cipta IT Jepang, serta kontrak Haken vs Ukeoi.
+                    {txt.stratDesc}
                   </p>
                 </div>
                 <div className="flex items-center justify-between text-xs font-semibold text-amber-500 pt-2 border-t border-[var(--border)]">
-                  <span>Mulai Drill</span>
+                  <span>{txt.startDrill}</span>
                   <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
@@ -613,11 +770,11 @@ export function LearnClient() {
                     設問・重要用語 (Vocab & Kanji)
                   </h4>
                   <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                    30 kosakata kunci & kanji penentu soal ujian FE (改ざん, 否認防止, 脆弱性, 適切でない, 整合性, 冗長化, 閾値).
+                    {txt.vocabDesc}
                   </p>
                 </div>
                 <div className="flex items-center justify-between text-xs font-semibold text-purple-500 pt-2 border-t border-[var(--border)]">
-                  <span>Mulai Drill (30 Kartu)</span>
+                  <span>{txt.startDrillVocab}</span>
                   <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
@@ -632,7 +789,7 @@ export function LearnClient() {
               disabled={!progress.starredCardIds || progress.starredCardIds.length === 0}
               className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 font-semibold text-xs transition-all disabled:opacity-40 disabled:pointer-events-none"
             >
-              <Star size={15} className="fill-amber-500" /> Drill Kartu Favorit ({progress.starredCardIds?.length || 0})
+              <Star size={15} className="fill-amber-500" /> {txt.drillStarred} ({progress.starredCardIds?.length || 0})
             </button>
 
             <button
@@ -641,7 +798,7 @@ export function LearnClient() {
               disabled={progress.reviewCardIds.length === 0}
               className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-rose-500/30 bg-rose-500/10 hover:bg-rose-500/20 text-rose-500 font-semibold text-xs transition-all disabled:opacity-40 disabled:pointer-events-none"
             >
-              <RotateCcw size={15} /> Review Kartu Sulit ({progress.reviewCardIds.length})
+              <RotateCcw size={15} /> {txt.reviewDifficult} ({progress.reviewCardIds.length})
             </button>
 
             <button
@@ -649,7 +806,7 @@ export function LearnClient() {
               onClick={() => handleStartSession("all")}
               className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] bg-[var(--surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-semibold text-xs transition-all"
             >
-              <BookOpen size={15} /> Drill Seluruh Materi ({FE_CARDS.length} Kartu)
+              <BookOpen size={15} /> {txt.drillAll}
             </button>
           </div>
 
@@ -658,10 +815,10 @@ export function LearnClient() {
             <div className="flex items-center gap-2 text-[var(--text-primary)] font-medium">
               <Sparkles size={16} className="text-[var(--brand-primary)] shrink-0" />
               <span>
-                <b>Tips Belajar Efektif:</b> Otak mengingat 3x lebih kuat saat kamu berusaha menebak dulu sebelum membalik kartu (Active Recall).
+                <b>{txt.tipTitle}</b> {txt.tipDesc}
               </span>
             </div>
-            <span className="text-[11px] opacity-70">Rujukan: <i>Make It Stick</i> (Brown et al.)</span>
+            <span className="text-[11px] opacity-70">{txt.tipRef}</span>
           </div>
           </>
           )}

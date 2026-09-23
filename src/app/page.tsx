@@ -175,8 +175,26 @@ export default function Home() {
           <aside className="upcoming-notes" aria-label="Upcoming notes">
             <p className="eyebrow">{upcomingTitle}</p>
             <ul>
-              <li><span>{locale === "id" ? "Membangun alur kerja AI yang andal untuk intake UMKM" : "Building a reliable AI workflow for UMKM intake"}</span><small>{comingSoonText}</small></li>
-              <li><span>{locale === "id" ? "Membangun arahan visual untuk Blue Vengeance" : "Building the visual direction for Blue Vengeance"}</span><small>{comingSoonText}</small></li>
+              <li>
+                <span>
+                  {locale === "id"
+                    ? "Membangun alur kerja AI yang andal untuk intake UMKM"
+                    : locale === "ja"
+                    ? "中小企業向けインテークのための堅牢なAIワークフロー構築"
+                    : "Building a reliable AI workflow for UMKM intake"}
+                </span>
+                <small>{comingSoonText}</small>
+              </li>
+              <li>
+                <span>
+                  {locale === "id"
+                    ? "Membangun arahan visual untuk Blue Vengeance"
+                    : locale === "ja"
+                    ? "Blue Vengeanceのビジュアルディレクションの構築"
+                    : "Building the visual direction for Blue Vengeance"}
+                </span>
+                <small>{comingSoonText}</small>
+              </li>
             </ul>
           </aside>
         </div>

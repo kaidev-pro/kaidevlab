@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 
 const projects = {
   "8agents": {
-    title: "8Agents", category: "UMKM Digital Transformation", status: "Live · Client Engine", role: "Product architecture, brand strategy, digital asset vault, web engineering", logo: "/logos/8agents-mark.webp", liveUrl: "https://8agents.id", year: "2026", stack: ["Next.js", "Brand Systems", "Digital Vault Architecture", "Intake Queue (BullMQ/Redis)", "WhatsApp Automated Funnel", "Content Studio Pipeline"],
+    title: "8Agents", category: "UMKM Digital Transformation", status: "Live · Client Engine", role: "Product architecture, brand strategy, digital asset vault, web engineering", logo: "/logos/8agents-mark.webp", coverImage: "/project-screenshots/8agents.webp", liveUrl: "https://8agents.id", year: "2026", stack: ["Next.js", "Brand Systems", "Digital Vault Architecture", "Intake Queue (BullMQ/Redis)", "WhatsApp Automated Funnel", "Content Studio Pipeline"],
     summary: "An end-to-end digital partner transforming Indonesian MSMEs (UMKM) into modern, credible brands with professional brand kits, high-converting websites, UGC video content, and a zero-loss Digital Asset Vault.",
     problem: "Over 66 million Indonesian MSMEs generate 61% of national GDP, yet the vast majority lack modern visual branding and websites. Brand assets routinely get lost in unstructured WhatsApp chats, and conventional agencies charge prohibitive fees with slow turnarounds.",
     goals: [
@@ -39,7 +39,7 @@ const projects = {
     ]
   },
   "fe-study-hub": {
-    title: "FE Cognitive Gym", category: "Interactive Education Hub", status: "Live · Interactive System", role: "Full-stack engineering, learning system, CBT simulator, active recall engine", logo: "/brand/kaidevlab-logo-dark.webp", liveUrl: "/learn", year: "2026", stack: ["Next.js", "React 19", "Tailwind CSS", "Web Audio API", "Web Speech TTS", "Offline PWA", "Service Worker"],
+    title: "FE Cognitive Gym", category: "Interactive Education Hub", status: "Live · Interactive System", role: "Full-stack engineering, learning system, CBT simulator, active recall engine", logo: "/brand/kaidevlab-logo-dark.webp", coverImage: "/project-screenshots/fe-study-hub.webp", liveUrl: "/learn", year: "2026", stack: ["Next.js", "React 19", "Tailwind CSS", "Web Audio API", "Web Speech TTS", "Offline PWA", "Service Worker"],
     summary: "A cognitive study gym for Japan’s Fundamental Information Technology Engineer Examination (基本情報技術者試験) featuring 129 high-yield flashcards with native furigana & TTS, CBT simulator with digital certificates, pseudocode tracer, and offline PWA mode.",
     problem: "Preparing for Japan's national FE certification typically involves 600+ page textbooks dense with technical kanji and abstract pseudocode, leading to cognitive overload, slow recall, and study burnout during daily transit.",
     goals: ["Create an active recall drill with native Japanese TTS and furigana toggles", "Simulate the authentic 22.5-minute CBT exam with live scoring and digital certificates", "Build an interactive pseudocode tracer to demystify trace tables for 科目B", "Deliver an installable offline PWA (電車モード) for studying inside commuter trains without signal"],
@@ -50,7 +50,7 @@ const projects = {
     next: ["Expand question bank for subsequent exam seasons", "Add custom user-created flashcard decks", "Implement spaced repetition interval algorithms based on review history"]
   },
   "rakusaku": {
-    title: "Rakusaku", category: "Fast Top-Up Commerce", status: "Live · Payment Active (<60s Fulfillment)", role: "Founder, full-stack commerce engineering, brand architecture, anime-tech UX", logo: "/logos/rakusaku-128.webp", liveUrl: "https://rakusaku.com", year: "2026", stack: ["DOKU Payment Gateway", "Pakasir Engine", "QRIS & E-Wallet Webhooks", "Real-Time Callback Reconciliation", "Anime-Tech Design System", "Interactive Duo Mascots"],
+    title: "Rakusaku", category: "Fast Top-Up Commerce", status: "Live · Payment Active (<60s Fulfillment)", role: "Founder, full-stack commerce engineering, brand architecture, anime-tech UX", logo: "/logos/rakusaku-128.webp", coverImage: "/project-screenshots/rakusaku.webp", liveUrl: "https://rakusaku.com", year: "2026", stack: ["DOKU Payment Gateway", "Pakasir Engine", "QRIS & E-Wallet Webhooks", "Real-Time Callback Reconciliation", "Anime-Tech Design System", "Interactive Duo Mascots"],
     summary: "A fast, pocket-sized game & digital voucher top-up platform fusing Japanese-Indonesian naming philosophy (楽 + Saku), vibrant pink anime-tech aesthetics, and automated sub-minute fulfillment via DOKU and Pakasir.",
     problem: "Most gaming top-up sites in Indonesia suffer from cluttered dark-mode clone layouts, confusing navigation, hidden processing surcharges, and sluggish manual payment verification. Gamers need an ultra-fast, trustworthy, and delightful checkout experience that fits right in their pocket.",
     goals: [
@@ -131,7 +131,12 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const title = `${p.title} — Kaidevlab Project`;
   const description = p.summary;
   const url = `/work/${slug}`;
-  const images = "poster" in p && p.poster ? [p.poster] : undefined;
+  const images =
+    "poster" in p && p.poster
+      ? [p.poster]
+      : "coverImage" in p && p.coverImage
+      ? [p.coverImage as string]
+      : undefined;
 
   return {
     title,

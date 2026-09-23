@@ -13,6 +13,7 @@ interface ClientProjectProps {
     status: string;
     role: string;
     logo?: string;
+    coverImage?: string;
     liveUrl?: string;
     year: string;
     stack: readonly string[];
@@ -126,6 +127,52 @@ export function ClientProject({
             sizes="(max-width: 760px) 100vw, 720px"
           />
           <figcaption>{p.title} key visual / poster.</figcaption>
+        </figure>
+      ) : p.coverImage ? (
+        <figure className="detail-showcase">
+          <div className="detail-showcase-bar">
+            <div className="detail-showcase-dots" aria-hidden="true">
+              <span className="dot dot-red" />
+              <span className="dot dot-yellow" />
+              <span className="dot dot-green" />
+            </div>
+            <div className="detail-showcase-url">
+              <span>
+                {p.liveUrl
+                  ? p.liveUrl.startsWith("http")
+                    ? p.liveUrl.replace(/^https?:\/\//, "")
+                    : `kaidevlab.com${p.liveUrl}`
+                  : p.title}
+              </span>
+            </div>
+            {p.liveUrl && (
+              <a
+                href={p.liveUrl}
+                target={p.liveUrl.startsWith("http") ? "_blank" : undefined}
+                rel={p.liveUrl.startsWith("http") ? "noreferrer" : undefined}
+                className="detail-showcase-link"
+              >
+                {labels.visitLive} ↗
+              </a>
+            )}
+          </div>
+          <div className="detail-showcase-viewport">
+            <Image
+              src={p.coverImage}
+              alt={`${p.title} live interface preview`}
+              width={1440}
+              height={900}
+              sizes="(max-width: 768px) 100vw, 1100px"
+              priority
+            />
+          </div>
+          <figcaption>
+            {locale === "id"
+              ? `Tangkapan layar antarmuka langsung ${p.title} — ${p.status}`
+              : locale === "ja"
+              ? `${p.title} のライブUIプレビュー — ${p.status}`
+              : `Live interface preview of ${p.title} — ${p.status}`}
+          </figcaption>
         </figure>
       ) : creative && p.logo ? (
         <section className="detail-concept-visual" aria-label={`${p.title} visual development status`}>

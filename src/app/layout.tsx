@@ -6,7 +6,7 @@ import { PwaRegister } from "@/components/pwa-register";
 import "./globals.css";
 
 const inter = Inter({ variable: "--font-body", subsets: ["latin"] });
-const cinzel = Cinzel({ variable: "--font-display", subsets: ["latin"], weight: ["600", "700"] });
+const cinzel = Cinzel({ variable: "--font-display", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kaidevlab.com"),

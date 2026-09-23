@@ -3,6 +3,7 @@ import { Cinzel, Inter } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { PwaRegister } from "@/components/pwa-register";
+import { LanguageProvider } from "@/lib/i18n/context";
 import "./globals.css";
 
 const inter = Inter({ variable: "--font-body", subsets: ["latin"] });
@@ -63,11 +64,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body>
-        <PwaRegister />
-        <div className="noise-overlay" aria-hidden="true" />
-        <SiteHeader />
-        {children}
-        <SiteFooter />
+        <LanguageProvider>
+          <PwaRegister />
+          <div className="noise-overlay" aria-hidden="true" />
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -4,18 +4,21 @@
 import Image from "next/image";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/lib/i18n/context";
+import { LanguageSwitcher } from "./language-switcher";
 
 export function SiteHeader() {
+  const { t } = useLanguage();
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   const navItems = [
-    ["Work", "/#work"],
-    ["Learn", "/learn"],
-    ["Lab Notes", "/#notes"],
-    ["About", "/#about"],
-    ["Contact", "/contact/"],
+    [t.nav.work, "/#work"],
+    [t.nav.learn, "/learn"],
+    [t.nav.labNotes, "/#notes"],
+    [t.nav.about, "/#about"],
+    [t.nav.contact, "/contact/"],
   ] as const;
 
   useEffect(() => {
@@ -61,6 +64,8 @@ export function SiteHeader() {
       </nav>
 
       <div className="header-actions">
+        <LanguageSwitcher />
+
         <button
           className="icon-button theme-toggle"
           type="button"
@@ -70,7 +75,7 @@ export function SiteHeader() {
         >
           {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
         </button>
-        <a className="talk desktop-talk" href="/contact/">Let's Talk</a>
+        <a className="talk desktop-talk" href="/contact/">{t.nav.letsTalk}</a>
         <button
           className="icon-button menu-toggle"
           type="button"
@@ -83,10 +88,14 @@ export function SiteHeader() {
       </div>
 
       <nav className={`mobile-nav ${menuOpen ? "open" : ""}`} aria-label="Mobile navigation">
+        <div className="px-4 py-2 flex items-center justify-between border-b border-[var(--border)] mb-2">
+          <span className="text-xs font-bold text-[var(--text-secondary)]">Language</span>
+          <LanguageSwitcher />
+        </div>
         {navItems.map(([label, href]) => (
           <a href={href} key={href} onClick={() => setMenuOpen(false)}>{label}</a>
         ))}
-        <a className="mobile-talk" href="/contact/" onClick={() => setMenuOpen(false)}>Let's Talk</a>
+        <a className="mobile-talk" href="/contact/" onClick={() => setMenuOpen(false)}>{t.nav.letsTalk}</a>
       </nav>
     </header>
   );

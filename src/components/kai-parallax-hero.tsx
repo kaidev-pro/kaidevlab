@@ -2,11 +2,13 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/lib/i18n/context";
 
 const particles = [[13, 28, 0], [27, 76, -2.4], [45, 16, -4.2], [61, 67, -1.1], [78, 24, -3.2], [91, 73, -5.1]];
 const clamp = (value: number, min = -1, max = 1) => Math.min(max, Math.max(min, value));
 
 export function KaiParallaxHero() {
+  const { t } = useLanguage();
   const stageRef = useRef<HTMLDivElement>(null);
   const [motionOn, setMotionOn] = useState(true);
   const [isTouch, setIsTouch] = useState(false);
@@ -122,15 +124,19 @@ export function KaiParallaxHero() {
       <div className="cinematic-scrim" aria-hidden="true" />
 
       <div className="cinematic-copy hero-reveal">
-        <p className="eyebrow">Creative Technologist &amp; Independent Builder</p>
-        <h1>Building products, systems, and stories at the intersection of <em>AI, code, and creativity.</em></h1>
-        <p className="lead">I turn ideas into digital products, intelligent systems, and meaningful creative experiences.</p>
+        <p className="eyebrow">{t.hero.eyebrow}</p>
+        <h1>
+          {t.hero.headlinePrefix}
+          <em>{t.hero.headlineHighlight}</em>
+          {t.hero.headlineSuffix}
+        </h1>
+        <p className="lead">{t.hero.lead}</p>
         <div className="cinematic-actions">
-          <a className="primary" href="#work">Explore My Work</a>
-          <a className="secondary" href="#about">Meet Kai</a>
+          <a className="primary" href="#work">{t.hero.exploreWork}</a>
+          <a className="secondary" href="#about">{t.hero.meetKai}</a>
         </div>
         <p className="meta">
-          Based in Japan · Building independently · <a href="https://x.com/Kiminoheroo" target="_blank" rel="noreferrer" style={{ color: "var(--brand-primary)", textDecoration: "underline", textUnderlineOffset: "3px" }}>@Kiminoheroo on X ↗</a>
+          {t.hero.basedIn} · {t.hero.buildingIndependently} · <a href="https://x.com/Kiminoheroo" target="_blank" rel="noreferrer" style={{ color: "var(--brand-primary)", textDecoration: "underline", textUnderlineOffset: "3px" }}>@Kiminoheroo on X ↗</a>
         </p>
       </div>
     </div>

@@ -12,11 +12,40 @@ import { useLanguage } from "@/lib/i18n/context";
 const capabilityIcons = [Code2, Cpu, Palette, Film];
 
 const building = ["8Agents", "Kaidevlab redesign", "Rakusaku", "FE Study Hub"];
-const exploring = ["FE Exam Prep (基本情報技術者試験) 🇯🇵", "Manhwa production", "Visual storytelling", "AI-assisted filmmaking", "Product storytelling", "Video editing"];
+const exploringByLocale: Record<string, string[]> = {
+  id: [
+    "Persiapan Ujian FE Jepang (基本情報) 🇯🇵",
+    "Produksi Manhwa",
+    "Visual Storytelling",
+    "Pembuatan Film Berbantuan AI",
+    "Product Storytelling",
+    "Penyuntingan Video",
+  ],
+  en: [
+    "FE Exam Prep (基本情報技術者試験) 🇯🇵",
+    "Manhwa production",
+    "Visual storytelling",
+    "AI-assisted filmmaking",
+    "Product storytelling",
+    "Video editing",
+  ],
+  ja: [
+    "基本情報技術者試験（FE）対策 🇯🇵",
+    "ウェブトゥーン制作",
+    "ビジュアルストーリーテリング",
+    "AI映画制作ワークフロー",
+    "プロダクト発信",
+    "映像編集",
+  ],
+};
 
 export default function Home() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const blueVengeance = creativeProjects.find((project) => project.slug === "blue-vengeance");
+  const exploring = exploringByLocale[locale] || exploringByLocale.en;
+  const comingSoonText = locale === "id" ? "Segera Hadir" : locale === "ja" ? "近日公開" : "Coming Soon";
+  const upcomingTitle = locale === "id" ? "Catatan Mendatang" : locale === "ja" ? "次回公開予定" : "Upcoming Notes";
+  const enteringText = locale === "id" ? "Masuk ke laboratorium" : locale === "ja" ? "ラボに入る" : "Entering the lab";
 
   return (
     <main>
@@ -80,7 +109,7 @@ export default function Home() {
               {exploring.map((item) => (
                 <li key={item}>
                   <span />
-                  {item.includes("FE Exam") ? (
+                  {item.includes("FE") ? (
                     <a href="/learn" className="hover:text-[var(--brand-primary)] underline decoration-[var(--border)] transition-colors font-medium">
                       {item} →
                     </a>
@@ -123,7 +152,7 @@ export default function Home() {
       </section>
 
       <section id="notes" className="section lab-notes-section">
-        <div className="lab-transition" aria-hidden="true"><span>Entering the lab</span></div>
+        <div className="lab-transition" aria-hidden="true"><span>{enteringText}</span></div>
         <div className="section-heading notes-heading">
           <div>
             <p className="eyebrow">{t.notes.eyebrow}</p>
@@ -144,10 +173,10 @@ export default function Home() {
             </div>
           </article>
           <aside className="upcoming-notes" aria-label="Upcoming notes">
-            <p className="eyebrow">Upcoming Notes</p>
+            <p className="eyebrow">{upcomingTitle}</p>
             <ul>
-              <li><span>Building a reliable AI workflow for UMKM intake</span><small>Coming Soon</small></li>
-              <li><span>Building the visual direction for Blue Vengeance</span><small>Coming Soon</small></li>
+              <li><span>{locale === "id" ? "Membangun alur kerja AI yang andal untuk intake UMKM" : "Building a reliable AI workflow for UMKM intake"}</span><small>{comingSoonText}</small></li>
+              <li><span>{locale === "id" ? "Membangun arahan visual untuk Blue Vengeance" : "Building the visual direction for Blue Vengeance"}</span><small>{comingSoonText}</small></li>
             </ul>
           </aside>
         </div>
@@ -159,7 +188,11 @@ export default function Home() {
           <p className="eyebrow">{t.cta.eyebrow}</p>
           <h2>{t.cta.heading}</h2>
           <p>{t.cta.description}</p>
-          <div className="cta-tags"><span>Product builds</span><span>AI systems</span><span>Creative worlds</span></div>
+          <div className="cta-tags">
+            <span>{locale === "id" ? "Pengembangan Produk" : locale === "ja" ? "プロダクト開発" : "Product builds"}</span>
+            <span>{locale === "id" ? "Sistem AI" : locale === "ja" ? "AIシステム" : "AI systems"}</span>
+            <span>{locale === "id" ? "Dunia Kreatif" : locale === "ja" ? "クリエイティブ" : "Creative worlds"}</span>
+          </div>
           <a className="primary" href="/contact/">{t.cta.button}</a>
         </div>
       </section>

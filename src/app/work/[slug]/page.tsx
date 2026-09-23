@@ -154,77 +154,29 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   };
 }
 
+import { ClientProject } from "./client-project";
+
 export default async function Project({ params }: ProjectPageProps) {
   const { slug } = await params;
   const p = getProject(slug);
 
   if (!p) notFound();
 
-  const creative = "kind" in p && p.kind === "creative";
   const projectSlugs = Object.keys(projects) as ProjectSlug[];
   const currentIndex = projectSlugs.indexOf(slug as ProjectSlug);
   const previousSlug = projectSlugs[(currentIndex - 1 + projectSlugs.length) % projectSlugs.length];
   const nextSlug = projectSlugs[(currentIndex + 1) % projectSlugs.length];
   const previousProject = projects[previousSlug];
   const nextProject = projects[nextSlug];
-  const labels = creative
-    ? {
-      problem: "Premise / story hook",
-      goals: "Creative goals",
-      features: "Visual direction",
-      approach: "Production workflow",
-      challenges: "Creative challenges",
-      limitations: "Current progress",
-      next: "Next steps",
-    }
-    : {
-      problem: "Problem / opportunity",
-      goals: "Product goals",
-      features: "Key features",
-      approach: "Technical / creative approach",
-      challenges: "Challenges",
-      limitations: "Current limitations",
-      next: "Next steps",
-    };
 
-  return <main className="section detail-page">
-    <a className="secondary" href="/work/">← Back to Work</a>
-    <section className="detail-hero">
-      <div><p className="eyebrow">{p.category}</p><h1>{p.title}</h1><p className="lead">{p.summary}</p><div className="detail-actions"><span className="status">{p.status}</span>{"liveUrl" in p && p.liveUrl && <a className="primary" href={p.liveUrl} target="_blank" rel="noreferrer">Visit Live Site</a>}</div></div>
-      <div className="detail-card">{!creative && <Image src={p.logo} alt="" aria-hidden="true" width={88} height={88} />}<p><b>Role</b><br/>{p.role}</p><p><b>Year</b><br/>{p.year}</p></div>
-    </section>
-    {"poster" in p && p.poster ? <figure className="detail-poster"><Image src={p.poster} alt={`${p.title} poster`} width={900} height={1350} sizes="(max-width: 760px) 100vw, 720px" /><figcaption>{p.title} key visual / poster.</figcaption></figure> : creative ? <section className="detail-concept-visual" aria-label={`${p.title} visual development status`}><Image src={p.logo} alt="" aria-hidden="true" width={96} height={96} /><p className="eyebrow">Visual Development</p><h2>{p.title}</h2><span>Pre-production artwork is being developed. No released chapter visual is claimed here.</span></section> : null}
-    {creative && <section className="creative-facts" aria-label="Production facts"><span>Status: {p.status}</span><span>Format: Creative / story experiment</span><span>Claims: No unreleased chapters or episodes promised</span></section>}
-    <section className="detail-grid">
-      <article><h2>{labels.problem}</h2><p>{p.problem}</p></article>
-      <article><h2>{labels.goals}</h2><ul>{p.goals.map(x=><li key={x}>{x}</li>)}</ul></article>
-      <article><h2>{labels.features}</h2><ul>{p.features.map(x=><li key={x}>{x}</li>)}</ul></article>
-      <article><h2>{labels.approach}</h2><p>{p.approach}</p></article>
-      <article><h2>{labels.challenges}</h2><ul>{p.challenges.map(x=><li key={x}>{x}</li>)}</ul></article>
-      <article><h2>{labels.limitations}</h2><ul>{p.limitations.map(x=><li key={x}>{x}</li>)}</ul></article>
-      <article><h2>{labels.next}</h2><ul>{p.next.map(x=><li key={x}>{x}</li>)}</ul></article>
-    </section>
-    <section className="detail-next" aria-label="More projects">
-      <div>
-        <p className="eyebrow">MORE WORK</p>
-        <h2>{creative ? "Explore another story world or build." : "Keep exploring what Kai is building."}</h2>
-      </div>
-      <div className="detail-next-grid">
-        <a href={`/work/${previousSlug}`}>
-          <span>Previous</span>
-          <strong>{previousProject.title}</strong>
-          <small>{previousProject.category}</small>
-        </a>
-        <a href={`/work/${nextSlug}`}>
-          <span>Next</span>
-          <strong>{nextProject.title}</strong>
-          <small>{nextProject.category}</small>
-        </a>
-      </div>
-      <div className="detail-bottom-actions">
-        <a className="secondary" href="/work/">Back to all work</a>
-        {creative ? <a className="primary" href="/work/">Explore creative projects</a> : "liveUrl" in p && p.liveUrl && <a className="primary" href={p.liveUrl} target="_blank" rel="noreferrer">Visit live project</a>}
-      </div>
-    </section>
-  </main>
+  return (
+    <ClientProject
+      slug={slug}
+      initialProject={p}
+      previousSlug={previousSlug}
+      nextSlug={nextSlug}
+      previousProject={{ title: previousProject.title, category: previousProject.category }}
+      nextProject={{ title: nextProject.title, category: nextProject.category }}
+    />
+  );
 }

@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 
 const projects = {
   "8agents": {
-    title: "8Agents", category: "UMKM Digital Transformation", status: "Live · Client Engine", role: "Product architecture, brand strategy, digital asset vault, web engineering", logo: "/logos/8agents-128.webp", liveUrl: "https://8agents.id", year: "2026", stack: ["Next.js", "Brand Systems", "Digital Vault Architecture", "Intake Queue (BullMQ/Redis)", "WhatsApp Automated Funnel", "Content Studio Pipeline"],
+    title: "8Agents", category: "UMKM Digital Transformation", status: "Live · Client Engine", role: "Product architecture, brand strategy, digital asset vault, web engineering", logo: "/logos/8agents-mark.webp", liveUrl: "https://8agents.id", year: "2026", stack: ["Next.js", "Brand Systems", "Digital Vault Architecture", "Intake Queue (BullMQ/Redis)", "WhatsApp Automated Funnel", "Content Studio Pipeline"],
     summary: "An end-to-end digital partner transforming Indonesian MSMEs (UMKM) into modern, credible brands with professional brand kits, high-converting websites, UGC video content, and a zero-loss Digital Asset Vault.",
     problem: "Over 66 million Indonesian MSMEs generate 61% of national GDP, yet the vast majority lack modern visual branding and websites. Brand assets routinely get lost in unstructured WhatsApp chats, and conventional agencies charge prohibitive fees with slow turnarounds.",
     goals: [

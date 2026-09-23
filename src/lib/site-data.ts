@@ -32,7 +32,7 @@ export const projects: ProjectPreview[] = [
     role: "Product architecture, brand strategy, digital asset vault",
     summary:
       "An end-to-end digital partner transforming Indonesian MSMEs into modern brands through brand kits, high-converting websites, UGC content, and a zero-loss Digital Asset Vault.",
-    logo: "/logos/8agents-128.webp",
+    logo: "/logos/8agents-mark.webp",
     tone: "agent",
     signals: ["Before/After Transform", "Brankas Aset Digital", "3-Tier Packages", "Content Studio"],
     liveUrl: "https://8agents.id",

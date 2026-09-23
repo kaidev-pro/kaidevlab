@@ -50,31 +50,52 @@ function createAudioFeedback() {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = "sine";
-        osc.frequency.setValueAtTime(240, ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(480, ctx.currentTime + 0.09);
-        gain.gain.setValueAtTime(0.045, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.09);
+        osc.frequency.setValueAtTime(260, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(560, ctx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.20, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
         osc.connect(gain);
         gain.connect(ctx.destination);
         osc.start();
-        osc.stop(ctx.currentTime + 0.09);
+        osc.stop(ctx.currentTime + 0.08);
       } catch {}
     },
     playMastered: () => {
       try {
         if (ctx.state === "suspended") ctx.resume();
         const now = ctx.currentTime;
-        [587.33, 880].forEach((freq, i) => {
+        // Bright 3-note ascending dopamine arpeggio: D5, F#5, A5
+        [587.33, 739.99, 880].forEach((freq, i) => {
           const osc = ctx.createOscillator();
           const gain = ctx.createGain();
           osc.type = "triangle";
-          osc.frequency.setValueAtTime(freq, now + i * 0.08);
-          gain.gain.setValueAtTime(0.07, now + i * 0.08);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.38);
+          const startTime = now + i * 0.07;
+          osc.frequency.setValueAtTime(freq, startTime);
+          gain.gain.setValueAtTime(0.24, startTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.38);
           osc.connect(gain);
           gain.connect(ctx.destination);
-          osc.start(now + i * 0.08);
-          osc.stop(now + i * 0.08 + 0.38);
+          osc.start(startTime);
+          osc.stop(startTime + 0.38);
+        });
+      } catch {}
+    },
+    playUnsure: () => {
+      try {
+        if (ctx.state === "suspended") ctx.resume();
+        const now = ctx.currentTime;
+        [440, 493.88].forEach((freq, i) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = "sine";
+          const startTime = now + i * 0.07;
+          osc.frequency.setValueAtTime(freq, startTime);
+          gain.gain.setValueAtTime(0.18, startTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.18);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(startTime);
+          osc.stop(startTime + 0.18);
         });
       } catch {}
     },
@@ -84,14 +105,14 @@ function createAudioFeedback() {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = "sine";
-        osc.frequency.setValueAtTime(220, ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(130, ctx.currentTime + 0.16);
-        gain.gain.setValueAtTime(0.05, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.16);
+        osc.frequency.setValueAtTime(280, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(170, ctx.currentTime + 0.18);
+        gain.gain.setValueAtTime(0.20, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.18);
         osc.connect(gain);
         gain.connect(ctx.destination);
         osc.start();
-        osc.stop(ctx.currentTime + 0.16);
+        osc.stop(ctx.currentTime + 0.18);
       } catch {}
     },
   };
@@ -139,6 +160,7 @@ export function FlashcardView({
 
       if (soundEffects && audioRef.current) {
         if (rating === "mastered") audioRef.current.playMastered();
+        else if (rating === "unsure") audioRef.current.playUnsure();
         else audioRef.current.playForgot();
       }
 

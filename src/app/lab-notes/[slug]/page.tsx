@@ -39,7 +39,7 @@ export default async function Note({ params }: { params: Promise<{ slug: string 
 
         <h2>Honest status is part of the design</h2>
         <p>
-          A portfolio becomes less trustworthy when every project is presented as complete. 8Agents is still building, 8Router is in active beta, Rakusaku is a prototype with payment integration pending, and Blue Vengeance is in pre-production. Those labels are not weaknesses to hide; they help visitors understand the real state of the work.
+          A portfolio becomes less trustworthy when every project is presented as complete. 8Agents is live serving UMKM clients, 8Router is in active beta, Rakusaku is live with DOKU &amp; Pakasir payment gateways (&lt;60s fulfillment), and Blue Vengeance is in pre-production. Those labels are not weaknesses to hide; they help visitors understand the real state of the work.
         </p>
 
         <h2>The hero needed a signature</h2>

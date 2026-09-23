@@ -63,32 +63,52 @@ export function StudyProgressCard({ progress, onProgressUpdated }: StudyProgress
     reader.readAsText(file);
   };
 
+  const starredCount = progress.starredCardIds?.length || 0;
+
+  // 21-day activity heatmap data (last 3 weeks)
+  const activityDays = Array.from({ length: 21 }).map((_, i) => {
+    const d = new Date();
+    d.setDate(d.getDate() - (20 - i));
+    const dateStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    const isToday = i === 20;
+    const dayName = d.toLocaleDateString("id-ID", { weekday: "narrow" });
+    const dayNum = d.getDate();
+    const count = progress.dailyReviews?.[dateStr] || 0;
+    return { dateStr, isToday, dayName, dayNum, count };
+  });
+
   return (
-    <div className="w-full rounded-2xl border border-[var(--glass-border)] bg-[var(--surface)] p-6 md:p-8 shadow-[var(--shadow)] backdrop-blur-md flex flex-col gap-6">
-      {/* Top Banner: Streak & Overall Progress */}
-      <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[var(--border)]">
+    <div className="w-full rounded-2xl border border-[var(--glass-border)] bg-[var(--surface)] p-5 sm:p-6 md:p-8 shadow-[var(--shadow)] backdrop-blur-md flex flex-col gap-6">
+      {/* Top Banner: Streak, Starred & Overall Progress */}
+      <div className="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-[var(--border)]">
         <div>
           <span className="text-xs uppercase font-bold tracking-widest text-[var(--brand-primary)]">
             FE Exam Mastery Dashboard
           </span>
-          <h3 className="text-2xl font-bold text-[var(--text-primary)] mt-1 font-sans">
+          <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] mt-1 font-sans">
             Status Persiapan Ujian
           </h3>
         </div>
 
-        {/* Streak Badge */}
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-500 font-semibold text-sm">
-            <Flame size={18} className="fill-amber-500 animate-bounce" />
+        {/* Badges: Streak + Starred */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          {starredCount > 0 && (
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-500 font-semibold text-xs sm:text-sm">
+              <span className="text-amber-500">⭐</span>
+              <span>{starredCount} Favorit</span>
+            </div>
+          )}
+          <div className="flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-500 font-semibold text-xs sm:text-sm">
+            <Flame size={17} className="fill-amber-500 animate-bounce" />
             <span>{progress.streak} Hari Streak</span>
           </div>
         </div>
       </div>
 
       {/* Main Stats 3 Columns */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
         <div className="p-4 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)] flex items-center gap-3.5">
-          <div className="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center shrink-0">
             <CheckCircle2 size={20} />
           </div>
           <div>
@@ -100,7 +120,7 @@ export function StudyProgressCard({ progress, onProgressUpdated }: StudyProgress
         </div>
 
         <div className="p-4 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)] flex items-center gap-3.5">
-          <div className="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-500 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-500 flex items-center justify-center shrink-0">
             <RotateCw size={20} />
           </div>
           <div>
@@ -112,7 +132,7 @@ export function StudyProgressCard({ progress, onProgressUpdated }: StudyProgress
         </div>
 
         <div className="p-4 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)] flex items-center gap-3.5">
-          <div className="w-10 h-10 rounded-lg bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] flex items-center justify-center font-bold text-sm">
+          <div className="w-10 h-10 rounded-lg bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] flex items-center justify-center font-bold text-sm shrink-0">
             %
           </div>
           <div className="w-full">
@@ -127,6 +147,60 @@ export function StudyProgressCard({ progress, onProgressUpdated }: StudyProgress
               />
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Activity Consistency Heatmap (21 Hari Terakhir) */}
+      <div className="p-4 rounded-xl bg-[var(--surface-soft)]/50 border border-[var(--border)] flex flex-col gap-3">
+        <div className="flex items-center justify-between text-xs">
+          <span className="font-bold text-[var(--text-primary)] flex items-center gap-1.5">
+            <span>📅</span> Kalender Aktivitas & Konsistensi (21 Hari Terakhir)
+          </span>
+          <span className="text-[11px] text-[var(--text-secondary)]">
+            Total <b>{progress.totalCardsReviewed}</b> sesi review
+          </span>
+        </div>
+
+        {/* Heatmap Grid */}
+        <div className="w-full overflow-x-auto no-scrollbar pb-1">
+          <div className="grid grid-cols-21 gap-1.5 min-w-[340px] sm:min-w-0" style={{ gridTemplateColumns: "repeat(21, minmax(0, 1fr))" }}>
+            {activityDays.map((d) => {
+              let colorClass = "bg-[var(--surface)] border-[var(--border)] text-[var(--text-secondary)]/50";
+              if (d.count >= 16) {
+                colorClass = "bg-blue-600 border-blue-400 text-white font-bold shadow-sm shadow-blue-500/30";
+              } else if (d.count >= 6) {
+                colorClass = "bg-blue-500/70 border-blue-400 text-white font-semibold";
+              } else if (d.count >= 1) {
+                colorClass = "bg-blue-500/25 border-blue-500/40 text-blue-500 font-medium";
+              }
+
+              return (
+                <div
+                  key={d.dateStr}
+                  className={`aspect-square rounded-md border flex flex-col items-center justify-center text-[10px] transition-all relative group cursor-default ${
+                    d.isToday ? "ring-2 ring-[var(--brand-primary)] ring-offset-1" : ""
+                  } ${colorClass}`}
+                  title={`${d.dateStr}: ${d.count} kartu dipelajari`}
+                >
+                  <span className="text-[9px] leading-none">{d.dayNum}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Legend */}
+        <div className="flex items-center justify-between text-[10px] text-[var(--text-secondary)] pt-1">
+          <span>← 3 minggu lalu</span>
+          <div className="flex items-center gap-1.5">
+            <span>Santai</span>
+            <div className="w-2.5 h-2.5 rounded bg-[var(--surface)] border border-[var(--border)]" />
+            <div className="w-2.5 h-2.5 rounded bg-blue-500/25 border border-blue-500/40" />
+            <div className="w-2.5 h-2.5 rounded bg-blue-500/70" />
+            <div className="w-2.5 h-2.5 rounded bg-blue-600" />
+            <span>Intensif</span>
+          </div>
+          <span>Hari ini</span>
         </div>
       </div>
 

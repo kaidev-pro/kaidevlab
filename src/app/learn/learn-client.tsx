@@ -22,12 +22,14 @@ import {
   Search,
   Download,
   Smartphone,
+  Star,
 } from "lucide-react";
 import { FE_CARDS, FECard } from "@/data/fe-study-data";
 import {
   StudyProgress,
   loadStudyProgress,
   recordCardReview,
+  toggleStarCard,
   CardRating,
   DEFAULT_PROGRESS,
 } from "@/lib/fe-study-storage";
@@ -38,7 +40,7 @@ import { QuizView } from "@/components/fe-study/quiz-view";
 import { TracerView } from "@/components/fe-study/tracer-view";
 import { CheatsheetView } from "@/components/fe-study/cheatsheet-view";
 
-type StudyMode = "all" | "quick10" | "technology" | "management" | "strategy" | "review";
+type StudyMode = "all" | "quick10" | "technology" | "management" | "strategy" | "review" | "starred";
 type HubTab = "flashcards" | "quiz" | "tracer" | "cheatsheet";
 
 interface RoadmapItem {
@@ -155,12 +157,18 @@ export function LearnClient() {
       if (filtered.length === 0) {
         filtered = FE_CARDS.slice(0, 5);
       }
+    } else if (activeMode === "starred") {
+      const starredSet = new Set(progress?.starredCardIds || []);
+      filtered = FE_CARDS.filter((c) => starredSet.has(c.id));
+      if (filtered.length === 0) {
+        filtered = FE_CARDS.slice(0, 5);
+      }
     } else {
       filtered = FE_CARDS;
     }
 
     return filtered;
-  }, [activeMode, singleCardDrill, progress?.reviewCardIds]);
+  }, [activeMode, singleCardDrill, progress?.reviewCardIds, progress?.starredCardIds]);
 
   const searchResults = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -194,6 +202,11 @@ export function LearnClient() {
     const updated = recordCardReview(cardId, category, rating);
     setProgress(updated);
     setSessionReviewedCount((prev) => prev + 1);
+  };
+
+  const handleToggleStar = (cardId: string) => {
+    const updated = toggleStarCard(cardId);
+    setProgress(updated);
   };
 
   const handleFinishSession = () => {
@@ -248,6 +261,7 @@ export function LearnClient() {
               {activeMode === "management" && "📊 マネジメント系"}
               {activeMode === "strategy" && "📈 ストラテジ系"}
               {activeMode === "review" && "🔄 Review Soal Sulit"}
+              {activeMode === "starred" && "⭐ Drill Kartu Favorit"}
               {activeMode === "all" && "📚 Semua Kartu FE"}
             </span>
           </div>
@@ -257,6 +271,8 @@ export function LearnClient() {
             onRateCard={handleRateCard}
             masteredIds={progress.masteredCardIds}
             reviewIds={progress.reviewCardIds}
+            starredIds={progress.starredCardIds}
+            onToggleStar={handleToggleStar}
             streak={progress.streak}
             onFinishSession={handleFinishSession}
           />
@@ -577,13 +593,22 @@ export function LearnClient() {
             </div>
           </div>
 
-          {/* Secondary Drills: Review Queue & All */}
-          <div className="flex flex-wrap gap-4">
+          {/* Secondary Drills: Starred, Review Queue & All */}
+          <div className="flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={() => handleStartSession("starred")}
+              disabled={!progress.starredCardIds || progress.starredCardIds.length === 0}
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 font-semibold text-xs transition-all disabled:opacity-40 disabled:pointer-events-none"
+            >
+              <Star size={15} className="fill-amber-500" /> Drill Kartu Favorit ({progress.starredCardIds?.length || 0})
+            </button>
+
             <button
               type="button"
               onClick={() => handleStartSession("review")}
               disabled={progress.reviewCardIds.length === 0}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-amber-500/30 bg-amber-500/5 hover:bg-amber-500/10 text-amber-500 font-semibold text-xs transition-all disabled:opacity-40 disabled:pointer-events-none"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-rose-500/30 bg-rose-500/10 hover:bg-rose-500/20 text-rose-500 font-semibold text-xs transition-all disabled:opacity-40 disabled:pointer-events-none"
             >
               <RotateCcw size={15} /> Review Kartu Sulit ({progress.reviewCardIds.length})
             </button>

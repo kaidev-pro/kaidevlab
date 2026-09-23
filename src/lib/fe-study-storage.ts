@@ -5,10 +5,12 @@ export type CardRating = "forgot" | "unsure" | "mastered";
 export interface StudyProgress {
   masteredCardIds: string[];
   reviewCardIds: string[];
+  starredCardIds: string[];
   streak: number;
   lastStudyDate: string | null;
   totalCardsReviewed: number;
   categoryStats: Record<string, { mastered: number; review: number }>;
+  dailyReviews?: Record<string, number>;
 }
 
 const STORAGE_KEY = "kaidevlab_fe_study_progress_v1";
@@ -16,6 +18,7 @@ const STORAGE_KEY = "kaidevlab_fe_study_progress_v1";
 export const DEFAULT_PROGRESS: StudyProgress = {
   masteredCardIds: [],
   reviewCardIds: [],
+  starredCardIds: [],
   streak: 0,
   lastStudyDate: null,
   totalCardsReviewed: 0,
@@ -24,6 +27,7 @@ export const DEFAULT_PROGRESS: StudyProgress = {
     management: { mastered: 0, review: 0 },
     strategy: { mastered: 0, review: 0 },
   },
+  dailyReviews: {},
 };
 
 function getTodayString(): string {
@@ -50,6 +54,22 @@ export function saveStudyProgress(progress: StudyProgress): void {
   } catch (err) {
     console.error("Failed to save study progress to localStorage", err);
   }
+}
+
+export function toggleStarCard(cardId: string): StudyProgress {
+  const current = loadStudyProgress();
+  const starred = new Set(current.starredCardIds || []);
+  if (starred.has(cardId)) {
+    starred.delete(cardId);
+  } else {
+    starred.add(cardId);
+  }
+  const updated: StudyProgress = {
+    ...current,
+    starredCardIds: Array.from(starred),
+  };
+  saveStudyProgress(updated);
+  return updated;
 }
 
 export function recordCardReview(
@@ -88,6 +108,9 @@ export function recordCardReview(
     masteredSet.delete(cardId);
   }
 
+  const daily = current.dailyReviews ? { ...current.dailyReviews } : {};
+  daily[today] = (daily[today] || 0) + 1;
+
   const updated: StudyProgress = {
     ...current,
     masteredCardIds: Array.from(masteredSet),
@@ -95,6 +118,7 @@ export function recordCardReview(
     streak: newStreak,
     lastStudyDate: today,
     totalCardsReviewed: current.totalCardsReviewed + 1,
+    dailyReviews: daily,
   };
 
   saveStudyProgress(updated);

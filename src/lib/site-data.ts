@@ -83,6 +83,8 @@ export const projects: ProjectPreview[] = [
     tone: "education",
     signals: ["100 Flashcards", "CBT Simulator", "Offline PWA"],
     liveUrl: "/learn",
+    coverImage: "/project-screenshots/fe-study-hub.webp",
+    coverPosition: "center 30%",
   },
   {
     slug: "dragon-kings-last-contract",

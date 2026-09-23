@@ -18,7 +18,8 @@ import {
   BookOpen,
   VolumeX,
   Volume1,
-  Hand
+  Hand,
+  Bookmark,
 } from "lucide-react";
 import { FECard, CATEGORY_LABELS } from "@/data/fe-study-data";
 import { CardRating } from "@/lib/fe-study-storage";
@@ -28,6 +29,8 @@ interface FlashcardViewProps {
   onRateCard: (cardId: string, category: string, rating: CardRating) => void;
   masteredIds: string[];
   reviewIds: string[];
+  starredIds?: string[];
+  onToggleStar?: (cardId: string) => void;
   streak: number;
   onFinishSession?: () => void;
 }
@@ -123,6 +126,8 @@ export function FlashcardView({
   onRateCard,
   masteredIds,
   reviewIds,
+  starredIds = [],
+  onToggleStar,
   streak,
   onFinishSession,
 }: FlashcardViewProps) {
@@ -247,6 +252,7 @@ export function FlashcardView({
   const categoryMeta = CATEGORY_LABELS[currentCard.category];
   const isMastered = masteredIds.includes(currentCard.id);
   const isReview = reviewIds.includes(currentCard.id);
+  const isStarred = starredIds?.includes(currentCard.id) ?? false;
 
   // Apple-grade spring transitions for card deck sliding
   const deckVariants: Variants = {
@@ -454,14 +460,35 @@ export function FlashcardView({
                       )}
                     </div>
 
-                    {/* Priority Stars */}
-                    <div
-                      className="flex items-center gap-0.5 text-amber-400 shrink-0"
-                      title={`Prioritas: ${currentCard.importance} / 3`}
-                    >
-                      {Array.from({ length: currentCard.importance }).map((_, i) => (
-                        <Star key={i} size={13} className="fill-amber-400" />
-                      ))}
+                    {/* Action & Priority Stars */}
+                    <div className="flex items-center gap-2 shrink-0">
+                      {onToggleStar && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onToggleStar(currentCard.id);
+                          }}
+                          className={`p-1.5 rounded-lg border transition-all active:scale-90 flex items-center justify-center ${
+                            isStarred
+                              ? "bg-amber-500/15 border-amber-500/40 text-amber-500 shadow-sm"
+                              : "bg-[var(--surface-soft)]/60 border-[var(--border)] text-[var(--text-secondary)] hover:text-amber-500"
+                          }`}
+                          title={isStarred ? "Hapus dari Kartu Favorit (⭐)" : "Tandai sebagai Kartu Favorit (⭐)"}
+                        >
+                          <Bookmark size={13} className={isStarred ? "fill-amber-500 text-amber-500" : ""} />
+                        </button>
+                      )}
+
+                      {/* Priority Stars */}
+                      <div
+                        className="flex items-center gap-0.5 text-amber-400 shrink-0"
+                        title={`Prioritas: ${currentCard.importance} / 3`}
+                      >
+                        {Array.from({ length: currentCard.importance }).map((_, i) => (
+                          <Star key={i} size={12} className="fill-amber-400" />
+                        ))}
+                      </div>
                     </div>
                   </div>
 
@@ -522,7 +549,26 @@ export function FlashcardView({
                         ({currentCard.termEn})
                       </span>
                     </div>
-                    <span className="text-[10px] sm:text-xs text-[var(--text-secondary)] shrink-0">Penjelasan</span>
+                    <div className="flex items-center gap-2 shrink-0">
+                      {onToggleStar && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onToggleStar(currentCard.id);
+                          }}
+                          className={`p-1 rounded-lg border text-[11px] transition-all active:scale-90 ${
+                            isStarred
+                              ? "bg-amber-500/15 border-amber-500/40 text-amber-500"
+                              : "border-[var(--border)] text-[var(--text-secondary)] hover:text-amber-500"
+                          }`}
+                          title={isStarred ? "Kartu Favorit (⭐)" : "Tandai Favorit (⭐)"}
+                        >
+                          <Bookmark size={12} className={isStarred ? "fill-amber-500 text-amber-500" : ""} />
+                        </button>
+                      )}
+                      <span className="text-[10px] sm:text-xs text-[var(--text-secondary)]">Penjelasan</span>
+                    </div>
                   </div>
 
                   {/* Center Back: Explanation + Key Diff + Analogy */}

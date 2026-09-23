@@ -67,21 +67,23 @@ export function TracerView({ onBackToMenu }: TracerViewProps) {
         </div>
 
         {/* Algo Toggle Pills */}
-        <div className="flex items-center gap-2 p-1 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)]">
-          {FE_TRACER_ALGORITHMS.map((algo, idx) => (
-            <button
-              key={algo.id}
-              type="button"
-              onClick={() => handleSelectAlgo(idx)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                selectedAlgoIndex === idx
-                  ? "bg-[var(--surface)] text-[var(--text-primary)] shadow-sm border border-[var(--border)]"
-                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-              }`}
-            >
-              {algo.titleJp.split(" ")[0]}
-            </button>
-          ))}
+        <div className="w-full sm:w-auto overflow-x-auto no-scrollbar pb-0.5">
+          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)] min-w-max">
+            {FE_TRACER_ALGORITHMS.map((algo, idx) => (
+              <button
+                key={algo.id}
+                type="button"
+                onClick={() => handleSelectAlgo(idx)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all shrink-0 active:scale-95 ${
+                  selectedAlgoIndex === idx
+                    ? "bg-[var(--surface)] text-[var(--text-primary)] shadow-sm border border-[var(--border)]"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                }`}
+              >
+                {algo.titleJp.split(" ")[0]}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 

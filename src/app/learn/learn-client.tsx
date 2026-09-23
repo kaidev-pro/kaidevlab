@@ -233,20 +233,20 @@ export function LearnClient() {
       {/* ==================================================== */}
       {activeMode && !sessionCompleted && (
         <div className="flex flex-col gap-6">
-          <div className="flex items-center justify-between pb-4 border-b border-[var(--border)]">
+          <div className="flex items-center justify-between pb-4 border-b border-[var(--border)] gap-2">
             <button
               type="button"
               onClick={handleBackToMenu}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[var(--border)] hover:border-[var(--brand-primary)] text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[var(--border)] hover:border-[var(--brand-primary)] text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors shrink-0"
             >
-              <ArrowLeft size={14} /> Keluar Sesi
+              <ArrowLeft size={14} /> <span className="hidden sm:inline">Keluar Sesi</span><span className="sm:hidden">Keluar</span>
             </button>
 
-            <span className="text-xs uppercase font-bold tracking-wider text-[var(--brand-primary)]">
+            <span className="text-xs uppercase font-bold tracking-wider text-[var(--brand-primary)] truncate text-right">
               {activeMode === "quick10" && "⚡ Quick 10 Drill (5 Menit)"}
-              {activeMode === "technology" && "🛠️ テクノロジ系 (Technology)"}
-              {activeMode === "management" && "📊 マネジメント系 (Management)"}
-              {activeMode === "strategy" && "📈 ストラテジ系 (Strategy)"}
+              {activeMode === "technology" && "🛠️ テクノロジ系"}
+              {activeMode === "management" && "📊 マネジメント系"}
+              {activeMode === "strategy" && "📈 ストラテジ系"}
               {activeMode === "review" && "🔄 Review Soal Sulit"}
               {activeMode === "all" && "📚 Semua Kartu FE"}
             </span>
@@ -318,68 +318,61 @@ export function LearnClient() {
             </div>
           </div>
 
-          {/* Module Navigation Tabs (All 4 Live Modules) */}
-          <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] max-w-fit">
-            <button
-              type="button"
-              onClick={() => setActiveTab("flashcards")}
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                activeTab === "flashcards"
-                  ? "bg-[var(--surface)] text-[var(--brand-primary)] shadow-sm border border-[var(--border)]"
-                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-              }`}
-            >
-              <Layers size={14} />
-              <span>🗂️ Flashcards (Active)</span>
-            </button>
+          {/* Module Navigation Tabs (All 4 Live Modules - Horizontal Scroll on Mobile) */}
+          <div className="w-full overflow-x-auto no-scrollbar pb-1">
+            <div className="inline-flex items-center gap-1.5 p-1 sm:p-1.5 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] min-w-max">
+              <button
+                type="button"
+                onClick={() => setActiveTab("flashcards")}
+                className={`inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 ${
+                  activeTab === "flashcards"
+                    ? "bg-[var(--surface)] text-[var(--brand-primary)] shadow-sm border border-[var(--border)]"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                }`}
+              >
+                <Layers size={14} />
+                <span>🗂️ Flashcards</span>
+              </button>
 
-            <button
-              type="button"
-              onClick={() => setActiveTab("quiz")}
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                activeTab === "quiz"
-                  ? "bg-[var(--surface)] text-[var(--brand-primary)] shadow-sm border border-[var(--border)]"
-                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-              }`}
-            >
-              <FileQuestion size={14} />
-              <span>📝 過去問 (Kakomon Quiz)</span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 font-bold">
-                Active
-              </span>
-            </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab("quiz")}
+                className={`inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 ${
+                  activeTab === "quiz"
+                    ? "bg-[var(--surface)] text-[var(--brand-primary)] shadow-sm border border-[var(--border)]"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                }`}
+              >
+                <FileQuestion size={14} />
+                <span>📝 過去問 (Kakomon Quiz)</span>
+              </button>
 
-            <button
-              type="button"
-              onClick={() => setActiveTab("tracer")}
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                activeTab === "tracer"
-                  ? "bg-[var(--surface)] text-[var(--brand-primary)] shadow-sm border border-[var(--border)]"
-                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-              }`}
-            >
-              <Terminal size={14} />
-              <span>💻 Pseudocode Tracer (科目B)</span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 font-bold">
-                Active
-              </span>
-            </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab("tracer")}
+                className={`inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 ${
+                  activeTab === "tracer"
+                    ? "bg-[var(--surface)] text-[var(--brand-primary)] shadow-sm border border-[var(--border)]"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                }`}
+              >
+                <Terminal size={14} />
+                <span>💻 Pseudocode Tracer (科目B)</span>
+              </button>
 
-            <button
-              type="button"
-              onClick={() => setActiveTab("cheatsheet")}
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                activeTab === "cheatsheet"
-                  ? "bg-[var(--surface)] text-[var(--brand-primary)] shadow-sm border border-[var(--border)]"
-                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-              }`}
-            >
-              <Bookmark size={14} />
-              <span>⚡ Formula Cheatsheet</span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 font-bold">
-                Active
-              </span>
-            </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab("cheatsheet")}
+                className={`inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 ${
+                  activeTab === "cheatsheet"
+                    ? "bg-[var(--surface)] text-[var(--brand-primary)] shadow-sm border border-[var(--border)]"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                }`}
+              >
+                <Bookmark size={14} />
+                <span>⚡ Formula Cheatsheet</span>
+              </button>
+            </div>
           </div>
 
           {activeTab === "flashcards" && (
@@ -405,7 +398,7 @@ export function LearnClient() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Ketik istilah untuk cari arti & rumus (contoh: SQL, 公開鍵, RAID, ACID, Lock, Subnet, OSI, Pipelining)..."
+                placeholder="Cari arti & istilah FE (contoh: SQL, 公開鍵, RAID, ACID, Lock, Subnet, OSI)..."
                 className="w-full pl-11 pr-10 py-3.5 rounded-2xl border-2 border-[var(--border)] focus:border-[var(--brand-primary)] bg-[var(--surface)] text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]/60 focus:outline-none shadow-[var(--shadow)] transition-all"
               />
               {searchQuery && (

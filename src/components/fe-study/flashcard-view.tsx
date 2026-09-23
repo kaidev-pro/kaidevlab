@@ -331,7 +331,7 @@ export function FlashcardView({
 
       {/* 3D Flip Card Container with Slide-in Deck Transition */}
       <div
-        className="relative w-full h-[410px] overflow-visible"
+        className="relative w-full h-[365px] sm:h-[410px] overflow-visible"
         style={{ perspective: "1400px" }}
       >
         <AnimatePresence mode="wait" custom={direction}>
@@ -348,16 +348,16 @@ export function FlashcardView({
             {/* Swipe Feedback Badges */}
             <motion.div
               style={{ opacity: rightBadgeOpacity }}
-              className="absolute top-5 right-5 z-40 pointer-events-none px-3.5 py-1.5 rounded-xl bg-emerald-500 text-white font-bold text-xs shadow-lg flex items-center gap-1 rotate-6"
+              className="absolute top-4 sm:top-5 right-4 sm:right-5 z-40 pointer-events-none px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-emerald-500 text-white font-bold text-xs shadow-lg flex items-center gap-1 rotate-6"
             >
-              <CheckCircle2 size={15} /> KUASAI (SWIPE)
+              <CheckCircle2 size={14} /> KUASAI
             </motion.div>
 
             <motion.div
               style={{ opacity: leftBadgeOpacity }}
-              className="absolute top-5 left-5 z-40 pointer-events-none px-3.5 py-1.5 rounded-xl bg-rose-500 text-white font-bold text-xs shadow-lg flex items-center gap-1 -rotate-6"
+              className="absolute top-4 sm:top-5 left-4 sm:left-5 z-40 pointer-events-none px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-rose-500 text-white font-bold text-xs shadow-lg flex items-center gap-1 -rotate-6"
             >
-              <AlertCircle size={15} /> LUPA (SWIPE)
+              <AlertCircle size={14} /> LUPA
             </motion.div>
 
             {/* Draggable Swiping Container */}
@@ -367,6 +367,7 @@ export function FlashcardView({
                 x,
                 rotate: rotateCard,
                 transformStyle: "preserve-3d",
+                touchAction: "pan-y",
               }}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
@@ -401,17 +402,17 @@ export function FlashcardView({
               >
                 {/* ================= CARD FRONT ================= */}
                 <div
-                  className="absolute inset-0 w-full h-full rounded-2xl p-7 md:p-9 flex flex-col justify-between border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)]"
+                  className="absolute inset-0 w-full h-full rounded-2xl p-5 sm:p-7 md:p-9 flex flex-col justify-between border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)]"
                   style={{
                     backfaceVisibility: "hidden",
                     WebkitBackfaceVisibility: "hidden",
                   }}
                 >
                   {/* Header: Category + Importance */}
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
                       <span
-                        className="text-xs px-2.5 py-1 rounded-full font-medium"
+                        className="text-[11px] sm:text-xs px-2.5 py-1 rounded-full font-medium truncate max-w-[190px] sm:max-w-none"
                         style={{
                           backgroundColor: `${categoryMeta.color}18`,
                           color: categoryMeta.color,
@@ -420,12 +421,12 @@ export function FlashcardView({
                         {categoryMeta.nameJp} · {currentCard.subCategory}
                       </span>
                       {isMastered && (
-                        <span className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 font-medium">
+                        <span className="hidden xs:inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 font-medium shrink-0">
                           <CheckCircle2 size={11} /> Mastered
                         </span>
                       )}
                       {isReview && !isMastered && (
-                        <span className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-500 font-medium">
+                        <span className="hidden xs:inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-500 font-medium shrink-0">
                           <AlertCircle size={11} /> Review
                         </span>
                       )}
@@ -433,55 +434,56 @@ export function FlashcardView({
 
                     {/* Priority Stars */}
                     <div
-                      className="flex items-center gap-0.5 text-amber-400"
+                      className="flex items-center gap-0.5 text-amber-400 shrink-0"
                       title={`Prioritas: ${currentCard.importance} / 3`}
                     >
                       {Array.from({ length: currentCard.importance }).map((_, i) => (
-                        <Star key={i} size={14} className="fill-amber-400" />
+                        <Star key={i} size={13} className="fill-amber-400" />
                       ))}
                     </div>
                   </div>
 
                   {/* Center Content: Term & Furigana */}
-                  <div className="flex flex-col items-center justify-center text-center my-auto py-4">
+                  <div className="flex flex-col items-center justify-center text-center my-auto py-2 sm:py-4">
                     <AnimatePresence mode="wait">
                       {showFurigana && (
                         <motion.p
                           initial={{ opacity: 0, y: -4 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0 }}
-                          className="text-xs md:text-sm font-medium text-[var(--brand-primary)] tracking-wide mb-1.5"
+                          className="text-xs md:text-sm font-medium text-[var(--brand-primary)] tracking-wide mb-1"
                         >
                           {currentCard.furigana}
                         </motion.p>
                       )}
                     </AnimatePresence>
 
-                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[var(--text-primary)] font-sans">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--text-primary)] font-sans">
                       {currentCard.termJp}
                     </h2>
 
-                    <p className="mt-3 text-sm md:text-base text-[var(--text-secondary)] font-medium">
+                    <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-[var(--text-secondary)] font-medium">
                       {currentCard.termEn}
                     </p>
                   </div>
 
                   {/* Footer Prompt */}
-                  <div className="flex items-center justify-between text-xs text-[var(--text-secondary)] pt-4 border-t border-[var(--border)]">
+                  <div className="flex items-center justify-between text-[11px] sm:text-xs text-[var(--text-secondary)] pt-3 sm:pt-4 border-t border-[var(--border)]">
                     <span className="inline-flex items-center gap-1.5 opacity-70">
-                      <Sparkles size={13} className="text-[var(--brand-primary)]" />
-                      Active Recall Mode
+                      <Sparkles size={12} className="text-[var(--brand-primary)]" />
+                      Active Recall
                     </span>
                     <span className="opacity-70 flex items-center gap-1">
-                      <Hand size={12} className="hidden sm:inline" />
-                      Swipe / Spasi untuk balik ↵
+                      <Hand size={12} className="sm:hidden" />
+                      <span className="sm:hidden">Tap / Swipe balik ↻</span>
+                      <span className="hidden sm:inline">Swipe / Spasi untuk balik ↵</span>
                     </span>
                   </div>
                 </div>
 
                 {/* ================= CARD BACK ================= */}
                 <div
-                  className="absolute inset-0 w-full h-full rounded-2xl p-7 md:p-9 flex flex-col justify-between border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)]"
+                  className="absolute inset-0 w-full h-full rounded-2xl p-5 sm:p-7 md:p-9 flex flex-col justify-between border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)]"
                   style={{
                     backfaceVisibility: "hidden",
                     WebkitBackfaceVisibility: "hidden",
@@ -489,33 +491,33 @@ export function FlashcardView({
                   }}
                 >
                   {/* Header: Term Info */}
-                  <div className="flex items-center justify-between pb-3 border-b border-[var(--border)]">
-                    <div>
+                  <div className="flex items-center justify-between pb-2 sm:pb-3 border-b border-[var(--border)] gap-2">
+                    <div className="truncate">
                       <span className="text-xs font-semibold text-[var(--brand-primary)]">
                         {currentCard.termJp}
                       </span>
-                      <span className="text-xs text-[var(--text-secondary)] ml-2">
+                      <span className="text-xs text-[var(--text-secondary)] ml-1.5 truncate">
                         ({currentCard.termEn})
                       </span>
                     </div>
-                    <span className="text-xs text-[var(--text-secondary)]">Penjelasan & Analogi</span>
+                    <span className="text-[10px] sm:text-xs text-[var(--text-secondary)] shrink-0">Penjelasan</span>
                   </div>
 
                   {/* Center Back: Explanation + Key Diff + Analogy */}
-                  <div className="flex flex-col gap-3 my-auto overflow-y-auto pr-1">
+                  <div className="flex flex-col gap-2.5 sm:gap-3 my-auto overflow-y-auto pr-1 py-1 max-h-[220px] sm:max-h-none">
                     <div>
-                      <p className="text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mb-1">
+                      <p className="text-[10px] sm:text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mb-0.5 sm:mb-1">
                         Definisi Inti
                       </p>
-                      <p className="text-sm md:text-[15px] text-[var(--text-primary)] leading-relaxed">
+                      <p className="text-xs sm:text-sm md:text-[15px] text-[var(--text-primary)] leading-relaxed">
                         {currentCard.definitionId}
                       </p>
                     </div>
 
                     {/* Kata Kunci Ujian FE */}
-                    <div className="p-3 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)]">
-                      <p className="text-[11px] font-bold text-[var(--brand-primary)] uppercase tracking-wider mb-0.5 flex items-center gap-1">
-                        <BookOpen size={12} /> Kata Kunci Ujian FE (キーワード)
+                    <div className="p-2.5 sm:p-3 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)]">
+                      <p className="text-[10px] sm:text-[11px] font-bold text-[var(--brand-primary)] uppercase tracking-wider mb-0.5 flex items-center gap-1">
+                        <BookOpen size={11} /> Kata Kunci Ujian FE (キーワード)
                       </p>
                       <p className="text-xs md:text-sm text-[var(--text-primary)] font-medium">
                         {currentCard.keyDifferentiator}
@@ -523,19 +525,20 @@ export function FlashcardView({
                     </div>
 
                     {/* Analogi Visual ala Kitami-shiki */}
-                    <div className="p-3 rounded-xl bg-amber-500/8 border border-amber-500/20">
-                      <p className="text-[11px] font-bold text-amber-500 uppercase tracking-wider mb-0.5 flex items-center gap-1">
-                        <Sparkles size={12} /> Analogi Nyata (Kitami-shiki Style)
+                    <div className="p-2.5 sm:p-3 rounded-xl bg-amber-500/8 border border-amber-500/20">
+                      <p className="text-[10px] sm:text-[11px] font-bold text-amber-500 uppercase tracking-wider mb-0.5 flex items-center gap-1">
+                        <Sparkles size={11} /> Analogi (Kitami-shiki)
                       </p>
-                      <p className="text-xs text-[var(--text-secondary)] italic leading-relaxed">
+                      <p className="text-[11px] sm:text-xs text-[var(--text-secondary)] italic leading-relaxed">
                         &ldquo;{currentCard.analogy}&rdquo;
                       </p>
                     </div>
                   </div>
 
                   {/* Footer Notice */}
-                  <div className="text-center text-[11px] text-[var(--text-secondary)] opacity-60 pt-2 border-t border-[var(--border)]">
-                    Beri penilaian di bawah atau swipe kartu (Kanan: Kuasai, Kiri: Lupa)
+                  <div className="text-center text-[10px] sm:text-[11px] text-[var(--text-secondary)] opacity-60 pt-2 border-t border-[var(--border)]">
+                    <span className="sm:hidden">Pilih rating di bawah atau swipe</span>
+                    <span className="hidden sm:inline">Beri penilaian di bawah atau swipe kartu (Kanan: Kuasai, Kiri: Lupa)</span>
                   </div>
                 </div>
               </motion.div>
@@ -550,67 +553,73 @@ export function FlashcardView({
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            className="grid grid-cols-3 gap-3"
+            className="grid grid-cols-3 gap-2 sm:gap-3"
           >
             <button
               type="button"
               onClick={() => handleRate("forgot")}
-              className="group flex flex-col items-center justify-center p-3 rounded-xl border border-rose-500/30 hover:border-rose-500 bg-rose-500/5 hover:bg-rose-500/10 text-rose-500 transition-all shadow-sm active:scale-98"
+              className="group flex flex-col items-center justify-center min-h-[50px] p-2.5 sm:p-3 rounded-xl border border-rose-500/30 hover:border-rose-500 bg-rose-500/5 hover:bg-rose-500/10 text-rose-500 transition-all shadow-sm active:scale-95"
             >
-              <div className="flex items-center gap-1.5 font-bold text-sm">
-                <AlertCircle size={16} /> Lupa
+              <div className="flex items-center gap-1 font-bold text-xs sm:text-sm">
+                <AlertCircle size={15} /> Lupa
               </div>
-              <span className="text-[11px] opacity-75 mt-0.5">Ulangi lagi (1)</span>
+              <span className="text-[10px] opacity-75 mt-0.5">Ulangi <span className="hidden sm:inline">(1)</span></span>
             </button>
 
             <button
               type="button"
               onClick={() => handleRate("unsure")}
-              className="group flex flex-col items-center justify-center p-3 rounded-xl border border-amber-500/30 hover:border-amber-500 bg-amber-500/5 hover:bg-amber-500/10 text-amber-500 transition-all shadow-sm active:scale-98"
+              className="group flex flex-col items-center justify-center min-h-[50px] p-2.5 sm:p-3 rounded-xl border border-amber-500/30 hover:border-amber-500 bg-amber-500/5 hover:bg-amber-500/10 text-amber-500 transition-all shadow-sm active:scale-95"
             >
-              <div className="flex items-center gap-1.5 font-bold text-sm">
-                <HelpCircle size={16} /> Ragu-ragu
+              <div className="flex items-center gap-1 font-bold text-xs sm:text-sm">
+                <HelpCircle size={15} /> Ragu
               </div>
-              <span className="text-[11px] opacity-75 mt-0.5">Belum yakin (2)</span>
+              <span className="text-[10px] opacity-75 mt-0.5">Belum yakin <span className="hidden sm:inline">(2)</span></span>
             </button>
 
             <button
               type="button"
               onClick={() => handleRate("mastered")}
-              className="group flex flex-col items-center justify-center p-3 rounded-xl border border-emerald-500/30 hover:border-emerald-500 bg-emerald-500/5 hover:bg-emerald-500/10 text-emerald-500 transition-all shadow-sm active:scale-98"
+              className="group flex flex-col items-center justify-center min-h-[50px] p-2.5 sm:p-3 rounded-xl border border-emerald-500/30 hover:border-emerald-500 bg-emerald-500/5 hover:bg-emerald-500/10 text-emerald-500 transition-all shadow-sm active:scale-95"
             >
-              <div className="flex items-center gap-1.5 font-bold text-sm">
-                <CheckCircle2 size={16} /> Kuasai!
+              <div className="flex items-center gap-1 font-bold text-xs sm:text-sm">
+                <CheckCircle2 size={15} /> Kuasai!
               </div>
-              <span className="text-[11px] opacity-75 mt-0.5">Sudah hafal (3)</span>
+              <span className="text-[10px] opacity-75 mt-0.5">Sudah hafal <span className="hidden sm:inline">(3)</span></span>
             </button>
           </motion.div>
         ) : (
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-2">
             <button
               type="button"
               onClick={handlePrev}
               disabled={currentIndex === 0}
-              className="inline-flex items-center gap-1 px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none transition-all active:scale-95"
+              className="inline-flex items-center justify-center gap-1 px-3 sm:px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none transition-all active:scale-95 shrink-0"
+              title="Kartu Sebelumnya"
             >
-              <ChevronLeft size={16} /> Sebelumnya
+              <ChevronLeft size={16} />
+              <span className="hidden sm:inline">Sebelumnya</span>
             </button>
 
             <button
               type="button"
               onClick={handleFlip}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white text-xs font-bold tracking-wide shadow-md hover:shadow-lg transition-all active:scale-95"
+              className="flex-1 max-w-[240px] inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white text-xs font-bold tracking-wide shadow-md hover:shadow-lg transition-all active:scale-95"
             >
-              <RotateCcw size={14} /> Balik Kartu (Spasi)
+              <RotateCcw size={14} />
+              <span>Balik Kartu</span>
+              <span className="hidden sm:inline">(Spasi)</span>
             </button>
 
             <button
               type="button"
               onClick={handleNext}
               disabled={currentIndex === cards.length - 1}
-              className="inline-flex items-center gap-1 px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none transition-all active:scale-95"
+              className="inline-flex items-center justify-center gap-1 px-3 sm:px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none transition-all active:scale-95 shrink-0"
+              title="Kartu Berikutnya"
             >
-              Berikutnya <ChevronRight size={16} />
+              <span className="hidden sm:inline">Berikutnya</span>
+              <ChevronRight size={16} />
             </button>
           </div>
         )}

@@ -600,24 +600,24 @@ export function QuizView({ onBackToMenu }: QuizViewProps) {
   return (
     <div className="w-full max-w-3xl mx-auto flex flex-col gap-6 select-none">
       {/* Mode Switch Tabs & Meta Bar */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-3 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm">
         {/* Mode Selector */}
-        <div className="flex items-center p-1 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)] text-xs font-bold">
+        <div className="flex items-center p-1 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)] text-xs font-bold w-full sm:w-auto">
           <button
             type="button"
             onClick={() => handleReset("practice")}
-            className={`px-3 py-1.5 rounded-lg transition-all ${
+            className={`flex-1 sm:flex-none px-3 py-1.5 rounded-lg text-center transition-all ${
               examMode === "practice"
                 ? "bg-[var(--surface)] text-[var(--brand-primary)] shadow-sm"
                 : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             }`}
           >
-            Mode Latihan (Instant)
+            Latihan (Instant)
           </button>
           <button
             type="button"
             onClick={() => handleReset("mock")}
-            className={`px-3 py-1.5 rounded-lg transition-all ${
+            className={`flex-1 sm:flex-none px-3 py-1.5 rounded-lg text-center transition-all ${
               examMode === "mock"
                 ? "bg-[var(--surface)] text-[var(--brand-primary)] shadow-sm"
                 : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
@@ -628,7 +628,7 @@ export function QuizView({ onBackToMenu }: QuizViewProps) {
         </div>
 
         {/* Timer Display */}
-        <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+        <div className="flex items-center gap-2.5 w-full sm:w-auto justify-between sm:justify-end">
           {examMode === "mock" ? (
             <div
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border font-mono text-xs font-bold ${
@@ -639,7 +639,7 @@ export function QuizView({ onBackToMenu }: QuizViewProps) {
               title="Waktu sisa ujian CBT (Total 22,5 menit)"
             >
               <Timer size={14} />
-              <span>Sisa Waktu: {formatTime(mockTimeLeft)}</span>
+              <span>Sisa: {formatTime(mockTimeLeft)}</span>
             </div>
           ) : (
             <div
@@ -659,7 +659,7 @@ export function QuizView({ onBackToMenu }: QuizViewProps) {
             <button
               type="button"
               onClick={() => setIsSubmitModalOpen(true)}
-              className="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-sm transition-all"
+              className="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-sm transition-all shrink-0 active:scale-95"
             >
               Kumpulkan Ujian
             </button>
@@ -669,18 +669,18 @@ export function QuizView({ onBackToMenu }: QuizViewProps) {
 
       {/* Mock Exam Question Matrix Navigator */}
       {examMode === "mock" && (
-        <div className="p-3.5 rounded-2xl border border-[var(--border)] bg-[var(--surface)] flex flex-col gap-2.5">
+        <div className="p-3 sm:p-3.5 rounded-2xl border border-[var(--border)] bg-[var(--surface)] flex flex-col gap-2.5">
           <div className="flex items-center justify-between text-[11px] text-[var(--text-secondary)]">
             <span className="font-semibold text-[var(--text-primary)] flex items-center gap-1.5">
               <Layers size={13} />
-              Matriks Nomor Soal (Question Navigator)
+              Matriks Soal (Navigator)
             </span>
             <span>
               Terjawab: <b className="text-[var(--text-primary)]">{answeredCount}</b> / {questions.length}
             </span>
           </div>
 
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-1 sm:gap-1.5">
             {questions.map((q, idx) => {
               const isCurrent = currentIndex === idx;
               const isAnswered = Boolean(mockAnswers[q.id]);
@@ -699,7 +699,7 @@ export function QuizView({ onBackToMenu }: QuizViewProps) {
                   key={q.id}
                   type="button"
                   onClick={() => setCurrentIndex(idx)}
-                  className={`w-8 h-8 rounded-lg text-xs font-mono transition-all relative flex items-center justify-center border ${btnClass}`}
+                  className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg text-xs font-mono transition-all relative flex items-center justify-center border active:scale-95 ${btnClass}`}
                 >
                   {idx + 1}
                   {isFlagged && (
@@ -723,14 +723,14 @@ export function QuizView({ onBackToMenu }: QuizViewProps) {
       )}
 
       {/* Question Card */}
-      <div className="p-6 md:p-8 rounded-2xl border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)] flex flex-col gap-5">
+      <div className="p-4 sm:p-6 md:p-8 rounded-2xl border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)] flex flex-col gap-4 sm:gap-5">
         {/* Category & Flag Bar */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="text-sm font-bold text-[var(--text-primary)] font-mono">
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+            <span className="text-xs sm:text-sm font-bold text-[var(--text-primary)] font-mono shrink-0">
               Soal {currentIndex + 1} <span className="opacity-40">/ {questions.length}</span>
             </span>
-            <span className="px-2.5 py-0.5 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] text-[11px] font-medium">
+            <span className="px-2.5 py-0.5 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] text-[10px] sm:text-[11px] font-medium truncate">
               {currentQ.year} · {currentQ.subCategory}
             </span>
           </div>
@@ -739,30 +739,31 @@ export function QuizView({ onBackToMenu }: QuizViewProps) {
             <button
               type="button"
               onClick={() => toggleFlag(currentQ.id)}
-              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-semibold border transition-all ${
+              className={`inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-xl text-xs font-semibold border transition-all shrink-0 active:scale-95 ${
                 flaggedIds.has(currentQ.id)
                   ? "border-amber-500 text-amber-500 bg-amber-500/10 font-bold"
                   : "border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               }`}
             >
-              <Flag size={13} />
-              {flaggedIds.has(currentQ.id) ? "Ditandai (Ragu)" : "Tandai Soal (F)"}
+              <Flag size={12} />
+              <span className="hidden sm:inline">{flaggedIds.has(currentQ.id) ? "Ditandai (Ragu)" : "Tandai Soal (F)"}</span>
+              <span className="sm:hidden">{flaggedIds.has(currentQ.id) ? "Ragu" : "Tandai"}</span>
             </button>
           )}
         </div>
 
         {/* Japanese Question Text */}
         <div className="flex flex-col gap-2">
-          <h3 className="text-lg md:text-xl font-bold text-[var(--text-primary)] leading-relaxed font-sans">
+          <h3 className="text-base sm:text-lg md:text-xl font-bold text-[var(--text-primary)] leading-relaxed font-sans">
             {currentQ.questionJp}
           </h3>
-          <p className="text-xs md:text-sm text-[var(--text-secondary)] leading-relaxed italic border-l-2 border-[var(--brand-primary)]/40 pl-3 mt-1">
+          <p className="text-xs md:text-sm text-[var(--text-secondary)] leading-relaxed italic border-l-2 border-[var(--brand-primary)]/40 pl-3 mt-0.5">
             &ldquo;{currentQ.questionTranslation}&rdquo;
           </p>
         </div>
 
         {/* 4 Options Grid (ア, イ, ウ, エ) */}
-        <div className="grid grid-cols-1 gap-3 pt-2">
+        <div className="grid grid-cols-1 gap-2.5 sm:gap-3 pt-1">
           {currentQ.options.map((opt) => {
             const isMock = examMode === "mock";
             const mockSelected = mockAnswers[currentQ.id] === opt.key;
@@ -796,28 +797,28 @@ export function QuizView({ onBackToMenu }: QuizViewProps) {
                 type="button"
                 onClick={() => (isMock ? handleMockSelect(opt.key) : handlePracticeSelect(opt.key))}
                 disabled={!isMock && practiceAnswerSubmitted}
-                className={`p-4 rounded-xl border text-left transition-all flex items-start justify-between gap-3 ${btnStyle}`}
+                className={`p-3.5 sm:p-4 rounded-xl border text-left transition-all flex items-start justify-between gap-2.5 sm:gap-3 active:scale-[0.99] min-h-[48px] ${btnStyle}`}
               >
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-2.5 sm:gap-3">
                   <span className="w-6 h-6 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
                     {opt.key}
                   </span>
                   <div>
-                    <p className="text-sm font-medium">{opt.textJp}</p>
+                    <p className="text-xs sm:text-sm font-medium">{opt.textJp}</p>
                     {opt.textEnId && (
-                      <p className="text-xs text-[var(--text-secondary)] mt-0.5">{opt.textEnId}</p>
+                      <p className="text-[11px] sm:text-xs text-[var(--text-secondary)] mt-0.5">{opt.textEnId}</p>
                     )}
                   </div>
                 </div>
 
                 {/* Status Indicator */}
                 {isMock ? (
-                  mockSelected && <Check size={18} className="text-[var(--brand-primary)] shrink-0" />
+                  mockSelected && <Check size={16} className="text-[var(--brand-primary)] shrink-0 mt-0.5" />
                 ) : (
                   practiceAnswerSubmitted && (
-                    <div>
-                      {isCorrect && <CheckCircle2 size={18} className="text-emerald-500 shrink-0" />}
-                      {practiceSelected && !isCorrect && <XCircle size={18} className="text-rose-500 shrink-0" />}
+                    <div className="mt-0.5 shrink-0">
+                      {isCorrect && <CheckCircle2 size={16} className="text-emerald-500" />}
+                      {practiceSelected && !isCorrect && <XCircle size={16} className="text-rose-500" />}
                     </div>
                   )
                 )}
@@ -828,17 +829,17 @@ export function QuizView({ onBackToMenu }: QuizViewProps) {
 
         {/* Navigation Bar for Mock Mode */}
         {examMode === "mock" && (
-          <div className="flex items-center justify-between pt-4 border-t border-[var(--border)]">
+          <div className="flex items-center justify-between pt-4 border-t border-[var(--border)] gap-2">
             <button
               type="button"
               disabled={currentIndex === 0}
               onClick={() => setCurrentIndex((prev) => prev - 1)}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] disabled:opacity-30 text-xs font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all"
+              className="inline-flex items-center justify-center gap-1 sm:gap-1.5 px-3 sm:px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] disabled:opacity-30 text-xs font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all active:scale-95 shrink-0"
             >
-              <ChevronLeft size={16} /> Sebelumnya
+              <ChevronLeft size={16} /> <span className="hidden sm:inline">Sebelumnya</span>
             </button>
 
-            <span className="text-xs text-[var(--text-secondary)] font-mono">
+            <span className="text-xs text-[var(--text-secondary)] font-mono font-bold">
               {currentIndex + 1} / {questions.length}
             </span>
 
@@ -846,9 +847,9 @@ export function QuizView({ onBackToMenu }: QuizViewProps) {
               type="button"
               disabled={currentIndex === questions.length - 1}
               onClick={() => setCurrentIndex((prev) => prev + 1)}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[var(--surface-soft)] hover:bg-[var(--border)] disabled:opacity-30 text-xs font-bold text-[var(--text-primary)] transition-all border border-[var(--border)]"
+              className="inline-flex items-center justify-center gap-1 sm:gap-1.5 px-3.5 sm:px-4 py-2.5 rounded-xl bg-[var(--brand-primary)] text-white hover:bg-[var(--brand-hover)] disabled:opacity-30 text-xs font-bold transition-all active:scale-95 shrink-0"
             >
-              Berikutnya <ChevronRight size={16} />
+              <span className="hidden sm:inline">Berikutnya</span> <ChevronRight size={16} />
             </button>
           </div>
         )}

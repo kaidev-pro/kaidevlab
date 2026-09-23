@@ -1,11 +1,13 @@
 // FE Study Hub — Service Worker (Offline PWA)
-const CACHE_NAME = "fe-study-hub-v2";
+const CACHE_NAME = "fe-study-hub-v3";
 
 const PRECACHE_URLS = [
   "/learn",
   "/tools/fe-study",
   "/favicon.ico",
-  "/brand/kaidevlab-logo-dark.png",
+  "/brand/kaidevlab-icon-192.png",
+  "/brand/kaidevlab-icon-512.png",
+  "/apple-touch-icon.png",
 ];
 
 // Install Event: Pre-cache critical routes

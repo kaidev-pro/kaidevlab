@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Flame, CheckCircle2, RotateCw, Download, Upload, Cpu, Kanban, TrendingUp } from "lucide-react";
+import { Flame, CheckCircle2, RotateCw, Download, Upload, Cpu, Kanban, TrendingUp, Languages } from "lucide-react";
 import { StudyProgress, exportProgressJson, importProgressJson } from "@/lib/fe-study-storage";
 import { FE_CARDS, FECategory } from "@/data/fe-study-data";
 
@@ -32,6 +32,7 @@ export function StudyProgressCard({ progress, onProgressUpdated }: StudyProgress
   const techStats = categoryCount("technology");
   const mgmtStats = categoryCount("management");
   const stratStats = categoryCount("strategy");
+  const vocabStats = categoryCount("vocab");
 
   const handleExport = () => {
     const jsonStr = exportProgressJson();
@@ -210,7 +211,7 @@ export function StudyProgressCard({ progress, onProgressUpdated }: StudyProgress
           Progres per Bidang Ujian (IPA)
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {/* Technology */}
           <div className="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--surface)] flex flex-col gap-2">
             <div className="flex items-center justify-between text-xs">
@@ -253,6 +254,21 @@ export function StudyProgressCard({ progress, onProgressUpdated }: StudyProgress
             </div>
             <div className="w-full h-1.5 bg-[var(--surface-soft)] rounded-full overflow-hidden">
               <div className="h-full bg-amber-500" style={{ width: `${stratStats.pct}%` }} />
+            </div>
+          </div>
+
+          {/* Vocab & Kanji */}
+          <div className="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--surface)] flex flex-col gap-2">
+            <div className="flex items-center justify-between text-xs">
+              <span className="font-semibold text-purple-500 flex items-center gap-1.5">
+                <Languages size={14} /> 設問用語 (Vocab)
+              </span>
+              <span className="font-mono text-[var(--text-secondary)]">
+                {vocabStats.mastered}/{vocabStats.total}
+              </span>
+            </div>
+            <div className="w-full h-1.5 bg-[var(--surface-soft)] rounded-full overflow-hidden">
+              <div className="h-full bg-purple-500" style={{ width: `${vocabStats.pct}%` }} />
             </div>
           </div>
         </div>

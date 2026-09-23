@@ -13,6 +13,7 @@ import {
   EyeOff,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   Flame,
   Star,
   BookOpen,
@@ -23,6 +24,7 @@ import {
 } from "lucide-react";
 import { FECard, CATEGORY_LABELS } from "@/data/fe-study-data";
 import { CardRating } from "@/lib/fe-study-storage";
+import { RubyTerm } from "@/components/fe-study/ruby-term";
 
 interface FlashcardViewProps {
   cards: FECard[];
@@ -135,8 +137,14 @@ export function FlashcardView({
   const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
   const [isFlipped, setIsFlipped] = useState(false);
   const [showFurigana, setShowFurigana] = useState(true);
+  const [showAnalogy, setShowAnalogy] = useState(false);
   const [soundEffects, setSoundEffects] = useState(true);
   const [isSpeaking, setIsSpeaking] = useState(false);
+
+  // Reset analogy state whenever card changes
+  useEffect(() => {
+    setShowAnalogy(false);
+  }, [currentIndex]);
 
   const audioRef = useRef<ReturnType<typeof createAudioFeedback> | null>(null);
 
@@ -230,10 +238,17 @@ export function FlashcardView({
       } else if (e.code === "ArrowLeft") {
         e.preventDefault();
         handlePrev();
+      } else if (e.key === "f" || e.key === "F") {
+        e.preventDefault();
+        setShowFurigana((prev) => !prev);
       } else if (isFlipped) {
         if (e.key === "1") handleRate("forgot");
         if (e.key === "2") handleRate("unsure");
         if (e.key === "3") handleRate("mastered");
+        if (e.key === "a" || e.key === "A") {
+          e.preventDefault();
+          setShowAnalogy((prev) => !prev);
+        }
       }
     };
 
@@ -494,21 +509,12 @@ export function FlashcardView({
 
                   {/* Center Content: Term & Furigana */}
                   <div className="flex flex-col items-center justify-center text-center my-auto py-2 sm:py-4">
-                    <AnimatePresence mode="wait">
-                      {showFurigana && (
-                        <motion.p
-                          initial={{ opacity: 0, y: -4 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0 }}
-                          className="text-xs md:text-sm font-medium text-[var(--brand-primary)] tracking-wide mb-1"
-                        >
-                          {currentCard.furigana}
-                        </motion.p>
-                      )}
-                    </AnimatePresence>
-
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--text-primary)] font-sans">
-                      {currentCard.termJp}
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--text-primary)] font-sans leading-normal">
+                      <RubyTerm
+                        rubyText={currentCard.ruby}
+                        fallbackText={currentCard.termJp}
+                        showFurigana={showFurigana}
+                      />
                     </h2>
 
                     <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-[var(--text-secondary)] font-medium">
@@ -541,13 +547,28 @@ export function FlashcardView({
                 >
                   {/* Header: Term Info */}
                   <div className="flex items-center justify-between pb-2 sm:pb-3 border-b border-[var(--border)] gap-2">
-                    <div className="truncate">
-                      <span className="text-xs font-semibold text-[var(--brand-primary)]">
+                    <div className="truncate flex items-center gap-1.5 min-w-0">
+                      <span className="text-xs font-semibold text-[var(--brand-primary)] truncate">
                         {currentCard.termJp}
                       </span>
-                      <span className="text-xs text-[var(--text-secondary)] ml-1.5 truncate">
+                      <span className="text-xs text-[var(--text-secondary)] truncate">
                         ({currentCard.termEn})
                       </span>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          speakJapanese(currentCard.termJp);
+                        }}
+                        className={`p-1 rounded-md transition-colors shrink-0 ${
+                          isSpeaking
+                            ? "text-[var(--brand-primary)] bg-[var(--brand-primary)]/10 animate-pulse"
+                            : "text-[var(--text-secondary)] hover:text-[var(--brand-primary)] hover:bg-[var(--surface-soft)]"
+                        }`}
+                        title="Dengarkan Pengucapan Jepang"
+                      >
+                        <Volume2 size={12} />
+                      </button>
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
                       {onToggleStar && (
@@ -571,42 +592,74 @@ export function FlashcardView({
                     </div>
                   </div>
 
-                  {/* Center Back: Explanation + Key Diff + Analogy */}
-                  <div className="flex flex-col gap-2.5 sm:gap-3 my-auto overflow-y-auto pr-1 py-1 max-h-[220px] sm:max-h-none">
+                  {/* Center Back: Explanation + Key Diff + Collapsible Analogy */}
+                  <div className="flex flex-col gap-2.5 sm:gap-3 my-auto overflow-y-auto pr-1 py-1 max-h-[240px] sm:max-h-none">
                     <div>
-                      <p className="text-[10px] sm:text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mb-0.5 sm:mb-1">
+                      <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[var(--text-secondary)] font-bold mb-1">
                         Definisi Inti
                       </p>
-                      <p className="text-xs sm:text-sm md:text-[15px] text-[var(--text-primary)] leading-relaxed">
+                      <p className="text-xs sm:text-sm md:text-[15px] text-[var(--text-primary)] leading-relaxed font-sans">
                         {currentCard.definitionId}
                       </p>
                     </div>
 
                     {/* Kata Kunci Ujian FE */}
-                    <div className="p-2.5 sm:p-3 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)]">
-                      <p className="text-[10px] sm:text-[11px] font-bold text-[var(--brand-primary)] uppercase tracking-wider mb-0.5 flex items-center gap-1">
-                        <BookOpen size={11} /> Kata Kunci Ujian FE (キーワード)
+                    <div className="p-2.5 sm:p-3 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)] shadow-xs">
+                      <p className="text-[10px] sm:text-[11px] font-bold text-[var(--brand-primary)] uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                        <BookOpen size={12} />
+                        Kata Kunci Ujian FE (キーワード)
                       </p>
-                      <p className="text-xs md:text-sm text-[var(--text-primary)] font-medium">
+                      <p className="text-xs md:text-sm text-[var(--text-primary)] font-medium leading-relaxed">
                         {currentCard.keyDifferentiator}
                       </p>
                     </div>
 
-                    {/* Analogi Visual ala Kitami-shiki */}
-                    <div className="p-2.5 sm:p-3 rounded-xl bg-amber-500/8 border border-amber-500/20">
-                      <p className="text-[10px] sm:text-[11px] font-bold text-amber-500 uppercase tracking-wider mb-0.5 flex items-center gap-1">
-                        <Sparkles size={11} /> Analogi (Kitami-shiki)
-                      </p>
-                      <p className="text-[11px] sm:text-xs text-[var(--text-secondary)] italic leading-relaxed">
-                        &ldquo;{currentCard.analogy}&rdquo;
-                      </p>
+                    {/* Analogi Visual ala Kitami-shiki (Collapsible Accordion) */}
+                    <div className="pt-0.5">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setShowAnalogy((prev) => !prev);
+                        }}
+                        className={`w-full flex items-center justify-between px-3 py-2 rounded-xl border transition-all text-xs font-semibold cursor-pointer active:scale-[0.99] ${
+                          showAnalogy
+                            ? "bg-amber-500/12 border-amber-500/35 text-amber-500"
+                            : "bg-amber-500/6 border-amber-500/20 text-amber-500/90 hover:bg-amber-500/10 hover:text-amber-500"
+                        }`}
+                      >
+                        <span className="flex items-center gap-1.5">
+                          <Sparkles size={13} className="text-amber-500" />
+                          {showAnalogy ? "Tutup Analogi Kitami-shiki" : "💡 Lihat Analogi (Kitami-shiki)"}
+                        </span>
+                        <motion.div animate={{ rotate: showAnalogy ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                          <ChevronDown size={14} />
+                        </motion.div>
+                      </button>
+
+                      <AnimatePresence>
+                        {showAnalogy && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                            animate={{ opacity: 1, height: "auto", marginTop: 8 }}
+                            exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                            transition={{ duration: 0.22, ease: "easeOut" }}
+                            className="overflow-hidden"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/25 text-[11px] sm:text-xs text-[var(--text-secondary)] italic leading-relaxed shadow-xs">
+                              &ldquo;{currentCard.analogy}&rdquo;
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   </div>
 
                   {/* Footer Notice */}
                   <div className="text-center text-[10px] sm:text-[11px] text-[var(--text-secondary)] opacity-60 pt-2 border-t border-[var(--border)]">
                     <span className="sm:hidden">Pilih rating di bawah atau swipe</span>
-                    <span className="hidden sm:inline">Beri penilaian di bawah atau swipe kartu (Kanan: Kuasai, Kiri: Lupa)</span>
+                    <span className="hidden sm:inline">Beri penilaian (1: Lupa, 2: Ragu, 3: Kuasai) · [A] Toggle Analogi</span>
                   </div>
                 </div>
               </motion.div>

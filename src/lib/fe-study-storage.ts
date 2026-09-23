@@ -26,6 +26,7 @@ export const DEFAULT_PROGRESS: StudyProgress = {
     technology: { mastered: 0, review: 0 },
     management: { mastered: 0, review: 0 },
     strategy: { mastered: 0, review: 0 },
+    vocab: { mastered: 0, review: 0 },
   },
   dailyReviews: {},
 };

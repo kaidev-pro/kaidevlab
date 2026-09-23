@@ -23,6 +23,7 @@ import {
   Download,
   Smartphone,
   Star,
+  Languages,
 } from "lucide-react";
 import { FE_CARDS, FECard } from "@/data/fe-study-data";
 import {
@@ -39,8 +40,9 @@ import { SessionSummaryModal } from "@/components/fe-study/session-summary-modal
 import { QuizView } from "@/components/fe-study/quiz-view";
 import { TracerView } from "@/components/fe-study/tracer-view";
 import { CheatsheetView } from "@/components/fe-study/cheatsheet-view";
+import { RubyTerm } from "@/components/fe-study/ruby-term";
 
-type StudyMode = "all" | "quick10" | "technology" | "management" | "strategy" | "review" | "starred";
+type StudyMode = "all" | "quick10" | "technology" | "management" | "strategy" | "vocab" | "review" | "starred";
 type HubTab = "flashcards" | "quiz" | "tracer" | "cheatsheet";
 
 interface RoadmapItem {
@@ -57,8 +59,8 @@ const ROADMAP_MODULES: RoadmapItem[] = [
     id: "flashcards",
     title: "Flashcard Drill (科目A)",
     badge: "Active",
-    desc: "Active recall 100 istilah IT Jepang & Inggris, furigana toggle, audio TTS, dan analogi visual Kitami-shiki.",
-    target: "Pondasi Terminologi Ujian FE (100 Kartu)",
+    desc: "Active recall 129 istilah IT Jepang & Inggris, furigana kanji toggle, audio TTS, dan analogi visual Kitami-shiki.",
+    target: "Pondasi Terminologi & Kosakata Ujian FE (129 Kartu)",
     status: "active",
   },
   {
@@ -149,7 +151,12 @@ export function LearnClient() {
 
     if (activeMode === "quick10") {
       filtered = [...FE_CARDS].sort(() => 0.5 - Math.random()).slice(0, 10);
-    } else if (activeMode === "technology" || activeMode === "management" || activeMode === "strategy") {
+    } else if (
+      activeMode === "technology" ||
+      activeMode === "management" ||
+      activeMode === "strategy" ||
+      activeMode === "vocab"
+    ) {
       filtered = FE_CARDS.filter((c) => c.category === activeMode);
     } else if (activeMode === "review") {
       const reviewSet = new Set(progress?.reviewCardIds || []);
@@ -176,7 +183,8 @@ export function LearnClient() {
     return FE_CARDS.filter(
       (c) =>
         c.termJp.toLowerCase().includes(q) ||
-        c.furigana.toLowerCase().includes(q) ||
+        (c.furigana && c.furigana.toLowerCase().includes(q)) ||
+        (c.ruby && c.ruby.toLowerCase().includes(q)) ||
         c.termEn.toLowerCase().includes(q) ||
         c.definitionId.toLowerCase().includes(q) ||
         c.keyDifferentiator.toLowerCase().includes(q) ||
@@ -401,7 +409,7 @@ export function LearnClient() {
                 Kamus Cepat & Pencarian Istilah FE
               </span>
               <span className="text-[11px] text-[var(--text-secondary)]">
-                22 Istilah Tersedia (Cari Kanji, Katakana, Romaji, EN, ID)
+                129 Istilah Tersedia (99 Konsep IT + 30 Kosakata Sakti Soal)
               </span>
             </div>
 
@@ -458,9 +466,10 @@ export function LearnClient() {
                         <div>
                           <div className="flex items-center justify-between text-[11px] text-[var(--text-secondary)] mb-1">
                             <span className="font-semibold text-[var(--brand-primary)]">{card.subCategory}</span>
-                            <span className="opacity-70">{card.furigana}</span>
                           </div>
-                          <h4 className="text-base font-bold text-[var(--text-primary)] font-sans">{card.termJp}</h4>
+                          <h4 className="text-base font-bold text-[var(--text-primary)] font-sans">
+                            <RubyTerm rubyText={card.ruby} fallbackText={card.termJp} />
+                          </h4>
                           <p className="text-xs text-[var(--text-secondary)] font-medium mt-0.5">{card.termEn}</p>
                           <p className="text-xs text-[var(--text-primary)]/85 mt-1.5 line-clamp-2 leading-relaxed">
                             {card.definitionId}
@@ -524,7 +533,7 @@ export function LearnClient() {
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {/* Technology */}
               <div
                 onClick={() => handleStartSession("technology")}
@@ -587,6 +596,28 @@ export function LearnClient() {
                 </div>
                 <div className="flex items-center justify-between text-xs font-semibold text-amber-500 pt-2 border-t border-[var(--border)]">
                   <span>Mulai Drill</span>
+                  <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+
+              {/* Exam Vocabulary & Kanji */}
+              <div
+                onClick={() => handleStartSession("vocab")}
+                className="group cursor-pointer p-6 rounded-2xl border border-[var(--border)] hover:border-purple-500/50 bg-[var(--surface)] hover:bg-[var(--surface-soft)] transition-all flex flex-col justify-between gap-4 shadow-sm hover:shadow-md"
+              >
+                <div className="flex flex-col gap-2">
+                  <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center">
+                    <Languages size={20} />
+                  </div>
+                  <h4 className="text-lg font-bold text-[var(--text-primary)] font-sans group-hover:text-purple-500 transition-colors">
+                    設問・重要用語 (Vocab & Kanji)
+                  </h4>
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                    30 kosakata kunci & kanji penentu soal ujian FE (改ざん, 否認防止, 脆弱性, 適切でない, 整合性, 冗長化, 閾値).
+                  </p>
+                </div>
+                <div className="flex items-center justify-between text-xs font-semibold text-purple-500 pt-2 border-t border-[var(--border)]">
+                  <span>Mulai Drill (30 Kartu)</span>
                   <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>

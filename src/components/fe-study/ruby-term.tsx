@@ -52,14 +52,14 @@ export function RubyTerm({
     nodes.push(
       <ruby key={`ruby-${match.index}`} className="ruby-term mx-[1px]">
         {kanji}
-        <rt
-          className={`text-[0.44em] leading-none font-normal tracking-tight text-[var(--brand-primary)] select-none transition-opacity duration-200 ${
-            showFurigana ? "opacity-100" : "opacity-0"
-          } ${rtClassName}`}
-          style={{ rubyPosition: "over" }}
-        >
-          {furigana}
-        </rt>
+        {showFurigana && (
+          <rt
+            className={`text-[0.48em] leading-none font-normal tracking-tight text-[var(--brand-primary)] select-none ${rtClassName}`}
+            style={{ rubyPosition: "over" }}
+          >
+            {furigana}
+          </rt>
+        )}
       </ruby>
     );
 

@@ -1,30 +1,81 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Terminal,
   Play,
+  Pause,
   RotateCcw,
   ChevronRight,
   ChevronLeft,
   Sparkles,
   Table,
-  CheckCircle2
+  CheckCircle2,
+  XCircle,
+  Code2,
+  HelpCircle,
+  Target,
+  ArrowRight,
 } from "lucide-react";
-import { FE_TRACER_ALGORITHMS, TracerAlgorithm } from "@/data/fe-tracer-data";
+import {
+  FE_TRACER_ALGORITHMS,
+  TracerAlgorithm,
+  TracerChallenge,
+} from "@/data/fe-tracer-data";
 
 interface TracerViewProps {
   onBackToMenu: () => void;
 }
 
+type TracerTab = "debugger" | "challenges";
+
 export function TracerView({ onBackToMenu }: TracerViewProps) {
+  const [activeTab, setActiveTab] = useState<TracerTab>("debugger");
   const [selectedAlgoIndex, setSelectedAlgoIndex] = useState(0);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  const currentAlgo: TracerAlgorithm = FE_TRACER_ALGORITHMS[selectedAlgoIndex];
+  // Challenge mode states
+  const [activeChallengeIndex, setActiveChallengeIndex] = useState(0);
+  const [selectedOptionKey, setSelectedOptionKey] = useState<string | null>(null);
+  const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(false);
+
+  const algorithms = FE_TRACER_ALGORITHMS;
+  const currentAlgo: TracerAlgorithm = algorithms[selectedAlgoIndex];
   const steps = currentAlgo.steps;
   const currentStep = steps[currentStepIndex] || steps[0];
+
+  // Flatten all challenges across algorithms for the challenge tab
+  const allChallenges: { algo: TracerAlgorithm; challenge: TracerChallenge }[] = useMemo(() => {
+    const list: { algo: TracerAlgorithm; challenge: TracerChallenge }[] = [];
+    algorithms.forEach((algo) => {
+      algo.challenges.forEach((ch) => {
+        list.push({ algo, challenge: ch });
+      });
+    });
+    return list;
+  }, [algorithms]);
+
+  const currentChallengeItem = allChallenges[activeChallengeIndex] || allChallenges[0];
+
+  // Auto-play interval
+  useEffect(() => {
+    if (!isPlaying) return;
+
+    const interval = setInterval(() => {
+      setCurrentStepIndex((prev) => {
+        if (prev < steps.length - 1) {
+          return prev + 1;
+        } else {
+          setIsPlaying(false);
+          return prev;
+        }
+      });
+    }, 1200);
+
+    return () => clearInterval(interval);
+  }, [isPlaying, steps.length]);
 
   const handleNext = () => {
     if (currentStepIndex < steps.length - 1) {
@@ -40,163 +91,530 @@ export function TracerView({ onBackToMenu }: TracerViewProps) {
 
   const handleReset = () => {
     setCurrentStepIndex(0);
+    setIsPlaying(false);
   };
 
   const handleSelectAlgo = (idx: number) => {
     setSelectedAlgoIndex(idx);
     setCurrentStepIndex(0);
+    setIsPlaying(false);
+  };
+
+  // Jump from challenge to debugger step
+  const handleJumpToDebugger = (algoId: string, stepIndex?: number) => {
+    const targetAlgoIdx = algorithms.findIndex((a) => a.id === algoId);
+    if (targetAlgoIdx !== -1) {
+      setSelectedAlgoIndex(targetAlgoIdx);
+      setCurrentStepIndex(stepIndex ?? 0);
+      setActiveTab("debugger");
+    }
   };
 
   const isCompleted = currentStepIndex === steps.length - 1;
 
+  // Category badge colors
+  const getCatBadge = (cat: TracerAlgorithm["category"]) => {
+    switch (cat) {
+      case "search":
+        return "bg-blue-500/10 text-blue-500 border-blue-500/25";
+      case "sort":
+        return "bg-emerald-500/10 text-emerald-500 border-emerald-500/25";
+      case "structure":
+        return "bg-purple-500/10 text-purple-500 border-purple-500/25";
+      case "math":
+        return "bg-amber-500/10 text-amber-500 border-amber-500/25";
+      default:
+        return "bg-[var(--surface-soft)] text-[var(--text-secondary)] border-[var(--border)]";
+    }
+  };
+
   return (
-    <div className="w-full max-w-4xl mx-auto flex flex-col gap-6 select-none">
-      {/* Top Header & Algo Switcher */}
-      <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-[var(--border)]">
-        <div>
-          <span className="text-xs uppercase font-bold tracking-widest text-[var(--brand-primary)] flex items-center gap-1.5">
-            <Terminal size={14} />
-            Interactive Pseudocode Debugger · 科目B
-          </span>
-          <h2 className="text-2xl font-bold text-[var(--text-primary)] font-serif mt-1">
-            {currentAlgo.titleJp}
-          </h2>
-          <p className="text-xs text-[var(--text-secondary)] mt-0.5">
-            {currentAlgo.description}
-          </p>
+    <div className="w-full max-w-5xl mx-auto flex flex-col gap-6 select-none font-sans pb-12">
+      {/* Top Navigation & Sub-Tabs */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 p-4 rounded-3xl border border-[var(--border)] bg-[var(--surface)] shadow-sm">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-2xl bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] flex items-center justify-center shrink-0">
+            <Terminal size={20} />
+          </div>
+          <div>
+            <h2 className="text-base sm:text-lg font-bold text-[var(--text-primary)]">
+              科目B アルゴリズム・擬似言語道場
+            </h2>
+            <p className="text-xs text-[var(--text-secondary)]">
+              Penelusuran Trace Table (トレース表) & Latihan Soal Isian Rumpang (穴埋め問題)
+            </p>
+          </div>
         </div>
 
-        {/* Algo Toggle Pills */}
-        <div className="w-full sm:w-auto overflow-x-auto no-scrollbar pb-0.5">
-          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)] min-w-max">
-            {FE_TRACER_ALGORITHMS.map((algo, idx) => (
-              <button
-                key={algo.id}
-                type="button"
-                onClick={() => handleSelectAlgo(idx)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all shrink-0 active:scale-95 ${
-                  selectedAlgoIndex === idx
-                    ? "bg-[var(--surface)] text-[var(--text-primary)] shadow-sm border border-[var(--border)]"
-                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-                }`}
-              >
-                {algo.titleJp.split(" ")[0]}
-              </button>
-            ))}
-          </div>
+        {/* Tab Switcher */}
+        <div className="flex items-center p-1 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] text-xs font-bold">
+          <button
+            type="button"
+            onClick={() => setActiveTab("debugger")}
+            className={`px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 ${
+              activeTab === "debugger"
+                ? "bg-[var(--surface)] text-[var(--brand-primary)] shadow-sm"
+                : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+            }`}
+          >
+            <Code2 size={14} />
+            <span>Visual Step Tracer</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab("challenges")}
+            className={`px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 ${
+              activeTab === "challenges"
+                ? "bg-[var(--surface)] text-[var(--brand-primary)] shadow-sm"
+                : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+            }`}
+          >
+            <Target size={14} />
+            <span>Soal 科目B ({allChallenges.length})</span>
+          </button>
         </div>
       </div>
 
-      {/* Main Grid: Code Editor (Left) & Trace Table (Right) */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
-        {/* Left: Code Pane (7 cols) */}
-        <div className="md:col-span-7 p-4 rounded-2xl border border-[var(--border)] bg-[var(--midnight)] text-slate-200 font-mono text-xs flex flex-col shadow-inner overflow-hidden">
-          <div className="flex items-center justify-between pb-3 mb-2 border-b border-white/10 text-[11px] text-slate-400">
-            <span>pseudocode.fe</span>
-            <span>Step {currentStepIndex + 1} / {steps.length}</span>
-          </div>
-
-          <div className="flex flex-col gap-1 overflow-x-auto py-2">
-            {currentAlgo.codeLines.map((line, idx) => {
-              const isActive = idx === currentStep.lineIndex;
-              return (
-                <div
-                  key={idx}
-                  className={`flex items-center gap-3 px-2.5 py-1 rounded transition-colors ${
-                    isActive
-                      ? "bg-blue-500/25 text-white font-bold border-l-2 border-blue-400"
-                      : "text-slate-400 hover:text-slate-300"
+      {/* ========================================================== */}
+      {/* TAB 1: VISUAL STEP TRACER (DEBUGGER)                       */}
+      {/* ========================================================== */}
+      {activeTab === "debugger" && (
+        <div className="flex flex-col gap-6">
+          {/* Algorithm Selection Pills Bar */}
+          <div className="w-full overflow-x-auto no-scrollbar pb-1">
+            <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-[var(--surface)] border border-[var(--border)] min-w-max shadow-sm">
+              {algorithms.map((algo, idx) => (
+                <button
+                  key={algo.id}
+                  type="button"
+                  onClick={() => handleSelectAlgo(idx)}
+                  className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all shrink-0 flex items-center gap-2 active:scale-95 ${
+                    selectedAlgoIndex === idx
+                      ? "bg-[var(--surface-soft)] text-[var(--text-primary)] shadow-sm border border-[var(--border)] font-bold ring-1 ring-[var(--brand-primary)]"
+                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                   }`}
                 >
-                  <span className="w-5 text-right opacity-30 select-none">{idx + 1}</span>
-                  <span className="whitespace-pre">{line}</span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Right: Live Trace Table & Step Explanation (5 cols) */}
-        <div className="md:col-span-5 flex flex-col justify-between gap-4 p-5 rounded-2xl border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)]">
-          <div className="flex flex-col gap-4">
-            {/* Step Explanation Card */}
-            <div className="p-3.5 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)] flex flex-col gap-1.5">
-              <div className="flex items-center justify-between text-[11px] font-bold text-[var(--brand-primary)] uppercase tracking-wider">
-                <span>Langkah ke-{currentStepIndex + 1}</span>
-                {isCompleted && (
-                  <span className="text-emerald-500 flex items-center gap-1">
-                    <CheckCircle2 size={12} /> Selesai!
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded border ${getCatBadge(algo.category)}`}>
+                    {algo.category.toUpperCase()}
                   </span>
-                )}
+                  <span>{algo.titleJp.split(" ")[0]}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Algorithm Header Banner */}
+          <div className="p-5 sm:p-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md border ${getCatBadge(currentAlgo.category)}`}>
+                  {currentAlgo.category}
+                </span>
+                <span className="text-xs text-[var(--text-secondary)] font-medium">
+                  {currentAlgo.titleEn}
+                </span>
               </div>
-              <p className="text-xs md:text-sm text-[var(--text-primary)] leading-relaxed font-medium">
-                {currentStep.explanation}
+              <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] font-serif mt-1">
+                {currentAlgo.titleJp}
+              </h3>
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1 max-w-2xl leading-relaxed">
+                {currentAlgo.description}
               </p>
             </div>
 
-            {/* Trace Table (トレース表) */}
-            <div className="flex flex-col gap-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-[var(--text-secondary)] flex items-center gap-1.5">
-                <Table size={13} />
-                Tabel Penelusuran Variabel (トレース表)
-              </span>
+            <button
+              type="button"
+              onClick={() => {
+                const chIdx = allChallenges.findIndex((c) => c.algo.id === currentAlgo.id);
+                if (chIdx !== -1) {
+                  setActiveChallengeIndex(chIdx);
+                  setSelectedOptionKey(null);
+                  setIsAnswerSubmitted(false);
+                  setActiveTab("challenges");
+                }
+              }}
+              className="px-4 py-2 rounded-xl border border-[var(--brand-primary)] text-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/10 text-xs font-bold transition-all shrink-0 flex items-center gap-1.5"
+            >
+              <Target size={14} />
+              <span>Tes Soal 科目B Ini →</span>
+            </button>
+          </div>
 
-              <div className="rounded-xl border border-[var(--border)] overflow-hidden">
-                <table className="w-full text-xs text-left">
-                  <thead className="bg-[var(--surface-soft)] text-[var(--text-secondary)] border-b border-[var(--border)]">
-                    <tr>
-                      <th className="p-2.5 font-bold">Variabel</th>
-                      <th className="p-2.5 font-bold">Nilai Sekarang</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-[var(--border)]">
-                    {Object.entries(currentStep.variableState).map(([key, val]) => (
-                      <tr key={key} className="hover:bg-[var(--surface-soft)]/40 transition-colors">
-                        <td className="p-2.5 font-mono font-semibold text-[var(--brand-primary)]">{key}</td>
-                        <td className="p-2.5 font-mono text-[var(--text-primary)]">
-                          {String(val)}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+          {/* Main Grid: Code Editor (Left) & Live Trace Table (Right) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            {/* Left: Code Pane (7 cols) */}
+            <div className="lg:col-span-7 p-5 rounded-3xl border border-[#2d4268] bg-[#0c1628] text-slate-100 font-mono text-xs sm:text-sm flex flex-col shadow-2xl overflow-hidden">
+              <div className="flex items-center justify-between pb-3.5 mb-3 border-b border-white/10 text-xs text-slate-400">
+                <div className="flex items-center gap-2">
+                  <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
+                  <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
+                  <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
+                  <span className="ml-2 font-mono text-[11px] text-blue-300">algorithm.pseudocode</span>
+                </div>
+                <span className="text-[11px] font-bold text-slate-400">
+                  Langkah {currentStepIndex + 1} / {steps.length}
+                </span>
+              </div>
+
+              <div className="flex flex-col gap-1 overflow-x-auto py-2 pr-1">
+                {currentAlgo.codeLines.map((line, idx) => {
+                  const isActive = idx === currentStep.lineIndex;
+                  return (
+                    <div
+                      key={idx}
+                      className={`flex items-start gap-4 px-3 py-1.5 rounded-lg transition-colors ${
+                        isActive
+                          ? "bg-blue-600/30 text-white font-bold border-l-4 border-blue-400 shadow-sm"
+                          : "text-slate-400 hover:text-slate-300"
+                      }`}
+                    >
+                      <span className="w-6 text-right opacity-30 select-none text-xs mt-0.5">{idx + 1}</span>
+                      <span className="whitespace-pre leading-relaxed">{line}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Right: Live Trace Table & Step Explanation (5 cols) */}
+            <div className="lg:col-span-5 flex flex-col justify-between gap-5 p-6 rounded-3xl border border-[var(--border)] bg-[var(--surface)] shadow-md">
+              <div className="flex flex-col gap-5">
+                {/* Step Explanation Card */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] flex flex-col gap-2">
+                  <div className="flex items-center justify-between text-xs font-bold text-[var(--brand-primary)] uppercase tracking-wider">
+                    <span>Langkah ke-{currentStepIndex + 1}</span>
+                    {isCompleted && (
+                      <span className="text-emerald-500 flex items-center gap-1 font-bold">
+                        <CheckCircle2 size={13} /> Selesai!
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm sm:text-[15px] text-[var(--text-primary)] leading-[1.8] font-medium">
+                    {currentStep.explanation}
+                  </p>
+                </div>
+
+                {/* Trace Table (トレース表) */}
+                <div className="flex flex-col gap-2.5">
+                  <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[var(--text-secondary)]">
+                    <span className="flex items-center gap-1.5">
+                      <Table size={14} />
+                      Tabel Variabel (トレース表)
+                    </span>
+                    <span className="text-[11px] opacity-60 font-mono">Real-time State</span>
+                  </div>
+
+                  <div className="rounded-2xl border border-[var(--border)] overflow-hidden shadow-sm">
+                    <table className="w-full text-xs sm:text-sm text-left">
+                      <thead className="bg-[var(--surface-soft)] text-[var(--text-secondary)] border-b border-[var(--border)]">
+                        <tr>
+                          <th className="p-3 font-bold">Variabel</th>
+                          <th className="p-3 font-bold">Nilai Sekarang</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-[var(--border)]">
+                        {Object.entries(currentStep.variableState).map(([key, val]) => (
+                          <tr key={key} className="hover:bg-[var(--surface-soft)]/50 transition-colors">
+                            <td className="p-3 font-mono font-bold text-[var(--brand-primary)]">{key}</td>
+                            <td className="p-3 font-mono text-[var(--text-primary)] font-semibold">
+                              {String(val)}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              {/* Stepper Controls Bar */}
+              <div className="flex items-center justify-between pt-5 border-t border-[var(--border)] gap-2">
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handleReset}
+                    className="p-2.5 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all active:scale-95"
+                    title="Reset ke Langkah Awal"
+                  >
+                    <RotateCcw size={16} />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setIsPlaying(!isPlaying)}
+                    className={`inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl border text-xs font-bold transition-all active:scale-95 ${
+                      isPlaying
+                        ? "border-amber-500 bg-amber-500/10 text-amber-500"
+                        : "border-[var(--border)] hover:border-[var(--brand-primary)] text-[var(--text-primary)]"
+                    }`}
+                  >
+                    {isPlaying ? <Pause size={14} /> : <Play size={14} />}
+                    <span>{isPlaying ? "Jeda" : "Auto"}</span>
+                  </button>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handlePrev}
+                    disabled={currentStepIndex === 0}
+                    className="inline-flex items-center gap-1 px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] text-xs font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none transition-all active:scale-95"
+                  >
+                    <ChevronLeft size={16} /> Prev
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleNext}
+                    disabled={isCompleted}
+                    className="inline-flex items-center gap-1 px-5 py-2.5 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white text-xs font-bold shadow-md disabled:opacity-40 transition-all active:scale-95"
+                  >
+                    Next <ChevronRight size={16} />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+      )}
 
-          {/* Stepper Controls Bar */}
-          <div className="flex items-center justify-between pt-4 border-t border-[var(--border)] gap-2">
-            <button
-              type="button"
-              onClick={handleReset}
-              className="p-2 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-              title="Reset ke Langkah Awal"
-            >
-              <RotateCcw size={16} />
-            </button>
+      {/* ========================================================== */}
+      {/* TAB 2: LATIHAN SOAL 科目B (CHALLENGES / 穴埋め問題)         */}
+      {/* ========================================================== */}
+      {activeTab === "challenges" && currentChallengeItem && (
+        <div className="flex flex-col gap-6">
+          {/* Question Selector Strip */}
+          <div className="flex flex-wrap items-center gap-2 p-3 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-sm">
+            <span className="text-xs font-bold text-[var(--text-secondary)] px-2">
+              Daftar Soal:
+            </span>
+            {allChallenges.map((item, idx) => {
+              const isCurrent = activeChallengeIndex === idx;
+              return (
+                <button
+                  key={item.challenge.id}
+                  type="button"
+                  onClick={() => {
+                    setActiveChallengeIndex(idx);
+                    setSelectedOptionKey(null);
+                    setIsAnswerSubmitted(false);
+                  }}
+                  className={`w-9 h-9 rounded-xl text-xs font-mono font-bold transition-all flex items-center justify-center ${
+                    isCurrent
+                      ? "ring-2 ring-[var(--brand-primary)] bg-[var(--brand-primary)] text-white shadow-sm"
+                      : "border border-[var(--border)] bg-[var(--surface-soft)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                  }`}
+                >
+                  {idx + 1}
+                </button>
+              );
+            })}
+          </div>
 
-            <div className="flex items-center gap-2">
+          {/* Main Challenge Card */}
+          <div className="p-6 sm:p-8 md:p-10 rounded-3xl border border-[var(--border)] bg-[var(--surface)] shadow-md flex flex-col gap-6">
+            <div className="flex items-center justify-between pb-3 border-b border-[var(--border)]">
+              <div className="flex items-center gap-2">
+                <span className="text-sm sm:text-base font-bold text-[var(--text-primary)] font-mono">
+                  【問 {activeChallengeIndex + 1}】 {currentChallengeItem.algo.titleJp.split(" ")[0]}
+                </span>
+                <span className="px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-500 text-xs font-semibold">
+                  {currentChallengeItem.challenge.type === "fill_blank" ? "穴埋め (Isian Rumpang)" : "出力予測 (Trace)"}
+                </span>
+              </div>
+
               <button
                 type="button"
-                onClick={handlePrev}
-                disabled={currentStepIndex === 0}
-                className="inline-flex items-center gap-1 px-3.5 py-2 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none transition-all"
+                onClick={() =>
+                  handleJumpToDebugger(
+                    currentChallengeItem.algo.id,
+                    currentChallengeItem.challenge.hintStepIndex
+                  )
+                }
+                className="text-xs font-bold text-[var(--brand-primary)] hover:underline flex items-center gap-1"
               >
-                <ChevronLeft size={15} /> Prev
-              </button>
-
-              <button
-                type="button"
-                onClick={handleNext}
-                disabled={isCompleted}
-                className="inline-flex items-center gap-1 px-4 py-2 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white text-xs font-bold shadow-md disabled:opacity-40 transition-all active:scale-95"
-              >
-                Next Step <ChevronRight size={15} />
+                <span>Buka di Step Tracer</span>
+                <Code2 size={13} />
               </button>
             </div>
+
+            {/* Question Text */}
+            <div className="flex flex-col gap-2">
+              <h3 className="text-base sm:text-[18px] md:text-[19px] font-bold text-[var(--text-primary)] leading-[2] tracking-[0.02em]">
+                {currentChallengeItem.challenge.questionJp}
+              </h3>
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] italic leading-relaxed border-l-2 border-[var(--brand-primary)]/40 pl-3">
+                &ldquo;{currentChallengeItem.challenge.questionId}&rdquo;
+              </p>
+            </div>
+
+            {/* Code Snippet with Highlighted Blank [ a ] */}
+            {currentChallengeItem.challenge.codeSnippet && (
+              <div className="p-5 rounded-2xl bg-[#0c1628] border border-[#2d4268] text-slate-100 font-mono text-xs sm:text-sm shadow-inner">
+                <div className="text-[11px] text-slate-400 mb-2 font-bold font-mono">
+                  [ 擬似言語抜粋 / Pseudocode Snippet ]
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  {currentChallengeItem.challenge.codeSnippet.map((line, lIdx) => (
+                    <div key={lIdx} className="leading-relaxed">
+                      {line.includes("[  a  ]") ? (
+                        <span>
+                          {line.split("[  a  ]")[0]}
+                          <span className="inline-block px-2.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400 font-bold mx-1 animate-pulse">
+                            [  a  ]
+                          </span>
+                          {line.split("[  a  ]")[1]}
+                        </span>
+                      ) : (
+                        <span>{line}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* 4 Choices */}
+            <div className="flex flex-col gap-2 mt-2">
+              <div className="text-xs font-bold text-[var(--text-secondary)] px-1 mb-1">
+                【選択肢】 正しいものを1つ選択してください：
+              </div>
+
+              <div className="grid grid-cols-1 gap-3.5 sm:gap-4">
+                {currentChallengeItem.challenge.options.map((opt) => {
+                  const isSelected = selectedOptionKey === opt.key;
+                  const isRight = opt.isCorrect;
+
+                  let style =
+                    "border-[var(--border)] bg-[var(--surface-soft)]/50 hover:bg-[var(--surface-soft)] hover:border-[var(--brand-primary)]/50 text-[var(--text-primary)]";
+
+                  if (isAnswerSubmitted) {
+                    if (isRight) {
+                      style = "border-emerald-500 bg-emerald-500/10 text-emerald-500 font-bold shadow-md";
+                    } else if (isSelected && !isRight) {
+                      style = "border-rose-500 bg-rose-500/10 text-rose-500 line-through";
+                    } else {
+                      style = "opacity-40 border-[var(--border)] bg-transparent text-[var(--text-secondary)]";
+                    }
+                  }
+
+                  return (
+                    <button
+                      key={opt.key}
+                      type="button"
+                      onClick={() => {
+                        if (!isAnswerSubmitted) {
+                          setSelectedOptionKey(opt.key);
+                          setIsAnswerSubmitted(true);
+                        }
+                      }}
+                      disabled={isAnswerSubmitted}
+                      className={`p-4 sm:p-5 rounded-2xl border text-left transition-all flex items-start gap-4 active:scale-[0.99] min-h-[58px] ${style}`}
+                    >
+                      <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
+                        {opt.key}
+                      </span>
+                      <div className="flex-1">
+                        <p className="text-sm sm:text-base font-medium leading-[1.8] pt-0.5 font-mono">
+                          {opt.text}
+                        </p>
+                      </div>
+
+                      {isAnswerSubmitted && (
+                        <div className="mt-1 shrink-0">
+                          {isRight && <CheckCircle2 size={18} className="text-emerald-500" />}
+                          {isSelected && !isRight && <XCircle size={18} className="text-rose-500" />}
+                        </div>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Answer Feedback & Kaisetsu Drawer */}
+            <AnimatePresence>
+              {isAnswerSubmitted && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="p-6 sm:p-8 rounded-3xl border border-[var(--border)] bg-[var(--surface-soft)] flex flex-col gap-4 mt-2"
+                >
+                  <div className="flex items-center justify-between pb-3 border-b border-[var(--border)]">
+                    <span
+                      className={`text-xs sm:text-sm uppercase font-bold tracking-wider flex items-center gap-2 ${
+                        currentChallengeItem.challenge.options.find((o) => o.key === selectedOptionKey)?.isCorrect
+                          ? "text-emerald-500"
+                          : "text-rose-500"
+                      }`}
+                    >
+                      {currentChallengeItem.challenge.options.find((o) => o.key === selectedOptionKey)?.isCorrect ? (
+                        <>
+                          <CheckCircle2 size={16} /> 正解！ Jawaban Kamu Benar!
+                        </>
+                      ) : (
+                        <>
+                          <XCircle size={16} /> 不正解 · Jawaban Kurang Tepat
+                        </>
+                      )}
+                    </span>
+
+                    <span className="text-xs sm:text-sm font-bold text-emerald-500">
+                      正解: 【 {currentChallengeItem.challenge.options.find((o) => o.isCorrect)?.key} 】
+                    </span>
+                  </div>
+
+                  {/* Option Explanation */}
+                  <div className="p-4 rounded-2xl bg-[var(--surface)] border border-[var(--border)] text-xs sm:text-sm text-[var(--text-primary)] leading-[1.8]">
+                    <span className="font-bold text-[var(--brand-primary)] block mb-1">
+                      Ulasan Jawaban:
+                    </span>
+                    {currentChallengeItem.challenge.options.find((o) => o.key === selectedOptionKey)?.explanation}
+                  </div>
+
+                  {/* Key Takeaway */}
+                  <div className="p-4 rounded-2xl bg-[var(--surface)] border border-[var(--border)] text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                    <b className="text-[var(--brand-primary)]">Kunci Ujian 科目B:</b>{" "}
+                    {currentChallengeItem.challenge.keyTakeaway}
+                  </div>
+
+                  {/* Actions */}
+                  <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        handleJumpToDebugger(
+                          currentChallengeItem.algo.id,
+                          currentChallengeItem.challenge.hintStepIndex
+                        )
+                      }
+                      className="w-full sm:flex-1 py-3 rounded-xl border border-[var(--brand-primary)] text-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/10 text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5"
+                    >
+                      <Code2 size={15} />
+                      <span>Pelajari Trace Table di Debugger</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const nextIdx = (activeChallengeIndex + 1) % allChallenges.length;
+                        setActiveChallengeIndex(nextIdx);
+                        setSelectedOptionKey(null);
+                        setIsAnswerSubmitted(false);
+                      }}
+                      className="w-full sm:flex-1 py-3 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white text-xs sm:text-sm font-bold shadow-md transition-all flex items-center justify-center gap-1.5"
+                    >
+                      <span>Lanjut ke Soal Berikutnya</span>
+                      <ArrowRight size={15} />
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

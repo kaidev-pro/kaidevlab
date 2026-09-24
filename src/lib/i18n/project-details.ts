@@ -226,21 +226,21 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
       category: "Hub Belajar Interaktif",
       status: "Live · Sistem Interaktif",
       role: "Full-stack engineering, sistem pembelajaran, simulator CBT, active recall",
-      summary: "Gym kognitif untuk persiapan ujian Fundamental Information Technology Engineer (FE) Jepang (基本情報技術者試験), menghadirkan 129 flashcard sakti dengan audio furigana TTS, simulasi ujian CBT resmi, pelacak pseudocode, dan mode PWA offline.",
+      summary: "Gym kognitif untuk persiapan ujian Fundamental Information Technology Engineer (FE) Jepang (基本情報技術者試験), menghadirkan 159 flashcard sakti dengan audio furigana TTS, kurikulum 16 hari, simulasi ujian CBT resmi 45 soal, pelacak pseudocode, dan mode PWA offline.",
       problem: "Mempersiapkan ujian sertifikasi nasional Jepang (FE) biasanya harus membaca buku tebal lebih dari 600 halaman dengan kanji teknis yang padat dan pseudocode abstrak, menyebabkan kelelahan kognitif dan lambatnya daya ingat saat belajar di tengah perjalanan kereta komuter.",
       goals: [
         "Membuat drill active recall dengan audio native Text-to-Speech Jepang dan tombol saklar furigana",
-        "Mensimulasikan ujian CBT 22,5 menit autentik lengkap dengan penilaian langsung dan sertifikat kelulusan digital (合格証明書)",
+        "Mensimulasikan ujian CBT autentik dengan pilihan sesi 15/30/45 soal lengkap dengan penilaian langsung dan sertifikat kelulusan digital (合格証明書)",
         "Membangun visualisasi pelacak pseudocode langkah-demi-langkah dengan tabel trace interaktif untuk 科目B",
         "Menyediakan aplikasi PWA yang dapat diinstal (Mode Kereta) untuk belajar di dalam kereta tanpa sinyal internet"
       ],
       features: [
-        "129 Flashcard Sakti (64 Teknologi, 16 Manajemen, 19 Strategi, 30 Kosakata Ujian & Kanji)",
+        "159 Flashcard Sakti (84 Teknologi, 21 Manajemen, 24 Strategi, 30 Kosakata Ujian & Kanji)",
         "Drill active recall dengan analogi visual Kitami-shiki dan kata kunci pembeda ujian",
         "Furigana Kanji bawaan berbasis tag <ruby> dan pengucapan audio Text-to-Speech native Jepang",
-        "Simulator Mock Exam CBT dengan timer 22,5 menit dan navigasi matriks soal",
+        "Simulator Mock Exam CBT dengan 45 bank soal otentik IPA, durasi fleksibel (15/30/45 soal), dan navigasi matriks soal",
         "Penilaian otomatis, rincian skor per kategori, dan Sertifikat Kelulusan Digital (合格証明書) siap cetak",
-        "Step-Tracer pseudocode interaktif dengan visualisasi tabel trace real-time untuk 4 algoritma FE",
+        "Step-Tracer pseudocode interaktif dengan visualisasi tabel trace real-time untuk 8 algoritma FE",
         "4 kalkulator rumus interaktif (Availability, MTBF/MTTR, Effective Memory Access Time, BEP)",
         "Dukungan offline PWA dengan Service Worker (Mode Kereta) dan prompt instalasi"
       ],
@@ -251,7 +251,7 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
         "Pengelolaan caching aset dan audio offline yang andal di lingkungan transit yang minim koneksi"
       ],
       limitations: [
-        "Saat ini difokuskan pada kurasi 129 kartu istilah sakti dan bank soal ujian esensial",
+        "Saat ini difokuskan pada kurasi 159 kartu istilah sakti dan 45 bank soal ujian otentik IPA",
         "Bank soal dan skenario ujian akan terus diperluas secara bertahap"
       ],
       next: [
@@ -401,22 +401,22 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
       status: "運用中 · インタラクティブ学習システム",
       role: "フルスタックエンジニアリング、学習システム設計、CBTシミュレーター、アクティブリコール",
       summary:
-        "国家試験「基本情報技術者試験（FE）」および技人国ビザ取得を支援する認知科学ベースの学習ジム。129枚の厳選フラッシュカード（漢字ルビ・TTS音声付き）、22.5分本番CBT模試シミュレーター、科目B擬似言語ステップトレーサー、オフラインPWA（電車モード）を搭載。",
+        "国家試験「基本情報技術者試験（FE）」および技人国ビザ取得を支援する認知科学ベースの学習ジム。159枚の厳選フラッシュカード（漢字ルビ・TTS音声付き・16日完成プラン）、45問収録CBT模試シミュレーター、科目B擬似言語ステップトレーサー、オフラインPWA（電車モード）を搭載。",
       problem:
         "基本情報技術者試験の対策テキストは600ページを超える専門用語の漢字や抽象的な擬似言語で埋め尽くされており、通勤電車内での暗記効率低下や認知過負荷による挫折が大きな課題でした。",
       goals: [
         "ネイティブ日本語TTS音声と漢字ルビ（<ruby>）切り替えによるアクティブリコールドリルの実現",
-        "本番形式の22.5分CBT模擬試験と即時自動採点、デジタル合格証明書（合格証明書）の発行",
-        "科目B対策のためのリアルタイムトレース表付き擬似言語ステップ実行デバッガの構築",
+        "本番形式のCBT模擬試験（15/30/45問の柔軟な時間設定）と即時自動採点、デジタル合格証明書（合格証明書）の発行",
+        "科目B対策のためのリアルタイムトレース表付き擬似言語ステップ実行デバッガの構築（全8アルゴリズム）",
         "満員電車内でも通信なしで学習を継続できるインストール型PWA（電車モード）の提供"
       ],
       features: [
-        "厳選129枚の重要フラッシュカード（テクノロジ系64枚、マネジメント系16枚、ストラテジ系19枚、頻出用語・漢字30枚）",
+        "厳選159枚の重要フラッシュカード（テクノロジ系84枚、マネジメント系21枚、ストラテジ系24枚、頻出用語・漢字30枚）",
         "キタミ式イラスト着想の視覚的直感アナロジーと、試験で即答するための差別化キーワード",
         "ネイティブHTML <ruby> による漢字ふりがな表示切替とWeb Speech APIによる日本語音声発音",
-        "22.5分タイマーと問題ナビゲーションマトリクスを備えたCBT模試シミュレーター",
+        "45問の過去問バンクと問題ナビゲーションマトリクスを備えたCBT模試シミュレーター（15/30/45問セッション）",
         "自動採点・分野別正答率・印刷可能なデジタル合格証明書（合格証明書）",
-        "アルゴリズム4題のリアルタイム変数値追跡が可能な科目B擬似言語ステップトレーサー",
+        "アルゴリズム8題のリアルタイム変数値追跡が可能な科目B擬似言語ステップトレーサー",
         "4種の計算問題シミュレーター（稼働率、MTBF/MTTR、実効アクセス時間、損益分岐点）",
         "Service Workerキャッシュによる完全オフラインPWA（電車モード）とインストール導線"
       ],
@@ -428,7 +428,7 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
         "地下鉄など通信が途切れる環境でも安定して動作するService Workerオフラインキャッシュの実装"
       ],
       limitations: [
-        "現在は厳選された129枚の重要用語カードと15問の過去問を中心に構成",
+        "現在は厳選された159枚の重要用語カードと45問の過去問を中心に構成",
         "今後の試験シーズンに合わせて過去問プールを順次拡充予定"
       ],
       next: [

@@ -24,6 +24,8 @@ import {
   Smartphone,
   Star,
   Languages,
+  Calendar,
+  CheckCircle2,
 } from "lucide-react";
 import { FE_CARDS, FECard } from "@/data/fe-study-data";
 import {
@@ -40,7 +42,15 @@ import { SessionSummaryModal } from "@/components/fe-study/session-summary-modal
 import { QuizView } from "@/components/fe-study/quiz-view";
 import { TracerView } from "@/components/fe-study/tracer-view";
 import { CheatsheetView } from "@/components/fe-study/cheatsheet-view";
+import { WrongQuestionsView } from "@/components/fe-study/wrong-questions-view";
 import { RubyTerm } from "@/components/fe-study/ruby-term";
+import { FE_DAILY_DECKS, FEDailyDeck, getCardsForDay } from "@/data/fe-daily-decks";
+import {
+  loadWrongQuestions,
+  getWrongNotebookStats,
+  WrongQuestionsStore,
+} from "@/lib/fe-wrong-questions-storage";
+import { QuizQuestion } from "@/data/fe-quiz-data";
 import { useLanguage } from "@/lib/i18n/context";
 
 const LEARN_I18N = {
@@ -63,8 +73,9 @@ const LEARN_I18N = {
     tabQuiz: "📝 過去問 (Kakomon Quiz)",
     tabTracer: "💻 Pseudocode Tracer (科目B)",
     tabCheatsheet: "⚡ Formula Cheatsheet",
+    tabMistakes: "📕 Soal Salah",
     searchTitle: "Kamus Cepat & Pencarian Istilah FE",
-    searchSubtitle: "129 Istilah Tersedia (99 Konsep IT + 30 Kosakata Sakti Soal)",
+    searchSubtitle: "159 Istilah Tersedia (129 Konsep IT + 30 Kosakata Sakti Soal)",
     searchPlaceholder: "Cari arti & istilah FE (contoh: SQL, 公開鍵, RAID, ACID, Lock, Subnet, OSI)...",
     searchFound: "Ditemukan",
     searchTermsFor: "istilah untuk",
@@ -85,10 +96,17 @@ const LEARN_I18N = {
     startDrillVocab: "Mulai Drill (30 Kartu)",
     drillStarred: "Drill Kartu Favorit",
     reviewDifficult: "Review Kartu Sulit",
-    drillAll: "Drill Seluruh Materi (129 Kartu)",
+    drillAll: "Drill Seluruh Materi (159 Kartu)",
     tipTitle: "Tips Belajar Efektif:",
     tipDesc: "Otak mengingat 3x lebih kuat saat kamu berusaha menebak dulu sebelum membalik kartu (Active Recall).",
     tipRef: "Rujukan: Make It Stick (Brown et al.)",
+    dailyDecksEyebrow: "Porsi Belajar Terstruktur (Bite-Sized)",
+    dailyDecksTitle: "📅 Kurikulum Harian 16 Hari (10 Kosakata / Hari)",
+    dailyDecksDesc: "Bukan kartu acak. 159 materi dikelompokkan tematik 10 kartu per hari agar hafalan melekat kuat, bertahap, dan tidak bikin jenuh.",
+    startDayDeck: "Mulai Hari Ini →",
+    dayUnit: "Hari",
+    cardUnit: "Kartu",
+    deckMastered: "Dikuasai",
   },
   ja: {
     back: "セッション終了",
@@ -109,8 +127,9 @@ const LEARN_I18N = {
     tabQuiz: "📝 過去問 (CBT模試)",
     tabTracer: "💻 擬似言語トレーサー (科目B)",
     tabCheatsheet: "⚡ 公式＆計算ツール",
+    tabMistakes: "📕 間違え直しノート",
     searchTitle: "FE用語クイック検索・辞書",
-    searchSubtitle: "129用語収録（IT専門概念99 + 頻出試験用語30）",
+    searchSubtitle: "159用語収録（IT専門概念129 + 頻出試験用語30）",
     searchPlaceholder: "FE用語を検索（例: SQL, 公開鍵, RAID, ACID, Lock, Subnet, OSI）...",
     searchFound: "検索結果",
     searchTermsFor: "件該当：",
@@ -131,10 +150,17 @@ const LEARN_I18N = {
     startDrillVocab: "ドリル開始 (30枚)",
     drillStarred: "お気に入りカード",
     reviewDifficult: "苦手カード復習",
-    drillAll: "全出題範囲ドリル (129枚)",
+    drillAll: "全出題範囲ドリル (159枚)",
     tipTitle: "効果的な学習のコツ:",
     tipDesc: "答えを見る前に自力で思い出す練習（アクティブリコール）を行うことで、記憶の定着率は3倍向上します。",
     tipRef: "参考文献: 『Make It Stick（学び方の科学）』",
+    dailyDecksEyebrow: "構造化学習プラン（スモールステップ）",
+    dailyDecksTitle: "📅 16日間デイリープラン（1日10用語）",
+    dailyDecksDesc: "全159用語をテーマ別に10語ずつ分割。ランダム学習の散漫さを防ぎ、体系的な記憶定着を実現します。",
+    startDayDeck: "この日のドリルを開始 →",
+    dayUnit: "日目",
+    cardUnit: "枚",
+    deckMastered: "習得済み",
   },
   en: {
     back: "Exit Session",
@@ -155,8 +181,9 @@ const LEARN_I18N = {
     tabQuiz: "📝 Past Exams (Kakomon CBT)",
     tabTracer: "💻 Pseudocode Tracer (Section B)",
     tabCheatsheet: "⚡ Formula Cheatsheet",
+    tabMistakes: "📕 Mistake Notebook",
     searchTitle: "Quick Search & FE IT Dictionary",
-    searchSubtitle: "129 Terms Available (99 IT Concepts + 30 Exam Vocabulary)",
+    searchSubtitle: "159 Terms Available (129 IT Concepts + 30 Exam Vocabulary)",
     searchPlaceholder: "Search FE terms (e.g. SQL, Public Key, RAID, ACID, Lock, Subnet, OSI)...",
     searchFound: "Found",
     searchTermsFor: "terms for",
@@ -177,15 +204,22 @@ const LEARN_I18N = {
     startDrillVocab: "Start Drill (30 Cards)",
     drillStarred: "Starred Cards",
     reviewDifficult: "Review Difficult Cards",
-    drillAll: "Drill All Cards (129 Cards)",
+    drillAll: "Drill All Cards (159 Cards)",
     tipTitle: "Effective Study Tip:",
     tipDesc: "Your brain retains concepts 3x longer when you force yourself to recall before flipping the card (Active Recall).",
     tipRef: "Reference: Make It Stick (Brown et al.)",
+    dailyDecksEyebrow: "Structured Daily Plan (Bite-Sized Learning)",
+    dailyDecksTitle: "📅 16-Day Daily Plan (10 Terms / Day)",
+    dailyDecksDesc: "Master 159 FE exam terms without cognitive overload. Grouped thematically at 10 cards per day for structured retention.",
+    startDayDeck: "Start Today's Deck →",
+    dayUnit: "Day",
+    cardUnit: "Cards",
+    deckMastered: "Mastered",
   }
 };
 
 type StudyMode = "all" | "quick10" | "technology" | "management" | "strategy" | "vocab" | "review" | "starred";
-type HubTab = "flashcards" | "quiz" | "tracer" | "cheatsheet";
+type HubTab = "flashcards" | "quiz" | "tracer" | "cheatsheet" | "mistakes";
 
 interface RoadmapItem {
   id: HubTab;
@@ -201,15 +235,15 @@ const ROADMAP_MODULES: RoadmapItem[] = [
     id: "flashcards",
     title: "Flashcard Drill (科目A)",
     badge: "Active",
-    desc: "Active recall 129 istilah IT Jepang & Inggris, furigana kanji toggle, audio TTS, dan analogi visual Kitami-shiki.",
-    target: "Pondasi Terminologi & Kosakata Ujian FE (129 Kartu)",
+    desc: "Active recall 159 istilah IT Jepang & Inggris, furigana kanji toggle, audio TTS, dan analogi visual Kitami-shiki.",
+    target: "Pondasi Terminologi & Kosakata Ujian FE (159 Kartu)",
     status: "active",
   },
   {
     id: "quiz",
     title: "Simulasi 過去問 (Kakomon)",
     badge: "Active",
-    desc: "Simulator CBT 15 soal otentik dengan timer 22,5 menit, matriks navigator nomor, flag review, dan sertifikat kelulusan.",
+    desc: "Simulator CBT 45 soal otentik dengan timer, seleksi sesi 15/30/45 soal, matriks navigator nomor, flag review, dan sertifikat kelulusan.",
     target: "Simulasi Ujian CBT Resmi",
     status: "active",
   },
@@ -217,7 +251,7 @@ const ROADMAP_MODULES: RoadmapItem[] = [
     id: "tracer",
     title: "Pseudocode Step-Tracer",
     badge: "Active",
-    desc: "Interactive debugger baris demi baris untuk melatih trace table (トレース表) dan 4 algoritma khas ujian FE.",
+    desc: "Interactive debugger baris demi baris untuk melatih trace table (トレース表) dan 8 algoritma resmi ujian FE.",
     target: "Kunci Kelulusan 科目B",
     status: "active",
   },
@@ -229,6 +263,14 @@ const ROADMAP_MODULES: RoadmapItem[] = [
     target: "Kalkulator Rumus Hitungan",
     status: "active",
   },
+  {
+    id: "mistakes",
+    title: "間違え直しノート (Buku Soal Salah)",
+    badge: "Active",
+    desc: "Koleksi otomatis soal-soal yang pernah kamu jawab keliru di latihan maupun CBT dengan analisis domain kelemahan.",
+    target: "Penguatan Remedial Kognitif",
+    status: "active",
+  },
 ];
 
 export function LearnClient() {
@@ -237,6 +279,7 @@ export function LearnClient() {
   const [progress, setProgress] = useState<StudyProgress>(DEFAULT_PROGRESS);
   const [activeTab, setActiveTab] = useState<HubTab>("flashcards");
   const [activeMode, setActiveMode] = useState<StudyMode | null>(null);
+  const [selectedDayDeck, setSelectedDayDeck] = useState<FEDailyDeck | null>(null);
   const [singleCardDrill, setSingleCardDrill] = useState<FECard | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [sessionCompleted, setSessionCompleted] = useState(false);
@@ -276,19 +319,28 @@ export function LearnClient() {
     setDeferredPrompt(null);
   };
 
-  // Load progress from localStorage once mounted
+  const [wrongStore, setWrongStore] = useState<WrongQuestionsStore>({ records: {}, lastUpdated: 0 });
+  const [mistakeDrillQuestions, setMistakeDrillQuestions] = useState<QuizQuestion[] | null>(null);
+
+  // Load progress and wrong questions from localStorage once mounted or tab changes
   useEffect(() => {
     setProgress(loadStudyProgress());
-  }, []);
+    setWrongStore(loadWrongQuestions());
+  }, [activeTab]);
 
+  const wrongStats = useMemo(() => {
+    return getWrongNotebookStats(wrongStore);
+  }, [wrongStore]);
 
   const refreshProgress = useCallback(() => {
     setProgress(loadStudyProgress());
+    setWrongStore(loadWrongQuestions());
   }, []);
 
   // Filter cards based on selected mode
   const activeCards = useMemo(() => {
     if (singleCardDrill) return [singleCardDrill];
+    if (selectedDayDeck) return getCardsForDay(selectedDayDeck.day);
     if (!activeMode) return [];
 
     let filtered: FECard[] = [];
@@ -319,7 +371,7 @@ export function LearnClient() {
     }
 
     return filtered;
-  }, [activeMode, singleCardDrill, progress?.reviewCardIds, progress?.starredCardIds]);
+  }, [activeMode, selectedDayDeck, singleCardDrill, progress?.reviewCardIds, progress?.starredCardIds]);
 
   const searchResults = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -338,12 +390,22 @@ export function LearnClient() {
 
   const handleStartSession = (mode: StudyMode) => {
     setSingleCardDrill(null);
+    setSelectedDayDeck(null);
     setActiveMode(mode);
     setSessionCompleted(false);
     setSessionReviewedCount(0);
   };
 
+  const handleStartDailyDeck = (deck: FEDailyDeck) => {
+    setSingleCardDrill(null);
+    setSelectedDayDeck(deck);
+    setActiveMode(null);
+    setSessionCompleted(false);
+    setSessionReviewedCount(0);
+  };
+
   const handleStartSingleCard = (card: FECard) => {
+    setSelectedDayDeck(null);
     setSingleCardDrill(card);
     setActiveMode("all");
     setSessionCompleted(false);
@@ -372,10 +434,12 @@ export function LearnClient() {
 
   const handleBackToMenu = () => {
     setActiveMode(null);
+    setSelectedDayDeck(null);
     setSingleCardDrill(null);
     setSessionCompleted(false);
   };
 
+  const isDrillActive = Boolean(activeMode || selectedDayDeck);
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 py-8 md:py-12 flex flex-col gap-10">
@@ -394,9 +458,9 @@ export function LearnClient() {
       </nav>
 
       {/* ==================================================== */}
-      {/* MODE 1: ACTIVE DRILL SESSION                         */}
+      {/* ACTIVE DRILL SESSION (CATEGORY, DAILY DECK, QUICK10) */}
       {/* ==================================================== */}
-      {activeMode && !sessionCompleted && (
+      {isDrillActive && !sessionCompleted && (
         <div className="flex flex-col gap-6">
           <div className="flex items-center justify-between pb-4 border-b border-[var(--border)] gap-2">
             <button
@@ -408,14 +472,20 @@ export function LearnClient() {
             </button>
 
             <span className="text-xs uppercase font-bold tracking-wider text-[var(--brand-primary)] truncate text-right">
-              {activeMode === "quick10" && txt.modeQuick10}
-              {activeMode === "technology" && txt.modeTech}
-              {activeMode === "management" && txt.modeMgmt}
-              {activeMode === "strategy" && txt.modeStrat}
-              {activeMode === "vocab" && txt.modeVocab}
-              {activeMode === "review" && txt.modeReview}
-              {activeMode === "starred" && txt.modeStarred}
-              {activeMode === "all" && txt.modeAll}
+              {selectedDayDeck ? (
+                <>📅 {selectedDayDeck.titleId} ({activeCards.length} {txt.cardUnit})</>
+              ) : (
+                <>
+                  {activeMode === "quick10" && txt.modeQuick10}
+                  {activeMode === "technology" && txt.modeTech}
+                  {activeMode === "management" && txt.modeMgmt}
+                  {activeMode === "strategy" && txt.modeStrat}
+                  {activeMode === "vocab" && txt.modeVocab}
+                  {activeMode === "review" && txt.modeReview}
+                  {activeMode === "starred" && txt.modeStarred}
+                  {activeMode === "all" && txt.modeAll}
+                </>
+              )}
             </span>
           </div>
 
@@ -435,7 +505,7 @@ export function LearnClient() {
       {/* ==================================================== */}
       {/* MODE 2: SESSION SUMMARY MODAL                        */}
       {/* ==================================================== */}
-      {activeMode && sessionCompleted && (
+      {isDrillActive && sessionCompleted && (
         <SessionSummaryModal
           totalReviewed={sessionReviewedCount || activeCards.length}
           streak={progress.streak}
@@ -447,7 +517,7 @@ export function LearnClient() {
       {/* ==================================================== */}
       {/* MODE 3: MAIN HUB DASHBOARD                           */}
       {/* ==================================================== */}
-      {!activeMode && (
+      {!isDrillActive && (
         <div className="flex flex-col gap-10">
           {/* Hero Section */}
           <div className="flex flex-col gap-4 max-w-3xl">
@@ -553,6 +623,27 @@ export function LearnClient() {
                 <Bookmark size={14} />
                 <span>{txt.tabCheatsheet}</span>
               </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setMistakeDrillQuestions(null);
+                  setActiveTab("mistakes");
+                }}
+                className={`inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 ${
+                  activeTab === "mistakes"
+                    ? "bg-[var(--surface)] text-rose-500 shadow-sm border border-rose-500/30"
+                    : "text-[var(--text-secondary)] hover:text-rose-500"
+                }`}
+              >
+                <BookOpen size={14} />
+                <span>{txt.tabMistakes}</span>
+                {wrongStats.unmastered > 0 && (
+                  <span className="px-1.5 py-0.2 rounded-full bg-rose-500 text-white text-[10px] font-mono font-bold">
+                    {wrongStats.unmastered}
+                  </span>
+                )}
+              </button>
             </div>
           </div>
 
@@ -648,6 +739,137 @@ export function LearnClient() {
                 )}
               </div>
             )}
+          </div>
+
+          {/* ==================================================== */}
+          {/* FEATURE: 13-DAY STRUCTURED DAILY PLAN (10 CARDS/DAY) */}
+          {/* ==================================================== */}
+          <div className="p-6 md:p-8 rounded-3xl bg-gradient-to-br from-[var(--surface)] via-[var(--surface-soft)] to-[var(--surface)] border border-[var(--border)] shadow-[var(--shadow)] flex flex-col gap-6 relative overflow-hidden">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="flex flex-col gap-1.5 max-w-2xl">
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-primary)]/10 border border-[var(--brand-primary)]/25 text-[var(--brand-primary)] text-xs font-bold uppercase tracking-wider">
+                    <Calendar size={13} className="text-[var(--brand-primary)]" />
+                    <span>{txt.dailyDecksEyebrow}</span>
+                  </span>
+                  <span className="text-xs font-bold text-emerald-500 flex items-center gap-1">
+                    <CheckCircle2 size={13} />
+                    <span>{FE_CARDS.length} {txt.cardUnit} · {FE_DAILY_DECKS.length} {txt.dayUnit}</span>
+                  </span>
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] font-serif">
+                  {txt.dailyDecksTitle}
+                </h3>
+                <p className="text-xs md:text-sm text-[var(--text-secondary)] leading-relaxed">
+                  {txt.dailyDecksDesc}
+                </p>
+              </div>
+
+              {/* Overall Deck Mastery Counter */}
+              <div className="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-sm shrink-0">
+                <div className="flex flex-col">
+                  <span className="text-[10px] uppercase font-bold text-[var(--text-secondary)] tracking-wider">
+                    Total Dikuasai
+                  </span>
+                  <span className="text-sm font-bold font-mono text-[var(--text-primary)]">
+                    <b className="text-emerald-500">{progress?.masteredCardIds?.length || 0}</b> / {FE_CARDS.length}
+                  </span>
+                </div>
+                <div className="w-16 h-2 rounded-full bg-[var(--surface-soft)] overflow-hidden">
+                  <div
+                    className="h-full bg-emerald-500 transition-all duration-300"
+                    style={{
+                      width: `${Math.min(100, Math.round(((progress?.masteredCardIds?.length || 0) / (FE_CARDS.length || 1)) * 100))}%`,
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Daily Decks Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 pt-1">
+              {FE_DAILY_DECKS.map((deck) => {
+                const masteredCount = deck.cardIds.filter((id) =>
+                  progress?.masteredCardIds?.includes(id)
+                ).length;
+                const isAllMastered = masteredCount === deck.cardIds.length;
+
+                // Category theme styles
+                let catBadge = "bg-blue-500/10 text-blue-500 border-blue-500/20";
+                let catLabel = "テクノロジ";
+                if (deck.category === "management") {
+                  catBadge = "bg-emerald-500/10 text-emerald-500 border-emerald-500/20";
+                  catLabel = "マネジメント";
+                } else if (deck.category === "strategy") {
+                  catBadge = "bg-amber-500/10 text-amber-500 border-amber-500/20";
+                  catLabel = "ストラテジ";
+                } else if (deck.category === "vocab") {
+                  catBadge = "bg-purple-500/10 text-purple-500 border-purple-500/20";
+                  catLabel = "設問・語彙";
+                }
+
+                return (
+                  <div
+                    key={deck.day}
+                    onClick={() => handleStartDailyDeck(deck)}
+                    className="cursor-pointer p-4 sm:p-5 rounded-2xl border border-[var(--border)] hover:border-[var(--brand-primary)] bg-[var(--surface)] hover:bg-[var(--surface-soft)] transition-all flex flex-col justify-between gap-3 shadow-sm hover:shadow-md group active:scale-[0.99]"
+                  >
+                    <div className="flex flex-col gap-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-mono font-extrabold px-2.5 py-0.5 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] text-[var(--text-primary)]">
+                          DAY {deck.day.toString().padStart(2, "0")}
+                        </span>
+                        <div className="flex items-center gap-1.5">
+                          <span className={`text-[10px] px-2 py-0.5 rounded-md border font-medium ${catBadge}`}>
+                            {catLabel}
+                          </span>
+                          <span className="text-[11px] font-mono text-[var(--text-secondary)] font-medium">
+                            {deck.cardIds.length} {txt.cardUnit}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h4 className="text-sm sm:text-base font-bold text-[var(--text-primary)] group-hover:text-[var(--brand-primary)] transition-colors leading-snug">
+                          {deck.titleId}
+                        </h4>
+                        <p className="text-xs font-mono text-[var(--text-secondary)] mt-0.5">
+                          {deck.titleJp}
+                        </p>
+                      </div>
+
+                      <p className="text-xs text-[var(--text-secondary)] line-clamp-2 leading-relaxed">
+                        {deck.descriptionId}
+                      </p>
+                    </div>
+
+                    <div className="pt-2.5 border-t border-[var(--border)]/70 flex items-center justify-between text-xs">
+                      {/* Mini Progress */}
+                      <div className="flex items-center gap-2">
+                        <div className="w-12 h-1.5 rounded-full bg-[var(--surface-soft)] overflow-hidden">
+                          <div
+                            className={`h-full transition-all ${
+                              isAllMastered ? "bg-emerald-500" : "bg-[var(--brand-primary)]"
+                            }`}
+                            style={{
+                              width: `${Math.round((masteredCount / deck.cardIds.length) * 100)}%`,
+                            }}
+                          />
+                        </div>
+                        <span className="text-[11px] font-mono text-[var(--text-secondary)]">
+                          {masteredCount}/{deck.cardIds.length}
+                        </span>
+                      </div>
+
+                      <div className="inline-flex items-center gap-1 font-bold text-[var(--brand-primary)] group-hover:underline">
+                        <span>{isAllMastered ? "Review" : "Drill"}</span>
+                        <ChevronRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           {/* Quick Action: Start 10-Cards Drill (Atomic Habits) */}
@@ -825,7 +1047,18 @@ export function LearnClient() {
 
           {/* TAB 2: KAKOMON QUIZ (科目A) */}
           {activeTab === "quiz" && (
-            <QuizView onBackToMenu={() => setActiveTab("flashcards")} />
+            <QuizView
+              onBackToMenu={() => {
+                setMistakeDrillQuestions(null);
+                setActiveTab("flashcards");
+              }}
+              customQuestions={mistakeDrillQuestions || undefined}
+              customTitle={mistakeDrillQuestions ? `Drill Soal Salah (${mistakeDrillQuestions.length} Soal)` : undefined}
+              onOpenMistakeNotebook={() => {
+                setMistakeDrillQuestions(null);
+                setActiveTab("mistakes");
+              }}
+            />
           )}
 
           {/* TAB 3: PSEUDOCODE TRACER (科目B) */}
@@ -836,6 +1069,17 @@ export function LearnClient() {
           {/* TAB 4: FORMULA CHEATSHEET */}
           {activeTab === "cheatsheet" && (
             <CheatsheetView />
+          )}
+
+          {/* TAB 5: MISTAKE NOTEBOOK (間違え直しノート) */}
+          {activeTab === "mistakes" && (
+            <WrongQuestionsView
+              onBackToMenu={() => setActiveTab("flashcards")}
+              onStartDrill={(questions) => {
+                setMistakeDrillQuestions(questions);
+                setActiveTab("quiz");
+              }}
+            />
           )}
         </div>
       )}

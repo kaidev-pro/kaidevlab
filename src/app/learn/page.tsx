@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function LearnPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen w-full max-w-full overflow-x-hidden">
       <LearnClient />
     </main>
   );

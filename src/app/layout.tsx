@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cinzel, Inter } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -8,6 +8,14 @@ import "./globals.css";
 
 const inter = Inter({ variable: "--font-body", subsets: ["latin"] });
 const cinzel = Cinzel({ variable: "--font-display", subsets: ["latin"] });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  themeColor: "#061126",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kaidevlab.com"),

@@ -79,7 +79,7 @@ export function StudyProgressCard({ progress, onProgressUpdated }: StudyProgress
   });
 
   return (
-    <div className="w-full rounded-2xl border border-[var(--glass-border)] bg-[var(--surface)] p-5 sm:p-6 md:p-8 shadow-[var(--shadow)] backdrop-blur-md flex flex-col gap-6">
+    <div className="w-full rounded-2xl border border-[var(--glass-border)] bg-[var(--surface)] p-4 sm:p-6 md:p-8 shadow-[var(--shadow)] backdrop-blur-md flex flex-col gap-5 sm:gap-6 min-w-0 max-w-full">
       {/* Top Banner: Streak, Starred & Overall Progress */}
       <div className="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-[var(--border)]">
         <div>
@@ -152,8 +152,8 @@ export function StudyProgressCard({ progress, onProgressUpdated }: StudyProgress
       </div>
 
       {/* Activity Consistency Heatmap (21 Hari Terakhir) */}
-      <div className="p-4 rounded-xl bg-[var(--surface-soft)]/50 border border-[var(--border)] flex flex-col gap-3">
-        <div className="flex items-center justify-between text-xs">
+      <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[var(--surface-soft)]/50 border border-[var(--border)] flex flex-col gap-3 min-w-0 max-w-full">
+        <div className="flex flex-wrap items-center justify-between text-xs gap-1.5">
           <span className="font-bold text-[var(--text-primary)] flex items-center gap-1.5">
             <Calendar size={14} className="text-[var(--brand-primary)] shrink-0" /> Kalender Aktivitas & Konsistensi (21 Hari Terakhir)
           </span>
@@ -163,7 +163,7 @@ export function StudyProgressCard({ progress, onProgressUpdated }: StudyProgress
         </div>
 
         {/* Heatmap Grid */}
-        <div className="w-full overflow-x-auto no-scrollbar pb-1">
+        <div className="w-full max-w-full min-w-0 overflow-x-auto no-scrollbar pb-1">
           <div className="grid grid-cols-21 gap-1.5 min-w-[340px] sm:min-w-0" style={{ gridTemplateColumns: "repeat(21, minmax(0, 1fr))" }}>
             {activityDays.map((d) => {
               let colorClass = "bg-[var(--surface)] border-[var(--border)] text-[var(--text-secondary)]/50";
@@ -191,7 +191,7 @@ export function StudyProgressCard({ progress, onProgressUpdated }: StudyProgress
         </div>
 
         {/* Legend */}
-        <div className="flex items-center justify-between text-[10px] text-[var(--text-secondary)] pt-1">
+        <div className="flex flex-wrap items-center justify-between text-[10px] text-[var(--text-secondary)] pt-1 gap-2">
           <span>← 3 minggu lalu</span>
           <div className="flex items-center gap-1.5">
             <span>Santai</span>

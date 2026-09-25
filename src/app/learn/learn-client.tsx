@@ -442,7 +442,7 @@ export function LearnClient() {
   const isDrillActive = Boolean(activeMode || selectedDayDeck);
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 py-8 md:py-12 flex flex-col gap-10">
+    <div className="w-full max-w-5xl mx-auto px-3.5 sm:px-4 py-5 sm:py-8 md:py-12 flex flex-col gap-6 sm:gap-8 md:gap-10 min-w-0 max-w-full">
       {/* Breadcrumb Navigation */}
       <nav
         className="flex items-center gap-2 text-xs font-semibold text-[var(--text-secondary)]"
@@ -521,7 +521,7 @@ export function LearnClient() {
       {/* MODE 3: MAIN HUB DASHBOARD                           */}
       {/* ==================================================== */}
       {!isDrillActive && (
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-6 sm:gap-8 md:gap-10 min-w-0 max-w-full">
           {/* Hero Section */}
           <div className="flex flex-col gap-4 max-w-3xl">
             <div className="flex items-center gap-2">
@@ -573,7 +573,7 @@ export function LearnClient() {
           </div>
 
           {/* Module Navigation Tabs (All 4 Live Modules - Horizontal Scroll on Mobile) */}
-          <div className="w-full overflow-x-auto no-scrollbar pb-1">
+          <div className="w-full max-w-full min-w-0 overflow-x-auto no-scrollbar pb-1 -mx-1 px-1">
             <div className="inline-flex items-center gap-1.5 p-1 sm:p-1.5 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] min-w-max">
               <button
                 type="button"
@@ -750,10 +750,10 @@ export function LearnClient() {
           {/* ==================================================== */}
           {/* FEATURE: 13-DAY STRUCTURED DAILY PLAN (10 CARDS/DAY) */}
           {/* ==================================================== */}
-          <div className="p-6 md:p-8 rounded-3xl bg-gradient-to-br from-[var(--surface)] via-[var(--surface-soft)] to-[var(--surface)] border border-[var(--border)] shadow-[var(--shadow)] flex flex-col gap-6 relative overflow-hidden">
+          <div className="p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[var(--surface)] via-[var(--surface-soft)] to-[var(--surface)] border border-[var(--border)] shadow-[var(--shadow)] flex flex-col gap-4 sm:gap-6 relative overflow-hidden">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
               <div className="flex flex-col gap-1.5 max-w-2xl">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-primary)]/10 border border-[var(--brand-primary)]/25 text-[var(--brand-primary)] text-xs font-bold uppercase tracking-wider">
                     <Calendar size={13} className="text-[var(--brand-primary)]" />
                     <span>{txt.dailyDecksEyebrow}</span>
@@ -772,7 +772,7 @@ export function LearnClient() {
               </div>
 
               {/* Overall Deck Mastery Counter */}
-              <div className="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-sm shrink-0">
+              <div className="flex items-center justify-between sm:justify-start gap-3 w-full sm:w-auto px-4 py-2.5 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-sm shrink-0">
                 <div className="flex flex-col">
                   <span className="text-[10px] uppercase font-bold text-[var(--text-secondary)] tracking-wider">
                     Total Dikuasai
@@ -793,7 +793,7 @@ export function LearnClient() {
             </div>
 
             {/* Daily Decks Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 pt-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3.5 pt-1">
               {FE_DAILY_DECKS.map((deck) => {
                 const masteredCount = deck.cardIds.filter((id) =>
                   progress?.masteredCardIds?.includes(id)
@@ -879,7 +879,7 @@ export function LearnClient() {
           </div>
 
           {/* Quick Action: Start 10-Cards Drill (Atomic Habits) */}
-          <div className="p-6 md:p-8 rounded-2xl bg-gradient-to-br from-[var(--surface)] to-[var(--surface-soft)] border border-[var(--glass-border)] shadow-[var(--shadow)] flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-gradient-to-br from-[var(--surface)] to-[var(--surface-soft)] border border-[var(--glass-border)] shadow-[var(--shadow)] flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6">
             <div className="flex flex-col gap-1.5 max-w-xl">
               <div className="flex items-center gap-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-amber-500 flex items-center gap-1">
@@ -898,7 +898,7 @@ export function LearnClient() {
             <button
               type="button"
               onClick={() => handleStartSession("quick10")}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white text-sm font-bold tracking-wide shadow-md hover:shadow-lg transition-all active:scale-98 whitespace-nowrap"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white text-sm font-bold tracking-wide shadow-md hover:shadow-lg transition-all active:scale-98 whitespace-nowrap"
             >
               <Zap size={16} /> {txt.dailyBtn}
             </button>
@@ -918,11 +918,11 @@ export function LearnClient() {
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {/* Technology */}
               <div
                 onClick={() => handleStartSession("technology")}
-                className="group cursor-pointer p-6 rounded-2xl border border-[var(--border)] hover:border-blue-500/50 bg-[var(--surface)] hover:bg-[var(--surface-soft)] transition-all flex flex-col justify-between gap-4 shadow-sm hover:shadow-md"
+                className="group cursor-pointer p-4 sm:p-5 md:p-6 rounded-2xl border border-[var(--border)] hover:border-blue-500/50 bg-[var(--surface)] hover:bg-[var(--surface-soft)] transition-all flex flex-col justify-between gap-4 shadow-sm hover:shadow-md"
               >
                 <div className="flex flex-col gap-2">
                   <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center">
@@ -944,7 +944,7 @@ export function LearnClient() {
               {/* Management */}
               <div
                 onClick={() => handleStartSession("management")}
-                className="group cursor-pointer p-6 rounded-2xl border border-[var(--border)] hover:border-emerald-500/50 bg-[var(--surface)] hover:bg-[var(--surface-soft)] transition-all flex flex-col justify-between gap-4 shadow-sm hover:shadow-md"
+                className="group cursor-pointer p-4 sm:p-5 md:p-6 rounded-2xl border border-[var(--border)] hover:border-emerald-500/50 bg-[var(--surface)] hover:bg-[var(--surface-soft)] transition-all flex flex-col justify-between gap-4 shadow-sm hover:shadow-md"
               >
                 <div className="flex flex-col gap-2">
                   <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
@@ -966,7 +966,7 @@ export function LearnClient() {
               {/* Strategy */}
               <div
                 onClick={() => handleStartSession("strategy")}
-                className="group cursor-pointer p-6 rounded-2xl border border-[var(--border)] hover:border-amber-500/50 bg-[var(--surface)] hover:bg-[var(--surface-soft)] transition-all flex flex-col justify-between gap-4 shadow-sm hover:shadow-md"
+                className="group cursor-pointer p-4 sm:p-5 md:p-6 rounded-2xl border border-[var(--border)] hover:border-amber-500/50 bg-[var(--surface)] hover:bg-[var(--surface-soft)] transition-all flex flex-col justify-between gap-4 shadow-sm hover:shadow-md"
               >
                 <div className="flex flex-col gap-2">
                   <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center">

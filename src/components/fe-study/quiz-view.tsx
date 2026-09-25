@@ -381,11 +381,11 @@ export function QuizView({
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="w-full max-w-5xl mx-auto flex flex-col gap-8 pb-12 select-none"
+          className="w-full max-w-5xl mx-auto flex flex-col gap-6 sm:gap-8 pb-12 select-none min-w-0 max-w-full"
         >
         {/* Top Result Banner */}
-        <div className="p-6 sm:p-8 md:p-10 rounded-3xl border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)] flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-5">
+        <div className="p-4 sm:p-6 md:p-10 rounded-2xl sm:rounded-3xl border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)] flex flex-col md:flex-row items-center justify-between gap-6 min-w-0 max-w-full">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 sm:gap-5 w-full sm:w-auto">
             <div
               className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center shrink-0 ${
                 examStats.isPassed
@@ -396,7 +396,7 @@ export function QuizView({
               <Trophy size={36} />
             </div>
             <div>
-              <span className="text-xs uppercase font-bold tracking-widest text-[var(--brand-primary)] flex items-center gap-1.5">
+              <span className="text-xs uppercase font-bold tracking-widest text-[var(--brand-primary)] flex items-center justify-center sm:justify-start gap-1.5">
                 <Sparkles size={13} />
                 {examMode === "mock" ? "Hasil Ujian CBT Resmi IPA" : "Hasil Sesi Latihan Soal"}
               </span>
@@ -415,7 +415,7 @@ export function QuizView({
             </div>
           </div>
 
-          <div className="flex items-center gap-4 p-4 sm:p-5 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] shrink-0">
+          <div className="flex items-center justify-around w-full sm:w-auto gap-4 p-4 sm:p-5 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] shrink-0">
             <div className="text-center px-3 sm:px-4">
               <p className="text-xs text-[var(--text-secondary)]">Skor Benar</p>
               <p className="text-2xl sm:text-3xl font-bold font-mono text-[var(--text-primary)] mt-0.5">
@@ -831,49 +831,49 @@ export function QuizView({
   // ==========================================================
   if (examMode === "mock") {
     return (
-      <div className="w-full max-w-5xl mx-auto flex flex-col gap-6 select-none pb-12 font-sans">
+      <div className="w-full max-w-5xl mx-auto flex flex-col gap-4 sm:gap-6 select-none pb-12 font-sans min-w-0 max-w-full">
         {/* Authentic Prometric CBT Top Bar (Theme adaptive) */}
-        <div className="w-full bg-[var(--surface)] dark:bg-[#131f34] text-[var(--text-primary)] dark:text-white p-4 sm:p-5 rounded-2xl flex flex-wrap items-center justify-between gap-4 border border-[var(--border)] dark:border-[#2d4268] shadow-sm dark:shadow-lg">
-          <div className="flex items-center gap-3.5">
-            <span className="px-3 py-1 rounded-lg bg-blue-500/10 dark:bg-blue-500/20 border border-blue-500/25 dark:border-blue-400/30 text-blue-600 dark:text-blue-300 text-xs font-mono font-bold tracking-wider">
+        <div className="w-full bg-[var(--surface)] dark:bg-[#131f34] text-[var(--text-primary)] dark:text-white p-3.5 sm:p-5 rounded-2xl flex flex-wrap items-center justify-between gap-3 sm:gap-4 border border-[var(--border)] dark:border-[#2d4268] shadow-sm dark:shadow-lg min-w-0 max-w-full">
+          <div className="flex items-center gap-2.5 sm:gap-3.5">
+            <span className="px-2.5 py-1 rounded-lg bg-blue-500/10 dark:bg-blue-500/20 border border-blue-500/25 dark:border-blue-400/30 text-blue-600 dark:text-blue-300 text-xs font-mono font-bold tracking-wider shrink-0">
               IPA CBT
             </span>
             <div>
-              <h2 className="text-sm sm:text-base md:text-lg font-bold tracking-wide !text-[var(--text-primary)] dark:!text-white">
+              <h2 className="text-xs sm:text-base md:text-lg font-bold tracking-wide !text-[var(--text-primary)] dark:!text-white">
                 基本情報技術者試験（科目A試験）CBT
               </h2>
-              <p className="text-xs text-[var(--text-secondary)] dark:text-blue-200/80 font-mono mt-0.5">
+              <p className="text-[11px] sm:text-xs text-[var(--text-secondary)] dark:text-blue-200/80 font-mono mt-0.5">
                 受験者: {candidateName} 殿 ｜ 制限時間: {Math.floor(TOTAL_MOCK_TIME / 60)}分{TOTAL_MOCK_TIME % 60 > 0 ? (TOTAL_MOCK_TIME % 60) + "秒" : ""} (全{questions.length}問)
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center justify-between sm:justify-start gap-2 sm:gap-3 w-full sm:w-auto">
             <div
-              className={`px-3.5 py-1.5 rounded-xl border font-mono text-xs sm:text-sm font-bold flex items-center gap-2 ${
+              className={`px-3 py-1.5 rounded-xl border font-mono text-xs sm:text-sm font-bold flex items-center gap-1.5 sm:gap-2 ${
                 mockTimeLeft < 300
                   ? "border-rose-500/40 bg-rose-500/10 text-rose-600 dark:border-rose-400 dark:bg-rose-500/20 dark:text-rose-300 animate-pulse"
                   : "border-[var(--border)] dark:border-blue-400/40 bg-[var(--surface-soft)] dark:bg-blue-950/70 text-[var(--text-primary)] dark:text-white"
               }`}
               title="残り時間 (Time Remaining)"
             >
-              <Timer size={15} className="text-blue-600 dark:text-blue-300" />
+              <Timer size={14} className="text-blue-600 dark:text-blue-300" />
               <span>残り {formatTime(mockTimeLeft)}</span>
             </div>
 
             <button
               type="button"
               onClick={() => setIsQuestionListModalOpen(true)}
-              className="px-3.5 py-1.5 rounded-xl bg-[var(--surface-soft)] hover:bg-[var(--surface)] dark:bg-blue-900/70 dark:hover:bg-blue-800 border border-[var(--border)] dark:border-blue-500/40 text-xs font-bold text-[var(--text-primary)] dark:text-white transition-all flex items-center gap-1.5 shadow-sm active:scale-95"
+              className="px-3 py-1.5 rounded-xl bg-[var(--surface-soft)] hover:bg-[var(--surface)] dark:bg-blue-900/70 dark:hover:bg-blue-800 border border-[var(--border)] dark:border-blue-500/40 text-xs font-bold text-[var(--text-primary)] dark:text-white transition-all flex items-center gap-1.5 shadow-sm active:scale-95"
             >
-              <Layers size={14} />
+              <Layers size={13} />
               <span>問題一覧</span>
             </button>
 
             <button
               type="button"
               onClick={() => setIsSubmitModalOpen(true)}
-              className="px-4 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 dark:bg-amber-600 dark:hover:bg-amber-500 text-white text-xs font-bold shadow-sm transition-all active:scale-95"
+              className="px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 dark:bg-amber-600 dark:hover:bg-amber-500 text-white text-xs font-bold shadow-sm transition-all active:scale-95"
             >
               試験終了
             </button>
@@ -881,21 +881,21 @@ export function QuizView({
         </div>
 
         {/* Mode switcher tab & CBT Session Length Selector */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-[var(--text-secondary)] px-1">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs text-[var(--text-secondary)] px-1 min-w-0 max-w-full">
           <button
             type="button"
             onClick={() => handleReset("practice")}
-            className="text-[var(--brand-primary)] hover:underline font-semibold"
+            className="text-[var(--brand-primary)] hover:underline font-semibold text-left"
           >
             ← Beralih ke Mode Latihan Santai
           </button>
 
           {!customQuestions && (
-            <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)] overflow-x-auto no-scrollbar max-w-full">
+            <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)] overflow-x-auto no-scrollbar max-w-full min-w-0">
               <span className="text-[11px] font-bold text-[var(--text-secondary)] px-1.5 shrink-0">Paket CBT:</span>
               {[
-                { id: "paketA" as const, label: "Paket A (60問 · 90分)" },
-                { id: "paketB" as const, label: "Paket B (60問 · 90分)" },
+                { id: "paketA" as const, label: "Paket A (60問)" },
+                { id: "paketB" as const, label: "Paket B (60問)" },
                 { id: "quick15" as const, label: "15問 (Kilat)" },
                 { id: "half30" as const, label: "30問 (Setengah)" },
                 { id: "all" as const, label: "全120問 (Maraton)" },
@@ -925,11 +925,11 @@ export function QuizView({
         </div>
 
         {/* CBT Question Display Card */}
-        <div className="p-6 sm:p-8 md:p-10 rounded-3xl border border-[var(--border)] bg-[var(--surface)] shadow-md flex flex-col gap-6">
+        <div className="p-3.5 sm:p-6 md:p-10 rounded-2xl sm:rounded-3xl border border-[var(--border)] bg-[var(--surface)] shadow-md flex flex-col gap-4 sm:gap-6 min-w-0 max-w-full">
           {/* Question Header & Review Checkbox */}
-          <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[var(--border)]">
-            <div className="flex items-center gap-2.5">
-              <span className="text-base sm:text-lg font-bold text-[var(--text-primary)] font-mono">
+          <div className="flex flex-wrap items-center justify-between gap-3 pb-3 sm:pb-4 border-b border-[var(--border)]">
+            <div className="flex items-center gap-2">
+              <span className="text-sm sm:text-base font-bold text-[var(--text-primary)] font-mono">
                 【問 {currentIndex + 1}】
               </span>
               <span className="text-xs sm:text-sm text-[var(--text-secondary)] font-medium">
@@ -937,7 +937,7 @@ export function QuizView({
               </span>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
               <button
                 type="button"
                 onClick={() => setShowFurigana((prev) => !prev)}
@@ -990,11 +990,11 @@ export function QuizView({
           </div>
 
           {/* Authentic Japanese Question Text (In dedicated readable card, Zero translations) */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-[var(--surface-soft)]/60 border border-[var(--border)] shadow-inner">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--brand-primary)] block mb-2.5">
+          <div className="p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl bg-[var(--surface-soft)]/60 border border-[var(--border)] shadow-inner min-w-0 max-w-full">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--brand-primary)] block mb-2">
               【問題文】
             </span>
-            <h3 className="text-base sm:text-[18px] md:text-[20px] font-bold text-[var(--text-primary)] leading-[2.1] tracking-[0.03em] select-text">
+            <h3 className="text-[15px] sm:text-[18px] md:text-[20px] font-bold text-[var(--text-primary)] leading-[1.9] sm:leading-[2.1] tracking-[0.02em] select-text">
               <RubyTerm
                 rubyText={autoAnnotateRuby(currentQ.questionJp)}
                 fallbackText={currentQ.questionJp}
@@ -1004,13 +1004,13 @@ export function QuizView({
           </div>
 
           {/* 4 Authentic Japanese Katakana Choices (ア, イ, ウ, エ) */}
-          <div className="flex flex-col gap-2 mt-2">
+          <div className="flex flex-col gap-2 mt-1 sm:mt-2">
             <div className="flex items-center justify-between text-xs font-bold text-[var(--text-secondary)] px-1 mb-1">
               <span>【解答群】 適切な選択肢を1つ選んでください：</span>
               <span className="hidden sm:inline font-mono opacity-60">キー: 1〜4</span>
             </div>
 
-            <div className="grid grid-cols-1 gap-3.5 sm:gap-4.5">
+            <div className="grid grid-cols-1 gap-2.5 sm:gap-4">
               {currentQ.options.map((opt) => {
                 const isSelected = mockAnswers[currentQ.id] === opt.key;
 
@@ -1019,14 +1019,14 @@ export function QuizView({
                     key={opt.key}
                     type="button"
                     onClick={() => handleMockSelect(opt.key)}
-                    className={`p-4 sm:p-5 rounded-2xl border text-left transition-all flex items-start gap-4 active:scale-[0.99] min-h-[58px] ${
+                    className={`p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border text-left transition-all flex items-start gap-3 sm:gap-4 active:scale-[0.99] min-h-[50px] sm:min-h-[58px] ${
                       isSelected
                         ? "border-blue-500 bg-blue-500/10 text-[var(--text-primary)] ring-2 ring-blue-500 font-semibold shadow-md"
                         : "border-[var(--border)] bg-[var(--surface-soft)]/50 hover:bg-[var(--surface-soft)] hover:border-blue-400/60 text-[var(--text-primary)]"
                     }`}
                   >
                     <span
-                      className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full border flex items-center justify-center font-bold text-sm shrink-0 mt-0.5 ${
+                      className={`w-7 h-7 sm:w-9 sm:h-9 rounded-full border flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 mt-0.5 ${
                         isSelected
                           ? "border-blue-500 bg-blue-500 text-white shadow-sm"
                           : "border-[var(--border)] bg-[var(--surface)] text-[var(--text-secondary)]"
@@ -1034,9 +1034,9 @@ export function QuizView({
                     >
                       {opt.key}
                     </span>
-                    <div className="flex-1">
+                    <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
-                        <p className="text-sm sm:text-base md:text-[16.5px] leading-[1.85] tracking-[0.02em] font-medium pt-0.5 text-[var(--text-primary)]">
+                        <p className="text-xs sm:text-base md:text-[16.5px] leading-[1.75] sm:leading-[1.85] tracking-[0.02em] font-medium pt-0.5 text-[var(--text-primary)]">
                           <RubyTerm
                             rubyText={autoAnnotateRuby(opt.textJp)}
                             fallbackText={opt.textJp}
@@ -1067,20 +1067,20 @@ export function QuizView({
           </div>
 
           {/* Bottom Prometric Navigation Bar */}
-          <div className="flex items-center justify-between pt-6 border-t border-[var(--border)] gap-2 sm:gap-3">
+          <div className="flex items-center justify-between pt-4 sm:pt-6 border-t border-[var(--border)] gap-1.5 sm:gap-3 min-w-0 max-w-full">
             <button
               type="button"
               disabled={currentIndex === 0}
               onClick={() => setCurrentIndex((prev) => prev - 1)}
-              className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] disabled:opacity-30 text-xs sm:text-sm font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all active:scale-95 shrink-0"
+              className="inline-flex items-center gap-1 sm:gap-2 px-2.5 sm:px-5 py-2.5 sm:py-3 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] disabled:opacity-30 text-xs sm:text-sm font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all active:scale-95 shrink-0"
             >
-              <ChevronLeft size={16} /> <span>＜ 前へ</span>
+              <ChevronLeft size={15} /> <span>＜ 前へ</span>
             </button>
 
             <button
               type="button"
               onClick={() => setIsQuestionListModalOpen(true)}
-              className="px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-[var(--surface-soft)] hover:bg-[var(--surface)] border border-[var(--border)] text-xs sm:text-sm font-semibold text-[var(--text-secondary)] transition-all shadow-sm truncate text-center"
+              className="px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-[var(--surface-soft)] hover:bg-[var(--surface)] border border-[var(--border)] text-xs sm:text-sm font-semibold text-[var(--text-secondary)] transition-all shadow-sm truncate text-center min-w-0"
             >
               <span>問 {currentIndex + 1} / {questions.length}</span>
               <span className="hidden sm:inline"> ｜ 問題一覧</span>
@@ -1089,18 +1089,18 @@ export function QuizView({
             {currentIndex < questions.length - 1 ? (
               <button
                 type="button"
-                onClick={() => setCurrentIndex((prev) => prev + 1)}
-                className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-bold transition-all active:scale-95 shrink-0 shadow-sm"
+                onClick={() => setCurrentIndex((prev) => prev - 1)}
+                className="inline-flex items-center gap-1 sm:gap-2 px-2.5 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-bold transition-all active:scale-95 shrink-0 shadow-sm"
               >
-                <span>次へ ＞</span> <ChevronRight size={16} />
+                <span>次へ ＞</span> <ChevronRight size={15} />
               </button>
             ) : (
               <button
                 type="button"
                 onClick={() => setIsSubmitModalOpen(true)}
-                className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs sm:text-sm font-bold transition-all active:scale-95 shrink-0 shadow-sm"
+                className="inline-flex items-center gap-1 sm:gap-2 px-2.5 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs sm:text-sm font-bold transition-all active:scale-95 shrink-0 shadow-sm"
               >
-                <span>試験終了確認</span> <ChevronRight size={16} />
+                <span>試験終了</span> <ChevronRight size={15} />
               </button>
             )}
           </div>
@@ -1283,9 +1283,9 @@ export function QuizView({
   const isPracticeCorrect = practiceSelectedKey === currentQ.correctKey;
 
   return (
-    <div className="w-full max-w-5xl mx-auto flex flex-col gap-6 select-none font-sans">
+    <div className="w-full max-w-5xl mx-auto flex flex-col gap-4 sm:gap-6 select-none font-sans min-w-0 max-w-full">
       {/* Mode Switch Tabs & Meta Bar */}
-      <div className="flex flex-col gap-3 p-3.5 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm">
+      <div className="flex flex-col gap-3 p-3 sm:p-3.5 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm min-w-0 max-w-full">
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           {/* Mode Selector or Custom Drill Title */}
           {customTitle ? (
@@ -1307,14 +1307,14 @@ export function QuizView({
               <button
                 type="button"
                 onClick={() => handleReset("practice")}
-                className="flex-1 sm:flex-none px-3.5 py-1.5 rounded-lg text-center transition-all bg-[var(--surface)] text-[var(--brand-primary)] shadow-sm"
+                className="flex-1 sm:flex-none px-3 py-1.5 rounded-lg text-center transition-all bg-[var(--surface)] text-[var(--brand-primary)] shadow-sm"
               >
                 Latihan Soal (Jepang Asli)
               </button>
               <button
                 type="button"
                 onClick={() => handleReset("mock")}
-                className="flex-1 sm:flex-none px-3.5 py-1.5 rounded-lg text-center transition-all text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                className="flex-1 sm:flex-none px-3 py-1.5 rounded-lg text-center transition-all text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               >
                 Simulasi CBT (模擬試験)
               </button>
@@ -1342,13 +1342,13 @@ export function QuizView({
 
         {/* Practice Domain Filter Chips */}
         {!customTitle && (
-          <div className="flex flex-wrap items-center gap-2 pt-2.5 border-t border-[var(--border)]/70">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-2.5 border-t border-[var(--border)]/70">
             <span className="text-xs font-bold text-[var(--text-secondary)] mr-1">Filter Domain:</span>
             {[
-              { id: "all", label: "Semua Domain (75 Soal)" },
-              { id: "technology", label: "テクノロジ系 (40)" },
-              { id: "management", label: "マネジメント系 (17)" },
-              { id: "strategy", label: "ストラテジ系 (18)" },
+              { id: "all", label: `Semua Domain (${FE_QUIZ_QUESTIONS.length})` },
+              { id: "technology", label: `テクノロジ系 (${FE_QUIZ_QUESTIONS.filter(q => q.category === "technology").length})` },
+              { id: "management", label: `マネジメント系 (${FE_QUIZ_QUESTIONS.filter(q => q.category === "management").length})` },
+              { id: "strategy", label: `ストラテジ系 (${FE_QUIZ_QUESTIONS.filter(q => q.category === "strategy").length})` },
             ].map((cat) => (
               <button
                 key={cat.id}
@@ -1361,7 +1361,7 @@ export function QuizView({
                   setShowManualExplanation(false);
                   setPracticeTimeLeft(90);
                 }}
-                className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
+                className={`px-2.5 sm:px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
                   practiceCategory === cat.id
                     ? "bg-[var(--brand-primary)] text-white shadow-sm"
                     : "bg-[var(--surface-soft)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border)]"
@@ -1383,24 +1383,24 @@ export function QuizView({
       </div>
 
       {/* Question Card */}
-      <div className="p-6 sm:p-8 md:p-10 rounded-3xl border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)] flex flex-col gap-6">
+      <div className="p-3.5 sm:p-6 md:p-10 rounded-2xl sm:rounded-3xl border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)] flex flex-col gap-4 sm:gap-6 min-w-0 max-w-full">
         {/* Category & Status Bar */}
         <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[var(--border)]/70">
           <div className="flex items-center gap-2 min-w-0">
             <span className="text-sm sm:text-base font-bold text-[var(--text-primary)] font-mono shrink-0">
               Soal {currentIndex + 1} <span className="opacity-40">/ {questions.length}</span>
             </span>
-            <span className="px-3 py-0.5 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] text-xs font-semibold truncate">
+            <span className="px-2.5 sm:px-3 py-0.5 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] text-xs font-semibold truncate">
               {currentQ.year} · {currentQ.subCategory}
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             {/* Furigana Toggle */}
             <button
               type="button"
               onClick={() => setShowFurigana((prev) => !prev)}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-bold transition-all ${
+              className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl border text-xs font-bold transition-all ${
                 showFurigana
                   ? "bg-[var(--brand-primary)] text-white border-[var(--brand-primary)] shadow-sm"
                   : "bg-[var(--surface-soft)] text-[var(--text-secondary)] border-[var(--border)] hover:text-[var(--text-primary)]"
@@ -1415,7 +1415,7 @@ export function QuizView({
             <button
               type="button"
               onClick={() => speak(currentQ.questionJp, `practice-q-${currentQ.id}`)}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-bold transition-all ${
+              className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl border text-xs font-bold transition-all ${
                 activeSpeechId === `practice-q-${currentQ.id}`
                   ? "bg-emerald-500 text-white border-emerald-500 shadow-sm animate-pulse"
                   : "bg-[var(--surface-soft)] text-[var(--text-secondary)] border-[var(--border)] hover:text-[var(--text-primary)]"
@@ -1429,8 +1429,8 @@ export function QuizView({
         </div>
 
         {/* Japanese Question Text (In dedicated readable card, NO Indonesian translation upfront!) */}
-        <div className="p-6 sm:p-8 rounded-2xl bg-[var(--surface-soft)]/60 border border-[var(--border)] shadow-inner">
-          <div className="flex items-center justify-between mb-2.5">
+        <div className="p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl bg-[var(--surface-soft)]/60 border border-[var(--border)] shadow-inner min-w-0 max-w-full">
+          <div className="flex items-center justify-between mb-2">
             <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--brand-primary)]">
               【問題文】
             </span>
@@ -1443,7 +1443,7 @@ export function QuizView({
               <span>Dengarkan Soal</span>
             </button>
           </div>
-          <h3 className="text-base sm:text-[18px] md:text-[20px] font-bold text-[var(--text-primary)] leading-[2.1] tracking-[0.03em] select-text">
+          <h3 className="text-[15px] sm:text-[18px] md:text-[20px] font-bold text-[var(--text-primary)] leading-[1.9] sm:leading-[2.1] tracking-[0.02em] select-text">
             <RubyTerm
               rubyText={autoAnnotateRuby(currentQ.questionJp)}
               fallbackText={currentQ.questionJp}
@@ -1453,13 +1453,13 @@ export function QuizView({
         </div>
 
         {/* 4 Options Grid (ア, イ, ウ, エ) */}
-        <div className="flex flex-col gap-2 mt-2">
+        <div className="flex flex-col gap-2 mt-1 sm:mt-2">
           <div className="flex items-center justify-between text-xs font-bold text-[var(--text-secondary)] px-1 mb-1">
             <span>【解答群】 適切な選択肢を1つ選んでください：</span>
             <span className="hidden sm:inline font-mono opacity-60">ショートカット: 1〜4</span>
           </div>
 
-          <div className="grid grid-cols-1 gap-3.5 sm:gap-4.5">
+          <div className="grid grid-cols-1 gap-2.5 sm:gap-4">
             {currentQ.options.map((opt) => {
               const practiceSelected = practiceSelectedKey === opt.key;
               const isCorrect = opt.key === currentQ.correctKey;
@@ -1483,15 +1483,15 @@ export function QuizView({
                   type="button"
                   onClick={() => handlePracticeSelect(opt.key)}
                   disabled={practiceAnswerSubmitted}
-                  className={`p-4 sm:p-5 rounded-2xl border text-left transition-all flex items-start justify-between gap-4 active:scale-[0.99] min-h-[58px] ${btnStyle}`}
+                  className={`p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border text-left transition-all flex items-start justify-between gap-3 sm:gap-4 active:scale-[0.99] min-h-[50px] sm:min-h-[58px] ${btnStyle}`}
                 >
-                  <div className="flex items-start gap-4 flex-1">
-                    <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
+                  <div className="flex items-start gap-3 sm:gap-4 flex-1 min-w-0">
+                    <span className="w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 mt-0.5">
                       {opt.key}
                     </span>
-                    <div className="flex-1">
+                    <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
-                        <p className="text-sm sm:text-base md:text-[16.5px] font-medium leading-[1.85] tracking-[0.02em] pt-0.5">
+                        <p className="text-xs sm:text-base md:text-[16.5px] font-medium leading-[1.75] sm:leading-[1.85] tracking-[0.02em] pt-0.5">
                           <RubyTerm
                             rubyText={autoAnnotateRuby(opt.textJp)}
                             fallbackText={opt.textJp}
@@ -1511,7 +1511,7 @@ export function QuizView({
                           }`}
                           title="Dengarkan pelafalan opsi"
                         >
-                          <Volume2 size={14} />
+                          <Volume2 size={13} />
                         </button>
                       </div>
                     </div>
@@ -1520,8 +1520,8 @@ export function QuizView({
                   {/* Status Indicator */}
                   {practiceAnswerSubmitted && (
                     <div className="mt-1 shrink-0">
-                      {isCorrect && <CheckCircle2 size={18} className="text-emerald-500" />}
-                      {practiceSelected && !isCorrect && <XCircle size={18} className="text-rose-500" />}
+                      {isCorrect && <CheckCircle2 size={17} className="text-emerald-500" />}
+                      {practiceSelected && !isCorrect && <XCircle size={17} className="text-rose-500" />}
                     </div>
                   )}
                 </button>

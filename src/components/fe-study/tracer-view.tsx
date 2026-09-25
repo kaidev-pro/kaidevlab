@@ -131,9 +131,9 @@ export function TracerView({ onBackToMenu }: TracerViewProps) {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto flex flex-col gap-6 select-none font-sans pb-12">
+    <div className="w-full max-w-5xl mx-auto flex flex-col gap-4 sm:gap-6 select-none font-sans pb-12 min-w-0 max-w-full">
       {/* Top Navigation & Sub-Tabs */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 p-4 rounded-3xl border border-[var(--border)] bg-[var(--surface)] shadow-sm">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 p-3.5 sm:p-4 rounded-2xl sm:rounded-3xl border border-[var(--border)] bg-[var(--surface)] shadow-sm min-w-0 max-w-full">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] flex items-center justify-center shrink-0">
             <Terminal size={20} />
@@ -153,7 +153,7 @@ export function TracerView({ onBackToMenu }: TracerViewProps) {
           <button
             type="button"
             onClick={() => setActiveTab("debugger")}
-            className={`px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 ${
+            className={`px-3.5 sm:px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 ${
               activeTab === "debugger"
                 ? "bg-[var(--surface)] text-[var(--brand-primary)] shadow-sm"
                 : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
@@ -166,7 +166,7 @@ export function TracerView({ onBackToMenu }: TracerViewProps) {
           <button
             type="button"
             onClick={() => setActiveTab("challenges")}
-            className={`px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 ${
+            className={`px-3.5 sm:px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 ${
               activeTab === "challenges"
                 ? "bg-[var(--surface)] text-[var(--brand-primary)] shadow-sm"
                 : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
@@ -182,9 +182,9 @@ export function TracerView({ onBackToMenu }: TracerViewProps) {
       {/* TAB 1: VISUAL STEP TRACER (DEBUGGER)                       */}
       {/* ========================================================== */}
       {activeTab === "debugger" && (
-        <div className="flex flex-col gap-6 pb-24 lg:pb-0">
+        <div className="flex flex-col gap-5 sm:gap-6 pb-24 lg:pb-0 min-w-0 max-w-full">
           {/* Algorithm Selection Pills Bar */}
-          <div className="w-full overflow-x-auto no-scrollbar pb-1">
+          <div className="w-full max-w-full min-w-0 overflow-x-auto no-scrollbar pb-1">
             <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-[var(--surface)] border border-[var(--border)] min-w-max shadow-sm">
               {algorithms.map((algo, idx) => (
                 <button
@@ -284,42 +284,42 @@ export function TracerView({ onBackToMenu }: TracerViewProps) {
           </div>
 
           {/* Main Grid: Code Editor (Left) & Live Trace Table (Right) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 min-w-0 max-w-full">
             {/* Left: Code Pane (7 cols) */}
             <div
-              className={`p-5 rounded-3xl border border-[#2d4268] bg-[#0c1628] text-slate-100 font-mono text-xs sm:text-sm flex-col justify-between shadow-2xl overflow-hidden lg:col-span-7 ${
+              className={`p-3.5 sm:p-5 rounded-2xl sm:rounded-3xl border border-[#2d4268] bg-[#0c1628] text-slate-100 font-mono text-xs sm:text-sm flex-col justify-between shadow-2xl overflow-hidden min-w-0 max-w-full lg:col-span-7 ${
                 mobileView === "table" ? "hidden lg:flex" : "flex"
               }`}
             >
               <div>
-                <div className="flex items-center justify-between pb-3.5 mb-3 border-b border-white/10 text-xs text-slate-400">
+                <div className="flex items-center justify-between pb-3 mb-2.5 sm:pb-3.5 sm:mb-3 border-b border-white/10 text-xs text-slate-400">
                   <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
-                    <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
-                    <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
-                    <span className="ml-2 font-mono text-[11px] text-emerald-300 font-semibold flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-rose-500/80 inline-block" />
+                    <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-amber-500/80 inline-block" />
+                    <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-emerald-500/80 inline-block" />
+                    <span className="ml-1 sm:ml-2 font-mono text-[10px] sm:text-[11px] text-emerald-300 font-semibold flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                       IPA 公式擬似言語 (科目B 準拠)
                     </span>
                   </div>
-                  <span className="text-[11px] font-bold text-slate-400">
+                  <span className="text-[10px] sm:text-[11px] font-bold text-slate-400">
                     Langkah {currentStepIndex + 1} / {steps.length}
                   </span>
                 </div>
 
-                <div className="flex flex-col gap-1 overflow-x-auto py-2 pr-1">
+                <div className="flex flex-col gap-1 overflow-x-auto py-2 pr-1 max-w-full">
                   {currentAlgo.codeLines.map((line, idx) => {
                     const isActive = idx === currentStep.lineIndex;
                     return (
                       <div
                         key={idx}
-                        className={`flex items-start gap-4 px-3 py-1.5 rounded-lg transition-colors ${
+                        className={`flex items-start gap-3 sm:gap-4 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition-colors text-xs sm:text-sm ${
                           isActive
                             ? "bg-blue-600/30 text-white font-bold border-l-4 border-blue-400 shadow-sm"
                             : "text-slate-400 hover:text-slate-300"
                         }`}
                       >
-                        <span className="w-6 text-right opacity-30 select-none text-xs mt-0.5">{idx + 1}</span>
+                        <span className="w-5 sm:w-6 text-right opacity-30 select-none text-xs mt-0.5">{idx + 1}</span>
                         <span className="whitespace-pre leading-relaxed">{line}</span>
                       </div>
                     );
@@ -328,7 +328,7 @@ export function TracerView({ onBackToMenu }: TracerViewProps) {
               </div>
 
               {/* Mobile Compact Variable Snapshot (Visible only on mobile in Code view) */}
-              <div className="lg:hidden mt-3 p-3 rounded-2xl bg-blue-950/60 border border-blue-500/30 text-xs">
+              <div className="lg:hidden mt-3 p-3 rounded-xl sm:rounded-2xl bg-blue-950/60 border border-blue-500/30 text-xs min-w-0 max-w-full">
                 <div className="flex items-center justify-between text-[11px] font-bold text-blue-300 mb-1.5">
                   <span className="flex items-center gap-1">
                     <Sparkles size={11} className="text-amber-400" />
@@ -367,7 +367,7 @@ export function TracerView({ onBackToMenu }: TracerViewProps) {
 
             {/* Right: Live Trace Table & Step Explanation (5 cols) */}
             <div
-              className={`p-6 rounded-3xl border border-[var(--border)] bg-[var(--surface)] shadow-md flex-col justify-between gap-5 lg:col-span-5 ${
+              className={`p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-[var(--border)] bg-[var(--surface)] shadow-md flex-col justify-between gap-4 sm:gap-5 min-w-0 max-w-full lg:col-span-5 ${
                 mobileView === "code" ? "hidden lg:flex" : "flex"
               }`}
             >
@@ -569,7 +569,7 @@ export function TracerView({ onBackToMenu }: TracerViewProps) {
           </div>
 
           {/* Main Challenge Card */}
-          <div className="p-6 sm:p-8 md:p-10 rounded-3xl border border-[var(--border)] bg-[var(--surface)] shadow-md flex flex-col gap-6">
+          <div className="p-3.5 sm:p-6 md:p-10 rounded-2xl sm:rounded-3xl border border-[var(--border)] bg-[var(--surface)] shadow-md flex flex-col gap-4 sm:gap-6 min-w-0 max-w-full">
             <div className="flex items-center justify-between pb-3 border-b border-[var(--border)]">
               <div className="flex items-center gap-2">
                 <span className="text-sm sm:text-base font-bold text-[var(--text-primary)] font-mono">

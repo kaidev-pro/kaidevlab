@@ -302,7 +302,7 @@ export function FlashcardView({
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto flex flex-col gap-6 select-none">
+    <div className="w-full max-w-2xl mx-auto flex flex-col gap-5 sm:gap-6 select-none min-w-0 max-w-full">
       {/* Top Controls & Mini Bar */}
       <div className="flex items-center justify-between gap-4 text-xs font-medium text-[var(--text-secondary)]">
         <div className="flex items-center gap-3">
@@ -374,7 +374,7 @@ export function FlashcardView({
 
       {/* 3D Flip Card Container with Slide-in Deck Transition */}
       <div
-        className="relative w-full h-[365px] sm:h-[410px] overflow-visible"
+        className="relative w-full h-[340px] sm:h-[390px] md:h-[415px] overflow-x-clip"
         style={{ perspective: "1400px" }}
       >
         <AnimatePresence mode="wait" custom={direction}>
@@ -445,7 +445,7 @@ export function FlashcardView({
               >
                 {/* ================= CARD FRONT ================= */}
                 <div
-                  className="absolute inset-0 w-full h-full rounded-2xl p-5 sm:p-7 md:p-9 flex flex-col justify-between border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)]"
+                  className="absolute inset-0 w-full h-full rounded-2xl p-4 sm:p-7 md:p-9 flex flex-col justify-between border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)]"
                   style={{
                     backfaceVisibility: "hidden",
                     WebkitBackfaceVisibility: "hidden",
@@ -538,7 +538,7 @@ export function FlashcardView({
 
                 {/* ================= CARD BACK ================= */}
                 <div
-                  className="absolute inset-0 w-full h-full rounded-2xl p-5 sm:p-7 md:p-9 flex flex-col justify-between border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)]"
+                  className="absolute inset-0 w-full h-full rounded-2xl p-4 sm:p-7 md:p-9 flex flex-col justify-between border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)]"
                   style={{
                     backfaceVisibility: "hidden",
                     WebkitBackfaceVisibility: "hidden",

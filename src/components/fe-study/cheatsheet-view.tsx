@@ -34,7 +34,7 @@ export function CheatsheetView() {
     varRatio < 1 ? Number((fixedCost / (1 - varRatio)).toFixed(1)) : 0;
 
   return (
-    <div className="w-full max-w-4xl mx-auto flex flex-col gap-8 select-none">
+    <div className="w-full max-w-4xl mx-auto flex flex-col gap-6 sm:gap-8 select-none min-w-0 max-w-full">
       {/* Top Banner */}
       <div>
         <span className="text-xs uppercase font-bold tracking-widest text-[var(--brand-primary)] flex items-center gap-1.5">
@@ -50,9 +50,9 @@ export function CheatsheetView() {
       </div>
 
       {/* Grid: 4 Interactive Calculators */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 min-w-0 max-w-full">
         {/* Calculator 1: Ketersediaan Sistem (稼働率) */}
-        <div className="p-6 rounded-2xl border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)] flex flex-col justify-between gap-5">
+        <div className="p-4 sm:p-6 rounded-2xl border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)] flex flex-col justify-between gap-4 sm:gap-5 min-w-0 max-w-full">
           <div>
             <div className="flex items-center gap-2 text-xs font-bold text-[var(--brand-primary)] uppercase tracking-wider mb-1">
               <Calculator size={15} />
@@ -113,7 +113,7 @@ export function CheatsheetView() {
         </div>
 
         {/* Calculator 2: MTBF & MTTR */}
-        <div className="p-6 rounded-2xl border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)] flex flex-col justify-between gap-5">
+        <div className="p-4 sm:p-6 rounded-2xl border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)] flex flex-col justify-between gap-4 sm:gap-5 min-w-0 max-w-full">
           <div>
             <div className="flex items-center gap-2 text-xs font-bold text-[var(--brand-primary)] uppercase tracking-wider mb-1">
               <RefreshCw size={15} />
@@ -167,7 +167,7 @@ export function CheatsheetView() {
         </div>
 
         {/* Calculator 3: Effective Memory Access Time (実効アクセス時間) */}
-        <div className="p-6 rounded-2xl border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)] flex flex-col justify-between gap-5">
+        <div className="p-4 sm:p-6 rounded-2xl border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)] flex flex-col justify-between gap-4 sm:gap-5 min-w-0 max-w-full">
           <div>
             <div className="flex items-center gap-2 text-xs font-bold text-[var(--brand-primary)] uppercase tracking-wider mb-1">
               <Cpu size={15} />
@@ -234,7 +234,7 @@ export function CheatsheetView() {
         </div>
 
         {/* Calculator 4: Break-Even Point (損益分岐点) */}
-        <div className="p-6 rounded-2xl border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)] flex flex-col justify-between gap-5">
+        <div className="p-4 sm:p-6 rounded-2xl border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)] flex flex-col justify-between gap-4 sm:gap-5 min-w-0 max-w-full">
           <div>
             <div className="flex items-center gap-2 text-xs font-bold text-[var(--brand-primary)] uppercase tracking-wider mb-1">
               <Calculator size={15} />

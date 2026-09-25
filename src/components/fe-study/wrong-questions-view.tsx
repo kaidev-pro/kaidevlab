@@ -154,27 +154,27 @@ export function WrongQuestionsView({
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto flex flex-col gap-8 pb-16 select-none animate-fade-in">
+    <div className="w-full max-w-5xl mx-auto flex flex-col gap-5 sm:gap-8 pb-16 select-none animate-fade-in min-w-0 max-w-full">
       {/* ==================================================== */}
       {/* 1. TOP HEADER & NAVIGATION                           */}
       {/* ==================================================== */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-[var(--border)]">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 pb-4 sm:pb-6 border-b border-[var(--border)] min-w-0 max-w-full">
+        <div className="flex items-center gap-2.5 sm:gap-3">
           <button
             type="button"
             onClick={onBackToMenu}
-            className="px-3.5 py-1.5 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--surface-soft)] text-xs font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all"
+            className="px-3 py-1.5 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--surface-soft)] text-xs font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all shrink-0"
           >
             ← Kembali ke Menu
           </button>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-500 text-xs font-bold">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-500 text-xs font-bold truncate">
             <BookOpen size={13} />
             <span>間違え直しノート</span>
           </div>
         </div>
 
         {populatedList.length > 0 && (
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2">
             {stats.mastered > 0 && (
               <button
                 type="button"
@@ -200,20 +200,20 @@ export function WrongQuestionsView({
       {/* ==================================================== */}
       {/* 2. OVERVIEW BANNER & STATS CARDS                     */}
       {/* ==================================================== */}
-      <div className="p-6 sm:p-8 rounded-3xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow)] flex flex-col gap-6">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="flex items-start gap-4">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-500 flex items-center justify-center shrink-0">
-              <BrainCircuit size={32} />
+      <div className="p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow)] flex flex-col gap-4 sm:gap-6 min-w-0 max-w-full">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
+          <div className="flex items-start gap-3 sm:gap-4">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-500 flex items-center justify-center shrink-0">
+              <BrainCircuit size={28} />
             </div>
             <div>
               <span className="text-xs uppercase font-bold tracking-widest text-rose-500">
                 Cognitive Weakness Radar
               </span>
-              <h1 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)] font-serif mt-0.5">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] font-serif mt-0.5">
                 間違え直しノート (Buku Soal Salah)
               </h1>
-              <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1.5 max-w-2xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1 max-w-2xl leading-relaxed">
                 Soal yang pernah kamu jawab keliru di latihan maupun simulasi ujian CBT Prometric tersimpan otomatis di sini.
                 Latih berulang kali sampai ambang batas <b>習得済み (Mastered - 2x Benar Beruntun)</b>.
               </p>
@@ -224,33 +224,33 @@ export function WrongQuestionsView({
             <button
               type="button"
               onClick={() => handleLaunchDrill()}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white text-sm font-bold shadow-lg shadow-rose-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all shrink-0"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl sm:rounded-2xl bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white text-xs sm:text-sm font-bold shadow-lg shadow-rose-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all shrink-0"
             >
-              <Flame size={17} />
+              <Flame size={16} />
               <span>Drill Soal Salah ({stats.unmastered} Soal)</span>
             </button>
           )}
         </div>
 
         {/* Quick Numbers Bar */}
-        <div className="grid grid-cols-3 gap-3 sm:gap-4 pt-2 border-t border-[var(--border)]">
-          <div className="p-4 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] text-center">
-            <p className="text-[11px] sm:text-xs text-[var(--text-secondary)] font-medium">Total Tercatat</p>
-            <p className="text-xl sm:text-2xl font-bold font-mono text-[var(--text-primary)] mt-0.5">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-4 pt-2 border-t border-[var(--border)]">
+          <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] text-center flex sm:flex-col items-center justify-between sm:justify-center">
+            <p className="text-xs text-[var(--text-secondary)] font-medium">Total Tercatat</p>
+            <p className="text-lg sm:text-2xl font-bold font-mono text-[var(--text-primary)] sm:mt-0.5">
               {stats.total} <span className="text-xs font-sans opacity-50">問</span>
             </p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-rose-500/5 border border-rose-500/20 text-center">
-            <p className="text-[11px] sm:text-xs text-rose-500 font-semibold">Perlu Latihan (未習得)</p>
-            <p className="text-xl sm:text-2xl font-bold font-mono text-rose-500 mt-0.5">
+          <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-rose-500/5 border border-rose-500/20 text-center flex sm:flex-col items-center justify-between sm:justify-center">
+            <p className="text-xs text-rose-500 font-semibold">Perlu Latihan (未習得)</p>
+            <p className="text-lg sm:text-2xl font-bold font-mono text-rose-500 sm:mt-0.5">
               {stats.unmastered} <span className="text-xs font-sans opacity-50">問</span>
             </p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/20 text-center">
-            <p className="text-[11px] sm:text-xs text-emerald-500 font-semibold">Sudah Dikuasai (習得済)</p>
-            <p className="text-xl sm:text-2xl font-bold font-mono text-emerald-500 mt-0.5">
+          <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-emerald-500/5 border border-emerald-500/20 text-center flex sm:flex-col items-center justify-between sm:justify-center">
+            <p className="text-xs text-emerald-500 font-semibold">Sudah Dikuasai (習得済)</p>
+            <p className="text-lg sm:text-2xl font-bold font-mono text-emerald-500 sm:mt-0.5">
               {stats.mastered} <span className="text-xs font-sans opacity-50">問</span>
             </p>
           </div>

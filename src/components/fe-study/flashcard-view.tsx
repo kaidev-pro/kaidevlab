@@ -529,9 +529,9 @@ export function FlashcardView({
                       Active Recall
                     </span>
                     <span className="opacity-70 flex items-center gap-1">
-                      <Hand size={12} className="sm:hidden" />
-                      <span className="sm:hidden">Tap kartu atau swipe ↻</span>
-                      <span className="hidden sm:inline">Swipe atau Spasi untuk balik ↵</span>
+                      <Hand size={12} className="md:hidden" />
+                      <span className="md:hidden">Tap kartu atau swipe ↻</span>
+                      <span className="hidden md:inline">Swipe atau Spasi untuk balik ↵</span>
                     </span>
                   </div>
                 </div>
@@ -658,8 +658,8 @@ export function FlashcardView({
 
                   {/* Footer Notice */}
                   <div className="text-center text-[10px] sm:text-[11px] text-[var(--text-secondary)] opacity-60 pt-2 border-t border-[var(--border)]">
-                    <span className="sm:hidden">Pilih rating di bawah atau swipe</span>
-                    <span className="hidden sm:inline">Beri penilaian (1: Lupa, 2: Ragu, 3: Kuasai) · [A] Toggle Analogi</span>
+                    <span className="md:hidden">Pilih rating di bawah atau swipe</span>
+                    <span className="hidden md:inline">Beri penilaian (1: Lupa, 2: Ragu, 3: Kuasai) · [A] Toggle Analogi</span>
                   </div>
                 </div>
               </motion.div>
@@ -684,7 +684,7 @@ export function FlashcardView({
               <div className="flex items-center gap-1 font-bold text-xs sm:text-sm">
                 <AlertCircle size={15} /> Lupa
               </div>
-              <span className="text-[10px] opacity-75 mt-0.5">Ulangi <span className="hidden sm:inline">(1)</span></span>
+              <span className="text-[10px] opacity-75 mt-0.5">Ulangi <span className="hidden md:inline">(1)</span></span>
             </button>
 
             <button
@@ -695,7 +695,7 @@ export function FlashcardView({
               <div className="flex items-center gap-1 font-bold text-xs sm:text-sm">
                 <HelpCircle size={15} /> Ragu
               </div>
-              <span className="text-[10px] opacity-75 mt-0.5">Belum yakin <span className="hidden sm:inline">(2)</span></span>
+              <span className="text-[10px] opacity-75 mt-0.5">Belum yakin <span className="hidden md:inline">(2)</span></span>
             </button>
 
             <button
@@ -706,7 +706,7 @@ export function FlashcardView({
               <div className="flex items-center gap-1 font-bold text-xs sm:text-sm">
                 <CheckCircle2 size={15} /> Kuasai!
               </div>
-              <span className="text-[10px] opacity-75 mt-0.5">Sudah hafal <span className="hidden sm:inline">(3)</span></span>
+              <span className="text-[10px] opacity-75 mt-0.5">Sudah hafal <span className="hidden md:inline">(3)</span></span>
             </button>
           </motion.div>
         ) : (
@@ -729,7 +729,7 @@ export function FlashcardView({
             >
               <RotateCcw size={14} />
               <span>Balik Kartu</span>
-              <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono bg-white/20 text-white/90">Space</kbd>
+              <kbd className="hidden md:inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono bg-white/20 text-white/90">Space</kbd>
             </button>
 
             <button

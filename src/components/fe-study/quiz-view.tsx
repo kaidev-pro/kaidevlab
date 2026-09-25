@@ -866,8 +866,8 @@ export function QuizView({
           </button>
 
           {!customQuestions && (
-            <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)]">
-              <span className="text-[11px] font-bold text-[var(--text-secondary)] px-1.5">Sesi Ujian:</span>
+            <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)] overflow-x-auto no-scrollbar max-w-full">
+              <span className="text-[11px] font-bold text-[var(--text-secondary)] px-1.5 shrink-0">Sesi:</span>
               {[
                 { count: 15, label: "15 問 (22分30秒)" },
                 { count: 30, label: "30 問 (45分)" },
@@ -881,7 +881,7 @@ export function QuizView({
                     setCbtQuestionCount(s.count);
                     handleReset("mock", s.count);
                   }}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all ${
+                  className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all shrink-0 ${
                     cbtQuestionCount === s.count
                       ? "bg-blue-600 text-white shadow-sm"
                       : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
@@ -1042,12 +1042,12 @@ export function QuizView({
           </div>
 
           {/* Bottom Prometric Navigation Bar */}
-          <div className="flex items-center justify-between pt-6 border-t border-[var(--border)] gap-3">
+          <div className="flex items-center justify-between pt-6 border-t border-[var(--border)] gap-2 sm:gap-3">
             <button
               type="button"
               disabled={currentIndex === 0}
               onClick={() => setCurrentIndex((prev) => prev - 1)}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] disabled:opacity-30 text-xs sm:text-sm font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all active:scale-95 shrink-0"
+              className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] disabled:opacity-30 text-xs sm:text-sm font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all active:scale-95 shrink-0"
             >
               <ChevronLeft size={16} /> <span>＜ 前へ</span>
             </button>
@@ -1055,16 +1055,17 @@ export function QuizView({
             <button
               type="button"
               onClick={() => setIsQuestionListModalOpen(true)}
-              className="px-4 py-2.5 rounded-xl bg-[var(--surface-soft)] hover:bg-[var(--surface)] border border-[var(--border)] text-xs sm:text-sm font-semibold text-[var(--text-secondary)] transition-all shadow-sm"
+              className="px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-[var(--surface-soft)] hover:bg-[var(--surface)] border border-[var(--border)] text-xs sm:text-sm font-semibold text-[var(--text-secondary)] transition-all shadow-sm truncate text-center"
             >
-              問 {currentIndex + 1} / {questions.length} ｜ 問題一覧
+              <span>問 {currentIndex + 1} / {questions.length}</span>
+              <span className="hidden sm:inline"> ｜ 問題一覧</span>
             </button>
 
             {currentIndex < questions.length - 1 ? (
               <button
                 type="button"
                 onClick={() => setCurrentIndex((prev) => prev + 1)}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-bold transition-all active:scale-95 shrink-0 shadow-sm"
+                className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-bold transition-all active:scale-95 shrink-0 shadow-sm"
               >
                 <span>次へ ＞</span> <ChevronRight size={16} />
               </button>
@@ -1072,7 +1073,7 @@ export function QuizView({
               <button
                 type="button"
                 onClick={() => setIsSubmitModalOpen(true)}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs sm:text-sm font-bold transition-all active:scale-95 shrink-0 shadow-sm"
+                className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs sm:text-sm font-bold transition-all active:scale-95 shrink-0 shadow-sm"
               >
                 <span>試験終了確認</span> <ChevronRight size={16} />
               </button>
@@ -1528,6 +1529,9 @@ export function QuizView({
                 className="flex-1 sm:flex-none px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 shadow-md active:scale-95"
               >
                 <span>{currentIndex === questions.length - 1 ? "Lihat Skor" : "Soal Berikutnya"}</span>
+                {currentIndex < questions.length - 1 && (
+                  <span className="hidden md:inline font-mono opacity-80 text-xs ml-1">(Enter / Space)</span>
+                )}
                 <ArrowRight size={15} />
               </button>
             </div>
@@ -1594,7 +1598,10 @@ export function QuizView({
               onClick={handlePracticeNext}
               className="mt-2 w-full py-3.5 rounded-2xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white text-xs sm:text-sm font-bold tracking-wide shadow-md transition-all flex items-center justify-center gap-2 active:scale-98"
             >
-              <span>{currentIndex === questions.length - 1 ? "Lihat Skor Akhir" : "Lanjut ke Soal Berikutnya (Enter / Space)"}</span>
+              <span>{currentIndex === questions.length - 1 ? "Lihat Skor Akhir" : "Lanjut ke Soal Berikutnya"}</span>
+              {currentIndex < questions.length - 1 && (
+                <span className="hidden md:inline font-mono opacity-80 text-xs ml-1">(Enter / Space)</span>
+              )}
               <ArrowRight size={15} />
             </button>
           </motion.div>

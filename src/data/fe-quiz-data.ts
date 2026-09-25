@@ -1683,5 +1683,527 @@ export const FE_QUIZ_QUESTIONS: QuizQuestion[] = [
     "correctKey": "ウ",
     "summaryExplanation": "Rumus ROI (Return on Investment / 投下資本利益率): ROI = (当期純利益 ÷ 投資額) × 100%. Di soal: (1,000万 ÷ 5,000万) × 100% = 0.2 × 100% = 20%. Semakin tinggi persentase ROI, semakin efisien dan menguntungkan investasi TI tersebut.",
     "keyTakeaway": "ROI = (Laba Bersih / Nilai Investasi) × 100%."
+  },
+
+  // ==========================================
+  // 計算問題 Technology — Calculation-Based Questions
+  // ==========================================
+  {
+    "id": "quiz-calc-01",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "Number Systems (Binary → Decimal Conversion)",
+    "questionJp": "2進数 10110011 を10進数に変換した値はどれか。",
+    "questionTranslation": "Berapa nilai desimal dari bilangan biner 10110011?",
+    "options": [
+      { "key": "ア", "textJp": "163", "textEnId": "163", "explanation": "Salah. Cek ulang perhitungan tiap posisi bit." },
+      { "key": "イ", "textJp": "179", "textEnId": "179", "explanation": "Benar! 1×128 + 0×64 + 1×32 + 1×16 + 0×8 + 0×4 + 1×2 + 1×1 = 128+32+16+2+1 = 179." },
+      { "key": "ウ", "textJp": "185", "textEnId": "185", "explanation": "Salah. Mungkin ada bit yang salah dihitung." },
+      { "key": "エ", "textJp": "203", "textEnId": "203", "explanation": "Salah. Periksa kembali posisi bit yang bernilai 1." }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "Konversi 2進数→10進数: kalikan setiap bit dengan pangkat 2 sesuai posisinya (dari kanan, posisi 0). 10110011₂ = 2⁷+2⁵+2⁴+2¹+2⁰ = 128+32+16+2+1 = 179.",
+    "keyTakeaway": "2進数→10進数: jumlahkan 2ⁿ untuk setiap bit yang bernilai 1."
+  },
+  {
+    "id": "quiz-calc-02",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "Number Systems (Decimal → Hexadecimal Conversion)",
+    "questionJp": "10進数 250 を16進数に変換した値はどれか。",
+    "questionTranslation": "Berapa nilai heksadesimal dari bilangan desimal 250?",
+    "options": [
+      { "key": "ア", "textJp": "EA", "textEnId": "EA", "explanation": "Salah. EA₁₆ = 14×16+10 = 234." },
+      { "key": "イ", "textJp": "F0", "textEnId": "F0", "explanation": "Salah. F0₁₆ = 15×16+0 = 240." },
+      { "key": "ウ", "textJp": "FA", "textEnId": "FA", "explanation": "Benar! 250÷16 = 15 sisa 10. 15=F, 10=A. Jadi 250₁₀ = FA₁₆." },
+      { "key": "エ", "textJp": "FE", "textEnId": "FE", "explanation": "Salah. FE₁₆ = 15×16+14 = 254." }
+    ],
+    "correctKey": "ウ",
+    "summaryExplanation": "Konversi 10進数→16進数: bagi berulang dengan 16, catat sisa dari bawah ke atas. 250÷16 = 15 sisa 10 → F, A → FA₁₆. Verifikasi: 15×16+10 = 240+10 = 250 ✓.",
+    "keyTakeaway": "10進→16進: bagi berulang dengan 16, sisa = digit hex dari bawah ke atas."
+  },
+  {
+    "id": "quiz-calc-03",
+    "year": "令和3年 過去問",
+    "category": "technology",
+    "subCategory": "Number Systems (Two's Complement)",
+    "questionJp": "8ビットの2の補数表現で、-36₁₀ を表すビット列はどれか。",
+    "questionTranslation": "Dalam representasi Two's Complement 8-bit, bagaimana -36 direpresentasikan?",
+    "options": [
+      { "key": "ア", "textJp": "10100100", "textEnId": "10100100", "explanation": "Salah. Ini adalah -92." },
+      { "key": "イ", "textJp": "11011100", "textEnId": "11011100", "explanation": "Benar! 36₁₀ = 00100100₂. NOT: 11011011. +1: 11011100. Verifikasi: 128+64+16+8+4 = 220. 220-256 = -36 ✓." },
+      { "key": "ウ", "textJp": "11011011", "textEnId": "11011011", "explanation": "Salah. Ini adalah 1の補数 (One's Complement), belum +1." },
+      { "key": "エ", "textJp": "10100101", "textEnId": "10100101", "explanation": "Salah. Ini bukan complement yang benar." }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "Langkah 2の補数: ①Konversi absolut ke biner: 36=00100100 ②Balik semua bit (NOT): 11011011 ③Tambah 1: 11011100. MSB=1 menandakan bilangan negatif.",
+    "keyTakeaway": "2の補数 = NOT(biner absolut) + 1. MSB=1 → negatif."
+  },
+  {
+    "id": "quiz-calc-04",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "Boolean Logic (De Morgan's Law)",
+    "questionJp": "論理式 NOT(A AND B) と等価な論理式はどれか。",
+    "questionTranslation": "Ekspresi logika mana yang ekuivalen dengan NOT(A AND B)?",
+    "options": [
+      { "key": "ア", "textJp": "A AND (NOT B)", "textEnId": "A AND (NOT B)", "explanation": "Salah. Ini hanya true jika A=1 dan B=0." },
+      { "key": "イ", "textJp": "(NOT A) AND (NOT B)", "textEnId": "(NOT A) AND (NOT B)", "explanation": "Salah. Ini ekuivalen dengan NOT(A OR B) — De Morgan yang satunya." },
+      { "key": "ウ", "textJp": "(NOT A) OR (NOT B)", "textEnId": "(NOT A) OR (NOT B)", "explanation": "Benar! Berdasarkan Hukum De Morgan: ¬(A∧B) = ¬A∨¬B." },
+      { "key": "エ", "textJp": "A OR B", "textEnId": "A OR B", "explanation": "Salah. A OR B bukanlah negasi dari A AND B." }
+    ],
+    "correctKey": "ウ",
+    "summaryExplanation": "Hukum De Morgan: ¬(A∧B) = ¬A∨¬B dan ¬(A∨B) = ¬A∧¬B. Kunci: saat NOT didistribusikan, AND bertukar menjadi OR, dan sebaliknya.",
+    "keyTakeaway": "De Morgan: NOT(AND) → OR of NOTs. NOT(OR) → AND of NOTs."
+  },
+  {
+    "id": "quiz-calc-05",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "Network (Subnet Mask /26 → Host Count)",
+    "questionJp": "サブネットマスクが 255.255.255.192 (/26) のネットワークにおいて、1つのサブネットで使用できるホストアドレスの最大数はどれか。",
+    "questionTranslation": "Pada jaringan dengan subnet mask 255.255.255.192 (/26), berapa jumlah maksimum alamat host yang dapat digunakan per subnet?",
+    "options": [
+      { "key": "ア", "textJp": "30", "textEnId": "30", "explanation": "Salah. Ini untuk /27 (32-2=30)." },
+      { "key": "イ", "textJp": "62", "textEnId": "62", "explanation": "Benar! /26 = 32-26 = 6 bit host. 2⁶-2 = 64-2 = 62 host (dikurangi network address dan broadcast)." },
+      { "key": "ウ", "textJp": "64", "textEnId": "64", "explanation": "Salah. 64 adalah total alamat termasuk network dan broadcast." },
+      { "key": "エ", "textJp": "126", "textEnId": "126", "explanation": "Salah. Ini untuk /25." }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "/26 berarti 26 bit untuk network, sisa 32-26=6 bit untuk host. Total alamat = 2⁶ = 64. Dikurangi network address (semua 0) dan broadcast (semua 1): 64-2 = 62 host.",
+    "keyTakeaway": "Host per subnet = 2^(32-prefix) - 2."
+  },
+  {
+    "id": "quiz-calc-06",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "CPU Performance (MIPS Calculation)",
+    "questionJp": "クロック周波数が 800MHz、1命令の平均実行に必要なクロック数(CPI)が4のプロセッサにおいて、MIPS値はどれか。",
+    "questionTranslation": "Berapa nilai MIPS dari prosesor dengan clock 800MHz dan CPI rata-rata 4?",
+    "options": [
+      { "key": "ア", "textJp": "100", "textEnId": "100", "explanation": "Salah. 800÷8=100, tapi CPI=4 bukan 8." },
+      { "key": "イ", "textJp": "200", "textEnId": "200", "explanation": "Benar! MIPS = Clock(MHz) ÷ CPI = 800 ÷ 4 = 200 MIPS." },
+      { "key": "ウ", "textJp": "400", "textEnId": "400", "explanation": "Salah. 800÷2=400, bukan CPI yang dipakai." },
+      { "key": "エ", "textJp": "3200", "textEnId": "3200", "explanation": "Salah. Itu hasil perkalian, bukan pembagian." }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "MIPS = Clock Frequency (MHz) ÷ CPI. Dengan clock 800MHz dan CPI=4: 800÷4 = 200 MIPS (200 juta instruksi per detik).",
+    "keyTakeaway": "MIPS = Clock(MHz) ÷ CPI."
+  },
+  {
+    "id": "quiz-calc-07",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "CPU Architecture (Pipeline Throughput)",
+    "questionJp": "5段のパイプラインにおいて、各段の処理時間が20ナノ秒のとき、10命令の実行にかかる時間はどれか。",
+    "questionTranslation": "Dalam pipeline 5 tahap dengan waktu per tahap 20ns, berapa waktu yang diperlukan untuk mengeksekusi 10 instruksi?",
+    "options": [
+      { "key": "ア", "textJp": "200 ナノ秒", "textEnId": "200 ns", "explanation": "Salah. Ini waktu tanpa pipeline (10×20ns), tapi pipeline butuh waktu setup awal." },
+      { "key": "イ", "textJp": "280 ナノ秒", "textEnId": "280 ns", "explanation": "Benar! Pipeline: (k+n-1)×t = (5+10-1)×20 = 14×20 = 280 ns." },
+      { "key": "ウ", "textJp": "300 ナノ秒", "textEnId": "300 ns", "explanation": "Salah. Bukan (k+n)×t." },
+      { "key": "エ", "textJp": "1000 ナノ秒", "textEnId": "1000 ns", "explanation": "Salah. Ini waktu eksekusi sekuensial tanpa pipeline (10×5×20)." }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "Pipeline k-stage: Total time = (k + n - 1) × t. k=5 stage, n=10 instruksi, t=20ns → (5+10-1)×20 = 14×20 = 280ns. Bandingkan tanpa pipeline: 10×5×20 = 1000ns → speedup 3.57×.",
+    "keyTakeaway": "Pipeline total = (jumlah_stage + jumlah_instruksi - 1) × waktu_per_stage."
+  },
+  {
+    "id": "quiz-calc-08",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "Memory Architecture (Cache Hit Rate → EAT)",
+    "questionJp": "キャッシュメモリのアクセス時間が10ナノ秒、主記憶のアクセス時間が60ナノ秒、ヒット率が0.95のとき、実効アクセス時間はどれか。",
+    "questionTranslation": "Jika waktu akses cache 10ns, waktu akses memori utama 60ns, dan hit rate 0.95, berapa effective access time (EAT)?",
+    "options": [
+      { "key": "ア", "textJp": "12.5 ナノ秒", "textEnId": "12.5 ns", "explanation": "Benar! EAT = 0.95×10 + 0.05×60 = 9.5 + 3.0 = 12.5 ns." },
+      { "key": "イ", "textJp": "15 ナノ秒", "textEnId": "15 ns", "explanation": "Salah. Bukan (10+60)÷2÷2.33." },
+      { "key": "ウ", "textJp": "35 ナノ秒", "textEnId": "35 ns", "explanation": "Salah. Ini rata-rata sederhana (10+60)/2." },
+      { "key": "エ", "textJp": "57 ナノ秒", "textEnId": "57 ns", "explanation": "Salah. Ini 0.95×60, yang terbalik." }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "EAT = hit_rate × cache_time + (1-hit_rate) × main_memory_time = 0.95×10 + 0.05×60 = 9.5 + 3.0 = 12.5ns. Hit rate tinggi = EAT mendekati cache time.",
+    "keyTakeaway": "EAT = h×Tc + (1-h)×Tm. Semakin tinggi hit rate, semakin cepat."
+  },
+  {
+    "id": "quiz-calc-09",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "System Reliability (MTBF/MTTR → Availability)",
+    "questionJp": "MTBFが450時間、MTTRが50時間のシステムの稼働率はどれか。",
+    "questionTranslation": "Berapa availability sistem dengan MTBF 450 jam dan MTTR 50 jam?",
+    "options": [
+      { "key": "ア", "textJp": "0.80", "textEnId": "0.80", "explanation": "Salah. 400/500=0.80, bukan rumus yang benar." },
+      { "key": "イ", "textJp": "0.88", "textEnId": "0.88", "explanation": "Salah. Periksa pembilang dan penyebut." },
+      { "key": "ウ", "textJp": "0.90", "textEnId": "0.90", "explanation": "Benar! Availability = MTBF/(MTBF+MTTR) = 450/(450+50) = 450/500 = 0.90." },
+      { "key": "エ", "textJp": "0.95", "textEnId": "0.95", "explanation": "Salah. Ini untuk MTBF=950, MTTR=50." }
+    ],
+    "correctKey": "ウ",
+    "summaryExplanation": "稼働率(Availability) = MTBF ÷ (MTBF + MTTR) = 450 ÷ (450+50) = 450 ÷ 500 = 0.90 (90%). MTBF = waktu rata-rata antar kerusakan, MTTR = waktu rata-rata perbaikan.",
+    "keyTakeaway": "Availability = MTBF / (MTBF + MTTR)."
+  },
+  {
+    "id": "quiz-calc-10",
+    "year": "令和3年 過去問",
+    "category": "technology",
+    "subCategory": "System Reliability (Serial-Parallel Calculation)",
+    "questionJp": "稼働率0.9の装置Aと稼働率0.8の装置Bを並列接続したシステムの稼働率はどれか。",
+    "questionTranslation": "Berapa availability sistem jika perangkat A (0.9) dan perangkat B (0.8) dihubungkan secara paralel?",
+    "options": [
+      { "key": "ア", "textJp": "0.72", "textEnId": "0.72", "explanation": "Salah. 0.72 = 0.9×0.8, ini untuk sistem SERIAL." },
+      { "key": "イ", "textJp": "0.85", "textEnId": "0.85", "explanation": "Salah. Bukan rata-rata sederhana." },
+      { "key": "ウ", "textJp": "0.90", "textEnId": "0.90", "explanation": "Salah. Ini cuma availability A saja." },
+      { "key": "エ", "textJp": "0.98", "textEnId": "0.98", "explanation": "Benar! Paralel: 1 - (1-0.9)(1-0.8) = 1 - 0.1×0.2 = 1 - 0.02 = 0.98." }
+    ],
+    "correctKey": "エ",
+    "summaryExplanation": "Sistem paralel: R = 1 - (1-R_A)(1-R_B) = 1 - (1-0.9)(1-0.8) = 1 - 0.1×0.2 = 1 - 0.02 = 0.98. Jebakan: 0.72 = 0.9×0.8 adalah rumus SERIAL, bukan paralel!",
+    "keyTakeaway": "Paralel: 1-(1-A)(1-B). Serial: A×B. Jangan tertukar!"
+  },
+  {
+    "id": "quiz-calc-11",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "Database (SQL GROUP BY & Aggregate)",
+    "questionJp": "表「受注」に対して次のSQL文を実行した結果の行数はどれか。受注テーブル: {(商品A, 5), (商品A, 3), (商品B, 2), (商品B, 7), (商品B, 1), (商品C, 4)}。SQL: SELECT 商品名 FROM 受注 GROUP BY 商品名 HAVING SUM(数量) >= 5",
+    "questionTranslation": "Tabel Pesanan: {(A,5),(A,3),(B,2),(B,7),(B,1),(C,4)}. SQL: SELECT 商品名 FROM 受注 GROUP BY 商品名 HAVING SUM(数量) >= 5. Berapa baris hasilnya?",
+    "options": [
+      { "key": "ア", "textJp": "1 行", "textEnId": "1 baris", "explanation": "Salah. Lebih dari satu grup yang total-nya ≥ 5." },
+      { "key": "イ", "textJp": "2 行", "textEnId": "2 baris", "explanation": "Benar! A: 5+3=8 ≥ 5 ✓, B: 2+7+1=10 ≥ 5 ✓, C: 4 < 5 ✗. Dua baris lolos HAVING." },
+      { "key": "ウ", "textJp": "3 行", "textEnId": "3 baris", "explanation": "Salah. C hanya 4, tidak lolos HAVING SUM ≥ 5." },
+      { "key": "エ", "textJp": "6 行", "textEnId": "6 baris", "explanation": "Salah. GROUP BY mengelompokkan, bukan menampilkan semua baris." }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "GROUP BY mengelompokkan per 商品名, HAVING memfilter kelompok. A: SUM=8 ✓, B: SUM=10 ✓, C: SUM=4 ✗. Hanya 2 baris yang lolos.",
+    "keyTakeaway": "WHERE memfilter BARIS sebelum grouping. HAVING memfilter GRUP setelah grouping."
+  },
+  {
+    "id": "quiz-calc-12",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "Algorithms (Binary Search Max Comparisons)",
+    "questionJp": "1,000個のデータが昇順に整列された配列に対して2分探索を行うとき、最大の比較回数はどれか。",
+    "questionTranslation": "Berapa jumlah perbandingan maksimum saat melakukan binary search pada array 1000 elemen terurut?",
+    "options": [
+      { "key": "ア", "textJp": "7", "textEnId": "7", "explanation": "Salah. 2⁷=128 < 1000." },
+      { "key": "イ", "textJp": "10", "textEnId": "10", "explanation": "Benar! ⌈log₂(1000)⌉ = ⌈9.97⌉ = 10. (2¹⁰=1024 ≥ 1000)." },
+      { "key": "ウ", "textJp": "100", "textEnId": "100", "explanation": "Salah. Ini untuk linear search (n/10)." },
+      { "key": "エ", "textJp": "500", "textEnId": "500", "explanation": "Salah. Ini rata-rata linear search (n/2)." }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "Binary search membagi setengah di setiap langkah. Perbandingan max = ⌈log₂(n)⌉. Untuk n=1000: log₂(1000) ≈ 9.97 → dibulatkan ke atas = 10. Verifikasi: 2¹⁰=1024 ≥ 1000 ✓.",
+    "keyTakeaway": "Binary search max comparisons = ⌈log₂(n)⌉. Ini yang membuat O(log n) jauh lebih cepat dari O(n)."
+  },
+  {
+    "id": "quiz-calc-13",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "OS (Page Replacement LRU Trace)",
+    "questionJp": "ページ枠数が3のLRUページ置換方式で、次の参照列をアクセスしたとき、ページフォルト回数はどれか。参照列: 1, 2, 3, 4, 1, 2, 5, 1, 2, 3",
+    "questionTranslation": "Dengan 3 frame dan LRU, berapa kali page fault untuk urutan akses: 1, 2, 3, 4, 1, 2, 5, 1, 2, 3?",
+    "options": [
+      { "key": "ア", "textJp": "5 回", "textEnId": "5 kali", "explanation": "Salah. Terlalu sedikit." },
+      { "key": "イ", "textJp": "7 回", "textEnId": "7 kali", "explanation": "Benar! Trace: [1]F→[1,2]F→[1,2,3]F→[4,2,3]→[4,1,3]F→[4,1,2]F→[5,1,2]F→hit→hit→[3,1,2]F = 7 fault." },
+      { "key": "ウ", "textJp": "8 回", "textEnId": "8 kali", "explanation": "Salah. Ada beberapa hit di antara akses." },
+      { "key": "エ", "textJp": "10 回", "textEnId": "10 kali", "explanation": "Salah. Tidak semua akses menyebabkan page fault." }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "LRU: buang halaman yang paling lama tidak diakses. Trace frame: {1}F,{1,2}F,{1,2,3}F,{2,3,4}F,{3,4,1}F,{4,1,2}F,{1,2,5}F,{1,2,5}H,{1,2,5}H,{1,2,3}F = 7 fault total.",
+    "keyTakeaway": "LRU = Least Recently Used. Buang halaman yang paling lama tidak dipakai."
+  },
+  {
+    "id": "quiz-calc-14",
+    "year": "令和3年 過去問",
+    "category": "technology",
+    "subCategory": "Queuing Theory (M/M/1 Utilization)",
+    "questionJp": "窓口が1つのM/M/1待ち行列モデルで、平均到着率λ=4件/時間、平均サービス率μ=5件/時間のとき、窓口の利用率ρはどれか。",
+    "questionTranslation": "Model M/M/1 dengan λ=4/jam dan μ=5/jam, berapa utilization rate ρ?",
+    "options": [
+      { "key": "ア", "textJp": "0.6", "textEnId": "0.6", "explanation": "Salah. 3/5=0.6, bukan λ/μ yang benar." },
+      { "key": "イ", "textJp": "0.8", "textEnId": "0.8", "explanation": "Benar! ρ = λ/μ = 4/5 = 0.8." },
+      { "key": "ウ", "textJp": "1.0", "textEnId": "1.0", "explanation": "Salah. ρ=1 berarti sistem tepat saturasi." },
+      { "key": "エ", "textJp": "1.25", "textEnId": "1.25", "explanation": "Salah. ρ=μ/λ terbalik. Dan ρ>1 berarti antrian tidak stabil." }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "Utilization rate ρ = λ/μ = arrival rate / service rate = 4/5 = 0.8 (80%). Syarat stabil: ρ < 1 (kedatangan harus lebih lambat dari layanan).",
+    "keyTakeaway": "ρ = λ/μ. Harus < 1 agar antrian stabil."
+  },
+  {
+    "id": "quiz-calc-15",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "Software Testing (Boundary Value Analysis)",
+    "questionJp": "入力値の有効範囲が 1 ≦ x ≦ 100 のとき、境界値分析で最低限テストすべき値の組合せはどれか。",
+    "questionTranslation": "Jika rentang input valid adalah 1 ≤ x ≤ 100, kombinasi nilai mana yang harus diuji minimum dalam boundary value analysis?",
+    "options": [
+      { "key": "ア", "textJp": "0, 1, 100, 101", "textEnId": "0, 1, 100, 101", "explanation": "Benar! Boundary value = batas valid (1, 100) + tepat di luar batas (0, 101)." },
+      { "key": "イ", "textJp": "1, 50, 100", "textEnId": "1, 50, 100", "explanation": "Salah. Tidak ada nilai di luar batas." },
+      { "key": "ウ", "textJp": "-1, 0, 100, 101", "textEnId": "-1, 0, 100, 101", "explanation": "Salah. -1 terlalu jauh dari batas bawah." },
+      { "key": "エ", "textJp": "1, 100", "textEnId": "1, 100", "explanation": "Salah. Hanya batas valid, tanpa nilai invalid di luar batas." }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "Boundary Value Analysis (BVA): uji nilai tepat DI batas dan tepat DI LUAR batas. Untuk 1≤x≤100: batas bawah (0,1) dan batas atas (100,101). Minimal 4 test case.",
+    "keyTakeaway": "BVA: uji tepat di batas (valid) dan tepat di luar batas (invalid)."
+  },
+
+  // ==========================================
+  // 計算問題 Management — Calculation-Based Questions
+  // ==========================================
+  {
+    "id": "quiz-calc-16",
+    "year": "令和5年 過去問",
+    "category": "management",
+    "subCategory": "Project Management (PERT Critical Path Calculation)",
+    "questionJp": "次のアローダイアグラムにおいて、クリティカルパスの所要日数はどれか。A(3日)→C(5日)→E(2日)、A(3日)→D(4日)→E(2日)、B(2日)→D(4日)→E(2日)。",
+    "questionTranslation": "Pada arrow diagram berikut, berapa hari durasi critical path? A(3)→C(5)→E(2), A(3)→D(4)→E(2), B(2)→D(4)→E(2).",
+    "options": [
+      { "key": "ア", "textJp": "8 日", "textEnId": "8 hari", "explanation": "Salah. B+D+E = 2+4+2 = 8, tapi ada jalur lebih panjang." },
+      { "key": "イ", "textJp": "9 日", "textEnId": "9 hari", "explanation": "Salah. A+D+E = 3+4+2 = 9, tapi cek jalur lain." },
+      { "key": "ウ", "textJp": "10 日", "textEnId": "10 hari", "explanation": "Benar! A→C→E = 3+5+2 = 10 hari. Ini jalur terpanjang (critical path)." },
+      { "key": "エ", "textJp": "12 日", "textEnId": "12 hari", "explanation": "Salah. Tidak ada jalur yang berjumlah 12." }
+    ],
+    "correctKey": "ウ",
+    "summaryExplanation": "Critical Path = jalur TERPANJANG dalam network diagram. Path 1: A+C+E = 3+5+2 = 10. Path 2: A+D+E = 3+4+2 = 9. Path 3: B+D+E = 2+4+2 = 8. CP = 10 hari.",
+    "keyTakeaway": "Critical Path = jalur terpanjang. Keterlambatan di CP = keterlambatan proyek."
+  },
+  {
+    "id": "quiz-calc-17",
+    "year": "令和4年 過去問",
+    "category": "management",
+    "subCategory": "EVM Project Management (CPI & SPI)",
+    "questionJp": "あるプロジェクトの現時点でのEVM指標が、PV=500万円、EV=400万円、AC=480万円のとき、CPI(コスト効率指数)の値はどれか。",
+    "questionTranslation": "Jika PV=5M yen, EV=4M yen, AC=4.8M yen, berapa nilai CPI?",
+    "options": [
+      { "key": "ア", "textJp": "約 0.80", "textEnId": "≈ 0.80", "explanation": "Salah. 0.80 = EV/PV = SPI, bukan CPI." },
+      { "key": "イ", "textJp": "約 0.83", "textEnId": "≈ 0.83", "explanation": "Benar! CPI = EV/AC = 400/480 ≈ 0.833. CPI < 1 berarti over budget." },
+      { "key": "ウ", "textJp": "約 1.04", "textEnId": "≈ 1.04", "explanation": "Salah. 1.04 = PV/AC, bukan rumus EVM." },
+      { "key": "エ", "textJp": "約 1.20", "textEnId": "≈ 1.20", "explanation": "Salah. 1.20 = AC/EV, ini terbalik." }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "CPI = EV ÷ AC = 400 ÷ 480 ≈ 0.833. CPI<1 = over budget (biaya aktual lebih tinggi dari earned value). SPI = EV ÷ PV = 400 ÷ 500 = 0.80 (behind schedule juga).",
+    "keyTakeaway": "CPI = EV/AC (cost efficiency). SPI = EV/PV (schedule efficiency). < 1 = buruk."
+  },
+  {
+    "id": "quiz-calc-18",
+    "year": "令和5年 過去問",
+    "category": "management",
+    "subCategory": "EVM Project Management (EAC Estimation)",
+    "questionJp": "EVM指標でBAC=1000万円、CPI=0.8のとき、完成時の見積総コスト(EAC)はどれか。",
+    "questionTranslation": "Jika BAC=10M yen dan CPI=0.8, berapa estimasi total biaya saat selesai (EAC)?",
+    "options": [
+      { "key": "ア", "textJp": "800 万円", "textEnId": "8 juta yen", "explanation": "Salah. Ini BAC×CPI, bukan rumus EAC." },
+      { "key": "イ", "textJp": "1000 万円", "textEnId": "10 juta yen", "explanation": "Salah. Ini BAC asli tanpa memperhitungkan inefisiensi." },
+      { "key": "ウ", "textJp": "1200 万円", "textEnId": "12 juta yen", "explanation": "Salah. Bukan BAC × 1.2." },
+      { "key": "エ", "textJp": "1250 万円", "textEnId": "12.5 juta yen", "explanation": "Benar! EAC = BAC ÷ CPI = 1000 ÷ 0.8 = 1250万円. Proyek akan over budget 250万." }
+    ],
+    "correctKey": "エ",
+    "summaryExplanation": "EAC (Estimate at Completion) = BAC ÷ CPI = 1000 ÷ 0.8 = 1250万円. Asumsi: tren inefisiensi saat ini (CPI=0.8) akan berlanjut sampai akhir proyek.",
+    "keyTakeaway": "EAC = BAC / CPI. Jika CPI < 1, EAC > BAC (pasti over budget)."
+  },
+  {
+    "id": "quiz-calc-19",
+    "year": "令和3年 過去問",
+    "category": "management",
+    "subCategory": "Project Management (Total Float Calc)",
+    "questionJp": "クリティカルパスの所要日数が20日のプロジェクトにおいて、作業Xの最早開始日が5日、最遅完了日が15日、作業Xの所要日数が7日のとき、トータルフロートはどれか。",
+    "questionTranslation": "Critical path = 20 hari. Task X: earliest start = hari 5, latest finish = hari 15, durasi = 7 hari. Berapa total float?",
+    "options": [
+      { "key": "ア", "textJp": "1 日", "textEnId": "1 hari", "explanation": "Salah. Kurang perhitungan." },
+      { "key": "イ", "textJp": "3 日", "textEnId": "3 hari", "explanation": "Benar! Total Float = LF - ES - Duration = 15 - 5 - 7 = 3 hari." },
+      { "key": "ウ", "textJp": "5 日", "textEnId": "5 hari", "explanation": "Salah. 20-15=5 bukan total float task X." },
+      { "key": "エ", "textJp": "8 日", "textEnId": "8 hari", "explanation": "Salah. 15-7=8 bukan rumus yang tepat." }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "Total Float = Latest Finish - Earliest Start - Duration = 15 - 5 - 7 = 3 hari. Artinya task X bisa terlambat hingga 3 hari tanpa mempengaruhi jadwal proyek keseluruhan.",
+    "keyTakeaway": "Total Float = LF - ES - Duration. Float = 0 → critical path."
+  },
+  {
+    "id": "quiz-calc-20",
+    "year": "令和4年 過去問",
+    "category": "management",
+    "subCategory": "IT Service Management (SLA Availability %)",
+    "questionJp": "月間のサービス時間が720時間、そのうち計画外停止時間が3.6時間であったとき、可用性(%)はどれか。",
+    "questionTranslation": "Jika total service time per bulan 720 jam dan downtime tidak terencana 3.6 jam, berapa availability (%)?",
+    "options": [
+      { "key": "ア", "textJp": "99.0 ％", "textEnId": "99.0%", "explanation": "Salah. 720×0.99 = 712.8 jam downtime." },
+      { "key": "イ", "textJp": "99.5 ％", "textEnId": "99.5%", "explanation": "Benar! Availability = (720-3.6)/720 × 100% = 716.4/720 × 100% = 99.5%." },
+      { "key": "ウ", "textJp": "99.9 ％", "textEnId": "99.9%", "explanation": "Salah. Untuk 99.9% downtime max 0.72 jam." },
+      { "key": "エ", "textJp": "99.95 ％", "textEnId": "99.95%", "explanation": "Salah. Ini target SLA lebih ketat." }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "SLA Availability = (Total Time - Downtime) / Total Time × 100% = (720-3.6)/720 × 100% = 99.5%. Istilah: 99.9% = Three Nines, 99.99% = Four Nines.",
+    "keyTakeaway": "Availability % = (Service Time - Downtime) / Service Time × 100%."
+  },
+  {
+    "id": "quiz-calc-21",
+    "year": "令和5年 過去問",
+    "category": "management",
+    "subCategory": "Project Risk Management (Expected Value)",
+    "questionJp": "リスクAの発生確率が30%で発生時の損失額が200万円、リスクBの発生確率が10%で発生時の損失額が500万円のとき、期待損失額の合計はどれか。",
+    "questionTranslation": "Risiko A: probabilitas 30%, kerugian ¥2M. Risiko B: probabilitas 10%, kerugian ¥5M. Berapa total expected loss?",
+    "options": [
+      { "key": "ア", "textJp": "60 万円", "textEnId": "¥600K", "explanation": "Salah. Ini cuma risiko A saja." },
+      { "key": "イ", "textJp": "110 万円", "textEnId": "¥1.1M", "explanation": "Benar! A: 0.3×200=60万 + B: 0.1×500=50万 = 110万円." },
+      { "key": "ウ", "textJp": "150 万円", "textEnId": "¥1.5M", "explanation": "Salah. Bukan penjumlahan langsung probabilitas." },
+      { "key": "エ", "textJp": "700 万円", "textEnId": "¥7M", "explanation": "Salah. Ini total kerugian tanpa memperhitungkan probabilitas." }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "Expected Loss = Σ (Probabilitas × Dampak). A: 0.3×200=60万. B: 0.1×500=50万. Total: 60+50 = 110万円. Ini digunakan untuk menentukan berapa besar anggaran mitigasi risiko.",
+    "keyTakeaway": "Expected Value = Probability × Impact. Jumlahkan semua risiko."
+  },
+  {
+    "id": "quiz-calc-22",
+    "year": "令和4年 過去問",
+    "category": "management",
+    "subCategory": "Function Point Estimation",
+    "questionJp": "あるシステムの未調整ファンクションポイント(UFP)が250で、調整係数(VAF)が1.10のとき、調整済みファンクションポイント(AFP)はどれか。",
+    "questionTranslation": "Jika UFP = 250 dan VAF = 1.10, berapa Adjusted Function Point (AFP)?",
+    "options": [
+      { "key": "ア", "textJp": "225", "textEnId": "225", "explanation": "Salah. 250÷1.10 ≈ 227, bukan ini." },
+      { "key": "イ", "textJp": "250", "textEnId": "250", "explanation": "Salah. Ini UFP tanpa adjustment." },
+      { "key": "ウ", "textJp": "275", "textEnId": "275", "explanation": "Benar! AFP = UFP × VAF = 250 × 1.10 = 275." },
+      { "key": "エ", "textJp": "360", "textEnId": "360", "explanation": "Salah. Faktor terlalu besar." }
+    ],
+    "correctKey": "ウ",
+    "summaryExplanation": "AFP = UFP × VAF = 250 × 1.10 = 275. VAF>1 berarti sistem lebih kompleks dari rata-rata. Function Point digunakan untuk estimasi effort dan biaya pengembangan.",
+    "keyTakeaway": "AFP = UFP × VAF. Function Point = ukuran fungsionalitas software."
+  },
+
+  // ==========================================
+  // 計算問題 Strategy — Calculation-Based Questions
+  // ==========================================
+  {
+    "id": "quiz-calc-23",
+    "year": "令和5年 過去問",
+    "category": "strategy",
+    "subCategory": "Business Accounting (BEP Break-Even Point)",
+    "questionJp": "固定費が1,200万円、商品1個あたりの販売単価が2,000円、変動費が800円のとき、損益分岐点の販売個数はどれか。",
+    "questionTranslation": "Fixed cost ¥12M, harga jual ¥2000/unit, variable cost ¥800/unit. Berapa unit BEP (break-even)?",
+    "options": [
+      { "key": "ア", "textJp": "6,000 個", "textEnId": "6.000 unit", "explanation": "Salah. 12,000,000÷2,000=6,000, tapi ini tanpa variable cost." },
+      { "key": "イ", "textJp": "10,000 個", "textEnId": "10.000 unit", "explanation": "Benar! BEP = Fixed Cost ÷ (Price - Variable Cost) = 12,000,000 ÷ (2,000-800) = 12,000,000 ÷ 1,200 = 10,000 unit." },
+      { "key": "ウ", "textJp": "12,000 個", "textEnId": "12.000 unit", "explanation": "Salah. 12,000,000÷1,000=12,000, margin kontribusi salah." },
+      { "key": "エ", "textJp": "15,000 個", "textEnId": "15.000 unit", "explanation": "Salah. 12,000,000÷800=15,000, menggunakan variable cost saja." }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "BEP (損益分岐点) = Fixed Cost ÷ Contribution Margin per unit = 12,000,000 ÷ (2,000-800) = 12,000,000 ÷ 1,200 = 10,000 unit. Di atas 10,000 unit = untung.",
+    "keyTakeaway": "BEP = Fixed Cost ÷ (Selling Price - Variable Cost per unit)."
+  },
+  {
+    "id": "quiz-calc-24",
+    "year": "令和4年 過去問",
+    "category": "strategy",
+    "subCategory": "Financial Analysis (NPV Calculation)",
+    "questionJp": "初期投資額が1,000万円、1年後のキャッシュフローが550万円、2年後のキャッシュフローが605万円、割引率が10%のとき、NPV(正味現在価値)はどれか。",
+    "questionTranslation": "Investasi awal ¥10M, CF tahun 1 = ¥5.5M, CF tahun 2 = ¥6.05M, discount rate 10%. Berapa NPV?",
+    "options": [
+      { "key": "ア", "textJp": "-50 万円", "textEnId": "-¥500K", "explanation": "Salah. Perhitungan diskonto kurang tepat." },
+      { "key": "イ", "textJp": "0 万円", "textEnId": "¥0", "explanation": "Benar! PV1 = 550/1.1 = 500万. PV2 = 605/1.21 = 500万. NPV = 500+500-1000 = 0万円." },
+      { "key": "ウ", "textJp": "50 万円", "textEnId": "¥500K", "explanation": "Salah. Jangan lupa mendiskon CF masa depan." },
+      { "key": "エ", "textJp": "155 万円", "textEnId": "¥1.55M", "explanation": "Salah. Ini tanpa diskonto: 550+605-1000=155." }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "NPV = Σ(CFt/(1+r)^t) - Initial Investment. PV1 = 550/1.1 = 500万. PV2 = 605/(1.1)² = 605/1.21 = 500万. NPV = 500 + 500 - 1000 = 0. NPV≥0 → layak investasi.",
+    "keyTakeaway": "NPV = Σ(CF/(1+r)^t) - Investment. NPV > 0 → investasi menguntungkan."
+  },
+  {
+    "id": "quiz-calc-25",
+    "year": "令和5年 過去問",
+    "category": "strategy",
+    "subCategory": "Financial Analysis (Depreciation 定額法)",
+    "questionJp": "取得価額100万円、残存価額0円、耐用年数5年の固定資産を定額法で減価償却するとき、毎年の償却額はどれか。",
+    "questionTranslation": "Aset ¥1M, nilai sisa ¥0, umur manfaat 5 tahun, metode garis lurus. Berapa depresiasi per tahun?",
+    "options": [
+      { "key": "ア", "textJp": "10 万円", "textEnId": "¥100K", "explanation": "Salah. Ini untuk 10 tahun." },
+      { "key": "イ", "textJp": "15 万円", "textEnId": "¥150K", "explanation": "Salah. Bukan rumus garis lurus." },
+      { "key": "ウ", "textJp": "20 万円", "textEnId": "¥200K", "explanation": "Benar! 定額法: (取得価額-残存価額)/耐用年数 = (100-0)/5 = 20万円/tahun." },
+      { "key": "エ", "textJp": "25 万円", "textEnId": "¥250K", "explanation": "Salah. Ini untuk 4 tahun." }
+    ],
+    "correctKey": "ウ",
+    "summaryExplanation": "定額法 (Straight-Line): Depresiasi = (Acquisition Cost - Salvage Value) / Useful Life = (100-0)/5 = 20万/tahun. Sama setiap tahun (konstan).",
+    "keyTakeaway": "定額法 = (取得 - 残存) ÷ 耐用年数. Sama setiap tahun."
+  },
+  {
+    "id": "quiz-calc-26",
+    "year": "令和3年 過去問",
+    "category": "strategy",
+    "subCategory": "Business Analysis (ABC / Pareto Analysis)",
+    "questionJp": "全商品の売上を降順に並べたとき、累積構成比が上位70%までをAランク、70%～90%をBランク、90%～100%をCランクとする。全20商品で上位5商品の売上合計が全体の70%を占めるとき、Aランクの商品数はどれか。",
+    "questionTranslation": "20 produk, 5 produk teratas = 70% total penjualan. Jika A=70%, B=70-90%, C=90-100%, berapa jumlah produk rank A?",
+    "options": [
+      { "key": "ア", "textJp": "3 品目", "textEnId": "3 produk", "explanation": "Salah. Terlalu sedikit." },
+      { "key": "イ", "textJp": "5 品目", "textEnId": "5 produk", "explanation": "Benar! 5 produk teratas sudah mencapai 70% kumulatif → semuanya masuk Rank A." },
+      { "key": "ウ", "textJp": "7 品目", "textEnId": "7 produk", "explanation": "Salah. 7 produk melebihi batas 70%." },
+      { "key": "エ", "textJp": "14 品目", "textEnId": "14 produk", "explanation": "Salah. Ini 70% dari jumlah produk, bukan kumulatif penjualan." }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "ABC分析 (Pareto): Rank A = produk yang secara kumulatif menyumbang 70% pertama. Karena 5 produk teratas = 70% kumulatif, maka Rank A = 5 produk.",
+    "keyTakeaway": "ABC分析: A = top 70% sales. Prinsip Pareto: 20% item = 80% value."
+  },
+  {
+    "id": "quiz-calc-27",
+    "year": "令和4年 過去問",
+    "category": "strategy",
+    "subCategory": "Decision Making (Expected Value)",
+    "questionJp": "ある事業に投資する場合、景気が良い確率60%で利益3,000万円、景気が悪い確率40%で損失1,000万円のとき、投資の期待値はどれか。",
+    "questionTranslation": "Investasi: probabilitas 60% untung ¥30M, probabilitas 40% rugi ¥10M. Berapa expected value?",
+    "options": [
+      { "key": "ア", "textJp": "1,000 万円", "textEnId": "¥10M", "explanation": "Salah. 3000-1000÷2." },
+      { "key": "イ", "textJp": "1,400 万円", "textEnId": "¥14M", "explanation": "Benar! EV = 0.6×3000 + 0.4×(-1000) = 1800 - 400 = 1400万円." },
+      { "key": "ウ", "textJp": "1,800 万円", "textEnId": "¥18M", "explanation": "Salah. Ini hanya skenario untung tanpa dikurangi kerugian." },
+      { "key": "エ", "textJp": "2,000 万円", "textEnId": "¥20M", "explanation": "Salah. Rata-rata sederhana (3000-1000)/1." }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "Expected Value = Σ(Probability × Outcome). EV = 0.6 × 3,000 + 0.4 × (-1,000) = 1,800 - 400 = 1,400万円. EV > 0 → secara statistik layak diinvestasikan.",
+    "keyTakeaway": "期待値 = Σ(確率 × 結果). EV > 0 → rata-rata menguntungkan."
+  },
+  {
+    "id": "quiz-calc-28",
+    "year": "令和5年 過去問",
+    "category": "strategy",
+    "subCategory": "Corporate Strategy (Market Share PPM)",
+    "questionJp": "PPM(プロダクトポートフォリオマネジメント)において、市場成長率が高く相対的市場シェアも高い事業はどれに分類されるか。",
+    "questionTranslation": "Dalam PPM, bisnis dengan pertumbuhan pasar TINGGI dan market share TINGGI diklasifikasikan sebagai?",
+    "options": [
+      { "key": "ア", "textJp": "花形 (Star)", "textEnId": "Star", "explanation": "Benar! High Growth + High Share = Star. Butuh investasi besar tapi menghasilkan revenue tinggi." },
+      { "key": "イ", "textJp": "金のなる木 (Cash Cow)", "textEnId": "Cash Cow", "explanation": "Salah. Cash Cow = Low Growth + High Share." },
+      { "key": "ウ", "textJp": "問題児 (Question Mark)", "textEnId": "Question Mark", "explanation": "Salah. Question Mark = High Growth + Low Share." },
+      { "key": "エ", "textJp": "負け犬 (Dog)", "textEnId": "Dog", "explanation": "Salah. Dog = Low Growth + Low Share." }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "PPM Matrix (BCG Matrix): Star(花形)=HiGrowth+HiShare, Cash Cow(金のなる木)=LoGrowth+HiShare, Question Mark(問題児)=HiGrowth+LoShare, Dog(負け犬)=LoGrowth+LoShare.",
+    "keyTakeaway": "Star = butuh investasi besar. Cash Cow = sumber dana utama perusahaan."
+  },
+  {
+    "id": "quiz-calc-29",
+    "year": "令和3年 過去問",
+    "category": "strategy",
+    "subCategory": "IT Law (Personal Data Protection APPI)",
+    "questionJp": "個人情報保護法における「要配慮個人情報」に該当するものはどれか。",
+    "questionTranslation": "Manakah yang termasuk 'Sensitive Personal Information' (要配慮個人情報) menurut UU Perlindungan Data Pribadi Jepang?",
+    "options": [
+      { "key": "ア", "textJp": "氏名と電話番号", "textEnId": "Nama dan nomor telepon", "explanation": "Salah. Ini personal information biasa, bukan yang memerlukan perhatian khusus." },
+      { "key": "イ", "textJp": "メールアドレス", "textEnId": "Alamat email", "explanation": "Salah. Email adalah personal information biasa." },
+      { "key": "ウ", "textJp": "病歴や犯罪歴", "textEnId": "Riwayat penyakit dan kriminal", "explanation": "Benar! 要配慮個人情報 mencakup ras, kepercayaan, riwayat penyakit, riwayat kriminal, dan status disabilitas — memerlukan consent EKSPLISIT untuk pengumpulannya." },
+      { "key": "エ", "textJp": "勤務先の住所", "textEnId": "Alamat kantor", "explanation": "Salah. Ini bukan data sensitif." }
+    ],
+    "correctKey": "ウ",
+    "summaryExplanation": "要配慮個人情報: ras, kepercayaan agama/politik, riwayat penyakit, riwayat kriminal, status korban kejahatan, disabilitas. Berbeda dari personal information biasa: pengumpulannya WAJIB consent eksplisit dari pemilik data.",
+    "keyTakeaway": "要配慮個人情報 = data sensitif (penyakit, kriminal, ras). Wajib consent eksplisit."
+  },
+  {
+    "id": "quiz-calc-30",
+    "year": "令和4年 過去問",
+    "category": "strategy",
+    "subCategory": "IT Law (Worker Dispatch vs Contract 派遣 vs 請負)",
+    "questionJp": "請負契約において、発注者が受注者の従業員に対して直接業務上の指示を行った場合、法的にどのような問題が生じるか。",
+    "questionTranslation": "Dalam kontrak outsourcing (請負), jika pemesan langsung memberikan instruksi kerja kepada karyawan kontraktor, masalah hukum apa yang timbul?",
+    "options": [
+      { "key": "ア", "textJp": "契約違反にはならない", "textEnId": "Tidak melanggar kontrak", "explanation": "Salah. Ini jelas pelanggaran." },
+      { "key": "イ", "textJp": "偽装請負に該当する可能性がある", "textEnId": "Berpotensi menjadi pseudo-outsourcing (偽装請負)", "explanation": "Benar! 請負 = kontraktor yang memberikan instruksi. Jika pemesan langsung memerintah karyawan kontraktor → 偽装請負 → melanggar UU Dispatch." },
+      { "key": "ウ", "textJp": "委任契約に自動変更される", "textEnId": "Otomatis berubah menjadi kontrak komisi", "explanation": "Salah. Tidak ada perubahan otomatis." },
+      { "key": "エ", "textJp": "労働基準法のみの問題", "textEnId": "Hanya masalah UU Standar Ketenagakerjaan", "explanation": "Salah. Ini melanggar UU Dispatch juga." }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "請負(outsourcing): kontraktor yang memberi instruksi kerja ke karyawannya sendiri. 派遣(dispatch): perusahaan klien yang memberi instruksi. Jika dalam 請負 tapi klien yang langsung perintah → 偽装請負 (pseudo-outsourcing) → ILEGAL karena melanggar 労働者派遣法.",
+    "keyTakeaway": "請負: kontraktor yang perintah. Klien langsung perintah pekerja = 偽装請負 (ilegal)."
   }
 ];

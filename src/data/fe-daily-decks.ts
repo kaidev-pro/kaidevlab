@@ -329,6 +329,86 @@ export const FE_DAILY_DECKS: FEDailyDeck[] = [
       "mgmt-agile-09",
       "mgmt-agile-10"
     ]
+  },
+  {
+    "day": 17,
+    "category": "technology",
+    "icon": "Binary",
+    "titleId": "Hari 17: Sistem Bilangan, Konversi Basis & Logika Boolean",
+    "titleJp": "基数変換・論理演算・数値表現",
+    "descriptionId": "Biner, Heksadesimal, 2の補数, Floating Point, AND/OR/NOT/XOR, De Morgan, Bit Shift, dan Error Numerik.",
+    "cardIds": [
+      "calc-num-01",
+      "calc-num-02",
+      "calc-num-03",
+      "calc-num-04",
+      "calc-num-05",
+      "calc-num-06",
+      "calc-num-07",
+      "calc-num-08",
+      "calc-num-09",
+      "calc-num-10"
+    ]
+  },
+  {
+    "day": 18,
+    "category": "technology",
+    "icon": "Gauge",
+    "titleId": "Hari 18: CPU, Pipeline, Cache & Perhitungan Kinerja Sistem",
+    "titleJp": "CPU・パイプライン・キャッシュ・性能計算",
+    "descriptionId": "MIPS, Pipeline Processing, Cache Hit Rate, CISC vs RISC, MTBF/MTTR, Reliability, Throughput, dan Queuing Theory.",
+    "cardIds": [
+      "calc-perf-01",
+      "calc-perf-02",
+      "calc-perf-03",
+      "calc-perf-04",
+      "calc-perf-05",
+      "calc-perf-06",
+      "calc-perf-07",
+      "calc-perf-08",
+      "calc-perf-09",
+      "calc-perf-10"
+    ]
+  },
+  {
+    "day": 19,
+    "category": "technology",
+    "icon": "Workflow",
+    "titleId": "Hari 19: UML, Design Pattern & Software Testing",
+    "titleJp": "UML・デザインパターン・ソフトウェアテスト",
+    "descriptionId": "UML Overview, Class Diagram, Use Case, Sequence, State Transition, Coupling, Cohesion, White Box Testing, GoF Pattern, dan Refactoring.",
+    "cardIds": [
+      "sw-eng-01",
+      "sw-eng-02",
+      "sw-eng-03",
+      "sw-eng-04",
+      "sw-eng-05",
+      "sw-eng-06",
+      "sw-eng-07",
+      "sw-eng-08",
+      "sw-eng-09",
+      "sw-eng-10"
+    ]
+  },
+  {
+    "day": 20,
+    "category": "strategy",
+    "icon": "Building2",
+    "titleId": "Hari 20: Bisnis Digital, Keuangan & Hukum IT Lanjutan",
+    "titleJp": "ビジネスシステム・企業法務・経営戦略",
+    "descriptionId": "SFA, SCM, CRM, ERP, EDI, Enterprise Architecture, BPR, 個人情報保護法, 派遣 vs 請負, dan Linear Programming.",
+    "cardIds": [
+      "biz-term-01",
+      "biz-term-02",
+      "biz-term-03",
+      "biz-term-04",
+      "biz-term-05",
+      "biz-term-06",
+      "biz-term-07",
+      "biz-term-08",
+      "biz-term-09",
+      "biz-term-10"
+    ]
   }
 ];
 

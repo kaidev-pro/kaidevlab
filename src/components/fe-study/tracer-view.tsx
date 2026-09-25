@@ -17,6 +17,7 @@ import {
   HelpCircle,
   Target,
   ArrowRight,
+  Layers,
 } from "lucide-react";
 import {
   FE_TRACER_ALGORITHMS,
@@ -35,6 +36,7 @@ export function TracerView({ onBackToMenu }: TracerViewProps) {
   const [selectedAlgoIndex, setSelectedAlgoIndex] = useState(0);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [mobileView, setMobileView] = useState<"code" | "table" | "split">("code");
 
   // Challenge mode states
   const [activeChallengeIndex, setActiveChallengeIndex] = useState(0);
@@ -180,7 +182,7 @@ export function TracerView({ onBackToMenu }: TracerViewProps) {
       {/* TAB 1: VISUAL STEP TRACER (DEBUGGER)                       */}
       {/* ========================================================== */}
       {activeTab === "debugger" && (
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 pb-24 lg:pb-0">
           {/* Algorithm Selection Pills Bar */}
           <div className="w-full overflow-x-auto no-scrollbar pb-1">
             <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-[var(--surface)] border border-[var(--border)] min-w-max shadow-sm">
@@ -241,10 +243,54 @@ export function TracerView({ onBackToMenu }: TracerViewProps) {
             </button>
           </div>
 
+          {/* Mobile View Switcher (lg:hidden) */}
+          <div className="lg:hidden flex items-center p-1 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] text-xs font-semibold">
+            <button
+              type="button"
+              onClick={() => setMobileView("code")}
+              className={`flex-1 py-2 rounded-xl transition-all flex items-center justify-center gap-1.5 ${
+                mobileView === "code"
+                  ? "bg-[var(--surface)] text-[var(--brand-primary)] shadow-sm font-bold"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              }`}
+            >
+              <Code2 size={13} />
+              <span>Kode IPA</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobileView("table")}
+              className={`flex-1 py-2 rounded-xl transition-all flex items-center justify-center gap-1.5 ${
+                mobileView === "table"
+                  ? "bg-[var(--surface)] text-[var(--brand-primary)] shadow-sm font-bold"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              }`}
+            >
+              <Table size={13} />
+              <span>Tabel Variabel</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobileView("split")}
+              className={`flex-1 py-2 rounded-xl transition-all flex items-center justify-center gap-1.5 ${
+                mobileView === "split"
+                  ? "bg-[var(--surface)] text-[var(--brand-primary)] shadow-sm font-bold"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              }`}
+            >
+              <Layers size={13} />
+              <span>Keduanya</span>
+            </button>
+          </div>
+
           {/* Main Grid: Code Editor (Left) & Live Trace Table (Right) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             {/* Left: Code Pane (7 cols) */}
-            <div className="lg:col-span-7 p-5 rounded-3xl border border-[#2d4268] bg-[#0c1628] text-slate-100 font-mono text-xs sm:text-sm flex flex-col justify-between shadow-2xl overflow-hidden">
+            <div
+              className={`p-5 rounded-3xl border border-[#2d4268] bg-[#0c1628] text-slate-100 font-mono text-xs sm:text-sm flex-col justify-between shadow-2xl overflow-hidden lg:col-span-7 ${
+                mobileView === "table" ? "hidden lg:flex" : "flex"
+              }`}
+            >
               <div>
                 <div className="flex items-center justify-between pb-3.5 mb-3 border-b border-white/10 text-xs text-slate-400">
                   <div className="flex items-center gap-2">
@@ -281,6 +327,33 @@ export function TracerView({ onBackToMenu }: TracerViewProps) {
                 </div>
               </div>
 
+              {/* Mobile Compact Variable Snapshot (Visible only on mobile in Code view) */}
+              <div className="lg:hidden mt-3 p-3 rounded-2xl bg-blue-950/60 border border-blue-500/30 text-xs">
+                <div className="flex items-center justify-between text-[11px] font-bold text-blue-300 mb-1.5">
+                  <span className="flex items-center gap-1">
+                    <Sparkles size={11} className="text-amber-400" />
+                    Status Langkah {currentStepIndex + 1}:
+                  </span>
+                  <span className="font-mono opacity-70">
+                    {currentStepIndex + 1}/{steps.length}
+                  </span>
+                </div>
+                <p className="text-slate-200 text-xs leading-relaxed mb-2 font-sans font-medium">
+                  {currentStep.explanation}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {Object.entries(currentStep.variableState).map(([k, v]) => (
+                    <span
+                      key={k}
+                      className="px-2 py-0.5 rounded-lg bg-blue-900/50 border border-blue-400/25 text-[11px] font-mono"
+                    >
+                      <span className="text-blue-300 font-bold">{k}: </span>
+                      <span className="text-white font-semibold">{String(v)}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+
               {/* IPA Syntax Cheat Helper */}
               <div className="mt-4 pt-3 border-t border-white/10 text-[11px] text-slate-400 flex flex-wrap items-center gap-x-4 gap-y-1">
                 <span className="text-amber-300/90 font-semibold">📌 Sintaks IPA:</span>
@@ -291,8 +364,22 @@ export function TracerView({ onBackToMenu }: TracerViewProps) {
             </div>
 
             {/* Right: Live Trace Table & Step Explanation (5 cols) */}
-            <div className="lg:col-span-5 flex flex-col justify-between gap-5 p-6 rounded-3xl border border-[var(--border)] bg-[var(--surface)] shadow-md">
+            <div
+              className={`p-6 rounded-3xl border border-[var(--border)] bg-[var(--surface)] shadow-md flex-col justify-between gap-5 lg:col-span-5 ${
+                mobileView === "code" ? "hidden lg:flex" : "flex"
+              }`}
+            >
               <div className="flex flex-col gap-5">
+                {/* Mobile Active Line Badge */}
+                <div className="lg:hidden p-3 rounded-2xl bg-[#0c1628] border border-[#2d4268] text-xs font-mono text-slate-100 flex items-center gap-2">
+                  <span className="px-2 py-0.5 rounded-md bg-blue-600/40 text-blue-300 font-bold text-[10px] shrink-0">
+                    Baris {currentStep.lineIndex + 1}
+                  </span>
+                  <span className="truncate text-slate-200 text-[11px]">
+                    {currentAlgo.codeLines[currentStep.lineIndex]}
+                  </span>
+                </div>
+
                 {/* Step Explanation Card */}
                 <div className="p-4 sm:p-5 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] flex flex-col gap-2">
                   <div className="flex items-center justify-between text-xs font-bold text-[var(--brand-primary)] uppercase tracking-wider">
@@ -341,7 +428,7 @@ export function TracerView({ onBackToMenu }: TracerViewProps) {
                 </div>
               </div>
 
-              {/* Stepper Controls Bar */}
+              {/* Stepper Controls Bar (Desktop & Inline) */}
               <div className="flex items-center justify-between pt-5 border-t border-[var(--border)] gap-2">
                 <div className="flex items-center gap-2">
                   <button
@@ -387,6 +474,60 @@ export function TracerView({ onBackToMenu }: TracerViewProps) {
                   </button>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Mobile Sticky Floating Stepper Navigation Bar */}
+          <div className="lg:hidden fixed bottom-4 left-3 right-3 z-40 p-2.5 rounded-2xl bg-[var(--surface)]/95 backdrop-blur-md border border-[var(--border)] shadow-2xl flex items-center justify-between gap-2 ring-1 ring-black/5">
+            <div className="flex items-center gap-1.5">
+              <button
+                type="button"
+                onClick={handleReset}
+                className="p-2 rounded-xl border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] active:scale-95 bg-[var(--surface)]"
+                title="Reset"
+              >
+                <RotateCcw size={15} />
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsPlaying(!isPlaying)}
+                className={`p-2 rounded-xl border text-xs font-bold active:scale-95 flex items-center gap-1 ${
+                  isPlaying
+                    ? "border-amber-500 bg-amber-500/10 text-amber-500"
+                    : "border-[var(--border)] text-[var(--text-primary)] bg-[var(--surface)]"
+                }`}
+              >
+                {isPlaying ? <Pause size={14} /> : <Play size={14} />}
+                <span className="text-[11px] font-medium">{isPlaying ? "Jeda" : "Auto"}</span>
+              </button>
+            </div>
+
+            <div className="flex flex-col items-center">
+              <span className="text-[9px] font-bold text-[var(--brand-primary)] uppercase tracking-wider">
+                Langkah
+              </span>
+              <span className="text-xs font-bold text-[var(--text-primary)] font-mono">
+                {currentStepIndex + 1} / {steps.length}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-1.5">
+              <button
+                type="button"
+                onClick={handlePrev}
+                disabled={currentStepIndex === 0}
+                className="px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface)] text-xs font-bold disabled:opacity-30 active:scale-95 flex items-center gap-0.5 text-[var(--text-secondary)]"
+              >
+                <ChevronLeft size={15} /> Prev
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                disabled={isCompleted}
+                className="px-3.5 py-2 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white text-xs font-bold disabled:opacity-40 active:scale-95 shadow-md flex items-center gap-0.5"
+              >
+                Next <ChevronRight size={15} />
+              </button>
             </div>
           </div>
         </div>

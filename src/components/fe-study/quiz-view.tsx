@@ -32,6 +32,7 @@ import {
 import { RubyTerm } from "@/components/fe-study/ruby-term";
 import { autoAnnotateRuby } from "@/lib/fe-furigana";
 import { useJapaneseTts } from "@/lib/use-japanese-tts";
+import { ConfettiBurst } from "@/components/fe-study/confetti-burst";
 
 interface QuizViewProps {
   onBackToMenu: () => void;
@@ -351,11 +352,13 @@ export function QuizView({
   // ==========================================================
   if (isExamFinished && !isReviewMode) {
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.98 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="w-full max-w-5xl mx-auto flex flex-col gap-8 pb-12 select-none"
-      >
+      <>
+        {examStats.isPassed && <ConfettiBurst trigger={true} withSound={true} />}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="w-full max-w-5xl mx-auto flex flex-col gap-8 pb-12 select-none"
+        >
         {/* Top Result Banner */}
         <div className="p-6 sm:p-8 md:p-10 rounded-3xl border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)] flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-5">
@@ -376,6 +379,11 @@ export function QuizView({
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--text-primary)] font-serif mt-1">
                 {examStats.isPassed ? "合格！Lulus Standar IPA Jepang" : "不合格 · Perlu Penguatan Materi"}
               </h2>
+              {examStats.isPassed && (
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-500 border border-emerald-500/40 text-xs font-bold mt-2">
+                  <span>🎉 合格おめでとうございます！ (Lolos Ambang Batas Resmi 60%)</span>
+                </div>
+              )}
               <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1.5 leading-relaxed">
                 Ambang batas kelulusan resmi: <b>60% (600 / 1000 poin)</b>. Skor kamu: <b>{examStats.percentage}%</b>.
               </p>
@@ -587,7 +595,8 @@ export function QuizView({
           </button>
         </div>
       </motion.div>
-    );
+    </>
+  );
   }
 
   // ==========================================================

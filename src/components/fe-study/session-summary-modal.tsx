@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Award, Flame, RotateCcw, ArrowRight } from "lucide-react";
+import { ConfettiBurst } from "@/components/fe-study/confetti-burst";
 
 interface SessionSummaryModalProps {
   totalReviewed: number;
@@ -17,11 +18,13 @@ export function SessionSummaryModal({
   onBackToDashboard,
 }: SessionSummaryModalProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      className="w-full max-w-md mx-auto p-8 rounded-2xl border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)] text-center flex flex-col items-center gap-6 backdrop-blur-md"
-    >
+    <>
+      <ConfettiBurst trigger={true} withSound={true} />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="w-full max-w-md mx-auto p-8 rounded-2xl border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)] text-center flex flex-col items-center gap-6 backdrop-blur-md"
+      >
       <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-500 flex items-center justify-center shadow-inner">
         <Award size={32} />
       </div>
@@ -61,5 +64,6 @@ export function SessionSummaryModal({
         </button>
       </div>
     </motion.div>
+    </>
   );
 }

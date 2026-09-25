@@ -43,6 +43,7 @@ interface QuizViewProps {
 }
 
 type ExamMode = "practice" | "mock";
+export type CbtPackage = "paketA" | "paketB" | "quick15" | "half30" | "all";
 
 export function QuizView({
   onBackToMenu,
@@ -71,8 +72,8 @@ export function QuizView({
   // Practice Filter state
   const [practiceCategory, setPracticeCategory] = useState<"all" | "technology" | "management" | "strategy">("all");
 
-  // CBT Mock settings
-  const [cbtQuestionCount, setCbtQuestionCount] = useState<number>(15);
+  // CBT Mock settings (Paket A: 60 soal, Paket B: 60 soal, Quick: 15, Half: 30, All: 120)
+  const [cbtPackage, setCbtPackage] = useState<CbtPackage>("paketA");
   const [cbtRandomSeed, setCbtRandomSeed] = useState<number>(() => Date.now());
 
   // Filtered practice questions
@@ -82,14 +83,34 @@ export function QuizView({
     return FE_QUIZ_QUESTIONS.filter((q) => q.category === practiceCategory);
   }, [customQuestions, practiceCategory]);
 
-  // Balanced randomized CBT questions
+  // Balanced authentic CBT question sets
   const cbtQuestions = useMemo(() => {
     if (customQuestions && customQuestions.length > 0) return customQuestions;
-    if (cbtQuestionCount >= FE_QUIZ_QUESTIONS.length) return FE_QUIZ_QUESTIONS;
 
     const tech = FE_QUIZ_QUESTIONS.filter((q) => q.category === "technology");
     const mgmt = FE_QUIZ_QUESTIONS.filter((q) => q.category === "management");
     const strat = FE_QUIZ_QUESTIONS.filter((q) => q.category === "strategy");
+
+    // Paket Resmi A (60 Soal: 37 Tech + 11 Mgmt + 12 Strat)
+    if (cbtPackage === "paketA") {
+      return [...tech.slice(0, 37), ...mgmt.slice(0, 11), ...strat.slice(0, 12)];
+    }
+
+    // Paket Resmi B (60 Soal: 37 Tech + 11 Mgmt + 12 Strat)
+    if (cbtPackage === "paketB") {
+      return [...tech.slice(37, 74), ...mgmt.slice(11, 22), ...strat.slice(12, 24)];
+    }
+
+    // Maraton Lengkap (120 Soal)
+    if (cbtPackage === "all") {
+      return FE_QUIZ_QUESTIONS;
+    }
+
+    // Quick Drill (15 / 30 Soal)
+    const count = cbtPackage === "quick15" ? 15 : 30;
+    const targetTech = Math.round(count * 0.6);
+    const targetMgmt = Math.round(count * 0.2);
+    const targetStrat = Math.max(0, count - targetTech - targetMgmt);
 
     const shuffle = <T,>(arr: T[], seed: number): T[] => {
       const a = [...arr];
@@ -105,16 +126,12 @@ export function QuizView({
       return a;
     };
 
-    const targetTech = Math.round(cbtQuestionCount * 0.6);
-    const targetMgmt = Math.round(cbtQuestionCount * 0.2);
-    const targetStrat = Math.max(0, cbtQuestionCount - targetTech - targetMgmt);
-
     const sTech = shuffle(tech, cbtRandomSeed).slice(0, targetTech);
     const sMgmt = shuffle(mgmt, cbtRandomSeed + 1).slice(0, targetMgmt);
     const sStrat = shuffle(strat, cbtRandomSeed + 2).slice(0, targetStrat);
 
     return [...sTech, ...sMgmt, ...sStrat];
-  }, [customQuestions, cbtQuestionCount, cbtRandomSeed]);
+  }, [customQuestions, cbtPackage, cbtRandomSeed]);
 
   // Active question set
   const questions = useMemo(() => {
@@ -287,7 +304,7 @@ export function QuizView({
   };
 
   // Restart everything
-  const handleReset = (mode: ExamMode = examMode, newCount?: number) => {
+  const handleReset = (mode: ExamMode = examMode, newPkg?: CbtPackage) => {
     setExamMode(mode);
     setCurrentIndex(0);
     setPracticeSelectedKey(null);
@@ -295,9 +312,16 @@ export function QuizView({
     setShowManualExplanation(false);
     setPracticeScore(0);
     setPracticeTimeLeft(90);
+    const targetPkg = newPkg || cbtPackage;
+    if (newPkg) {
+      setCbtPackage(newPkg);
+    }
     if (mode === "mock") {
       setCbtRandomSeed(Date.now());
-      const count = newCount || cbtQuestionCount;
+      let count = 60;
+      if (targetPkg === "quick15") count = 15;
+      else if (targetPkg === "half30") count = 30;
+      else if (targetPkg === "all") count = 120;
       setMockTimeLeft(count * 90);
     } else {
       setMockTimeLeft(TOTAL_MOCK_TIME);
@@ -868,22 +892,22 @@ export function QuizView({
 
           {!customQuestions && (
             <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)] overflow-x-auto no-scrollbar max-w-full">
-              <span className="text-[11px] font-bold text-[var(--text-secondary)] px-1.5 shrink-0">Sesi:</span>
+              <span className="text-[11px] font-bold text-[var(--text-secondary)] px-1.5 shrink-0">Paket CBT:</span>
               {[
-                { count: 15, label: "15 問 (22分30秒)" },
-                { count: 30, label: "30 問 (45分)" },
-                { count: 60, label: "60 問 (90分 - 本番)" },
-                { count: 75, label: "全75問 (全問マラソン)" },
+                { id: "paketA" as const, label: "Paket A (60問 · 90分)" },
+                { id: "paketB" as const, label: "Paket B (60問 · 90分)" },
+                { id: "quick15" as const, label: "15問 (Kilat)" },
+                { id: "half30" as const, label: "30問 (Setengah)" },
+                { id: "all" as const, label: "全120問 (Maraton)" },
               ].map((s) => (
                 <button
-                  key={s.count}
+                  key={s.id}
                   type="button"
                   onClick={() => {
-                    setCbtQuestionCount(s.count);
-                    handleReset("mock", s.count);
+                    handleReset("mock", s.id);
                   }}
                   className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all shrink-0 ${
-                    cbtQuestionCount === s.count
+                    cbtPackage === s.id
                       ? "bg-blue-600 text-white shadow-sm"
                       : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                   }`}

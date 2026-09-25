@@ -2205,5 +2205,1670 @@ export const FE_QUIZ_QUESTIONS: QuizQuestion[] = [
     "correctKey": "イ",
     "summaryExplanation": "請負(outsourcing): kontraktor yang memberi instruksi kerja ke karyawannya sendiri. 派遣(dispatch): perusahaan klien yang memberi instruksi. Jika dalam 請負 tapi klien yang langsung perintah → 偽装請負 (pseudo-outsourcing) → ILEGAL karena melanggar 労働者派遣法.",
     "keyTakeaway": "請負: kontraktor yang perintah. Klien langsung perintah pekerja = 偽装請負 (ilegal)."
+  },
+  {
+    "id": "quiz-exp-01",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "Computer Architecture (Pipeline Hazards)",
+    "questionJp": "CPUのパイプライン処理において、先行する命令の実行結果を後続の命令が利用するために生じるパイプラインの乱れ（ハザード）はどれか。",
+    "questionTranslation": "Dalam pemrosesan pipeline CPU, gangguan pipeline (hazard) yang terjadi karena instruksi berikutnya harus menunggu hasil eksekusi dari instruksi sebelumnya disebut?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "構造ハザード (Structural Hazard)",
+        "textEnId": "Structural Hazard",
+        "explanation": "Salah. Structural hazard terjadi ketika dua instruksi memerlukan sumber daya perangkat keras yang sama secara bersamaan (misal: port memori tunggal)."
+      },
+      {
+        "key": "イ",
+        "textJp": "データハザード (Data Hazard)",
+        "textEnId": "Data Hazard",
+        "explanation": "Benar! Data hazard terjadi saat instruksi berikutnya memerlukan data yang belum selesai dihitung/ditulis oleh instruksi sebelumnya (Read-After-Write conflict)."
+      },
+      {
+        "key": "ウ",
+        "textJp": "制御ハザード (Control Hazard)",
+        "textEnId": "Control Hazard",
+        "explanation": "Salah. Control hazard (branch hazard) terjadi akibat instruksi percabangan kondisional (jump/branch) yang membuat CPU belum tahu instruksi mana yang harus diambil berikutnya."
+      },
+      {
+        "key": "エ",
+        "textJp": "割込みハザード (Interrupt Hazard)",
+        "textEnId": "Interrupt Hazard",
+        "explanation": "Salah. Istilah ini bukan klasifikasi standar dari 3 hazard klasik CPU pipeline."
+      }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "Tiga jenis Hazard pada CPU Pipeline: 1. データハザード (Data Hazard): ketergantungan data antar instruksi (RAW/WAR/WAW). 2. 制御ハザード (Control Hazard): percabangan/branching. 3. 構造ハザード (Structural Hazard): konflik perebutan hardware fisik.",
+    "keyTakeaway": "Data Hazard = butuh hasil instruksi sebelumnya. Control Hazard = percabangan (branch). Structural Hazard = rebutan hardware."
+  },
+  {
+    "id": "quiz-exp-02",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "Memory Architecture (Cache Write Policy)",
+    "questionJp": "キャッシュメモリの書込み方式のうち、CPUがデータを書き込む際にキャッシュと主記憶の両方に同時に書き込む方式はどれか。",
+    "questionTranslation": "Di antara metode penulisan cache memori, metode mana yang menulis data ke cache dan memori utama (RAM) secara bersamaan saat CPU melakukan operasi penulisan?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "ライトスルー方式 (Write-Through)",
+        "textEnId": "Write-Through",
+        "explanation": "Benar! Write-through selalu menulis ke cache sekaligus RAM. Keunggulannya data selalu konsisten (coherency terjaga), kelemahannya kecepatan tulis dibatasi oleh kecepatan RAM."
+      },
+      {
+        "key": "イ",
+        "textJp": "ライトバック方式 (Write-Back)",
+        "textEnId": "Write-Back",
+        "explanation": "Salah. Write-back hanya menulis ke cache terlebih dahulu; penulisan ke RAM ditunda sampai blok cache tersebut dikeluarkan (evicted/replaced)."
+      },
+      {
+        "key": "ウ",
+        "textJp": "ライトアラウンド方式 (Write-Around)",
+        "textEnId": "Write-Around",
+        "explanation": "Salah. Write-around menulis langsung ke RAM dan melewatkan cache sama sekali."
+      },
+      {
+        "key": "エ",
+        "textJp": "ダイレクトマップ方式 (Direct Mapped)",
+        "textEnId": "Direct Mapped",
+        "explanation": "Salah. Direct mapped adalah metode pemetaan alamat memori ke cache, bukan kebijakan penulisan data."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "ライトスルー (Write-Through): tulis ke Cache + RAM bersamaan (aman, lambat). ライトバック (Write-Back): tulis ke Cache saja dulu, ke RAM hanya saat blok di-replace (cepat, butuh dirty bit untuk pelacakan).",
+    "keyTakeaway": "Write-Through = tulis dua-duanya (Cache + RAM). Write-Back = tulis ke cache dulu, RAM belakangan."
+  },
+  {
+    "id": "quiz-exp-03",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "Operating Systems (Virtual Memory & Thrashing)",
+    "questionJp": "仮想記憶システムにおいて、主記憶の容量不足が原因でページの入替え（ページイン／ページアウト）が頻発し、CPUの処理能力の大部分がページ管理に費やされてシステムの処理能力が著しく低下する現象はどれか。",
+    "questionTranslation": "Dalam sistem memori virtual, fenomena di mana kekurangan RAM fisik menyebabkan pergantian halaman (page in/page out) terjadi secara berlebihan sehingga CPU sibuk mengurus paging dan performa sistem anjlok disebut?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "スラッシング (Thrashing)",
+        "textEnId": "Thrashing",
+        "explanation": "Benar! Thrashing adalah kondisi di mana sistem menghabiskan lebih banyak waktu untuk swap paging daripada mengeksekusi instruksi program sesungguhnya karena RAM terlalu sempit."
+      },
+      {
+        "key": "イ",
+        "textJp": "フラグメンテーション (Fragmentation)",
+        "textEnId": "Fragmentation",
+        "explanation": "Salah. Fragmentation adalah fragmentasi ruang memori menjadi blok-blok kecil yang tidak terpakai (internal atau external)."
+      },
+      {
+        "key": "ウ",
+        "textJp": "デッドロック (Deadlock)",
+        "textEnId": "Deadlock",
+        "explanation": "Salah. Deadlock adalah kondisi saling tunggu (deadlock) antara dua atau lebih proses yang merebutkan sumber daya."
+      },
+      {
+        "key": "エ",
+        "textJp": "ページフォールト (Page Fault)",
+        "textEnId": "Page Fault",
+        "explanation": "Salah. Page fault adalah interrupt normal hardware ketika halaman virtual belum ada di RAM; thrashing adalah frekuensi page fault yang berlebihan dan tidak terkendali."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "スラッシング (Thrashing): paging berulang-ulang tanpa henti karena kapasitas RAM fisik tidak mencukupi working set program. Solusinya: tambah kapasitas memori fisik (RAM) atau kurangi tingkat multiprogramming.",
+    "keyTakeaway": "Paging berlebihan sampai sistem macet = Thrashing. Solusi utama: Tambah RAM."
+  },
+  {
+    "id": "quiz-exp-04",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "Operating Systems (Page Replacement LRU)",
+    "questionJp": "仮想記憶のページ置換えアルゴリズムのうち、最後に参照されてから最も長い時間が経過したページを置換え対象とするものはどれか。",
+    "questionTranslation": "Di antara algoritma penggantian halaman (page replacement) memori virtual, manakah yang memilih halaman yang paling lama tidak diakses sejak terakhir kali direferensikan sebagai target penggantian?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "FIFO (First-In, First-Out)",
+        "textEnId": "FIFO",
+        "explanation": "Salah. FIFO mengganti halaman yang paling pertama kali dimuat ke dalam memori, tanpa memperhitungkan kapan terakhir diakses."
+      },
+      {
+        "key": "イ",
+        "textJp": "LRU (Least Recently Used)",
+        "textEnId": "LRU",
+        "explanation": "Benar! LRU mengganti halaman yang paling lama tidak digunakan sejak referensi terakhir (berdasarkan prinsip temporal locality)."
+      },
+      {
+        "key": "ウ",
+        "textJp": "LFU (Least Frequently Used)",
+        "textEnId": "LFU",
+        "explanation": "Salah. LFU mengganti halaman dengan frekuensi/jumlah pengaksesan paling sedikit (counter-based)."
+      },
+      {
+        "key": "エ",
+        "textJp": "OPT (Optimal Replacement)",
+        "textEnId": "Optimal",
+        "explanation": "Salah. OPT mengganti halaman yang tidak akan digunakan untuk waktu terlama di masa depan (algoritma teoritis, mustahil diimplementasikan sempurna)."
+      }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "Algoritma Page Replacement: LRU (Least Recently Used) = paling lama tidak diakses. LFU (Least Frequently Used) = paling jarang diakses (frekuensi terendah). FIFO = paling awal masuk.",
+    "keyTakeaway": "LRU = Paling lama nganggur sejak akses terakhir. LFU = Frekuensi akses paling sedikit."
+  },
+  {
+    "id": "quiz-exp-05",
+    "year": "令和3年 過去問",
+    "category": "technology",
+    "subCategory": "Operating Systems (Process Scheduling)",
+    "questionJp": "マルチプログラミング環境におけるCPUスケジューリング方式のうち、各プロセスにタイムクウォンタム（微小なCPU割当て時間）を順番に与え、タイムクウォンタムを使い切ったプロセスは実行待ち行列の末尾に移る方式はどれか。",
+    "questionTranslation": "Dalam penjadwalan CPU multiprogramming, metode mana yang memberikan jatah waktu CPU (time quantum) kepada setiap proses secara bergiliran, dan memindahkan proses yang kehabisan jatah waktu ke antrean paling belakang?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "ラウンドロビン方式 (Round Robin)",
+        "textEnId": "Round Robin",
+        "explanation": "Benar! Round Robin membagi waktu CPU sama rata dengan time slice/quantum bergantian secara melingkar (preemptive)."
+      },
+      {
+        "key": "イ",
+        "textJp": "FCFS (First-Come, First-Served)",
+        "textEnId": "FCFS",
+        "explanation": "Salah. FCFS menjalankan proses sesuai urutan kedatangan sampai selesai (non-preemptive, tidak ada time slice)."
+      },
+      {
+        "key": "ウ",
+        "textJp": "優先度順方式 (Priority Scheduling)",
+        "textEnId": "Priority Scheduling",
+        "explanation": "Salah. Priority scheduling memilih proses berdasarkan tingkat prioritas tertinggi, bukan time quantum tetap."
+      },
+      {
+        "key": "エ",
+        "textJp": "処理時間順方式 (Shortest Job First)",
+        "textEnId": "Shortest Job First",
+        "explanation": "Salah. SJF mendahulukan proses dengan estimasi waktu eksekusi paling pendek."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "ラウンドロビン (Round Robin): adil untuk time-sharing system (TSS). Time quantum yang terlalu besar membuat sistem berperilaku seperti FCFS; time quantum yang terlalu kecil menimbulkan overhead context switch yang tinggi.",
+    "keyTakeaway": "Time slice/quantum bergantian memutar = Round Robin. Cocok untuk sistem interaktif."
+  },
+  {
+    "id": "quiz-exp-06",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "Software Engineering (Coupling & Cohesion)",
+    "questionJp": "モジュール設計において、モジュールの独立性を最も高く保ち、保守性を最大化できるモジュール結合度とモジュール強度の適切な組合せはどれか。",
+    "questionTranslation": "Dalam perancangan modul perangkat lunak, kombinasi Coupling (モジュール結合度) dan Cohesion (モジュール強度) mana yang menghasilkan independensi modul tertinggi dan kemudahan pemeliharaan terbaik?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "結合度：低（疎結合） ／ 強度：高（高凝集）",
+        "textEnId": "Coupling: Rendah (Loose) / Cohesion: Tinggi (High)",
+        "explanation": "Benar! Prinsip dasar software engineering adalah 'Loose Coupling, High Cohesion' (疎結合・高凝集). Modul berdiri sendiri dan fokus pada satu tanggung jawab tunggal."
+      },
+      {
+        "key": "イ",
+        "textJp": "結合度：高（密結合） ／ 強度：低（低凝集）",
+        "textEnId": "Coupling: Tinggi (Tight) / Cohesion: Rendah (Low)",
+        "explanation": "Salah. Ini rancangan terburuk: ketergantungan antar modul tinggi (spaghetti code) dan fungsi internal modul berantakan."
+      },
+      {
+        "key": "ウ",
+        "textJp": "結合度：低（疎結合） ／ 強度：低（低凝集）",
+        "textEnId": "Coupling: Rendah (Loose) / Cohesion: Rendah (Low)",
+        "explanation": "Salah. Cohesion yang rendah berarti modul mengerjakan banyak hal yang tidak berhubungan (sulit dipahami dan dirawat)."
+      },
+      {
+        "key": "エ",
+        "textJp": "結合度：高（密結合） ／ 強度：高（高凝集）",
+        "textEnId": "Coupling: Tinggi (Tight) / Cohesion: Tinggi (High)",
+        "explanation": "Salah. Coupling yang tinggi membuat perubahan di satu modul merembet dan merusak modul lainnya (ripple effect)."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "Kaidah baku ujian FE: Modul terbaik memiliki 結合度: 弱い (Coupling lemah/Data Coupling) dan 凝集度/強度: 強い (Cohesion kuat/Functional Cohesion).",
+    "keyTakeaway": "Prinsip Emas Modul: モジュール結合度は弱く (Coupling rendah), モジュール強度は強く (Cohesion tinggi)."
+  },
+  {
+    "id": "quiz-exp-07",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "Software Engineering (Design Pattern Singleton)",
+    "questionJp": "オブジェクト指向のGoFデザインパターンのうち、特定のクラスのインスタンスがシステム全体で常に1つしか生成されないことを保証するパターンはどれか。",
+    "questionTranslation": "Di antara Design Pattern GoF (Gang of Four), pola mana yang menjamin bahwa sebuah kelas hanya memiliki tepat satu instans yang dibuat di seluruh sistem?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "Factory Method",
+        "textEnId": "Factory Method",
+        "explanation": "Salah. Factory Method mendelegasikan proses instansiasi objek ke subclass."
+      },
+      {
+        "key": "イ",
+        "textJp": "Singleton",
+        "textEnId": "Singleton",
+        "explanation": "Benar! Singleton menyembunyikan constructor (private) dan menyediakan satu titik akses global (getInstance) untuk memastikan hanya ada satu instans."
+      },
+      {
+        "key": "ウ",
+        "textJp": "Observer",
+        "textEnId": "Observer",
+        "explanation": "Salah. Observer adalah pola publish-subscribe di mana subjek memberi tahu sejumlah observer saat statusnya berubah."
+      },
+      {
+        "key": "エ",
+        "textJp": "Adapter",
+        "textEnId": "Adapter",
+        "explanation": "Salah. Adapter mengubah antarmuka kelas yang ada agar kompatibel dengan antarmuka yang diharapkan klien."
+      }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "Singleton: menjamin class hanya memiliki 1 instance (misal: connection pool database, logger sistem). Ciri khas: private constructor, static instance variable, dan static getter method.",
+    "keyTakeaway": "Hanya boleh 1 instans di seluruh aplikasi = Singleton Pattern."
+  },
+  {
+    "id": "quiz-exp-08",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "Database (Transaction Isolation Levels)",
+    "questionJp": "リレーショナルデータベースにおいて、あるトランザクションがまだコミットしていない未確定の変更データを、別のトランザクションが読み取ってしまう異常現象はどれか。",
+    "questionTranslation": "Dalam basis data relasional, fenomena anomali di mana suatu transaksi membaca data perubahan yang belum di-commit oleh transaksi lain disebut?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "ダーティリード (Dirty Read)",
+        "textEnId": "Dirty Read",
+        "explanation": "Benar! Dirty Read terjadi jika Transaksi B membaca data kotor yang diubah Transaksi A, padahal Transaksi A nantinya melakukan ROLLBACK."
+      },
+      {
+        "key": "イ",
+        "textJp": "ノンリピータブルリード (Non-repeatable Read)",
+        "textEnId": "Non-repeatable Read",
+        "explanation": "Salah. Non-repeatable read terjadi saat Transaksi membaca baris yang sama dua kali, tetapi mendapatkan nilai yang berbeda karena transaksi lain telah melakukan UPDATE dan COMMIT di tengah-tengah."
+      },
+      {
+        "key": "ウ",
+        "textJp": "ファントムリード (Phantom Read)",
+        "textEnId": "Phantom Read",
+        "explanation": "Salah. Phantom read terjadi saat Transaksi mengeksekusi query rentang (range query) dua kali, lalu menemukan baris baru yang muncul karena INSERT transaksi lain."
+      },
+      {
+        "key": "エ",
+        "textJp": "ロストアップデート (Lost Update)",
+        "textEnId": "Lost Update",
+        "explanation": "Salah. Lost update terjadi saat dua transaksi menimpa data yang sama tanpa penguncian sehingga hasil pembaruan pertama hilang."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "Anomali Transaksi RDBMS: 1. Dirty Read: baca data yang belum di-commit (dicegah oleh READ COMMITTED). 2. Non-repeatable Read: nilai baris berubah di tengah transaksi (dicegah oleh REPEATABLE READ). 3. Phantom Read: muncul baris baru pada rentang query (dicegah oleh SERIALIZABLE).",
+    "keyTakeaway": "Baca data uncommitted = Dirty Read. Nilai kolom berubah setelah commit orang lain = Non-repeatable Read."
+  },
+  {
+    "id": "quiz-exp-09",
+    "year": "令和3年 過去問",
+    "category": "technology",
+    "subCategory": "Database (Distributed 2-Phase Commit)",
+    "questionJp": "分散データベースシステムにおいて、複数のノード間でトランザクションの一貫性を保つための2相コミットプロトコル（Two-Phase Commit）の説明として、適切なものはどれか。",
+    "questionTranslation": "Dalam sistem basis data terdistribusi, manakah penjelasan yang tepat mengenai protokol Two-Phase Commit (2PC) untuk menjaga konsistensi transaksi antar-node?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "コミット要求フェーズで全参加ノードから合意が得られた場合のみ、コミット実行フェーズで全ノードにコミットを指示する。",
+        "textEnId": "Instruksi commit hanya dikirim pada fase eksekusi jika semua node setuju pada fase persiapan.",
+        "explanation": "Benar! Fase 1 (Prepare/Voting): Koordinator bertanya apakah semua siap. Jika SEMUA vote YES, Fase 2 (Commit): koordinator kirim perintah COMMIT. Jika ada 1 saja vote NO, koordinator kirim ROLLBACK ke semua node."
+      },
+      {
+        "key": "イ",
+        "textJp": "過半数の参加ノードがコミット可能と応答した場合に、全ノードへコミットを指示する。",
+        "textEnId": "Menginstruksikan commit jika mayoritas node merespons siap commit.",
+        "explanation": "Salah. 2PC memerlukan konsensus mutlak (100% all nodes), bukan suara mayoritas (quorum)."
+      },
+      {
+        "key": "ウ",
+        "textJp": "マスターノードがコミットを完了した後に、バックアップノードへ非同期に差分を送信する。",
+        "textEnId": "Mengirimkan selisih secara asinkron ke backup setelah master commit.",
+        "explanation": "Salah. Ini adalah replikasi asinkron, bukan 2-Phase Commit."
+      },
+      {
+        "key": "エ",
+        "textJp": "各ノードが自律的にコミットを判断し、衝突が生じた場合にタイムスタンプ順でロールバックする。",
+        "textEnId": "Setiap node memutuskan commit mandiri dan rollback jika tabrakan.",
+        "explanation": "Salah. 2PC dipimpin oleh Coordinator secara terpusat."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "2相コミット (2PC): Fase 1 (セキュア準備/コミット要求) → semua participant vote. Jika ada 1 saja node yang gagal atau timeout → ROLLBACK seluruh cluster. Jika 100% OK → Fase 2 (コミット実行).",
+    "keyTakeaway": "2-Phase Commit: Butuh persetujuan 100% node di fase 1, baru dieksekusi di fase 2."
+  },
+  {
+    "id": "quiz-exp-10",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "Networking (TCP 3-Way Handshake)",
+    "questionJp": "TCPにおけるコネクション確立処理（3ウェイハンドシェイク）において、クライアントが最初にサーバへ送信するパケットの制御フラグはどれか。",
+    "questionTranslation": "Dalam proses pembentukan koneksi TCP (3-way handshake), flag kontrol paket apa yang pertama kali dikirimkan oleh klien ke server?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "ACK",
+        "textEnId": "ACK",
+        "explanation": "Salah. ACK dikirim bersamaan dengan SYN oleh server (SYN/ACK), atau dikirim terakhir oleh klien untuk menyelesaikan handshake."
+      },
+      {
+        "key": "イ",
+        "textJp": "SYN",
+        "textEnId": "SYN",
+        "explanation": "Benar! Alur 3-way handshake dimulai dengan paket [SYN] dari klien untuk meminta sinkronisasi nomor urut (Sequence Number)."
+      },
+      {
+        "key": "ウ",
+        "textJp": "FIN",
+        "textEnId": "FIN",
+        "explanation": "Salah. FIN digunakan untuk pemutusan (terminasi) koneksi TCP secara normal, bukan pembentukan."
+      },
+      {
+        "key": "エ",
+        "textJp": "RST",
+        "textEnId": "RST",
+        "explanation": "Salah. RST digunakan untuk mereset atau menolak koneksi secara paksa jika ada error."
+      }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "TCP 3-way Handshake: Langkah 1: Klien kirim [SYN]. Langkah 2: Server balas [SYN + ACK]. Langkah 3: Klien konfirmasi [ACK]. Koneksi ESTABLISHED.",
+    "keyTakeaway": "Koneksi TCP: SYN → SYN/ACK → ACK. Putus koneksi: FIN → ACK → FIN → ACK."
+  },
+  {
+    "id": "quiz-exp-11",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "Networking (NAT vs NAPT / IP Masquerade)",
+    "questionJp": "プライベートIPアドレスとグローバルIPアドレスを相互変換する技術のうち、IPアドレスだけでなくポート番号も変換することで、1つのグローバルIPアドレスを社内LANの複数端末で共有できるものはどれか。",
+    "questionTranslation": "Di antara teknologi penerjemahan alamat IP privat ke IP publik, teknologi mana yang selain menerjemahkan alamat IP juga menerjemahkan nomor port, sehingga 1 IP publik dapat dipakai bersama oleh banyak perangkat LAN?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "NAT (Network Address Translation)",
+        "textEnId": "NAT",
+        "explanation": "Salah. NAT statis konvensional hanya memetakan 1 IP privat ke 1 IP publik (1-to-1 mapping), tidak menghemat alamat IP publik."
+      },
+      {
+        "key": "イ",
+        "textJp": "NAPT (Network Address Port Translation / IPマスカレード)",
+        "textEnId": "NAPT / IP Masquerade",
+        "explanation": "Benar! NAPT (juga dikenal sebagai IP Masquerade atau PAT) memetakan banyak IP privat ke 1 IP publik dengan membedakan nomor port TCP/UDP."
+      },
+      {
+        "key": "ウ",
+        "textJp": "DHCP (Dynamic Host Configuration Protocol)",
+        "textEnId": "DHCP",
+        "explanation": "Salah. DHCP bertugas membagikan konfigurasi IP secara otomatis ke host di jaringan lokal."
+      },
+      {
+        "key": "エ",
+        "textJp": "ARP (Address Resolution Protocol)",
+        "textEnId": "ARP",
+        "explanation": "Salah. ARP menerjemahkan alamat IP menjadi alamat fisik MAC."
+      }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "NAT murni = pemetaan 1-ke-1 (IP saja). NAPT (IPマスカレード / PAT) = pemetaan banyak-ke-1 (menggunakan kombinasi IP + Nomor Port). Inilah yang dipakai router rumahan/kantor saat ini.",
+    "keyTakeaway": "Banyak IP privat pakai 1 IP publik barengan via nomor port = NAPT (IPマスカレード)."
+  },
+  {
+    "id": "quiz-exp-12",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "Networking (ARP & RARP)",
+    "questionJp": "LAN環境において、通信相手のIPアドレスから対応するMACアドレスを動的に解決するために使用されるプロトコルはどれか。",
+    "questionTranslation": "Dalam lingkungan LAN, protokol apa yang digunakan untuk mencari alamat fisik MAC dari alamat IP target yang diketahui secara dinamis?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "ARP (Address Resolution Protocol)",
+        "textEnId": "ARP",
+        "explanation": "Benar! ARP mengirimkan broadcast ke jaringan untuk menanyakan 'Siapa pemilik IP ini? Tolong beritahu MAC address-mu'."
+      },
+      {
+        "key": "イ",
+        "textJp": "RARP (Reverse Address Resolution Protocol)",
+        "textEnId": "RARP",
+        "explanation": "Salah. RARP adalah kebalikannya: mencari IP address dari MAC address yang diketahui (biasanya untuk diskless workstation lawas)."
+      },
+      {
+        "key": "ウ",
+        "textJp": "ICMP (Internet Control Message Protocol)",
+        "textEnId": "ICMP",
+        "explanation": "Salah. ICMP digunakan untuk pelaporan error dan diagnostik jaringan (seperti utilitas ping dan traceroute)."
+      },
+      {
+        "key": "エ",
+        "textJp": "DNS (Domain Name System)",
+        "textEnId": "DNS",
+        "explanation": "Salah. DNS memetakan Nama Domain (URL) ke alamat IP, bukan MAC address."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "ARP: IPアドレス → MACアドレス (tanya alamat fisik hardware). RARP: MACアドレス → IPアドレス (kebalikannya).",
+    "keyTakeaway": "IP ke MAC = ARP. MAC ke IP = RARP."
+  },
+  {
+    "id": "quiz-exp-13",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "Security (SQL Injection Defense)",
+    "questionJp": "WebアプリケーションにおけるSQLインジェクション対策として、最も根本的かつ有効なものはどれか。",
+    "questionTranslation": "Manakah tindakan pencegahan paling mendasar dan paling efektif terhadap serangan SQL Injection pada aplikasi web?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "プレースホルダ（静的プレースホルダ／バインド機構）を利用してSQL文を組み立てる。",
+        "textEnId": "Menggunakan placeholder statis / parameter binding dalam menyusun SQL.",
+        "explanation": "Benar! Dengan Prepared Statements / Parameter Binding, struktur query dikompilasi terlebih dahulu, dan input pengguna hanya diperlakukan sebagai literal data murni sehingga perintah SQL jahat tidak bisa disuntikkan."
+      },
+      {
+        "key": "イ",
+        "textJp": "データベースの管理者を root などの特権アカウントにして権限を一元化する。",
+        "textEnId": "Memusatkan akses menggunakan akun root/privilege tinggi.",
+        "explanation": "Salah. Ini melanggar prinsip Least Privilege; jika terjadi kebocoran, penyerang mendapat kendali penuh atas seluruh database."
+      },
+      {
+        "key": "ウ",
+        "textJp": "入力値からHTMLタグ（<や>）をエスケープ処理する。",
+        "textEnId": "Melakukan escaping tag HTML (< dan >).",
+        "explanation": "Salah. Escaping HTML adalah mitigasi untuk Cross-Site Scripting (XSS), bukan SQL Injection."
+      },
+      {
+        "key": "エ",
+        "textJp": "通信経路をSSL/TLSによって暗号化する。",
+        "textEnId": "Mengenkripsi jalur transmisi dengan SSL/TLS.",
+        "explanation": "Salah. SSL/TLS hanya melindungi dari eavesdropping/man-in-the-middle di jaringan; payload SQL injection tetap sampai ke database dalam bentuk plaintext."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "Mitigasi Fundamental SQL Injection: Gunakan バインド機構 (PreparedStatement / Placeholders). Input pengguna tidak digabungkan langsung secara string (string concatenation) ke klausa SQL.",
+    "keyTakeaway": "Obat paten SQL Injection = Prepared Statement (プレースホルダ / バインド機構)."
+  },
+  {
+    "id": "quiz-exp-14",
+    "year": "令和3年 過去問",
+    "category": "technology",
+    "subCategory": "Security (Cross-Site Scripting XSS)",
+    "questionJp": "Webアプリケーションの脆弱性であるクロスサイトスクリプティング（XSS）の根本的な防止策はどれか。",
+    "questionTranslation": "Manakah solusi pencegahan paling mendasar untuk kerentanan Cross-Site Scripting (XSS) pada aplikasi web?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "HTML出力時に「<」「>」「&」「\"」「'」などの特殊文字を適切にエスケープ処理する（サニタイズ）。",
+        "textEnId": "Melakukan escaping karakter khusus HTML (<, >, &, \", ') saat render output.",
+        "explanation": "Benar! XSS terjadi karena browser mengira input pengguna adalah tag script yang dapat dieksekusi. Mengubah karakter khusus menjadi entity HTML (misal < menjadi &lt;) mematikan eksekusi script."
+      },
+      {
+        "key": "イ",
+        "textJp": "Webサーバへの全リクエストに対してワンタイムトークンを検証する。",
+        "textEnId": "Memverifikasi token sekali pakai pada setiap request.",
+        "explanation": "Salah. CSRF token adalah pencegahan untuk Cross-Site Request Forgery (CSRF), bukan XSS."
+      },
+      {
+        "key": "ウ",
+        "textJp": "SQLクエリ実行時にプレースホルダを使用する。",
+        "textEnId": "Menggunakan placeholder pada query SQL.",
+        "explanation": "Salah. Ini pencegahan untuk SQL Injection."
+      },
+      {
+        "key": "エ",
+        "textJp": "クッキーに Secure 属性のみを設定し、HttpOnly 属性は外す。",
+        "textEnId": "Hanya menyetel atribut Secure dan melepas HttpOnly.",
+        "explanation": "Salah. Atribut HttpOnly wajib diaktifkan justru untuk mencegah pencurian cookie session via script XSS (document.cookie)."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "XSS (クロスサイトスクリプティング): Penyerang menyisipkan script jahat ke halaman yang dilihat pengguna lain. Solusi fundamental: エスケープ処理 (HTML escaping / sanitasi karakter khusus <, >, &, \", ').",
+    "keyTakeaway": "XSS = Serangan script jahat di browser. Solusi: HTML Escaping (< jadi &lt;)."
+  },
+  {
+    "id": "quiz-exp-15",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "Security (CSRF Prevention)",
+    "questionJp": "Webサイトにログイン中の正規ユーザーが、悪意ある外部Webページを閲覧した際、意図しない書き込みや送金リクエストなどを強制実行させられる攻撃（CSRF）の対策として適切なものはどれか。",
+    "questionTranslation": "Manakah tindakan penanggulangan yang tepat untuk serangan CSRF (Cross-Site Request Forgery), di mana pengguna yang sedang login dipaksa mengeksekusi request transaksi tanpa disadarinya saat membuka situs jahat?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "フォーム送信時に予測困難なワンタイムトークン（CSRFトークン）を発行し、サーバ側で一致を検証する。",
+        "textEnId": "Menerbitkan CSRF token rahasia pada formulir dan memvalidasinya di server.",
+        "explanation": "Benar! Situs jahat tidak bisa membaca token rahasia di halaman asal korban (karena Same-Origin Policy), sehingga request palsu dari pihak ketiga akan ditolak oleh server."
+      },
+      {
+        "key": "イ",
+        "textJp": "入力された文字列の「<」や「>」を「&lt;」「&gt;」に変換する。",
+        "textEnId": "Mengonversi tanda kurung sudut menjadi entity HTML.",
+        "explanation": "Salah. Ini mitigasi untuk XSS."
+      },
+      {
+        "key": "ウ",
+        "textJp": "WebサーバのSSL/TLS証明書をEV証明書にアップグレードする。",
+        "textEnId": "Upgrade sertifikat TLS menjadi EV certificate.",
+        "explanation": "Salah. Sertifikat TLS tidak mencegah pemalsuan request lintas situs."
+      },
+      {
+        "key": "エ",
+        "textJp": "パスワードのハッシュ化アルゴリズムをMD5からSHA-1に変更する。",
+        "textEnId": "Mengganti hashing MD5 ke SHA-1.",
+        "explanation": "Salah. Keduanya sudah tergolong lemah dan tidak relevan dengan CSRF."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "CSRF: Memanfaatkan session login aktif korban untuk mengirim request jahat. Mitigasi utama: Gunakan CSRF Token (ワンタイムトークン) rahasia pada form POST, atau gunakan atribut cookie `SameSite=Strict/Lax`.",
+    "keyTakeaway": "Pencegahan CSRF = Pasang CSRF Token (ワンタイムトークン) atau Cookie SameSite."
+  },
+  {
+    "id": "quiz-exp-16",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "Security (Zero Trust Architecture)",
+    "questionJp": "社内ネットワークを「信頼できる領域」、外部を「信頼できない領域」とする従来の境界防御に対し、「すべての通信を信頼せず、常に検証する」という概念に基づくセキュリティモデルはどれか。",
+    "questionTranslation": "Berbeda dari model pertahanan batas konvensional yang menganggap jaringan internal aman, model keamanan mana yang berpegang pada konsep 'Never Trust, Always Verify' (jangan percaya siapa pun, verifikasi selalu)?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "ゼロトラスト (Zero Trust)",
+        "textEnId": "Zero Trust",
+        "explanation": "Benar! Zero Trust tidak mempercayai perangkat atau user meskipun berada di dalam kantor/LAN internal; setiap akses diverifikasi identitas, device posture, dan hak aksesnya secara ketat."
+      },
+      {
+        "key": "イ",
+        "textJp": "DMZ (DeMilitarized Zone)",
+        "textEnId": "DMZ",
+        "explanation": "Salah. DMZ adalah subnet perantara pada arsitektur batas tradisional untuk menempatkan server publik."
+      },
+      {
+        "key": "ウ",
+        "textJp": "VPN (Virtual Private Network)",
+        "textEnId": "VPN",
+        "explanation": "Salah. VPN tradisional masih menganut konsep batas: begitu terkoneksi ke VPN, user dianggap sudah berada di dalam jaringan terpercaya."
+      },
+      {
+        "key": "エ",
+        "textJp": "ハニーポット (Honeypot)",
+        "textEnId": "Honeypot",
+        "explanation": "Salah. Honeypot adalah sistem umpan yang sengaja dibiarkan rentan untuk mempelajari teknik peretas."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "ゼロトラスト (Zero Trust): Asumsi bahwa ancaman ada di dalam dan luar jaringan ('Never Trust, Always Verify'). Mendorong verifikasi identitas berlapis (MFA, EDR, Microsegmentation) menggantikan model batas (perimeter defense).",
+    "keyTakeaway": "Jangan percaya jaringan internal, selalu verifikasi akses = Zero Trust."
+  },
+  {
+    "id": "quiz-exp-17",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "Security (EDR Endpoint Detection & Response)",
+    "questionJp": "PCやサーバなどのエンドポイント端末において、挙動ログを常時監視・収集し、侵入したマルウェアの早期検知、感染拡大の防止、および原因調査を支援するセキュリティ製品はどれか。",
+    "questionTranslation": "Produk keamanan mana yang memantau log perilaku pada perangkat endpoint (PC/server) secara terus-menerus untuk mendeteksi malware yang lolos, mencegah penyebaran infeksi, dan membantu investigasi forensik?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "EDR (Endpoint Detection and Response)",
+        "textEnId": "EDR",
+        "explanation": "Benar! Berbeda dengan antivirus konvensional yang fokus mencegah sebelum masuk, EDR beroperasi dengan asumsi malware bisa lolos, lalu memantau perilaku anomali di endpoint dan meresponsnya."
+      },
+      {
+        "key": "イ",
+        "textJp": "WAF (Web Application Firewall)",
+        "textEnId": "WAF",
+        "explanation": "Salah. WAF memfilter traffic HTTP/HTTPS pada layer aplikasi web."
+      },
+      {
+        "key": "ウ",
+        "textJp": "SIEM (Security Information and Event Management)",
+        "textEnId": "SIEM",
+        "explanation": "Salah. SIEM adalah platform analisis terpusat yang mengumpulkan log dari berbagai perangkat di seluruh jaringan, bukan agen endpoint."
+      },
+      {
+        "key": "エ",
+        "textJp": "DLP (Data Loss Prevention)",
+        "textEnId": "DLP",
+        "explanation": "Salah. DLP bertujuan mencegah kebocoran data rahasia perusahaan keluar jaringan."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "EDR (Endpoint Detection and Response): Memantau endpoint secara real-time. Jika ada proses mencurigakan, EDR dapat langsung mengisolasi perangkat dari jaringan dan menganalisis jejak serangan (forensik).",
+    "keyTakeaway": "Deteksi dan respons malware yang sudah masuk ke PC = EDR."
+  },
+  {
+    "id": "quiz-exp-18",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "Security (WAF vs IPS vs Firewall)",
+    "questionJp": "ネットワークセキュリティ機器のうち、HTTP/HTTPS通信の内容をパケットのペイロードまで詳細に検査し、SQLインジェクションやXSSなどのWebアプリケーション特有の攻撃を防ぐものはどれか。",
+    "questionTranslation": "Di antara perangkat keamanan jaringan, manakah yang memeriksa muatan data (payload) paket HTTP/HTTPS sampai ke lapisan aplikasi untuk menangkal serangan spesifik web seperti SQL Injection dan XSS?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "パケットフィルタリング型ファイアウォール",
+        "textEnId": "Packet Filtering Firewall",
+        "explanation": "Salah. Firewall tradisional hanya memeriksa header IP dan Port layer 3 & 4, tidak memahami isi payload HTTP layer 7."
+      },
+      {
+        "key": "イ",
+        "textJp": "WAF (Web Application Firewall)",
+        "textEnId": "WAF",
+        "explanation": "Benar! WAF secara spesifik bekerja di Layer 7 (Application) untuk menganalisis parameter URL, body POST, cookie, dan mencegah eksploitasi web."
+      },
+      {
+        "key": "ウ",
+        "textJp": "サーキットレベルゲートウェイ",
+        "textEnId": "Circuit Level Gateway",
+        "explanation": "Salah. Circuit gateway bekerja di layer transport (TCP/UDP) dengan mengawasi sesi handshake (seperti SOCKS proxy)."
+      },
+      {
+        "key": "エ",
+        "textJp": "ロードバランサ (Load Balancer)",
+        "textEnId": "Load Balancer",
+        "explanation": "Salah. Load balancer bertugas mendistribusikan beban trafik ke banyak server."
+      }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "Hierarki Proteksi Jaringan: Firewall (L3/L4: IP + Port) → IDS/IPS (L3-L7: pola anomali OS/jaringan) → WAF (L7: khusus payload aplikasi web seperti SQLi, XSS, CSRF).",
+    "keyTakeaway": "Proteksi khusus serangan aplikasi web di Layer 7 = WAF."
+  },
+  {
+    "id": "quiz-exp-19",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "Data Structures (Stack vs Queue)",
+    "questionJp": "要素の追加（Push/Enqueue）と取り出し（Pop/Dequeue）の順序に関して、最初に入れた要素が最後に取り出される「LIFO（Last-In, First-Out）」の特性を持つデータ構造はどれか。",
+    "questionTranslation": "Terkait urutan penambahan dan pengambilan elemen, struktur data manakah yang memiliki karakteristik LIFO (Last-In, First-Out), di mana elemen yang pertama kali dimasukkan akan menjadi yang paling terakhir dikeluarkan?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "スタック (Stack)",
+        "textEnId": "Stack",
+        "explanation": "Benar! Stack menganut prinsip LIFO / FILO (seperti tumpukan piring: elemen paling atas yang masuk terakhir diambil duluan)."
+      },
+      {
+        "key": "イ",
+        "textJp": "キュー (Queue)",
+        "textEnId": "Queue",
+        "explanation": "Salah. Queue menganut FIFO (First-In, First-Out: seperti antrean loket kasir)."
+      },
+      {
+        "key": "ウ",
+        "textJp": "ヒープ (Heap)",
+        "textEnId": "Heap",
+        "explanation": "Salah. Heap mengeluarkan data berdasarkan prioritas nilai (nilai max atau min), bukan urutan masuk."
+      },
+      {
+        "key": "エ",
+        "textJp": "リングバッファ (Ring Buffer)",
+        "textEnId": "Ring Buffer",
+        "explanation": "Salah. Ring buffer pada umumnya dioperasikan sebagai FIFO queue berbentuk melingkar."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "スタック (Stack) = LIFO (Last-In, First-Out). Operasi: Push & Pop. Contoh: Call stack fungsi rekursif, Undo text editor. キュー (Queue) = FIFO (First-In, First-Out). Operasi: Enqueue & Dequeue.",
+    "keyTakeaway": "LIFO (tumpukan) = Stack. FIFO (antrean) = Queue."
+  },
+  {
+    "id": "quiz-exp-20",
+    "year": "令和3年 過去問",
+    "category": "technology",
+    "subCategory": "Data Structures (Binary Search Tree BST)",
+    "questionJp": "2分探索木（Binary Search Tree）の性質に関する記述として、適切なものはどれか。",
+    "questionTranslation": "Manakah pernyataan yang tepat mengenai karakteristik dari Pohon Biner Cari (Binary Search Tree - BST)?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "任意の節点において、左部分木の全ノードの値はその節点より小さく、右部分木の全ノードの値はその節点より大きい。",
+        "textEnId": "Pada setiap node, nilai sub-pohon kiri lebih kecil dan nilai sub-pohon kanan lebih besar.",
+        "explanation": "Benar! Ini adalah definisi baku BST: Nilai kiri < Nilai Node < Nilai kanan. Melakukan penelusuran In-Order (中間順) pada BST selalu menghasilkan urutan terurut menaik (ascending)."
+      },
+      {
+        "key": "イ",
+        "textJp": "すべての葉の深さが等しく、かつ完全2分木でなければならない。",
+        "textEnId": "Semua daun harus memiliki kedalaman yang sama dan harus berupa Complete Binary Tree.",
+        "explanation": "Salah. Ini adalah syarat pohon seimbang sempurna (seperti B-tree); BST biasa tidak mewajibkan hal ini."
+      },
+      {
+        "key": "ウ",
+        "textJp": "親ノードの値は、常に子ノードの値よりも大きいか等しい。",
+        "textEnId": "Nilai induk selalu lebih besar atau sama dengan nilai anak.",
+        "explanation": "Salah. Ini adalah definisi struktur Max-Heap, bukan Binary Search Tree."
+      },
+      {
+        "key": "エ",
+        "textJp": "各ノードは最大で3つまでの子ノードを持つことができる。",
+        "textEnId": "Setiap node dapat memiliki maksimal 3 anak.",
+        "explanation": "Salah. 2分木 (Binary Tree) dibatasi maksimal 2 anak (kiri dan kanan)."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "2分探索木 (BST): Kiri < Node < Kanan. Karakteristik sakti ujian FE: In-order traversal (中間順巡回: Kiri → Node → Kanan) pada BST selalu menghasilkan urutan data terurut dari kecil ke besar (昇順)!",
+    "keyTakeaway": "BST: Nilai anak kiri < induk < anak kanan. Traversal In-order menghasilkan urutan terurut."
+  },
+  {
+    "id": "quiz-exp-21",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "Algorithms (Time Complexity Big-O)",
+    "questionJp": "要素数が n の整列されていない配列から、特定の要素を探索する場合の線形探索法（リニアサーチ）の平均計算量（オーダー）はどれか。",
+    "questionTranslation": "Berapakah kompleksitas waktu rata-rata (Big-O) untuk mencari suatu elemen dalam array acak berukuran n menggunakan Linear Search?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "O(1)",
+        "textEnId": "O(1)",
+        "explanation": "Salah. O(1) adalah kompleksitas akses indeks array langsung atau hash table lookup."
+      },
+      {
+        "key": "イ",
+        "textJp": "O(log n)",
+        "textEnId": "O(log n)",
+        "explanation": "Salah. O(log n) adalah kompleksitas 2分探索 (Binary Search) pada array yang SUDAH terurut."
+      },
+      {
+        "key": "ウ",
+        "textJp": "O(n)",
+        "textEnId": "O(n)",
+        "explanation": "Benar! Pada array acak, kita harus memeriksa elemen satu per satu dari awal sampai akhir, sehingga waktu yang dibutuhkan berbanding lurus dengan n: (n+1)/2 perbandingan = O(n)."
+      },
+      {
+        "key": "エ",
+        "textJp": "O(n log n)",
+        "textEnId": "O(n log n)",
+        "explanation": "Salah. O(n log n) adalah kompleksitas algoritma sorting efisien seperti Merge Sort atau Quick Sort."
+      }
+    ],
+    "correctKey": "ウ",
+    "summaryExplanation": "Kompleksitas Pencarian: Linear Search (線形探索) = O(n) (array acak). Binary Search (2分探索) = O(log n) (wajib array terurut). Hash Lookup (ハッシュ探索) = O(1) rata-rata.",
+    "keyTakeaway": "Linear Search = O(n). Binary Search = O(log n). Hash = O(1)."
+  },
+  {
+    "id": "quiz-exp-22",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "Algorithms (Sorting Algorithms Stability)",
+    "questionJp": "ソートアルゴリズムのうち、キーの値が同一である複数のレコードについて、ソート後も元の並び順が必ず保たれる「安定なソート（Stable Sort）」に分類されるものはどれか。",
+    "questionTranslation": "Di antara algoritma pengurutan (sorting), manakah yang tergolong 'Stable Sort' (urutan awal elemen yang bernilai kembar selalu dipertahankan)?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "バブルソート (Bubble Sort)",
+        "textEnId": "Bubble Sort",
+        "explanation": "Benar! Bubble Sort dan Insertion Sort bersifat stabil karena hanya menukar elemen yang bersebelahan jika nilainya lebih besar/kecil murni, tidak menukar jika nilainya kembar."
+      },
+      {
+        "key": "イ",
+        "textJp": "クイックソート (Quick Sort)",
+        "textEnId": "Quick Sort",
+        "explanation": "Salah. Quick Sort tidak stabil karena proses partisi pivot melompati banyak elemen sekaligus."
+      },
+      {
+        "key": "ウ",
+        "textJp": "ヒープソート (Heap Sort)",
+        "textEnId": "Heap Sort",
+        "explanation": "Salah. Heap Sort tidak stabil karena proses pertukaran root dengan leaf merusak urutan asli."
+      },
+      {
+        "key": "エ",
+        "textJp": "選択ソート (Selection Sort)",
+        "textEnId": "Selection Sort",
+        "explanation": "Salah. Selection Sort tidak stabil karena penukaran elemen minimum langsung dengan posisi depan dapat melompati elemen kembar lainnya."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "安定なソート (Stable Sort): バブルソート (Bubble), 挿入ソート (Insertion), マージソート (Merge). 不安定なソート (Unstable Sort): クイックソート (Quick), ヒープソート (Heap), 選択ソート (Selection).",
+    "keyTakeaway": "Stable Sort: Bubble, Insertion, Merge. Unstable: Quick, Heap, Selection."
+  },
+  {
+    "id": "quiz-exp-23",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "AI & Machine Learning (Overfitting)",
+    "questionJp": "機械学習のモデル学習において、訓練データに対しては極めて高い精度を示すものの、未知のテストデータに対する予測精度が著しく低下してしまう現象はどれか。",
+    "questionTranslation": "Dalam pelatihan model machine learning, fenomena di mana model memiliki akurasi sangat tinggi pada data latih (training) tetapi akurasinya anjlok pada data baru (test) disebut?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "過学習 (Overfitting)",
+        "textEnId": "Overfitting",
+        "explanation": "Benar! Overfitting terjadi ketika model terlalu rumit dan menghafal noise data latih sehingga kehilangan kemampuan generalisasi terhadap data baru."
+      },
+      {
+        "key": "イ",
+        "textJp": "未学習 (Underfitting)",
+        "textEnId": "Underfitting",
+        "explanation": "Salah. Underfitting terjadi saat model terlalu sederhana sehingga bahkan gagal menangkap pola dasar data latih."
+      },
+      {
+        "key": "ウ",
+        "textJp": "勾配消失 (Vanishing Gradient)",
+        "textEnId": "Vanishing Gradient",
+        "explanation": "Salah. Vanishing gradient adalah kendala di deep neural network di mana nilai gradien mendekati nol saat backpropagation."
+      },
+      {
+        "key": "エ",
+        "textJp": "データドリフト (Data Drift)",
+        "textEnId": "Data Drift",
+        "explanation": "Salah. Data drift adalah pergeseran distribusi data di lingkungan produksi seiring berjalannya waktu."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "過学習 (Overfitting): Model terlalu fit ke data training sampai menghafal noise. Pencegahan: Regularization (L1/L2), Dropout, Early Stopping, menambah volume data latih, atau Cross-validation (交差検証).",
+    "keyTakeaway": "Akurasi training tinggi tapi jeblok di data baru = Overfitting (過学習)."
+  },
+  {
+    "id": "quiz-exp-24",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "AI & Deep Learning (Transformer & LLM)",
+    "questionJp": "近年の大規模言語モデル（LLM）の基盤技術であり、文中の単語間の相互関係の強さを重み付けして並列処理を可能にした機構はどれか。",
+    "questionTranslation": "Teknologi fondasi dari Large Language Models (LLM) modern yang menghitung bobot hubungan antar kata dalam kalimat dan memungkinkan pemrosesan secara paralel adalah?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "アテンション機構 (Attention Mechanism)",
+        "textEnId": "Attention Mechanism",
+        "explanation": "Benar! Self-Attention pada arsitektur Transformer memungkinkan model memperhitungkan hubungan konteks antar kata secara simultan tanpa harus memproses sekuensial langkah demi langkah seperti RNN."
+      },
+      {
+        "key": "イ",
+        "textJp": "畳み込み層 (Convolutional Layer)",
+        "textEnId": "Convolutional Layer",
+        "explanation": "Salah. CNN (Convolutional Neural Network) adalah arsitektur yang dominan untuk pemrosesan citra/gambar (computer vision)."
+      },
+      {
+        "key": "ウ",
+        "textJp": "パーセプトロン (Perceptron)",
+        "textEnId": "Perceptron",
+        "explanation": "Salah. Perceptron adalah model neuron tiruan paling dasar dari tahun 1950-an."
+      },
+      {
+        "key": "エ",
+        "textJp": "プーリング層 (Pooling Layer)",
+        "textEnId": "Pooling Layer",
+        "explanation": "Salah. Pooling layer digunakan pada CNN untuk mereduksi dimensi spasial gambar."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "Transformer & Attention (注意機構): Menghilangkan ketergantungan sekuensial RNN, memungkinkan komputasi GPU paralel masif. Menjadi arsitektur utama GPT, BERT, dan LLM modern.",
+    "keyTakeaway": "Fondasi LLM modern untuk menghitung hubungan konteks kata = Attention Mechanism (Transformer)."
+  },
+  {
+    "id": "quiz-exp-25",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "Cloud Computing (IaaS vs PaaS vs SaaS)",
+    "questionJp": "クラウドサービスモデルのうち、OS、ミドルウェア、データベースなどのアプリケーション実行環境があらかじめ提供され、利用者はアプリケーションの開発とデータ管理に集中できるものはどれか。",
+    "questionTranslation": "Di antara model layanan cloud, manakah yang telah menyediakan sistem operasi, middleware, dan runtime database, sehingga pengguna dapat fokus murni pada pengembangan kode aplikasi dan data?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "IaaS (Infrastructure as a Service)",
+        "textEnId": "IaaS",
+        "explanation": "Salah. IaaS hanya menyediakan virtual machine, storage, dan jaringan. Pengguna harus menginstal dan mengelola OS, runtime, dan middleware sendiri (misal: AWS EC2, GCP Compute Engine)."
+      },
+      {
+        "key": "イ",
+        "textJp": "PaaS (Platform as a Service)",
+        "textEnId": "PaaS",
+        "explanation": "Benar! PaaS menyediakan lingkungan eksekusi lengkap (OS, runtime, DB) sehingga developer cukup deploy source code (misal: Google App Engine, Heroku, AWS Elastic Beanstalk)."
+      },
+      {
+        "key": "ウ",
+        "textJp": "SaaS (Software as a Service)",
+        "textEnId": "SaaS",
+        "explanation": "Salah. SaaS menyediakan aplikasi jadi yang siap digunakan pengguna akhir melalui browser (misal: Gmail, Google Workspace, Salesforce)."
+      },
+      {
+        "key": "エ",
+        "textJp": "DaaS (Desktop as a Service)",
+        "textEnId": "DaaS",
+        "explanation": "Salah. DaaS adalah virtual desktop infrastruktur yang di-host di cloud."
+      }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "Model Layanan Cloud: IaaS: hardware/VM + network (user urus OS ke atas). PaaS: platform aplikasi lengkap (user urus kode & data). SaaS: aplikasi jadi siap pakai (user tinggal pakai fitur).",
+    "keyTakeaway": "Cloud yang sediakan OS & runtime agar developer fokus kode = PaaS."
+  },
+  {
+    "id": "quiz-exp-26",
+    "year": "令和3年 過去問",
+    "category": "technology",
+    "subCategory": "Internet of Things (IoT Protocols MQTT)",
+    "questionJp": "IoT環境において、帯域幅が狭く信頼性の低い無線ネットワークでも効率的にセンサーデータを収集・配信できるよう設計された、軽量なPublish/Subscribe型のメッセージングプロトコルはどれか。",
+    "questionTranslation": "Dalam lingkungan IoT, protokol messaging berbasis Publish/Subscribe yang sangat ringan dan dirancang untuk mentransmisikan data sensor secara efisien di jaringan dengan bandwidth terbatas adalah?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "MQTT (Message Queuing Telemetry Transport)",
+        "textEnId": "MQTT",
+        "explanation": "Benar! MQTT memiliki header paket yang sangat kecil (hanya 2 byte) dan menggunakan model pub/sub melalui broker, sangat ideal untuk perangkat IoT berdaya rendah."
+      },
+      {
+        "key": "イ",
+        "textJp": "HTTP (Hypertext Transfer Protocol)",
+        "textEnId": "HTTP",
+        "explanation": "Salah. HTTP berbasis request/response dengan overhead header teks yang besar, kurang efisien untuk sensor IoT baterai kecil."
+      },
+      {
+        "key": "ウ",
+        "textJp": "FTP (File Transfer Protocol)",
+        "textEnId": "FTP",
+        "explanation": "Salah. FTP ditujukan untuk transfer berkas antar komputer, bukan streaming data sensor."
+      },
+      {
+        "key": "エ",
+        "textJp": "SNMP (Simple Network Management Protocol)",
+        "textEnId": "SNMP",
+        "explanation": "Salah. SNMP digunakan untuk memonitor perangkat jaringan (router, switch)."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "MQTT: Protokol IoT super ringan berbasis Publish/Subscribe via Broker. Header minimalis (2 byte), mendukung 3 tingkat QoS (Quality of Service: 0, 1, 2) untuk memastikan pengiriman data.",
+    "keyTakeaway": "Protokol IoT Publish/Subscribe ber-overhead minimal = MQTT."
+  },
+  {
+    "id": "quiz-exp-27",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "Digital Logic (Boolean De Morgan's Laws)",
+    "questionJp": "ド・モルガンの法則に従い、論理式 ¬(A ∧ B) と等価な論理式はどれか。ここで「¬」は否定、「∧」は論理積（AND）、「∨」は論理和（OR）を表す。",
+    "questionTranslation": "Menurut Hukum De Morgan, ekspresi logika manakah yang ekuivalen dengan ¬(A ∧ B)? Di mana '¬' adalah NOT, '∧' adalah AND, dan '∨' adalah OR.",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "¬A ∨ ¬B",
+        "textEnId": "¬A ∨ ¬B",
+        "explanation": "Benar! Hukum De Morgan menyatakan bahwa negasi dari AND adalah OR dari masing-masing negasi: NOT(A AND B) = (NOT A) OR (NOT B)."
+      },
+      {
+        "key": "イ",
+        "textJp": "¬A ∧ ¬B",
+        "textEnId": "¬A ∧ ¬B",
+        "explanation": "Salah. ¬A ∧ ¬B ekuivalen dengan ¬(A ∨ B)."
+      },
+      {
+        "key": "ウ",
+        "textJp": "A ∨ B",
+        "textEnId": "A ∨ B",
+        "explanation": "Salah. Negasi belum didistribusikan ke masing-masing variabel."
+      },
+      {
+        "key": "エ",
+        "textJp": "¬(A ∨ B)",
+        "textEnId": "¬(A ∨ B)",
+        "explanation": "Salah. Ini tidak ekuivalen dengan ¬(A ∧ B)."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "Hukum De Morgan (ド・モルガンの法則): 1. ¬(A ∧ B) = ¬A ∨ ¬B. 2. ¬(A ∨ B) = ¬A ∧ ¬B. Kunci: Saat NOT didistribusikan ke dalam kurung, operator AND bertukar menjadi OR, dan sebaliknya.",
+    "keyTakeaway": "Hukum De Morgan: NOT(A AND B) = (NOT A) OR (NOT B). AND bertukar jadi OR."
+  },
+  {
+    "id": "quiz-exp-28",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "Hardware & Storage (SSD vs HDD Wear Leveling)",
+    "questionJp": "フラッシュメモリを用いたSSDにおいて、特定のブロックへの書き込み集中を防ぎ、全ブロックの書き換え回数を均等化することでドライブ全体の寿命を延ばす技術はどれか。",
+    "questionTranslation": "Pada media penyimpanan SSD, teknologi apa yang meratakan jumlah siklus tulis/hapus ke seluruh blok memori flash guna mencegah aus prematur pada blok tertentu dan memperpanjang umur drive?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "ウェアレベリング (Wear Leveling)",
+        "textEnId": "Wear Leveling",
+        "explanation": "Benar! Memori flash NAND memiliki batas siklus penulisan (P/E cycle). Wear leveling memetakan penulisan data secara merata ke seluruh blok yang tersedia."
+      },
+      {
+        "key": "イ",
+        "textJp": "トリム (TRIM)",
+        "textEnId": "TRIM",
+        "explanation": "Salah. Perintah TRIM memberi tahu SSD blok mana yang sudah dihapus oleh OS sehingga bisa dibersihkan sebelumnya saat garbage collection."
+      },
+      {
+        "key": "ウ",
+        "textJp": "オーバープロビジョニング (Over-provisioning)",
+        "textEnId": "Over-provisioning",
+        "explanation": "Salah. Over-provisioning adalah penyediaan kapasitas memori cadangan tambahan yang tidak terlihat oleh pengguna."
+      },
+      {
+        "key": "エ",
+        "textJp": "デフラグメンテーション (Defragmentation)",
+        "textEnId": "Defragmentation",
+        "explanation": "Salah. Defragmentasi dilakukan pada HDD piringan magnetik; melakukan defrag pada SSD justru memperpendek umur karena menambah siklus tulis sia-sia."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "ウェアレベリング (Wear Leveling): Teknik pengontrol SSD untuk meratakan penulisan ke seluruh sel flash (mencegah titik aus). Ada 2 jenis: Dynamic (hanya blok bebas) dan Static (termasuk memindahkan data pasif).",
+    "keyTakeaway": "Pemerataan siklus tulis pada SSD agar awet = Wear Leveling."
+  },
+  {
+    "id": "quiz-exp-29",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "Networking (DNS Resolution Hierarchy)",
+    "questionJp": "DNSにおいて、クライアントからの名前解決要求を受け取り、ルートネームサーバからトップレベルドメイン（TLD）、権威ネームサーバへと反復問い合わせを代行して結果を返すサーバはどれか。",
+    "questionTranslation": "Dalam hierarki DNS, server apa yang menerima permintaan resolusi nama dari klien, lalu melakukan kueri berulang (iterative query) mulai dari Root server, TLD server, hingga Authoritative server untuk mendapatkan alamat IP target?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "DNSキャッシュサーバ（フルサービスリゾルバ）",
+        "textEnId": "DNS Cache Server / Full Resolver",
+        "explanation": "Benar! DNS Resolver (seperti DNS ISP atau 8.8.8.8) menerima recursive query dari PC pengguna, lalu melakukan iterative queries ke hierarki DNS dan menyimpan hasilnya di cache."
+      },
+      {
+        "key": "イ",
+        "textJp": "権威ネームサーバ（コンテンツサーバ）",
+        "textEnId": "Authoritative DNS Server",
+        "explanation": "Salah. Server otoritatif hanya bertugas menyimpan rekaman zone file resmi domain miliknya sendiri."
+      },
+      {
+        "key": "ウ",
+        "textJp": "ルートネームサーバ (Root DNS Server)",
+        "textEnId": "Root DNS Server",
+        "explanation": "Salah. Root server berada di puncak hierarki (titik .) yang hanya mengarahkan ke TLD (.jp, .com)."
+      },
+      {
+        "key": "エ",
+        "textJp": "DHCPサーバ (DHCP Server)",
+        "textEnId": "DHCP Server",
+        "explanation": "Salah. DHCP memberikan konfigurasi IP dan menetapkan alamat DNS resolver ke klien."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "Dua Jenis Server DNS: 1. DNSキャッシュサーバ (フルサービスリゾルバ): Mencari jawaban ke berbagai server atas nama klien, lalu menyimpan di cache. 2. 権威DNSサーバ (コンテンツサーバ): Memegang data resmi domain.",
+    "keyTakeaway": "Server yang keliling mencari IP atas nama klien = DNS Cache Server (Resolver)."
+  },
+  {
+    "id": "quiz-exp-30",
+    "year": "令和3年 過去問",
+    "category": "technology",
+    "subCategory": "Database (Normalization 1NF to 3NF)",
+    "questionJp": "関係データベースの正規化において、主キーの一部に関数従属している非キー属性を排除し、完全関数従属のみとする段階はどれか。",
+    "questionTranslation": "Dalam normalisasi basis data relasional, langkah normalisasi manakah yang menghilangkan ketergantungan fungsional parsial (sebagian kolom primary key) sehingga menjadi ketergantungan fungsional penuh?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "第1正規形 (1NF)",
+        "textEnId": "1NF",
+        "explanation": "Salah. 1NF menghilangkan pengulangan grup dan memastikan setiap kolom hanya bernilai atomik (tunggal)."
+      },
+      {
+        "key": "イ",
+        "textJp": "第2正規形 (2NF)",
+        "textEnId": "2NF",
+        "explanation": "Benar! 2NF mensyaratkan 1NF dan menghilangkan Ketergantungan Parsial (部分関数従属の排除): semua atribut non-kunci harus bergantung penuh pada seluruh Primary Key komposit."
+      },
+      {
+        "key": "ウ",
+        "textJp": "第3正規形 (3NF)",
+        "textEnId": "3NF",
+        "explanation": "Salah. 3NF mensyaratkan 2NF dan menghilangkan Ketergantungan Transitif (推移的関数従属の排除): kolom non-kunci tidak boleh bergantung pada kolom non-kunci lainnya."
+      },
+      {
+        "key": "エ",
+        "textJp": "ボイス・コッド正規形 (BCNF)",
+        "textEnId": "BCNF",
+        "explanation": "Salah. BCNF adalah bentuk lebih ketat dari 3NF untuk menangani dependensi antar kandidat kunci ganda."
+      }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "Tangga Normalisasi Relasional: 1NF: Hilangkan data berulang (jadikan nilai atomik). 2NF: Hilangkan dependensi fungsional parsial (部分関数従属). 3NF: Hilangkan dependensi fungsional transitif (推移的関数従属).",
+    "keyTakeaway": "Hilangkan dependensi parsial = 2NF. Hilangkan dependensi transitif = 3NF."
+  },
+  {
+    "id": "quiz-exp-31",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "Database (B-Tree Index Characteristics)",
+    "questionJp": "リレーショナルデータベースで広く利用されている「B木インデックス」の特徴として、適切なものはどれか。",
+    "questionTranslation": "Manakah pernyataan yang tepat mengenai karakteristik dari 'B-tree Index' yang banyak digunakan pada basis data relasional?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "根から任意の葉までの深さが常に一定である平衡木構造を持ち、データの挿入・削除があってもバランスが保たれる。",
+        "textEnId": "Memiliki struktur pohon seimbang di mana kedalaman dari root ke semua leaf selalu sama.",
+        "explanation": "Benar! B-tree adalah Balanced Tree multi-way: semua leaf node berada pada level kedalaman yang persis sama, menjamin performa pencarian stabil O(log n)."
+      },
+      {
+        "key": "イ",
+        "textJp": "ハッシュ関数を利用するため、完全一致検索は高速だが、範囲検索（BETWEENや不等号）には利用できない。",
+        "textEnId": "Menggunakan fungsi hash sehingga cepat untuk exact match tetapi tidak bisa untuk range search.",
+        "explanation": "Salah. Ini adalah karakteristik Hash Index; B-tree justru sangat unggul untuk range search karena datanya terurut."
+      },
+      {
+        "key": "ウ",
+        "textJp": "カーディナリティ（値の種類の数）が非常に低い列（例：性別フラグなど）に対して最も検索性能が高くなる。",
+        "textEnId": "Paling efisien untuk kolom dengan kardinalitas sangat rendah.",
+        "explanation": "Salah. Kolom ber-kardinalitas rendah lebih cocok memakai Bitmap Index; B-tree tidak efisien jika ragam nilainya sedikit."
+      },
+      {
+        "key": "エ",
+        "textJp": "データの追加順序によって木構造が一方に偏るため、定期的な再構築が不可欠である。",
+        "textEnId": "Pohon akan miring sebelah seiring waktu dan wajib di-rebuild berkala.",
+        "explanation": "Salah. B-tree secara otomatis menyeimbangkan diri (self-balancing) melalui operasi split dan merge node."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "B木 (B-Tree Index): Balanced Tree (平衡木). Semua daun memiliki kedalaman yang sama (O(log n)). Sangat cepat untuk pencarian exact match (一致検索) maupun range search (範囲検索).",
+    "keyTakeaway": "B-Tree = Balanced Tree. Kedalaman semua daun sama, sangat stabil untuk range query."
+  },
+  {
+    "id": "quiz-exp-32",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "Software Architecture (Microservices vs Monolith)",
+    "questionJp": "マイクロサービスアーキテクチャの特徴として、モノリシックアーキテクチャと比較したときの適切な記述はどれか。",
+    "questionTranslation": "Manakah karakteristik arsitektur Microservices yang tepat jika dibandingkan dengan arsitektur Monolitik?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "サービスごとに独立して開発・テスト・デプロイを行うことができ、耐障害性やスケーラビリティの向上が容易になる。",
+        "textEnId": "Layanan dapat dikembangkan, diuji, dan dideploy secara independen.",
+        "explanation": "Benar! Setiap microservice memiliki codebase dan database sendiri, berkomunikasi lewat lightweight API (REST/gRPC), dan dapat diskalakan secara terpisah."
+      },
+      {
+        "key": "イ",
+        "textJp": "サービス間のネットワーク通信が発生しないため、レイテンシ（遅延）が極めて低くなる。",
+        "textEnId": "Tidak ada komunikasi jaringan antar layanan sehingga latensi sangat rendah.",
+        "explanation": "Salah. Monolith tidak butuh network call antar komponen; microservices justru memiliki overhead network latency antar service."
+      },
+      {
+        "key": "ウ",
+        "textJp": "単一のデータベースを全サービスで共有するため、ACIDトランザクションの維持が非常に容易である。",
+        "textEnId": "Seluruh layanan berbagi 1 database tunggal sehingga transaksi ACID mudah dipertahankan.",
+        "explanation": "Salah. Best practice microservices adalah 'Database per service'; menjaga konsistensi data membutuhkan pola eventual consistency (Saga pattern)."
+      },
+      {
+        "key": "エ",
+        "textJp": "システム全体の監視やログ収集、障害解析の難易度が大幅に下がる。",
+        "textEnId": "Kesulitan monitoring dan debugging turun drastis.",
+        "explanation": "Salah. Tracing sistem terdistribusi (Distributed Tracing) justru jauh lebih rumit dibanding monolith."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "Microservices: Memecah aplikasi menjadi layanan-layanan kecil independen. Keunggulan: Deploy independen, skalabilitas per service, isolasi kegagalan. Tantangan: Network latency, distributed transaction, dan kompleksitas tracing.",
+    "keyTakeaway": "Microservices = Tiap service independen (deploy terpisah, database terpisah)."
+  },
+  {
+    "id": "quiz-exp-33",
+    "year": "令和5年 過去問",
+    "category": "technology",
+    "subCategory": "Software Engineering (Code Refactoring)",
+    "questionJp": "ソフトウェア開発における「リファクタリング」の定義として、最も適切なものはどれか。",
+    "questionTranslation": "Manakah definisi yang paling tepat mengenai 'Refactoring' dalam pengembangan perangkat lunak?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "ソフトウェアの外部から見た振る舞い（仕様）を変えずに、内部のプログラム構造を整理して保守性や可読性を高めること。",
+        "textEnId": "Memperbaiki struktur internal kode tanpa mengubah perilaku eksternal.",
+        "explanation": "Benar! Definisi baku Martin Fowler: Refactoring mengubah struktur internal perangkat lunak agar lebih mudah dipahami dan murah dimodifikasi, tanpa mengubah fungsi/perilaku yang terlihat oleh pengguna."
+      },
+      {
+        "key": "イ",
+        "textJp": "既存のプログラムに新たな機能を追加してシステム要件を拡張すること。",
+        "textEnId": "Menambahkan fitur baru untuk memperluas fungsionalitas sistem.",
+        "explanation": "Salah. Menambah fitur baru adalah penambahan fungsionalitas, bukan refactoring."
+      },
+      {
+        "key": "ウ",
+        "textJp": "発見されたバグの原因を特定し、不具合を修正すること。",
+        "textEnId": "Menemukan dan memperbaiki bug (debugging).",
+        "explanation": "Salah. Memperbaiki bug disebut bug-fixing/debugging."
+      },
+      {
+        "key": "エ",
+        "textJp": "プログラムを高速化するために、可読性を犠牲にして低レベル言語のアセンブラで書き直すこと。",
+        "textEnId": "Menulis ulang kode dengan bahasa assembly demi kecepatan.",
+        "explanation": "Salah. Refactoring justru bertujuan meningkatkan keterbacaan (readability) dan pemeliharaan (maintainability)."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "リファクタリング (Refactoring): Memperbaiki kualitas internal kode (Clean Code) TANPA mengubah output/perilaku fungsional eksternal. Biasanya didukung oleh unit test otomatis untuk menjamin tidak ada regresi.",
+    "keyTakeaway": "Refactoring = Perbaiki struktur internal kode tanpa mengubah fitur eksternal."
+  },
+  {
+    "id": "quiz-exp-34",
+    "year": "令和4年 過去問",
+    "category": "technology",
+    "subCategory": "Security (Ransomware & 3-2-1 Backup Rule)",
+    "questionJp": "ランサムウェアによるデータ暗号化被害に備えるバックアップ戦略として、推奨される「3-2-1バックアップルール」の説明はどれか。",
+    "questionTranslation": "Sebagai strategi mitigasi terhadap serangan pemerasan Ransomware, manakah penjelasan aturan '3-2-1 Backup Rule' yang direkomendasikan?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "データを3部作成し、2種類の異なるメディアに保存し、そのうち1部をオフサイト（遠隔地またはオフライン）に保管する。",
+        "textEnId": "Buat 3 salinan data, simpan di 2 media berbeda, dan letakkan 1 salinan di offsite/offline.",
+        "explanation": "Benar! 3 Salinan (1 primer + 2 backup) di 2 media berbeda (misal: NAS dan Cloud/Tape), dengan minimal 1 salinan terisolasi (air-gapped/offsite) agar tidak ikut terinfeksi ransomware."
+      },
+      {
+        "key": "イ",
+        "textJp": "3日ごとにフルバックアップを取り、2つの別部署で管理し、1年ごとにメディアを廃棄する。",
+        "textEnId": "Backup penuh tiap 3 hari, dikelola 2 departemen, dibuang setelah 1 tahun.",
+        "explanation": "Salah. 3-2-1 merujuk pada jumlah salinan, variasi media, dan lokasi penyimpanan."
+      },
+      {
+        "key": "ウ",
+        "textJp": "3重のパスワードを設定し、2要素認証を導入し、1つの暗号化キーを共有する。",
+        "textEnId": "Setel 3 lapis password, 2 faktor autentikasi, dan 1 kunci bersama.",
+        "explanation": "Salah. Ini mengada-ada istilah keamanan akun."
+      },
+      {
+        "key": "エ",
+        "textJp": "同一サーバ内の異なる3つのパーティションに、2回暗号化して、1つの圧縮ファイルとして保存する。",
+        "textEnId": "Simpan di 3 partisi berbeda pada server yang sama.",
+        "explanation": "Salah. Jika satu server terkena ransomware, seluruh partisi di dalamnya akan ikut terenkripsi."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "3-2-1 Backup Rule: 3 salinan data (3 copies) → pada minimal 2 tipe media berbeda (2 different media) → minimal 1 salinan berada di lokasi terpisah atau offline/air-gapped (1 offsite/immutable copy).",
+    "keyTakeaway": "3-2-1 Backup: 3 Salinan data, di 2 Media berbeda, 1 di Tempat terpisah/Offline."
+  },
+  {
+    "id": "quiz-exp-35",
+    "year": "令和5年 過去問",
+    "category": "management",
+    "subCategory": "Agile & Scrum (Roles & Responsibilities)",
+    "questionJp": "スクラム開発における「プロダクトオーナー（PO）」の主な責任として、最も適切なものはどれか。",
+    "questionTranslation": "Dalam metodologi Agile Scrum, manakah tanggung jawab utama dari seorang Product Owner (PO)?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "プロダクトバックログの優先順位を決定し、プロダクトの価値を最大化すること。",
+        "textEnId": "Menentukan prioritas Product Backlog dan memaksimalkan nilai produk.",
+        "explanation": "Benar! Product Owner bertanggung jawab atas 'APA' yang dibangun (visi produk, prioritas backlog, ROI) dan memaksimalkan nilai bisnis."
+      },
+      {
+        "key": "イ",
+        "textJp": "スクラムの理論とプラクティスを遵守させ、チームの障害物を取り除くこと。",
+        "textEnId": "Memastikan kepatuhan aturan Scrum dan menyingkirkan hambatan tim.",
+        "explanation": "Salah. Ini adalah tugas dari Scrum Master (SM)."
+      },
+      {
+        "key": "ウ",
+        "textJp": "スプリント内の作業見積もりを行い、アーキテクチャの設計を決定すること。",
+        "textEnId": "Melakukan estimasi kerja dan merancang arsitektur sistem.",
+        "explanation": "Salah. Ini adalah tanggung jawab tim pengembang (Developers)."
+      },
+      {
+        "key": "エ",
+        "textJp": "チームメンバーの日常業務の作業割り当てを直接指示すること。",
+        "textEnId": "Memberikan instruksi penugasan harian ke anggota tim.",
+        "explanation": "Salah. Tim Scrum bersifat self-organizing (swakelola); tidak ada manajer yang mendikte penugasan."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "Peran dalam Scrum: Product Owner (PO): Mengelola Product Backlog & memaksimalkan nilai produk. Scrum Master (SM): Fasilitator, memastikan proses Scrum berjalan dan menghapus blocker. Developers: Mengembangkan inkremen produk secara swakelola.",
+    "keyTakeaway": "Product Owner = Nilai produk & prioritas backlog. Scrum Master = Fasilitator proses & pelindung tim."
+  },
+  {
+    "id": "quiz-exp-36",
+    "year": "令和4年 過去問",
+    "category": "management",
+    "subCategory": "Agile & Scrum (Burndown Chart)",
+    "questionJp": "アジャイル開発において、スプリント内の残作業量の推移を日次で視覚化し、計画どおりにスプリントゴールを達成できるかを把握するために用いる図はどれか。",
+    "questionTranslation": "Dalam pengembangan Agile, diagram apa yang memvisualisasikan sisa beban kerja harian dalam satu Sprint untuk memantau apakah Sprint Goal dapat tercapai sesuai jadwal?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "バーンダウンチャート (Burndown Chart)",
+        "textEnId": "Burndown Chart",
+        "explanation": "Benar! Sumbu Y menunjukkan sisa poin cerita/jam kerja, sumbu X menunjukkan hari kerja. Garis yang menurun ke nol di akhir sprint menandakan pekerjaan selesai tepat waktu."
+      },
+      {
+        "key": "イ",
+        "textJp": "ガントチャート (Gantt Chart)",
+        "textEnId": "Gantt Chart",
+        "explanation": "Salah. Gantt chart digunakan pada model Waterfall untuk menampilkan jadwal batang horizontal dan ketergantungan tugas."
+      },
+      {
+        "key": "ウ",
+        "textJp": "マトリックス図 (Matrix Diagram)",
+        "textEnId": "Matrix Diagram",
+        "explanation": "Salah. Diagram matriks digunakan untuk membandingkan hubungan antara dua himpunan data."
+      },
+      {
+        "key": "エ",
+        "textJp": "パレート図 (Pareto Diagram)",
+        "textEnId": "Pareto Diagram",
+        "explanation": "Salah. Diagram Pareto digunakan untuk menganalisis frekuensi masalah kualitas berdasarkan prinsip 80/20."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "バーンダウンチャート (Burndown Chart): Menunjukkan sisa pekerjaan (remaining effort) yang terus terbakar berkurang menuju angka 0. Jika garis nyata berada di atas garis ideal, tim terlambat; jika di bawah, tim lebih cepat.",
+    "keyTakeaway": "Grafik sisa beban kerja yang turun menuju nol di akhir sprint = Burndown Chart."
+  },
+  {
+    "id": "quiz-exp-37",
+    "year": "令和5年 過去問",
+    "category": "management",
+    "subCategory": "ITIL Service Management (Incident vs Problem)",
+    "questionJp": "ITIL（ITサービスマネジメント）において、インシデント管理と問題管理の関係に関する記述として、最も適切なものはどれか。",
+    "questionTranslation": "Menurut kerangka kerja ITIL, manakah pernyataan yang paling tepat mengenai perbedaan antara Incident Management dan Problem Management?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "インシデント管理はサービスの迅速な復旧を目的とし、問題管理はインシデントの根本原因を究明して再発を防止することを目的とする。",
+        "textEnId": "Incident management memulihkan layanan secepatnya, Problem management mencari akar masalah agar tidak terulang.",
+        "explanation": "Benar! Definisi klasik ITIL: Incident Management berfokus pada kecepatan pemulihan operasi (bisa pakai workaround sementara). Problem Management menganalisis root cause (根本原因) agar insiden tidak terjadi lagi di masa depan."
+      },
+      {
+        "key": "イ",
+        "textJp": "インシデント管理は重大な障害のみを扱い、問題管理は軽微な障害を扱う。",
+        "textEnId": "Incident menangani gangguan fatal, problem menangani gangguan sepele.",
+        "explanation": "Salah. Klasifikasi keduanya didasarkan pada tujuan (pemulihan vs pencarian akar penyebab), bukan skala keparahan."
+      },
+      {
+        "key": "ウ",
+        "textJp": "問題管理が完了するまで、インシデント管理はワークアラウンド（暫定回避策）を適用してはならない。",
+        "textEnId": "Incident tidak boleh menerapkan workaround sebelum problem selesai.",
+        "explanation": "Salah. Incident management justru sangat dianjurkan menerapkan workaround sesegera mungkin demi memulihkan layanan pengguna."
+      },
+      {
+        "key": "エ",
+        "textJp": "インシデント管理は開発部門が担当し、問題管理は運用部門が担当する。",
+        "textEnId": "Incident ditangani tim developer, problem ditangani tim operasional.",
+        "explanation": "Salah. Keduanya adalah proses operasional layanan IT."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "ITIL: 1. インシデント管理 (Incident Management): Pulihkan layanan sesegera mungkin (Prioritas: Kecepatan / Workaround). 2. 問題管理 (Problem Management): Cari akar masalah dan hilangkan penyebab permanennya (Prioritas: Kualitas / Eliminasi Root Cause).",
+    "keyTakeaway": "Incident Management = Pulihkan layanan cepat. Problem Management = Cari akar penyebab (root cause)."
+  },
+  {
+    "id": "quiz-exp-38",
+    "year": "令和3年 過去問",
+    "category": "management",
+    "subCategory": "Quality Control (Pareto Diagram 80/20)",
+    "questionJp": "品質管理で用いられるQC7つ道具のうち、項目別の発生件数を降順に並べた棒グラフと、その累積比率を表す折れ線グラフを組み合わせた図はどれか。",
+    "questionTranslation": "Di antara 7 alat pengendalian kualitas (QC 7 Tools), diagram apa yang menggabungkan diagram batang terurut menurun berdasarkan frekuensi kemunculan dengan diagram garis persentase kumulatif?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "パレート図 (Pareto Diagram)",
+        "textEnId": "Pareto Diagram",
+        "explanation": "Benar! Diagram Pareto digunakan untuk mengidentifikasi 'The Vital Few' (masalah-masalah utama yang menyumbang 80% dari total cacat) berdasarkan prinsip 80/20."
+      },
+      {
+        "key": "イ",
+        "textJp": "特性要因図（魚の骨図 / フィッシュボーン）",
+        "textEnId": "Ishikawa / Fishbone Diagram",
+        "explanation": "Salah. Diagram Fishbone digunakan untuk membedah akar penyebab masalah secara kualitatif."
+      },
+      {
+        "key": "ウ",
+        "textJp": "散布図 (Scatter Diagram)",
+        "textEnId": "Scatter Diagram",
+        "explanation": "Salah. Diagram sebar menampilkan titik-titik untuk menganalisis korelasi antara dua variabel."
+      },
+      {
+        "key": "エ",
+        "textJp": "管理図 (Control Chart)",
+        "textEnId": "Control Chart",
+        "explanation": "Salah. Diagram kendali menampilkan batas kontrol atas (UCL) dan bawah (LCL) untuk mendeteksi anomali proses dari waktu ke waktu."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "パレート図 (Pareto Chart): Diagram batang (frekuensi cacat menurun dari kiri ke kanan) + kurva garis kumulatif (0% - 100%). Berguna untuk menentukan prioritas perbaikan masalah (Prinsip Pareto: fokus pada 20% penyebab terbesar).",
+    "keyTakeaway": "Grafik batang menurun + garis persentase kumulatif = Pareto Diagram (QC 7 Tools)."
+  },
+  {
+    "id": "quiz-exp-39",
+    "year": "令和4年 過去問",
+    "category": "management",
+    "subCategory": "Project Risk Management (Risk Response Strategies)",
+    "questionJp": "プロジェクトのリスクマネジメントにおいて、リスクの影響を軽減するために損害保険に加入したり、専門技術を持つ外部企業へ業務を委託したりする対応戦略はどれか。",
+    "questionTranslation": "Dalam manajemen risiko proyek, membeli polis asuransi kerugian atau mengontrak pihak ketiga ahli untuk mengalihkan dampak risiko termasuk dalam strategi?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "リスクの回避 (Risk Avoidance)",
+        "textEnId": "Risk Avoidance",
+        "explanation": "Salah. Menghindari risiko berarti mengubah rencana proyek untuk sepenuhnya membatalkan aktivitas berbahaya tersebut."
+      },
+      {
+        "key": "イ",
+        "textJp": "リスクの転嫁 / 移転 (Risk Transference)",
+        "textEnId": "Risk Transference",
+        "explanation": "Benar! Mentransfer risiko berarti mengalihkan dampak finansial atau tanggung jawab risiko ke pihak ketiga (misal: asuransi, garansi vendor, kontrak outsourcing fixed-price)."
+      },
+      {
+        "key": "ウ",
+        "textJp": "リスクの軽減 / 緩和 (Risk Mitigation)",
+        "textEnId": "Risk Mitigation",
+        "explanation": "Salah. Mitigasi berarti mengambil tindakan proaktif untuk menurunkan probabilitas terjadinya risiko atau memperkecil dampak kerusakannya (misal: pasang redundansi server)."
+      },
+      {
+        "key": "エ",
+        "textJp": "リスクの受容 / 保有 (Risk Acceptance)",
+        "textEnId": "Risk Acceptance",
+        "explanation": "Salah. Menerima risiko berarti tidak mengambil tindakan pencegahan khusus dan siap menanggung risiko jika terjadi (biasanya jika dampaknya kecil)."
+      }
+    ],
+    "correctKey": "イ",
+    "summaryExplanation": "4 Strategi Respons Risiko Negatif: 1. 転嫁 (Transfer): Asuransi, outsource ke vendor lain. 2. 回避 (Avoid): Batalkan fitur berisiko. 3. 軽減 (Mitigate): Redundansi, testing ekstra. 4. 受容 (Accept): Pasrah terima dampak.",
+    "keyTakeaway": "Beli asuransi atau lempar risiko ke pihak ketiga = リスクの転嫁 (Risk Transfer)."
+  },
+  {
+    "id": "quiz-exp-40",
+    "year": "令和5年 過去問",
+    "category": "strategy",
+    "subCategory": "Business Strategy (DX Digital Transformation)",
+    "questionJp": "経済産業省の「DX推進ガイドライン」におけるデジタルトランスフォーメーション（DX）の定義として、適切なものはどれか。",
+    "questionTranslation": "Menurut Pedoman Promosi DX Kementerian Ekonomi, Perdagangan, dan Industri Jepang (METI), manakah definisi Digital Transformation (DX) yang tepat?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "企業がデータとデジタル技術を活用して、ビジネスモデルや業務、組織、企業文化を変革し、競争上の優位性を確立すること。",
+        "textEnId": "Perusahaan memanfaatkan data dan teknologi digital untuk mentransformasi model bisnis dan budaya demi keunggulan kompetitif.",
+        "explanation": "Benar! DX bukan sekadar komputerisasi dokumen (digitization) atau efisiensi kerja (digitalization), melainkan transformasi menyeluruh pada model bisnis dan budaya organisasi."
+      },
+      {
+        "key": "イ",
+        "textJp": "社内の紙書類をすべてスキャナでPDF化し、ペーパーレス化を達成すること。",
+        "textEnId": "Melakukan scan kertas menjadi PDF untuk mewujudkan paperless.",
+        "explanation": "Salah. Ini hanyalah デジタイゼーション (Digitization) tahap awal, belum mencapai transformasi nilai bisnis."
+      },
+      {
+        "key": "ウ",
+        "textJp": "社内ネットワークの通信速度を10Gbpsに増強すること。",
+        "textEnId": "Menaikkan kecepatan bandwidth internet kantor.",
+        "explanation": "Salah. Peningkatan infrastruktur teknis semata bukanlah DX."
+      },
+      {
+        "key": "エ",
+        "textJp": "既存のレガシーシステムを修正せず、クラウド環境へそのまま移行（リフト）すること。",
+        "textEnId": "Memindahkan sistem lama apa adanya ke cloud tanpa perubahan.",
+        "explanation": "Salah. Lift-and-shift tanpa perubahan arsitektur tidak menyelesaikan masalah teknis sistem lama (2025年の崖)."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "Tiga Tahap Evolusi Digital: 1. デジタイゼーション (Digitization): Ubah fisik ke digital (misal: scan kertas ke PDF). 2. デジタライゼーション (Digitalization): Otomasi proses kerja. 3. デジタルトランスフォーメーション (DX): Rombak model bisnis dan budaya perusahaan demi keunggulan kompetitif.",
+    "keyTakeaway": "DX = Transformasi model bisnis & kultur organisasi secara holistik via data dan teknologi."
+  },
+  {
+    "id": "quiz-exp-41",
+    "year": "令和4年 過去問",
+    "category": "strategy",
+    "subCategory": "Business Management (KPI vs KGI vs CSF)",
+    "questionJp": "目標管理の指標において、最終的な事業目標の達成度を測る「KGI（重要目標達成指標）」に対し、そのプロセスにおける中間的な進捗度を定量的に測定する指標はどれか。",
+    "questionTranslation": "Dalam manajemen sasaran bisnis, jika KGI (Key Goal Indicator) mengukur pencapaian target akhir, indikator apa yang mengukur kemajuan proses perantara secara kuantitatif?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "KPI (Key Performance Indicator / 重要業績評価指標)",
+        "textEnId": "KPI",
+        "explanation": "Benar! KGI adalah tujuan akhir (misal: Penjualan 10 Miliar Yen). KPI adalah indikator proses antara yang harus dicapai untuk menuju KGI tersebut (misal: Jumlah kunjungan sales 100 kali per bulan)."
+      },
+      {
+        "key": "イ",
+        "textJp": "CSF (Critical Success Factor / 重要成功要因)",
+        "textEnId": "CSF",
+        "explanation": "Salah. CSF adalah faktor strategis penentu keberhasilan (kualitatif), sedangkan KPI adalah ukuran kuantitatif dari CSF tersebut."
+      },
+      {
+        "key": "ウ",
+        "textJp": "SLA (Service Level Agreement)",
+        "textEnId": "SLA",
+        "explanation": "Salah. SLA adalah perjanjian tingkat kualitas layanan antara penyedia dan pengguna layanan."
+      },
+      {
+        "key": "エ",
+        "textJp": "BCP (Business Continuity Plan)",
+        "textEnId": "BCP",
+        "explanation": "Salah. BCP adalah rencana kelangsungan bisnis menghadapi bencana darurat."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "KGI vs CSF vs KPI: KGI (Key Goal Indicator): Target akhir kuantitatif (contoh: Laba bersih naik 20%). CSF (Critical Success Factor): Faktor kunci untuk mencapai KGI. KPI (Key Performance Indicator): Metrik proses untuk mengukur efektivitas CSF.",
+    "keyTakeaway": "KGI = Target akhir bisnis. KPI = Metrik progres proses harian penentu KGI."
+  },
+  {
+    "id": "quiz-exp-42",
+    "year": "令和5年 過去問",
+    "category": "strategy",
+    "subCategory": "Accounting & Finance (ROE Return on Equity)",
+    "questionJp": "企業の財務分析において、自己資本（純資産）に対して企業がどれだけの当期純利益を上げたかを示す、株主視点で最も重視される収益性指標はどれか。",
+    "questionTranslation": "Dalam analisis keuangan perusahaan, rasio profitabilitas mana yang mengukur laba bersih terhadap modal sendiri (ekuitas pemegang saham) dan menjadi metrik utama bagi investor?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "ROE (Return on Equity / 自己資本利益率)",
+        "textEnId": "ROE",
+        "explanation": "Benar! Rumus ROE = (当期純利益 ÷ 自己資本) × 100. Mengukur seberapa efisien uang para pemegang saham digunakan untuk menghasilkan keuntungan bersih."
+      },
+      {
+        "key": "イ",
+        "textJp": "ROA (Return on Assets / 総資産利益率)",
+        "textEnId": "ROA",
+        "explanation": "Salah. ROA membagi laba terhadap TOTAL aset (termasuk hutang/liabilitas), bukan hanya modal sendiri."
+      },
+      {
+        "key": "ウ",
+        "textJp": "PER (Price Earnings Ratio / 株価収益率)",
+        "textEnId": "PER",
+        "explanation": "Salah. PER mengukur valuasi harga saham pasar terhadap laba per lembar saham (EPS)."
+      },
+      {
+        "key": "エ",
+        "textJp": "PBR (Price Book-value Ratio / 株価純資産倍率)",
+        "textEnId": "PBR",
+        "explanation": "Salah. PBR membandingkan harga saham terhadap nilai buku ekuitas (BPS)."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "ROE = 当期純利益 ÷ 自己資本 × 100%. Tolok ukur utama efisiensi modal saham bagi investor. ROA = 当期純利益 ÷ 総資産 × 100% (memperhitungkan seluruh aset termasuk utang).",
+    "keyTakeaway": "Laba bersih dibagi modal sendiri = ROE. Laba bersih dibagi total aset = ROA."
+  },
+  {
+    "id": "quiz-exp-43",
+    "year": "令和3年 過去問",
+    "category": "strategy",
+    "subCategory": "Accounting & Finance (Cash Flow Statement)",
+    "questionJp": "キャッシュフロー計算書（C/F）における「投資活動によるキャッシュフロー」に分類される取引はどれか。",
+    "questionTranslation": "Manakah transaksi yang diklasifikasikan ke dalam 'Arus Kas dari Aktivitas Investasi' (Investing Cash Flow) pada Laporan Arus Kas?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "事業拡大のために新たな生産設備（有形固定資産）を購入した。",
+        "textEnId": "Membeli mesin/fasilitas produksi baru (aset tetap).",
+        "explanation": "Benar! Pembelian atau penjualan aset tetap (tanah, gedung, mesin, software sistem) dan investasi surat berharga masuk ke Arus Kas Investasi (投資活動によるC/F)."
+      },
+      {
+        "key": "イ",
+        "textJp": "商品の販売による売掛金を現金で回収した。",
+        "textEnId": "Menerima pelunasan piutang hasil penjualan produk.",
+        "explanation": "Salah. Ini berkaitan dengan kegiatan operasional harian, masuk ke 営業活動によるC/F (Operating Cash Flow)."
+      },
+      {
+        "key": "ウ",
+        "textJp": "銀行からの長期借入金に対して元金を返済した。",
+        "textEnId": "Membayar pokok cicilan pinjaman jangka panjang bank.",
+        "explanation": "Salah. Ini berkaitan dengan pendanaan utang/modal, masuk ke 財務活動によるC/F (Financing Cash Flow)."
+      },
+      {
+        "key": "エ",
+        "textJp": "株主に対して配当金を支払った。",
+        "textEnId": "Membayar dividen kepada para pemegang saham.",
+        "explanation": "Salah. Pembagian dividen masuk ke 財務活動によるC/F (Financing Cash Flow)."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "3 Kategori Arus Kas (C/F): 1. 営業活動C/F: Jual beli barang, gaji karyawan, bayar pajak (operasional harian). 2. 投資活動C/F: Beli/jual mesin, gedung, software pabrik, saham anak perusahaan. 3. 財務活動C/F: Pinjam bank, terbitkan saham, bayar dividen.",
+    "keyTakeaway": "Beli/jual aset tetap atau software = 投資活動によるキャッシュフロー (Investasi)."
+  },
+  {
+    "id": "quiz-exp-44",
+    "year": "令和4年 過去問",
+    "category": "strategy",
+    "subCategory": "Intellectual Property (Open Source Licenses GPL vs MIT)",
+    "questionJp": "オープンソースソフトウェア（OSS）のライセンスのうち、著作権表示と許諾表示を残せば商用利用・改変・再配布が極めて自由であり、派生著作物のソースコードを公開する義務（コピーレフト性）がないライセンスはどれか。",
+    "questionTranslation": "Di antara lisensi Open Source Software (OSS), manakah lisensi yang memperbolehkan penggunaan komersial dan modifikasi secara bebas tanpa kewajiban membuka source code turunan (tanpa copyleft)?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "MITライセンス (MIT License)",
+        "textEnId": "MIT License",
+        "explanation": "Benar! MIT License (dan BSD License) adalah lisensi permisif: siapa pun boleh memodifikasi dan menutup source code turunannya untuk kepentingan komersial, cukup menyertakan copyright notice asli."
+      },
+      {
+        "key": "イ",
+        "textJp": "GPL (GNU General Public License)",
+        "textEnId": "GNU GPL",
+        "explanation": "Salah. GPL memiliki sifat コピーレフト (Copyleft) kuat: software turunan yang menggunakan kode GPL WAJIB ikut membuka source code-nya di bawah lisensi GPL yang sama."
+      },
+      {
+        "key": "ウ",
+        "textJp": "AGPL (Affero General Public License)",
+        "textEnId": "AGPL",
+        "explanation": "Salah. AGPL bahkan mewajibkan pembukaan source code jika software digunakan sebagai layanan jaringan (SaaS)."
+      },
+      {
+        "key": "エ",
+        "textJp": "パブリックドメイン (Public Domain)",
+        "textEnId": "Public Domain",
+        "explanation": "Salah. Public domain berarti hak cipta telah kedaluwarsa atau dilepaskan sepenuhnya, bukan bentuk lisensi OSS formal."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "Lisensi OSS Utama: 1. Permissive (MIT, BSD, Apache 2.0): Boleh dipakai bebas, boleh jadi proprietary/closed source, wajib cantumkan attribution. 2. Copyleft (GPL, AGPL): Wajib membuka kembali source code dari program turunan.",
+    "keyTakeaway": "MIT License = Boleh bebas dijadikan closed-source. GPL = Wajib ikut open-source (Copyleft)."
+  },
+  {
+    "id": "quiz-exp-45",
+    "year": "令和5年 過去問",
+    "category": "strategy",
+    "subCategory": "IT Law (Unfair Competition Prevention Act 営業秘密)",
+    "questionJp": "不正競争防止法において「営業秘密」として法的に保護されるための3つの要件の組合せとして、正しいものはどれか。",
+    "questionTranslation": "Menurut UU Pencegahan Persaingan Tidak Sehat Jepang (不正競争防止法), kombinasi 3 syarat apakah yang wajib dipenuhi agar informasi perusahaan diakui secara hukum sebagai 'Rahasia Dagang' (営業秘密)?",
+    "options": [
+      {
+        "key": "ア",
+        "textJp": "秘密管理性、有用性、非公知性",
+        "textEnId": "Kerahasiaan Dikelola, Nilai Manfaat, Belum Diketahui Publik",
+        "explanation": "Benar! Tiga syarat mutlak rahasia dagang: 1. 秘密管理性 (dikelola secara rahasia, misal diberi label 'Confidential' dan akses dibatasi). 2. 有用性 (berguna bagi bisnis). 3. 非公知性 (tidak diketahui umum/rahasia)."
+      },
+      {
+        "key": "イ",
+        "textJp": "新規性、進歩性、産業上の利用可能性",
+        "textEnId": "Kebaruan, Langkah Inventif, Dapat Diterapkan Industri",
+        "explanation": "Salah. Ini adalah 3 syarat untuk memperoleh hak paten menurut Undang-Undang Paten (特許法)."
+      },
+      {
+        "key": "ウ",
+        "textJp": "独自性、表現性、客観性",
+        "textEnId": "Originalitas, Ekspresi, Objektivitas",
+        "explanation": "Salah. Ini mendekati konsep hak cipta (著作権)."
+      },
+      {
+        "key": "エ",
+        "textJp": "商標性、識別性、著名性",
+        "textEnId": "Karakter Merek, Daya Pembeda, Ketenaran",
+        "explanation": "Salah. Ini adalah persyaratan pendaftaran merek dagang (商標法)."
+      }
+    ],
+    "correctKey": "ア",
+    "summaryExplanation": "Tiga Syarat Rahasia Dagang (不正競争防止法): 1. 秘密管理性: Dokumen dilabeli rahasia & akses dikunci password. 2. 有用性: Memiliki nilai bisnis/teknis. 3. 非公知性: Belum bocor ke publik. Trik Ujian: Jangan tertukar dengan syarat Paten (新規性・進歩性・産業上利用可能性).",
+    "keyTakeaway": "Syarat Rahasia Dagang: 秘密管理性 (dijaga rahasia), 有用性 (bermanfaat), 非公知性 (tidak umum)."
   }
 ];

@@ -243,7 +243,7 @@ const ROADMAP_MODULES: RoadmapItem[] = [
     id: "quiz",
     title: "Simulasi 過去問 (Kakomon)",
     badge: "Active",
-    desc: "Simulator CBT 75 soal otentik (termasuk 30 soal hitung) dengan timer, seleksi sesi 15/30/60/75 soal, matriks navigator nomor, flag review, dan sertifikat kelulusan.",
+    desc: "Simulator CBT 120 soal otentik dengan timer, seleksi Paket A & B (60 soal resmi 90 menit), matriks navigator nomor, flag review, dan sertifikat kelulusan.",
     target: "Simulasi Ujian CBT Resmi",
     status: "active",
   },

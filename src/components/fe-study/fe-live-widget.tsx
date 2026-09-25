@@ -11,7 +11,7 @@ const widgetTranslations = {
     tracker: "Live Study Tracker · Fundamental IT",
     streakSuffix: "Day Streak",
     ready: "Daily Drill Ready",
-    title: "FE Exam Prep (基本情報技術者試験) 🇯🇵",
+    title: "FE Exam Prep (基本情報技術者試験)",
     subtitle: "Japan's National IT Certification prep & Engineer/Specialist Visa qualification.",
     masteredOf: (mastered: number, total: number) => (
       <>
@@ -25,7 +25,7 @@ const widgetTranslations = {
     tracker: "Live Study Tracker · 基本情報",
     streakSuffix: "Hari Streak",
     ready: "Drill Harian Siap",
-    title: "FE Exam Prep (基本情報技術者試験) 🇯🇵",
+    title: "FE Exam Prep (基本情報技術者試験)",
     subtitle: "Target kelulusan sertifikasi IT negara Jepang & syarat visa 技人国.",
     masteredOf: (mastered: number, total: number) => (
       <>
@@ -39,7 +39,7 @@ const widgetTranslations = {
     tracker: "学習進捗トラッカー · 基本情報",
     streakSuffix: "日連続学習中",
     ready: "デイリー演習準備完了",
-    title: "基本情報技術者試験 対策ジム 🇯🇵",
+    title: "基本情報技術者試験 対策ジム",
     subtitle: "国家試験合格＆IT高度人材・技人国ビザ要件対策のアクティブリコール道場。",
     masteredOf: (mastered: number, total: number) => (
       <>

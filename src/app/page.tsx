@@ -14,7 +14,7 @@ const capabilityIcons = [Code2, Cpu, Palette, Film];
 const building = ["8Agents", "Kaidevlab redesign", "Rakusaku", "FE Study Hub"];
 const exploringByLocale: Record<string, string[]> = {
   id: [
-    "Persiapan Ujian FE Jepang (基本情報) 🇯🇵",
+    "Persiapan Ujian FE Jepang (基本情報)",
     "Produksi Manhwa",
     "Visual Storytelling",
     "Pembuatan Film Berbantuan AI",
@@ -22,7 +22,7 @@ const exploringByLocale: Record<string, string[]> = {
     "Penyuntingan Video",
   ],
   en: [
-    "FE Exam Prep (基本情報技術者試験) 🇯🇵",
+    "FE Exam Prep (基本情報技術者試験)",
     "Manhwa production",
     "Visual storytelling",
     "AI-assisted filmmaking",
@@ -30,7 +30,7 @@ const exploringByLocale: Record<string, string[]> = {
     "Video editing",
   ],
   ja: [
-    "基本情報技術者試験（FE）対策 🇯🇵",
+    "基本情報技術者試験（FE）対策",
     "ウェブトゥーン制作",
     "ビジュアルストーリーテリング",
     "AI映画制作ワークフロー",

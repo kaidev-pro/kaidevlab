@@ -381,7 +381,8 @@ export function QuizView({
               </h2>
               {examStats.isPassed && (
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-500 border border-emerald-500/40 text-xs font-bold mt-2">
-                  <span>🎉 合格おめでとうございます！ (Lolos Ambang Batas Resmi 60%)</span>
+                  <Award size={13} className="shrink-0" />
+                  <span>合格おめでとうございます！ (Lolos Ambang Batas Resmi 60%)</span>
                 </div>
               )}
               <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1.5 leading-relaxed">
@@ -1138,8 +1139,8 @@ export function QuizView({
                         }`}
                       >
                         {isFlagged && (
-                          <span className="absolute top-1 right-1 text-amber-500 text-[10px] font-bold">
-                            🚩
+                          <span className="absolute top-1 right-1 text-amber-500">
+                            <Flag size={11} className="fill-amber-500 text-amber-500" />
                           </span>
                         )}
                         <span className="text-xs font-mono font-bold">問 {idx + 1}</span>
@@ -1210,14 +1211,18 @@ export function QuizView({
                   </div>
                   <div className="w-px h-8 bg-[var(--border)]" />
                   <div>
-                    <p className="text-[11px] text-[var(--text-secondary)]">チェック 🚩</p>
+                    <p className="text-[11px] text-[var(--text-secondary)] flex items-center gap-1">
+                      <span>チェック</span>
+                      <Flag size={10} className="fill-cyan-500 text-cyan-500" />
+                    </p>
                     <p className="text-lg font-bold text-cyan-500">{flaggedIds.size}</p>
                   </div>
                 </div>
 
                 {unansweredCount > 0 && (
-                  <p className="text-[11px] text-amber-500 font-semibold">
-                    ⚠️ 未解答の問題が {unansweredCount} 問あります（無回答は不正解となります）。
+                  <p className="text-[11px] text-amber-500 font-semibold flex items-center gap-1.5">
+                    <AlertCircle size={13} className="shrink-0" />
+                    <span>未解答の問題が {unansweredCount} 問あります（無回答は不正解となります）。</span>
                   </p>
                 )}
 

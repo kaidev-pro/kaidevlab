@@ -489,7 +489,7 @@ export function FlashcardView({
                               ? "bg-amber-500/15 border-amber-500/40 text-amber-500 shadow-sm"
                               : "bg-[var(--surface-soft)]/60 border-[var(--border)] text-[var(--text-secondary)] hover:text-amber-500"
                           }`}
-                          title={isStarred ? "Hapus dari Kartu Favorit (⭐)" : "Tandai sebagai Kartu Favorit (⭐)"}
+                          title={isStarred ? "Hapus dari Kartu Favorit" : "Tandai sebagai Kartu Favorit"}
                         >
                           <Bookmark size={13} className={isStarred ? "fill-amber-500 text-amber-500" : ""} />
                         </button>
@@ -583,7 +583,7 @@ export function FlashcardView({
                               ? "bg-amber-500/15 border-amber-500/40 text-amber-500"
                               : "border-[var(--border)] text-[var(--text-secondary)] hover:text-amber-500"
                           }`}
-                          title={isStarred ? "Kartu Favorit (⭐)" : "Tandai Favorit (⭐)"}
+                          title={isStarred ? "Kartu Favorit" : "Tandai Favorit"}
                         >
                           <Bookmark size={12} className={isStarred ? "fill-amber-500 text-amber-500" : ""} />
                         </button>
@@ -630,7 +630,7 @@ export function FlashcardView({
                       >
                         <span className="flex items-center gap-1.5">
                           <Sparkles size={13} className="text-amber-500" />
-                          {showAnalogy ? "Tutup Analogi Kitami-shiki" : "💡 Lihat Analogi (Kitami-shiki)"}
+                          {showAnalogy ? "Tutup Analogi Kitami-shiki" : "Lihat Analogi (Kitami-shiki)"}
                         </span>
                         <motion.div animate={{ rotate: showAnalogy ? 180 : 0 }} transition={{ duration: 0.2 }}>
                           <ChevronDown size={14} />

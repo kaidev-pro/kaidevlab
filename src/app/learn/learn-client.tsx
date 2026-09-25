@@ -57,23 +57,23 @@ const LEARN_I18N = {
   id: {
     back: "Keluar Sesi",
     backShort: "Keluar",
-    modeQuick10: "⚡ Quick 10 Drill (5 Menit)",
-    modeTech: "🛠️ テクノロジ系",
-    modeMgmt: "📊 マネジメント系",
-    modeStrat: "📈 ストラテジ系",
-    modeVocab: "設問・重要用語 (Vocab & Kanji)",
-    modeReview: "🔄 Review Soal Sulit",
-    modeStarred: "⭐ Drill Kartu Favorit",
-    modeAll: "📚 Semua Kartu FE",
+    modeQuick10: "Quick 10 Drill (5 Menit)",
+    modeTech: "Teknologi (テクノロジ系)",
+    modeMgmt: "Manajemen (マネジメント系)",
+    modeStrat: "Strategi (ストラテジ系)",
+    modeVocab: "Kosakata & Kanji Soal (設問・重要語彙)",
+    modeReview: "Review Soal Sulit",
+    modeStarred: "Drill Kartu Favorit",
+    modeAll: "Semua Kartu FE",
     eyebrow: "Japan IT Certification Drill · 基本情報技術者試験",
     title: "FE Cognitive Gym & Study Hub",
-    trainMode: "Mode Kereta Offline Ready (電車モード) 🚅",
+    trainMode: "Offline Transit Mode Ready (電車モード)",
     installApp: "Install App ke HP",
-    tabFlashcards: "🗂️ Flashcards",
-    tabQuiz: "📝 過去問 (Kakomon Quiz)",
-    tabTracer: "💻 Pseudocode Tracer (科目B)",
-    tabCheatsheet: "⚡ Formula Cheatsheet",
-    tabMistakes: "📕 Soal Salah",
+    tabFlashcards: "Flashcards",
+    tabQuiz: "Kakomon CBT (過去問)",
+    tabTracer: "Pseudocode Tracer (科目B)",
+    tabCheatsheet: "Formula & Math (公式)",
+    tabMistakes: "Catatan Soal Salah",
     searchTitle: "Kamus Cepat & Pencarian Istilah FE",
     searchSubtitle: "199 Istilah Tersedia (169 Konsep IT + 30 Kosakata Sakti Soal)",
     searchPlaceholder: "Cari arti & istilah FE (contoh: SQL, 公開鍵, RAID, ACID, Lock, Subnet, OSI)...",
@@ -101,7 +101,7 @@ const LEARN_I18N = {
     tipDesc: "Otak mengingat 3x lebih kuat saat kamu berusaha menebak dulu sebelum membalik kartu (Active Recall).",
     tipRef: "Rujukan: Make It Stick (Brown et al.)",
     dailyDecksEyebrow: "Porsi Belajar Terstruktur (Bite-Sized)",
-    dailyDecksTitle: "📅 Kurikulum Harian 20 Hari (10 Kosakata / Hari)",
+    dailyDecksTitle: "Kurikulum Harian 20 Hari (10 Istilah / Hari)",
     dailyDecksDesc: "Bukan kartu acak. 199 materi dikelompokkan tematik 10 kartu per hari agar hafalan melekat kuat, bertahap, dan tidak bikin jenuh.",
     startDayDeck: "Mulai Hari Ini →",
     dayUnit: "Hari",
@@ -111,23 +111,23 @@ const LEARN_I18N = {
   ja: {
     back: "セッション終了",
     backShort: "終了",
-    modeQuick10: "⚡ Quick 10 ドリル (5分)",
-    modeTech: "🛠️ テクノロジ系",
-    modeMgmt: "📊 マネジメント系",
-    modeStrat: "📈 ストラテジ系",
-    modeVocab: "設問・重要用語 (Vocab & Kanji)",
-    modeReview: "🔄 復習・苦手カード",
-    modeStarred: "⭐ お気に入りカード",
-    modeAll: "📚 全FEカード",
+    modeQuick10: "Quick 10 ドリル (5分)",
+    modeTech: "テクノロジ系",
+    modeMgmt: "マネジメント系",
+    modeStrat: "ストラテジ系",
+    modeVocab: "設問・重要用語 (語彙・漢字)",
+    modeReview: "復習・苦手カード",
+    modeStarred: "お気に入りカード",
+    modeAll: "全FEカード",
     eyebrow: "国家試験・基本情報技術者試験 学習ドリル",
     title: "FE Cognitive Gym & 学習ハブ",
-    trainMode: "オフライン電車モード対応 (電車モード) 🚅",
+    trainMode: "オフライン電車モード対応 (電車モード)",
     installApp: "ホーム画面に追加",
-    tabFlashcards: "🗂️ フラッシュカード",
-    tabQuiz: "📝 過去問 (CBT模試)",
-    tabTracer: "💻 擬似言語トレーサー (科目B)",
-    tabCheatsheet: "⚡ 公式＆計算ツール",
-    tabMistakes: "📕 間違え直しノート",
+    tabFlashcards: "フラッシュカード",
+    tabQuiz: "過去問 (CBT模試)",
+    tabTracer: "擬似言語トレーサー (科目B)",
+    tabCheatsheet: "公式＆計算ツール",
+    tabMistakes: "間違え直しノート",
     searchTitle: "FE用語クイック検索・辞書",
     searchSubtitle: "199用語収録（IT専門概念169 + 頻出試験用語30）",
     searchPlaceholder: "FE用語を検索（例: SQL, 公開鍵, RAID, ACID, Lock, Subnet, OSI）...",
@@ -155,7 +155,7 @@ const LEARN_I18N = {
     tipDesc: "答えを見る前に自力で思い出す練習（アクティブリコール）を行うことで、記憶の定着率は3倍向上します。",
     tipRef: "参考文献: 『Make It Stick（学び方の科学）』",
     dailyDecksEyebrow: "構造化学習プラン（スモールステップ）",
-    dailyDecksTitle: "📅 20日間デイリープラン（1日10用語）",
+    dailyDecksTitle: "20日間デイリープラン（1日10用語）",
     dailyDecksDesc: "全199用語をテーマ別に10語ずつ分割。ランダム学習の散漫さを防ぎ、体系的な記憶定着を実現します。",
     startDayDeck: "この日のドリルを開始 →",
     dayUnit: "日目",
@@ -165,23 +165,23 @@ const LEARN_I18N = {
   en: {
     back: "Exit Session",
     backShort: "Exit",
-    modeQuick10: "⚡ Quick 10 Drill (5 Min)",
-    modeTech: "🛠️ Technology",
-    modeMgmt: "📊 Management",
-    modeStrat: "📈 Strategy & Legal",
-    modeVocab: "設問・重要用語 (Vocab & Kanji)",
-    modeReview: "🔄 Review Weak Cards",
-    modeStarred: "⭐ Starred Cards Drill",
-    modeAll: "📚 All FE Cards",
+    modeQuick10: "Quick 10 Drill (5 Min)",
+    modeTech: "Technology (テクノロジ系)",
+    modeMgmt: "Management (マネジメント系)",
+    modeStrat: "Strategy & Legal (ストラテジ系)",
+    modeVocab: "Exam Vocabulary & Kanji",
+    modeReview: "Review Weak Cards",
+    modeStarred: "Starred Cards",
+    modeAll: "All FE Cards",
     eyebrow: "Japan IT Certification Drill · Fundamental IT Engineer Examination",
     title: "FE Cognitive Gym & Study Hub",
-    trainMode: "Offline Commuter Mode Ready (電車モード) 🚅",
+    trainMode: "Offline Commuter Mode Ready (電車モード)",
     installApp: "Install App to Device",
-    tabFlashcards: "🗂️ Flashcards",
-    tabQuiz: "📝 Past Exams (Kakomon CBT)",
-    tabTracer: "💻 Pseudocode Tracer (Section B)",
-    tabCheatsheet: "⚡ Formula Cheatsheet",
-    tabMistakes: "📕 Mistake Notebook",
+    tabFlashcards: "Flashcards",
+    tabQuiz: "Past Exams (Kakomon CBT)",
+    tabTracer: "Pseudocode Tracer (Section B)",
+    tabCheatsheet: "Formula Cheatsheet",
+    tabMistakes: "Mistake Notebook",
     searchTitle: "Quick Search & FE IT Dictionary",
     searchSubtitle: "199 Terms Available (169 IT Concepts + 30 Exam Vocabulary)",
     searchPlaceholder: "Search FE terms (e.g. SQL, Public Key, RAID, ACID, Lock, Subnet, OSI)...",
@@ -209,7 +209,7 @@ const LEARN_I18N = {
     tipDesc: "Your brain retains concepts 3x longer when you force yourself to recall before flipping the card (Active Recall).",
     tipRef: "Reference: Make It Stick (Brown et al.)",
     dailyDecksEyebrow: "Structured Daily Plan (Bite-Sized Learning)",
-    dailyDecksTitle: "📅 20-Day Daily Plan (10 Terms / Day)",
+    dailyDecksTitle: "20-Day Daily Plan (10 Terms / Day)",
     dailyDecksDesc: "Master 199 FE exam terms without cognitive overload. Grouped thematically at 10 cards per day for structured retention.",
     startDayDeck: "Start Today's Deck →",
     dayUnit: "Day",
@@ -473,7 +473,10 @@ export function LearnClient() {
 
             <span className="text-xs uppercase font-bold tracking-wider text-[var(--brand-primary)] truncate text-right">
               {selectedDayDeck ? (
-                <>📅 {selectedDayDeck.titleId} ({activeCards.length} {txt.cardUnit})</>
+                <span className="inline-flex items-center gap-1.5">
+                  <Calendar size={13} className="text-[var(--brand-primary)] shrink-0" />
+                  <span>{selectedDayDeck.titleId} ({activeCards.length} {txt.cardUnit})</span>
+                </span>
               ) : (
                 <>
                   {activeMode === "quick10" && txt.modeQuick10}
@@ -724,7 +727,10 @@ export function LearnClient() {
                           </p>
                         </div>
                         <div className="pt-2 border-t border-[var(--border)]/60 flex items-center justify-between">
-                          <span className="text-[10px] text-amber-500 font-medium">★ Prioritas {card.importance}/3</span>
+                          <span className="text-[10px] text-amber-500 font-medium flex items-center gap-1">
+                            <Star size={10} className="fill-amber-500 text-amber-500 shrink-0" />
+                            <span>Prioritas {card.importance}/3</span>
+                          </span>
                           <button
                             type="button"
                             onClick={() => handleStartSingleCard(card)}

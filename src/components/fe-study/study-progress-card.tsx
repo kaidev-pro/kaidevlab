@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Flame, CheckCircle2, RotateCw, Download, Upload, Cpu, Kanban, TrendingUp, Languages } from "lucide-react";
+import { Flame, CheckCircle2, RotateCw, Download, Upload, Cpu, Kanban, TrendingUp, Languages, Calendar, Star } from "lucide-react";
 import { StudyProgress, exportProgressJson, importProgressJson } from "@/lib/fe-study-storage";
 import { FE_CARDS, FECategory } from "@/data/fe-study-data";
 
@@ -95,7 +95,7 @@ export function StudyProgressCard({ progress, onProgressUpdated }: StudyProgress
         <div className="flex items-center gap-2 sm:gap-3">
           {starredCount > 0 && (
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-500 font-semibold text-xs sm:text-sm">
-              <span className="text-amber-500">⭐</span>
+              <Star size={14} className="fill-amber-500 text-amber-500 shrink-0" />
               <span>{starredCount} Favorit</span>
             </div>
           )}
@@ -155,7 +155,7 @@ export function StudyProgressCard({ progress, onProgressUpdated }: StudyProgress
       <div className="p-4 rounded-xl bg-[var(--surface-soft)]/50 border border-[var(--border)] flex flex-col gap-3">
         <div className="flex items-center justify-between text-xs">
           <span className="font-bold text-[var(--text-primary)] flex items-center gap-1.5">
-            <span>📅</span> Kalender Aktivitas & Konsistensi (21 Hari Terakhir)
+            <Calendar size={14} className="text-[var(--brand-primary)] shrink-0" /> Kalender Aktivitas & Konsistensi (21 Hari Terakhir)
           </span>
           <span className="text-[11px] text-[var(--text-secondary)]">
             Total <b>{progress.totalCardsReviewed}</b> sesi review

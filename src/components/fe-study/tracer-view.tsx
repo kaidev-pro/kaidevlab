@@ -356,7 +356,9 @@ export function TracerView({ onBackToMenu }: TracerViewProps) {
 
               {/* IPA Syntax Cheat Helper */}
               <div className="mt-4 pt-3 border-t border-white/10 text-[11px] text-slate-400 flex flex-wrap items-center gap-x-4 gap-y-1">
-                <span className="text-amber-300/90 font-semibold">📌 Sintaks IPA:</span>
+                <span className="text-amber-300/90 font-semibold flex items-center gap-1">
+                  <Code2 size={13} className="shrink-0 text-amber-300" /> Sintaks IPA:
+                </span>
                 <span><code className="text-emerald-300 font-bold">←</code> 代入 (Assignment)</span>
                 <span><code className="text-sky-300 font-bold">＝ / ≠ / ≦</code> 比較 (Comparison)</span>
                 <span><code className="text-purple-300 font-bold">data[1..n]</code> 配列添字 1始まり</span>

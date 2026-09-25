@@ -23,6 +23,10 @@ import {
   Volume2,
   VolumeX,
   Languages,
+  Cpu,
+  Kanban,
+  TrendingUp,
+  X,
 } from "lucide-react";
 import { QuizQuestion, FE_QUIZ_QUESTIONS } from "@/data/fe-quiz-data";
 import {
@@ -262,7 +266,9 @@ export function WrongQuestionsView({
               {/* Tech */}
               <div className="p-3.5 rounded-xl bg-[var(--surface-soft)]/60 border border-[var(--border)] flex flex-col gap-2">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-bold text-[var(--brand-primary)]">🛠️ テクノロジ系</span>
+                  <span className="font-bold text-[var(--brand-primary)] flex items-center gap-1.5">
+                    <Cpu size={14} className="shrink-0" /> テクノロジ系
+                  </span>
                   <span className="font-mono text-[var(--text-secondary)]">
                     {stats.categoryBreakdown.technology.unmastered} belum dikuasai
                   </span>
@@ -286,7 +292,9 @@ export function WrongQuestionsView({
               {/* Mgmt */}
               <div className="p-3.5 rounded-xl bg-[var(--surface-soft)]/60 border border-[var(--border)] flex flex-col gap-2">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-bold text-cyan-500">📊 マネジメント系</span>
+                  <span className="font-bold text-cyan-500 flex items-center gap-1.5">
+                    <Kanban size={14} className="shrink-0" /> マネジメント系
+                  </span>
                   <span className="font-mono text-[var(--text-secondary)]">
                     {stats.categoryBreakdown.management.unmastered} belum dikuasai
                   </span>
@@ -310,7 +318,9 @@ export function WrongQuestionsView({
               {/* Strategy */}
               <div className="p-3.5 rounded-xl bg-[var(--surface-soft)]/60 border border-[var(--border)] flex flex-col gap-2">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-bold text-emerald-500">📈 ストラテジ系</span>
+                  <span className="font-bold text-emerald-500 flex items-center gap-1.5">
+                    <TrendingUp size={14} className="shrink-0" /> ストラテジ系
+                  </span>
                   <span className="font-mono text-[var(--text-secondary)]">
                     {stats.categoryBreakdown.strategy.unmastered} belum dikuasai
                   </span>
@@ -519,15 +529,17 @@ export function WrongQuestionsView({
                       {record.lastSelectedKey && (
                         <div className="flex items-center gap-1.5 text-rose-500 font-bold">
                           <span>Jawaban Terakhir Kamu:</span>
-                          <span className="px-2 py-0.5 rounded-md bg-rose-500/10 border border-rose-500/20 font-mono">
-                            【 {record.lastSelectedKey} 】 ❌
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-rose-500/10 border border-rose-500/20 font-mono">
+                            <span>【 {record.lastSelectedKey} 】</span>
+                            <X size={12} className="stroke-[3]" />
                           </span>
                         </div>
                       )}
                       <div className="flex items-center gap-1.5 text-emerald-500 font-bold">
                         <span>Kunci Jawaban Resmi:</span>
-                        <span className="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 font-mono">
-                          【 {question.correctKey} 】 ✓
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 font-mono">
+                          <span>【 {question.correctKey} 】</span>
+                          <Check size={12} className="stroke-[3]" />
                         </span>
                       </div>
                     </div>
@@ -555,7 +567,7 @@ export function WrongQuestionsView({
                       {/* Indonesian Translation */}
                       <div className="p-4 sm:p-5 rounded-2xl bg-amber-500/5 border border-amber-500/20 flex flex-col gap-1.5">
                         <span className="text-xs font-bold text-amber-500 flex items-center gap-1.5 uppercase tracking-wider">
-                          🇮🇩 Terjemahan Soal (Bahasa Indonesia)
+                          <Languages size={13} className="shrink-0" /> Terjemahan Soal (Bahasa Indonesia)
                         </span>
                         <p className="text-sm sm:text-[15.5px] text-[var(--text-primary)] leading-[1.85] font-medium">
                           {question.questionTranslation}
@@ -564,8 +576,8 @@ export function WrongQuestionsView({
 
                       {/* Official Explanation / Kaisetsu */}
                       <div className="p-4 sm:p-5 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] flex flex-col gap-2">
-                        <span className="text-xs font-bold text-[var(--brand-primary)] uppercase tracking-wider">
-                          📖 Inti Pembahasan Resmi (解説 - Kaisetsu)
+                        <span className="text-xs font-bold text-[var(--brand-primary)] uppercase tracking-wider flex items-center gap-1.5">
+                          <BookOpen size={14} className="shrink-0" /> Inti Pembahasan Resmi (解説 - Kaisetsu)
                         </span>
                         <p className="text-sm sm:text-[15px] text-[var(--text-secondary)] leading-[1.85]">
                           {question.summaryExplanation}

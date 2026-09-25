@@ -244,36 +244,49 @@ export function TracerView({ onBackToMenu }: TracerViewProps) {
           {/* Main Grid: Code Editor (Left) & Live Trace Table (Right) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             {/* Left: Code Pane (7 cols) */}
-            <div className="lg:col-span-7 p-5 rounded-3xl border border-[#2d4268] bg-[#0c1628] text-slate-100 font-mono text-xs sm:text-sm flex flex-col shadow-2xl overflow-hidden">
-              <div className="flex items-center justify-between pb-3.5 mb-3 border-b border-white/10 text-xs text-slate-400">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
-                  <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
-                  <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
-                  <span className="ml-2 font-mono text-[11px] text-blue-300">algorithm.pseudocode</span>
+            <div className="lg:col-span-7 p-5 rounded-3xl border border-[#2d4268] bg-[#0c1628] text-slate-100 font-mono text-xs sm:text-sm flex flex-col justify-between shadow-2xl overflow-hidden">
+              <div>
+                <div className="flex items-center justify-between pb-3.5 mb-3 border-b border-white/10 text-xs text-slate-400">
+                  <div className="flex items-center gap-2">
+                    <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
+                    <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
+                    <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
+                    <span className="ml-2 font-mono text-[11px] text-emerald-300 font-semibold flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      IPA 公式擬似言語 (科目B 準拠)
+                    </span>
+                  </div>
+                  <span className="text-[11px] font-bold text-slate-400">
+                    Langkah {currentStepIndex + 1} / {steps.length}
+                  </span>
                 </div>
-                <span className="text-[11px] font-bold text-slate-400">
-                  Langkah {currentStepIndex + 1} / {steps.length}
-                </span>
+
+                <div className="flex flex-col gap-1 overflow-x-auto py-2 pr-1">
+                  {currentAlgo.codeLines.map((line, idx) => {
+                    const isActive = idx === currentStep.lineIndex;
+                    return (
+                      <div
+                        key={idx}
+                        className={`flex items-start gap-4 px-3 py-1.5 rounded-lg transition-colors ${
+                          isActive
+                            ? "bg-blue-600/30 text-white font-bold border-l-4 border-blue-400 shadow-sm"
+                            : "text-slate-400 hover:text-slate-300"
+                        }`}
+                      >
+                        <span className="w-6 text-right opacity-30 select-none text-xs mt-0.5">{idx + 1}</span>
+                        <span className="whitespace-pre leading-relaxed">{line}</span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
 
-              <div className="flex flex-col gap-1 overflow-x-auto py-2 pr-1">
-                {currentAlgo.codeLines.map((line, idx) => {
-                  const isActive = idx === currentStep.lineIndex;
-                  return (
-                    <div
-                      key={idx}
-                      className={`flex items-start gap-4 px-3 py-1.5 rounded-lg transition-colors ${
-                        isActive
-                          ? "bg-blue-600/30 text-white font-bold border-l-4 border-blue-400 shadow-sm"
-                          : "text-slate-400 hover:text-slate-300"
-                      }`}
-                    >
-                      <span className="w-6 text-right opacity-30 select-none text-xs mt-0.5">{idx + 1}</span>
-                      <span className="whitespace-pre leading-relaxed">{line}</span>
-                    </div>
-                  );
-                })}
+              {/* IPA Syntax Cheat Helper */}
+              <div className="mt-4 pt-3 border-t border-white/10 text-[11px] text-slate-400 flex flex-wrap items-center gap-x-4 gap-y-1">
+                <span className="text-amber-300/90 font-semibold">📌 Sintaks IPA:</span>
+                <span><code className="text-emerald-300 font-bold">←</code> 代入 (Assignment)</span>
+                <span><code className="text-sky-300 font-bold">＝ / ≠ / ≦</code> 比較 (Comparison)</span>
+                <span><code className="text-purple-300 font-bold">data[1..n]</code> 配列添字 1始まり</span>
               </div>
             </div>
 

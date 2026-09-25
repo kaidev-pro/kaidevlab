@@ -871,7 +871,8 @@ export function QuizView({
               {[
                 { count: 15, label: "15 問 (22分30秒)" },
                 { count: 30, label: "30 問 (45分)" },
-                { count: 45, label: "全45問 (67分30秒)" },
+                { count: 60, label: "60 問 (90分 - 本番)" },
+                { count: 75, label: "全75問 (全問マラソン)" },
               ].map((s) => (
                 <button
                   key={s.count}
@@ -1314,10 +1315,10 @@ export function QuizView({
           <div className="flex flex-wrap items-center gap-2 pt-2.5 border-t border-[var(--border)]/70">
             <span className="text-xs font-bold text-[var(--text-secondary)] mr-1">Filter Domain:</span>
             {[
-              { id: "all", label: "Semua Domain (45 Soal)" },
-              { id: "technology", label: "テクノロジ系 (25)" },
-              { id: "management", label: "マネジメント系 (10)" },
-              { id: "strategy", label: "ストラテジ系 (10)" },
+              { id: "all", label: "Semua Domain (75 Soal)" },
+              { id: "technology", label: "テクノロジ系 (40)" },
+              { id: "management", label: "マネジメント系 (17)" },
+              { id: "strategy", label: "ストラテジ系 (18)" },
             ].map((cat) => (
               <button
                 key={cat.id}

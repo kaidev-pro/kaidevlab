@@ -78,10 +78,10 @@ export const projects: ProjectPreview[] = [
     status: "Live · Interactive System",
     role: "Full-stack engineering, learning system, CBT simulator",
     summary:
-      "A cognitive study gym for Japan’s Fundamental Information Technology Engineer Examination (基本情報技術者試験) featuring 100 high-yield flashcards, CBT simulator, pseudocode tracer, and offline PWA mode.",
+      "A cognitive study gym for Japan’s Fundamental Information Technology Engineer Examination (基本情報技術者試験) featuring 199 high-yield flashcards, 20-day plan, 75-question CBT simulator, pseudocode tracer, and offline PWA mode.",
     logo: "/brand/kaidevlab-logo-dark.webp",
     tone: "education",
-    signals: ["100 Flashcards", "CBT Simulator", "Offline PWA"],
+    signals: ["199 Flashcards", "75 CBT Soal", "20-Day Plan"],
     liveUrl: "/learn",
     coverImage: "/project-screenshots/fe-study-hub.webp",
     coverPosition: "center 30%",

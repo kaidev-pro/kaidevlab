@@ -22,7 +22,7 @@ export function SiteHeader() {
   ] as const;
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -36,7 +36,7 @@ export function SiteHeader() {
   }
 
   return (
-    <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
+    <header className={`site-header ${scrolled || menuOpen ? "is-scrolled" : ""}`}>
       <a className="brand-logo" href="/" aria-label="Kaidevlab home">
         <Image
           className="logo-light"

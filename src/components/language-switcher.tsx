@@ -43,7 +43,7 @@ export function LanguageSwitcher({
 
   return (
     <div
-      className={`language-pill-group inline-flex items-center p-0.5 rounded-full border border-[var(--glass-border)] bg-[var(--surface-soft)] backdrop-blur-md shadow-xs transition-all ${className}`}
+      className={`language-pill-group items-center p-0.5 rounded-full border border-[var(--glass-border)] bg-[var(--surface-soft)] backdrop-blur-md shadow-xs transition-all ${className}`}
       role="group"
       aria-label="Language selection"
     >

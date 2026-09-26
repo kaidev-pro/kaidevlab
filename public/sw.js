@@ -1,5 +1,5 @@
 // FE Study Hub — Service Worker (Offline PWA)
-const CACHE_NAME = "fe-study-hub-v3";
+const CACHE_NAME = "fe-study-hub-v6";
 
 const PRECACHE_URLS = [
   "/learn",
@@ -22,7 +22,7 @@ self.addEventListener("install", (event) => {
   );
 });
 
-// Activate Event: Clean up old caches
+// Activate Event: Clean up old caches immediately
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches
@@ -38,7 +38,7 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Fetch Event: Network-first for navigation with cache fallback, Cache-first for static assets
+// Fetch Event: Network-first for navigation and static code assets, fallback to cache
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
 
@@ -47,12 +47,26 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Next.js static assets (_next/static, fonts, images) -> Cache-first
-  if (
-    url.pathname.startsWith("/_next/static/") ||
-    url.pathname.startsWith("/brand/") ||
-    url.pathname.startsWith("/icons/")
-  ) {
+  // Next.js static assets (_next/static/css, _next/static/chunks) -> Network-first to always receive new builds
+  if (url.pathname.startsWith("/_next/static/")) {
+    event.respondWith(
+      fetch(event.request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const responseClone = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, responseClone);
+            });
+          }
+          return networkResponse;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  // Brand images and icons -> Cache-first with network fallback
+  if (url.pathname.startsWith("/brand/") || url.pathname.startsWith("/icons/")) {
     event.respondWith(
       caches.match(event.request).then((cachedResponse) => {
         if (cachedResponse) return cachedResponse;

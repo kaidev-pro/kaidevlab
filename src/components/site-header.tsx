@@ -64,7 +64,7 @@ export function SiteHeader() {
       </nav>
 
       <div className="header-actions">
-        <LanguageSwitcher className="hidden sm:inline-flex" />
+        <LanguageSwitcher className="hidden lg:inline-flex desktop-lang-switcher" />
 
         <button
           className="icon-button theme-toggle"

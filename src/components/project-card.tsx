@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
 import type { ProjectPreview } from "@/lib/site-data";
 import { useLanguage } from "@/lib/i18n/context";
@@ -13,6 +14,15 @@ export function ProjectCard({
   featured?: boolean;
 }) {
   const { locale } = useLanguage();
+  const cardRef = useRef<HTMLElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
+    card.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
+  };
   const overrides = localizedProjectDetails[locale]?.[project.slug] || {};
 
   const category = overrides.category || project.category;
@@ -61,7 +71,11 @@ export function ProjectCard({
     : "Live Site";
 
   return (
-    <article className={`project-card ${featured ? "project-featured" : ""} tone-${project.tone}`}>
+    <article
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      className={`project-card ${featured ? "project-featured" : ""} tone-${project.tone}`}
+    >
       <div className={`project-cover ${project.coverImage ? "has-cover-image" : ""}`}>
         {project.coverImage ? (
           <Image

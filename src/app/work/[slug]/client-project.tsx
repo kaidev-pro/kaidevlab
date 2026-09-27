@@ -27,6 +27,7 @@ interface ClientProjectProps {
     next: readonly string[];
     kind?: string;
     poster?: string;
+    youtubeId?: string;
   };
   previousSlug: string;
   nextSlug: string;
@@ -74,6 +75,14 @@ export function ClientProject({
   const nextTitle = nextOverrides.title || nextProject.title;
   const nextCategory = nextOverrides.category || nextProject.category;
 
+  const isYouTube = p.liveUrl?.includes("youtube.com") || p.liveUrl?.includes("youtu.be");
+  const watchVideoLabel =
+    locale === "id"
+      ? "Tonton di YouTube ↗"
+      : locale === "ja"
+      ? "YouTubeで視聴 ↗"
+      : "Watch on YouTube ↗";
+
   return (
     <main className="section detail-page">
       <a className="secondary" href="/work/">
@@ -88,7 +97,7 @@ export function ClientProject({
             <span className="status">{p.status}</span>
             {p.liveUrl && (
               <a className="primary" href={p.liveUrl} target="_blank" rel="noreferrer">
-                {labels.visitLive}
+                {isYouTube ? watchVideoLabel : labels.visitLive}
               </a>
             )}
           </div>
@@ -116,6 +125,55 @@ export function ClientProject({
           </p>
         </div>
       </section>
+
+      {p.youtubeId ? (
+        <figure className="detail-showcase detail-video-showcase">
+          <div className="detail-showcase-bar">
+            <div className="detail-showcase-dots" aria-hidden="true">
+              <span className="dot dot-red" />
+              <span className="dot dot-yellow" />
+              <span className="dot dot-green" />
+            </div>
+            <div className="detail-showcase-url">
+              <span>{`youtube.com/watch?v=${p.youtubeId}`}</span>
+            </div>
+            <a
+              href={`https://youtu.be/${p.youtubeId}`}
+              target="_blank"
+              rel="noreferrer"
+              className="detail-showcase-link"
+            >
+              {watchVideoLabel}
+            </a>
+          </div>
+          <div
+            className="detail-showcase-viewport"
+            style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden", background: "#050914" }}
+          >
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${p.youtubeId}?rel=0&modestbranding=1`}
+              title={`${p.title} Episode 0 Pilot`}
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                border: "none",
+              }}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+          <figcaption>
+            {locale === "id"
+              ? `Pemutar video resmi ${p.title} Episode 0 Pilot — Tonton langsung dalam kualitas HD 1080p.`
+              : locale === "ja"
+              ? `${p.title} エピソード0 パイロット公式プレイヤー — 1080p HDで直接視聴できます。`
+              : `Official player for ${p.title} Episode 0 Pilot — Stream directly in full 1080p HD.`}
+          </figcaption>
+        </figure>
+      ) : null}
 
       {p.poster ? (
         <figure className="detail-poster">
@@ -313,7 +371,11 @@ export function ClientProject({
           <a className="secondary" href="/work/">
             {labels.backToAll}
           </a>
-          {creative ? (
+          {creative && p.liveUrl ? (
+            <a className="primary" href={p.liveUrl} target="_blank" rel="noreferrer">
+              {isYouTube ? watchVideoLabel : labels.visitLiveBottom}
+            </a>
+          ) : creative ? (
             <a className="primary" href="/work/">
               {labels.exploreCreative}
             </a>

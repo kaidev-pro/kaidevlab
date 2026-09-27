@@ -86,14 +86,14 @@ const projects = {
     ]
   },
   "blue-vengeance": {
-    kind: "creative", title: "Blue Vengeance", category: "Original Anime Series", status: "Episode 0 Released · Creative Pilot", role: "Creator, story direction, visual development", logo: "/logos/kai-revengers-64.svg", poster: "/blue-vengeance-poster.webp", year: "2026", stack: ["Anime Pilot", "CapCut Multi-track", "ElevenLabs Audio", "Character Arcs", "Cinematic Direction"],
+    kind: "creative", title: "Blue Vengeance", category: "Original Anime Series", status: "Episode 0 Released · Creative Pilot", role: "Creator, story direction, visual development", logo: "/logos/kai-revengers-64.svg", poster: "/blue-vengeance-poster.webp", liveUrl: "https://youtu.be/0fGTbY20PJk", youtubeId: "0fGTbY20PJk", year: "2026", stack: ["Anime Pilot", "YouTube 1080p", "CapCut Multi-track", "ElevenLabs Audio", "Character Arcs", "Cinematic Direction"],
     summary: "An original anime series following Kai and Rin through a story of gentle bonds, fading scars, and promises that become vengeance.",
     problem: "A long-form original IP needs disciplined story architecture, distinct character motivations, and production verification before expanding chapter claims.",
-    goals: ["Release Episode 0 pilot showcase", "Establish Kai and Rin's emotional bond and tragic turning point", "Demonstrate multi-track video editing and voiceover direction", "Prepare sustainable pipeline for subsequent episodes"],
-    features: ["Episode 0 pilot release", "School delinquent action period transition", "Rin tragedy and amnesia narrative thread", "Multi-layered sound design and dialogue sync", "Original character visual sheets"],
+    goals: ["Release Episode 0 pilot showcase on YouTube", "Establish Kai and Rin's emotional bond and tragic turning point", "Demonstrate multi-track video editing and voiceover direction", "Prepare sustainable pipeline for subsequent episodes"],
+    features: ["Episode 0 pilot release on YouTube (1080p)", "School delinquent action period transition", "Rin tragedy and amnesia narrative thread", "Multi-layered sound design and dialogue sync", "Original character visual sheets"],
     approach: "Blue Vengeance Episode 0 serves as the primary creative pilot: story architecture, character arcs, tone, and production workflow with CapCut timeline cutting and ElevenLabs sound engineering.",
     challenges: ["Balancing emotional pacing with action beats", "Maintaining visual continuity across episodic sequences", "Syncing multi-track voice acting with background score"],
-    limitations: ["Episode 0 pilot completed", "Next episodes in storyboarding stage"],
+    limitations: ["Episode 0 pilot completed and streamable on YouTube", "Next episodes in storyboarding stage"],
     next: ["Lock episode-one storyboard outline", "Refine key action sequences", "Expand voice direction stem library"]
   },
   "kai-in-summer": {

@@ -1,5 +1,5 @@
 // FE Study Hub — Service Worker (Offline PWA)
-const CACHE_NAME = "fe-study-hub-v9";
+const CACHE_NAME = "fe-study-hub-v10";
 
 const PRECACHE_URLS = [
   "/learn",

@@ -34,18 +34,25 @@ export function ProjectCard({
       ? "概要"
       : "Overview";
 
-  const liveSiteLabel =
-    locale === "id"
-      ? project.liveUrl?.startsWith("/")
-        ? "Buka Hub"
-        : "Situs Live"
+  const isYouTube = project.liveUrl?.includes("youtube.com") || project.liveUrl?.includes("youtu.be");
+
+  const liveSiteLabel = isYouTube
+    ? locale === "id"
+      ? "Tonton Episode 0 ↗"
       : locale === "ja"
-      ? project.liveUrl?.startsWith("/")
-        ? "ハブを開く"
-        : "公式サイト"
-      : project.liveUrl?.startsWith("/")
-      ? "Launch Hub"
-      : "Live Site";
+      ? "エピソード0を視聴 ↗"
+      : "Watch Episode 0 ↗"
+    : locale === "id"
+    ? project.liveUrl?.startsWith("/")
+      ? "Buka Hub"
+      : "Situs Live"
+    : locale === "ja"
+    ? project.liveUrl?.startsWith("/")
+      ? "ハブを開く"
+      : "公式サイト"
+    : project.liveUrl?.startsWith("/")
+    ? "Launch Hub"
+    : "Live Site";
 
   return (
     <article className={`project-card ${featured ? "project-featured" : ""} tone-${project.tone}`}>

@@ -267,13 +267,13 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
       summary: "Serial anime orisinal yang mengikuti perjalanan Kai dan Rin melintasi ikatan hangat, luka masa lalu, dan janji yang berubah menjadi pembalasan dendam.",
       problem: "Membangun episode pilot yang memiliki kedalaman narasi, ritme adegan yang tepat, dan sinkronisasi audio dialog karakter yang meyakinkan.",
       goals: [
-        "Merilis showcase episode 0 sebagai bukti kualitas narasi dan visual",
+        "Merilis showcase episode 0 di YouTube sebagai bukti kualitas narasi dan visual",
         "Membangun dinamika karakter Kai dan titik balik tragedi Rin",
         "Menerapkan editing multi-track profesional di CapCut dengan sinkronisasi waveform audio",
         "Mengarahkan voice acting dan soundscape dramatis melalui ElevenLabs"
       ],
       features: [
-        "Perilisan pilot episode 0 berdurasi penuh",
+        "Perilisan pilot episode 0 berdurasi penuh di YouTube (1080p)",
         "Transisi adegan aksi dan tensi dramatis",
         "Benang merah misteri ingatan masa lalu Rin",
         "Tata suara multi-layer dengan dialog bersubtitle presisi",
@@ -286,7 +286,7 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
         "Menyelaraskan intonasi suara dialog dengan ketukan musik latar"
       ],
       limitations: [
-        "Episode 0 telah selesai dirilis sebagai pilot",
+        "Episode 0 telah selesai dirilis dan dapat ditonton langsung di YouTube",
         "Episode selanjutnya dalam tahap storyboarding"
       ],
       next: [
@@ -446,13 +446,13 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
       problem:
         "キャラクターの感情の説得力、一貫した世界観、および確かな映像制作パイプラインを確立したパイロット作品の実装。",
       goals: [
-        "ストーリーとビジュアルクオリティを実証するエピソード0パイロットの公開",
+        "ストーリーとビジュアルクオリティを実証するエピソード0パイロットのYouTube公開",
         "主人公カイの葛藤とヒロイン・リンの悲劇の転換点の描写",
         "CapCutを用いたマルチトラック映像編集と音声波形同期の実現",
         "ElevenLabsを活用したキャラクターボイスと劇伴音響の演出"
       ],
       features: [
-        "エピソード0パイロット映像の完全パッケージ制作",
+        "エピソード0パイロット映像のYouTube公式公開（1080p フルHD）",
         "緊迫感あるアクションと感情の緩急の設計",
         "記憶喪失の謎とリンの過去に刻まれた傷跡",
         "正確な英語字幕と台詞に合わせたマルチレイヤー音響設計",
@@ -466,7 +466,7 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
         "BGMと台詞ボイスの音響バランスおよびテンポの調和"
       ],
       limitations: [
-        "エピソード0はパイロット版として完成・公開済み",
+        "エピソード0はパイロット版としてYouTubeにて完成・公開中",
         "以降のエピソードは絵コンテ・プロット制作段階"
       ],
       next: [

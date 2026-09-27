@@ -31,7 +31,7 @@ export function RubyTerm({
     return <span className={className}>{text}</span>;
   }
 
-  const regex = /\[([^:]+):([^\]]+)\]/g;
+  const regex = /\[([^:\]]+):([^\]]+)\]/g;
   const nodes: React.ReactNode[] = [];
   let lastIndex = 0;
   let match: RegExpExecArray | null;

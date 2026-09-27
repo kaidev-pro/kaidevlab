@@ -559,6 +559,14 @@ export function LearnClient() {
                 {txt.trainMode}
               </span>
 
+              <a
+                href="/tools/tango-n3/"
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-primary)]/10 hover:bg-[var(--brand-primary)]/20 border border-[var(--brand-primary)]/30 text-[var(--brand-primary)] text-xs font-semibold transition-colors"
+              >
+                <Languages size={13} />
+                <span>JLPT N3 単語 (新完全マスター) →</span>
+              </a>
+
               {deferredPrompt && !isInstalled && (
                 <button
                   type="button"

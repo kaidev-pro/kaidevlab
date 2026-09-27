@@ -305,9 +305,11 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
         "Membangun atmosfer pantai musim panas Jepang yang cerah dan ikonik",
         "Menghadirkan tradisi musim panas otentik (suikawari) dalam narasi karakter",
         "Menyelaraskan subtitle dialog dengan waveform audio secara presisi",
-        "Membuktikan alur kerja editing multi-track nyata melalui timeline CapCut"
+        "Membuktikan alur kerja editing multi-track nyata melalui timeline CapCut",
+        "Menayangkan spec video UGC di YouTube dalam resolusi 1080p"
       ],
       features: [
+        "Video reel penuh dapat ditonton langsung di YouTube (1080p)",
         "Latar pantai musim panas dengan palet warna cerah",
         "Interaksi karakter anime dengan subtitle dialog bilingual",
         "Sekuens suikawari (pemukulan semangka) yang dinamis",
@@ -321,7 +323,7 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
         "Mempertahankan ritme video tetap padat dalam durasi singkat"
       ],
       limitations: [
-        "Proyek dibuat sebagai spec commercial untuk portofolio demonstrasi"
+        "Proyek dibuat sebagai spec commercial dan dapat ditonton langsung di YouTube untuk demonstrasi portofolio"
       ],
       next: [
         "Mengembangkan konsep UGC untuk kolaborasi brand minuman dan lifestyle",
@@ -488,9 +490,11 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
         "日本の明るく爽快な夏の海辺の空気感を再現",
         "スイカ割りなど日本文化のモチーフを自然な物語として組み込む",
         "英語字幕と台詞音声波形の正確なタイミング同期",
-        "CapCutマルチトラックタイムラインによる実編集プロセスの実証"
+        "CapCutマルチトラックタイムラインによる実編集プロセスの実証",
+        "YouTubeでの高画質1080pストリーミング公開による制作成果の実証"
       ],
       features: [
+        "YouTubeでのフルHD（1080p）動画ストリーミング対応",
         "夏の海岸と鮮やかなブルーのカラースキーム",
         "アニメキャラクターによる自然な会話と字幕表示",
         "ダイナミックなスイカ割りのアクションシークエンス",
@@ -505,7 +509,7 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
         "短尺の中で視聴者を飽きさせないスピーディーなテンポの維持"
       ],
       limitations: [
-        "ポートフォリオ実証用のスペック広告として制作"
+        "ポートフォリオ実証用のスペック広告としてYouTubeにて公開中"
       ],
       next: [
         "飲料やライフスタイルブランド向けUGCコンセプトの展開",

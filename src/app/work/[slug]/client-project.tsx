@@ -152,7 +152,7 @@ export function ClientProject({
           >
             <iframe
               src={`https://www.youtube-nocookie.com/embed/${p.youtubeId}?rel=0&modestbranding=1`}
-              title={`${p.title} Episode 0 Pilot`}
+              title={`${p.title} Video Showcase`}
               style={{
                 position: "absolute",
                 top: 0,
@@ -167,10 +167,10 @@ export function ClientProject({
           </div>
           <figcaption>
             {locale === "id"
-              ? `Pemutar video resmi ${p.title} Episode 0 Pilot — Tonton langsung dalam kualitas HD 1080p.`
+              ? `Pemutar video resmi ${p.title} — Tonton langsung dalam kualitas HD 1080p.`
               : locale === "ja"
-              ? `${p.title} エピソード0 パイロット公式プレイヤー — 1080p HDで直接視聴できます。`
-              : `Official player for ${p.title} Episode 0 Pilot — Stream directly in full 1080p HD.`}
+              ? `${p.title} 公式プレイヤー — 1080p HDで直接視聴できます。`
+              : `Official player for ${p.title} — Stream directly in full 1080p HD.`}
           </figcaption>
         </figure>
       ) : null}

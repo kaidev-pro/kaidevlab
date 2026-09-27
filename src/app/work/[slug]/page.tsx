@@ -97,14 +97,14 @@ const projects = {
     next: ["Lock episode-one storyboard outline", "Refine key action sequences", "Expand voice direction stem library"]
   },
   "kai-in-summer": {
-    kind: "creative", title: "Kai in Summer · Pocari Sweat UGC", category: "Commercial UGC & Storytelling", status: "Completed · Spec Commercial Reel", role: "Creator, multi-track editing (CapCut), audio sync, sound direction", logo: "/logos/kai-revengers-64.svg", poster: "/pocari-summer-poster.webp", year: "2026", stack: ["CapCut Multi-track", "Pocari Sweat Spec", "Summer Beach UGC", "Suikawari Scene", "Audio Waveform Sync"],
+    kind: "creative", title: "Kai in Summer · Pocari Sweat UGC", category: "Commercial UGC & Storytelling", status: "Completed · Spec Commercial Reel", role: "Creator, multi-track editing (CapCut), audio sync, sound direction", logo: "/logos/kai-revengers-64.svg", poster: "/pocari-summer-poster.webp", liveUrl: "https://youtu.be/sCo2D7CMDHg", youtubeId: "sCo2D7CMDHg", year: "2026", stack: ["Spec Commercial", "YouTube 1080p", "CapCut Multi-track", "Pocari Sweat Spec", "Summer Beach UGC", "Suikawari Scene"],
     summary: "A vibrant Japanese summer UGC narrative combining anime visual aesthetics, seaside suikawari traditions, English dialogue subtitles, and upbeat sound editing.",
     problem: "Commercial UGC and spec reels need authentic cultural texture, immediate hook, tight multi-track audio sync, and verified editing execution.",
     goals: ["Build a cheerful Japanese summer beach atmosphere", "Incorporate authentic suikawari and seaside motifs", "Synchronize dialogue subtitles with audio waveforms", "Demonstrate end-to-end CapCut multi-track timeline editing"],
-    features: ["Summer beach setting with coastal aesthetic", "Anime character interaction & dialogue subtitles", "Suikawari (watermelon splitting) sequence", "Audio-matched cuts and BGM pacing", "Production timeline verification via CapCut screenshots"],
+    features: ["Full video spec reel streamable on YouTube (1080p)", "Summer beach setting with coastal aesthetic", "Anime character interaction & dialogue subtitles", "Suikawari (watermelon splitting) sequence", "Audio-matched cuts and BGM pacing", "Production timeline verification via CapCut screenshots"],
     approach: "Produced as a spec UGC commercial demonstrating brand storytelling, color grading for high-saturation summer vibes, and precise dialogue subtitle timing in CapCut.",
     challenges: ["Balancing bright summer color grading with character legibility", "Timing dialogue cuts tightly against upbeat summer BGM", "Maintaining high visual energy without jarring cuts"],
-    limitations: ["Spec commercial project created for portfolio demonstration"],
+    limitations: ["Spec commercial project streamable directly on YouTube for portfolio demonstration"],
     next: ["Expand UGC concept to beverage and lifestyle brand collaborations", "Explore vertical 9:16 short-form cutdowns"]
   }
 } as const;

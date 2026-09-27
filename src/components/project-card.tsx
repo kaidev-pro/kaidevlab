@@ -37,11 +37,17 @@ export function ProjectCard({
   const isYouTube = project.liveUrl?.includes("youtube.com") || project.liveUrl?.includes("youtu.be");
 
   const liveSiteLabel = isYouTube
-    ? locale === "id"
-      ? "Tonton Episode 0 ↗"
+    ? project.slug === "blue-vengeance"
+      ? locale === "id"
+        ? "Tonton Episode 0 ↗"
+        : locale === "ja"
+        ? "エピソード0を視聴 ↗"
+        : "Watch Episode 0 ↗"
+      : locale === "id"
+      ? "Tonton Video UGC ↗"
       : locale === "ja"
-      ? "エピソード0を視聴 ↗"
-      : "Watch Episode 0 ↗"
+      ? "UGC動画を視聴 ↗"
+      : "Watch UGC Video ↗"
     : locale === "id"
     ? project.liveUrl?.startsWith("/")
       ? "Buka Hub"

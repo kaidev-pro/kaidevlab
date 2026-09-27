@@ -19,6 +19,7 @@ export function ProjectCard({
   const status = overrides.status || project.status;
   const summary = overrides.summary || project.summary;
   const role = overrides.role || project.role;
+  const signals = overrides.signals || project.signals;
 
   const roleLabel =
     locale === "id"
@@ -94,7 +95,7 @@ export function ProjectCard({
           <span>{status}</span>
         </div>
         <div className="project-signals" aria-label={`${project.name} highlights`}>
-          {project.signals.map((signal) => (
+          {signals.map((signal) => (
             <span key={signal}>{signal}</span>
           ))}
         </div>

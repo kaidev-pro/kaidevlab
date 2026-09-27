@@ -70,6 +70,8 @@ export interface CtaTranslations {
 export interface FooterTranslations {
   tagline: string;
   rights: string;
+  privacy: string;
+  terms: string;
 }
 
 export interface Translations {

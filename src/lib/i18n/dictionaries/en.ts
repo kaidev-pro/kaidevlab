@@ -77,5 +77,7 @@ export const en: Translations = {
   footer: {
     tagline: "Build · Code · Create",
     rights: "© 2026 Kaidevlab. The personal creative technology lab of Kai.",
+    privacy: "Privacy",
+    terms: "Terms",
   },
 };

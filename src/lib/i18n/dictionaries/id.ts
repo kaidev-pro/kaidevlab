@@ -75,7 +75,9 @@ export const id: Translations = {
     button: "Mulai Diskusi",
   },
   footer: {
-    tagline: "Bangun · Koding · Ciptakan",
+    tagline: "Bangun · Rekayasa · Ciptakan",
     rights: "© 2026 Kaidevlab. Laboratorium teknologi kreatif pribadi oleh Kai.",
+    privacy: "Privasi",
+    terms: "Ketentuan",
   },
 };

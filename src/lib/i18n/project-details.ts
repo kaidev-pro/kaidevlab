@@ -7,6 +7,7 @@ export interface LocalizedProjectDetail {
   role: string;
   year: string;
   summary: string;
+  signals?: string[];
   problem: string;
   goals: string[];
   features: string[];
@@ -153,6 +154,7 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
       status: "Live · Sistem Klien",
       role: "Arsitektur produk, strategi brand, brankas aset digital, rekayasa web",
       summary: "Partner digital menyeluruh untuk UMKM Indonesia, mengubah usaha lokal menjadi brand modern dan terpercaya melalui brand kit, website berkecepatan tinggi, konten video UGC, dan Brankas Aset Digital.",
+      signals: ["Transformasi UMKM", "Brankas Aset Digital", "Paket 3-Tier", "Studio Konten"],
       problem: "Lebih dari 66 juta UMKM Indonesia menyumbang 61% PDB nasional, tetapi sebagian besar belum memiliki identitas visual modern dan website resmi. Aset bisnis sering kali tercecer di obrolan WhatsApp, dan biaya agensi konvensional sangat mahal dengan proses yang lambat.",
       goals: [
         "Menjembatani kesenjangan digital UMKM lokal dengan paket harga 3-tier yang transparan (Starter, Growth, Care)",
@@ -189,6 +191,7 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
       status: "Live · Pembayaran Aktif (Fulfillment <60s)",
       role: "Founder, rekayasa commerce full-stack, arsitektur brand, UX anime-tech",
       summary: "Platform top-up game & voucher digital secepat genggaman saku, memadukan filosofi bahasa Jepang-Indonesia (楽 + Saku), estetika pink anime-cyber yang memikat, dan pemrosesan otomatis di bawah 1 menit via DOKU & Pakasir.",
+      signals: ["QRIS DOKU & Pakasir", "Otomasi <60 Detik", "Duo Maskot", "Estetika Hot-Pink"],
       problem: "Sebagian besar platform top-up game di Indonesia memiliki tata letak bertema gelap yang monoton, alur navigasi membingungkan, biaya admin tersembunyi, dan verifikasi manual yang lambat. Gamer membutuhkan pengalaman top-up yang secepat kilat, terpercaya, dan praktis dalam genggaman saku.",
       goals: [
         "Menghadirkan pemrosesan transaksi otomatis dalam 1–3 menit (teruji nyata rata-rata di bawah 60 detik langsung masuk)",
@@ -227,6 +230,7 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
       status: "Live · Sistem Interaktif",
       role: "Full-stack engineering, sistem pembelajaran, simulator CBT, active recall",
       summary: "Gym kognitif untuk persiapan ujian Fundamental Information Technology Engineer (FE) Jepang (基本情報技術者試験), menghadirkan 199 flashcard sakti dengan audio furigana TTS, kurikulum 20 hari, simulasi ujian CBT resmi 75 soal, pelacak pseudocode, dan mode PWA offline.",
+      signals: ["199 Flashcard", "75 Soal CBT", "Paket 20 Hari", "Mode Offline PWA"],
       problem: "Mempersiapkan ujian sertifikasi nasional Jepang (FE) biasanya harus membaca buku tebal lebih dari 600 halaman dengan kanji teknis yang padat dan pseudocode abstrak, menyebabkan kelelahan kognitif dan lambatnya daya ingat saat belajar di tengah perjalanan kereta komuter.",
       goals: [
         "Membuat drill active recall dengan audio native Text-to-Speech Jepang dan tombol saklar furigana",
@@ -265,6 +269,7 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
       status: "Episode 0 Rilis · Pilot Kreatif",
       role: "Kreator, arahan cerita, editing video (CapCut), audio engineering (ElevenLabs)",
       summary: "Serial anime orisinal yang mengikuti perjalanan Kai dan Rin melintasi ikatan hangat, luka masa lalu, dan janji yang berubah menjadi pembalasan dendam.",
+      signals: ["Stream Episode 0", "Resolusi 1080p", "Sinkronisasi Audio & CapCut"],
       problem: "Membangun episode pilot yang memiliki kedalaman narasi, ritme adegan yang tepat, dan sinkronisasi audio dialog karakter yang meyakinkan.",
       goals: [
         "Merilis showcase episode 0 di YouTube sebagai bukti kualitas narasi dan visual",
@@ -300,6 +305,7 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
       status: "Selesai · Video Reel & Narasi Musim Panas",
       role: "Kreator, editing multi-track (CapCut), sinkronisasi audio, sound direction",
       summary: "Eksperimen video naratif UGC bernuansa musim panas Jepang yang memadukan visual anime pantai, tradisi suikawari (pecah semangka), subtitle dialog bahasa Inggris, dan editing audio yang ritmis.",
+      signals: ["Tonton di YouTube", "Resolusi 1080p", "Workflow CapCut Multi-Track"],
       problem: "Video UGC komersial membutuhkan hook visual yang memikat, ritme pemotongan adegan yang presisi, dan sinkronisasi audio dialog yang pas agar tidak terasa kaku atau membosankan.",
       goals: [
         "Membangun atmosfer pantai musim panas Jepang yang cerah dan ikonik",
@@ -337,6 +343,7 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
       status: "運用中 · クライアントエンジン",
       role: "製品アーキテクチャ、ブランド戦略、デジタル資産保管庫、Webエンジニアリング",
       summary: "インドネシアの6600万の中小企業（UMKM）を対象に、ブランドキット、高速Webサイト、UGC動画、およびデジタル資産保管庫を提供し、信頼されるモダンブランドへと成長させるパートナー。",
+      signals: ["ビフォーアフター変革", "デジタル資産保管庫", "3段階プラン", "コンテンツスタジオ"],
       problem: "インドネシアのGDPの61%を担う中小企業ですが、大半は公式Webサイトやブランドアイデンティティを持たず、素材ファイルがチャット上で散乱しています。",
       goals: [
         "透明性のある3段階パッケージ（Starter、Growth、Care）でデジタル格差を解消",
@@ -367,6 +374,7 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
       status: "運用中 · 決済稼働中 (60秒以内納品)",
       role: "創業者、フルスタックコマースエンジニアリング、ブランド設計、アニメテックUI",
       summary: "日本語「楽（らく）」とインドネシア語「Saku（ポケット）」を融合し、鮮やかなピンクのアニメテックデザインとDOKU＆Pakasirによる1分以内の自動納品を実現したポケットサイズのゲーム課金プラットフォーム。",
+      signals: ["DOKU・Pakasir QRIS", "60秒以内自動納品", "デュオマスコット", "ホットピンクデザイン"],
       problem: "既存の課金サイトは暗く無機質なデザインが多く、手数料が不透明で反映も遅いという課題がありました。ゲーマーはポケットから取り出すように迅速で楽しく、信頼できる課金体験を求めています。",
       goals: [
         "1〜3分以内（実測60秒未満）の超高速自動納品を実現",
@@ -403,6 +411,7 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
       role: "フルスタックエンジニアリング、学習システム設計、CBTシミュレーター、アクティブリコール",
       summary:
         "国家試験「基本情報技術者試験（FE）」および技人国ビザ取得を支援する認知科学ベースの学習ジム。199枚の厳選フラッシュカード（漢字ルビ・TTS音声付き・20日完成プラン）、75問収録CBT模試シミュレーター、科目B擬似言語ステップトレーサー、オフラインPWA（電車モード）を搭載。",
+      signals: ["199枚 フラッシュカード", "75問 CBT模試", "20日間プラン", "オフラインPWA対応"],
       problem:
         "基本情報技術者試験の対策テキストは600ページを超える専門用語の漢字や抽象的な擬似言語で埋め尽くされており、通勤電車内での暗記効率低下や認知過負荷による挫折が大きな課題でした。",
       goals: [
@@ -445,6 +454,7 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
       role: "原案・ストーリー演出、映像編集（CapCut）、音響設計（ElevenLabs）",
       summary:
         "カイとリンの二人が織りなす、優しい絆と消えゆく傷跡、そして復讐へと変わる約束を描くオリジナルアニメシリーズ。",
+      signals: ["エピソード0 公開中", "YouTube 1080p", "CapCut・音響同期"],
       problem:
         "キャラクターの感情の説得力、一貫した世界観、および確かな映像制作パイプラインを確立したパイロット作品の実装。",
       goals: [
@@ -484,6 +494,7 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
       role: "クリエイター、マルチトラック映像編集（CapCut）、音声同期、音響ディレクション",
       summary:
         "日本の夏の風物詩をテーマにしたUGC短編映像。海岸でのスイカ割り、アニメキャラクターの掛け合い、テンポの良い英語字幕、そして爽快な音楽編集を融合。",
+      signals: ["YouTubeで視聴", "フルHD 1080p", "CapCutマルチトラック制作"],
       problem:
         "商業向けUGCやスペック広告において、冒頭の引き込み（フック）、軽快なカット割り、および音楽と台詞の完全な同期が求められます。",
       goals: [
@@ -517,5 +528,21 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
       ]
     }
   },
-  en: {}
+  en: {
+    "8agents": {
+      signals: ["Before/After Transform", "Digital Asset Vault", "3-Tier Packages", "Content Studio"],
+    },
+    "rakusaku": {
+      signals: ["DOKU & Pakasir QRIS", "<60s Auto Fulfillment", "Duo Mascots", "Hot-Pink Aesthetics"],
+    },
+    "blue-vengeance": {
+      signals: ["Episode 0 Streamable", "YouTube 1080p", "CapCut & Audio Sync"],
+    },
+    "fe-study-hub": {
+      signals: ["199 Flashcards", "75 CBT Questions", "20-Day Plan", "Offline PWA Mode"],
+    },
+    "kai-in-summer": {
+      signals: ["Watch on YouTube", "1080p Resolution", "CapCut Multi-Track Workflow"],
+    },
+  }
 };

@@ -14,18 +14,14 @@ export const metadata: Metadata = {
   alternates: { canonical: `/lab-notes/${slug}/` },
 };
 
+import { NoteArticleClient } from "./note-article-client";
+
 export default async function Note({ params }: { params: Promise<{ slug: string }> }) {
   const current = await params;
   if (current.slug !== slug) notFound();
 
   return (
-    <main className="page-shell article-page">
-      <header className="article-header">
-        <p className="eyebrow">Lab Note 01 · July 2026</p>
-        <h1>Behind the Kaidevlab Redesign: Turning a Portfolio into a Creative Technology Lab</h1>
-        <p className="lead">A portfolio should not only show finished work. It should make the builder’s direction, standards, and growth visible.</p>
-      </header>
-
+    <NoteArticleClient>
       <article className="article-body">
         <p className="article-intro">
           The first version of Kaidevlab worked as a developer portfolio, but it did not fully represent the work behind it. Products, AI systems, visual experiments, editing, and original stories appeared as separate interests instead of one connected practice.
@@ -62,8 +58,6 @@ export default async function Note({ params }: { params: Promise<{ slug: string 
           Kaidevlab will keep evolving through real project screenshots, deeper case studies, published build logs, and the gradual development of Blue Vengeance. The goal is not to make the site look permanently finished. The goal is to make every update more truthful, useful, and recognizably Kaidevlab.
         </p>
       </article>
-
-      <div className="article-actions"><a className="secondary" href="/lab-notes/">Back to Lab Notes</a><a className="primary" href="/work/">Explore the Work</a></div>
-    </main>
+    </NoteArticleClient>
   );
 }

@@ -77,5 +77,7 @@ export const ja: Translations = {
   footer: {
     tagline: "設計 · 実装 · 創造",
     rights: "© 2026 Kaidevlab. Kai による個人クリエイティブ・テクノロジー・ラボ。",
+    privacy: "プライバシーポリシー",
+    terms: "利用規約",
   },
 };

@@ -61,8 +61,8 @@ export function SiteFooter() {
           </a>
         </div>
         <div className="footer-legal-links">
-          <a href="/privacy/">Privacy</a>
-          <a href="/terms/">Terms</a>
+          <a href="/privacy/">{t.footer.privacy}</a>
+          <a href="/terms/">{t.footer.terms}</a>
         </div>
       </nav>
       <small>{t.footer.rights}</small>

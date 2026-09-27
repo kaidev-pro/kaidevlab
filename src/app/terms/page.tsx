@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import { TermsClient } from "./terms-client";
 
 export const metadata: Metadata = {
   title: "Terms of Service — Kaidevlab",
-  description: "Kaidevlab terms of service — rules and guidelines for using kaidevlab.com.",
+  description:
+    "Kaidevlab terms of service — rules and guidelines for using kaidevlab.com.",
 };
 
-export default function Terms(){return <main className="section legal-page"><p className="eyebrow">TERMS</p><h1>Terms of Use</h1><p className="lead">Kaidevlab shares personal projects, experiments, writing, and visual work. Use the site responsibly and treat project status labels as part of the content.</p><section className="detail-grid"><article><h2>Content ownership</h2><p>Text, visuals, logos, posters, and creative direction shown on Kaidevlab belong to their respective owners or creators. Do not reuse visual assets without permission.</p></article><article><h2>Project status</h2><p>Some projects are beta, prototypes, archived experiments, or pre-production concepts. These pages are not guarantees of commercial availability.</p></article><article><h2>External links</h2><p>External project links and social links may change, break, or point to services outside Kaidevlab&apos;s control.</p></article><article><h2>Experimental availability</h2><p>Creative experiments, developer tools, and product prototypes may be incomplete, unstable, private, or revised over time.</p></article><article><h2>Limitation of liability</h2><p>Kaidevlab is provided as a portfolio and information site. Use external projects and linked services at your own discretion.</p></article></section></main>}
+export default function Terms() {
+  return <TermsClient />;
+}

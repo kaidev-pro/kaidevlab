@@ -86,26 +86,26 @@ const projects = {
     ]
   },
   "blue-vengeance": {
-    kind: "creative", title: "Blue Vengeance", category: "Original Anime Series", status: "Pre-Production", role: "Creator, story direction, worldbuilding, visual development", logo: "/logos/kai-revengers-64.svg", poster: "/blue-vengeance-poster.webp", year: "2026", stack: ["Manhwa production", "Long-form story", "Character arcs", "Visual development", "Action direction"],
+    kind: "creative", title: "Blue Vengeance", category: "Original Anime Series", status: "Episode 0 Released · Creative Pilot", role: "Creator, story direction, visual development", logo: "/logos/kai-revengers-64.svg", poster: "/blue-vengeance-poster.webp", year: "2026", stack: ["Anime Pilot", "CapCut Multi-track", "ElevenLabs Audio", "Character Arcs", "Cinematic Direction"],
     summary: "An original anime series following Kai and Rin through a story of gentle bonds, fading scars, and promises that become vengeance.",
-    problem: "A long-form original IP needs honest positioning before chapters are released: premise, arcs, and production direction can be public without claiming a launched series.",
-    goals: ["Define Kai’s 17-to-27 arc", "Build the Tachibana family and Rin storyline", "Shape the criminal network mystery", "Prepare a production pipeline before chapter release"],
-    features: ["School delinquent action period", "Adult investigator evolution", "Rin tragedy and amnesia thread", "Tachibana family conflict", "Wider criminal-network mystery"],
-    approach: "Blue Vengeance is treated as the future primary creative IP: story architecture, character arcs, tone, and production workflow come first before public chapter claims.",
-    challenges: ["Balancing action with long-term mystery", "Maintaining character continuity across a decade", "Avoiding release claims before chapters exist"],
-    limitations: ["Pre-production only", "No chapters publicly released yet"],
-    next: ["Lock chapter-one outline", "Develop key character sheets", "Plan production cadence after assets are ready"]
+    problem: "A long-form original IP needs disciplined story architecture, distinct character motivations, and production verification before expanding chapter claims.",
+    goals: ["Release Episode 0 pilot showcase", "Establish Kai and Rin's emotional bond and tragic turning point", "Demonstrate multi-track video editing and voiceover direction", "Prepare sustainable pipeline for subsequent episodes"],
+    features: ["Episode 0 pilot release", "School delinquent action period transition", "Rin tragedy and amnesia narrative thread", "Multi-layered sound design and dialogue sync", "Original character visual sheets"],
+    approach: "Blue Vengeance Episode 0 serves as the primary creative pilot: story architecture, character arcs, tone, and production workflow with CapCut timeline cutting and ElevenLabs sound engineering.",
+    challenges: ["Balancing emotional pacing with action beats", "Maintaining visual continuity across episodic sequences", "Syncing multi-track voice acting with background score"],
+    limitations: ["Episode 0 pilot completed", "Next episodes in storyboarding stage"],
+    next: ["Lock episode-one storyboard outline", "Refine key action sequences", "Expand voice direction stem library"]
   },
-  "dragon-kings-last-contract": {
-    kind: "creative", title: "The Dragon King’s Last Contract", category: "AI Film Experiment", status: "Episode 1 Completed · Creative Experiment", role: "Creator, story direction, poster concept, AI film workflow", logo: "/logos/kai-revengers-64.svg", poster: "/dragon-kings-last-contract-poster.webp", year: "2026", stack: ["AI filmmaking", "Dark fantasy", "Episode 1", "Poster direction", "Cinematic workflow"],
-    summary: "A completed Episode 1 dark fantasy creative experiment about a monster, a contract, and the girl sent to kill him.",
-    problem: "AI film experiments need coherent character motivation, repeatable mood, scene continuity, and honest status around what has actually been completed.",
-    goals: ["Present Episode 1 as completed", "Keep dark fantasy tone clear", "Use the experiment to refine AI filmmaking workflow"],
-    features: ["Gothic romance premise", "Dragon King visual identity", "Moonlit dark-fantasy mood", "Contract and betrayal story hook", "Completed first episode experiment"],
-    approach: "The project is presented as a completed creative experiment rather than an active production promise. The page documents its premise, visual direction, and workflow value.",
-    challenges: ["Maintaining character consistency across AI-generated scenes", "Preserving gothic tone without losing story clarity", "Avoiding stale future-production language"],
-    limitations: ["Episode 1 is completed as an experiment", "Future format is not committed publicly"],
-    next: ["Archive learnings", "Use workflow lessons in future creative production", "Keep page status accurate"]
+  "kai-in-summer": {
+    kind: "creative", title: "Kai in Summer · Pocari Sweat UGC", category: "Commercial UGC & Storytelling", status: "Completed · Spec Commercial Reel", role: "Creator, multi-track editing (CapCut), audio sync, sound direction", logo: "/logos/kai-revengers-64.svg", poster: "/pocari-summer-poster.webp", year: "2026", stack: ["CapCut Multi-track", "Pocari Sweat Spec", "Summer Beach UGC", "Suikawari Scene", "Audio Waveform Sync"],
+    summary: "A vibrant Japanese summer UGC narrative combining anime visual aesthetics, seaside suikawari traditions, English dialogue subtitles, and upbeat sound editing.",
+    problem: "Commercial UGC and spec reels need authentic cultural texture, immediate hook, tight multi-track audio sync, and verified editing execution.",
+    goals: ["Build a cheerful Japanese summer beach atmosphere", "Incorporate authentic suikawari and seaside motifs", "Synchronize dialogue subtitles with audio waveforms", "Demonstrate end-to-end CapCut multi-track timeline editing"],
+    features: ["Summer beach setting with coastal aesthetic", "Anime character interaction & dialogue subtitles", "Suikawari (watermelon splitting) sequence", "Audio-matched cuts and BGM pacing", "Production timeline verification via CapCut screenshots"],
+    approach: "Produced as a spec UGC commercial demonstrating brand storytelling, color grading for high-saturation summer vibes, and precise dialogue subtitle timing in CapCut.",
+    challenges: ["Balancing bright summer color grading with character legibility", "Timing dialogue cuts tightly against upbeat summer BGM", "Maintaining high visual energy without jarring cuts"],
+    limitations: ["Spec commercial project created for portfolio demonstration"],
+    next: ["Expand UGC concept to beverage and lifestyle brand collaborations", "Explore vertical 9:16 short-form cutdowns"]
   }
 } as const;
 

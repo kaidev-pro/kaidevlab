@@ -1,6 +1,6 @@
 export type ProjectGroup =
   | "Products"
-  | "AI Systems"
+  | "Systems & Automation"
   | "Developer Tools"
   | "Education"
   | "Creative"
@@ -27,7 +27,7 @@ export const projects: ProjectPreview[] = [
     slug: "8agents",
     name: "8Agents",
     category: "UMKM Digital Transformation",
-    group: "AI Systems",
+    group: "Systems & Automation",
     status: "Live · Client Engine",
     role: "Product architecture, brand strategy, digital asset vault",
     summary:
@@ -60,13 +60,13 @@ export const projects: ProjectPreview[] = [
     name: "Blue Vengeance",
     category: "Original Anime Series",
     group: "Creative",
-    status: "Pre-Production",
+    status: "Episode 0 Released · Creative Pilot",
     role: "Creator, story direction, visual development",
     summary:
       "An original anime series following Kai and Rin through a story of gentle bonds, fading scars, and promises that become vengeance.",
     logo: "/logos/kai-revengers-64.svg",
     tone: "creative",
-    signals: ["Long-form story", "Character arcs", "Visual development"],
+    signals: ["Episode 0 Released", "CapCut & Audio Sync", "Character Arcs"],
     coverImage: "/blue-vengeance-poster.webp",
     coverPosition: "center 24%",
   },
@@ -87,23 +87,23 @@ export const projects: ProjectPreview[] = [
     coverPosition: "center 30%",
   },
   {
-    slug: "dragon-kings-last-contract",
-    name: "The Dragon King’s Last Contract",
-    category: "AI Film Experiment",
-    group: "Experiments",
-    status: "Episode 1 Completed · Creative Experiment",
-    role: "Story direction, visual direction, AI film workflow",
+    slug: "kai-in-summer",
+    name: "Kai in Summer · Pocari Sweat UGC",
+    category: "Commercial UGC & Storytelling",
+    group: "Creative",
+    status: "Completed · Spec Commercial Reel",
+    role: "Creator, multi-track editing (CapCut), audio sync, sound direction",
     summary:
-      "A completed dark-fantasy Episode 1 experiment about a monster, a contract, and the girl sent to kill him.",
+      "A vibrant Japanese summer UGC narrative combining anime visual aesthetics, seaside suikawari traditions, English dialogue subtitles, and upbeat sound editing.",
     logo: "/logos/kai-revengers-64.svg",
-    tone: "fantasy",
-    signals: ["Dark fantasy", "Episode 1", "AI filmmaking"],
-    coverImage: "/dragon-kings-last-contract-poster.webp",
-    coverPosition: "center 20%",
+    tone: "creative",
+    signals: ["CapCut Multi-track", "Pocari Sweat Spec", "Summer Beach UGC", "Suikawari Scene"],
+    coverImage: "/pocari-summer-poster.webp",
+    coverPosition: "center center",
   },
 ];
 
 export const featuredProjects = projects.filter(
-  (project) => project.group === "Products" || project.group === "AI Systems" || project.group === "Education"
+  (project) => project.group === "Products" || project.group === "Systems & Automation" || project.group === "Education"
 );
 export const creativeProjects = projects.filter((project) => project.group === "Creative");

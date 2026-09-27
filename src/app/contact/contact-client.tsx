@@ -26,7 +26,7 @@ const contactByLocale: Record<string, ContactDictionary> = {
   en: {
     eyebrow: "Contact",
     heading: "Have an idea, collaboration, or interesting problem?",
-    lead: "The best fit is product building, AI systems, creative technology, visual storytelling, or a project where engineering and creative direction need to work together.",
+    lead: "The best fit is full-stack web development, systems automation, interactive UI design, visual storytelling, or a project where engineering and creative direction need to work together.",
     options: [
       {
         title: "Email",
@@ -63,7 +63,7 @@ const contactByLocale: Record<string, ContactDictionary> = {
   id: {
     eyebrow: "Kontak",
     heading: "Punya ide, peluang kolaborasi, atau tantangan menarik?",
-    lead: "Sangat terbuka untuk pengembangan produk digital, sistem AI, teknologi kreatif, visual storytelling, atau proyek di mana rekayasa teknis dan arahan desain berpadu harmonis.",
+    lead: "Sangat terbuka untuk pengembangan aplikasi web full-stack, otomasi sistem backend, desain UI/UX interaktif, atau proyek video & narasi kreatif.",
     options: [
       {
         title: "Email",
@@ -100,7 +100,7 @@ const contactByLocale: Record<string, ContactDictionary> = {
   ja: {
     eyebrow: "お問い合わせ",
     heading: "アイデア、協業のご相談、または興味深い課題をお持ちですか？",
-    lead: "プロダクト開発、AIシステム、クリエイティブ・テクノロジー、ビジュアルストーリーテリング、エンジニアリングとクリエイティブが交差するプロジェクトを歓迎します。",
+    lead: "フルスタックWeb開発、システム自動化、UI/UXデザイン、映像・ビジュアルストーリーテリングなど、エンジニアリングと表現力を活かしたプロジェクトを歓迎します。",
     options: [
       {
         title: "メール (Email)",

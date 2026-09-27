@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://kaidevlab.com"),
   title: "Kaidevlab — Kai’s Creative Technology Lab",
   description:
-    "Kaidevlab is the personal creative technology lab of Kai, featuring AI products, developer tools, learning platforms, original stories, and visual experiments.",
+    "Kaidevlab is the personal portfolio and creative technology lab of Kai, featuring full-stack web products, systems automation, education platforms, and visual media.",
   manifest: "/manifest.json",
   icons: {
     icon: [
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Kaidevlab — Kai’s Creative Technology Lab",
     description:
-      "AI products, developer tools, learning platforms, original stories, and visual experiments by Kai.",
+      "Full-stack web products, systems automation, education platforms, and visual media by Kai.",
     url: "https://kaidevlab.com",
     siteName: "Kaidevlab",
     type: "website",

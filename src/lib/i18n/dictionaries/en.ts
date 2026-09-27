@@ -10,11 +10,11 @@ export const en: Translations = {
     letsTalk: "Let's Talk",
   },
   hero: {
-    eyebrow: "Creative Technologist & Independent Builder",
-    headlinePrefix: "Building products, systems, and stories at the intersection of ",
-    headlineHighlight: "AI, code, and creativity.",
+    eyebrow: "Full-Stack Developer & Creative Technologist",
+    headlinePrefix: "Crafting modern web products, reliable systems, and ",
+    headlineHighlight: "distinctive visual narratives.",
     headlineSuffix: "",
-    lead: "I turn ideas into digital products, intelligent systems, and meaningful creative experiences.",
+    lead: "Software engineer based in Japan. Building high-performance web applications, dependable automation systems, and considered visual experiences.",
     exploreWork: "Explore My Work",
     meetKai: "Meet Kai",
     basedIn: "Based in Japan",
@@ -23,29 +23,29 @@ export const en: Translations = {
   work: {
     eyebrow: "Selected Work",
     heading: "Real products, honest status, clear direction.",
-    description: "Products are shown with their current state—not a polished fiction of where they might be later.",
+    description: "Every project is presented with its current production state—grounded in working software rather than exaggerated claims.",
     exploreAll: "Explore all work",
   },
   capabilities: {
     eyebrow: "What I Do",
     heading: "Build · Code · Create",
-    description: "From product architecture and AI workflows to visual direction and motion, I work across disciplines to turn ideas into functioning experiences.",
+    description: "Bridging modern full-stack engineering (Next.js, TypeScript) with clean system design, responsive UI, and multimedia storytelling.",
     items: [
       {
-        title: "Product Engineering",
-        description: "From concept and architecture to interface, backend, deployment, and iteration.",
+        title: "Full-Stack Web Development",
+        description: "Building responsive, high-performance web applications from concept and database design to deployment and optimization.",
       },
       {
-        title: "AI Systems",
-        description: "AI agents, model routing, automation, prompt systems, and reliable generative workflows.",
+        title: "Systems & Automation",
+        description: "Robust API integrations, data workflows, background tasks, and reliable backend infrastructure.",
       },
       {
-        title: "Creative Direction",
-        description: "Brand identities, interface direction, digital characters, and content concepts.",
+        title: "UI/UX & Interactive Design",
+        description: "Crafting intuitive, accessible interfaces with disciplined typography, responsive layouts, and thoughtful micro-interactions.",
       },
       {
-        title: "Visual Storytelling",
-        description: "Video editing, cinematic pacing, sound direction, manhwa, and AI-assisted production.",
+        title: "Video & Storytelling",
+        description: "Multi-track video editing in CapCut, voice engineering via ElevenLabs, commercial UGC, and cinematic pacing.",
       },
     ],
   },
@@ -58,8 +58,8 @@ export const en: Translations = {
   },
   creative: {
     eyebrow: "Creative Lab",
-    heading: "Cinematic narratives and worldbuilding experiments.",
-    description: "Exploring original story concepts, webtoon/manhwa IP, and episodic experiments powered by human writing and visual craft.",
+    heading: "Cinematic narratives and visual storytelling.",
+    description: "Original story concepts, anime pilots, and commercial video reels crafted with thoughtful pacing and modern visual direction.",
     exploreStory: "Explore the Story",
   },
   notes: {
@@ -71,7 +71,7 @@ export const en: Translations = {
   cta: {
     eyebrow: "Let's Collaborate",
     heading: "Have an ambitious project in mind?",
-    description: "Open to product development collaborations, AI system architectures, or cinematic creative direction.",
+    description: "Open to full-stack web engineering roles, systems automation, or cinematic creative direction.",
     button: "Get in Touch",
   },
   footer: {

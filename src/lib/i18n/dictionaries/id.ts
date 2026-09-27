@@ -10,11 +10,11 @@ export const id: Translations = {
     letsTalk: "Hubungi Saya",
   },
   hero: {
-    eyebrow: "Creative Technologist & Independent Builder",
-    headlinePrefix: "Membangun produk, sistem, dan cerita di titik temu ",
-    headlineHighlight: "AI, pemrograman, dan kreativitas.",
+    eyebrow: "Full-Stack Developer & Creative Technologist",
+    headlinePrefix: "Membangun produk web, arsitektur sistem, dan ",
+    headlineHighlight: "cerita visual yang berkarakter.",
     headlineSuffix: "",
-    lead: "Mengubah ide menjadi produk digital, sistem cerdas, dan pengalaman kreatif yang bermakna.",
+    lead: "Software engineer berbasis di Jepang. Mengembangkan aplikasi web performa tinggi, sistem otomasi yang andal, dan pengalaman visual yang matang.",
     exploreWork: "Jelajahi Karya",
     meetKai: "Tentang Kai",
     basedIn: "Berbasis di Jepang",
@@ -23,29 +23,29 @@ export const id: Translations = {
   work: {
     eyebrow: "Karya Terpilih",
     heading: "Produk nyata, status jujur, arah jelas.",
-    description: "Semua produk ditampilkan sesuai status aslinya saat ini—bukan narasi fiktif yang dibesar-besarkan.",
+    description: "Semua proyek ditampilkan sesuai status aslinya saat ini—bukan narasi fiktif yang dibesar-besarkan.",
     exploreAll: "Jelajahi Semua Karya",
   },
   capabilities: {
     eyebrow: "Keahlian & Fokus",
     heading: "Bangun · Koding · Ciptakan",
-    description: "Dari arsitektur produk dan alur kerja AI hingga arahan visual dan gerak, saya menghubungkan lintas disiplin untuk mewujudkan ide menjadi kenyataan.",
+    description: "Menghubungkan rekayasa perangkat lunak modern (Next.js, TypeScript) dengan rancangan antarmuka yang presisi dan produksi multimedia.",
     items: [
       {
-        title: "Product Engineering",
-        description: "Dari konsep dan arsitektur hingga antarmuka, backend, deployment, dan iterasi cepat.",
+        title: "Full-Stack Web Development",
+        description: "Membangun aplikasi web end-to-end dengan Next.js, React, TypeScript, dan arsitektur modular yang cepat serta scalable.",
       },
       {
-        title: "AI Systems",
-        description: "Agen AI, perutean model, otomasi cerdas, sistem prompt, dan workflow generatif yang andal.",
+        title: "Systems & Automation",
+        description: "Integrasi API, pipeline data, automasi alur kerja backend, dan manajemen database yang andal.",
       },
       {
-        title: "Creative Direction",
-        description: "Identitas brand, arahan UI/UX, karakter digital, dan perancangan konsep konten.",
+        title: "UI/UX & Interactive Design",
+        description: "Merancang antarmuka modern yang responsif di semua perangkat, dengan tipografi dan desain sistem yang konsisten.",
       },
       {
-        title: "Visual Storytelling",
-        description: "Penyuntingan video, ritme sinematik, tata suara, manhwa, dan produksi berbantuan AI.",
+        title: "Video & Storytelling",
+        description: "Penyuntingan video multi-track di CapCut, audio engineering via ElevenLabs, ritme sinematik, dan produksi UGC brand.",
       },
     ],
   },
@@ -59,7 +59,7 @@ export const id: Translations = {
   creative: {
     eyebrow: "Creative Lab",
     heading: "Narasi sinematik & pembangunan dunia.",
-    description: "Eksperimen cerita original, manhwa, dan IP kreatif yang menggabungkan naskah mendalam dengan visual modern.",
+    description: "Eksperimen cerita original, pilot anime, dan video komersial dengan naskah mendalam dan visual modern.",
     exploreStory: "Baca Cerita",
   },
   notes: {
@@ -70,8 +70,8 @@ export const id: Translations = {
   },
   cta: {
     eyebrow: "Kolaborasi & Proyek",
-    heading: "Punya ide yang ingin diwujudkan?",
-    description: "Terbuka untuk kolaborasi pengembangan produk digital, sistem AI, atau proyek kreatif sinematik.",
+    heading: "Punya proyek yang ingin diwujudkan?",
+    description: "Terbuka untuk kolaborasi pengembangan produk web full-stack, otomasi sistem, atau produksi video & narasi kreatif.",
     button: "Mulai Diskusi",
   },
   footer: {

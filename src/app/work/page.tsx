@@ -5,33 +5,30 @@ import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/lib/site-data";
 import { useLanguage } from "@/lib/i18n/context";
 
-const filters = ["All", "Products", "AI Systems", "Education", "Creative", "Experiments"] as const;
+const filters = ["All", "Products", "Systems & Automation", "Education", "Creative"] as const;
 type Filter = "All" | (typeof filters)[number];
 
 const filterLabels: Record<string, Record<Filter, string>> = {
   id: {
     All: "Semua",
     Products: "Produk",
-    "AI Systems": "Sistem AI",
+    "Systems & Automation": "Sistem & Otomasi",
     Education: "Edukasi",
-    Creative: "Kreatif",
-    Experiments: "Eksperimen",
+    Creative: "Kreatif & Visual",
   },
   en: {
     All: "All",
     Products: "Products",
-    "AI Systems": "AI Systems",
+    "Systems & Automation": "Systems & Automation",
     Education: "Education",
-    Creative: "Creative",
-    Experiments: "Experiments",
+    Creative: "Creative & Visual",
   },
   ja: {
     All: "すべて",
     Products: "プロダクト",
-    "AI Systems": "AIシステム",
+    "Systems & Automation": "システム・自動化",
     Education: "教育・学習",
-    Creative: "クリエイティブ",
-    Experiments: "実験",
+    Creative: "映像・クリエイティブ",
   },
 };
 
@@ -45,19 +42,19 @@ export default function Work() {
 
   const labels = filterLabels[locale] || filterLabels.en;
 
-  const eyebrow = locale === "id" ? "Karya" : locale === "ja" ? "作品一覧" : "Work";
+  const eyebrow = locale === "id" ? "Katalog Karya" : locale === "ja" ? "作品・実績" : "Selected Work";
   const heading =
     locale === "id"
-      ? "Produk, sistem, edukasi, dan eksperimen kreatif."
+      ? "Produk web, arsitektur sistem, edukasi, dan karya visual."
       : locale === "ja"
-      ? "プロダクト、AIシステム、学習ハブ、クリエイティブ実験。"
-      : "Products, systems, education, and creative experiments.";
+      ? "Webプロダクト、システム自動化、学習ハブ、映像制作。"
+      : "Web applications, systems automation, education, and visual media.";
   const lead =
     locale === "id"
-      ? "Setiap karya menampilkan status aslinya secara transparan—dari platform yang sudah live dan sistem bisnis hingga prototipe dan dunia cerita."
+      ? "Setiap proyek ditampilkan sesuai status aslinya—dari platform yang sudah beroperasi di production hingga karya video dan pilot kreatif."
       : locale === "ja"
-      ? "運用中のプラットフォームからビジネスシステム、試作モデル、プレプロダクションまで、すべてのプロジェクトの現在地を公開しています。"
-      : "Every project keeps its current status visible—from live platforms and business systems to commerce prototypes and pre-production worlds.";
+      ? "本番稼働中のWebプラットフォームから業務システム、映像制作、アニメパイロットまで、実装ステータスを公開しています。"
+      : "Every project keeps its verified production status visible—from live web platforms and backend automation to commercial UGC and creative pilots.";
 
   const countText =
     locale === "id"

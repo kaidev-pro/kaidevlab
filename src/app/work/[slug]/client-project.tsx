@@ -209,6 +209,38 @@ export function ClientProject({
         </section>
       )}
 
+      {slug === "kai-in-summer" && (
+        <figure className="detail-showcase" style={{ margin: "2.5rem 0" }}>
+          <div className="detail-showcase-bar">
+            <div className="detail-showcase-dots" aria-hidden="true">
+              <span className="dot dot-red" />
+              <span className="dot dot-yellow" />
+              <span className="dot dot-green" />
+            </div>
+            <div className="detail-showcase-url">
+              <span>CapCut Multi-Track Timeline & Audio Waveform Sync</span>
+            </div>
+          </div>
+          <div className="detail-showcase-viewport">
+            <Image
+              src="/project-screenshots/pocari-summer-capcut.png"
+              alt="CapCut multi-track timeline editing process for Kai in Summer"
+              width={1024}
+              height={575}
+              sizes="(max-width: 768px) 100vw, 1100px"
+              style={{ width: "100%", height: "auto", display: "block" }}
+            />
+          </div>
+          <figcaption>
+            {locale === "id"
+              ? "Dokumentasi proses editing di CapCut: penyusunan multi-track video, subtitle dialog, dan sinkronisasi waveform audio."
+              : locale === "ja"
+              ? "CapCutでの制作タイムライン実証：マルチトラック映像編集、字幕同期、音声波形の精緻なタイムアラインメント。"
+              : "CapCut multi-track editing breakdown: sequence arrangement, dialogue subtitle timing, and audio waveform synchronization."}
+          </figcaption>
+        </figure>
+      )}
+
       <section className="detail-grid">
         <article>
           <h2>{sectionLabels.problem}</h2>

@@ -40,8 +40,8 @@ interface AboutDictionary {
 const contentByLocale: Record<string, AboutDictionary> = {
   en: {
     eyebrow: "About Kai",
-    heading: "I’m Kai, an independent builder based in Japan.",
-    lead: "Kaidevlab is my personal creative technology lab—a place to build products, code systems, and shape stories with honest status and clear direction.",
+    heading: "I’m Kai, a full-stack developer and creative technologist based in Japan.",
+    lead: "Kaidevlab is my personal creative technology lab—a place to build modern web products, code reliable systems, and shape visual stories with honest status and clear direction.",
     actions: {
       contact: "Start a Conversation",
       work: "Explore My Work",
@@ -58,7 +58,7 @@ const contentByLocale: Record<string, AboutDictionary> = {
       items: [
         {
           title: "8Agents",
-          desc: "AI-assisted business transformation and zero-loss digital asset vault for Indonesian MSMEs (UMKM).",
+          desc: "Digital transformation and zero-loss digital asset vault for Indonesian MSMEs (UMKM).",
           link: "/work/8agents/",
         },
         {
@@ -78,12 +78,12 @@ const contentByLocale: Record<string, AboutDictionary> = {
         },
         {
           title: "Blue Vengeance",
-          desc: "Original long-form anime/manhwa series in pre-production.",
+          desc: "Original anime series · Episode 0 released.",
           link: "/work/blue-vengeance/",
         },
         {
           title: "Visual production",
-          desc: "Editing, motion graphics, and AI-assisted filmmaking workflows.",
+          desc: "Multi-track video editing (CapCut), sound direction (ElevenLabs), and commercial UGC.",
         },
       ],
     },
@@ -99,7 +99,7 @@ const contentByLocale: Record<string, AboutDictionary> = {
         },
         {
           title: "Code",
-          desc: "Learning architecture, AI workflows, reliability, and deployment through real projects.",
+          desc: "System architecture, full-stack performance, reliability, and deployment across real projects.",
         },
         {
           title: "Create",
@@ -110,8 +110,8 @@ const contentByLocale: Record<string, AboutDictionary> = {
   },
   id: {
     eyebrow: "Tentang Kai",
-    heading: "Saya Kai, independent builder berbasis di Jepang.",
-    lead: "Kaidevlab adalah laboratorium teknologi kreatif pribadi saya—tempat membangun produk, sistem perangkat lunak, dan merangkai cerita dengan status jujur dan arah yang terarah.",
+    heading: "Saya Kai, full-stack developer & creative technologist berbasis di Jepang.",
+    lead: "Kaidevlab adalah laboratorium teknologi kreatif pribadi saya—tempat membangun aplikasi web modern, sistem otomasi yang andal, dan merangkai cerita visual dengan status jujur dan arah yang jelas.",
     actions: {
       contact: "Mulai Percakapan",
       work: "Jelajahi Karya Saya",
@@ -148,12 +148,12 @@ const contentByLocale: Record<string, AboutDictionary> = {
         },
         {
           title: "Blue Vengeance",
-          desc: "Serial anime/manhwa original dalam tahap pra-produksi.",
+          desc: "Serial anime original · Episode 0 Selesai.",
           link: "/work/blue-vengeance/",
         },
         {
           title: "Visual production",
-          desc: "Editing video, motion graphics, dan alur pembuatan film berbantuan AI.",
+          desc: "Editing video multi-track di CapCut, audio engineering ElevenLabs, dan video komersial UGC.",
         },
       ],
     },
@@ -169,7 +169,7 @@ const contentByLocale: Record<string, AboutDictionary> = {
         },
         {
           title: "Rekayasa (Code)",
-          desc: "Mempelajari arsitektur sistem, alur kerja AI, reliabilitas, dan deployment melalui proyek nyata.",
+          desc: "Mempelajari arsitektur sistem, skalabilitas, reliabilitas kode, dan deployment pada proyek nyata.",
         },
         {
           title: "Kreasi (Create)",
@@ -180,8 +180,8 @@ const contentByLocale: Record<string, AboutDictionary> = {
   },
   ja: {
     eyebrow: "Kai について",
-    heading: "日本を拠点に活動するインディペンデント・ビルダー、Kai です。",
-    lead: "Kaidevlab は私の個人クリエイティブ・テクノロジー・ラボです。誠実な開発ステータスと明確なビジョンを持ち、プロダクト開発、システム設計、ストーリー制作を行っています。",
+    heading: "日本を拠点に活動するフルスタック開発者 / クリエイティブ・テクノロジスト、Kai です。",
+    lead: "Kaidevlab は私の個人クリエイティブ・テクノロジー・ラボです。誠実な開発ステータスと明確なビジョンを持ち、Webプロダクト開発、システム設計、ストーリー制作を行っています。",
     actions: {
       contact: "問い合わせる",
       work: "プロジェクトを見る",
@@ -198,7 +198,7 @@ const contentByLocale: Record<string, AboutDictionary> = {
       items: [
         {
           title: "8Agents",
-          desc: "インドネシア中小企業（UMKM）向けAI・デジタルブランディング支援および資産保管庫。",
+          desc: "インドネシア中小企業（UMKM）向けデジタルブランディング支援および資産保管庫。",
           link: "/work/8agents/",
         },
         {
@@ -218,12 +218,12 @@ const contentByLocale: Record<string, AboutDictionary> = {
         },
         {
           title: "Blue Vengeance",
-          desc: "オリジナル長編アニメ・ウェブトゥーン作品（プレプロダクション中）。",
+          desc: "オリジナルアニメシリーズ · エピソード0 公開中。",
           link: "/work/blue-vengeance/",
         },
         {
           title: "Visual production",
-          desc: "映像編集、モーショングラフィックス、AI映画制作ワークフロー。",
+          desc: "CapCutによるマルチトラック映像編集、ElevenLabs音響演出、商業向けUGC制作。",
         },
       ],
     },
@@ -239,7 +239,7 @@ const contentByLocale: Record<string, AboutDictionary> = {
         },
         {
           title: "実装 (Code)",
-          desc: "実際のプロジェクトを通じてアーキテクチャ、AIワークフロー、堅牢性、デプロイを習得。",
+          desc: "実際のプロジェクトを通じてWebアーキテクチャ、フルスタック開発、堅牢性、デプロイを習得。",
         },
         {
           title: "創作 (Create)",

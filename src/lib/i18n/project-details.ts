@@ -261,72 +261,71 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
       ]
     },
     "blue-vengeance": {
-      category: "Serial Anime & Manhwa Orisinal",
-      status: "Pra-Produksi",
-      role: "Kreator, arahan cerita, pembangunan dunia, pengembangan visual",
-      summary: "Serial anime & manhwa orisinal yang mengikuti perjalanan Kai dan Rin melintasi ikatan hangat, luka masa lalu, dan janji yang berubah menjadi pembalasan dendam.",
-      problem: "Karya kekayaan intelektual (IP) orisinal jangka panjang membutuhkan landasan yang matang sebelum perilisan bab: premis, alur cerita, dan visi produksi perlu dirancang jelas tanpa klaim yang berlebihan.",
+      category: "Serial Anime Orisinal",
+      status: "Episode 0 Rilis · Pilot Kreatif",
+      role: "Kreator, arahan cerita, editing video (CapCut), audio engineering (ElevenLabs)",
+      summary: "Serial anime orisinal yang mengikuti perjalanan Kai dan Rin melintasi ikatan hangat, luka masa lalu, dan janji yang berubah menjadi pembalasan dendam.",
+      problem: "Membangun episode pilot yang memiliki kedalaman narasi, ritme adegan yang tepat, dan sinkronisasi audio dialog karakter yang meyakinkan.",
       goals: [
-        "Menyusun perkembangan karakter Kai dari usia 17 hingga 27 tahun",
-        "Membangun konflik keluarga Tachibana dan misteri tragedi Rin",
-        "Merancang alur cerita sindikat kriminal bawah tanah",
-        "Mempersiapkan pipeline produksi manhwa sebelum rilis bab publik"
+        "Merilis showcase episode 0 sebagai bukti kualitas narasi dan visual",
+        "Membangun dinamika karakter Kai dan titik balik tragedi Rin",
+        "Menerapkan editing multi-track profesional di CapCut dengan sinkronisasi waveform audio",
+        "Mengarahkan voice acting dan soundscape dramatis melalui ElevenLabs"
       ],
       features: [
-        "Era aksi masa muda dan perselisihan jalanan",
-        "Evolusi menjadi penyelidik independen di usia dewasa",
-        "Misteri hilangnya ingatan dan luka masa lalu Rin",
-        "Konflik internal dinasti keluarga Tachibana",
-        "Konspirasi jaringan kejahatan kota metropolitan"
+        "Perilisan pilot episode 0 berdurasi penuh",
+        "Transisi adegan aksi dan tensi dramatis",
+        "Benang merah misteri ingatan masa lalu Rin",
+        "Tata suara multi-layer dengan dialog bersubtitle presisi",
+        "Lembar konsep karakter orisinal"
       ],
-      approach: "Blue Vengeance dirancang sebagai IP cerita utama masa depan: fondasi naskah, ritme emosional karakter, dan gaya visual dikembangkan lebih dulu sebelum komitmen publikasi.",
+      approach: "Blue Vengeance Episode 0 diproduksi sebagai pilot kreatif utama: menggabungkan perancangan naskah, pemotongan timeline di CapCut, dan tata suara ElevenLabs.",
       challenges: [
-        "Menjaga keseimbangan antara intensitas aksi dan kedalaman misteri jangka panjang",
-        "Mempertahankan konsistensi karakter selama rentang waktu satu dekade",
-        "Menjaga fokus produksi naskah sebelum bab pertama dirilis"
+        "Menjaga keseimbangan antara intensitas aksi dan kedalaman misteri",
+        "Mempertahankan kesinambungan visual karakter antarsekuens adegan",
+        "Menyelaraskan intonasi suara dialog dengan ketukan musik latar"
       ],
       limitations: [
-        "Masih dalam tahap pra-produksi",
-        "Belum ada bab yang dirilis untuk publik"
+        "Episode 0 telah selesai dirilis sebagai pilot",
+        "Episode selanjutnya dalam tahap storyboarding"
       ],
       next: [
-        "Menuntaskan garis besar skrip bab pertama",
-        "Mengembangkan lembar desain karakter (character sheet) utama",
-        "Menyusun jadwal produksi serial setelah visual siap"
+        "Menyusun storyboard lanjutan",
+        "Mematangkan sekuens aksi klimaks",
+        "Memperluas library vokal dan efek suara"
       ]
     },
-    "dragon-kings-last-contract": {
-      category: "Eksperimen Film Sinematik AI",
-      status: "Episode 1 Selesai · Eksperimen Kreatif",
-      role: "Kreator, arahan cerita, konsep poster, alur kerja film AI",
-      summary: "Eksperimen film fantasi gelap tentang monster kuno, perjanjian terkutuk, dan gadis yang dikirim untuk membunuhnya.",
-      problem: "Eksperimen pembuatan film berbasis AI memerlukan motivasi karakter yang kuat, atmosfer konsisten, dan kejelasan status karya yang telah diselesaikan.",
+    "kai-in-summer": {
+      category: "Komersial UGC & Storytelling",
+      status: "Selesai · Video Reel & Narasi Musim Panas",
+      role: "Kreator, editing multi-track (CapCut), sinkronisasi audio, sound direction",
+      summary: "Eksperimen video naratif UGC bernuansa musim panas Jepang yang memadukan visual anime pantai, tradisi suikawari (pecah semangka), subtitle dialog bahasa Inggris, dan editing audio yang ritmis.",
+      problem: "Video UGC komersial membutuhkan hook visual yang memikat, ritme pemotongan adegan yang presisi, dan sinkronisasi audio dialog yang pas agar tidak terasa kaku atau membosankan.",
       goals: [
-        "Menampilkan Episode 1 yang telah selesai diproduksi",
-        "Menjaga nuansa gothic dark fantasy yang kental",
-        "Menggunakan eksperimen ini untuk menyempurnakan alur kerja penyuntingan film AI"
+        "Membangun atmosfer pantai musim panas Jepang yang cerah dan ikonik",
+        "Menghadirkan tradisi musim panas otentik (suikawari) dalam narasi karakter",
+        "Menyelaraskan subtitle dialog dengan waveform audio secara presisi",
+        "Membuktikan alur kerja editing multi-track nyata melalui timeline CapCut"
       ],
       features: [
-        "Premis romansa gotik bernuansa misterius",
-        "Identitas visual sang Raja Naga yang memikat",
-        "Suasana malam berkabut dengan pencahayaan sinematik",
-        "Plot pengkhianatan dan perjanjian kontrak kuno",
-        "Produksi eksperimen episode perdana berdurasi penuh"
+        "Latar pantai musim panas dengan palet warna cerah",
+        "Interaksi karakter anime dengan subtitle dialog bilingual",
+        "Sekuens suikawari (pemukulan semangka) yang dinamis",
+        "Penyelarasan cut video dengan ketukan BGM pantai",
+        "Verifikasi alur kerja produksi melalui tangkapan layar timeline CapCut"
       ],
-      approach: "Proyek ini dipresentasikan sebagai eksperimen kreatif yang telah selesai, mendokumentasikan nilai eksplorasi alur kerja visual modern.",
+      approach: "Diproduksi sebagai spec UGC commercial untuk mendemonstrasikan keahlian brand storytelling, grading warna musim panas, dan presisi pemotongan audio multi-track di CapCut.",
       challenges: [
-        "Menjaga konsistensi wajah dan proporsi karakter di seluruh adegan generatif AI",
-        "Mempertahankan atmosfer gotik tanpa mengaburkan kejelasan alur adegan",
-        "Membuat ritme sinematik yang menyatu dengan musik dan tata suara"
+        "Menjaga konsistensi pencahayaan matahari pantai pada karakter",
+        "Menyelaraskan jeda dialog dengan musik latar yang bersemangat",
+        "Mempertahankan ritme video tetap padat dalam durasi singkat"
       ],
       limitations: [
-        "Episode 1 diproduksi sebagai studi eksperimental independen",
-        "Format kelanjutan musim belum dijadwalkan secara publik"
+        "Proyek dibuat sebagai spec commercial untuk portofolio demonstrasi"
       ],
       next: [
-        "Mendokumentasikan pelajaran teknik penyuntingan video",
-        "Menerapkan metodologi AI film pada proyek kreatif berikutnya",
-        "Mempertahankan catatan transparansi proses produksi"
+        "Mengembangkan konsep UGC untuk kolaborasi brand minuman dan lifestyle",
+        "Mengeksplorasi variasi rasio 9:16 untuk format video pendek media sosial"
       ]
     }
   },
@@ -439,79 +438,78 @@ export const localizedProjectDetails: Record<Locale, Record<string, Partial<Loca
     },
     "blue-vengeance": {
       title: "Blue Vengeance",
-      category: "オリジナルアニメ＆マンガ企画",
-      status: "プレプロダクション",
-      role: "原案・クリエイター、ストーリー構成、世界観設計、ビジュアルディベロップメント",
+      category: "オリジナルアニメシリーズ",
+      status: "エピソード0 公開 · クリエイティブパイロット",
+      role: "原案・ストーリー演出、映像編集（CapCut）、音響設計（ElevenLabs）",
       summary:
-        "カイとリンの二人が織りなす、優しい絆と消えゆく傷跡、そして復讐へと変わる約束を描くオリジナルアニメ＆マンガシリーズ。",
+        "カイとリンの二人が織りなす、優しい絆と消えゆく傷跡、そして復讐へと変わる約束を描くオリジナルアニメシリーズ。",
       problem:
-        "長期連載を見据えたオリジナルIPの立ち上げには、第1話の公開前にキャラクターの動機、世界観の重厚さ、および確かな制作パイプラインを確立する必要があります。",
+        "キャラクターの感情の説得力、一貫した世界観、および確かな映像制作パイプラインを確立したパイロット作品の実装。",
       goals: [
-        "17歳から27歳に至る主人公カイの10年間にわたるキャラクター成長軌跡の構築",
-        "立花財閥の内部抗争と、ヒロイン・リンの過去の悲劇の真相を描くミステリーの設計",
-        "都市地下組織と対峙する緊迫感あるサスペンスアクションのプロット構成",
-        "一般公開に先立つマンガ制作パイプラインの整備"
+        "ストーリーとビジュアルクオリティを実証するエピソード0パイロットの公開",
+        "主人公カイの葛藤とヒロイン・リンの悲劇の転換点の描写",
+        "CapCutを用いたマルチトラック映像編集と音声波形同期の実現",
+        "ElevenLabsを活用したキャラクターボイスと劇伴音響の演出"
       ],
       features: [
-        "激動の青年期におけるストリートアクションと葛藤",
-        "成人後の独立調査員としてのプロフェッショナルな活躍",
+        "エピソード0パイロット映像の完全パッケージ制作",
+        "緊迫感あるアクションと感情の緩急の設計",
         "記憶喪失の謎とリンの過去に刻まれた傷跡",
-        "立花家の権力闘争と複雑な血縁関係",
-        "大都市の暗部で蠢く犯罪ネットワークとの心理戦"
+        "正確な英語字幕と台詞に合わせたマルチレイヤー音響設計",
+        "オリジナルキャラクター設定資料"
       ],
       approach:
-        "『Blue Vengeance』は次世代のフラッグシップIPとして設計されています。安易な公開を急ぐことなく、脚本の密度、心理描写、およびアートディレクションの完成度を最優先に開発を進めています。",
+        "『Blue Vengeance』エピソード0は、フラッグシップ作品としての制作手法を確立するために制作されました。脚本構成からCapCutでのタイムライン編集、ElevenLabsによるボイス演出まで一貫して手掛けています。",
       challenges: [
         "疾走感あるアクションと重厚なサスペンスミステリーの絶妙なバランス調整",
-        "10年という歳月におけるキャラクターの外見・精神的成長の一貫性の維持",
-        "独自の世界観を印象付けるダークで洗練されたネオノワール調の色彩設計"
+        "カットごとのキャラクター作画と色彩の一貫性の維持",
+        "BGMと台詞ボイスの音響バランスおよびテンポの調和"
       ],
       limitations: [
-        "現在はプロローグ脚本とキャラクター設定画の開発段階にあります",
-        "完成した原稿の公開日は制作クオリティを最優先して設定されます"
+        "エピソード0はパイロット版として完成・公開済み",
+        "以降のエピソードは絵コンテ・プロット制作段階"
       ],
       next: [
-        "ティザーパイロット向けコンセプトアートブックの完成",
-        "第1話ネーム（絵コンテ）の制作",
-        "主要キャラクターのボイスイメージ選定とトーンの確定"
+        "エピソード1の絵コンテおよびプロットの確定",
+        "クライマックスアクションシーンの演出設計",
+        "キャラクターボイスおよび音響ライブラリの拡張"
       ]
     },
-    "dragon-kings-last-contract": {
-      title: "The Dragon King’s Last Contract",
-      category: "AIシネマ映像実験",
-      status: "第1話完成 · クリエイティブ実験",
-      role: "原案・ストーリー演出、ビジュアルディレクション、AIフィルムワークフロー",
+    "kai-in-summer": {
+      title: "Kai in Summer · Pocari Sweat UGC",
+      category: "商業UGC・ストーリーテリング映像",
+      status: "完成 · スペック広告 ＆ 夏の叙事詩",
+      role: "クリエイター、マルチトラック映像編集（CapCut）、音声同期、音響ディレクション",
       summary:
-        "古の怪物、呪われた契約、そして彼を討つために遣わされた少女を描くダークファンタジー第1話の短編映像制作実験。",
+        "日本の夏の風物詩をテーマにしたUGC短編映像。海岸でのスイカ割り、アニメキャラクターの掛け合い、テンポの良い英語字幕、そして爽快な音楽編集を融合。",
       problem:
-        "生成AIを用いた映像制作実験において、キャラクターの感情の説得力、一貫した世界観の維持、および作品の完成度を客観的に示すことが課題でした。",
+        "商業向けUGCやスペック広告において、冒頭の引き込み（フック）、軽快なカット割り、および音楽と台詞の完全な同期が求められます。",
       goals: [
-        "完成版となる第1話のフルシークエンスを制作・公開",
-        "重厚なゴシックダークファンタジーの美術・ライティングの統一感を確立",
-        "最新のAIツール群を組み合わせた映像編集ワークフローの実証"
+        "日本の明るく爽快な夏の海辺の空気感を再現",
+        "スイカ割りなど日本文化のモチーフを自然な物語として組み込む",
+        "英語字幕と台詞音声波形の正確なタイミング同期",
+        "CapCutマルチトラックタイムラインによる実編集プロセスの実証"
       ],
       features: [
-        "謎めいたゴシックロマンスと破滅の美学",
-        "威厳と哀愁を兼ね備えた竜王の印象的なキャラクターデザイン",
-        "夜霧と月の光が織りなすシネマティックなライティング設計",
-        "裏切りと古代の盟約が交錯するドラマティックな展開",
-        "完結した第1話実験映像のフルパッケージ制作"
+        "夏の海岸と鮮やかなブルーのカラースキーム",
+        "アニメキャラクターによる自然な会話と字幕表示",
+        "ダイナミックなスイカ割りのアクションシークエンス",
+        "BGMのビートに合わせたリズミカルなカット編集",
+        "CapCut編集タイムラインのキャプチャによる制作プロセスの証明"
       ],
       approach:
-        "本作は完結した映像実験として位置付けられています。AI動画生成技術の現状の到達点と、映画的演出技法を融合させることで、次世代のクリエイティブ制作手法を探求しています。",
+        "ブランドストーリーテリング、夏らしい鮮やかなカラーグレーディング、および正確な字幕・音声編集能力を証明するスペックUGC広告として制作。",
       challenges: [
-        "複数のAIモデル間でキャラクターの顔貌と衣装の一貫性を保持すること",
-        "ダークなゴシック調の雰囲気を保ちつつ、カットごとの視認性とドラマ性を確保すること",
-        "シネマティックなカット割り、劇伴音楽、および音響効果の完全な調和"
+        "明るい日差しの中でもキャラクターの視認性と質感を損なわない色調整",
+        "アップテンポなBGMのリズムを邪魔しない会話の間（ま）の調整",
+        "短尺の中で視聴者を飽きさせないスピーディーなテンポの維持"
       ],
       limitations: [
-        "第1話は独立したパイロット実験として制作されています",
-        "シリーズ本編としての継続公開は現時点では未定です"
+        "ポートフォリオ実証用のスペック広告として制作"
       ],
       next: [
-        "AI映像制作ワークフローから得られた知見のドキュメント化",
-        "次回クリエイティブプロジェクトへの演出技法のフィードバック",
-        "制作プロセスの透明性を維持した制作レポートの公開"
+        "飲料やライフスタイルブランド向けUGCコンセプトの展開",
+        "SNS向け縦型9:16フォーマットへの派生展開"
       ]
     }
   },

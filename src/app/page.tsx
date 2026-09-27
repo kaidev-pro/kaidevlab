@@ -17,25 +17,25 @@ const exploringByLocale: Record<string, string[]> = {
     "Persiapan Ujian FE Jepang (基本情報)",
     "Produksi Manhwa",
     "Visual Storytelling",
-    "Pembuatan Film Berbantuan AI",
+    "Produksi Video UGC",
     "Product Storytelling",
-    "Penyuntingan Video",
+    "Penyuntingan Video CapCut",
   ],
   en: [
     "FE Exam Prep (基本情報技術者試験)",
     "Manhwa production",
     "Visual storytelling",
-    "AI-assisted filmmaking",
+    "Commercial UGC reels",
     "Product storytelling",
-    "Video editing",
+    "Multi-track video editing",
   ],
   ja: [
     "基本情報技術者試験（FE）対策",
     "ウェブトゥーン制作",
     "ビジュアルストーリーテリング",
-    "AI映画制作ワークフロー",
+    "商業UGC・リール制作",
     "プロダクト発信",
-    "映像編集",
+    "CapCut映像編集",
   ],
 };
 
@@ -133,7 +133,9 @@ export default function Home() {
           <p>{t.creative.description}</p>
         </div>
         <div className="creative-grid">
-          {blueVengeance ? <ProjectCard project={blueVengeance} featured /> : null}
+          {creativeProjects.map((project, index) => (
+            <ProjectCard project={project} featured={index === 0} key={project.slug} />
+          ))}
         </div>
       </section>
 
@@ -178,10 +180,10 @@ export default function Home() {
               <li>
                 <span>
                   {locale === "id"
-                    ? "Membangun alur kerja AI yang andal untuk intake UMKM"
+                    ? "Membangun sistem automasi intake data UMKM yang andal"
                     : locale === "ja"
-                    ? "中小企業向けインテークのための堅牢なAIワークフロー構築"
-                    : "Building a reliable AI workflow for UMKM intake"}
+                    ? "中小企業向けデータインテーク自動化システムの構築"
+                    : "Building a reliable automation workflow for UMKM intake"}
                 </span>
                 <small>{comingSoonText}</small>
               </li>
@@ -207,9 +209,9 @@ export default function Home() {
           <h2>{t.cta.heading}</h2>
           <p>{t.cta.description}</p>
           <div className="cta-tags">
-            <span>{locale === "id" ? "Pengembangan Produk" : locale === "ja" ? "プロダクト開発" : "Product builds"}</span>
-            <span>{locale === "id" ? "Sistem AI" : locale === "ja" ? "AIシステム" : "AI systems"}</span>
-            <span>{locale === "id" ? "Dunia Kreatif" : locale === "ja" ? "クリエイティブ" : "Creative worlds"}</span>
+            <span>{locale === "id" ? "Pengembangan Web" : locale === "ja" ? "Webプロダクト開発" : "Web development"}</span>
+            <span>{locale === "id" ? "Sistem Otomasi" : locale === "ja" ? "自動化システム" : "Systems & Automation"}</span>
+            <span>{locale === "id" ? "Karya Kreatif & Video" : locale === "ja" ? "映像・クリエイティブ" : "Creative & Video"}</span>
           </div>
           <a className="primary" href="/contact/">{t.cta.button}</a>
         </div>

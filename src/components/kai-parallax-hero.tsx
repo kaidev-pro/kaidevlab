@@ -8,32 +8,10 @@ const particles = [[13, 28, 0], [27, 76, -2.4], [45, 16, -4.2], [61, 67, -1.1], 
 const clamp = (value: number, min = -1, max = 1) => Math.min(max, Math.max(min, value));
 
 export function KaiParallaxHero() {
-  const { t, locale } = useLanguage();
+  const { t } = useLanguage();
   const stageRef = useRef<HTMLDivElement>(null);
   const [motionOn, setMotionOn] = useState(true);
   const [isTouch, setIsTouch] = useState(false);
-  const [timeJST, setTimeJST] = useState<string>("");
-
-  useEffect(() => {
-    const updateTime = () => {
-      try {
-        const now = new Date();
-        const formatter = new Intl.DateTimeFormat("en-GB", {
-          timeZone: "Asia/Tokyo",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-          hour12: false,
-        });
-        setTimeJST(formatter.format(now));
-      } catch {
-        setTimeJST("Tokyo");
-      }
-    };
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     const coarse = window.matchMedia("(pointer: coarse)");
@@ -146,24 +124,6 @@ export function KaiParallaxHero() {
       <div className="cinematic-scrim" aria-hidden="true" />
 
       <div className="cinematic-copy hero-reveal">
-        <div className="hero-status-widget" aria-label="Tokyo Studio Live Status">
-          <span className="hero-status-pulse" aria-hidden="true">
-            <span className="pulse-core" />
-            <span className="pulse-ring" />
-          </span>
-          <span className="hero-status-city">Tokyo, JP</span>
-          <span className="hero-status-sep" aria-hidden="true">/</span>
-          <span className="hero-status-clock">{timeJST || "14:45:00"} JST</span>
-          <span className="hero-status-sep" aria-hidden="true">·</span>
-          <span className="hero-status-act">
-            {locale === "id"
-              ? "Aktif di Lab · Merancang Blue Vengeance Ep 1"
-              : locale === "ja"
-              ? "制作稼働中 · Blue Vengeance 第1話 構成中"
-              : "Active in Lab · Scripting Blue Vengeance Ep 1"}
-          </span>
-          <span className="hero-status-tag" aria-hidden="true">開発室</span>
-        </div>
         <p className="eyebrow">{t.hero.eyebrow}</p>
         <h1>
           {t.hero.headlinePrefix}

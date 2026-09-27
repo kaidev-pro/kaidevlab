@@ -127,55 +127,52 @@ export function ClientProject({
       </section>
 
       {p.youtubeId ? (
-        <div className="detail-video-wrapper">
-          <div className="detail-video-ambient-glow" aria-hidden="true" />
-          <figure className="detail-showcase detail-video-showcase">
-            <div className="detail-showcase-bar">
-              <div className="detail-showcase-dots" aria-hidden="true">
-                <span className="dot dot-red" />
-                <span className="dot dot-yellow" />
-                <span className="dot dot-green" />
-              </div>
-              <div className="detail-showcase-url">
-                <span>{`youtube.com/watch?v=${p.youtubeId}`}</span>
-              </div>
-              <a
-                href={`https://youtu.be/${p.youtubeId}`}
-                target="_blank"
-                rel="noreferrer"
-                className="detail-showcase-link"
-              >
-                {watchVideoLabel}
-              </a>
+        <figure className="detail-showcase detail-video-showcase">
+          <div className="detail-showcase-bar">
+            <div className="detail-showcase-dots" aria-hidden="true">
+              <span className="dot dot-red" />
+              <span className="dot dot-yellow" />
+              <span className="dot dot-green" />
             </div>
-            <div
-              className="detail-showcase-viewport"
-              style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden", background: "#050914" }}
+            <div className="detail-showcase-url">
+              <span>{`youtube.com/watch?v=${p.youtubeId}`}</span>
+            </div>
+            <a
+              href={`https://youtu.be/${p.youtubeId}`}
+              target="_blank"
+              rel="noreferrer"
+              className="detail-showcase-link"
             >
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${p.youtubeId}?rel=0&modestbranding=1`}
-                title={`${p.title} Video Showcase`}
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                  border: "none",
-                }}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-            </div>
-            <figcaption>
-              {locale === "id"
-                ? `Pemutar video resmi ${p.title} — Tonton langsung dalam kualitas HD 1080p.`
-                : locale === "ja"
-                ? `${p.title} 公式プレイヤー — 1080p HDで直接視聴できます。`
-                : `Official player for ${p.title} — Stream directly in full 1080p HD.`}
-            </figcaption>
-          </figure>
-        </div>
+              {watchVideoLabel}
+            </a>
+          </div>
+          <div
+            className="detail-showcase-viewport"
+            style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden", background: "#050914" }}
+          >
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${p.youtubeId}?rel=0&modestbranding=1`}
+              title={`${p.title} Video Showcase`}
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                border: "none",
+              }}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+          <figcaption>
+            {locale === "id"
+              ? `Pemutar video resmi ${p.title} — Tonton langsung dalam kualitas HD 1080p.`
+              : locale === "ja"
+              ? `${p.title} 公式プレイヤー — 1080p HDで直接視聴できます。`
+              : `Official player for ${p.title} — Stream directly in full 1080p HD.`}
+          </figcaption>
+        </figure>
       ) : null}
 
       {p.poster ? (

@@ -1,7 +1,5 @@
 import { TangoN3Card } from './types';
 
-// Auto-generated 645 cards for Part 1 (#0001 to #0645)
-// Covers Chapters 1 to 16: General Nouns, Traffic, Health, Relations, Education, Business, Nature, Lifestyle, Culture, Society, Tech
 export const PART1_NOUNS: TangoN3Card[] = [
   {
     "id": "tango-0001",
@@ -636,19 +634,19 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "chapterId": "noun-general-1",
     "section": "第1回 (1〜40)",
     "sectionId": "sec-001-040",
-    "word": "演奏",
-    "reading": "えんそう",
-    "ruby": "[演奏:えんそう]",
+    "word": "影響",
+    "reading": "えいきょう",
+    "ruby": "[影響:えいきょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pertunjukan musik, memainkan instrumen",
-    "meaningEn": "Musical performance",
+    "meaningId": "Pengaruh dampak imbas",
+    "meaningEn": "Influence, effect, impact",
     "collocation": {
-      "jpRuby": "[生:なま]の[演奏:えんそう]を[聴:き]く",
-      "meaningId": "Mendengarkan pertunjukan musik langsung"
+      "jpRuby": "[社会:しゃかい]に[大:おお]きな[影響:えいきょう]を[与:あた]える",
+      "meaningId": "Memberikan pengaruh dampak besar pada masyarakat"
     },
     "exampleSentence": {
-      "jpRuby": "ピアノの[美:うつく]しい[演奏:えんそう]に、みんなが[感動:かんどう]した。",
-      "meaningId": "Semua orang terharu mendengarkan alunan permainan piano yang indah."
+      "jpRuby": "ニュースの報道が世論の形成に大きな[影響:えいきょう]を及ぼしている。",
+      "meaningId": "Pemberitaan warta berita memberikan pengaruh besar pada pembentukan opini publik."
     }
   },
   {
@@ -684,19 +682,19 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "chapterId": "noun-general-1",
     "section": "第1回 (1〜40)",
     "sectionId": "sec-001-040",
-    "word": "応援",
-    "reading": "おうえん",
-    "ruby": "[応援:おうえん]",
+    "word": "応募",
+    "reading": "おうぼ",
+    "ruby": "[応募:おうぼ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Dukungan semangat, suporter",
-    "meaningEn": "Cheering, rooting, support",
+    "meaningId": "Pendaftaran aplikasi melamar lowongan",
+    "meaningEn": "Application, entry, enlistment",
     "collocation": {
-      "jpRuby": "チームを[声:こえ]を[限:かぎ]りに[応援:おうえん]する",
-      "meaningId": "Mendukung tim sekuat tenaga"
+      "jpRuby": "[求人:きゅうじん]に[応募:おうぼ]する",
+      "meaningId": "Melamar mendaftar ke lowongan pekerjaan"
     },
     "exampleSentence": {
-      "jpRuby": "[友達:ともだち]の[試合:しあい]を[見:み]に[行:い]って、スタンドから[応援:おうえん]した。",
-      "meaningId": "Saya pergi menonton pertandingan teman dan menyemangatinya dari tribun."
+      "jpRuby": "募集要項をよく確認してからインターンシップに[応募:おうぼ]した。",
+      "meaningId": "Saya melamar mendaftar program magang setelah membaca teliti syarat rekrutmen."
     }
   },
   {
@@ -876,19 +874,19 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "chapterId": "noun-general-1",
     "section": "第1回 (1〜40)",
     "sectionId": "sec-001-040",
-    "word": "家事",
-    "reading": "かじ",
-    "ruby": "[家事:かじ]",
+    "word": "過去",
+    "reading": "かこ",
+    "ruby": "[過去:かこ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pekerjaan rumah tangga",
-    "meaningEn": "Housework, domestic chores",
+    "meaningId": "Masa lalu riwayat silam yang telah lewat",
+    "meaningEn": "The past, bygone days",
     "collocation": {
-      "jpRuby": "[家事:かじ]を[分担:ぶんたん]する",
-      "meaningId": "Berbagi tugas pekerjaan rumah"
+      "jpRuby": "[過去:かこ]の[失敗:しっぱい]から[学:まな]ぶ",
+      "meaningId": "Belajar memetik hikmah dari kegagalan masa lalu"
     },
     "exampleSentence": {
-      "jpRuby": "[週末:しゅうまつ]は、[掃除:そうじ]や[洗濯:せんたく]などの[家事:かじ]で[忙:いそが]しい。",
-      "meaningId": "Di akhir pekan saya sibuk dengan urusan rumah tangga seperti menyapu dan mencuci."
+      "jpRuby": "[過去:かこ]の過ちにとらわれず前を向いて未来を切り開く。",
+      "meaningId": "Tidak terbelenggu oleh khilaf masa lalu melainkan melangkah maju menatap masa depan."
     }
   },
   {
@@ -996,19 +994,19 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "chapterId": "noun-general-2",
     "section": "第2回 (41〜80)",
     "sectionId": "sec-041-080",
-    "word": "気候",
-    "reading": "きこう",
-    "ruby": "[気候:きこう]",
+    "word": "記憶",
+    "reading": "きおく",
+    "ruby": "[記憶:きおく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Iklim cuaca regional",
-    "meaningEn": "Climate",
+    "meaningId": "Ingatan memori rekaman ingatan",
+    "meaningEn": "Memory, recollection",
     "collocation": {
-      "jpRuby": "[温暖:おんだん]な[気候:きこう]",
-      "meaningId": "Iklim yang hangat dan ramah"
+      "jpRuby": "[記憶:きおく]に[残:のこ]る[名場面:めいばめん]",
+      "meaningId": "Adegan bersejarah yang berkesan melekat di ingatan"
     },
     "exampleSentence": {
-      "jpRuby": "この[地域:ちいき]は[一年中:いちねんじゅう][温暖:おんだん]な[気候:きこう]に[恵:めぐ]まれている。",
-      "meaningId": "Kawasan ini sepanjang tahun diberkahi oleh iklim yang hangat nyaman."
+      "jpRuby": "幼い頃に家族と旅行した楽しい思い出が今も鮮明に[記憶:きおく]に刻まれている。",
+      "meaningId": "Kenangan indah tamasya bersama keluarga saat kanak-kanak masih terukir lekat di ingatan."
     }
   },
   {
@@ -1188,19 +1186,19 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "chapterId": "noun-general-2",
     "section": "第2回 (41〜80)",
     "sectionId": "sec-041-080",
-    "word": "義務",
-    "reading": "ぎむ",
-    "ruby": "[義務:ぎむ]",
+    "word": "基準",
+    "reading": "きじゅん",
+    "ruby": "[基準:きじゅん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kewajiban kenegaraan/moral",
-    "meaningEn": "Obligation, duty",
+    "meaningId": "Standar patokan tolak ukur",
+    "meaningEn": "Standard, criterion",
     "collocation": {
-      "jpRuby": "[国民:こくみん]の[義務:ぎむ]",
-      "meaningId": "Kewajiban setiap warga negara"
+      "jpRuby": "[判断:はんだん]の[基準:きじゅん]を[定:さだ]める",
+      "meaningId": "Menetapkan standar tolak ukur penilaian"
     },
     "exampleSentence": {
-      "jpRuby": "[納税:のうぜい]はすべての[市民:しみん]の[義務:ぎむ]である。",
-      "meaningId": "Membayar pajak adalah kewajiban bagi seluruh warga negara."
+      "jpRuby": "合否を判定するための明確な[基準:きじゅん]をあらかじめ公表しておく。",
+      "meaningId": "Mengumumkan standar tolak ukur baku secara jelas sebelum menilai kelulusan."
     }
   },
   {
@@ -1956,19 +1954,19 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "chapterId": "noun-general-3",
     "section": "第3回 (81〜120)",
     "sectionId": "sec-081-120",
-    "word": "湿気",
-    "reading": "しっき",
-    "ruby": "[湿気:しっき]",
+    "word": "資格",
+    "reading": "しかく",
+    "ruby": "[資格:しかく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kelembapan hawa pengap uap basah",
-    "meaningEn": "Moisture, humidity, dampness",
+    "meaningId": "Kualifikasi sertifikat lisensi kompetensi",
+    "meaningEn": "Qualification, license, certificate",
     "collocation": {
-      "jpRuby": "[湿気:しっき]が[多:おお]い[季節:きせつ]",
-      "meaningId": "Musim yang banyak berkelembapan tinggi"
+      "jpRuby": "[国家:こっか][資格:しかく]を[取得:しゅとく]する",
+      "meaningId": "Meraih mendapatkan sertifikasi kualifikasi negara"
     },
     "exampleSentence": {
-      "jpRuby": "梅雨の時期は部屋の中に[湿気:しっき]がこもりやすい。",
-      "meaningId": "Di musim penghujan kelembapan udara mudah terperangkap di dalam ruangan."
+      "jpRuby": "キャリアアップを目指して仕事帰りに専門スクールへ通い[資格:しかく]の勉強に励む。",
+      "meaningId": "Demi mendongkrak karier sepulang kerja belajar kursus demi meraih sertifikat kualifikasi."
     }
   },
   {
@@ -1980,19 +1978,19 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "chapterId": "noun-general-3",
     "section": "第3回 (81〜120)",
     "sectionId": "sec-081-120",
-    "word": "実験",
-    "reading": "じっけん",
-    "ruby": "[実験:じっけん]",
-    "partOfSpeech": "[名]",
-    "meaningId": "Eksperimen percobaan ilmiah",
-    "meaningEn": "Experiment",
+    "word": "実際",
+    "reading": "じっさい",
+    "ruby": "[実際:じっさい]",
+    "partOfSpeech": "[名・副]",
+    "meaningId": "Kenyataan riil fakta keadaan sebenarnya",
+    "meaningEn": "Reality, practicality, actual condition",
     "collocation": {
-      "jpRuby": "[科学:かがく]の[実験:じっけん]を[行:おこな]う",
-      "meaningId": "Melakukan percobaan eksperimen sains"
+      "jpRuby": "[実際:じっさい]のところどうなのか",
+      "meaningId": "Bagaimana duduk persoalan kenyataan sebenarnya"
     },
     "exampleSentence": {
-      "jpRuby": "研究室で新しい仮説を証明するための[実験:じっけん]を繰り返した。",
-      "meaningId": "Mengulang eksperimen di laboratorium demi membuktikan hipotesis baru."
+      "jpRuby": "話に聞いていたのと[実際:じっさい]に自分の目で見たのとでは受ける印象が大きく違った。",
+      "meaningId": "Kesan yang didengar dari orang sangat berbeda jauh dengan apa yang disaksikan langsung di kenyataan."
     }
   },
   {
@@ -2340,19 +2338,19 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "chapterId": "noun-general-3",
     "section": "第3回 (81〜120)",
     "sectionId": "sec-081-120",
-    "word": "正確",
-    "reading": "せいかく",
-    "ruby": "[正確:せいかく]",
-    "partOfSpeech": "[名・ナ形]",
-    "meaningId": "Ketelitian presisi akurat",
-    "meaningEn": "Accurate, precise",
+    "word": "正体",
+    "reading": "しょうたい",
+    "ruby": "[正体:しょうたい]",
+    "partOfSpeech": "[名]",
+    "meaningId": "Identitas asli wujud sejati",
+    "meaningEn": "True identity, true character",
     "collocation": {
-      "jpRuby": "[正確:せいかく]な[情報:じょうほう]を[伝:つた]える",
-      "meaningId": "Menyampaikan informasi yang akurat presisi"
+      "jpRuby": "犯人の[正体:しょうたい]を[暴:あば]く",
+      "meaningId": "Membongkar identitas asli pelaku kejahatan"
     },
     "exampleSentence": {
-      "jpRuby": "時計の針のように常に[正確:せいかく]な時間管理を心がける。",
-      "meaningId": "Selalu mengutamakan manajemen waktu yang akurat persis bagai jarum jam."
+      "jpRuby": "仮面を外して長年隠されてきた怪盗の[正体:しょうたい]がついに白日の下に晒された。",
+      "meaningId": "Membuka topeng menyingkap wujud asli sang pencuri yang lama tersembunyi."
     }
   },
   {
@@ -2388,19 +2386,19 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "chapterId": "noun-general-3",
     "section": "第3回 (81〜120)",
     "sectionId": "sec-081-120",
-    "word": "世論",
-    "reading": "せろん",
-    "ruby": "[世論:せろん]",
+    "word": "格好",
+    "reading": "かっこう",
+    "ruby": "[格好:かっこう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Opini publik suara masyarakat",
-    "meaningEn": "Public opinion",
+    "meaningId": "Penampilan gaya rupa postur",
+    "meaningEn": "Appearance, posture, shape",
     "collocation": {
-      "jpRuby": "[世論:せろん]の[動向:どうこう]を[注視:ちゅうし]する",
-      "meaningId": "Mengamati cermat pergerakan opini publik"
+      "jpRuby": "[格好:かっこう]のいい服を[着:き]る",
+      "meaningId": "Mengenakan pakaian berpenampilan keren rapi"
     },
     "exampleSentence": {
-      "jpRuby": "新しい法案に対して[世論:せろん]の反対の声が急速に高まった。",
-      "meaningId": "Suara penolakan publik melonjak pesat menentang draf undang-undang baru."
+      "jpRuby": "人前に出るのにふさわしいきちんとした[格好:かっこう]に身を整える。",
+      "meaningId": "Merapikan diri berpenampilan sopan pantas saat tampil di depan khalayak."
     }
   },
   {
@@ -2580,19 +2578,19 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "chapterId": "noun-general-3",
     "section": "第3回 (81〜120)",
     "sectionId": "sec-081-120",
-    "word": "伝統",
-    "reading": "でんとう",
-    "ruby": "[伝統:でんとう]",
+    "word": "特徴",
+    "reading": "とくちょう",
+    "ruby": "[特徴:とくちょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tradisi adat istiadat warisan turun-temurun",
-    "meaningEn": "Tradition, convention",
+    "meaningId": "Ciri khas keunikan keistimewaan",
+    "meaningEn": "Feature, characteristic, trait",
     "collocation": {
-      "jpRuby": "[伝統:でんとう]を[受:う]け[継:つ]ぐ",
-      "meaningId": "Mewarisi melanjutkan adat tradisi"
+      "jpRuby": "[製品:せいひん]の[最大:さいだい]の[特徴:とくちょう]をアピールする",
+      "meaningId": "Mempromosikan menonjolkan ciri khas utama produk"
     },
     "exampleSentence": {
-      "jpRuby": "何百年も受け継がれてきた職人の[伝統:でんとう]の技を守り続ける。",
-      "meaningId": "Terus menjaga keahlian tradisi perajin yang diwariskan ratusan tahun."
+      "jpRuby": "このスマートフォンの大きな[特徴:とくちょう]は夜間でも鮮明に撮れる高性能カメラだ。",
+      "meaningId": "Ciri khas utama ponsel cerdas ini adalah kamera canggih penangkap gambar jernih di malam hari."
     }
   },
   {
@@ -2964,19 +2962,19 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "chapterId": "noun-general-4",
     "section": "第4回 (121〜160)",
     "sectionId": "sec-121-160",
-    "word": "法律",
-    "reading": "ほうりつ",
-    "ruby": "[法律:ほうりつ]",
+    "word": "形式",
+    "reading": "けいしき",
+    "ruby": "[形式:けいしき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Undang-undang hukum perundang-undangan",
-    "meaningEn": "Law, legislation",
+    "meaningId": "Format formalitas bentuk tata cara",
+    "meaningEn": "Form, format, formality",
     "collocation": {
-      "jpRuby": "[法律:ほうりつ]を[遵守:じゅんしゅ]する",
-      "meaningId": "Mematuhi hukum dan perundang-undangan"
+      "jpRuby": "[決:き]まった[形式:けいしき]に[従:したが]って[記入:きにゅう]する",
+      "meaningId": "Mengisi data mematuhi ketentuan format baku"
     },
     "exampleSentence": {
-      "jpRuby": "社会秩序を守るために定められた国の[法律:ほうりつ]を正しく守る。",
-      "meaningId": "Mematuhi hukum undang-undang negara yang ditetapkan demi menjaga ketertiban."
+      "jpRuby": "申請書類は指定された[形式:けいしき]に従って漏れなく丁寧に記入してください。",
+      "meaningId": "Harap mengisi berkas pendaftaran dengan teliti mematuhi tata cara dan format resmi."
     }
   },
   {
@@ -3084,19 +3082,19 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "chapterId": "noun-general-4",
     "section": "第4回 (121〜160)",
     "sectionId": "sec-121-160",
-    "word": "有利",
-    "reading": "ゆうり",
-    "ruby": "[ゆうり]",
-    "partOfSpeech": "[名・ナ形]",
-    "meaningId": "Posisi menguntungkan keunggulan",
-    "meaningEn": "Advantage, favorable",
+    "word": "勝敗",
+    "reading": "しょうはい",
+    "ruby": "[勝敗:しょうはい]",
+    "partOfSpeech": "[名]",
+    "meaningId": "Menang kalah hasil pertarungan laga",
+    "meaningEn": "Victory or defeat, outcome of match",
     "collocation": {
-      "jpRuby": "[勝負:しょうぶ]を[有利:ゆうり]に[進:すす]める",
-      "meaningId": "Menjalankan laga dalam posisi menguntungkan"
+      "jpRuby": "[勝敗:しょうはい]の[行方:ゆくえ]を[見守:みまも]る",
+      "meaningId": "Menyaksikan jalannya arah hasil akhir menang kalah"
     },
     "exampleSentence": {
-      "jpRuby": "序盤から先手を取ったことで試合を終始[有利:ゆうり]に進めることができた。",
-      "meaningId": "Mengambil inisiatif awal membuat jalannya laga senantiasa menguntungkan."
+      "jpRuby": "一瞬の隙が[勝敗:しょうはい]を分ける緊張感あふれるハイレベルな決勝戦となった。",
+      "meaningId": "Kelengahan sesaat menentukan menang kalah dalam laga puncak final bertekanan tinggi."
     }
   },
   {
@@ -3420,19 +3418,19 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "chapterId": "noun-general-4",
     "section": "第4回 (121〜160)",
     "sectionId": "sec-121-160",
-    "word": "異常",
-    "reading": "いじょう",
-    "ruby": "[いじょう]",
-    "partOfSpeech": "[名・ナ形]",
-    "meaningId": "Ketidaknormalan anomali kejanggalan",
-    "meaningEn": "Abnormality, unusualness",
+    "word": "事態",
+    "reading": "じたい",
+    "ruby": "[事態:じたい]",
+    "partOfSpeech": "[名]",
+    "meaningId": "Keadaan genting situasi genting darurat",
+    "meaningEn": "Situation, state of affairs (serious)",
     "collocation": {
-      "jpRuby": "[機械:きかい]に[異常:いじょう]が[見:み]つかる",
-      "meaningId": "Ditemukan ketidaknormalan pada mesin"
+      "jpRuby": "[緊急:きんきゅう]の[事態:じたい]に[冷静:れいせい]に[対応:たいおう]する",
+      "meaningId": "Merespons tenang saat menghadapi kondisi darurat"
     },
     "exampleSentence": {
-      "jpRuby": "点検の最中にエンジンの回転数にわずかな[異常:いじょう]を発見した。",
-      "meaningId": "Menemukan sedikit ketidaknormalan pada putaran mesin di tengah inspeksi."
+      "jpRuby": "深刻な[事態:じたい]に発展する前に速やかに関係部署と連携して対策を講じた。",
+      "meaningId": "Segera berkoordinasi dengan divisi terkait sebelum situasi berkembang menjadi kondisi genting."
     }
   },
   {
@@ -3540,19 +3538,19 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "chapterId": "noun-general-4",
     "section": "第4回 (121〜160)",
     "sectionId": "sec-121-160",
-    "word": "意欲",
-    "reading": "いよく",
-    "ruby": "[いよく]",
+    "word": "根気",
+    "reading": "こんき",
+    "ruby": "[根気:こんき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gairah tekad membara kemauan kuat",
-    "meaningEn": "Ambition, passion, enthusiasm",
+    "meaningId": "Ketabahan kesabaran ketekunan ulet",
+    "meaningEn": "Patience, perseverance, stamina",
     "collocation": {
-      "jpRuby": "[創作:そうさく][意欲:いよく]に[燃:も]える",
-      "meaningId": "Membara tekad gairah berkarya seni"
+      "jpRuby": "[根気:こんき]よく[練習:れんしゅう]を[続:つづ]ける",
+      "meaningId": "Melanjutkan latihan dengan tekun sabar ulet"
     },
     "exampleSentence": {
-      "jpRuby": "若い芸術家たちは新しい作品の発表に向けて強い[意欲:いよく]を見せている。",
-      "meaningId": "Seniman muda menunjukkan antusiasme tekad membara melahirkan karya baru."
+      "jpRuby": "どんなに細かい作業であっても[根気:こんき]強く向き合うことで道が開ける。",
+      "meaningId": "Sebaik apapun kerumitan tugas dihadapi dengan ulet sabar akan berbuah hasil."
     }
   },
   {
@@ -4548,19 +4546,19 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "chapterId": "noun-general-5",
     "section": "第5回 (161〜200)",
     "sectionId": "sec-161-200",
-    "word": "視野",
-    "reading": "しや",
-    "ruby": "[しや]",
+    "word": "焦点",
+    "reading": "しょうてん",
+    "ruby": "[焦点:しょうてん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Cakrawala wawasan sudut pandang",
-    "meaningEn": "View, scope of mind",
+    "meaningId": "Titik fokus poros perhatian pusat telaah",
+    "meaningEn": "Focus, focal point, pivot",
     "collocation": {
-      "jpRuby": "[広:ひろ]い[視野:しや]で[物事:ものごと]を[捉:とら]える",
-      "meaningId": "Memandang perkara dengan cakrawala luas"
+      "jpRuby": "[議論:ぎろん]の[焦点:しょうてん]を[絞:しぼ]る",
+      "meaningId": "Mengerucutkan memfokuskan poros perdebatan"
     },
     "exampleSentence": {
-      "jpRuby": "目先の利益にとらわれず、百年先を見据えた広い[視野:しや]で物事を考えよう。",
-      "meaningId": "Jangan tergiur untung sesaat, berpikirlah dengan cakrawala luas menatap masa depan."
+      "jpRuby": "今回の首脳会談では気候変動対策と経済支援が最大の[焦点:しょうてん]となった。",
+      "meaningId": "Pada KTT kali ini isu iklim dan stimulus ekonomi menjadi titik fokus utama pembahasan."
     }
   },
   {
@@ -5148,19 +5146,19 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "chapterId": "noun-general-6",
     "section": "第6回 (201〜240)",
     "sectionId": "sec-201-240",
-    "word": "提携",
-    "reading": "ていけい",
-    "ruby": "[提携:ていけい]",
+    "word": "承諾",
+    "reading": "しょうだく",
+    "ruby": "[承諾:しょうだく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Aliansi kemitraan kolaborasi bisnis",
-    "meaningEn": "Partnership, tie-up, alliance",
+    "meaningId": "Persetujuan kesepakatan akseptasi",
+    "meaningEn": "Consent, agreement, acceptance",
     "collocation": {
-      "jpRuby": "[海外:かいがい][企業:きぎょう]と[提携:ていけい]する",
-      "meaningId": "Menjalin aliansi kemitraan dengan kantor luar"
+      "jpRuby": "[条件:じょうけん]を[承諾:しょうだく]する",
+      "meaningId": "Menyetujui menyepakati syarat kesepakatan"
     },
     "exampleSentence": {
-      "jpRuby": "世界市場へ進出するため大手物流会社と戦略的な[提携:ていけい]を結んだ。",
-      "meaningId": "Menjalin aliansi strategis dengan perusahaan logistik besar menembus pasar global."
+      "jpRuby": "双方の話し合いがまとまり提示された契約条件を正式に[承諾:しょうだく]した。",
+      "meaningId": "Kedua pihak mufakat dan resmi menyetujui syarat kontrak yang diajukan."
     }
   },
   {
@@ -5724,19 +5722,19 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "chapterId": "noun-general-6",
     "section": "第6回 (201〜240)",
     "sectionId": "sec-201-240",
-    "word": "手腕",
-    "reading": "しゅわん",
-    "ruby": "[しゅわん]",
+    "word": "手順",
+    "reading": "てじゅん",
+    "ruby": "[手順:てじゅん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kecakapan tangan dingin kepemimpinan",
-    "meaningEn": "Skill, leadership ability",
+    "meaningId": "Prosedur urutan langkah tahapan proses",
+    "meaningEn": "Procedure, process, operational steps",
     "collocation": {
-      "jpRuby": "[見事:みごと]な[手腕:しゅわん]で[統率:とうそつ]する",
-      "meaningId": "Memimpin dengan kecakapan tangan dingin memukau"
+      "jpRuby": "マニュアルの[手順:てじゅん]に[従:したが]って[操作:そうさ]する",
+      "meaningId": "Mengoperasikan mengikuti prosedur langkah di panduan manual"
     },
     "exampleSentence": {
-      "jpRuby": "意見が対立するチームを見事にまとめ上げたリーダーの[手腕:しゅわん]は流石だ。",
-      "meaningId": "Kecakapan tangan dingin sang pemimpin mempersatukan tim patut diacungi jempol."
+      "jpRuby": "実験を行う際は安全のため定められた[手順:てじゅん]を必ず一つずつ厳守しなければならない。",
+      "meaningId": "Saat menjalankan praktikum wajib mematuhi tiap tahapan prosedur demi keselamatan kerja."
     }
   },
   {
@@ -8004,19 +8002,19 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "chapterId": "noun-relations",
     "section": "第9回 (321〜360)",
     "sectionId": "sec-321-360",
-    "word": "ライバル",
-    "reading": "ライバル",
-    "ruby": "ライバル",
+    "word": "伴侶",
+    "reading": "はんりょ",
+    "ruby": "[伴侶:はんりょ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Rival pesaing seimbang",
-    "meaningEn": "Rival, competitor",
+    "meaningId": "Pendamping hidup belahan jiwa pasangan",
+    "meaningEn": "Partner, companion, spouse",
     "collocation": {
-      "jpRuby": "[良:よ]きライバルと[切磋琢磨:せっさたくま]する",
-      "meaningId": "Saling menempa diri bersama rival positif"
+      "jpRuby": "[人生:じんせい]の[良:よ]き[伴侶:はんりょ]に[巡:めぐ]り[合:あ]う",
+      "meaningId": "Dipertemukan dengan pendamping hidup yang setia"
     },
     "exampleSentence": {
-      "jpRuby": "幼馴染の彼は学業でもスポーツでも常に私を刺激してくれる[良:よ]きライバルだ。",
-      "meaningId": "Sahabat masa kecil itu adalah rival sehat pemacu semangat belajar dan olahraga."
+      "jpRuby": "苦楽を共に分かち合い生涯を歩んでいくかけがえのない[伴侶:はんりょ]と結ばれた。",
+      "meaningId": "Dipersatukan dengan pendamping hidup yang senantiasa berbagi suka dan duka bersama."
     }
   },
   {
@@ -11532,19 +11530,19 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "chapterId": "noun-nature",
     "section": "第12回 (446〜490)",
     "sectionId": "sec-446-490",
-    "word": "分別",
-    "reading": "ぶんべつ",
-    "ruby": "[分別:ぶんべつ]",
+    "word": "恩恵",
+    "reading": "おんけい",
+    "ruby": "[恩恵:おんけい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pemilahan sortir kategori sampah",
-    "meaningEn": "Sorting, separation of garbage",
+    "meaningId": "Berkah rahmat anugerah kemurahan",
+    "meaningEn": "Blessing, grace, benefit, bounty",
     "collocation": {
-      "jpRuby": "[家庭:かてい]ごみを[厳密:げんみつ]に[分別:ぶんべつ]する",
-      "meaningId": "Memilah sampah rumah tangga secara teliti"
+      "jpRuby": "[大自然:だいしぜん]の[恩恵:おんけい]を[受:う]ける",
+      "meaningId": "Menikmati limpahan berkah alam semesta"
     },
     "exampleSentence": {
-      "jpRuby": "環境を守る第一歩として、一人ひとりがごみの正しい[分別:ぶんべつ]を習慣にする。",
-      "meaningId": "Langkah awal menjaga bumi adalah membiasakan memilah sampah dengan benar."
+      "jpRuby": "豊かな森林と清流がもたらす大自然の[恩恵:おんけい]に感謝しながら暮らす。",
+      "meaningId": "Menjalani hidup penuh syukur atas anugerah dan berkah alam berupa hutan dan air jernih."
     }
   },
   {

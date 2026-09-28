@@ -1,7 +1,5 @@
 import { TangoN3Card } from './types';
 
-// Auto-generated 420 cards for Part 2 (#0646 to #1065)
-// Covers G1 Verbs, G2 Verbs, G3 Suru Verbs, Compound Verbs, Transitive/Intransitive
 export const PART2_VERBS: TangoN3Card[] = [
   {
     "id": "tango-0646",
@@ -372,19 +370,19 @@ export const PART2_VERBS: TangoN3Card[] = [
     "chapterId": "verb-g1-1",
     "section": "第17回 (646〜685)",
     "sectionId": "sec-646-685",
-    "word": "思いつく",
-    "reading": "おもいつく",
-    "ruby": "[思:おも]いつく",
+    "word": "味わう",
+    "reading": "あじわう",
+    "ruby": "[味:あじ]わう",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Teringat ide, mencetuskan gagasan",
-    "meaningEn": "To think of, to hit upon an idea",
+    "meaningId": "Menikmati mencicipi meresapi rasa",
+    "meaningEn": "To taste, to savor, to relish",
     "collocation": {
-      "jpRuby": "良い[案:あん]を[思:おも]いつく",
-      "meaningId": "Mencetuskan ide usulan yang cemerlang"
+      "jpRuby": "[旬:しゅん]の[料理:りょうり]を[味:あじ]わう",
+      "meaningId": "Mencicipi menikmati masakan musiman segar"
     },
     "exampleSentence": {
-      "jpRuby": "散歩の途中で素晴らしい解決策を[思:おも]いついた。",
-      "meaningId": "Saat sedang jalan-jalan santai saya menemukan solusi cemerlang."
+      "jpRuby": "旅行先で土地の郷土料理を心ゆくまで[味:あじ]わい旅情を満喫した。",
+      "meaningId": "Mencicipi masakan khas lokal sepuasnya menikmati nostalgia perjalanan wisata."
     }
   },
   {
@@ -660,19 +658,19 @@ export const PART2_VERBS: TangoN3Card[] = [
     "chapterId": "verb-g1-1",
     "section": "第17回 (646〜685)",
     "sectionId": "sec-646-685",
-    "word": "枯れる",
-    "reading": "かれる",
-    "ruby": "[枯:か]れる",
-    "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Layu mengering mati (tanaman)",
-    "meaningEn": "To wither, to dry up",
+    "word": "跨ぐ",
+    "reading": "またぐ",
+    "ruby": "[跨:また]ぐ",
+    "partOfSpeech": "[動Ⅰ 他]",
+    "meaningId": "Melangkahi melompati melintasi rintangan",
+    "meaningEn": "To step over, to straddle, to cross",
     "collocation": {
-      "jpRuby": "[花:はな]が[枯:か]れる",
-      "meaningId": "Bunga layu mengering"
+      "jpRuby": "[小川:おがわ]を[一歩:いっぽ]で[跨:また]ぐ",
+      "meaningId": "Melangkahi anak sungai dalam satu langkah"
     },
     "exampleSentence": {
-      "jpRuby": "水をやらなかったため、観葉植物が[枯:か]れてしまった。",
-      "meaningId": "Karena lupa disiram tanaman hiasnya mengering layu."
+      "jpRuby": "道に倒れていた木の枝をひらりと[跨:また]いで先へと進んだ。",
+      "meaningId": "Melangkahi ranting kayu yang tumbang di jalan lalu terus melangkah maju."
     }
   },
   {
@@ -1356,19 +1354,19 @@ export const PART2_VERBS: TangoN3Card[] = [
     "chapterId": "verb-g1-2",
     "section": "第18回 (686〜725)",
     "sectionId": "sec-686-725",
-    "word": "注ぐ",
-    "reading": "つぐ",
-    "ruby": "[注:つ]ぐ",
+    "word": "浸す",
+    "reading": "ひたす",
+    "ruby": "[浸:ひた]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menuangkan minuman ke cangkir",
-    "meaningEn": "To pour drink",
+    "meaningId": "Merendam mencelupkan ke dalam air cairan",
+    "meaningEn": "To soak, to dip, to immerse",
     "collocation": {
-      "jpRuby": "[酒:さけ]を[注:つ]ぐ",
-      "meaningId": "Menuangkan minuman sake"
+      "jpRuby": "[足:あし]を[温泉:おんせん]に[浸:ひた]す",
+      "meaningId": "Merendam mencelupkan kaki ke air panas onsen"
     },
     "exampleSentence": {
-      "jpRuby": "お互いにグラスにお茶を[注:つ]ぎ合って乾杯した。",
-      "meaningId": "Saling menuangkan teh ke gelas masing-masing lalu bersulang."
+      "jpRuby": "乾燥した豆を一晩水に[浸:ひた]してから弱火でコトコト煮込んだ。",
+      "meaningId": "Merendam kacang kering di air semalaman lalu merebusnya dengan api kecil."
     }
   },
   {
@@ -1812,19 +1810,19 @@ export const PART2_VERBS: TangoN3Card[] = [
     "chapterId": "verb-g1-2",
     "section": "第18回 (686〜725)",
     "sectionId": "sec-686-725",
-    "word": "告げる",
-    "reading": "つげる",
-    "ruby": "[告:つ]げる",
-    "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Memberitahukan, mengabarkan waktu",
-    "meaningEn": "To inform, to announce, to tell",
+    "word": "黙る",
+    "reading": "だまる",
+    "ruby": "[黙:だま]る",
+    "partOfSpeech": "[動Ⅰ 自]",
+    "meaningId": "Terdiam membisu tidak mengeluarkan suara",
+    "meaningEn": "To be silent, to say nothing",
     "collocation": {
-      "jpRuby": "[別:わか]れを[告:つ]げる",
-      "meaningId": "Mengucapkan salam perpisahan pamit"
+      "jpRuby": "じっと[黙:だま]り[込:こ]む",
+      "meaningId": "Terdiam membisu seribu bahasa"
     },
     "exampleSentence": {
-      "jpRuby": "時計の鐘の音が１２時を[告:つ]げた。",
-      "meaningId": "Dentang lonceng jam memberitahukan tibanya pukul 12 siang."
+      "jpRuby": "厳しい質問を投げかけられた彼は何も答えられず[黙:だま]ってうつむいた。",
+      "meaningId": "Dicecar pertanyaan pedas ia tertunduk diam membisu tak sanggup menjawab."
     }
   },
   {
@@ -2268,19 +2266,19 @@ export const PART2_VERBS: TangoN3Card[] = [
     "chapterId": "verb-g1-3",
     "section": "第19回 (726〜765)",
     "sectionId": "sec-726-765",
-    "word": "慰める",
-    "reading": "なぐさめる",
-    "ruby": "[慰:なぐさ]める",
-    "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menghibur menenangkan hati duka",
-    "meaningEn": "To comfort, to console",
+    "word": "示す",
+    "reading": "しめす",
+    "ruby": "[示:しめ]す",
+    "partOfSpeech": "[動Ⅰ 他]",
+    "meaningId": "Menunjukkan memaparkan memperlihatkan data",
+    "meaningEn": "To show, to demonstrate, to indicate",
     "collocation": {
-      "jpRuby": "[落胆:らくたん]した友を[慰:なぐさ]める",
-      "meaningId": "Menghibur teman yang sedang putus asa"
+      "jpRuby": "[証拠:しょうこ]を[具体的:ぐたいてき]に[示:しめ]す",
+      "meaningId": "Menunjukkan memaparkan bukti secara konkret"
     },
     "exampleSentence": {
-      "jpRuby": "失恋して泣いている友達の背中をさすって[慰:なぐさ]めた。",
-      "meaningId": "Menepuk punggung dan menghibur kawan yang patah hati menangis."
+      "jpRuby": "調査の分析結果をグラフで[示:しめ]しながら現状の課題を分かりやすく説明した。",
+      "meaningId": "Memaparkan kendala secara gamblang seraya menunjukkan grafik analisis riset."
     }
   },
   {
@@ -2292,19 +2290,19 @@ export const PART2_VERBS: TangoN3Card[] = [
     "chapterId": "verb-g1-3",
     "section": "第19回 (726〜765)",
     "sectionId": "sec-726-765",
-    "word": "怠ける",
-    "reading": "なまける",
-    "ruby": "[怠:なま]ける",
-    "partOfSpeech": "[動Ⅱ 自・他]",
-    "meaningId": "Malas bermalas-malasan bolos tugas",
-    "meaningEn": "To be idle, to neglect, to slack off",
+    "word": "従う",
+    "reading": "したがう",
+    "ruby": "[従:したが]う",
+    "partOfSpeech": "[動Ⅰ 自]",
+    "meaningId": "Mematuhi menuruti menaati instruksi aturan",
+    "meaningEn": "To obey, to comply with, to follow",
     "collocation": {
-      "jpRuby": "[勉強:べんきょう]を[怠:なま]ける",
-      "meaningId": "Bermalas-malasan dalam belajar"
+      "jpRuby": "[指示:しじ]に[従:したが]って[行動:こうどう]する",
+      "meaningId": "Bertindak mematuhi menaati petunjuk arahan"
     },
     "exampleSentence": {
-      "jpRuby": "日々の努力を[怠:なま]けるとすぐに腕が落ちてしまう。",
-      "meaningId": "Bila malas berlatih harian kemampuan akan langsung merosot."
+      "jpRuby": "非常時は慌てずに係員の誘導に[従:したが]って避難所へ移動してください。",
+      "meaningId": "Di saat darurat harap tenang dan patuhi arahan petugas menuju posko pengungsian."
     }
   },
   {
@@ -2412,19 +2410,19 @@ export const PART2_VERBS: TangoN3Card[] = [
     "chapterId": "verb-g1-3",
     "section": "第19回 (726〜765)",
     "sectionId": "sec-726-765",
-    "word": "逃げる",
-    "reading": "にげる",
-    "ruby": "[逃:に]げる",
-    "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Kabur melarikan diri mengelak",
-    "meaningEn": "To run away, to escape",
+    "word": "支払う",
+    "reading": "しはらう",
+    "ruby": "[支払:しはら]う",
+    "partOfSpeech": "[動Ⅰ 他]",
+    "meaningId": "Membayar melunasi tagihan biaya",
+    "meaningEn": "To pay",
     "collocation": {
-      "jpRuby": "[犯人:はんにん]が[逃:に]げる",
-      "meaningId": "Pelaku kejahatan melarikan diri"
+      "jpRuby": "[料金:りょうきん]をカードで[支払:しはら]う",
+      "meaningId": "Membayar tagihan tarif dengan kartu"
     },
     "exampleSentence": {
-      "jpRuby": "火事が発生したため、非常階段を使って急いで[逃:に]げた。",
-      "meaningId": "Karena terjadi kebakaran kami bergegas kabur lewat tangga darurat."
+      "jpRuby": "月末までに家賃と水道光熱費を忘れずに銀行振込で[支払:しはら]った。",
+      "meaningId": "Sebelum akhir bulan membayar sewa hunian dan tagihan air listrik via transfer."
     }
   },
   {
@@ -2508,19 +2506,19 @@ export const PART2_VERBS: TangoN3Card[] = [
     "chapterId": "verb-g1-3",
     "section": "第19回 (726〜765)",
     "sectionId": "sec-726-765",
-    "word": "伸びる",
-    "reading": "のびる",
-    "ruby": "[伸:の]びる",
-    "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Tumbuh memanjang, berkembang melesat",
-    "meaningEn": "To lengthen, to grow, to develop",
+    "word": "和らぐ",
+    "reading": "やわらぐ",
+    "ruby": "[和:やわ]らぐ",
+    "partOfSpeech": "[動Ⅰ 自]",
+    "meaningId": "Mereda melunak (hawa dingin, sakit, amarah)",
+    "meaningEn": "To soften, to calm down, to abate",
     "collocation": {
-      "jpRuby": "[背:せ]が[伸:の]びる",
-      "meaningId": "Tinggi badan tumbuh memanjang"
+      "jpRuby": "[寒:さむ]さが[和:やわ]らぐ",
+      "meaningId": "Hawa dingin mereda menjadi lebih hangat"
     },
     "exampleSentence": {
-      "jpRuby": "１年間で弟の背がぐんと[伸:の]びて驚いた。",
-      "meaningId": "Dalam satu tahun tinggi badan adik bertambah banyak hingga mengagetkan."
+      "jpRuby": "春の訪れとともに厳しい寒さが次第に[和:やわ]らいできた。",
+      "meaningId": "Seiring tibanya musim semi hawa dingin yang menusuk berangsur-angsur mereda."
     }
   },
   {
@@ -2700,19 +2698,19 @@ export const PART2_VERBS: TangoN3Card[] = [
     "chapterId": "verb-g1-3",
     "section": "第19回 (726〜765)",
     "sectionId": "sec-726-765",
-    "word": "乗り越える",
-    "reading": "のりこえる",
-    "ruby": "[乗:の]り[越:こ]える",
-    "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Melompati rintangan, mengatasi ujian cobaan",
-    "meaningEn": "To overcome, to surmount",
+    "word": "乗り過ごす",
+    "reading": "のりすごす",
+    "ruby": "[乗:の]り[過:す]ごす",
+    "partOfSpeech": "[動Ⅰ 他]",
+    "meaningId": "Kebablasan terlewat stasiun tujuan di kereta",
+    "meaningEn": "To ride past one's stop, to miss station",
     "collocation": {
-      "jpRuby": "[困難:こんなん]を[乗:の]り[越:こ]える",
-      "meaningId": "Mengatasi rintangan kesulitan"
+      "jpRuby": "[電車:でんしゃ]で[寝過:ねす]ごして[乗:の]り[過:す]ごす",
+      "meaningId": "Kebablasan terlewat stasiun karena ketiduran di kereta"
     },
     "exampleSentence": {
-      "jpRuby": "仲間と励まし合いながら数々の試練を[乗:の]り[越:こ]えた。",
-      "meaningId": "Saling menyemangati dengan rekan melewati sederet ujian cobaan."
+      "jpRuby": "読書に夢中になって降りるべき駅を二つも[乗:の]り[過:す]ごしてしまった。",
+      "meaningId": "Terhanyut membaca buku hingga kebablasan terlewat dua stasiun dari halte tujuan."
     }
   },
   {
@@ -3204,19 +3202,19 @@ export const PART2_VERBS: TangoN3Card[] = [
     "chapterId": "verb-g1-4",
     "section": "第20回 (766〜805)",
     "sectionId": "sec-766-805",
-    "word": "引っ越す",
-    "reading": "ひっこす",
-    "ruby": "[引:ひ]っ[越:こ]す",
+    "word": "偏る",
+    "reading": "かたよる",
+    "ruby": "[偏:かたよ]る",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Pindah rumah tempat tinggal",
-    "meaningEn": "To move (residence)",
+    "meaningId": "Berat sebelah condong tidak seimbang bias",
+    "meaningEn": "To be biased, to be one-sided, to lean",
     "collocation": {
-      "jpRuby": "[隣町:となりまち]へ[引:ひ]っ[越:こ]す",
-      "meaningId": "Pindah tempat tinggal ke kota tetangga"
+      "jpRuby": "[栄養:えいよう]が[偏:かたよ]る",
+      "meaningId": "Gizi nutrisi makanan tidak seimbang"
     },
     "exampleSentence": {
-      "jpRuby": "来月会社の近くの新しいマンションへ[引:ひ]っ[越:こ]す予定だ。",
-      "meaningId": "Bulan depan saya berencana pindah ke apartemen baru dekat kantor."
+      "jpRuby": "外食ばかりしていると栄養バランスが[偏:かたよ]って体調を崩しやすい。",
+      "meaningId": "Terlalu sering jajan di luar membuat gizi tidak seimbang dan tubuh lekas sakit."
     }
   },
   {
@@ -3228,19 +3226,19 @@ export const PART2_VERBS: TangoN3Card[] = [
     "chapterId": "verb-g1-4",
     "section": "第20回 (766〜805)",
     "sectionId": "sec-766-805",
-    "word": "引っ張る",
-    "reading": "ひっぱる",
-    "ruby": "[引:ひ]っ[張:ぱ]る",
+    "word": "包む",
+    "reading": "つつむ",
+    "ruby": "[包:つつ]む",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menarik kencang menyeret",
-    "meaningEn": "To pull, to drag, to haul",
+    "meaningId": "Membungkus mengemas hadiah paket",
+    "meaningEn": "To wrap, to bundle, to pack",
     "collocation": {
-      "jpRuby": "[手:て]を[引:ひ]っ[張:ぱ]る",
-      "meaningId": "Menarik tangan kencang"
+      "jpRuby": "[綺麗:きれい]な[包装紙:ほうそうし]で[包:つつ]む",
+      "meaningId": "Membungkus rapi dengan kertas kado cantik"
     },
     "exampleSentence": {
-      "jpRuby": "重い荷物を乗せた台車を力いっぱい[引:ひ]っ[張:ぱ]った。",
-      "meaningId": "Menarik gerobak bermuatan barang berat dengan sekuat tenaga."
+      "jpRuby": "大切な人へのプレゼントを壊れないように丁寧にクッション材で[包:つつ]んだ。",
+      "meaningId": "Membungkus kado untuk orang tercinta secara hati-hati dengan bantalan pelindung."
     }
   },
   {
@@ -3756,19 +3754,19 @@ export const PART2_VERBS: TangoN3Card[] = [
     "chapterId": "verb-g1-4",
     "section": "第20回 (766〜805)",
     "sectionId": "sec-766-805",
-    "word": "割れる",
-    "reading": "われる",
-    "ruby": "[割:わ]れる",
+    "word": "裂ける",
+    "reading": "さける",
+    "ruby": "[裂:さ]ける",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Pecah terbelah retak",
-    "meaningEn": "To break, to crack, to split",
+    "meaningId": "Robek terkoyak terbelah merekah",
+    "meaningEn": "To split, to tear, to burst open",
     "collocation": {
-      "jpRuby": "[窓:まど]ガラスが[割:わ]れる",
-      "meaningId": "Kaca jendela pecah berhamburan"
+      "jpRuby": "[着:き]ていたシャツが[裂:さ]ける",
+      "meaningId": "Kemeja yang dikenakan robek terkoyak"
     },
     "exampleSentence": {
-      "jpRuby": "強いボールが当たって窓ガラスが粉々に[割:わ]れた。",
-      "meaningId": "Kaca jendela pecah berkeping-keping akibat hantaman bola keras."
+      "jpRuby": "釘に引っかけてズボンの裾がビリッと大きく[裂:さ]けてしまった。",
+      "meaningId": "Ujung celana robek terkoyak cukup lebar akibat tersangkut paku tajam."
     }
   },
   {
@@ -4956,19 +4954,19 @@ export const PART2_VERBS: TangoN3Card[] = [
     "chapterId": "verb-g2-2",
     "section": "第22回 (846〜885)",
     "sectionId": "sec-846-885",
-    "word": "逃げる",
-    "reading": "にげる",
-    "ruby": "[逃:に]げる",
-    "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Menjauh menghindar dari tanggung jawab",
-    "meaningEn": "To evade, to run away",
+    "word": "免れる",
+    "reading": "まぬかれる",
+    "ruby": "[免:まぬか]れる",
+    "partOfSpeech": "[動Ⅱ 他]",
+    "meaningId": "Lolos terhindar terbebas dari sanksi bahaya",
+    "meaningEn": "To escape, to be spared from, to evade",
     "collocation": {
-      "jpRuby": "[責任:せきにん]から[逃:に]げる",
-      "meaningId": "Lari menghindar dari tanggung jawab"
+      "jpRuby": "[大事故:だいじこ]を[奇跡:きせき][的:てき]に[免:まぬか]れる",
+      "meaningId": "Secara ajaib terhindar dari musibah kecelakaan besar"
     },
     "exampleSentence": {
-      "jpRuby": "困難から[逃:に]げずに正面から向き合う勇気を持とう。",
-      "meaningId": "Milikilah keberanian menghadapi rintangan tanpa lari menghindar."
+      "jpRuby": "シートベルトを締めていたおかげで九死に一生を得て怪我を[免:まぬか]れた。",
+      "meaningId": "Berkat mengenakan sabuk pengaman ia selamat dan terhindar dari luka parah."
     }
   },
   {
@@ -5100,19 +5098,19 @@ export const PART2_VERBS: TangoN3Card[] = [
     "chapterId": "verb-g2-2",
     "section": "第22回 (846〜885)",
     "sectionId": "sec-846-885",
-    "word": "破れる",
-    "reading": "やぶれる",
-    "ruby": "[破:やぶ]れる",
+    "word": "剥がれる",
+    "reading": "はがれる",
+    "ruby": "[剥:は]がれる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Gagal hancur pupus (impian/rencana)",
-    "meaningEn": "To be shattered, to be broken",
+    "meaningId": "Terkelupas tanggal copot stiker kulit",
+    "meaningEn": "To peel off, to come off, to flake",
     "collocation": {
-      "jpRuby": "[夢:ゆめ]が[破:やぶ]れる",
-      "meaningId": "Impian cita-cita kandas pupus"
+      "jpRuby": "ポスターが[壁:かべ]から[剥:は]がれる",
+      "meaningId": "Poster terkelupas copot dari dinding tembok"
     },
     "exampleSentence": {
-      "jpRuby": "予選で敗退し、全国大会出場の夢が[破:やぶ]れてしまった。",
-      "meaningId": "Kalah di babak penyisihan membuat impian melaju ke tingkat nasional pupus."
+      "jpRuby": "雨風にさらされて古い看板のペンキがボロボロと[剥:は]がれ落ちていた。",
+      "meaningId": "Terpaan hujan dan angin membuat cat papan reklame tua terkelupas rontok."
     }
   },
   {
@@ -5340,19 +5338,19 @@ export const PART2_VERBS: TangoN3Card[] = [
     "chapterId": "verb-g2-2",
     "section": "第22回 (846〜885)",
     "sectionId": "sec-846-885",
-    "word": "訪れる",
-    "reading": "おとずれる",
-    "ruby": "[訪:おとず]れる",
-    "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Mengunjungi mendatangi tempat",
-    "meaningEn": "To visit, to call on",
+    "word": "招く",
+    "reading": "まねく",
+    "ruby": "[招:まね]く",
+    "partOfSpeech": "[動Ⅰ 他]",
+    "meaningId": "Mengundang menyambut tamu / mengundang musibah",
+    "meaningEn": "To invite, to cause (trouble), to bring about",
     "collocation": {
-      "jpRuby": "[古都:こと]を[訪:おとず]れる",
-      "meaningId": "Mengunjungi kota kuno bersejarah"
+      "jpRuby": "[友人:ゆうじん]を[自宅:じたく]に[招:まね]く",
+      "meaningId": "Mengundang sahabat berkunjung ke rumah tinggal"
     },
     "exampleSentence": {
-      "jpRuby": "秋の連休に歴史ある奈良の寺院を[訪:おとず]れた。",
-      "meaningId": "Di libur musim gugur saya mengunjungi wihara bersejarah di Nara."
+      "jpRuby": "不注意な発言が誤解を[招:まね]いて同僚との関係をぎくしゃくさせてしまった。",
+      "meaningId": "Ucapan yang ceroboh mengundang kesalahpahaman memicu hubungan dengan rekan kerja renggang."
     }
   },
   {
@@ -5580,19 +5578,19 @@ export const PART2_VERBS: TangoN3Card[] = [
     "chapterId": "verb-g2-2",
     "section": "第22回 (846〜885)",
     "sectionId": "sec-846-885",
-    "word": "落ちる",
-    "reading": "おちる",
-    "ruby": "[落:お]ちる",
-    "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Rontok luruh memudar warnanya",
-    "meaningEn": "To fade (color), to fall",
+    "word": "和らげる",
+    "reading": "やわらげる",
+    "ruby": "[和:やわ]らげる",
+    "partOfSpeech": "[動Ⅱ 他]",
+    "meaningId": "Meredakan melembutkan menenteramkan",
+    "meaningEn": "To soften, to relieve, to soothe",
     "collocation": {
-      "jpRuby": "[色:いろ]が[落:お]ちる",
-      "meaningId": "Warna pakaian luntur memudar"
+      "jpRuby": "[痛:いた]みを[和:やわ]らげる[薬:くすり]",
+      "meaningId": "Obat pereda peringan rasa nyeri sakit"
     },
     "exampleSentence": {
-      "jpRuby": "何度も洗濯するうちにTシャツの色がすっかり[落:お]ちた。",
-      "meaningId": "Setelah berkali-kali dicuci warna kaos oblongnya luntur memudar."
+      "jpRuby": "深呼吸をして緊張を[和:やわ]らげてからステージの上へと向かった。",
+      "meaningId": "Tarik napas dalam-dalam meredakan ketegangan lalu melangkah naik ke atas pentas."
     }
   },
   {

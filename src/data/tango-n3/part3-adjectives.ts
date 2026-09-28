@@ -1,7 +1,5 @@
 import { TangoN3Card } from './types';
 
-// Auto-generated 350 cards for Part 3 (#1066 to #1415)
-// Covers i-Adjectives, na-Adjectives, and Adverbs
 export const PART3_ADJECTIVES: TangoN3Card[] = [
   {
     "id": "tango-1066",
@@ -4764,19 +4762,19 @@ export const PART3_ADJECTIVES: TangoN3Card[] = [
     "chapterId": "adj-na-evaluation",
     "section": "第32回 (1226〜1265)",
     "sectionId": "sec-1226-1265",
-    "word": "決定的",
-    "reading": "けっていてき",
-    "ruby": "[決定的:けっていてき]",
+    "word": "革新的",
+    "reading": "かくしんてき",
+    "ruby": "[革新的:かくしんてき]",
     "partOfSpeech": "[ナ形]",
-    "meaningId": "Krusial telak memastikan akhir",
-    "meaningEn": "Conclusive, critical",
+    "meaningId": "Inovatif revolusioner pembaruan maju",
+    "meaningEn": "Innovative, revolutionary",
     "collocation": {
-      "jpRuby": "[決定的:けっていてき]な瞬間を捉える",
-      "meaningId": "Menangkap momen krusial yang menentukan"
+      "jpRuby": "[革新的:かくしんてき]なビジネスモデル",
+      "meaningId": "Model bisnis yang inovatif revolusioner"
     },
     "exampleSentence": {
-      "jpRuby": "彼のシュートが[決定的:けっていてき]な勝利をもたらした。",
-      "meaningId": "Tendangan tembakannya mendatangkan kemenangan telak yang menentukan."
+      "jpRuby": "新技術を取り入れた[革新的:かくしんてき]なサービスの登場が市場の常識を一変させた。",
+      "meaningId": "Lahirnya layanan inovatif berteknologi baru mengubah total standar kebiasaan pasar."
     }
   },
   {
@@ -5676,19 +5674,19 @@ export const PART3_ADJECTIVES: TangoN3Card[] = [
     "chapterId": "adv-degree",
     "section": "第33回 (1266〜1305)",
     "sectionId": "sec-1266-1305",
-    "word": "極めて",
-    "reading": "きわめて",
-    "ruby": "[極:きわ]めて",
+    "word": "至って",
+    "reading": "いたって",
+    "ruby": "[至:いた]って",
     "partOfSpeech": "[副]",
-    "meaningId": "Paling pucuk teramat puncak",
-    "meaningEn": "Most highly, extremely",
+    "meaningId": "Teramat sangat luar biasa amat",
+    "meaningEn": "Extremely, exceedingly, very",
     "collocation": {
-      "jpRuby": "[極:きわ]めて高い精度",
-      "meaningId": "Tingkat akurasi yang amat sangat presisi"
+      "jpRuby": "[健康:けんこう][状態:じょうたい]は[至:いた]って[良好:りょうこう]だ",
+      "meaningId": "Kondisi kebugaran kesehatan teramat sangat prima"
     },
     "exampleSentence": {
-      "jpRuby": "この実験は[極:きわ]めて慎重に行われた。",
-      "meaningId": "Eksperimen ini dijalankan dengan penuh kehati-hatian tingkat tinggi."
+      "jpRuby": "操作方法は[至:いた]ってシンプルなので誰でもすぐに使いこなすことができる。",
+      "meaningId": "Cara pengoperasiannya teramat sangat sederhana sehingga siapapun lekas bisa menguasainya."
     }
   },
   {
@@ -5772,19 +5770,19 @@ export const PART3_ADJECTIVES: TangoN3Card[] = [
     "chapterId": "adv-manner",
     "section": "第34回 (1306〜1345)",
     "sectionId": "sec-1306-1345",
-    "word": "じっくり",
-    "reading": "じっくり",
-    "ruby": "じっくり",
+    "word": "つくづく",
+    "reading": "つくづく",
+    "ruby": "つくづく",
     "partOfSpeech": "[副]",
-    "meaningId": "Mendalam seksama penuh pertimbangan",
-    "meaningEn": "Deliberately, thoroughly",
+    "meaningId": "Mendalam sungguh-sungguh merasakan betul",
+    "meaningEn": "Deeply, genuinely, thoroughly",
     "collocation": {
-      "jpRuby": "じっくり[考:かんが]える",
-      "meaningId": "Memikirkan matang-matang secara mendalam"
+      "jpRuby": "[健康:けんこう]のありがたさを[実感:じっかん]する",
+      "meaningId": "Merasakan betul arti berharganya kebugaran"
     },
     "exampleSentence": {
-      "jpRuby": "将来の進路についてじっくり話し合おう。",
-      "meaningId": "Mari bicarakan masa depan karir kita secara mendalam dan seksama."
+      "jpRuby": "病気を経験して初めて健康であることの大切さをつくづく痛感した。",
+      "meaningId": "Usai jatuh sakit barulah saya sungguh-sungguh merasakan betul pentingnya hidup bugar."
     }
   },
   {
@@ -5800,15 +5798,15 @@ export const PART3_ADJECTIVES: TangoN3Card[] = [
     "reading": "そっと",
     "ruby": "そっと",
     "partOfSpeech": "[副]",
-    "meaningId": "Perlahan hati-hati tanpa suara",
-    "meaningEn": "Quietly, softly, gently",
+    "meaningId": "Perlahan hati-hati tanpa bersuara lembut",
+    "meaningEn": "Softly, gently, quietly",
     "collocation": {
-      "jpRuby": "そっとドアを閉める",
-      "meaningId": "Menutup pintu tanpa suara perlahan"
+      "jpRuby": "ドアをそっと[閉:し]める",
+      "meaningId": "Menutup pintu perlahan tanpa bersuara"
     },
     "exampleSentence": {
-      "jpRuby": "[赤:あか]ちゃんが起きないようにそっと部屋を出た。",
-      "meaningId": "Agar bayi tidak terbangun saya keluar kamar dengan amat perlahan."
+      "jpRuby": "赤ちゃんが目を覚まさないようベッドにそっと寝かせた。",
+      "meaningId": "Menidurkan bayi di ranjang perlahan hati-hati agar tidak terbangun kaget."
     }
   },
   {
@@ -5820,19 +5818,19 @@ export const PART3_ADJECTIVES: TangoN3Card[] = [
     "chapterId": "adv-manner",
     "section": "第34回 (1306〜1345)",
     "sectionId": "sec-1306-1345",
-    "word": "ばったり",
-    "reading": "ばったり",
-    "ruby": "ばったり",
+    "word": "偶然に",
+    "reading": "ぐうぜんに",
+    "ruby": "[偶然:ぐうぜん]に",
     "partOfSpeech": "[副]",
-    "meaningId": "Kebetulan berpapasan bertemu / tumbang",
-    "meaningEn": "By chance meeting / abruptly falling",
+    "meaningId": "Secara kebetulan tanpa disengaja",
+    "meaningEn": "By chance, accidentally, coincidentally",
     "collocation": {
-      "jpRuby": "道でばったり出会う",
-      "meaningId": "Papasan tak sengaja di jalan"
+      "jpRuby": "[街:まち]で[偶然:ぐうぜん]に[旧友:きゅうゆう]と[会:あ]う",
+      "meaningId": "Secara kebetulan bertemu teman lama di kota"
     },
     "exampleSentence": {
-      "jpRuby": "駅で昔の同級生にばったり出会った。",
-      "meaningId": "Saya kebetulan berpapasan dengan teman sekelas lama di stasiun."
+      "jpRuby": "旅先のカフェで昔の同級生と[偶然:ぐうぜん]に出会って旧交を温めた。",
+      "meaningId": "Secara kebetulan bertemu teman sekelas lama di kedai wisata dan bernostalgia bersama."
     }
   },
   {
@@ -5844,19 +5842,19 @@ export const PART3_ADJECTIVES: TangoN3Card[] = [
     "chapterId": "adv-manner",
     "section": "第34回 (1306〜1345)",
     "sectionId": "sec-1306-1345",
-    "word": "ぴったり",
-    "reading": "ぴったり",
-    "ruby": "ぴったり",
+    "word": "きっちり",
+    "reading": "きっちり",
+    "ruby": "きっちり",
     "partOfSpeech": "[副]",
-    "meaningId": "Pas persis tepat sesuai",
-    "meaningEn": "Exactly, tightly, snugly",
+    "meaningId": "Tepat persis rapi tanpa selisih",
+    "meaningEn": "Punctually, precisely, tightly",
     "collocation": {
-      "jpRuby": "サイズがぴったりだ",
-      "meaningId": "Ukurannya pas sekali di badan"
+      "jpRuby": "[時間:じかん]きっちりに[到着:とうちゃく]する",
+      "meaningId": "Tiba tepat waktu persis tanpa terlambat"
     },
     "exampleSentence": {
-      "jpRuby": "この靴は私の足にぴったり合う。",
-      "meaningId": "Sepatu ini pas sekali dengan ukuran kaki saya."
+      "jpRuby": "約束の期日まできっちり仕事を終わらせて信頼関係を深める。",
+      "meaningId": "Menuntaskan tugas tepat waktu tanpa meleset guna mempererat tali saling percaya."
     }
   },
   {
@@ -5868,19 +5866,19 @@ export const PART3_ADJECTIVES: TangoN3Card[] = [
     "chapterId": "adv-manner",
     "section": "第34回 (1306〜1345)",
     "sectionId": "sec-1306-1345",
-    "word": "ふと",
-    "reading": "ふと",
-    "ruby": "ふと",
+    "word": "思わず",
+    "reading": "おもわず",
+    "ruby": "[思:おも]わず",
     "partOfSpeech": "[副]",
-    "meaningId": "Tiba-tiba terpikir / tanpa sengaja",
-    "meaningEn": "Suddenly, casually, by chance",
+    "meaningId": "Spontan tanpa sadar terdorong refleks",
+    "meaningEn": "Spontaneously, unintentionally, reflexively",
     "collocation": {
-      "jpRuby": "ふと思い出す",
-      "meaningId": "Mendadak teringat kembali"
+      "jpRuby": "[思:おも]わず[声:こえ]を[上:あ]げる",
+      "meaningId": "Spontan tanpa sadar berseru lantang"
     },
     "exampleSentence": {
-      "jpRuby": "ふと窓の外を見ると雪が降っていた。",
-      "meaningId": "Ketika tanpa sengaja menengok ke luar jendela ternyata salju sedang turun."
+      "jpRuby": "映画のあまりの感動的な結末に[思:おも]わず涙がポロポロこぼれた。",
+      "meaningId": "Menatap akhir film yang begitu menyentuh air mata saya spontan bercucuran terharu."
     }
   },
   {
@@ -5892,19 +5890,19 @@ export const PART3_ADJECTIVES: TangoN3Card[] = [
     "chapterId": "adv-manner",
     "section": "第34回 (1306〜1345)",
     "sectionId": "sec-1306-1345",
-    "word": "思い切って",
-    "reading": "おもいきって",
-    "ruby": "[思:おも]い[切:き]って",
+    "word": "いっそ",
+    "reading": "いっそ",
+    "ruby": "いっそ",
     "partOfSpeech": "[副]",
-    "meaningId": "Memberanikan diri, nekad mengambil langkah",
-    "meaningEn": "Boldly, taking the plunge",
+    "meaningId": "Sekalian lebih baik daripada tanggung",
+    "meaningEn": "Rather, sooner, might as well",
     "collocation": {
-      "jpRuby": "思い切って告白する",
-      "meaningId": "Memberanikan diri menyatakan cinta"
+      "jpRuby": "いっそのこと[新:あたら]しく[買:か]い[替:か]える",
+      "meaningId": "Sekalian saja ganti beli baru yang baru"
     },
     "exampleSentence": {
-      "jpRuby": "思い切って転職を決意した。",
-      "meaningId": "Saya memberanikan diri mengambil keputusan untuk pindah karier."
+      "jpRuby": "修理代が高くつくならいっそ新車に買い替えたほうが賢明かもしれない。",
+      "meaningId": "Jika ongkos servis mahal, sekalian saja beli mobil baru mungkin lebih bijak."
     }
   },
   {
@@ -8052,19 +8050,19 @@ export const PART3_ADJECTIVES: TangoN3Card[] = [
     "chapterId": "adv-sentence",
     "section": "第36回 (1381〜1415)",
     "sectionId": "sec-1381-1415",
-    "word": "さっぱり",
-    "reading": "さっぱり",
-    "ruby": "さっぱり",
+    "word": "到底",
+    "reading": "とうてい",
+    "ruby": "[到底:とうてい]",
     "partOfSpeech": "[副]",
-    "meaningId": "Sama sekali blong tidak paham (〜ない)",
-    "meaningEn": "Not at all, completely not",
+    "meaningId": "Sama sekali mustahil tidak sanggup (〜ない)",
+    "meaningEn": "By no means, impossible (with negative)",
     "collocation": {
-      "jpRuby": "さっぱりわからない",
-      "meaningId": "Sama sekali blong tidak mengerti"
+      "jpRuby": "[到底:とうてい][間:ま]に[合:あ]わない",
+      "meaningId": "Sama sekali mustahil untuk terkejar tepat waktu"
     },
     "exampleSentence": {
-      "jpRuby": "先生の難しい講義はさっぱり理解できなかった。",
-      "meaningId": "Kuliah dosen yang rumit itu sama sekali tak bisa kupahami."
+      "jpRuby": "たった一日でこれほど膨大な資料を読み切ることは[到底:とうてい]無理だ。",
+      "meaningId": "Membaca tuntas dokumen sebanyak ini hanya dalam sehari sama sekali mustahil terkejar."
     }
   },
   {
@@ -8292,19 +8290,19 @@ export const PART3_ADJECTIVES: TangoN3Card[] = [
     "chapterId": "adv-sentence",
     "section": "第36回 (1381〜1415)",
     "sectionId": "sec-1381-1415",
-    "word": "まさか",
-    "reading": "まさか",
-    "ruby": "まさか",
+    "word": "まして",
+    "reading": "まして",
+    "ruby": "まして",
     "partOfSpeech": "[副]",
-    "meaningId": "Sungguh mustahil di luar nalar",
-    "meaningEn": "By no means, impossible",
+    "meaningId": "Apalagi terlebih lagi (〜ない)",
+    "meaningEn": "Much less, let alone, even more",
     "collocation": {
-      "jpRuby": "まさかそんなことが起きるとは",
-      "meaningId": "Mustahil hal seperti itu bisa terjadi"
+      "jpRuby": "大人でも解けない、まして子供には無理だ",
+      "meaningId": "Orang dewasa pun tak mampu, apalagi anak kecil"
     },
     "exampleSentence": {
-      "jpRuby": "まさか彼が優勝するとは誰も予想していなかった。",
-      "meaningId": "Tak seorang pun menduga bahwa dirinya yang akan keluar sebagai juara."
+      "jpRuby": "プロでも苦戦する難問なのだから、まして初心者が解けないのも無理はない。",
+      "meaningId": "Pakar profesional saja kesulitan, apalagi pemula wajar bila belum mampu memecahkannya."
     }
   },
   {

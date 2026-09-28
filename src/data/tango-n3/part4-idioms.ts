@@ -1,7 +1,5 @@
 import { TangoN3Card } from './types';
 
-// Auto-generated 235 cards for Part 4 (#1416 to #1650)
-// Covers Idioms (Body Parts), Onomatopoeia, and Katakana Words
 export const PART4_IDIOMS: TangoN3Card[] = [
   {
     "id": "tango-1416",
@@ -2388,19 +2386,19 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "chapterId": "onomatopoeia-emotion",
     "section": "第39回 (1496〜1535)",
     "sectionId": "sec-1496-1535",
-    "word": "すっきり",
-    "reading": "すっきり",
-    "ruby": "すっきり",
+    "word": "しゃきっと",
+    "reading": "しゃきっと",
+    "ruby": "しゃきっと",
     "partOfSpeech": "[副]",
-    "meaningId": "Ringkas, bersih rapi tanpa cela",
-    "meaningEn": "Neat, clean-cut",
+    "meaningId": "Tegap segar bugar bersemangat",
+    "meaningEn": "Crisp, refreshed, straight and neat",
     "collocation": {
-      "jpRuby": "すっきりしたデザイン",
-      "meaningId": "Desain yang simpel dan elegan"
+      "jpRuby": "背筋を伸ばしてしゃきっと[立:た]つ",
+      "meaningId": "Berdiri tegap meluruskan punggung"
     },
     "exampleSentence": {
-      "jpRuby": "この部屋はすっきりしていて気持ちがいい。",
-      "meaningId": "Kamar ini rapi ringkas dan sangat nyaman ditinggali."
+      "jpRuby": "冷たい水で顔を洗うと眠気が吹き飛んでしゃきっとした気分になった。",
+      "meaningId": "Membasuh muka dengan air dingin melenyapkan kantuk dan badan terasa segar bugar."
     }
   },
   {
@@ -3348,19 +3346,19 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "chapterId": "onomatopoeia-state",
     "section": "第40回 (1536〜1575)",
     "sectionId": "sec-1536-1575",
-    "word": "そっと",
-    "reading": "そっと",
-    "ruby": "そっと",
+    "word": "もたもた",
+    "reading": "もたもた",
+    "ruby": "もたもた",
     "partOfSpeech": "[副]",
-    "meaningId": "Perlahan hati-hati tanpa suara",
-    "meaningEn": "Quietly, softly, gently",
+    "meaningId": "Lamban lelet bertele-tele tidak cekatan",
+    "meaningEn": "Slowly, clumsily, dawdling",
     "collocation": {
-      "jpRuby": "そっとドアを[閉:し]める",
-      "meaningId": "Menutup pintu tanpa suara perlahan"
+      "jpRuby": "もたもたしていると[電車:でんしゃ]に[乗:の]り[遅:おく]れる",
+      "meaningId": "Bila lelet lamban akan ketinggalan kereta"
     },
     "exampleSentence": {
-      "jpRuby": "[赤:あか]ちゃんが起きないようにそっと部屋を出た。",
-      "meaningId": "Agar bayi tidak terbangun saya keluar kamar dengan amat perlahan."
+      "jpRuby": "支度をもたもたしていたせいで集合時間に遅刻してしまった。",
+      "meaningId": "Akibat bersiap-siap lamban lelet saya jadi terlambat tiba di jam kumpul."
     }
   },
   {
@@ -3444,19 +3442,19 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "chapterId": "onomatopoeia-state",
     "section": "第40回 (1536〜1575)",
     "sectionId": "sec-1536-1575",
-    "word": "ぎっしり",
-    "reading": "ぎっしり",
-    "ruby": "ぎっしり",
+    "word": "びっしり",
+    "reading": "びっしり",
+    "ruby": "びっしり",
     "partOfSpeech": "[副]",
-    "meaningId": "Rapat penuh muatan",
-    "meaningEn": "Densely packed",
+    "meaningId": "Penuh berjejal berbaris rapat tanpa ada celah",
+    "meaningEn": "Closely packed, crowded, crammed without gap",
     "collocation": {
-      "jpRuby": "ぎっしり[詰:つ]める",
-      "meaningId": "Menjejal penuh padat"
+      "jpRuby": "手帳に予定がびっしり[書:か]き[込:こ]まれている",
+      "meaningId": "Buku agenda terisi penuh agenda padat"
     },
     "exampleSentence": {
-      "jpRuby": "トランクに荷物をぎっしり詰めた。",
-      "meaningId": "Memasukkan barang bawaan hingga penuh padat ke dalam koper."
+      "jpRuby": "カレンダーのマス目に試験までの勉強予定がびっしりと書き込まれていた。",
+      "meaningId": "Kotak tanggal kalender terisi penuh jadwal les tanpa celah hingga hari ujian."
     }
   },
   {
@@ -4380,19 +4378,19 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "chapterId": "katakana-business",
     "section": "第41回 (1576〜1615)",
     "sectionId": "sec-1576-1615",
-    "word": "ライバル",
-    "reading": "ライバル",
-    "ruby": "ライバル",
+    "word": "アポイント",
+    "reading": "アポイント",
+    "ruby": "アポイント",
     "partOfSpeech": "[名]",
-    "meaningId": "Saingan, rival kompetitor",
-    "meaningEn": "Rival, competitor",
+    "meaningId": "Janji temu janji temu bisnis reservasi",
+    "meaningEn": "Appointment, business meeting reservation",
     "collocation": {
-      "jpRuby": "ライバルと[競:きそ]い[合:あ]う",
-      "meaningId": "Saling bersaing dengan rival"
+      "jpRuby": "[取引先:とりひきさき]にアポイントを[取:と]る",
+      "meaningId": "Membuat janji temu dengan mitra bisnis"
     },
     "exampleSentence": {
-      "jpRuby": "[彼:かれ]は学生時代からの良きライバルだ。",
-      "meaningId": "Dia adalah rival positif saya sejak zaman sekolah."
+      "jpRuby": "訪問する前に電話で事前にアポイントを取り都合の良い日時を確認した。",
+      "meaningId": "Sebelum berkunjung menelepon membuat janji temu memastikan jadwal yang pas."
     }
   },
   {
@@ -5484,19 +5482,19 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "chapterId": "katakana-life",
     "section": "第42回 (1616〜1650)",
     "sectionId": "sec-1616-1650",
-    "word": "ボランティア",
-    "reading": "ボランティア",
-    "ruby": "ボランティア",
+    "word": "チャリティー",
+    "reading": "チャリティー",
+    "ruby": "チャリティー",
     "partOfSpeech": "[名]",
-    "meaningId": "Aksi sosial suka rela",
-    "meaningEn": "Volunteer",
+    "meaningId": "Amal donasi kebajikan sosial kegiatan amal",
+    "meaningEn": "Charity, philanthropic event",
     "collocation": {
-      "jpRuby": "ボランティアに参加する",
-      "meaningId": "Turut serta menjadi relawan"
+      "jpRuby": "チャリティーコンサートを[開催:かいさい]する",
+      "meaningId": "Menggelar konser amal kemanusiaan"
     },
     "exampleSentence": {
-      "jpRuby": "[地域:ちいき]の清掃ボランティアに家族で参加した。",
-      "meaningId": "Ikut serta bersama keluarga dalam kerja bakti relawan kebersihan warga."
+      "jpRuby": "収益の全額を被災地支援に寄付するチャリティーバザーを企画した。",
+      "meaningId": "Merancang bazar amal yang seluruh labanya didonasikan bagi korban bencana."
     }
   },
   {

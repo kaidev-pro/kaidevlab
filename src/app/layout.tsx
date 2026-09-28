@@ -74,7 +74,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `(() => {try {const saved = localStorage.getItem('theme'); const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; document.documentElement.dataset.theme = saved || system || 'light';} catch (_) {document.documentElement.dataset.theme = 'light';}})();`,
+            __html: `(() => {try {const saved = localStorage.getItem('theme'); document.documentElement.dataset.theme = saved === 'dark' ? 'dark' : 'light';} catch (_) {document.documentElement.dataset.theme = 'light';}})();`,
           }}
         />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

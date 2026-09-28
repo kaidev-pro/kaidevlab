@@ -25,6 +25,13 @@ export function SiteHeader() {
     const onScroll = () => setScrolled(window.scrollY > 40);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
+
+    // Sync theme on mount
+    const saved = localStorage.getItem("theme");
+    const activeTheme = saved === "dark" ? "dark" : "light";
+    setTheme(activeTheme);
+    document.documentElement.dataset.theme = activeTheme;
+
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 

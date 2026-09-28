@@ -321,7 +321,7 @@ export function TangoChapterQuizModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md overflow-y-auto">
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/75 backdrop-blur-md overflow-y-auto">
       {/* Confetti Celebration on Pass */}
       {isFinished && isPassed && <ConfettiBurst trigger={true} withSound={true} />}
 

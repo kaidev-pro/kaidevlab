@@ -538,24 +538,25 @@ export function AcademyPortalClient() {
       {/* ==================================================== */}
       <AnimatePresence>
         {syncModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+          <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-md">
             <motion.div
               initial={{ opacity: 0, scale: 0.94 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.94 }}
-              className="w-full max-w-lg bg-[var(--surface-primary)] border border-[var(--border-subtle)] rounded-3xl p-6 sm:p-7 space-y-6 shadow-2xl relative max-h-[92vh] overflow-y-auto"
+              className="w-full max-w-md bg-[var(--surface-primary)] border border-[var(--border-subtle)] rounded-3xl p-5 sm:p-6 space-y-4 shadow-2xl relative text-[var(--text-primary)]"
             >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-2xl bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] flex items-center justify-center">
+              {/* Header */}
+              <div className="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)]">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] flex items-center justify-center shrink-0">
                     <QrCode className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-base sm:text-lg font-bold text-[var(--text-primary)]">
+                    <h3 className="text-base font-bold text-[var(--text-primary)] leading-tight">
                       Sinkronisasi Antar-Perangkat
                     </h3>
-                    <p className="text-xs text-[var(--text-tertiary)]">
-                      Hubungkan HP dan laptop tanpa registrasi akun
+                    <p className="text-[11px] text-[var(--text-tertiary)]">
+                      Hubungkan HP dan laptop tanpa login
                     </p>
                   </div>
                 </div>
@@ -563,7 +564,7 @@ export function AcademyPortalClient() {
                 <button
                   type="button"
                   onClick={() => setSyncModalOpen(false)}
-                  className="p-1.5 rounded-xl text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-secondary)] transition-colors"
+                  className="p-1.5 rounded-xl text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-secondary)] transition-colors shrink-0"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -574,7 +575,7 @@ export function AcademyPortalClient() {
                 <button
                   type="button"
                   onClick={() => setSyncTab("qr")}
-                  className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+                  className={`flex-1 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
                     syncTab === "qr"
                       ? "bg-[var(--surface-primary)] text-[var(--brand-primary)] shadow-sm"
                       : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
@@ -586,7 +587,7 @@ export function AcademyPortalClient() {
                 <button
                   type="button"
                   onClick={() => setSyncTab("file")}
-                  className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+                  className={`flex-1 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
                     syncTab === "file"
                       ? "bg-[var(--surface-primary)] text-[var(--brand-primary)] shadow-sm"
                       : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
@@ -599,37 +600,37 @@ export function AcademyPortalClient() {
 
               {/* Tab 1: QR Code Scanner */}
               {syncTab === "qr" && (
-                <div className="space-y-4 text-center">
-                  <div className="p-4 rounded-3xl bg-white inline-block shadow-md mx-auto border border-slate-200">
+                <div className="space-y-3 text-center pt-1">
+                  <div className="p-3 rounded-2xl bg-white inline-block shadow-sm border border-slate-200/80 mx-auto">
                     {qrDataUrl ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={qrDataUrl}
                         alt="QR Code Sinkronisasi"
-                        className="w-48 h-48 sm:w-56 sm:h-56 mx-auto block"
+                        className="w-40 h-40 sm:w-44 sm:h-44 mx-auto block"
                       />
                     ) : (
-                      <div className="w-48 h-48 sm:w-56 sm:h-56 flex items-center justify-center text-xs text-slate-400">
+                      <div className="w-40 h-40 flex items-center justify-center text-xs text-slate-400">
                         Membuat QR Code...
                       </div>
                     )}
                   </div>
 
-                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed max-w-sm mx-auto">
-                    Arahkan kamera ponsel kamu ke kode di atas untuk membuka Kaidevlab dan menerapkan seluruh progres belajar secara otomatis.
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed max-w-xs mx-auto">
+                    Arahkan kamera ponsel kamu ke kode di atas untuk membuka dan menerapkan progres belajar secara instan.
                   </p>
 
-                  <div className="pt-2 flex items-center gap-2">
+                  <div className="pt-1 flex items-center gap-2">
                     <input
                       type="text"
                       readOnly
                       value={syncUrl}
-                      className="flex-1 bg-[var(--surface-secondary)] text-[var(--text-tertiary)] text-[11px] font-mono px-3 py-2.5 rounded-xl border border-[var(--border-subtle)] truncate"
+                      className="flex-1 bg-[var(--surface-secondary)] text-[var(--text-tertiary)] text-[11px] font-mono px-3 py-2 rounded-xl border border-[var(--border-subtle)] truncate"
                     />
                     <button
                       type="button"
                       onClick={handleCopySyncLink}
-                      className="px-3.5 py-2.5 rounded-xl bg-[var(--brand-primary)] hover:opacity-95 text-white text-xs font-bold flex items-center gap-1.5 shrink-0 transition-opacity"
+                      className="px-3.5 py-2 rounded-xl bg-[var(--brand-primary)] hover:opacity-95 text-white text-xs font-bold flex items-center gap-1.5 shrink-0 transition-opacity active:scale-[0.98]"
                     >
                       {copiedSyncLink ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
                       <span>{copiedSyncLink ? "Tersalin" : "Salin Link"}</span>
@@ -640,9 +641,9 @@ export function AcademyPortalClient() {
 
               {/* Tab 2: File Backup (.JSON) */}
               {syncTab === "file" && (
-                <div className="space-y-4">
+                <div className="space-y-3 pt-1">
                   {/* Export Card */}
-                  <div className="p-4 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-secondary)]/30 space-y-2">
+                  <div className="p-3.5 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-secondary)]/30 space-y-1.5">
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-bold text-[var(--text-primary)]">
                         Ekspor Data ke Berkas
@@ -651,13 +652,13 @@ export function AcademyPortalClient() {
                         Cadangan Penuh
                       </span>
                     </div>
-                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                      Unduh arsip lengkap kosakata N3 yang dikuasai, hari FE yang terbuka, dan riwayat ujian sebagai file `.json`.
+                    <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
+                      Unduh arsip lengkap kosakata N3 dan kartu FE yang dikuasai sebagai berkas `.json`.
                     </p>
                     <button
                       type="button"
                       onClick={downloadFullBackupFile}
-                      className="w-full py-2.5 px-4 rounded-xl bg-[var(--brand-primary)]/10 hover:bg-[var(--brand-primary)]/20 text-[var(--brand-primary)] border border-[var(--brand-primary)]/30 text-xs font-bold flex items-center justify-center gap-1.5 transition-colors"
+                      className="w-full py-2 px-3.5 rounded-xl bg-[var(--brand-primary)]/10 hover:bg-[var(--brand-primary)]/20 text-[var(--brand-primary)] border border-[var(--brand-primary)]/30 text-xs font-bold flex items-center justify-center gap-1.5 transition-colors"
                     >
                       <Download className="w-3.5 h-3.5" />
                       <span>Unduh File Cadangan (.json)</span>
@@ -665,7 +666,7 @@ export function AcademyPortalClient() {
                   </div>
 
                   {/* Import Card */}
-                  <div className="p-4 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-secondary)]/30 space-y-2">
+                  <div className="p-3.5 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-secondary)]/30 space-y-1.5">
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-bold text-[var(--text-primary)]">
                         Pulihkan dari Berkas
@@ -674,10 +675,10 @@ export function AcademyPortalClient() {
                         Impor Data
                       </span>
                     </div>
-                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                      Pilih file `.json` cadangan yang sebelumnya diunduh untuk memulihkan progres di perangkat ini.
+                    <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
+                      Pilih berkas `.json` cadangan untuk memulihkan progres di perangkat ini.
                     </p>
-                    <label className="w-full py-2.5 px-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface-secondary)] hover:bg-[var(--surface-secondary)]/80 text-[var(--text-primary)] text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer transition-colors">
+                    <label className="w-full py-2 px-3.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface-secondary)] hover:bg-[var(--surface-secondary)]/80 text-[var(--text-primary)] text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer transition-colors">
                       <Upload className="w-3.5 h-3.5" />
                       <span>Pilih File Cadangan (.json)</span>
                       <input
@@ -691,7 +692,7 @@ export function AcademyPortalClient() {
 
                   {restoreMessage && (
                     <div
-                      className={`p-3 rounded-xl text-xs font-medium flex items-center gap-2 border ${
+                      className={`p-2.5 rounded-xl text-xs font-medium flex items-center gap-2 border ${
                         restoreMessage.error
                           ? "bg-rose-500/10 text-rose-500 border-rose-500/20"
                           : "bg-emerald-500/10 text-emerald-500 border-emerald-500/20"
@@ -719,12 +720,12 @@ export function AcademyPortalClient() {
       {/* ==================================================== */}
       <AnimatePresence>
         {incomingSync && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+          <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="w-full max-w-md bg-[var(--surface-primary)] border border-[var(--border-subtle)] rounded-3xl p-6 sm:p-7 space-y-5 shadow-2xl"
+              className="w-full max-w-md bg-[var(--surface-primary)] border border-[var(--border-subtle)] rounded-3xl p-5 sm:p-6 space-y-4 shadow-2xl"
             >
               <div className="text-center space-y-2">
                 <div className="w-12 h-12 mx-auto rounded-2xl bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 flex items-center justify-center">

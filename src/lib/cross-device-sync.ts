@@ -4,6 +4,8 @@ import QRCode from "qrcode";
 import { loadTangoProgress, saveTangoProgress, TangoProgress } from "@/lib/tango-n3-storage";
 import { loadStudyProgress, saveStudyProgress, StudyProgress } from "@/lib/fe-study-storage";
 import { loadWrongQuestions, saveWrongQuestions, WrongQuestionsStore } from "@/lib/fe-wrong-questions-storage";
+import { TANGO_N3_CARDS } from "@/data/tango-n3-data";
+import { FE_CARDS } from "@/data/fe-study-data";
 
 export interface UnifiedBackupPayload {
   version: 1;
@@ -17,15 +19,22 @@ export interface UnifiedBackupPayload {
 export interface CompactSyncPayload {
   v: 1;
   cid: string;
-  tm: string[]; // Tango mastered IDs
+  tm: string[]; // Tango mastered card IDs
   tu: string[]; // Tango unlocked chapter IDs
   tq: Array<[string, number, number]>; // [chId, score, total]
-  fm: string[]; // FE mastered IDs
+  fm: string[]; // FE mastered card IDs
   fu: number[]; // FE unlocked days
   fq: Array<[number, number, number]>; // [day, score, total]
   st: number;   // Max streak
   ts: number;   // Timestamp
 }
+
+// Lookup tables for fast integer index compression
+const tangoIdToIdx = new Map<string, number>();
+TANGO_N3_CARDS.forEach((c, i) => tangoIdToIdx.set(c.id, i));
+
+const feIdToIdx = new Map<string, number>();
+FE_CARDS.forEach((c, i) => feIdToIdx.set(c.id, i));
 
 /**
  * Creates a complete full backup of all learning data
@@ -113,21 +122,35 @@ export function encodeCompactSyncToken(): string {
   const tango = loadTangoProgress();
   const fe = loadStudyProgress();
 
-  const tq: Array<[string, number, number]> = Object.entries(tango.chapterQuizScores || {}).map(
-    ([ch, val]) => [ch, val.score, val.total]
+  // Compress card IDs into integer indices
+  const tmIndices = (tango.masteredCardIds || [])
+    .map((id) => tangoIdToIdx.get(id))
+    .filter((idx): idx is number => idx !== undefined);
+
+  const fmIndices = (fe.masteredCardIds || [])
+    .map((id) => feIdToIdx.get(id))
+    .filter((idx): idx is number => idx !== undefined);
+
+  // Compress chapter numbers ("ch-01" -> 1)
+  const tuNumbers = (tango.unlockedChapterIds || ["ch-01"]).map((ch) =>
+    parseInt(ch.replace("ch-", ""), 10)
+  );
+
+  const tq: Array<[number, number, number]> = Object.entries(tango.chapterQuizScores || {}).map(
+    ([ch, val]) => [parseInt(ch.replace("ch-", ""), 10), val.score, val.total]
   );
 
   const fq: Array<[number, number, number]> = Object.entries(fe.dayQuizScores || {}).map(
     ([day, val]) => [Number(day), val.score, val.total]
   );
 
-  const compact: CompactSyncPayload = {
+  const compact = {
     v: 1,
     cid: cadetId,
-    tm: tango.masteredCardIds || [],
-    tu: tango.unlockedChapterIds || ["ch-01"],
+    tm: tmIndices,
+    tu: tuNumbers,
     tq,
-    fm: fe.masteredCardIds || [],
+    fm: fmIndices,
     fu: fe.unlockedDeckDays || [1],
     fq,
     st: Math.max(tango.streak || 0, fe.streak || 0, 1),
@@ -135,7 +158,6 @@ export function encodeCompactSyncToken(): string {
   };
 
   const jsonStr = JSON.stringify(compact);
-  // Base64 encode safe for URL
   if (typeof window !== "undefined") {
     return btoa(unescape(encodeURIComponent(jsonStr)));
   }
@@ -154,11 +176,56 @@ export function decodeCompactSyncToken(token: string): CompactSyncPayload | null
       jsonStr = Buffer.from(token, "base64").toString("utf-8");
     }
 
-    const payload = JSON.parse(jsonStr) as CompactSyncPayload;
-    if (payload && payload.v === 1 && Array.isArray(payload.tm) && Array.isArray(payload.fm)) {
-      return payload;
-    }
-    return null;
+    const payload = JSON.parse(jsonStr);
+    if (!payload || payload.v !== 1) return null;
+
+    // Convert indices back to card IDs if they are numbers
+    const tmCards: string[] = (payload.tm || [])
+      .map((item: string | number) => {
+        if (typeof item === "number") {
+          return TANGO_N3_CARDS[item]?.id || "";
+        }
+        return item;
+      })
+      .filter(Boolean);
+
+    const fmCards: string[] = (payload.fm || [])
+      .map((item: string | number) => {
+        if (typeof item === "number") {
+          return FE_CARDS[item]?.id || "";
+        }
+        return item;
+      })
+      .filter(Boolean);
+
+    // Convert chapter numbers back to "ch-XX"
+    const tuChapters: string[] = (payload.tu || [1]).map((item: string | number) => {
+      if (typeof item === "number") {
+        return `ch-${String(item).padStart(2, "0")}`;
+      }
+      return item;
+    });
+
+    const tqConverted: Array<[string, number, number]> = (payload.tq || []).map(
+      ([ch, score, total]: [string | number, number, number]) => [
+        typeof ch === "number" ? `ch-${String(ch).padStart(2, "0")}` : ch,
+        score,
+        total,
+      ]
+    );
+
+    return {
+      v: 1,
+      cid: payload.cid || "KAI-PASS-USER",
+      tm: tmCards,
+      tu: tuChapters,
+      tq: tqConverted,
+      fm: fmCards,
+      fu: payload.fu || [1],
+      fq: payload.fq || [],
+      st: payload.st || 1,
+      ts: payload.ts || Date.now(),
+    };
   } catch {
     return null;
   }
@@ -236,9 +303,9 @@ export function applyCompactSyncPayload(compact: CompactSyncPayload): void {
  */
 export async function generateQrCodeDataUrl(text: string): Promise<string> {
   return QRCode.toDataURL(text, {
-    width: 280,
+    width: 240,
     margin: 1.5,
-    errorCorrectionLevel: "L", // Low error correction to keep matrix simpler for data capacity
+    errorCorrectionLevel: "L",
     color: {
       dark: "#061126",
       light: "#FFFFFF",

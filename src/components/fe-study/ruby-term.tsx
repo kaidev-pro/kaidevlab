@@ -73,5 +73,5 @@ export function RubyTerm({
     );
   }
 
-  return <span className={`inline-block leading-relaxed ${className}`}>{nodes}</span>;
+  return <span className={className ? className : "inline-block leading-relaxed"}>{nodes}</span>;
 }

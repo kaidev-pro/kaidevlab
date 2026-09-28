@@ -346,6 +346,18 @@ export function TangoN3Client() {
                   <span>Favorit ({progress.starredCardIds.length})</span>
                 </button>
               )}
+
+              <button
+                onClick={() => setActiveViewTab("reading")}
+                className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border text-xs font-bold transition-colors ${
+                  activeViewTab === "reading"
+                    ? "bg-[var(--brand-primary)] text-white border-[var(--brand-primary)] shadow-xs"
+                    : "border-[var(--brand-primary)]/30 bg-[var(--brand-primary)]/5 text-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/10"
+                }`}
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>Bacaan (20 Cerita)</span>
+              </button>
             </div>
           </div>
 

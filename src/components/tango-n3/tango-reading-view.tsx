@@ -652,7 +652,7 @@ export function TangoReadingView({ onSelectCardDetail }: TangoReadingViewProps) 
                   onClick={() => setMobileTab("list")}
                   className="lg:hidden text-xs font-bold text-[var(--brand-primary)] hover:underline"
                 >
-                  Lihat 20 Cerita 📑
+                  Lihat 20 Cerita
                 </button>
 
                 <span className="hidden lg:inline-block font-mono text-xs text-[var(--text-tertiary)]">

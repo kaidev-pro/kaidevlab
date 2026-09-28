@@ -238,7 +238,7 @@ export function TangoN3Client() {
                     ? "bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/30"
                     : "bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/30"
                 }`}>
-                  {sessionType === "quiz" ? "📝 Kuis" : "🗂️ Flashcard"}
+                  {sessionType === "quiz" ? "Kuis" : "Flashcard"}
                 </span>
               </div>
             </div>
@@ -333,7 +333,7 @@ export function TangoN3Client() {
                   }`}
                 >
                   <Layers className="w-3.5 h-3.5" />
-                  <span>🗂️ Flashcard</span>
+                  <span>Flashcard</span>
                 </button>
                 <button
                   onClick={() => setSelectedStudyTab("quiz")}
@@ -344,7 +344,7 @@ export function TangoN3Client() {
                   }`}
                 >
                   <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>📝 Kuis CBT</span>
+                  <span>Kuis CBT</span>
                 </button>
               </div>
             </div>
@@ -1018,7 +1018,7 @@ export function TangoN3Client() {
                                 </span>
                                 {mistakeCount > 0 && (
                                   <span className="text-[10px] px-1.5 py-0.2 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 font-bold">
-                                    ⚠️ {mistakeCount}x salah
+                                    {mistakeCount}x salah
                                   </span>
                                 )}
                                 <span className="text-[10px] px-1.5 py-0.2 rounded bg-blue-500/10 text-blue-600 dark:text-blue-400 font-mono">

@@ -795,7 +795,8 @@ export function TangoFlashcardView({
                     {/* Usage Note */}
                     {currentCard.usageNote && (
                       <div className="text-[10px] sm:text-[11px] text-[var(--text-secondary)] bg-blue-500/5 border-l-2 border-blue-500 pl-2.5 py-1">
-                        💡 {currentCard.usageNote}
+                        <span className="font-semibold text-blue-500 mr-1.5">Catatan:</span>
+                        {currentCard.usageNote}
                       </div>
                     )}
                   </div>

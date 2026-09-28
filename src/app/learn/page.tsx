@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { LearnClient } from "./learn-client";
+import { AcademyPortalClient } from "@/components/academy/academy-portal-client";
 
 export const metadata: Metadata = {
-  title: "FE Study Hub (基本情報技術者試験) — Kaidevlab",
+  title: "Kaidevlab Academy & Research Hub — Portal Belajar & Perpustakaan",
   description:
-    "Cognitive study gym for Japan's Fundamental Information Technology Engineer Examination (FE / 基本情報技術者試験) with Active Recall, Spaced Repetition, and visual analogies.",
+    "Portal pembelajaran terpadu Kaidevlab. Jelajahi jalur belajar Shin Kanzen Master Tango N3, Fundamental FE Exam, English for Engineers, dan perpustakaan digital interaktif.",
 };
 
 export default function LearnPage() {
   return (
-    <main className="min-h-screen w-full max-w-full overflow-x-hidden">
-      <LearnClient />
+    <main className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#07090E] text-slate-100">
+      <AcademyPortalClient />
     </main>
   );
 }

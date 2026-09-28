@@ -50,7 +50,7 @@ export function TangoSessionSummary({
         {/* Title & Description */}
         <div>
           <span className="text-[11px] uppercase font-bold tracking-widest text-[var(--brand-primary)]">
-            Sesi Belajar Selesai! 🎉
+            Sesi Belajar Selesai
           </span>
           <h3 className="text-2xl font-extrabold text-[var(--text-primary)] mt-1">
             {scorePercent >= 80

@@ -93,19 +93,19 @@ export function TangoChapterQuizModal({
   >([]);
   const [isFinished, setIsFinished] = useState(false);
 
-  // Generate 10 curated questions from the chapter cards
+  // Test ALL cards in the chapter for complete mastery
   const questions: QuizQuestion[] = useMemo(() => {
     if (chapterCards.length === 0) return [];
 
+    // Test all cards in the chapter (shuffled)
     const shuffledCards = shuffle(chapterCards);
-    const selected = shuffledCards.slice(0, Math.min(10, shuffledCards.length));
     const allDistractorPool = TANGO_N3_CARDS.length > 50 ? TANGO_N3_CARDS : chapterCards;
 
-    return selected.map((card, i) => {
-      // Rotate question types: kanji-to-meaning (40%), meaning-to-kanji (30%), collocation (30%)
-      const qTypeNum = i % 3;
+    return shuffledCards.map((card, i) => {
+      // Rotate question types: kanji-to-meaning (50%), meaning-to-kanji (25%), collocation (25%)
+      const qTypeNum = i % 4;
 
-      if (qTypeNum === 0) {
+      if (qTypeNum === 0 || qTypeNum === 2) {
         // Type 1: Kanji -> Indonesian Meaning
         const correct = card.meaningId;
         const distractors = shuffle(
@@ -244,46 +244,74 @@ export function TangoChapterQuizModal({
     });
   }, [chapterCards]);
 
-  const currentQ = questions[currentIdx];
-  const totalQuestions = questions.length;
+  // Quiz items list (can be swapped when re-testing wrong answers)
+  const [activeQuestions, setActiveQuestions] = useState<QuizQuestion[]>([]);
+
+  useEffect(() => {
+    setActiveQuestions(questions);
+  }, [questions]);
+
+  const currentQ = activeQuestions[currentIdx];
+  const totalQuestions = activeQuestions.length;
   const isPassed = totalQuestions > 0 ? score / totalQuestions >= 0.8 : false;
 
+  // Fast-paced option selection (Opsi 2: Smooth auto-advance without mid-quiz interruption)
   function handleSelectOption(opt: string) {
-    if (isAnswerChecked) return;
+    if (isAnswerChecked || !currentQ) return;
     setSelectedOpt(opt);
     setIsAnswerChecked(true);
 
     const isCorrect = opt === currentQ.correctAnswer;
+    const newScore = isCorrect ? score + 1 : score;
     if (isCorrect) {
-      setScore((s) => s + 1);
-      playTone(659, "triangle", 0.18);
+      setScore(newScore);
+      playTone(659, "triangle", 0.16);
     } else {
       playTone(180, "sawtooth", 0.22);
     }
 
-    setUserAnswers((prev) => [
-      ...prev,
+    const updatedAnswers = [
+      ...userAnswers,
       { question: currentQ, selected: opt, isCorrect },
-    ]);
+    ];
+    setUserAnswers(updatedAnswers);
+
+    // Advance to next question after 280ms tactile delay
+    setTimeout(() => {
+      setSelectedOpt(null);
+      setIsAnswerChecked(false);
+
+      if (currentIdx < totalQuestions - 1) {
+        setCurrentIdx((i) => i + 1);
+      } else {
+        setIsFinished(true);
+        const passed = totalQuestions > 0 ? newScore / totalQuestions >= 0.8 : false;
+        if (passed) {
+          onPassQuiz(newScore, totalQuestions, nextChapter?.id);
+        }
+      }
+    }, 280);
   }
 
-  function handleNextQuestion() {
+  function handleRestartAll() {
+    setActiveQuestions(questions);
+    setCurrentIdx(0);
     setSelectedOpt(null);
     setIsAnswerChecked(false);
-
-    if (currentIdx < totalQuestions - 1) {
-      setCurrentIdx((i) => i + 1);
-    } else {
-      setIsFinished(true);
-      const finalScore = score + (selectedOpt === currentQ?.correctAnswer ? 0 : 0);
-      const passed = totalQuestions > 0 ? finalScore / totalQuestions >= 0.8 : false;
-      if (passed) {
-        onPassQuiz(finalScore, totalQuestions, nextChapter?.id);
-      }
-    }
+    setScore(0);
+    setUserAnswers([]);
+    setIsFinished(false);
   }
 
-  function handleRestart() {
+  // Re-test ONLY wrong questions
+  function handleRetestWrongOnly() {
+    const wrongQuestions = userAnswers
+      .filter((a) => !a.isCorrect)
+      .map((a) => a.question);
+    
+    if (wrongQuestions.length === 0) return;
+
+    setActiveQuestions(shuffle(wrongQuestions));
     setCurrentIdx(0);
     setSelectedOpt(null);
     setIsAnswerChecked(false);
@@ -400,48 +428,6 @@ export function TangoChapterQuizModal({
               })}
             </div>
 
-            {/* Explanation & Next Button */}
-            {isAnswerChecked && (
-              <div className="space-y-4 pt-2">
-                <div
-                  className={`p-3.5 rounded-xl border text-xs space-y-1 ${
-                    selectedOpt === currentQ.correctAnswer
-                      ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-800 dark:text-emerald-200"
-                      : "bg-amber-500/10 border-amber-500/30 text-amber-800 dark:text-amber-200"
-                  }`}
-                >
-                  <div className="font-bold flex items-center gap-1.5">
-                    {selectedOpt === currentQ.correctAnswer ? (
-                      <>
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                        <span>Jawaban Tepat!</span>
-                      </>
-                    ) : (
-                      <>
-                        <XCircle className="w-4 h-4 text-amber-500" />
-                        <span>Kunci Jawaban: {currentQ.correctAnswer}</span>
-                      </>
-                    )}
-                  </div>
-                  <p className="text-[var(--text-secondary)]">
-                    Kosakata: <strong>{currentQ.explanation.word}</strong> 【{currentQ.explanation.reading}】 — {currentQ.explanation.meaning}
-                    {currentQ.explanation.collocation && (
-                      <span className="block mt-0.5 opacity-90">
-                        連語: {currentQ.explanation.collocation}
-                      </span>
-                    )}
-                  </p>
-                </div>
-
-                <button
-                  onClick={handleNextQuestion}
-                  className="w-full py-3.5 px-4 rounded-2xl bg-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/90 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm transition-all"
-                >
-                  <span>{currentIdx < totalQuestions - 1 ? "Soal Berikutnya" : "Lihat Hasil Kelulusan"}</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            )}
           </div>
         ) : (
           /* Result Screen */
@@ -492,36 +478,58 @@ export function TangoChapterQuizModal({
                     Skor: {score} / {totalQuestions} ({Math.round((score / totalQuestions) * 100)}%)
                   </h3>
                   <p className="text-xs text-[var(--text-secondary)] max-w-sm mx-auto">
-                    Syarat kelulusan untuk membuka bab berikutnya adalah minimal <strong>80% (Benar 8 dari 10 soal)</strong>.
+                    Syarat kelulusan untuk membuka bab berikutnya adalah minimal <strong>80% (Benar {Math.ceil(totalQuestions * 0.8)} dari {totalQuestions} soal)</strong>.
                   </p>
                 </div>
               </div>
             )}
 
-            {/* Wrong Answers Review */}
+            {/* Wrong Answers Review (Opsi 2: Bedah Soal yang Salah di Akhir) */}
             {userAnswers.filter((a) => !a.isCorrect).length > 0 && (
-              <div className="text-left space-y-2 pt-2 border-t border-[var(--border-subtle)]">
-                <div className="text-xs font-bold text-rose-500 flex items-center gap-1.5">
-                  <XCircle className="w-4 h-4" />
-                  <span>Evaluasi Kata yang Belum Tepat ({userAnswers.filter((a) => !a.isCorrect).length} Kata):</span>
+              <div className="text-left space-y-3 pt-4 border-t border-[var(--border-subtle)]">
+                <div className="flex items-center justify-between">
+                  <div className="text-xs font-bold text-rose-500 flex items-center gap-1.5">
+                    <XCircle className="w-4 h-4" />
+                    <span>Bedah Soal yang Belum Tepat ({userAnswers.filter((a) => !a.isCorrect).length} Soal):</span>
+                  </div>
+                  <button
+                    onClick={handleRetestWrongOnly}
+                    className="text-xs font-bold px-2.5 py-1 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-500/20 flex items-center gap-1 transition-colors"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                    <span>Uji Ulang {userAnswers.filter((a) => !a.isCorrect).length} Soal Ini</span>
+                  </button>
                 </div>
-                <div className="space-y-2 max-h-48 overflow-y-auto pr-1">
+
+                <div className="space-y-2.5 max-h-64 overflow-y-auto pr-1">
                   {userAnswers
                     .filter((a) => !a.isCorrect)
                     .map((item, idx) => (
                       <div
                         key={idx}
-                        className="p-3 rounded-xl bg-rose-500/5 border border-rose-500/20 text-xs space-y-1"
+                        className="p-3.5 rounded-2xl bg-rose-500/5 border border-rose-500/20 text-xs space-y-1.5"
                       >
                         <div className="flex items-center justify-between font-bold text-[var(--text-primary)]">
-                          <span>{item.question.explanation.word} 【{item.question.explanation.reading}】</span>
-                          <span className="text-emerald-600 dark:text-emerald-400 font-normal">
-                            Benar: {item.question.correctAnswer}
+                          <span className="font-japanese text-sm">
+                            {item.question.explanation.word} 【{item.question.explanation.reading}】
+                          </span>
+                          <span className="text-emerald-600 dark:text-emerald-400 font-semibold text-xs">
+                            ✓ {item.question.correctAnswer}
                           </span>
                         </div>
-                        <div className="text-[11px] text-[var(--text-secondary)]">
-                          Arti: {item.question.explanation.meaning}
+                        <div className="flex items-center justify-between text-[11px] text-[var(--text-tertiary)]">
+                          <span>
+                            Jawabanmu: <strong className="text-rose-500 line-through">{item.selected}</strong>
+                          </span>
+                          <span className="text-[var(--text-secondary)] font-medium">
+                            Arti: {item.question.explanation.meaning}
+                          </span>
                         </div>
+                        {item.question.explanation.collocation && (
+                          <div className="text-[11px] font-japanese text-[var(--text-secondary)] bg-[var(--surface-secondary)]/50 px-2 py-1 rounded-md">
+                            連語: {item.question.explanation.collocation}
+                          </div>
+                        )}
                       </div>
                     ))}
                 </div>
@@ -536,13 +544,20 @@ export function TangoChapterQuizModal({
                     onClick={onClose}
                     className="w-full sm:flex-1 py-3 px-4 rounded-xl border border-[var(--border-subtle)] text-xs font-bold hover:bg-[var(--surface-secondary)] text-[var(--text-primary)] transition-colors"
                   >
-                    Tutup & Kembali ke Daftar Bab
+                    Tutup & Kembali
                   </button>
+                  {userAnswers.filter((a) => !a.isCorrect).length > 0 && (
+                    <button
+                      onClick={handleRetestWrongOnly}
+                      className="w-full sm:flex-1 py-3 px-4 rounded-xl bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/30 text-xs font-bold flex items-center justify-center gap-1.5 transition-colors"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" />
+                      <span>Uji {userAnswers.filter((a) => !a.isCorrect).length} Soal Salah</span>
+                    </button>
+                  )}
                   {nextChapter && (
                     <button
-                      onClick={() => {
-                        onClose();
-                      }}
+                      onClick={onClose}
                       className="w-full sm:flex-1 py-3 px-4 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/90 text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-colors shadow-xs"
                     >
                       <span>Lanjut Bab {nextChapter.badge}</span>
@@ -558,12 +573,21 @@ export function TangoChapterQuizModal({
                   >
                     Pelajari Kartu Lagi
                   </button>
+                  {userAnswers.filter((a) => !a.isCorrect).length > 0 && (
+                    <button
+                      onClick={handleRetestWrongOnly}
+                      className="w-full sm:flex-1 py-3 px-4 rounded-xl bg-rose-500/10 text-rose-700 dark:text-rose-300 border border-rose-500/30 text-xs font-bold flex items-center justify-center gap-1.5 transition-colors"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" />
+                      <span>Uji {userAnswers.filter((a) => !a.isCorrect).length} Soal Salah</span>
+                    </button>
+                  )}
                   <button
-                    onClick={handleRestart}
+                    onClick={handleRestartAll}
                     className="w-full sm:flex-1 py-3 px-4 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/90 text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-colors shadow-xs"
                   >
-                    <RotateCcw className="w-4 h-4" />
-                    <span>Ulangi Tes Kelulusan</span>
+                    <RotateCcw className="w-3.5 h-3.5" />
+                    <span>Ulangi Semua Soal</span>
                   </button>
                 </>
               )}

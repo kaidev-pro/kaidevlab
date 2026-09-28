@@ -26,6 +26,10 @@ import {
   Languages,
   Calendar,
   CheckCircle2,
+  Lock,
+  Unlock,
+  ShieldCheck,
+  Trophy,
 } from "lucide-react";
 import { FE_CARDS, FECard } from "@/data/fe-study-data";
 import {
@@ -33,6 +37,8 @@ import {
   loadStudyProgress,
   recordCardReview,
   toggleStarCard,
+  unlockNextFeDay,
+  setFeMasteryMode,
   CardRating,
   DEFAULT_PROGRESS,
 } from "@/lib/fe-study-storage";
@@ -337,10 +343,19 @@ export function LearnClient() {
     setWrongStore(loadWrongQuestions());
   }, []);
 
+  const [forceReviewAllDayDeck, setForceReviewAllDayDeck] = useState(false);
+
   // Filter cards based on selected mode
   const activeCards = useMemo(() => {
     if (singleCardDrill) return [singleCardDrill];
-    if (selectedDayDeck) return getCardsForDay(selectedDayDeck.day);
+    if (selectedDayDeck) {
+      const dayCards = getCardsForDay(selectedDayDeck.day);
+      const unmastered = dayCards.filter((c) => !progress?.masteredCardIds?.includes(c.id));
+      if (!forceReviewAllDayDeck && unmastered.length > 0) {
+        return unmastered;
+      }
+      return dayCards;
+    }
     if (!activeMode) return [];
 
     let filtered: FECard[] = [];
@@ -371,7 +386,7 @@ export function LearnClient() {
     }
 
     return filtered;
-  }, [activeMode, selectedDayDeck, singleCardDrill, progress?.reviewCardIds, progress?.starredCardIds]);
+  }, [activeMode, selectedDayDeck, singleCardDrill, forceReviewAllDayDeck, progress?.masteredCardIds, progress?.reviewCardIds, progress?.starredCardIds]);
 
   const searchResults = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -391,14 +406,16 @@ export function LearnClient() {
   const handleStartSession = (mode: StudyMode) => {
     setSingleCardDrill(null);
     setSelectedDayDeck(null);
+    setForceReviewAllDayDeck(false);
     setActiveMode(mode);
     setSessionCompleted(false);
     setSessionReviewedCount(0);
   };
 
-  const handleStartDailyDeck = (deck: FEDailyDeck) => {
+  const handleStartDailyDeck = (deck: FEDailyDeck, forceAll = false) => {
     setSingleCardDrill(null);
     setSelectedDayDeck(deck);
+    setForceReviewAllDayDeck(forceAll);
     setActiveMode(null);
     setSessionCompleted(false);
     setSessionReviewedCount(0);
@@ -407,6 +424,7 @@ export function LearnClient() {
   const handleStartSingleCard = (card: FECard) => {
     setSelectedDayDeck(null);
     setSingleCardDrill(card);
+    setForceReviewAllDayDeck(false);
     setActiveMode("all");
     setSessionCompleted(false);
     setSessionReviewedCount(0);
@@ -416,6 +434,24 @@ export function LearnClient() {
     const updated = recordCardReview(cardId, category, rating);
     setProgress(updated);
     setSessionReviewedCount((prev) => prev + 1);
+
+    // If studying a daily deck and rating is mastered, check if all deck cards are now mastered
+    if (selectedDayDeck && rating === "mastered") {
+      const deckCards = getCardsForDay(selectedDayDeck.day);
+      const allMasteredNow = deckCards.every(
+        (c) => c.id === cardId || updated.masteredCardIds.includes(c.id)
+      );
+      if (allMasteredNow) {
+        const nextProgress = unlockNextFeDay(selectedDayDeck.day);
+        setProgress(nextProgress);
+      }
+    }
+  };
+
+  const handleToggleFeMasteryMode = () => {
+    const next = !progress?.masteryModeEnabled;
+    const updated = setFeMasteryMode(next);
+    setProgress(updated);
   };
 
   const handleToggleStar = (cardId: string) => {
@@ -779,23 +815,35 @@ export function LearnClient() {
                 </p>
               </div>
 
-              {/* Overall Deck Mastery Counter */}
-              <div className="flex items-center justify-between sm:justify-start gap-3 w-full sm:w-auto px-4 py-2.5 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-sm shrink-0">
-                <div className="flex flex-col">
-                  <span className="text-[10px] uppercase font-bold text-[var(--text-secondary)] tracking-wider">
-                    Total Dikuasai
-                  </span>
-                  <span className="text-sm font-bold font-mono text-[var(--text-primary)]">
-                    <b className="text-emerald-500">{progress?.masteredCardIds?.length || 0}</b> / {FE_CARDS.length}
-                  </span>
-                </div>
-                <div className="w-16 h-2 rounded-full bg-[var(--surface-soft)] overflow-hidden">
-                  <div
-                    className="h-full bg-emerald-500 transition-all duration-300"
-                    style={{
-                      width: `${Math.min(100, Math.round(((progress?.masteredCardIds?.length || 0) / (FE_CARDS.length || 1)) * 100))}%`,
-                    }}
-                  />
+              {/* Overall Deck Mastery Counter & Mastery Mode Toggle */}
+              <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto shrink-0">
+                <button
+                  type="button"
+                  onClick={handleToggleFeMasteryMode}
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-2xl bg-[var(--surface)] border border-[var(--border)] text-xs font-bold hover:bg-[var(--surface-soft)] transition-colors text-[var(--text-primary)] shadow-sm"
+                  title="Ubah sistem kunci bab bertahap"
+                >
+                  {progress?.masteryModeEnabled ? <Lock size={13} className="text-amber-500" /> : <Unlock size={13} className="text-emerald-500" />}
+                  <span>{progress?.masteryModeEnabled ? "Mode Bertahap ON" : "Mode Bebas ON"}</span>
+                </button>
+
+                <div className="flex items-center justify-between sm:justify-start gap-3 px-4 py-2 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-sm">
+                  <div className="flex flex-col">
+                    <span className="text-[10px] uppercase font-bold text-[var(--text-secondary)] tracking-wider">
+                      Total Dikuasai
+                    </span>
+                    <span className="text-sm font-bold font-mono text-[var(--text-primary)]">
+                      <b className="text-emerald-500">{progress?.masteredCardIds?.length || 0}</b> / {FE_CARDS.length}
+                    </span>
+                  </div>
+                  <div className="w-16 h-2 rounded-full bg-[var(--surface-soft)] overflow-hidden">
+                    <div
+                      className="h-full bg-emerald-500 transition-all duration-300"
+                      style={{
+                        width: `${Math.min(100, Math.round(((progress?.masteredCardIds?.length || 0) / (FE_CARDS.length || 1)) * 100))}%`,
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -807,6 +855,11 @@ export function LearnClient() {
                   progress?.masteredCardIds?.includes(id)
                 ).length;
                 const isAllMastered = masteredCount === deck.cardIds.length;
+                const unmasteredCount = deck.cardIds.length - masteredCount;
+                const isUnlocked =
+                  !progress?.masteryModeEnabled ||
+                  (progress?.unlockedDeckDays || [1]).includes(deck.day) ||
+                  deck.day === 1;
 
                 // Category theme styles
                 let catBadge = "bg-blue-500/10 text-blue-500 border-blue-500/20";
@@ -822,10 +875,48 @@ export function LearnClient() {
                   catLabel = "設問・語彙";
                 }
 
+                if (!isUnlocked) {
+                  return (
+                    <div
+                      key={deck.day}
+                      className="p-4 sm:p-5 rounded-2xl border border-[var(--border)] bg-[var(--surface-soft)]/40 opacity-60 flex flex-col justify-between gap-3 shadow-none select-none"
+                    >
+                      <div className="flex flex-col gap-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-lg bg-[var(--surface-soft)] text-[var(--text-secondary)]">
+                            DAY {deck.day.toString().padStart(2, "0")}
+                          </span>
+                          <span className="text-[10px] font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-md flex items-center gap-1">
+                            <Lock size={11} />
+                            <span>Terkunci</span>
+                          </span>
+                        </div>
+
+                        <div>
+                          <h4 className="text-sm sm:text-base font-bold text-[var(--text-secondary)] leading-snug">
+                            {deck.titleId}
+                          </h4>
+                          <p className="text-xs font-mono text-[var(--text-tertiary)] mt-0.5">
+                            {deck.titleJp}
+                          </p>
+                        </div>
+
+                        <p className="text-xs text-[var(--text-tertiary)] line-clamp-2 leading-relaxed">
+                          {deck.descriptionId}
+                        </p>
+                      </div>
+
+                      <div className="pt-2.5 border-t border-[var(--border)]/60 text-[11px] text-[var(--text-tertiary)] flex items-center justify-between">
+                        <span>Kuasai Day {(deck.day - 1).toString().padStart(2, "0")} untuk membuka.</span>
+                      </div>
+                    </div>
+                  );
+                }
+
                 return (
                   <div
                     key={deck.day}
-                    onClick={() => handleStartDailyDeck(deck)}
+                    onClick={() => handleStartDailyDeck(deck, false)}
                     className="cursor-pointer p-4 sm:p-5 rounded-2xl border border-[var(--border)] hover:border-[var(--brand-primary)] bg-[var(--surface)] hover:bg-[var(--surface-soft)] transition-all flex flex-col justify-between gap-3 shadow-sm hover:shadow-md group active:scale-[0.99]"
                   >
                     <div className="flex flex-col gap-2">
@@ -838,7 +929,7 @@ export function LearnClient() {
                             {catLabel}
                           </span>
                           <span className="text-[11px] font-mono text-[var(--text-secondary)] font-medium">
-                            {deck.cardIds.length} {txt.cardUnit}
+                            {unmasteredCount > 0 ? `${unmasteredCount} Sisa` : "Semua Dikuasai ✓"}
                           </span>
                         </div>
                       </div>
@@ -875,9 +966,29 @@ export function LearnClient() {
                         </span>
                       </div>
 
-                      <div className="inline-flex items-center gap-1 font-bold text-[var(--brand-primary)] group-hover:underline">
-                        <span>{isAllMastered ? "Review" : "Drill"}</span>
-                        <ChevronRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
+                      <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                        {masteredCount > 0 && (
+                          <button
+                            type="button"
+                            onClick={() => handleStartDailyDeck(deck, true)}
+                            title="Ulangi semua 10 kartu dari awal"
+                            className="p-1 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors rounded"
+                          >
+                            <RotateCcw size={12} />
+                          </button>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => handleStartDailyDeck(deck, false)}
+                          className={`inline-flex items-center gap-1 font-bold text-xs ${
+                            isAllMastered
+                              ? "text-emerald-600 dark:text-emerald-400"
+                              : "text-[var(--brand-primary)] group-hover:underline"
+                          }`}
+                        >
+                          <span>{isAllMastered ? "Review (10)" : `Lanjut (${unmasteredCount})`}</span>
+                          <ChevronRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
+                        </button>
                       </div>
                     </div>
                   </div>

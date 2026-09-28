@@ -11,6 +11,8 @@ export interface StudyProgress {
   totalCardsReviewed: number;
   categoryStats: Record<string, { mastered: number; review: number }>;
   dailyReviews?: Record<string, number>;
+  unlockedDeckDays: number[];
+  masteryModeEnabled: boolean;
 }
 
 const STORAGE_KEY = "kaidevlab_fe_study_progress_v1";
@@ -29,6 +31,8 @@ export const DEFAULT_PROGRESS: StudyProgress = {
     vocab: { mastered: 0, review: 0 },
   },
   dailyReviews: {},
+  unlockedDeckDays: [1],
+  masteryModeEnabled: true,
 };
 
 function getTodayString(): string {
@@ -42,10 +46,40 @@ export function loadStudyProgress(): StudyProgress {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return DEFAULT_PROGRESS;
     const parsed = JSON.parse(raw);
-    return { ...DEFAULT_PROGRESS, ...parsed };
+    const loaded = { ...DEFAULT_PROGRESS, ...parsed };
+    if (!loaded.unlockedDeckDays || loaded.unlockedDeckDays.length === 0) {
+      loaded.unlockedDeckDays = [1];
+    }
+    if (loaded.masteryModeEnabled === undefined) {
+      loaded.masteryModeEnabled = true;
+    }
+    return loaded;
   } catch {
     return DEFAULT_PROGRESS;
   }
+}
+
+export function unlockNextFeDay(day: number): StudyProgress {
+  const current = loadStudyProgress();
+  const nextDay = day + 1;
+  const set = new Set(current.unlockedDeckDays || [1]);
+  set.add(nextDay);
+  const updated: StudyProgress = {
+    ...current,
+    unlockedDeckDays: Array.from(set),
+  };
+  saveStudyProgress(updated);
+  return updated;
+}
+
+export function setFeMasteryMode(enabled: boolean): StudyProgress {
+  const current = loadStudyProgress();
+  const updated: StudyProgress = {
+    ...current,
+    masteryModeEnabled: enabled,
+  };
+  saveStudyProgress(updated);
+  return updated;
 }
 
 export function saveStudyProgress(progress: StudyProgress): void {

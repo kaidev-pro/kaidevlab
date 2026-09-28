@@ -152,6 +152,22 @@ export function TangoN3Client() {
     setSessionType(type);
   }
 
+  // Smart Chapter Queue: Only studies unmastered cards unless explicitly restarting from beginning
+  function startChapterStudy(ch: TangoChapter, forceAll = false, type: "flashcard" | "quiz" = selectedStudyTab) {
+    const chapterCards = TANGO_N3_CARDS.filter((c) => c.chapterId === ch.id);
+    const unmastered = chapterCards.filter((c) => !progress.masteredCardIds.includes(c.id));
+
+    // If not forcing all and there are unmastered cards, only load unmastered
+    const cardsToStudy = !forceAll && unmastered.length > 0 ? unmastered : chapterCards;
+
+    const title =
+      unmastered.length === 0 || forceAll
+        ? `Bab ${ch.badge}: ${ch.title} (Semua ${chapterCards.length} Kata)`
+        : `Bab ${ch.badge}: ${ch.title} (Sisa ${unmastered.length} dari ${chapterCards.length} Kata)`;
+
+    startSession(title, cardsToStudy, type);
+  }
+
   function startQuick10(type: "flashcard" | "quiz" = selectedStudyTab) {
     // Pick 10 prioritizing review cards, then unmastered cards
     const reviewCards = TANGO_N3_CARDS.filter((c) =>
@@ -658,10 +674,12 @@ export function TangoN3Client() {
                     );
                   }
 
+                  const unmasteredCount = chapterCards.length - chapterMastered;
+
                   return (
                     <div
                       key={ch.id}
-                      onClick={() => startSession(ch.title, chapterCards, selectedStudyTab)}
+                      onClick={() => startChapterStudy(ch, false, selectedStudyTab)}
                       className={`group relative p-5 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
                         quizRecord?.passed
                           ? "bg-[var(--surface-primary)] border-emerald-500/40 hover:border-emerald-500 shadow-sm"
@@ -680,7 +698,7 @@ export function TangoN3Client() {
                             </span>
                           ) : (
                             <span className="text-xs font-mono font-medium text-[var(--text-tertiary)]">
-                              {chapterCards.length} Kosakata
+                              {unmasteredCount > 0 ? `${unmasteredCount} Sisa / ${chapterCards.length}` : "40 Dikuasai ✓"}
                             </span>
                           )}
                         </div>
@@ -698,7 +716,7 @@ export function TangoN3Client() {
                         <div>
                           <div className="flex items-center justify-between text-xs mb-1.5">
                             <span className="text-[11px] text-[var(--text-tertiary)]">
-                              Terkumpul: {chapterMastered}/{chapterCards.length}
+                              {chapterMastered} Dikuasai · {unmasteredCount} Sisa
                             </span>
                             <span className="font-mono font-semibold text-[var(--text-primary)]">
                               {chapterPercent}%
@@ -715,18 +733,38 @@ export function TangoN3Client() {
                         <div className="flex flex-col gap-2 pt-1" onClick={(e) => e.stopPropagation()}>
                           <div className="flex items-center gap-2">
                             <button
-                              onClick={() => startSession(`${ch.title} (Flashcards)`, chapterCards, "flashcard")}
-                              className="flex-1 py-2 px-3 rounded-xl text-xs font-semibold bg-[var(--surface-secondary)] hover:bg-[var(--brand-primary)]/10 hover:text-[var(--brand-primary)] border border-[var(--border-subtle)] transition-colors flex items-center justify-center gap-1.5"
+                              onClick={() => startChapterStudy(ch, false, "flashcard")}
+                              className={`flex-1 py-2 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+                                unmasteredCount > 0
+                                  ? "bg-[var(--brand-primary)] text-white shadow-2xs hover:opacity-95"
+                                  : "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20"
+                              }`}
                             >
                               <Layers className="w-3.5 h-3.5" />
-                              <span>Flashcard</span>
+                              <span>
+                                {unmasteredCount > 0
+                                  ? `Lanjut (${unmasteredCount} Sisa)`
+                                  : "Semua Dikuasai (40)"}
+                              </span>
                             </button>
+
+                            {chapterMastered > 0 && (
+                              <button
+                                onClick={() => startChapterStudy(ch, true, "flashcard")}
+                                title="Ulangi semua kata dari nomor 1"
+                                className="py-2 px-2.5 rounded-xl text-xs text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-secondary)] border border-[var(--border-subtle)] transition-colors flex items-center justify-center gap-1"
+                              >
+                                <RotateCcw className="w-3.5 h-3.5" />
+                                <span className="text-[10px] hidden sm:inline">Ulangi</span>
+                              </button>
+                            )}
+
                             <button
-                              onClick={() => startSession(`${ch.title} (Kuis CBT)`, chapterCards, "quiz")}
-                              className="flex-1 py-2 px-3 rounded-xl text-xs font-semibold bg-purple-500/10 hover:bg-purple-500/20 text-purple-600 dark:text-purple-400 border border-purple-500/30 transition-colors flex items-center justify-center gap-1.5"
+                              onClick={() => startChapterStudy(ch, false, "quiz")}
+                              className="py-2 px-3 rounded-xl text-xs font-semibold bg-purple-500/10 hover:bg-purple-500/20 text-purple-600 dark:text-purple-400 border border-purple-500/30 transition-colors flex items-center justify-center gap-1.5"
                             >
                               <CheckCircle2 className="w-3.5 h-3.5" />
-                              <span>Kuis CBT</span>
+                              <span>Kuis</span>
                             </button>
                           </div>
 
@@ -747,7 +785,9 @@ export function TangoN3Client() {
                           >
                             <Trophy className="w-3.5 h-3.5 text-amber-500" />
                             <span>
-                              {quizRecord?.passed ? "Uji Ulang Kelulusan (★ Lulus)" : "Uji Kelulusan Bab (10 Soal)"}
+                              {quizRecord?.passed
+                                ? `Uji Ulang Kelulusan (★ Lulus ${quizRecord.score}/${quizRecord.total})`
+                                : `Uji Kelulusan Bab (Full ${chapterCards.length} Soal)`}
                             </span>
                           </button>
                         </div>

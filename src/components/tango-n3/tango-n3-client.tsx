@@ -1093,6 +1093,19 @@ export function TangoN3Client() {
           nextChapter={quizChapterModal.nextChapter}
           onClose={() => setQuizChapterModal(null)}
           onPassQuiz={handlePassChapterQuiz}
+          onStartNextChapter={(nextCh) => {
+            const nextCards = TANGO_N3_CARDS.filter((c) => c.chapterId === nextCh.id);
+            const nextChIdx = TANGO_N3_CHAPTERS.findIndex((c) => c.id === nextCh.id);
+            const nextNextCh =
+              nextChIdx >= 0 && nextChIdx < TANGO_N3_CHAPTERS.length - 1
+                ? TANGO_N3_CHAPTERS[nextChIdx + 1]
+                : undefined;
+            setQuizChapterModal({
+              chapter: nextCh,
+              cards: nextCards,
+              nextChapter: nextNextCh,
+            });
+          }}
         />
       )}
     </div>

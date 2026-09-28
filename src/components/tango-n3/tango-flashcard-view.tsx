@@ -178,11 +178,12 @@ export function TangoFlashcardView({
     }
   }, []);
 
-  const currentCard = activeDeck[currentIndex];
+  const safeIndex = activeDeck.length > 0 ? Math.min(currentIndex, activeDeck.length - 1) : 0;
+  const currentCard = activeDeck[safeIndex];
   const isMastered = currentCard ? masteredIds.includes(currentCard.id) : false;
   const isReview = currentCard ? reviewIds.includes(currentCard.id) : false;
   const isStarred = currentCard ? starredIds.includes(currentCard.id) : false;
-  const isLastCard = currentIndex === activeDeck.length - 1;
+  const isLastCard = activeDeck.length > 0 && safeIndex === activeDeck.length - 1;
 
   // Swipe motion tracking (Exact values from FE Study)
   const x = useMotionValue(0);
@@ -254,8 +255,7 @@ export function TangoFlashcardView({
       }));
 
       if (isLastCard) {
-        if (onFinishSession) onFinishSession();
-        else setIsSessionFinished(true);
+        setIsSessionFinished(true);
       } else {
         setDirection(1);
         setIsFlipped(false);

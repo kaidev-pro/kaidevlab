@@ -224,7 +224,17 @@ export function TangoQuizView({
     });
   }, [cards]);
 
-  const currentItem = quizItems[currentIndex];
+  useEffect(() => {
+    setCurrentIndex(0);
+    setSelectedOptionId(null);
+    setIsAnswered(false);
+    setCorrectCount(0);
+    setWrongCount(0);
+    setIsFinished(false);
+  }, [cards]);
+
+  const safeIndex = quizItems.length > 0 ? Math.min(currentIndex, quizItems.length - 1) : 0;
+  const currentItem = quizItems[safeIndex];
 
   const handleSelectOption = useCallback(
     (optionId: string) => {

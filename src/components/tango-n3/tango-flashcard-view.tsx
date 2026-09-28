@@ -466,19 +466,13 @@ export function TangoFlashcardView({
         className="w-full relative h-[480px] sm:h-[510px] select-none"
         style={{ perspective: "1400px" }}
       >
-        {/* Background Deck Stack: Card Underneath */}
+        {/* Background Deck Stack: 2 Clean Layered Cards Underneath */}
         {nextCard && (
-          <div className="absolute inset-0 w-full h-full rounded-3xl border border-[var(--border-subtle)] bg-[var(--surface-primary)]/80 scale-[0.95] translate-y-3.5 -z-10 shadow-lg pointer-events-none opacity-60 flex flex-col justify-between p-6 sm:p-8 transition-transform">
-            <div className="flex items-center justify-between text-xs text-[var(--text-tertiary)] opacity-40">
-              <span className="font-mono">#{String(nextCard.bookNumber).padStart(4, "0")}</span>
-              <span>{nextCard.partOfSpeech}</span>
-            </div>
-            <div className="text-center font-bold text-3xl sm:text-4xl text-[var(--text-tertiary)] opacity-30 font-japanese">
-              {nextCard.word}
-            </div>
-            <div className="text-center text-[11px] text-[var(--text-tertiary)] opacity-35 font-mono">
-              Berikutnya di dek →
-            </div>
+          <div className="absolute inset-0 w-full h-full pointer-events-none -z-10" aria-hidden="true">
+            {/* Deepest stack layer */}
+            <div className="absolute inset-0 w-full h-full rounded-3xl border border-[var(--border-subtle)] bg-slate-100/90 dark:bg-[#08152b]/90 scale-[0.92] translate-y-5 shadow-sm opacity-50 transition-transform" />
+            {/* Immediate stack layer */}
+            <div className="absolute inset-0 w-full h-full rounded-3xl border border-[var(--border-subtle)] bg-slate-50 dark:bg-[#0a1832] scale-[0.96] translate-y-2.5 shadow-md opacity-80 transition-transform" />
           </div>
         )}
 
@@ -491,7 +485,7 @@ export function TangoFlashcardView({
             initial="initial"
             animate="animate"
             exit="exit"
-            className="w-full h-full relative cursor-grab active:cursor-grabbing"
+            className="w-full h-full relative cursor-grab active:cursor-grabbing z-10"
             style={{
               x: dragX,
               rotate: rotateCard,
@@ -548,7 +542,7 @@ export function TangoFlashcardView({
             >
               {/* FRONT OF CARD */}
               <div
-                className={`absolute inset-0 w-full h-full p-6 sm:p-8 rounded-3xl flex flex-col justify-between border shadow-2xl bg-[var(--surface-primary)] select-none ${
+                className={`absolute inset-0 w-full h-full p-6 sm:p-8 rounded-3xl flex flex-col justify-between border shadow-2xl bg-white dark:bg-[#0b1b38] select-none ${
                   isMastered
                     ? "border-emerald-500/40 ring-1 ring-emerald-500/20"
                     : isNeedsReview
@@ -558,6 +552,8 @@ export function TangoFlashcardView({
                 style={{
                   backfaceVisibility: "hidden",
                   WebkitBackfaceVisibility: "hidden",
+                  transform: "rotateY(0deg) translateZ(1px)",
+                  WebkitTransform: "rotateY(0deg) translateZ(1px)",
                 }}
               >
                 {/* Header: Book No, Part of Speech, Chapter */}
@@ -630,12 +626,12 @@ export function TangoFlashcardView({
 
               {/* BACK OF CARD */}
               <div
-                className="absolute inset-0 w-full h-full p-6 sm:p-8 rounded-3xl flex flex-col justify-between border shadow-2xl bg-[var(--surface-primary)] border-[var(--brand-primary)]/40 ring-1 ring-[var(--brand-primary)]/20 select-none overflow-y-auto"
+                className="absolute inset-0 w-full h-full p-6 sm:p-8 rounded-3xl flex flex-col justify-between border shadow-2xl bg-white dark:bg-[#0b1b38] border-[var(--brand-primary)]/40 ring-1 ring-[var(--brand-primary)]/20 select-none overflow-y-auto"
                 style={{
                   backfaceVisibility: "hidden",
                   WebkitBackfaceVisibility: "hidden",
-                  transform: "rotateY(180deg)",
-                  WebkitTransform: "rotateY(180deg)",
+                  transform: "rotateY(180deg) translateZ(1px)",
+                  WebkitTransform: "rotateY(180deg) translateZ(1px)",
                 }}
               >
                 {/* Header Back */}

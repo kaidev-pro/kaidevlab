@@ -26,12 +26,18 @@ import {
   Target,
   ShieldAlert,
   Volume2,
+  Lock,
+  Unlock,
+  Trophy,
+  Award,
+  ShieldCheck,
 } from "lucide-react";
 import {
   TANGO_N3_CARDS,
   TANGO_N3_CHAPTERS,
   TANGO_N3_READINGS,
   TangoN3Card,
+  TangoChapter,
 } from "@/data/tango-n3-data";
 import {
   loadTangoProgress,
@@ -39,6 +45,8 @@ import {
   toggleStarTangoCard,
   getWeakCards,
   getSrsSchedules,
+  recordChapterQuizResult,
+  setMasteryMode,
   CardRating,
   TangoProgress,
   DEFAULT_TANGO_PROGRESS,
@@ -46,6 +54,7 @@ import {
 import { TangoFlashcardView } from "@/components/tango-n3/tango-flashcard-view";
 import { TangoQuizView } from "@/components/tango-n3/tango-quiz-view";
 import { TangoReadingView } from "@/components/tango-n3/tango-reading-view";
+import { TangoChapterQuizModal } from "@/components/tango-n3/tango-chapter-quiz-modal";
 import { RubyTerm } from "@/components/fe-study/ruby-term";
 import { useJapaneseTts } from "@/lib/use-japanese-tts";
 
@@ -59,6 +68,11 @@ export function TangoN3Client() {
   const [activeViewTab, setActiveViewTab] = useState<"chapters" | "srs" | "vocab" | "reading">("chapters");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedPart, setSelectedPart] = useState<"all" | "noun" | "verb" | "adj" | "idiom" | "affix">("all");
+  const [quizChapterModal, setQuizChapterModal] = useState<{
+    chapter: TangoChapter;
+    cards: TangoN3Card[];
+    nextChapter?: TangoChapter;
+  } | null>(null);
 
   useEffect(() => {
     setProgress(loadTangoProgress());
@@ -79,6 +93,35 @@ export function TangoN3Client() {
     const updated = toggleStarTangoCard(cardId);
     setProgress(updated);
   }, []);
+
+  const handlePassChapterQuiz = useCallback(
+    (score: number, total: number, nextChapterId?: string) => {
+      if (!quizChapterModal) return;
+      const { progress: updated } = recordChapterQuizResult(
+        quizChapterModal.chapter.id,
+        score,
+        total,
+        nextChapterId
+      );
+      setProgress(updated);
+    },
+    [quizChapterModal]
+  );
+
+  const handleToggleMasteryMode = useCallback(() => {
+    const nextMode = !progress.masteryModeEnabled;
+    const updated = setMasteryMode(nextMode);
+    setProgress(updated);
+  }, [progress.masteryModeEnabled]);
+
+  const isChapterUnlocked = useCallback(
+    (chapterId: string) => {
+      if (!progress.masteryModeEnabled) return true;
+      if (chapterId === "ch-01" || chapterId === TANGO_N3_CHAPTERS[0]?.id) return true;
+      return (progress.unlockedChapterIds || ["ch-01"]).includes(chapterId);
+    },
+    [progress.masteryModeEnabled, progress.unlockedChapterIds]
+  );
 
   // Filtered Cards for Search
   const searchResults = useMemo(() => {
@@ -505,11 +548,61 @@ export function TangoN3Client() {
                 </div>
               </div>
 
+              {/* Mastery Progression Banner */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-[var(--surface-primary)] border border-[var(--border-subtle)] flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] flex items-center gap-1.5">
+                      <ShieldCheck className="w-3.5 h-3.5" />
+                      <span>Sistem Pembelajaran Bertahap (Mastery Gate)</span>
+                    </span>
+                    {progress.masteryModeEnabled ? (
+                      <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold">
+                        Aktif
+                      </span>
+                    ) : (
+                      <span className="text-[11px] text-[var(--text-tertiary)] font-medium">
+                        Mode Bebas
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-[var(--text-secondary)]">
+                    {progress.masteryModeEnabled
+                      ? "Selesaikan bab dan lulus tes pemahaman (min. 80%) untuk membuka bab berikutnya."
+                      : "Semua bab terbuka bebas tanpa syarat tes kelulusan."}
+                  </p>
+                  <div className="text-[11px] font-mono text-[var(--text-tertiary)] pt-0.5">
+                    Progres:{" "}
+                    <strong className="text-[var(--text-primary)]">
+                      {(progress.unlockedChapterIds || ["ch-01"]).length} / {TANGO_N3_CHAPTERS.length} Bab Terbuka
+                    </strong>{" "}
+                    ·{" "}
+                    <strong className="text-emerald-600 dark:text-emerald-400">
+                      {Object.values(progress.chapterQuizScores || {}).filter((s) => s.passed).length} Bab Lulus Ujian
+                    </strong>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  <button
+                    onClick={handleToggleMasteryMode}
+                    className={`px-3 py-1.5 rounded-xl border text-xs font-bold transition-all flex items-center gap-1.5 ${
+                      progress.masteryModeEnabled
+                        ? "bg-[var(--brand-primary)] text-white border-[var(--brand-primary)] shadow-xs"
+                        : "bg-[var(--surface-secondary)] border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                    }`}
+                  >
+                    {progress.masteryModeEnabled ? <Lock className="w-3.5 h-3.5" /> : <Unlock className="w-3.5 h-3.5" />}
+                    <span>{progress.masteryModeEnabled ? "Mode Bertahap ON" : "Mode Bebas ON"}</span>
+                  </button>
+                </div>
+              </div>
+
               {/* Chapter Decks Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {TANGO_N3_CHAPTERS.filter(
                   (ch) => selectedPart === "all" || ch.partId === selectedPart
-                ).map((ch) => {
+                ).map((ch, idx) => {
                   const chapterCards = TANGO_N3_CARDS.filter(
                     (c) => c.chapterId === ch.id
                   );
@@ -521,20 +614,76 @@ export function TangoN3Client() {
                       ? Math.round((chapterMastered / chapterCards.length) * 100)
                       : 0;
 
+                  const isUnlocked = isChapterUnlocked(ch.id);
+                  const quizRecord = progress.chapterQuizScores?.[ch.id];
+                  const chIndex = TANGO_N3_CHAPTERS.findIndex((item) => item.id === ch.id);
+                  const nextCh = chIndex < TANGO_N3_CHAPTERS.length - 1 ? TANGO_N3_CHAPTERS[chIndex + 1] : undefined;
+
+                  if (!isUnlocked) {
+                    return (
+                      <div
+                        key={ch.id}
+                        className="p-5 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-secondary)]/30 opacity-70 flex flex-col justify-between select-none relative overflow-hidden"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-md bg-[var(--surface-secondary)] text-[var(--text-tertiary)]">
+                              BAB {ch.badge}
+                            </span>
+                            <span className="text-xs font-bold text-amber-500 flex items-center gap-1 bg-amber-500/10 px-2 py-0.5 rounded-md">
+                              <Lock className="w-3.5 h-3.5" />
+                              <span>Terkunci</span>
+                            </span>
+                          </div>
+
+                          <h3 className="text-base font-bold text-[var(--text-tertiary)] mb-1">
+                            {ch.title}
+                          </h3>
+                          <p className="text-xs text-[var(--text-tertiary)] leading-relaxed mb-4">
+                            {ch.desc}
+                          </p>
+                        </div>
+
+                        <div className="pt-3 border-t border-[var(--border-subtle)]/60 text-xs text-amber-600 dark:text-amber-400 flex items-center justify-between">
+                          <span className="text-[11px]">
+                            Luluskan Bab {chIndex > 0 ? TANGO_N3_CHAPTERS[chIndex - 1].badge : ""} untuk membuka bab ini.
+                          </span>
+                          <button
+                            onClick={handleToggleMasteryMode}
+                            className="text-[10px] underline text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"
+                          >
+                            Buka Bebas
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  }
+
                   return (
                     <div
                       key={ch.id}
                       onClick={() => startSession(ch.title, chapterCards, selectedStudyTab)}
-                      className="group relative p-5 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-[var(--brand-primary)]/50 hover:shadow-md transition-all cursor-pointer flex flex-col justify-between"
+                      className={`group relative p-5 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
+                        quizRecord?.passed
+                          ? "bg-[var(--surface-primary)] border-emerald-500/40 hover:border-emerald-500 shadow-sm"
+                          : "bg-[var(--surface-primary)] border-[var(--border-subtle)] hover:border-[var(--brand-primary)]/50 hover:shadow-md"
+                      }`}
                     >
                       <div>
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-md bg-[var(--surface-secondary)] text-[var(--text-secondary)]">
                             BAB {ch.badge}
                           </span>
-                          <span className="text-xs font-mono font-medium text-[var(--text-tertiary)]">
-                            {chapterCards.length} Kosakata
-                          </span>
+                          {quizRecord?.passed ? (
+                            <span className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-md flex items-center gap-1">
+                              <Award className="w-3.5 h-3.5" />
+                              <span>Lulus ({quizRecord.score}/{quizRecord.total})</span>
+                            </span>
+                          ) : (
+                            <span className="text-xs font-mono font-medium text-[var(--text-tertiary)]">
+                              {chapterCards.length} Kosakata
+                            </span>
+                          )}
                         </div>
 
                         <h3 className="text-base font-bold text-[var(--text-primary)] group-hover:text-[var(--brand-primary)] transition-colors mb-1">
@@ -545,7 +694,7 @@ export function TangoN3Client() {
                         </p>
                       </div>
 
-                      {/* Chapter Progress Bar & Direct Action Buttons */}
+                      {/* Chapter Progress Bar & Action Buttons */}
                       <div className="pt-3 border-t border-[var(--border-subtle)] space-y-3">
                         <div>
                           <div className="flex items-center justify-between text-xs mb-1.5">
@@ -564,20 +713,43 @@ export function TangoN3Client() {
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-2 pt-1" onClick={(e) => e.stopPropagation()}>
+                        <div className="flex flex-col gap-2 pt-1" onClick={(e) => e.stopPropagation()}>
+                          <div className="flex items-center gap-2">
+                            <button
+                              onClick={() => startSession(`${ch.title} (Flashcards)`, chapterCards, "flashcard")}
+                              className="flex-1 py-2 px-3 rounded-xl text-xs font-semibold bg-[var(--surface-secondary)] hover:bg-[var(--brand-primary)]/10 hover:text-[var(--brand-primary)] border border-[var(--border-subtle)] transition-colors flex items-center justify-center gap-1.5"
+                            >
+                              <Layers className="w-3.5 h-3.5" />
+                              <span>Flashcard</span>
+                            </button>
+                            <button
+                              onClick={() => startSession(`${ch.title} (Kuis CBT)`, chapterCards, "quiz")}
+                              className="flex-1 py-2 px-3 rounded-xl text-xs font-semibold bg-purple-500/10 hover:bg-purple-500/20 text-purple-600 dark:text-purple-400 border border-purple-500/30 transition-colors flex items-center justify-center gap-1.5"
+                            >
+                              <CheckCircle2 className="w-3.5 h-3.5" />
+                              <span>Kuis CBT</span>
+                            </button>
+                          </div>
+
+                          {/* Milestone Gate Quiz Button */}
                           <button
-                            onClick={() => startSession(`${ch.title} (Flashcards)`, chapterCards, "flashcard")}
-                            className="flex-1 py-2 px-3 rounded-xl text-xs font-semibold bg-[var(--surface-secondary)] hover:bg-[var(--brand-primary)]/10 hover:text-[var(--brand-primary)] border border-[var(--border-subtle)] transition-colors flex items-center justify-center gap-1.5"
+                            onClick={() =>
+                              setQuizChapterModal({
+                                chapter: ch,
+                                cards: chapterCards,
+                                nextChapter: nextCh,
+                              })
+                            }
+                            className={`w-full py-2 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-2xs ${
+                              quizRecord?.passed
+                                ? "bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30"
+                                : "bg-gradient-to-r from-amber-500/15 to-emerald-500/15 hover:from-amber-500/25 hover:to-emerald-500/25 text-amber-700 dark:text-amber-300 border border-amber-500/30"
+                            }`}
                           >
-                            <Layers className="w-3.5 h-3.5" />
-                            <span>Flashcard</span>
-                          </button>
-                          <button
-                            onClick={() => startSession(`${ch.title} (Kuis CBT)`, chapterCards, "quiz")}
-                            className="flex-1 py-2 px-3 rounded-xl text-xs font-semibold bg-purple-500/10 hover:bg-purple-500/20 text-purple-600 dark:text-purple-400 border border-purple-500/30 transition-colors flex items-center justify-center gap-1.5"
-                          >
-                            <CheckCircle2 className="w-3.5 h-3.5" />
-                            <span>Kuis CBT</span>
+                            <Trophy className="w-3.5 h-3.5 text-amber-500" />
+                            <span>
+                              {quizRecord?.passed ? "Uji Ulang Kelulusan (★ Lulus)" : "Uji Kelulusan Bab (10 Soal)"}
+                            </span>
                           </button>
                         </div>
                       </div>
@@ -872,6 +1044,17 @@ export function TangoN3Client() {
             />
           )}
         </div>
+      )}
+
+      {/* Chapter Milestone Gate Quiz Modal */}
+      {quizChapterModal && (
+        <TangoChapterQuizModal
+          chapter={quizChapterModal.chapter}
+          chapterCards={quizChapterModal.cards}
+          nextChapter={quizChapterModal.nextChapter}
+          onClose={() => setQuizChapterModal(null)}
+          onPassQuiz={handlePassChapterQuiz}
+        />
       )}
     </div>
   );

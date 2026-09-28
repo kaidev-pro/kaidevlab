@@ -17,6 +17,13 @@ export interface TangoProgress {
   cardLastReviewed: Record<string, string>;
   cardBox: Record<string, number>; // Leitner Box 1..5
   cardNextReview: Record<string, string>; // YYYY-MM-DD
+  // Progressive Mastery System
+  unlockedChapterIds: string[];
+  chapterQuizScores: Record<
+    string,
+    { score: number; total: number; passed: boolean; completedAt: string; attempts: number }
+  >;
+  masteryModeEnabled: boolean;
 }
 
 const STORAGE_KEY = "kaidevlab_tango_n3_progress_v1";
@@ -35,6 +42,9 @@ export const DEFAULT_TANGO_PROGRESS: TangoProgress = {
   cardLastReviewed: {},
   cardBox: {},
   cardNextReview: {},
+  unlockedChapterIds: ["ch-01"],
+  chapterQuizScores: {},
+  masteryModeEnabled: true,
 };
 
 export function getTodayString(): string {
@@ -62,7 +72,14 @@ export function loadTangoProgress(): TangoProgress {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return DEFAULT_TANGO_PROGRESS;
     const parsed = JSON.parse(raw);
-    return { ...DEFAULT_TANGO_PROGRESS, ...parsed };
+    const loaded = { ...DEFAULT_TANGO_PROGRESS, ...parsed };
+    if (!loaded.unlockedChapterIds || loaded.unlockedChapterIds.length === 0) {
+      loaded.unlockedChapterIds = ["ch-01"];
+    }
+    if (loaded.masteryModeEnabled === undefined) {
+      loaded.masteryModeEnabled = true;
+    }
+    return loaded;
   } catch {
     return DEFAULT_TANGO_PROGRESS;
   }
@@ -172,6 +189,7 @@ export function recordTangoReview(
   chapterStats[chapterId] = { mastered: mCount, review: rCount };
 
   const updated: TangoProgress = {
+    ...current,
     masteredCardIds: Array.from(mastered),
     reviewCardIds: Array.from(review),
     starredCardIds: current.starredCardIds || [],
@@ -185,6 +203,9 @@ export function recordTangoReview(
     cardLastReviewed,
     cardBox,
     cardNextReview,
+    unlockedChapterIds: current.unlockedChapterIds || ["ch-01"],
+    chapterQuizScores: current.chapterQuizScores || {},
+    masteryModeEnabled: current.masteryModeEnabled ?? true,
   };
 
   saveTangoProgress(updated);
@@ -233,3 +254,57 @@ export function getSrsSchedules<T extends { id: string }>(
     dueMonthly,
   };
 }
+
+export function recordChapterQuizResult(
+  chapterId: string,
+  score: number,
+  total: number,
+  nextChapterId?: string
+): { progress: TangoProgress; newlyUnlocked: boolean } {
+  const current = loadTangoProgress();
+  const passed = total > 0 ? score / total >= 0.8 : false;
+  const prevRecord = current.chapterQuizScores?.[chapterId];
+  const attempts = (prevRecord?.attempts || 0) + 1;
+  const bestScore = Math.max(score, prevRecord?.score || 0);
+
+  const chapterQuizScores = {
+    ...(current.chapterQuizScores || {}),
+    [chapterId]: {
+      score: bestScore,
+      total,
+      passed: passed || Boolean(prevRecord?.passed),
+      completedAt: getTodayString(),
+      attempts,
+    },
+  };
+
+  const unlockedSet = new Set(current.unlockedChapterIds || ["ch-01"]);
+  let newlyUnlocked = false;
+
+  if (passed && nextChapterId) {
+    if (!unlockedSet.has(nextChapterId)) {
+      unlockedSet.add(nextChapterId);
+      newlyUnlocked = true;
+    }
+  }
+
+  const updated: TangoProgress = {
+    ...current,
+    chapterQuizScores,
+    unlockedChapterIds: Array.from(unlockedSet),
+  };
+
+  saveTangoProgress(updated);
+  return { progress: updated, newlyUnlocked };
+}
+
+export function setMasteryMode(enabled: boolean): TangoProgress {
+  const current = loadTangoProgress();
+  const updated: TangoProgress = {
+    ...current,
+    masteryModeEnabled: enabled,
+  };
+  saveTangoProgress(updated);
+  return updated;
+}
+

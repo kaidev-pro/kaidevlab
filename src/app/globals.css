@@ -925,3 +925,12 @@ ul { margin: 0; }
   .cinematic-kai img { height: 78% !important; }
 }
 @media (prefers-reduced-motion: reduce) { .cinematic-layer[data-kai-depth] { transform: none !important; } }
+
+/* Utility to hide ugly native scrollbars while preserving scrollability */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

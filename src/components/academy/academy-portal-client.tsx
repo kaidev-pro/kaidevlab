@@ -128,6 +128,18 @@ export function AcademyPortalClient() {
     }
   }, [syncModalOpen]);
 
+  // Close modals on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSyncModalOpen(false);
+        setIncomingSync(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   const handleApplyIncomingSync = () => {
     if (!incomingSync) return;
     applyCompactSyncPayload(incomingSync);
@@ -538,12 +550,16 @@ export function AcademyPortalClient() {
       {/* ==================================================== */}
       <AnimatePresence>
         {syncModalOpen && (
-          <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-md">
+          <div
+            className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-md"
+            onClick={() => setSyncModalOpen(false)}
+          >
             <motion.div
               initial={{ opacity: 0, scale: 0.94 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.94 }}
-              className="w-full max-w-md bg-[var(--surface-primary)] border border-[var(--border-subtle)] rounded-3xl p-5 sm:p-6 space-y-4 shadow-2xl relative text-[var(--text-primary)]"
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-md max-h-[90vh] overflow-y-auto no-scrollbar bg-[var(--surface-primary)] border border-[var(--border-subtle)] rounded-3xl p-5 sm:p-6 space-y-4 shadow-2xl relative text-[var(--text-primary)]"
             >
               {/* Header */}
               <div className="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)]">
@@ -720,12 +736,16 @@ export function AcademyPortalClient() {
       {/* ==================================================== */}
       <AnimatePresence>
         {incomingSync && (
-          <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md">
+          <div
+            className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md"
+            onClick={() => setIncomingSync(null)}
+          >
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="w-full max-w-md bg-[var(--surface-primary)] border border-[var(--border-subtle)] rounded-3xl p-5 sm:p-6 space-y-4 shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-md max-h-[90vh] overflow-y-auto no-scrollbar bg-[var(--surface-primary)] border border-[var(--border-subtle)] rounded-3xl p-5 sm:p-6 space-y-4 shadow-2xl"
             >
               <div className="text-center space-y-2">
                 <div className="w-12 h-12 mx-auto rounded-2xl bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 flex items-center justify-center">

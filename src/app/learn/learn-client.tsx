@@ -324,6 +324,18 @@ export function LearnClient() {
     };
   }, []);
 
+  // Read ?tab= from URL on mount
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const tabParam = params.get("tab") as HubTab;
+      if (tabParam && ["flashcards", "quiz", "tracer", "cheatsheet", "mistakes"].includes(tabParam)) {
+        setActiveTab(tabParam);
+      }
+    } catch {}
+  }, []);
+
   const handleInstallPwa = async () => {
     if (!deferredPrompt) return;
     deferredPrompt.prompt();

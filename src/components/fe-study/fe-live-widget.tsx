@@ -18,6 +18,8 @@ const widgetTranslations = {
         <b className="text-[var(--text-primary)]">{mastered}</b> of {total} Terms Mastered
       </>
     ),
+    notStarted: "Not started — start first drill",
+    notStartedBadge: "199 Terms",
     srs: "Spaced Repetition System",
     openHub: "Open Study Gym",
   },
@@ -32,6 +34,8 @@ const widgetTranslations = {
         <b className="text-[var(--text-primary)]">{mastered}</b> dari {total} Istilah Dikuasai
       </>
     ),
+    notStarted: "Belum mulai — mulai drill pertama",
+    notStartedBadge: "199 Istilah",
     srs: "Metode Spaced Repetition",
     openHub: "Buka Study Gym",
   },
@@ -46,6 +50,8 @@ const widgetTranslations = {
         <b className="text-[var(--text-primary)]">{mastered}</b> / {total} 単語習得済み
       </>
     ),
+    notStarted: "未開始 — 最初の演習を始めよう",
+    notStartedBadge: "全199語",
     srs: "間隔反復学習システム (SRS)",
     openHub: "スタディジムを開く",
   },
@@ -97,10 +103,12 @@ export function FeLiveWidget() {
         <div className="flex flex-col gap-1.5 pt-1">
           <div className="flex items-center justify-between text-xs">
             <span className="text-[var(--text-secondary)] flex items-center gap-1">
-              <CheckCircle2 size={12} className="text-emerald-500" />
-              {t.masteredOf(mastered, total)}
+              <CheckCircle2 size={12} className={mastered > 0 ? "text-emerald-500" : "text-[var(--text-tertiary)]"} />
+              {mastered > 0 ? t.masteredOf(mastered, total) : t.notStarted}
             </span>
-            <span className="font-bold text-[var(--brand-primary)]">{percentage}%</span>
+            <span className="font-bold text-[var(--brand-primary)]">
+              {mastered > 0 ? `${percentage}%` : t.notStartedBadge}
+            </span>
           </div>
           <div className="w-full h-1.5 bg-[var(--surface-soft)] rounded-full overflow-hidden">
             <div

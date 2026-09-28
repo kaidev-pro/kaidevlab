@@ -6,6 +6,7 @@ import {
   AnimatePresence,
   useMotionValue,
   useTransform,
+  type Variants,
 } from "framer-motion";
 import {
   RotateCcw,
@@ -22,6 +23,9 @@ import {
   Star,
   BookOpen,
   VolumeX,
+  Volume1,
+  Hand,
+  Bookmark,
   Zap,
 } from "lucide-react";
 import { TangoN3Card } from "@/data/tango-n3-data";
@@ -40,6 +44,9 @@ interface TangoFlashcardViewProps {
   onFinishSession?: () => void;
 }
 
+// ==========================================
+// Web Audio API Synthesizer (Exact match with FE Study)
+// ==========================================
 function createAudioFeedback() {
   if (typeof window === "undefined") return null;
   const AudioCtx =
@@ -55,64 +62,69 @@ function createAudioFeedback() {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = "sine";
-        osc.frequency.setValueAtTime(320, ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(640, ctx.currentTime + 0.07);
-        gain.gain.setValueAtTime(0.15, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.07);
+        osc.frequency.setValueAtTime(260, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(560, ctx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.2, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
         osc.connect(gain);
         gain.connect(ctx.destination);
         osc.start();
-        osc.stop(ctx.currentTime + 0.07);
-      } catch {}
-    },
-    playSwoosh: (pitch: number = 300) => {
-      try {
-        if (ctx.state === "suspended") ctx.resume();
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = "sine";
-        osc.frequency.setValueAtTime(pitch, ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(pitch * 1.5, ctx.currentTime + 0.09);
-        gain.gain.setValueAtTime(0.12, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.09);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start();
-        osc.stop(ctx.currentTime + 0.09);
+        osc.stop(ctx.currentTime + 0.08);
       } catch {}
     },
     playMastered: () => {
       try {
         if (ctx.state === "suspended") ctx.resume();
         const now = ctx.currentTime;
-        [523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => {
+        // Bright 3-note ascending dopamine arpeggio: D5, F#5, A5
+        [587.33, 739.99, 880].forEach((freq, i) => {
           const osc = ctx.createOscillator();
           const gain = ctx.createGain();
           osc.type = "triangle";
-          osc.frequency.setValueAtTime(freq, now + i * 0.04);
-          gain.gain.setValueAtTime(0.14, now + i * 0.04);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.04 + 0.22);
+          const startTime = now + i * 0.07;
+          osc.frequency.setValueAtTime(freq, startTime);
+          gain.gain.setValueAtTime(0.24, startTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.38);
           osc.connect(gain);
           gain.connect(ctx.destination);
-          osc.start(now + i * 0.04);
-          osc.stop(now + i * 0.04 + 0.22);
+          osc.start(startTime);
+          osc.stop(startTime + 0.38);
         });
       } catch {}
     },
-    playReview: () => {
+    playUnsure: () => {
+      try {
+        if (ctx.state === "suspended") ctx.resume();
+        const now = ctx.currentTime;
+        [440, 493.88].forEach((freq, i) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = "sine";
+          const startTime = now + i * 0.07;
+          osc.frequency.setValueAtTime(freq, startTime);
+          gain.gain.setValueAtTime(0.18, startTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.18);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(startTime);
+          osc.stop(startTime + 0.18);
+        });
+      } catch {}
+    },
+    playForgot: () => {
       try {
         if (ctx.state === "suspended") ctx.resume();
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = "sine";
-        osc.frequency.setValueAtTime(220, ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(140, ctx.currentTime + 0.12);
-        gain.gain.setValueAtTime(0.16, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+        osc.frequency.setValueAtTime(280, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(170, ctx.currentTime + 0.18);
+        gain.gain.setValueAtTime(0.2, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.18);
         osc.connect(gain);
         gain.connect(ctx.destination);
         osc.start();
-        osc.stop(ctx.currentTime + 0.12);
+        osc.stop(ctx.currentTime + 0.18);
       } catch {}
     },
   };
@@ -130,49 +142,53 @@ export function TangoFlashcardView({
 }: TangoFlashcardViewProps) {
   const [activeDeck, setActiveDeck] = useState<TangoN3Card[]>(cards);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
   const [isFlipped, setIsFlipped] = useState(false);
   const [showFurigana, setShowFurigana] = useState(true);
-  const [soundEnabled, setSoundEnabled] = useState(true);
+  const [soundEffects, setSoundEffects] = useState(true);
   const [autoSpeakEnabled, setAutoSpeakEnabled] = useState(false);
   const [speechAvailable, setSpeechAvailable] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const [exitDirection, setExitDirection] = useState<"left" | "right" | "prev" | "next" | null>(null);
-
-  const [sessionStats, setSessionStats] = useState<{
-    mastered: number;
-    review: number;
-    mistakeCards: TangoN3Card[];
-  }>({ mastered: 0, review: 0, mistakeCards: [] });
   const [isSessionFinished, setIsSessionFinished] = useState(false);
 
-  useEffect(() => {
-    setActiveDeck(cards);
-    setCurrentIndex(0);
-    setIsFlipped(false);
-    setIsSessionFinished(false);
-    setSessionStats({ mastered: 0, review: 0, mistakeCards: [] });
-    setExitDirection(null);
-  }, [cards]);
+  const [sessionStats, setSessionStats] = useState({
+    mastered: 0,
+    review: 0,
+    mistakeCards: [] as TangoN3Card[],
+  });
 
   const audioRef = useRef<ReturnType<typeof createAudioFeedback> | null>(null);
 
   useEffect(() => {
     audioRef.current = createAudioFeedback();
+  }, []);
+
+  // Update deck if props change
+  useEffect(() => {
+    setActiveDeck(cards);
+    setCurrentIndex(0);
+    setIsFlipped(false);
+    setIsSessionFinished(false);
+  }, [cards]);
+
+  // Check Web Speech API availability
+  useEffect(() => {
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
       setSpeechAvailable(true);
     }
   }, []);
 
   const currentCard = activeDeck[currentIndex];
-  const nextCard = currentIndex < activeDeck.length - 1 ? activeDeck[currentIndex + 1] : null;
   const isMastered = currentCard ? masteredIds.includes(currentCard.id) : false;
-  const isNeedsReview = currentCard ? reviewIds.includes(currentCard.id) : false;
+  const isReview = currentCard ? reviewIds.includes(currentCard.id) : false;
   const isStarred = currentCard ? starredIds.includes(currentCard.id) : false;
+  const isLastCard = currentIndex === activeDeck.length - 1;
 
-  const dragX = useMotionValue(0);
-  const rotateCard = useTransform(dragX, [-220, 0, 220], [-14, 0, 14]);
-  const opacityRight = useTransform(dragX, [20, 100], [0, 1]);
-  const opacityLeft = useTransform(dragX, [-100, -20], [1, 0]);
+  // Swipe motion tracking (Exact values from FE Study)
+  const x = useMotionValue(0);
+  const rotateCard = useTransform(x, [-220, 220], [-14, 14]);
+  const rightBadgeOpacity = useTransform(x, [35, 110], [0, 1]);
+  const leftBadgeOpacity = useTransform(x, [-35, -110], [0, 1]);
 
   // Speech TTS Function
   const speakJapanese = useCallback(
@@ -204,120 +220,106 @@ export function TangoFlashcardView({
     if (autoSpeakEnabled && currentCard && !isSessionFinished) {
       const timer = setTimeout(() => {
         speakJapanese(currentCard.word);
-      }, 250);
+      }, 200);
       return () => clearTimeout(timer);
     }
   }, [currentCard, autoSpeakEnabled, isSessionFinished, speakJapanese]);
 
   const handleFlip = useCallback(() => {
-    if (soundEnabled && audioRef.current) {
+    if (soundEffects && audioRef.current) {
       audioRef.current.playFlip();
     }
     setIsFlipped((prev) => !prev);
-  }, [soundEnabled]);
+  }, [soundEffects]);
 
   const handleRate = useCallback(
     (rating: CardRating) => {
       if (!currentCard) return;
 
-      const isMasteredRating = rating === "mastered";
-      const dir: "left" | "right" = isMasteredRating ? "right" : "left";
-      setExitDirection(dir);
-
-      if (soundEnabled && audioRef.current) {
-        if (isMasteredRating) audioRef.current.playMastered();
-        else audioRef.current.playReview();
+      if (soundEffects && audioRef.current) {
+        if (rating === "mastered") audioRef.current.playMastered();
+        else if (rating === "unsure") audioRef.current.playUnsure();
+        else audioRef.current.playForgot();
       }
 
       onRateCard(currentCard.id, currentCard.chapterId, rating);
 
       setSessionStats((prev) => ({
-        mastered: prev.mastered + (isMasteredRating ? 1 : 0),
-        review: prev.review + (isMasteredRating ? 0 : 1),
-        mistakeCards: isMasteredRating
-          ? prev.mistakeCards
-          : [...prev.mistakeCards, currentCard],
+        mastered: prev.mastered + (rating === "mastered" ? 1 : 0),
+        review: prev.review + (rating === "mastered" ? 0 : 1),
+        mistakeCards:
+          rating === "mastered"
+            ? prev.mistakeCards
+            : [...prev.mistakeCards, currentCard],
       }));
 
-      // Smooth exit delay before switching to next card
-      setTimeout(() => {
+      if (isLastCard) {
+        if (onFinishSession) onFinishSession();
+        else setIsSessionFinished(true);
+      } else {
+        setDirection(1);
         setIsFlipped(false);
-        setExitDirection(null);
-        if (currentIndex < activeDeck.length - 1) {
-          setCurrentIndex((prev) => prev + 1);
-        } else {
-          setIsSessionFinished(true);
-        }
-      }, 160);
+        setCurrentIndex((prev) => prev + 1);
+      }
+      x.set(0);
     },
-    [currentCard, currentIndex, activeDeck.length, onRateCard, soundEnabled]
+    [currentCard, isLastCard, onRateCard, onFinishSession, soundEffects, x]
   );
-
-  const handlePrev = useCallback(() => {
-    if (currentIndex > 0) {
-      setExitDirection("prev");
-      if (soundEnabled && audioRef.current) audioRef.current.playSwoosh(260);
-      setIsFlipped(false);
-      setTimeout(() => {
-        setCurrentIndex((prev) => prev - 1);
-        setExitDirection(null);
-      }, 140);
-    }
-  }, [currentIndex, soundEnabled]);
 
   const handleNext = useCallback(() => {
     if (currentIndex < activeDeck.length - 1) {
-      setExitDirection("next");
-      if (soundEnabled && audioRef.current) audioRef.current.playSwoosh(360);
+      if (soundEffects && audioRef.current) audioRef.current.playFlip();
+      setDirection(1);
       setIsFlipped(false);
-      setTimeout(() => {
-        setCurrentIndex((prev) => prev + 1);
-        setExitDirection(null);
-      }, 140);
+      setCurrentIndex((prev) => prev + 1);
+      x.set(0);
     }
-  }, [currentIndex, activeDeck.length, soundEnabled]);
+  }, [currentIndex, activeDeck.length, soundEffects, x]);
 
-  // Keyboard Shortcuts
+  const handlePrev = useCallback(() => {
+    if (currentIndex > 0) {
+      if (soundEffects && audioRef.current) audioRef.current.playFlip();
+      setDirection(-1);
+      setIsFlipped(false);
+      setCurrentIndex((prev) => prev - 1);
+      x.set(0);
+    }
+  }, [currentIndex, soundEffects, x]);
+
+  // Keyboard navigation
   useEffect(() => {
-    function handleKeyDown(e: KeyboardEvent) {
+    const onKeyDown = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
         return;
       }
-      if (e.code === "Space" || e.key === "Enter") {
+
+      if (e.code === "Space") {
         e.preventDefault();
         handleFlip();
-      } else if (e.key === "1") {
-        e.preventDefault();
-        handleRate("forgot");
-      } else if (e.key === "2") {
-        e.preventDefault();
-        handleRate("unsure");
-      } else if (e.key === "3") {
-        e.preventDefault();
-        handleRate("mastered");
-      } else if (e.key === "ArrowLeft") {
-        e.preventDefault();
-        handlePrev();
-      } else if (e.key === "ArrowRight") {
+      } else if (e.code === "ArrowRight") {
         e.preventDefault();
         handleNext();
-      } else if (e.key.toLowerCase() === "f") {
+      } else if (e.code === "ArrowLeft") {
+        e.preventDefault();
+        handlePrev();
+      } else if (e.key === "f" || e.key === "F") {
         e.preventDefault();
         setShowFurigana((prev) => !prev);
-      } else if (e.key.toLowerCase() === "a" && currentCard) {
+      } else if (e.key === "a" || e.key === "A") {
         e.preventDefault();
-        speakJapanese(currentCard.word);
-      } else if (e.key.toLowerCase() === "s" && currentCard && onToggleStar) {
-        e.preventDefault();
-        onToggleStar(currentCard.id);
+        if (currentCard) speakJapanese(currentCard.word);
+      } else if (isFlipped) {
+        if (e.key === "1") handleRate("forgot");
+        if (e.key === "2") handleRate("unsure");
+        if (e.key === "3") handleRate("mastered");
       }
-    }
+    };
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleFlip, handleRate, handlePrev, handleNext, currentCard, onToggleStar, speakJapanese]);
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [handleFlip, handleNext, handlePrev, isFlipped, handleRate, currentCard, speakJapanese]);
 
-  if (isSessionFinished || !currentCard) {
+  if (isSessionFinished) {
     return (
       <TangoSessionSummary
         totalReviewed={activeDeck.length}
@@ -325,7 +327,6 @@ export function TangoFlashcardView({
         reviewCount={sessionStats.review}
         streak={streak}
         onRestart={() => {
-          setActiveDeck(cards);
           setCurrentIndex(0);
           setIsFlipped(false);
           setIsSessionFinished(false);
@@ -342,508 +343,551 @@ export function TangoFlashcardView({
               }
             : undefined
         }
-        onBackToDashboard={onFinishSession || (() => {})}
+        onBackToDashboard={() => {
+          if (onFinishSession) onFinishSession();
+        }}
       />
     );
   }
 
-  // Animation variants for smooth card transition
-  const cardMotionVariants = {
-    initial: (dir: string | null) => ({
-      x: dir === "prev" ? -280 : 0,
-      scale: 0.94,
-      y: 12,
+  if (!currentCard) {
+    return (
+      <div className="p-12 text-center text-[var(--text-secondary)]">
+        <p>Belum ada kartu di modul ini.</p>
+      </div>
+    );
+  }
+
+  // Apple-grade spring transitions for card deck sliding (Exact from FE Study)
+  const deckVariants: Variants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? 90 : -90,
       opacity: 0,
+      scale: 0.94,
+      rotate: dir > 0 ? 3 : -3,
     }),
-    animate: {
+    center: {
       x: 0,
-      y: 0,
-      scale: 1,
       opacity: 1,
+      scale: 1,
       rotate: 0,
       transition: {
-        type: "spring" as const,
+        type: "spring",
         stiffness: 340,
-        damping: 26,
+        damping: 28,
+        mass: 0.8,
       },
     },
-    exit: (dir: string | null) => ({
-      x: dir === "right" ? 400 : dir === "left" ? -400 : dir === "prev" ? 280 : -280,
-      rotate: dir === "right" ? 18 : dir === "left" ? -18 : 0,
+    exit: (dir: number) => ({
+      x: dir > 0 ? -110 : 110,
       opacity: 0,
-      scale: 0.92,
+      scale: 0.94,
+      rotate: dir > 0 ? -4 : 4,
       transition: {
         duration: 0.22,
-        ease: "easeOut" as const,
+        ease: "easeIn",
       },
     }),
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto flex flex-col items-center">
-      {/* Top Utility Bar */}
-      <div className="w-full flex items-center justify-between gap-2 mb-3 px-1 text-xs text-[var(--text-secondary)]">
-        {/* Progress Counter & Streak */}
-        <div className="flex items-center gap-1.5 sm:gap-2">
-          <span className="font-mono font-bold text-[var(--text-primary)] text-sm">
-            {currentIndex + 1}
+    <div className="w-full max-w-2xl mx-auto flex flex-col gap-4 sm:gap-6 select-none min-w-0 max-w-full">
+      {/* Top Controls & Mini Bar */}
+      <div className="flex items-center justify-between gap-2 text-xs font-medium text-[var(--text-secondary)]">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <span className="font-mono text-sm font-semibold text-[var(--text-primary)]">
+            {currentIndex + 1} <span className="opacity-40">/ {activeDeck.length}</span>
           </span>
-          <span className="text-[var(--text-tertiary)]">/</span>
-          <span className="text-[var(--text-tertiary)]">{activeDeck.length}</span>
-
           {streak > 0 && (
-            <span className="flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 font-semibold text-[10px] sm:text-xs">
-              <Flame className="w-3 h-3 fill-amber-500" />
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-500 font-medium text-[11px] sm:text-xs">
+              <Flame size={13} className="fill-amber-500 animate-pulse" />
               <span>{streak}<span className="hidden sm:inline"> Hari</span></span>
             </span>
           )}
         </div>
 
-        {/* Action Toggles: Auto-Audio, Furigana, Star, Sound */}
-        <div className="flex items-center gap-1 sm:gap-2">
+        {/* Action Toggles */}
+        <div className="flex items-center gap-1.5 sm:gap-2">
           {/* Auto-Speech Toggle */}
           <button
+            type="button"
             onClick={() => setAutoSpeakEnabled(!autoSpeakEnabled)}
-            className={`flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-lg border text-[10px] sm:text-[11px] font-medium transition-colors ${
+            className={`inline-flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-lg border text-[11px] transition-all ${
               autoSpeakEnabled
-                ? "bg-sky-500/10 border-sky-500/30 text-sky-600 dark:text-sky-400 font-semibold"
-                : "border-[var(--border-subtle)] text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"
+                ? "border-sky-500 text-sky-500 bg-sky-500/10 font-semibold"
+                : "border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             }`}
-            title="Otomatis putar audio saat kartu baru muncul"
+            title="Auto putar audio saat kartu baru muncul"
           >
-            <Zap className="w-3 h-3 text-sky-500" />
-            <span>Auto<span className="hidden sm:inline">-Lafal</span> {autoSpeakEnabled ? "ON" : "OFF"}</span>
+            <Zap size={13} className={autoSpeakEnabled ? "text-sky-500 fill-sky-500" : ""} />
+            <span className="hidden xs:inline">Auto</span>
+            <span className="font-bold">{autoSpeakEnabled ? "ON" : "OFF"}</span>
+          </button>
+
+          {/* Sound FX Toggle */}
+          <button
+            type="button"
+            onClick={() => setSoundEffects(!soundEffects)}
+            className={`inline-flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-lg border text-[11px] transition-all ${
+              soundEffects
+                ? "border-[var(--brand-primary)] text-[var(--brand-primary)] bg-[var(--brand-primary)]/5"
+                : "border-[var(--border)] text-[var(--text-secondary)]"
+            }`}
+            title={soundEffects ? "Efek Suara Aktif (Dopamine SFX)" : "Efek Suara Mati"}
+          >
+            {soundEffects ? <Volume1 size={13} /> : <VolumeX size={13} />}
+            <span className="hidden sm:inline">SFX</span>
           </button>
 
           {/* Furigana Toggle */}
           <button
-            onClick={() => setShowFurigana((prev) => !prev)}
-            className={`flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-lg border text-[10px] sm:text-[11px] font-medium transition-colors ${
-              showFurigana
-                ? "bg-[var(--brand-primary)]/10 border-[var(--brand-primary)]/30 text-[var(--brand-primary)] font-semibold"
-                : "border-[var(--border-subtle)] text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"
-            }`}
-            title="Aktif/Nonaktifkan Furigana (F)"
+            type="button"
+            onClick={() => setShowFurigana(!showFurigana)}
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[var(--border)] hover:border-[var(--brand-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors text-[11px]"
+            title="Toggle Furigana (Cara Baca)"
           >
-            {showFurigana ? <Eye className="w-3 h-3" /> : <EyeOff className="w-3 h-3" />}
-            <span className="hidden xs:inline">Furigana</span>
+            {showFurigana ? <Eye size={13} /> : <EyeOff size={13} />}
+            <span className="hidden sm:inline">Furigana</span>
           </button>
+
+          {/* Native Japanese Speech Audio */}
+          {speechAvailable && (
+            <button
+              type="button"
+              onClick={(e) => speakJapanese(currentCard.word, e)}
+              className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[var(--border)] hover:border-[var(--brand-primary)] transition-colors text-[11px] ${
+                isSpeaking
+                  ? "text-[var(--brand-primary)] border-[var(--brand-primary)] animate-pulse"
+                  : "text-[var(--text-secondary)]"
+              }`}
+              title="Dengarkan Pengucapan Asli"
+            >
+              <Volume2 size={13} />
+              <span className="hidden sm:inline">Audio</span>
+            </button>
+          )}
 
           {/* Favorite Star */}
           {onToggleStar && (
             <button
-              onClick={() => onToggleStar(currentCard.id)}
-              className={`p-1 sm:p-1.5 rounded-lg border border-[var(--border-subtle)] hover:bg-[var(--surface-secondary)] transition-colors ${
-                isStarred ? "text-yellow-500 bg-yellow-500/10" : "text-[var(--text-tertiary)]"
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onToggleStar(currentCard.id);
+              }}
+              className={`p-1.5 rounded-lg border text-[11px] transition-all active:scale-90 ${
+                isStarred
+                  ? "bg-amber-500/15 border-amber-500/40 text-amber-500 shadow-sm"
+                  : "bg-[var(--surface-soft)]/60 border-[var(--border)] text-[var(--text-secondary)] hover:text-amber-500"
               }`}
-              title="Tandai Favorit (S)"
+              title={isStarred ? "Hapus dari Favorit" : "Tandai sebagai Favorit"}
             >
-              <Star className={`w-3.5 h-3.5 ${isStarred ? "fill-yellow-500" : ""}`} />
+              <Bookmark size={13} className={isStarred ? "fill-amber-500 text-amber-500" : ""} />
             </button>
           )}
-
-          {/* Sound FX Toggle */}
-          <button
-            onClick={() => setSoundEnabled((prev) => !prev)}
-            className="p-1 sm:p-1.5 rounded-lg border border-[var(--border-subtle)] text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
-            title={soundEnabled ? "Nonaktifkan Efek Suara" : "Aktifkan Efek Suara"}
-          >
-            {soundEnabled ? <Volume2 className="w-3.5 h-3.5" /> : <VolumeX className="w-3.5 h-3.5" />}
-          </button>
         </div>
       </div>
 
-      {/* Progress Bar */}
-      <div className="w-full h-1.5 bg-[var(--surface-secondary)] rounded-full overflow-hidden mb-3 sm:mb-5">
-        <div
-          className="h-full bg-[var(--brand-primary)] transition-all duration-300 rounded-full"
-          style={{ width: `${((currentIndex + 1) / activeDeck.length) * 100}%` }}
+      {/* Progress Line */}
+      <div className="w-full h-1.5 bg-[var(--surface-soft)] rounded-full overflow-hidden">
+        <motion.div
+          className="h-full bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-glow)]"
+          initial={{ width: 0 }}
+          animate={{ width: `${((currentIndex + 1) / activeDeck.length) * 100}%` }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
         />
       </div>
 
-      {/* FLASHCARD CONTAINER WITH 3D DECK STACK & SWIPE */}
+      {/* 3D Flip Card Container with Slide-in Deck Transition */}
       <div
-        className="w-full relative h-[380px] xs:h-[410px] sm:h-[480px] select-none"
+        className="relative w-full h-[350px] sm:h-[395px] md:h-[420px] overflow-x-clip"
         style={{ perspective: "1400px" }}
       >
-        {/* Background Deck Stack: 2 Clean Layered Cards Underneath */}
-        {nextCard && (
-          <div className="absolute inset-0 w-full h-full pointer-events-none -z-10" aria-hidden="true">
-            {/* Deepest stack layer */}
-            <div className="absolute inset-0 w-full h-full rounded-3xl border border-[var(--border-subtle)] bg-slate-100/90 dark:bg-[#08152b]/90 scale-[0.92] translate-y-5 shadow-sm opacity-50 transition-transform" />
-            {/* Immediate stack layer */}
-            <div className="absolute inset-0 w-full h-full rounded-3xl border border-[var(--border-subtle)] bg-slate-50 dark:bg-[#0a1832] scale-[0.96] translate-y-2.5 shadow-md opacity-80 transition-transform" />
-          </div>
-        )}
-
-        {/* Active Animated Flashcard */}
-        <AnimatePresence mode="popLayout" custom={exitDirection}>
+        <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={currentCard.id}
-            custom={exitDirection}
-            variants={cardMotionVariants}
-            initial="initial"
-            animate="animate"
+            custom={direction}
+            variants={deckVariants}
+            initial="enter"
+            animate="center"
             exit="exit"
-            className="w-full h-full relative cursor-grab active:cursor-grabbing z-10"
-            style={{
-              x: dragX,
-              rotate: rotateCard,
-              transformStyle: "preserve-3d",
-              WebkitTransformStyle: "preserve-3d",
-              touchAction: "pan-y",
-            }}
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.65}
-            onDragEnd={(_, info) => {
-              if (info.offset.x > 100) {
-                handleRate("mastered");
-              } else if (info.offset.x < -100) {
-                handleRate("forgot");
-              }
-            }}
-            onClick={() => {
-              if (Math.abs(dragX.get()) < 8) {
-                handleFlip();
-              }
-            }}
+            className="w-full h-full relative"
+            style={{ perspective: "1400px" }}
           >
-            {/* Swipe Indicators on Drag */}
+            {/* Swipe Feedback Badges */}
             <motion.div
-              style={{ opacity: opacityRight }}
-              className="absolute top-6 left-6 z-40 pointer-events-none px-4 py-2 rounded-2xl bg-emerald-500 text-white font-bold text-sm shadow-xl flex items-center gap-1.5"
+              style={{ opacity: rightBadgeOpacity }}
+              className="absolute top-4 sm:top-5 right-4 sm:right-5 z-40 pointer-events-none px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-emerald-500 text-white font-bold text-xs shadow-lg flex items-center gap-1 rotate-6"
             >
-              <CheckCircle2 className="w-5 h-5" />
-              <span>✓ SUDAH HAFAL</span>
-            </motion.div>
-            <motion.div
-              style={{ opacity: opacityLeft }}
-              className="absolute top-6 right-6 z-40 pointer-events-none px-4 py-2 rounded-2xl bg-rose-500 text-white font-bold text-sm shadow-xl flex items-center gap-1.5"
-            >
-              <AlertCircle className="w-5 h-5" />
-              <span>↺ ULANGI (LUPA)</span>
+              <CheckCircle2 size={14} /> HAFAL
             </motion.div>
 
-            {/* 3D Flip Layer */}
             <motion.div
-              className="w-full h-full relative rounded-3xl"
-              animate={{
-                rotateY: isFlipped ? 180 : 0,
-              }}
-              transition={{
-                duration: 0.38,
-                ease: [0.23, 1, 0.32, 1],
-              }}
+              style={{ opacity: leftBadgeOpacity }}
+              className="absolute top-4 sm:top-5 left-4 sm:left-5 z-40 pointer-events-none px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-rose-500 text-white font-bold text-xs shadow-lg flex items-center gap-1 -rotate-6"
+            >
+              <AlertCircle size={14} /> LUPA
+            </motion.div>
+
+            {/* Draggable Swiping Container */}
+            <motion.div
+              className="w-full h-full relative cursor-grab active:cursor-grabbing"
               style={{
+                x,
+                rotate: rotateCard,
                 transformStyle: "preserve-3d",
-                WebkitTransformStyle: "preserve-3d",
+                touchAction: "pan-y",
+              }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.65}
+              onDragEnd={(e, info) => {
+                if (info.offset.x > 110) {
+                  handleRate("mastered");
+                } else if (info.offset.x < -110) {
+                  handleRate("forgot");
+                }
+              }}
+              onClick={() => {
+                if (Math.abs(x.get()) < 8) {
+                  handleFlip();
+                }
               }}
             >
-              {/* FRONT OF CARD */}
-              <div
-                className={`absolute inset-0 w-full h-full p-4 sm:p-7 rounded-3xl flex flex-col justify-between border shadow-xl bg-white dark:bg-[#0b1b38] select-none ${
-                  isMastered
-                    ? "border-emerald-500/40 ring-1 ring-emerald-500/20"
-                    : isNeedsReview
-                    ? "border-amber-500/40 ring-1 ring-amber-500/20"
-                    : "border-[var(--border-subtle)]"
-                }`}
+              {/* Card 3D Flip Layer with Clean GPU Rotation */}
+              <motion.div
+                className="w-full h-full relative rounded-2xl"
+                animate={{
+                  rotateY: isFlipped ? 180 : 0,
+                }}
+                transition={{
+                  duration: 0.44,
+                  ease: [0.23, 1, 0.32, 1],
+                }}
                 style={{
-                  backfaceVisibility: "hidden",
-                  WebkitBackfaceVisibility: "hidden",
-                  transform: "rotateY(0deg) translateZ(1px)",
-                  WebkitTransform: "rotateY(0deg) translateZ(1px)",
+                  transformStyle: "preserve-3d",
+                  WebkitTransformStyle: "preserve-3d",
                 }}
               >
-                {/* Header: Book No, Part of Speech, Chapter */}
-                <div className="flex items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-2 sm:pb-3">
-                  <div className="flex items-center gap-1.5 sm:gap-2">
-                    <span className="font-mono text-[11px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 rounded-md bg-[var(--brand-primary)]/10 text-[var(--brand-primary)]">
-                      #{String(currentCard.bookNumber).padStart(4, "0")}
-                    </span>
-                    <span className="text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded-full bg-[var(--surface-secondary)] border border-[var(--border-subtle)] text-[var(--text-secondary)]">
-                      {currentCard.partOfSpeech}
-                    </span>
-                  </div>
-                  <span className="text-[10px] sm:text-[11px] font-medium text-[var(--text-tertiary)] truncate max-w-[140px] sm:max-w-[200px]">
-                    {currentCard.section}
-                  </span>
-                </div>
-
-                {/* Center: Main Word & Audio Button */}
-                <div className="my-auto py-2 sm:py-4 text-center flex flex-col items-center justify-center">
-                  <div className="text-3xl xs:text-4xl sm:text-5xl font-bold tracking-tight text-[var(--text-primary)] mb-2 sm:mb-3">
-                    <RubyTerm
-                      rubyText={currentCard.ruby}
-                      fallbackText={currentCard.word}
-                      showFurigana={showFurigana}
-                      className="font-japanese"
-                    />
-                  </div>
-
-                  {/* Japanese Native Pronounce Button */}
-                  {speechAvailable && (
-                    <button
-                      onClick={(e) => speakJapanese(currentCard.word, e)}
-                      title="Dengarkan pelafalan asli"
-                      className={`mt-1 sm:mt-2 flex items-center gap-1.5 px-3 py-1 sm:py-1.5 rounded-full text-xs font-medium border transition-colors ${
-                        isSpeaking
-                          ? "border-sky-500 text-sky-500 bg-sky-50 dark:bg-sky-950/30 animate-pulse"
-                          : "border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--brand-primary)] hover:border-[var(--brand-primary)] bg-[var(--surface-secondary)]"
-                      }`}
-                    >
-                      <Volume2 className="w-3.5 h-3.5" />
-                      <span>Dengar Lafal</span>
-                    </button>
-                  )}
-
-                  {/* Collocation Teaser */}
-                  {currentCard.collocation && (
-                    <div className="mt-3 sm:mt-5 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-[var(--surface-secondary)] border border-[var(--border-subtle)] max-w-md w-full text-left sm:text-center">
-                      <div className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-[var(--brand-primary)] mb-0.5">
-                        連語・コロケーション (Pasangan Kata)
-                      </div>
-                      <div className="text-xs sm:text-sm font-japanese text-[var(--text-primary)] font-medium">
-                        <RubyTerm
-                          rubyText={currentCard.collocation.jpRuby}
-                          fallbackText={currentCard.collocation.jpRuby}
-                          showFurigana={showFurigana}
-                        />
-                      </div>
+                {/* ================= CARD FRONT ================= */}
+                <div
+                  className="absolute inset-0 w-full h-full rounded-2xl p-4 sm:p-7 md:p-8 flex flex-col justify-between border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)] select-none"
+                  style={{
+                    backfaceVisibility: "hidden",
+                    WebkitBackfaceVisibility: "hidden",
+                  }}
+                >
+                  {/* Header: Book Number + Part of Speech + Mastered Tag */}
+                  <div className="flex items-center justify-between gap-2 border-b border-[var(--border)] pb-2.5">
+                    <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+                      <span className="font-mono text-xs font-bold px-2 py-0.5 rounded-md bg-[var(--brand-primary)]/10 text-[var(--brand-primary)]">
+                        #{String(currentCard.bookNumber).padStart(4, "0")}
+                      </span>
+                      <span className="text-[11px] sm:text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[var(--surface-soft)] text-[var(--text-secondary)] border border-[var(--border)]">
+                        {currentCard.partOfSpeech}
+                      </span>
+                      {isMastered && (
+                        <span className="hidden xs:inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 font-medium shrink-0">
+                          <CheckCircle2 size={11} /> Hafal
+                        </span>
+                      )}
+                      {isReview && !isMastered && (
+                        <span className="hidden xs:inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-500 font-medium shrink-0">
+                          <AlertCircle size={11} /> Review
+                        </span>
+                      )}
                     </div>
-                  )}
-                </div>
 
-                {/* Bottom: Hint to Flip */}
-                <div className="pt-2 sm:pt-3 border-t border-[var(--border-subtle)] flex items-center justify-between text-[11px] sm:text-xs text-[var(--text-tertiary)]">
-                  <span className="hidden xs:inline">👈 Swipe Lupa | Hafal 👉</span>
-                  <span className="flex items-center gap-1 text-[var(--brand-primary)] font-semibold mx-auto xs:mx-0">
-                    Ketuk untuk arti ↻
-                  </span>
-                </div>
-              </div>
-
-              {/* BACK OF CARD */}
-              <div
-                className="absolute inset-0 w-full h-full p-4 sm:p-7 rounded-3xl flex flex-col justify-between border shadow-xl bg-white dark:bg-[#0b1b38] border-[var(--brand-primary)]/40 ring-1 ring-[var(--brand-primary)]/20 select-none overflow-y-auto"
-                style={{
-                  backfaceVisibility: "hidden",
-                  WebkitBackfaceVisibility: "hidden",
-                  transform: "rotateY(180deg) translateZ(1px)",
-                  WebkitTransform: "rotateY(180deg) translateZ(1px)",
-                  WebkitOverflowScrolling: "touch",
-                }}
-              >
-                {/* Header Back */}
-                <div className="flex items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs font-bold px-2 py-0.5 rounded-md bg-[var(--brand-primary)]/10 text-[var(--brand-primary)]">
-                      #{String(currentCard.bookNumber).padStart(4, "0")}
-                    </span>
-                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-[var(--surface-secondary)] text-[var(--text-secondary)]">
-                      {currentCard.partOfSpeech}
-                    </span>
+                    <div className="text-[11px] font-medium text-[var(--text-secondary)] truncate max-w-[140px] sm:max-w-none">
+                      {currentCard.section}
+                    </div>
                   </div>
-                  <button
-                    onClick={(e) => speakJapanese(currentCard.word, e)}
-                    className="flex items-center gap-1 text-xs text-[var(--brand-primary)] hover:underline font-medium"
-                  >
-                    <Volume2 className="w-3.5 h-3.5" />
-                    <span>Lafal Audio</span>
-                  </button>
-                </div>
 
-                {/* Content Details */}
-                <div className="my-auto py-2 space-y-3.5">
-                  {/* Word & Indonesian Meaning */}
-                  <div>
-                    <div className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)] font-japanese mb-1">
+                  {/* Center Content: Term & Furigana (Exact typography from FE Study) */}
+                  <div className="flex flex-col items-center justify-center text-center my-auto py-2 sm:py-4">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] font-sans leading-normal">
                       <RubyTerm
                         rubyText={currentCard.ruby}
                         fallbackText={currentCard.word}
-                        showFurigana={true}
+                        showFurigana={showFurigana}
                       />
+                    </h2>
+
+                    {/* Pronunciation Pill */}
+                    {speechAvailable && (
+                      <button
+                        type="button"
+                        onClick={(e) => speakJapanese(currentCard.word, e)}
+                        className={`mt-2 sm:mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[var(--border)] hover:border-[var(--brand-primary)] text-xs transition-colors ${
+                          isSpeaking
+                            ? "text-[var(--brand-primary)] border-[var(--brand-primary)] animate-pulse"
+                            : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                        }`}
+                        title="Dengarkan Pengucapan Asli (A)"
+                      >
+                        <Volume2 size={13} />
+                        <span>Dengar Lafal</span>
+                      </button>
+                    )}
+
+                    {/* Collocation Teaser (連語) */}
+                    {currentCard.collocation && (
+                      <div className="mt-3 sm:mt-4 px-3 sm:px-4 py-2 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)] max-w-md w-full text-center">
+                        <div className="text-[10px] uppercase font-bold tracking-wider text-[var(--brand-primary)] mb-0.5">
+                          連語・コロケーション (Pasangan Kata)
+                        </div>
+                        <div className="text-xs sm:text-sm font-sans font-medium text-[var(--text-primary)]">
+                          <RubyTerm
+                            rubyText={currentCard.collocation.jpRuby}
+                            fallbackText={currentCard.collocation.jpRuby}
+                            showFurigana={showFurigana}
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Footer Prompt */}
+                  <div className="flex items-center justify-between text-[11px] sm:text-xs text-[var(--text-secondary)] pt-3 sm:pt-4 border-t border-[var(--border)]">
+                    <span className="inline-flex items-center gap-1.5 opacity-70">
+                      <Sparkles size={12} className="text-[var(--brand-primary)]" />
+                      Active Recall
+                    </span>
+                    <span className="opacity-70 flex items-center gap-1">
+                      <Hand size={12} className="md:hidden" />
+                      <span className="md:hidden">Tap kartu atau swipe ↻</span>
+                      <span className="hidden md:inline">Swipe atau Spasi untuk balik ↵</span>
+                    </span>
+                  </div>
+                </div>
+
+                {/* ================= CARD BACK ================= */}
+                <div
+                  className="absolute inset-0 w-full h-full rounded-2xl p-4 sm:p-7 md:p-8 flex flex-col justify-between border border-[var(--glass-border)] bg-[var(--surface)] shadow-[var(--shadow)] select-none"
+                  style={{
+                    backfaceVisibility: "hidden",
+                    WebkitBackfaceVisibility: "hidden",
+                    transform: "rotateY(180deg)",
+                  }}
+                >
+                  {/* Header: Term Info & Audio */}
+                  <div className="flex items-center justify-between pb-2 sm:pb-2.5 border-b border-[var(--border)] gap-2">
+                    <div className="truncate flex items-center gap-1.5 min-w-0">
+                      <span className="font-mono text-xs font-bold px-2 py-0.5 rounded-md bg-[var(--brand-primary)]/10 text-[var(--brand-primary)]">
+                        #{String(currentCard.bookNumber).padStart(4, "0")}
+                      </span>
+                      <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-[var(--surface-soft)] text-[var(--text-secondary)]">
+                        {currentCard.partOfSpeech}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={(e) => speakJapanese(currentCard.word, e)}
+                        className={`p-1 rounded-md transition-colors shrink-0 ${
+                          isSpeaking
+                            ? "text-[var(--brand-primary)] bg-[var(--brand-primary)]/10 animate-pulse"
+                            : "text-[var(--text-secondary)] hover:text-[var(--brand-primary)] hover:bg-[var(--surface-soft)]"
+                        }`}
+                        title="Dengarkan Pengucapan Asli"
+                      >
+                        <Volume2 size={13} />
+                      </button>
                     </div>
-                    <div className="text-lg font-bold text-[var(--brand-primary)] leading-snug">
-                      {currentCard.meaningId}
-                    </div>
-                    <div className="text-xs text-[var(--text-tertiary)] italic">
-                      {currentCard.meaningEn}
+
+                    <div className="text-[10px] sm:text-xs text-[var(--text-secondary)] font-medium">
+                      Penjelasan & Contoh
                     </div>
                   </div>
 
-                  {/* Collocation Box (連語) */}
-                  {currentCard.collocation && (
-                    <div className="p-3 rounded-xl bg-amber-500/5 border border-amber-500/20 text-left">
-                      <div className="text-[11px] font-bold text-amber-700 dark:text-amber-300 flex items-center gap-1.5 mb-1">
-                        <span className="px-1.5 py-0.2 rounded bg-amber-500/20 text-[10px]">連語</span>
-                        <span>Pasangan Kata Wajib (Collocation):</span>
+                  {/* Center Content: Meaning + Collocation + Example */}
+                  <div className="flex flex-col gap-2.5 sm:gap-3 my-auto overflow-y-auto pr-1 py-1 max-h-[230px] sm:max-h-none">
+                    {/* Indonesian Meaning */}
+                    <div>
+                      <h3 className="text-lg sm:text-2xl font-bold text-[var(--brand-primary)] font-sans leading-snug">
+                        {currentCard.meaningId}
+                      </h3>
+                      {currentCard.meaningEn && (
+                        <p className="text-xs text-[var(--text-secondary)] mt-0.5 italic">
+                          {currentCard.meaningEn}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Collocation Box (連語) */}
+                    {currentCard.collocation && (
+                      <div className="p-2.5 sm:p-3 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)] shadow-xs text-left">
+                        <p className="text-[10px] sm:text-[11px] font-bold text-[var(--brand-primary)] uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                          <Sparkles size={12} />
+                          Pasangan Kata Wajib (連語):
+                        </p>
+                        <div className="text-xs sm:text-sm font-sans font-semibold text-[var(--text-primary)]">
+                          <RubyTerm
+                            rubyText={currentCard.collocation.jpRuby}
+                            fallbackText={currentCard.collocation.jpRuby}
+                            showFurigana={true}
+                          />
+                        </div>
+                        <div className="text-[11px] sm:text-xs text-[var(--text-secondary)] mt-0.5">
+                          → {currentCard.collocation.meaningId}
+                        </div>
                       </div>
-                      <div className="text-sm font-japanese font-semibold text-[var(--text-primary)]">
+                    )}
+
+                    {/* Example Sentence (例文) */}
+                    <div className="p-2.5 sm:p-3 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)] shadow-xs text-left">
+                      <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-bold text-[var(--brand-primary)] mb-1">
+                        <span className="flex items-center gap-1">
+                          <BookOpen size={12} />
+                          <span>例文 (Contoh Kalimat Resmi):</span>
+                        </span>
+                        {speechAvailable && (
+                          <button
+                            type="button"
+                            onClick={(e) => speakJapanese(currentCard.exampleSentence.jpRuby, e)}
+                            title="Dengarkan kalimat"
+                            className="text-xs text-[var(--text-secondary)] hover:text-[var(--brand-primary)] p-0.5"
+                          >
+                            <Volume2 size={12} />
+                          </button>
+                        )}
+                      </div>
+                      <div className="text-xs sm:text-sm font-sans text-[var(--text-primary)] leading-relaxed">
                         <RubyTerm
-                          rubyText={currentCard.collocation.jpRuby}
-                          fallbackText={currentCard.collocation.jpRuby}
+                          rubyText={currentCard.exampleSentence.jpRuby}
+                          fallbackText={currentCard.exampleSentence.jpRuby}
                           showFurigana={true}
                         />
                       </div>
-                      <div className="text-xs text-[var(--text-secondary)] mt-0.5">
-                        → {currentCard.collocation.meaningId}
+                      <div className="text-[11px] sm:text-xs text-[var(--text-secondary)] mt-1 pt-1 border-t border-[var(--border)]">
+                        {currentCard.exampleSentence.meaningId}
                       </div>
                     </div>
-                  )}
 
-                  {/* Example Sentence (例文) */}
-                  <div className="p-3 rounded-xl bg-[var(--surface-secondary)] border border-[var(--border-subtle)] text-left">
-                    <div className="flex items-center justify-between text-[11px] font-bold text-[var(--brand-primary)] mb-1">
-                      <span className="flex items-center gap-1">
-                        <BookOpen className="w-3 h-3" />
-                        <span>例文 (Contoh Kalimat Resmi):</span>
-                      </span>
-                      {speechAvailable && (
-                        <button
-                          onClick={(e) => speakJapanese(currentCard.exampleSentence.jpRuby, e)}
-                          title="Dengarkan kalimat"
-                          className="text-xs text-[var(--text-secondary)] hover:text-[var(--brand-primary)] p-0.5"
-                        >
-                          <Volume2 className="w-3.5 h-3.5" />
-                        </button>
-                      )}
-                    </div>
-                    <div className="text-sm font-japanese text-[var(--text-primary)] leading-relaxed">
-                      <RubyTerm
-                        rubyText={currentCard.exampleSentence.jpRuby}
-                        fallbackText={currentCard.exampleSentence.jpRuby}
-                        showFurigana={true}
-                      />
-                    </div>
-                    <div className="text-xs text-[var(--text-secondary)] mt-1 pt-1 border-t border-[var(--border-subtle)]">
-                      {currentCard.exampleSentence.meaningId}
-                    </div>
+                    {/* References (類 / 対 / 関 / 派) */}
+                    {currentCard.references && currentCard.references.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 pt-0.5">
+                        {currentCard.references.map((ref, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)]"
+                          >
+                            <span
+                              className={`font-bold px-1 rounded text-[9px] ${
+                                ref.label === "対"
+                                  ? "bg-rose-500/10 text-rose-500"
+                                  : ref.label === "類"
+                                  ? "bg-emerald-500/10 text-emerald-500"
+                                  : "bg-sky-500/10 text-sky-500"
+                              }`}
+                            >
+                              {ref.label}
+                            </span>
+                            <span className="font-sans font-medium text-[var(--text-primary)]">
+                              {ref.word}
+                            </span>
+                            <span className="text-[var(--text-secondary)] opacity-75">
+                              ({ref.meaningId})
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Usage Note */}
+                    {currentCard.usageNote && (
+                      <div className="text-[10px] sm:text-[11px] text-[var(--text-secondary)] bg-blue-500/5 border-l-2 border-blue-500 pl-2.5 py-1">
+                        💡 {currentCard.usageNote}
+                      </div>
+                    )}
                   </div>
 
-                  {/* References (類 / 対 / 関 / 派) */}
-                  {currentCard.references && currentCard.references.length > 0 && (
-                    <div className="flex flex-wrap gap-2 pt-1">
-                      {currentCard.references.map((ref, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg bg-[var(--surface-secondary)] border border-[var(--border-subtle)]"
-                        >
-                          <span
-                            className={`font-bold px-1.5 py-0.2 rounded text-[10px] ${
-                              ref.label === "対"
-                                ? "bg-rose-500/10 text-rose-600 dark:text-rose-400"
-                                : ref.label === "類"
-                                ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
-                                : "bg-sky-500/10 text-sky-600 dark:text-sky-400"
-                            }`}
-                          >
-                            {ref.label}
-                          </span>
-                          <span className="font-japanese font-medium text-[var(--text-primary)]">
-                            {ref.word}
-                          </span>
-                          <span className="text-[var(--text-tertiary)]">({ref.meaningId})</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Usage Note */}
-                  {currentCard.usageNote && (
-                    <div className="text-[11px] text-[var(--text-secondary)] bg-blue-500/5 border-l-2 border-blue-500 pl-2.5 py-1">
-                      💡 {currentCard.usageNote}
-                    </div>
-                  )}
+                  {/* Footer Notice */}
+                  <div className="text-center text-[10px] sm:text-[11px] text-[var(--text-secondary)] opacity-60 pt-2 border-t border-[var(--border)]">
+                    <span className="md:hidden">Pilih rating di bawah atau swipe</span>
+                    <span className="hidden md:inline">Beri penilaian (1: Lupa, 2: Ragu, 3: Kuasai)</span>
+                  </div>
                 </div>
-
-                {/* Bottom info */}
-                <div className="pt-1.5 text-center text-[10px] sm:text-xs text-[var(--text-tertiary)]">
-                  Pilih status pemahaman di bawah:
-                </div>
-              </div>
+              </motion.div>
             </motion.div>
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Rating Response Buttons */}
-      <div className="w-full grid grid-cols-3 gap-2 sm:gap-3 mt-3 sm:mt-4">
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            handleRate("forgot");
-          }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-3.5 px-2 sm:px-3 rounded-2xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-500/30 font-semibold transition-all active:scale-95 shadow-2xs"
-        >
-          <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-          <div className="text-center sm:text-left">
-            <div className="text-xs sm:text-sm font-bold">Lupa</div>
-            <div className="hidden sm:block text-[10px] opacity-75 font-normal">Tekan [1] · Review</div>
+      {/* Rating & Navigation Control Bar (Exact match with FE Study) */}
+      <div className="flex flex-col gap-3">
+        {isFlipped ? (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="grid grid-cols-3 gap-2 sm:gap-3"
+          >
+            <button
+              type="button"
+              onClick={() => handleRate("forgot")}
+              className="group flex flex-col items-center justify-center min-h-[50px] p-2.5 sm:p-3 rounded-xl border border-rose-500/30 hover:border-rose-500 bg-rose-500/5 hover:bg-rose-500/10 text-rose-500 transition-all shadow-sm active:scale-95 cursor-pointer"
+            >
+              <div className="flex items-center gap-1 font-bold text-xs sm:text-sm">
+                <AlertCircle size={15} /> Lupa
+              </div>
+              <span className="text-[10px] opacity-75 mt-0.5">Ulangi <span className="hidden md:inline">(1)</span></span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => handleRate("unsure")}
+              className="group flex flex-col items-center justify-center min-h-[50px] p-2.5 sm:p-3 rounded-xl border border-amber-500/30 hover:border-amber-500 bg-amber-500/5 hover:bg-amber-500/10 text-amber-500 transition-all shadow-sm active:scale-95 cursor-pointer"
+            >
+              <div className="flex items-center gap-1 font-bold text-xs sm:text-sm">
+                <HelpCircle size={15} /> Ragu
+              </div>
+              <span className="text-[10px] opacity-75 mt-0.5">Belum yakin <span className="hidden md:inline">(2)</span></span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => handleRate("mastered")}
+              className="group flex flex-col items-center justify-center min-h-[50px] p-2.5 sm:p-3 rounded-xl border border-emerald-500/30 hover:border-emerald-500 bg-emerald-500/5 hover:bg-emerald-500/10 text-emerald-500 transition-all shadow-sm active:scale-95 cursor-pointer"
+            >
+              <div className="flex items-center gap-1 font-bold text-xs sm:text-sm">
+                <CheckCircle2 size={15} /> Kuasai!
+              </div>
+              <span className="text-[10px] opacity-75 mt-0.5">Sudah hafal <span className="hidden md:inline">(3)</span></span>
+            </button>
+          </motion.div>
+        ) : (
+          <div className="flex items-center justify-between gap-2">
+            <button
+              type="button"
+              onClick={handlePrev}
+              disabled={currentIndex === 0}
+              className="inline-flex items-center justify-center gap-1 px-3 sm:px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none transition-all active:scale-95 shrink-0 cursor-pointer"
+              title="Kartu Sebelumnya"
+            >
+              <ChevronLeft size={16} />
+              <span className="hidden sm:inline">Sebelumnya</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={handleFlip}
+              className="flex-1 max-w-[240px] inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white text-xs font-bold tracking-wide shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer"
+            >
+              <RotateCcw size={14} />
+              <span>Balik Kartu</span>
+              <kbd className="hidden md:inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono bg-white/20 text-white/90">Space</kbd>
+            </button>
+
+            <button
+              type="button"
+              onClick={handleNext}
+              disabled={currentIndex === activeDeck.length - 1}
+              className="inline-flex items-center justify-center gap-1 px-3 sm:px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none transition-all active:scale-95 shrink-0 cursor-pointer"
+              title="Kartu Berikutnya"
+            >
+              <span className="hidden sm:inline">Berikutnya</span>
+              <ChevronRight size={16} />
+            </button>
           </div>
-        </button>
-
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            handleRate("unsure");
-          }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-3.5 px-2 sm:px-3 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30 font-semibold transition-all active:scale-95 shadow-2xs"
-        >
-          <HelpCircle className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-          <div className="text-center sm:text-left">
-            <div className="text-xs sm:text-sm font-bold">Ragu</div>
-            <div className="hidden sm:block text-[10px] opacity-75 font-normal">Tekan [2] · Ulangi</div>
-          </div>
-        </button>
-
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            handleRate("mastered");
-          }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-3.5 px-2 sm:px-3 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 font-semibold transition-all active:scale-95 shadow-2xs"
-        >
-          <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-          <div className="text-center sm:text-left">
-            <div className="text-xs sm:text-sm font-bold">Hafal!</div>
-            <div className="hidden sm:block text-[10px] opacity-75 font-normal">Tekan [3] · Paham</div>
-          </div>
-        </button>
-      </div>
-
-      {/* Prev / Next Bottom Controls */}
-      <div className="w-full flex items-center justify-between mt-2.5 sm:mt-4 px-1 text-xs text-[var(--text-secondary)]">
-        <button
-          disabled={currentIndex === 0}
-          onClick={handlePrev}
-          className="flex items-center gap-1 px-3 py-1.5 rounded-xl border border-[var(--border-subtle)] hover:bg-[var(--surface-secondary)] disabled:opacity-30 disabled:pointer-events-none transition-colors text-xs"
-        >
-          <ChevronLeft className="w-3.5 h-3.5" />
-          <span>Sebelumnya</span>
-        </button>
-
-        <div className="hidden sm:flex items-center gap-2 text-[11px] text-[var(--text-tertiary)]">
-          <span>Shortcuts:</span>
-          <kbd className="px-1.5 py-0.5 bg-[var(--surface-secondary)] border border-[var(--border-subtle)] rounded text-[10px]">
-            Space
-          </kbd>
-          <span>Balik</span>
-          <kbd className="px-1.5 py-0.5 bg-[var(--surface-secondary)] border border-[var(--border-subtle)] rounded text-[10px]">
-            1 / 2 / 3
-          </kbd>
-          <span>Nilai</span>
-        </div>
-
-        <button
-          disabled={currentIndex === activeDeck.length - 1}
-          onClick={handleNext}
-          className="flex items-center gap-1 px-3 py-1.5 rounded-xl border border-[var(--border-subtle)] hover:bg-[var(--surface-secondary)] disabled:opacity-30 disabled:pointer-events-none transition-colors text-xs"
-        >
-          <span>Berikutnya</span>
-          <ChevronRight className="w-3.5 h-3.5" />
-        </button>
+        )}
       </div>
     </div>
   );

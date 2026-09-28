@@ -1,9 +1,10 @@
-// FE Study Hub — Service Worker (Offline PWA)
-const CACHE_NAME = "fe-study-hub-v14";
+// Kaidevlab — Service Worker (Offline PWA & Ultra-fast Offline Caching)
+const CACHE_NAME = "kaidevlab-pwa-v15";
 
 const PRECACHE_URLS = [
   "/learn",
   "/tools/fe-study",
+  "/tools/tango-n3",
   "/favicon.ico",
   "/brand/kaidevlab-icon-192.png",
   "/brand/kaidevlab-icon-512.png",
@@ -38,7 +39,7 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Fetch Event: Network-first for navigation and static code assets, fallback to cache
+// Fetch Event: Cache-First for immutable static assets, Network-first with fast timeout for HTML
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
 
@@ -47,11 +48,15 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Next.js static assets (_next/static/css, _next/static/chunks) -> Network-first to always receive new builds
+  // 1. Next.js immutable static assets (_next/static/css, _next/static/chunks)
+  // These files are hashed and never change. Cache-First ensures instant (<10ms) loading on slow networks.
   if (url.pathname.startsWith("/_next/static/")) {
     event.respondWith(
-      fetch(event.request)
-        .then((networkResponse) => {
+      caches.match(event.request).then((cachedResponse) => {
+        if (cachedResponse) {
+          return cachedResponse;
+        }
+        return fetch(event.request).then((networkResponse) => {
           if (networkResponse && networkResponse.status === 200) {
             const responseClone = networkResponse.clone();
             caches.open(CACHE_NAME).then((cache) => {
@@ -59,14 +64,22 @@ self.addEventListener("fetch", (event) => {
             });
           }
           return networkResponse;
-        })
-        .catch(() => caches.match(event.request))
+        });
+      })
     );
     return;
   }
 
-  // Brand images and icons -> Cache-first with network fallback
-  if (url.pathname.startsWith("/brand/") || url.pathname.startsWith("/icons/")) {
+  // 2. Brand images, media, and icons -> Cache-first with network fallback
+  if (
+    url.pathname.startsWith("/brand/") ||
+    url.pathname.startsWith("/icons/") ||
+    url.pathname.startsWith("/media/") ||
+    url.pathname.endsWith(".png") ||
+    url.pathname.endsWith(".webp") ||
+    url.pathname.endsWith(".svg") ||
+    url.pathname.endsWith(".ico")
+  ) {
     event.respondWith(
       caches.match(event.request).then((cachedResponse) => {
         if (cachedResponse) return cachedResponse;
@@ -84,25 +97,53 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // HTML page navigations -> Network-first with offline cache fallback
+  // 3. HTML page navigations -> Network-first with 2s timeout fallback to cache
   if (event.request.mode === "navigate") {
     event.respondWith(
-      fetch(event.request)
-        .then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200) {
-            const responseClone = networkResponse.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, responseClone);
+      new Promise((resolve) => {
+        let didResolve = false;
+
+        // Set a 2-second timeout for slow / hanging mobile connections
+        const timer = setTimeout(() => {
+          if (!didResolve) {
+            caches.match(event.request).then((cached) => {
+              if (cached) {
+                didResolve = true;
+                resolve(cached);
+              }
             });
           }
-          return networkResponse;
-        })
-        .catch(() => {
-          return caches.match(event.request).then((cachedResponse) => {
-            if (cachedResponse) return cachedResponse;
-            return caches.match("/learn");
+        }, 2000);
+
+        fetch(event.request)
+          .then((networkResponse) => {
+            clearTimeout(timer);
+            if (!didResolve) {
+              didResolve = true;
+              if (networkResponse && networkResponse.status === 200) {
+                const responseClone = networkResponse.clone();
+                caches.open(CACHE_NAME).then((cache) => {
+                  cache.put(event.request, responseClone);
+                });
+              }
+              resolve(networkResponse);
+            }
+          })
+          .catch(() => {
+            clearTimeout(timer);
+            if (!didResolve) {
+              didResolve = true;
+              caches.match(event.request).then((cachedResponse) => {
+                if (cachedResponse) {
+                  resolve(cachedResponse);
+                } else {
+                  // Fallback to offline precached entry point if matching route not found
+                  resolve(caches.match("/tools/tango-n3").then((fb) => fb || caches.match("/learn")));
+                }
+              });
+            }
           });
-        })
+      })
     );
     return;
   }

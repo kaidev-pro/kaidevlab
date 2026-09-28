@@ -179,57 +179,56 @@ export function TangoN3Client() {
     totalAvailable > 0 ? Math.round((masteredCount / totalAvailable) * 100) : 0;
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 py-8 sm:py-12">
+    <div className={`w-full max-w-5xl mx-auto ${activeMode ? "px-2.5 sm:px-4 py-2 sm:py-6" : "px-4 py-6 sm:py-12"}`}>
       {/* Top Breadcrumb & Status */}
-      <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-        <a
-          href="/tools/fe-study/"
-          className="inline-flex items-center gap-1.5 text-xs text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
-        >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Kaidevlab Tools</span>
-        </a>
+      {!activeMode && (
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+          <a
+            href="/tools/fe-study/"
+            className="inline-flex items-center gap-1.5 text-xs text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Kaidevlab Tools</span>
+          </a>
 
-        {/* Streak indicator */}
-        {progress.streak > 0 && (
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-semibold">
-            <Flame className="w-4 h-4 fill-amber-500" />
-            <span>Streak {progress.streak} Hari</span>
-          </div>
-        )}
-      </div>
+          {/* Streak indicator */}
+          {progress.streak > 0 && (
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-semibold">
+              <Flame className="w-4 h-4 fill-amber-500" />
+              <span>Streak {progress.streak} Hari</span>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Main Study Screen (Active Session) */}
       {activeMode ? (
-        <div className="space-y-6">
-          <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-4">
+        <div className="space-y-3 sm:space-y-6">
+          <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-2.5 sm:pb-3">
             <button
               onClick={() => setActiveMode(null)}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl border border-[var(--border-subtle)] hover:bg-[var(--surface-secondary)] text-xs font-medium text-[var(--text-secondary)] transition-colors"
+              className="inline-flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-xl border border-[var(--border-subtle)] hover:bg-[var(--surface-secondary)] text-xs font-medium text-[var(--text-secondary)] transition-colors"
             >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Keluar Sesi</span>
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Keluar</span>
             </button>
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-[var(--brand-primary)]">
+            <div className="text-center truncate px-2">
+              <div className="flex items-center justify-center gap-1.5">
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--brand-primary)] truncate max-w-[130px] sm:max-w-none">
                   {activeMode}
                 </span>
-                <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${
+                <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider shrink-0 ${
                   sessionType === "quiz"
                     ? "bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/30"
                     : "bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/30"
                 }`}>
-                  {sessionType === "quiz" ? "📝 Kuis CBT 4-Pilihan" : "🗂️ Flashcards"}
+                  {sessionType === "quiz" ? "📝 Kuis" : "🗂️ Flashcard"}
                 </span>
               </div>
-              <div className="text-xs text-[var(--text-tertiary)] mt-0.5">
-                {activeCards.length} Kartu Kosakata
-              </div>
             </div>
-            <div className="w-20 text-right">
+            <div className="text-right shrink-0">
               <span className="text-xs font-mono font-bold text-[var(--text-secondary)]">
-                JLPT N3
+                {activeCards.length} Kartu
               </span>
             </div>
           </div>

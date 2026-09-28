@@ -382,58 +382,58 @@ export function TangoFlashcardView({
   return (
     <div className="w-full max-w-2xl mx-auto flex flex-col items-center">
       {/* Top Utility Bar */}
-      <div className="w-full flex items-center justify-between gap-3 mb-4 px-2 text-xs text-[var(--text-secondary)]">
+      <div className="w-full flex items-center justify-between gap-2 mb-3 px-1 text-xs text-[var(--text-secondary)]">
         {/* Progress Counter & Streak */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           <span className="font-mono font-bold text-[var(--text-primary)] text-sm">
             {currentIndex + 1}
           </span>
-          <span>/</span>
-          <span>{activeDeck.length}</span>
+          <span className="text-[var(--text-tertiary)]">/</span>
+          <span className="text-[var(--text-tertiary)]">{activeDeck.length}</span>
 
           {streak > 0 && (
-            <span className="flex items-center gap-1 ml-2 px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 font-medium">
-              <Flame className="w-3.5 h-3.5 fill-amber-500" />
-              <span>{streak} Hari</span>
+            <span className="flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 font-semibold text-[10px] sm:text-xs">
+              <Flame className="w-3 h-3 fill-amber-500" />
+              <span>{streak}<span className="hidden sm:inline"> Hari</span></span>
             </span>
           )}
         </div>
 
         {/* Action Toggles: Auto-Audio, Furigana, Star, Sound */}
-        <div className="flex items-center gap-1.5 sm:gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
           {/* Auto-Speech Toggle */}
           <button
             onClick={() => setAutoSpeakEnabled(!autoSpeakEnabled)}
-            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-medium transition-colors ${
+            className={`flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-lg border text-[10px] sm:text-[11px] font-medium transition-colors ${
               autoSpeakEnabled
-                ? "bg-sky-500/10 border-sky-500/30 text-sky-600 dark:text-sky-400"
+                ? "bg-sky-500/10 border-sky-500/30 text-sky-600 dark:text-sky-400 font-semibold"
                 : "border-[var(--border-subtle)] text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"
             }`}
             title="Otomatis putar audio saat kartu baru muncul"
           >
-            <Zap className="w-3 h-3" />
-            <span>Auto-Lafal {autoSpeakEnabled ? "ON" : "OFF"}</span>
+            <Zap className="w-3 h-3 text-sky-500" />
+            <span>Auto<span className="hidden sm:inline">-Lafal</span> {autoSpeakEnabled ? "ON" : "OFF"}</span>
           </button>
 
           {/* Furigana Toggle */}
           <button
             onClick={() => setShowFurigana((prev) => !prev)}
-            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-medium transition-colors ${
+            className={`flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-lg border text-[10px] sm:text-[11px] font-medium transition-colors ${
               showFurigana
-                ? "bg-[var(--brand-primary)]/10 border-[var(--brand-primary)]/30 text-[var(--brand-primary)]"
+                ? "bg-[var(--brand-primary)]/10 border-[var(--brand-primary)]/30 text-[var(--brand-primary)] font-semibold"
                 : "border-[var(--border-subtle)] text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"
             }`}
             title="Aktif/Nonaktifkan Furigana (F)"
           >
             {showFurigana ? <Eye className="w-3 h-3" /> : <EyeOff className="w-3 h-3" />}
-            <span>Furigana</span>
+            <span className="hidden xs:inline">Furigana</span>
           </button>
 
           {/* Favorite Star */}
           {onToggleStar && (
             <button
               onClick={() => onToggleStar(currentCard.id)}
-              className={`p-1.5 rounded-lg border border-[var(--border-subtle)] hover:bg-[var(--surface-secondary)] transition-colors ${
+              className={`p-1 sm:p-1.5 rounded-lg border border-[var(--border-subtle)] hover:bg-[var(--surface-secondary)] transition-colors ${
                 isStarred ? "text-yellow-500 bg-yellow-500/10" : "text-[var(--text-tertiary)]"
               }`}
               title="Tandai Favorit (S)"
@@ -445,7 +445,7 @@ export function TangoFlashcardView({
           {/* Sound FX Toggle */}
           <button
             onClick={() => setSoundEnabled((prev) => !prev)}
-            className="p-1.5 rounded-lg border border-[var(--border-subtle)] text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
+            className="p-1 sm:p-1.5 rounded-lg border border-[var(--border-subtle)] text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
             title={soundEnabled ? "Nonaktifkan Efek Suara" : "Aktifkan Efek Suara"}
           >
             {soundEnabled ? <Volume2 className="w-3.5 h-3.5" /> : <VolumeX className="w-3.5 h-3.5" />}
@@ -454,7 +454,7 @@ export function TangoFlashcardView({
       </div>
 
       {/* Progress Bar */}
-      <div className="w-full h-1.5 bg-[var(--surface-secondary)] rounded-full overflow-hidden mb-6">
+      <div className="w-full h-1.5 bg-[var(--surface-secondary)] rounded-full overflow-hidden mb-3 sm:mb-5">
         <div
           className="h-full bg-[var(--brand-primary)] transition-all duration-300 rounded-full"
           style={{ width: `${((currentIndex + 1) / activeDeck.length) * 100}%` }}
@@ -463,7 +463,7 @@ export function TangoFlashcardView({
 
       {/* FLASHCARD CONTAINER WITH 3D DECK STACK & SWIPE */}
       <div
-        className="w-full relative h-[480px] sm:h-[510px] select-none"
+        className="w-full relative h-[380px] xs:h-[410px] sm:h-[480px] select-none"
         style={{ perspective: "1400px" }}
       >
         {/* Background Deck Stack: 2 Clean Layered Cards Underneath */}
@@ -542,7 +542,7 @@ export function TangoFlashcardView({
             >
               {/* FRONT OF CARD */}
               <div
-                className={`absolute inset-0 w-full h-full p-6 sm:p-8 rounded-3xl flex flex-col justify-between border shadow-2xl bg-white dark:bg-[#0b1b38] select-none ${
+                className={`absolute inset-0 w-full h-full p-4 sm:p-7 rounded-3xl flex flex-col justify-between border shadow-xl bg-white dark:bg-[#0b1b38] select-none ${
                   isMastered
                     ? "border-emerald-500/40 ring-1 ring-emerald-500/20"
                     : isNeedsReview
@@ -557,23 +557,23 @@ export function TangoFlashcardView({
                 }}
               >
                 {/* Header: Book No, Part of Speech, Chapter */}
-                <div className="flex items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-3">
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs font-bold px-2 py-0.5 rounded-md bg-[var(--brand-primary)]/10 text-[var(--brand-primary)]">
+                <div className="flex items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-2 sm:pb-3">
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <span className="font-mono text-[11px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 rounded-md bg-[var(--brand-primary)]/10 text-[var(--brand-primary)]">
                       #{String(currentCard.bookNumber).padStart(4, "0")}
                     </span>
-                    <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[var(--surface-secondary)] border border-[var(--border-subtle)] text-[var(--text-secondary)]">
+                    <span className="text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded-full bg-[var(--surface-secondary)] border border-[var(--border-subtle)] text-[var(--text-secondary)]">
                       {currentCard.partOfSpeech}
                     </span>
                   </div>
-                  <span className="text-[11px] font-medium text-[var(--text-tertiary)] truncate max-w-[200px]">
+                  <span className="text-[10px] sm:text-[11px] font-medium text-[var(--text-tertiary)] truncate max-w-[140px] sm:max-w-[200px]">
                     {currentCard.section}
                   </span>
                 </div>
 
                 {/* Center: Main Word & Audio Button */}
-                <div className="my-auto py-4 text-center flex flex-col items-center justify-center">
-                  <div className="text-4xl sm:text-5xl font-bold tracking-tight text-[var(--text-primary)] mb-3">
+                <div className="my-auto py-2 sm:py-4 text-center flex flex-col items-center justify-center">
+                  <div className="text-3xl xs:text-4xl sm:text-5xl font-bold tracking-tight text-[var(--text-primary)] mb-2 sm:mb-3">
                     <RubyTerm
                       rubyText={currentCard.ruby}
                       fallbackText={currentCard.word}
@@ -586,25 +586,25 @@ export function TangoFlashcardView({
                   {speechAvailable && (
                     <button
                       onClick={(e) => speakJapanese(currentCard.word, e)}
-                      title="Dengarkan pelafalan asli (A)"
-                      className={`mt-2 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium border transition-colors ${
+                      title="Dengarkan pelafalan asli"
+                      className={`mt-1 sm:mt-2 flex items-center gap-1.5 px-3 py-1 sm:py-1.5 rounded-full text-xs font-medium border transition-colors ${
                         isSpeaking
                           ? "border-sky-500 text-sky-500 bg-sky-50 dark:bg-sky-950/30 animate-pulse"
                           : "border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--brand-primary)] hover:border-[var(--brand-primary)] bg-[var(--surface-secondary)]"
                       }`}
                     >
                       <Volume2 className="w-3.5 h-3.5" />
-                      <span>Dengar Pelafalan (音声)</span>
+                      <span>Dengar Lafal</span>
                     </button>
                   )}
 
                   {/* Collocation Teaser */}
                   {currentCard.collocation && (
-                    <div className="mt-6 px-4 py-2.5 rounded-xl bg-[var(--surface-secondary)] border border-[var(--border-subtle)] max-w-md w-full">
-                      <div className="text-[10px] uppercase font-bold tracking-wider text-[var(--brand-primary)] mb-1">
+                    <div className="mt-3 sm:mt-5 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-[var(--surface-secondary)] border border-[var(--border-subtle)] max-w-md w-full text-left sm:text-center">
+                      <div className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-[var(--brand-primary)] mb-0.5">
                         連語・コロケーション (Pasangan Kata)
                       </div>
-                      <div className="text-sm font-japanese text-[var(--text-primary)] font-medium">
+                      <div className="text-xs sm:text-sm font-japanese text-[var(--text-primary)] font-medium">
                         <RubyTerm
                           rubyText={currentCard.collocation.jpRuby}
                           fallbackText={currentCard.collocation.jpRuby}
@@ -616,22 +616,23 @@ export function TangoFlashcardView({
                 </div>
 
                 {/* Bottom: Hint to Flip */}
-                <div className="pt-3 border-t border-[var(--border-subtle)] flex items-center justify-between text-xs text-[var(--text-tertiary)]">
-                  <span>Swipe kanan: Hafal / kiri: Lupa</span>
-                  <span className="flex items-center gap-1 text-[var(--brand-primary)] font-semibold">
-                    Ketuk kartu untuk melihat arti →
+                <div className="pt-2 sm:pt-3 border-t border-[var(--border-subtle)] flex items-center justify-between text-[11px] sm:text-xs text-[var(--text-tertiary)]">
+                  <span className="hidden xs:inline">👈 Swipe Lupa | Hafal 👉</span>
+                  <span className="flex items-center gap-1 text-[var(--brand-primary)] font-semibold mx-auto xs:mx-0">
+                    Ketuk untuk arti ↻
                   </span>
                 </div>
               </div>
 
               {/* BACK OF CARD */}
               <div
-                className="absolute inset-0 w-full h-full p-6 sm:p-8 rounded-3xl flex flex-col justify-between border shadow-2xl bg-white dark:bg-[#0b1b38] border-[var(--brand-primary)]/40 ring-1 ring-[var(--brand-primary)]/20 select-none overflow-y-auto"
+                className="absolute inset-0 w-full h-full p-4 sm:p-7 rounded-3xl flex flex-col justify-between border shadow-xl bg-white dark:bg-[#0b1b38] border-[var(--brand-primary)]/40 ring-1 ring-[var(--brand-primary)]/20 select-none overflow-y-auto"
                 style={{
                   backfaceVisibility: "hidden",
                   WebkitBackfaceVisibility: "hidden",
                   transform: "rotateY(180deg) translateZ(1px)",
                   WebkitTransform: "rotateY(180deg) translateZ(1px)",
+                  WebkitOverflowScrolling: "touch",
                 }}
               >
                 {/* Header Back */}
@@ -758,8 +759,8 @@ export function TangoFlashcardView({
                 </div>
 
                 {/* Bottom info */}
-                <div className="pt-2 text-center text-xs text-[var(--text-tertiary)]">
-                  Pilih tingkat pemahamanmu di bawah untuk lanjut ke kartu berikutnya
+                <div className="pt-1.5 text-center text-[10px] sm:text-xs text-[var(--text-tertiary)]">
+                  Pilih status pemahaman di bawah:
                 </div>
               </div>
             </motion.div>
@@ -768,18 +769,18 @@ export function TangoFlashcardView({
       </div>
 
       {/* Rating Response Buttons */}
-      <div className="w-full grid grid-cols-3 gap-2.5 sm:gap-3 mt-5">
+      <div className="w-full grid grid-cols-3 gap-2 sm:gap-3 mt-3 sm:mt-4">
         <button
           onClick={(e) => {
             e.stopPropagation();
             handleRate("forgot");
           }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-2 py-3 px-3 rounded-2xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-500/30 font-semibold transition-all active:scale-95 shadow-2xs"
+          className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-3.5 px-2 sm:px-3 rounded-2xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-500/30 font-semibold transition-all active:scale-95 shadow-2xs"
         >
-          <AlertCircle className="w-5 h-5 shrink-0" />
+          <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
           <div className="text-center sm:text-left">
-            <div className="text-xs sm:text-sm font-bold">Lupa / Belum</div>
-            <div className="text-[10px] opacity-75 font-normal">Tekan [1] · Review</div>
+            <div className="text-xs sm:text-sm font-bold">Lupa</div>
+            <div className="hidden sm:block text-[10px] opacity-75 font-normal">Tekan [1] · Review</div>
           </div>
         </button>
 
@@ -788,12 +789,12 @@ export function TangoFlashcardView({
             e.stopPropagation();
             handleRate("unsure");
           }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-2 py-3 px-3 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30 font-semibold transition-all active:scale-95 shadow-2xs"
+          className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-3.5 px-2 sm:px-3 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30 font-semibold transition-all active:scale-95 shadow-2xs"
         >
-          <HelpCircle className="w-5 h-5 shrink-0" />
+          <HelpCircle className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
           <div className="text-center sm:text-left">
-            <div className="text-xs sm:text-sm font-bold">Ragu-ragu</div>
-            <div className="text-[10px] opacity-75 font-normal">Tekan [2] · Ulangi</div>
+            <div className="text-xs sm:text-sm font-bold">Ragu</div>
+            <div className="hidden sm:block text-[10px] opacity-75 font-normal">Tekan [2] · Ulangi</div>
           </div>
         </button>
 
@@ -802,24 +803,24 @@ export function TangoFlashcardView({
             e.stopPropagation();
             handleRate("mastered");
           }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-2 py-3 px-3 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 font-semibold transition-all active:scale-95 shadow-2xs"
+          className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-3.5 px-2 sm:px-3 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 font-semibold transition-all active:scale-95 shadow-2xs"
         >
-          <CheckCircle2 className="w-5 h-5 shrink-0" />
+          <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
           <div className="text-center sm:text-left">
-            <div className="text-xs sm:text-sm font-bold">Sudah Hafal!</div>
-            <div className="text-[10px] opacity-75 font-normal">Tekan [3] · Paham</div>
+            <div className="text-xs sm:text-sm font-bold">Hafal!</div>
+            <div className="hidden sm:block text-[10px] opacity-75 font-normal">Tekan [3] · Paham</div>
           </div>
         </button>
       </div>
 
       {/* Prev / Next Bottom Controls */}
-      <div className="w-full flex items-center justify-between mt-4 px-2 text-xs text-[var(--text-secondary)]">
+      <div className="w-full flex items-center justify-between mt-2.5 sm:mt-4 px-1 text-xs text-[var(--text-secondary)]">
         <button
           disabled={currentIndex === 0}
           onClick={handlePrev}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[var(--border-subtle)] hover:bg-[var(--surface-secondary)] disabled:opacity-30 disabled:pointer-events-none transition-colors"
+          className="flex items-center gap-1 px-3 py-1.5 rounded-xl border border-[var(--border-subtle)] hover:bg-[var(--surface-secondary)] disabled:opacity-30 disabled:pointer-events-none transition-colors text-xs"
         >
-          <ChevronLeft className="w-4 h-4" />
+          <ChevronLeft className="w-3.5 h-3.5" />
           <span>Sebelumnya</span>
         </button>
 
@@ -833,19 +834,15 @@ export function TangoFlashcardView({
             1 / 2 / 3
           </kbd>
           <span>Nilai</span>
-          <kbd className="px-1.5 py-0.5 bg-[var(--surface-secondary)] border border-[var(--border-subtle)] rounded text-[10px]">
-            A
-          </kbd>
-          <span>Audio</span>
         </div>
 
         <button
           disabled={currentIndex === activeDeck.length - 1}
           onClick={handleNext}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[var(--border-subtle)] hover:bg-[var(--surface-secondary)] disabled:opacity-30 disabled:pointer-events-none transition-colors"
+          className="flex items-center gap-1 px-3 py-1.5 rounded-xl border border-[var(--border-subtle)] hover:bg-[var(--surface-secondary)] disabled:opacity-30 disabled:pointer-events-none transition-colors text-xs"
         >
           <span>Berikutnya</span>
-          <ChevronRight className="w-4 h-4" />
+          <ChevronRight className="w-3.5 h-3.5" />
         </button>
       </div>
     </div>

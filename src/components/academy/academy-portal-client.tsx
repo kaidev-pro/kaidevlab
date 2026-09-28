@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import {
   BookOpen,
   Sparkles,
@@ -26,11 +26,25 @@ import {
   Star,
   Copy,
   Check,
+  Download,
+  Upload,
+  AlertCircle,
+  X,
+  RefreshCw,
 } from "lucide-react";
 import { loadTangoProgress } from "@/lib/tango-n3-storage";
 import { loadStudyProgress } from "@/lib/fe-study-storage";
 import { TANGO_N3_CARDS } from "@/data/tango-n3-data";
 import { FE_CARDS } from "@/data/fe-study-data";
+import {
+  downloadFullBackupFile,
+  restoreFullBackup,
+  encodeCompactSyncToken,
+  decodeCompactSyncToken,
+  applyCompactSyncPayload,
+  generateQrCodeDataUrl,
+  CompactSyncPayload,
+} from "@/lib/cross-device-sync";
 import { motion, AnimatePresence } from "framer-motion";
 
 type TrackFilter = "all" | "japanese" | "english" | "web" | "ai" | "library";
@@ -40,11 +54,18 @@ export function AcademyPortalClient() {
   const [tangoStats, setTangoStats] = useState({ mastered: 0, total: 1800, streak: 0 });
   const [feStats, setFeStats] = useState({ mastered: 0, total: 199, streak: 0 });
   const [syncModalOpen, setSyncModalOpen] = useState(false);
+  const [syncTab, setSyncTab] = useState<"qr" | "file">("qr");
+  const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
+  const [syncUrl, setSyncUrl] = useState<string>("");
+  const [copiedSyncLink, setCopiedSyncLink] = useState(false);
   const [copiedSyncCode, setCopiedSyncCode] = useState(false);
+  const [restoreMessage, setRestoreMessage] = useState<{ text: string; error?: boolean } | null>(null);
+  const [incomingSync, setIncomingSync] = useState<CompactSyncPayload | null>(null);
+  const [appliedSyncSuccess, setAppliedSyncSuccess] = useState(false);
   const [cadetId, setCadetId] = useState("KAI-PASS-7829");
 
-  // Load live statistics from localStorage
-  useEffect(() => {
+  // Reload live statistics
+  const reloadStats = useCallback(() => {
     try {
       const tProg = loadTangoProgress();
       setTangoStats({
@@ -60,7 +81,6 @@ export function AcademyPortalClient() {
         streak: feProg.streak || 0,
       });
 
-      // Generate or retrieve persistent Cadet ID
       const savedId = localStorage.getItem("kaidevlab_cadet_id");
       if (savedId) {
         setCadetId(savedId);
@@ -71,6 +91,82 @@ export function AcademyPortalClient() {
       }
     } catch {}
   }, []);
+
+  useEffect(() => {
+    reloadStats();
+    window.addEventListener("storage", reloadStats);
+    return () => window.removeEventListener("storage", reloadStats);
+  }, [reloadStats]);
+
+  // Check for incoming sync in URL (?sync=...)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const syncParam = params.get("sync");
+      if (syncParam) {
+        const decoded = decodeCompactSyncToken(syncParam);
+        if (decoded) {
+          setIncomingSync(decoded);
+        }
+      }
+    } catch {}
+  }, []);
+
+  // Generate QR code when modal opens
+  useEffect(() => {
+    if (syncModalOpen) {
+      try {
+        const token = encodeCompactSyncToken();
+        const base = typeof window !== "undefined" ? window.location.origin : "https://kaidevlab.com";
+        const full = `${base}/learn/?sync=${encodeURIComponent(token)}`;
+        setSyncUrl(full);
+        generateQrCodeDataUrl(full).then(setQrDataUrl);
+      } catch (err) {
+        console.error("Failed to generate QR sync URL", err);
+      }
+    }
+  }, [syncModalOpen]);
+
+  const handleApplyIncomingSync = () => {
+    if (!incomingSync) return;
+    applyCompactSyncPayload(incomingSync);
+    setIncomingSync(null);
+    setAppliedSyncSuccess(true);
+    setTimeout(() => setAppliedSyncSuccess(false), 4000);
+
+    if (typeof window !== "undefined") {
+      window.history.replaceState({}, "", window.location.pathname);
+    }
+    reloadStats();
+  };
+
+  const handleCopySyncLink = () => {
+    if (typeof navigator !== "undefined" && navigator.clipboard && syncUrl) {
+      navigator.clipboard.writeText(syncUrl);
+      setCopiedSyncLink(true);
+      setTimeout(() => setCopiedSyncLink(false), 2000);
+    }
+  };
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const content = event.target?.result as string;
+      if (content) {
+        const res = restoreFullBackup(content);
+        if (res.success) {
+          setRestoreMessage({ text: res.message });
+          reloadStats();
+        } else {
+          setRestoreMessage({ text: res.message, error: true });
+        }
+      }
+    };
+    reader.readAsText(file);
+  };
 
   const totalMastered = tangoStats.mastered + feStats.mastered;
   const globalStreak = Math.max(tangoStats.streak, feStats.streak, 1);
@@ -442,65 +538,259 @@ export function AcademyPortalClient() {
       {/* ==================================================== */}
       <AnimatePresence>
         {syncModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
             <motion.div
               initial={{ opacity: 0, scale: 0.94 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.94 }}
-              className="w-full max-w-md bg-[var(--surface-primary)] border border-[var(--border-subtle)] rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl relative"
+              className="w-full max-w-lg bg-[var(--surface-primary)] border border-[var(--border-subtle)] rounded-3xl p-6 sm:p-7 space-y-6 shadow-2xl relative max-h-[92vh] overflow-y-auto"
             >
-              <div className="text-center space-y-2">
-                <div className="w-14 h-14 mx-auto rounded-2xl bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] flex items-center justify-center">
-                  <QrCode className="w-7 h-7" />
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-2xl bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] flex items-center justify-center">
+                    <QrCode className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base sm:text-lg font-bold text-[var(--text-primary)]">
+                      Sinkronisasi Antar-Perangkat
+                    </h3>
+                    <p className="text-xs text-[var(--text-tertiary)]">
+                      Hubungkan HP dan laptop tanpa registrasi akun
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-[var(--text-primary)]">
-                  Hubungkan ke Perangkat Lain
-                </h3>
-                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                  Buka Kaidevlab di HP atau laptop barumu, lalu gunakan Research Pass ID ini untuk
-                  melanjutkan progress belajarmu tanpa harus mulai dari nol.
-                </p>
-              </div>
 
-              {/* Cadet Pass Code Box */}
-              <div className="p-4 rounded-2xl bg-[var(--surface-secondary)] border border-[var(--border-subtle)] flex items-center justify-between">
-                <div>
-                  <span className="text-[10px] uppercase font-bold text-[var(--text-tertiary)] block">
-                    Research Pass ID
-                  </span>
-                  <span className="font-mono text-base font-black text-[var(--brand-primary)]">
-                    {cadetId}
-                  </span>
-                </div>
                 <button
                   type="button"
-                  onClick={handleCopySyncCode}
-                  className="px-3 py-1.5 rounded-xl bg-[var(--surface-primary)] border border-[var(--border-subtle)] text-xs font-bold flex items-center gap-1.5 hover:bg-[var(--surface-secondary)] text-[var(--text-primary)] transition-colors"
+                  onClick={() => setSyncModalOpen(false)}
+                  className="p-1.5 rounded-xl text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-secondary)] transition-colors"
                 >
-                  {copiedSyncCode ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
-                  <span>{copiedSyncCode ? "Tersalin!" : "Salin ID"}</span>
+                  <X className="w-5 h-5" />
                 </button>
               </div>
 
-              <div className="text-[11px] text-[var(--text-tertiary)] space-y-1 bg-[var(--surface-secondary)]/30 p-3 rounded-xl border border-[var(--border-subtle)]/50">
-                <div className="flex items-center gap-1.5 font-bold text-[var(--text-secondary)]">
-                  <Smartphone className="w-3.5 h-3.5 text-[var(--brand-primary)]" />
-                  <span>Tips Belajar Mobile (PWA):</span>
+              {/* Sub-Tabs: QR Code vs File Backup */}
+              <div className="flex items-center p-1 rounded-2xl bg-[var(--surface-secondary)]/50 border border-[var(--border-subtle)] gap-1">
+                <button
+                  type="button"
+                  onClick={() => setSyncTab("qr")}
+                  className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+                    syncTab === "qr"
+                      ? "bg-[var(--surface-primary)] text-[var(--brand-primary)] shadow-sm"
+                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                  }`}
+                >
+                  <QrCode className="w-3.5 h-3.5" />
+                  <span>Pindai QR Code</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSyncTab("file")}
+                  className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+                    syncTab === "file"
+                      ? "bg-[var(--surface-primary)] text-[var(--brand-primary)] shadow-sm"
+                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                  }`}
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Berkas Cadangan (.JSON)</span>
+                </button>
+              </div>
+
+              {/* Tab 1: QR Code Scanner */}
+              {syncTab === "qr" && (
+                <div className="space-y-4 text-center">
+                  <div className="p-4 rounded-3xl bg-white inline-block shadow-md mx-auto border border-slate-200">
+                    {qrDataUrl ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={qrDataUrl}
+                        alt="QR Code Sinkronisasi"
+                        className="w-48 h-48 sm:w-56 sm:h-56 mx-auto block"
+                      />
+                    ) : (
+                      <div className="w-48 h-48 sm:w-56 sm:h-56 flex items-center justify-center text-xs text-slate-400">
+                        Membuat QR Code...
+                      </div>
+                    )}
+                  </div>
+
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed max-w-sm mx-auto">
+                    Arahkan kamera ponsel kamu ke kode di atas untuk membuka Kaidevlab dan menerapkan seluruh progres belajar secara otomatis.
+                  </p>
+
+                  <div className="pt-2 flex items-center gap-2">
+                    <input
+                      type="text"
+                      readOnly
+                      value={syncUrl}
+                      className="flex-1 bg-[var(--surface-secondary)] text-[var(--text-tertiary)] text-[11px] font-mono px-3 py-2.5 rounded-xl border border-[var(--border-subtle)] truncate"
+                    />
+                    <button
+                      type="button"
+                      onClick={handleCopySyncLink}
+                      className="px-3.5 py-2.5 rounded-xl bg-[var(--brand-primary)] hover:opacity-95 text-white text-xs font-bold flex items-center gap-1.5 shrink-0 transition-opacity"
+                    >
+                      {copiedSyncLink ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                      <span>{copiedSyncLink ? "Tersalin" : "Salin Link"}</span>
+                    </button>
+                  </div>
                 </div>
-                <p>
-                  Tambahkan Kaidevlab ke Home Screen HP kamu via tombol <b>&ldquo;Install App&rdquo;</b> di browser Safari/Chrome agar bisa dibuka seperti aplikasi native tanpa perlu internet konstan.
+              )}
+
+              {/* Tab 2: File Backup (.JSON) */}
+              {syncTab === "file" && (
+                <div className="space-y-4">
+                  {/* Export Card */}
+                  <div className="p-4 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-secondary)]/30 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold text-[var(--text-primary)]">
+                        Ekspor Data ke Berkas
+                      </span>
+                      <span className="text-[10px] font-mono text-[var(--text-tertiary)] uppercase">
+                        Cadangan Penuh
+                      </span>
+                    </div>
+                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                      Unduh arsip lengkap kosakata N3 yang dikuasai, hari FE yang terbuka, dan riwayat ujian sebagai file `.json`.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={downloadFullBackupFile}
+                      className="w-full py-2.5 px-4 rounded-xl bg-[var(--brand-primary)]/10 hover:bg-[var(--brand-primary)]/20 text-[var(--brand-primary)] border border-[var(--brand-primary)]/30 text-xs font-bold flex items-center justify-center gap-1.5 transition-colors"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>Unduh File Cadangan (.json)</span>
+                    </button>
+                  </div>
+
+                  {/* Import Card */}
+                  <div className="p-4 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-secondary)]/30 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold text-[var(--text-primary)]">
+                        Pulihkan dari Berkas
+                      </span>
+                      <span className="text-[10px] font-mono text-[var(--text-tertiary)] uppercase">
+                        Impor Data
+                      </span>
+                    </div>
+                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                      Pilih file `.json` cadangan yang sebelumnya diunduh untuk memulihkan progres di perangkat ini.
+                    </p>
+                    <label className="w-full py-2.5 px-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface-secondary)] hover:bg-[var(--surface-secondary)]/80 text-[var(--text-primary)] text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer transition-colors">
+                      <Upload className="w-3.5 h-3.5" />
+                      <span>Pilih File Cadangan (.json)</span>
+                      <input
+                        type="file"
+                        accept=".json"
+                        onChange={handleFileUpload}
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
+
+                  {restoreMessage && (
+                    <div
+                      className={`p-3 rounded-xl text-xs font-medium flex items-center gap-2 border ${
+                        restoreMessage.error
+                          ? "bg-rose-500/10 text-rose-500 border-rose-500/20"
+                          : "bg-emerald-500/10 text-emerald-500 border-emerald-500/20"
+                      }`}
+                    >
+                      <AlertCircle className="w-4 h-4 shrink-0" />
+                      <span>{restoreMessage.text}</span>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Cadet Pass Footer */}
+              <div className="pt-2 border-t border-[var(--border-subtle)] flex items-center justify-between text-xs font-mono text-[var(--text-tertiary)]">
+                <span>Pass ID: {cadetId}</span>
+                <span>PWA Offline Ready</span>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* ==================================================== */}
+      {/* 5. INCOMING SYNC PROMPT MODAL (DETECTED FROM URL)    */}
+      {/* ==================================================== */}
+      <AnimatePresence>
+        {incomingSync && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="w-full max-w-md bg-[var(--surface-primary)] border border-[var(--border-subtle)] rounded-3xl p-6 sm:p-7 space-y-5 shadow-2xl"
+            >
+              <div className="text-center space-y-2">
+                <div className="w-12 h-12 mx-auto rounded-2xl bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 flex items-center justify-center">
+                  <RefreshCw className="w-6 h-6 animate-spin-slow" />
+                </div>
+                <h3 className="text-lg font-bold text-[var(--text-primary)]">
+                  Sinkronisasi Progres Terdeteksi
+                </h3>
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                  Tautan ini berisi data progres belajar dari perangkat lain. Apakah kamu ingin menerapkan data ini ke perangkat sekarang?
                 </p>
               </div>
 
-              <button
-                type="button"
-                onClick={() => setSyncModalOpen(false)}
-                className="w-full py-3 rounded-xl bg-[var(--surface-secondary)] hover:bg-[var(--surface-secondary)]/80 text-[var(--text-primary)] font-bold text-xs transition-colors"
-              >
-                Tutup Jendela
-              </button>
+              {/* Summary of incoming data */}
+              <div className="p-4 rounded-2xl bg-[var(--surface-secondary)]/50 border border-[var(--border-subtle)] space-y-2 text-xs font-mono">
+                <div className="flex items-center justify-between">
+                  <span className="text-[var(--text-tertiary)]">ID Cadet Asal:</span>
+                  <span className="font-bold text-[var(--brand-primary)]">{incomingSync.cid}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-[var(--text-tertiary)]">Kosakata N3 Dikuasai:</span>
+                  <span className="font-bold text-[var(--text-primary)]">{incomingSync.tm.length} Kata</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-[var(--text-tertiary)]">Konsep FE Dikuasai:</span>
+                  <span className="font-bold text-[var(--text-primary)]">{incomingSync.fm.length} Konsep</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-[var(--text-tertiary)]">Streak Belajar:</span>
+                  <span className="font-bold text-amber-500">{incomingSync.st} Hari</span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setIncomingSync(null)}
+                  className="py-2.5 px-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface-secondary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-xs font-bold transition-colors"
+                >
+                  Abaikan
+                </button>
+                <button
+                  type="button"
+                  onClick={handleApplyIncomingSync}
+                  className="py-2.5 px-4 rounded-xl bg-[var(--brand-primary)] hover:opacity-95 text-white text-xs font-bold transition-opacity"
+                >
+                  Terapkan Data
+                </button>
+              </div>
             </motion.div>
           </div>
+        )}
+      </AnimatePresence>
+
+      {/* Success Notification Banner */}
+      <AnimatePresence>
+        {appliedSyncSuccess && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className="fixed bottom-6 right-6 z-50 p-4 rounded-2xl bg-emerald-600 text-white font-bold text-xs shadow-2xl flex items-center gap-2 border border-emerald-400"
+          >
+            <CheckCircle2 className="w-5 h-5 shrink-0" />
+            <span>Progres belajar berhasil disinkronkan ke perangkat ini.</span>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

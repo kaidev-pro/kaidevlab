@@ -3,6 +3,7 @@
 
 export * from "./tango-n3/types";
 export * from "./tango-n3/chapters";
+export * from "./tango-n3/readings";
 export * from "./tango-n3/part1-nouns";
 export * from "./tango-n3/part2-verbs";
 export * from "./tango-n3/part3-adjectives";

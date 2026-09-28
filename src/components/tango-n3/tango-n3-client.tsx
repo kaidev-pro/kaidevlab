@@ -30,6 +30,7 @@ import {
 import {
   TANGO_N3_CARDS,
   TANGO_N3_CHAPTERS,
+  TANGO_N3_READINGS,
   TangoN3Card,
 } from "@/data/tango-n3-data";
 import {
@@ -44,6 +45,7 @@ import {
 } from "@/lib/tango-n3-storage";
 import { TangoFlashcardView } from "@/components/tango-n3/tango-flashcard-view";
 import { TangoQuizView } from "@/components/tango-n3/tango-quiz-view";
+import { TangoReadingView } from "@/components/tango-n3/tango-reading-view";
 import { RubyTerm } from "@/components/fe-study/ruby-term";
 import { useJapaneseTts } from "@/lib/use-japanese-tts";
 
@@ -54,7 +56,7 @@ export function TangoN3Client() {
   const [activeCards, setActiveCards] = useState<TangoN3Card[]>([]);
   const [sessionType, setSessionType] = useState<"flashcard" | "quiz">("flashcard");
   const [selectedStudyTab, setSelectedStudyTab] = useState<"flashcard" | "quiz">("flashcard");
-  const [activeViewTab, setActiveViewTab] = useState<"chapters" | "srs" | "vocab">("chapters");
+  const [activeViewTab, setActiveViewTab] = useState<"chapters" | "srs" | "vocab" | "reading">("chapters");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedPart, setSelectedPart] = useState<"all" | "noun" | "verb" | "adj" | "idiom" | "affix">("all");
 
@@ -393,6 +395,21 @@ export function TangoN3Client() {
               <span>Kamus Kosakata</span>
               <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-[var(--surface-secondary)] text-[var(--text-secondary)] font-normal">
                 {totalAvailable}
+              </span>
+            </button>
+
+            <button
+              onClick={() => setActiveViewTab("reading")}
+              className={`flex items-center gap-2 py-3 px-4 border-b-2 font-bold text-xs transition-colors ${
+                activeViewTab === "reading"
+                  ? "border-[var(--brand-primary)] text-[var(--brand-primary)]"
+                  : "border-transparent text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"
+              }`}
+            >
+              <BookOpen className="w-4 h-4" />
+              <span>Bacaan (読んでみよう)</span>
+              <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] font-bold">
+                {TANGO_N3_READINGS.length}
               </span>
             </button>
           </div>
@@ -834,6 +851,13 @@ export function TangoN3Client() {
                 </div>
               </div>
             </div>
+          )}
+
+          {/* TAB 4: LATIHAN BACAAN (読解・読んでみよう) */}
+          {activeViewTab === "reading" && (
+            <TangoReadingView
+              onSelectCardDetail={(card) => startSession(`Drill: ${card.word}`, [card], selectedStudyTab)}
+            />
           )}
         </div>
       )}

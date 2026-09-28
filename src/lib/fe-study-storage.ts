@@ -2,6 +2,14 @@
 
 export type CardRating = "forgot" | "unsure" | "mastered";
 
+export interface FeDayQuizScore {
+  score: number;
+  total: number;
+  passed: boolean;
+  completedAt: string;
+  attempts: number;
+}
+
 export interface StudyProgress {
   masteredCardIds: string[];
   reviewCardIds: string[];
@@ -12,6 +20,7 @@ export interface StudyProgress {
   categoryStats: Record<string, { mastered: number; review: number }>;
   dailyReviews?: Record<string, number>;
   unlockedDeckDays: number[];
+  dayQuizScores: Record<number, FeDayQuizScore>;
   masteryModeEnabled: boolean;
 }
 
@@ -32,6 +41,7 @@ export const DEFAULT_PROGRESS: StudyProgress = {
   },
   dailyReviews: {},
   unlockedDeckDays: [1],
+  dayQuizScores: {},
   masteryModeEnabled: true,
 };
 
@@ -68,6 +78,40 @@ export function unlockNextFeDay(day: number): StudyProgress {
     ...current,
     unlockedDeckDays: Array.from(set),
   };
+  saveStudyProgress(updated);
+  return updated;
+}
+
+export function recordFeDayQuizScore(
+  day: number,
+  score: number,
+  total: number,
+  nextDay?: number
+): StudyProgress {
+  const current = loadStudyProgress();
+  const scores = { ...(current.dayQuizScores || {}) };
+  const prevRecord = scores[day];
+  const passed = total > 0 ? score / total >= 0.8 : false;
+
+  scores[day] = {
+    score: Math.max(score, prevRecord?.score || 0),
+    total,
+    passed: passed || prevRecord?.passed || false,
+    completedAt: getTodayString(),
+    attempts: (prevRecord?.attempts || 0) + 1,
+  };
+
+  const unlockedSet = new Set(current.unlockedDeckDays || [1]);
+  if (passed && nextDay) {
+    unlockedSet.add(nextDay);
+  }
+
+  const updated: StudyProgress = {
+    ...current,
+    dayQuizScores: scores,
+    unlockedDeckDays: Array.from(unlockedSet),
+  };
+
   saveStudyProgress(updated);
   return updated;
 }

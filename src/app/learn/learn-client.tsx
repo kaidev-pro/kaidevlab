@@ -38,6 +38,7 @@ import {
   recordCardReview,
   toggleStarCard,
   unlockNextFeDay,
+  recordFeDayQuizScore,
   setFeMasteryMode,
   CardRating,
   DEFAULT_PROGRESS,
@@ -46,6 +47,7 @@ import { FlashcardView } from "@/components/fe-study/flashcard-view";
 import { StudyProgressCard } from "@/components/fe-study/study-progress-card";
 import { SessionSummaryModal } from "@/components/fe-study/session-summary-modal";
 import { QuizView } from "@/components/fe-study/quiz-view";
+import { FeDayQuizModal } from "@/components/fe-study/fe-day-quiz-modal";
 import { TracerView } from "@/components/fe-study/tracer-view";
 import { CheatsheetView } from "@/components/fe-study/cheatsheet-view";
 import { WrongQuestionsView } from "@/components/fe-study/wrong-questions-view";
@@ -286,10 +288,17 @@ export function LearnClient() {
   const [activeTab, setActiveTab] = useState<HubTab>("flashcards");
   const [activeMode, setActiveMode] = useState<StudyMode | null>(null);
   const [selectedDayDeck, setSelectedDayDeck] = useState<FEDailyDeck | null>(null);
+  const [dayQuizModalDeck, setDayQuizModalDeck] = useState<FEDailyDeck | null>(null);
   const [singleCardDrill, setSingleCardDrill] = useState<FECard | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [sessionCompleted, setSessionCompleted] = useState(false);
   const [sessionReviewedCount, setSessionReviewedCount] = useState(0);
+
+  const handlePassDayQuiz = (score: number, total: number, nextDay?: number) => {
+    if (!dayQuizModalDeck) return;
+    const updated = recordFeDayQuizScore(dayQuizModalDeck.day, score, total, nextDay);
+    setProgress(updated);
+  };
   const [roadmapModal, setRoadmapModal] = useState<RoadmapItem | null>(null);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [isInstalled, setIsInstalled] = useState(false);
@@ -913,11 +922,12 @@ export function LearnClient() {
                   );
                 }
 
+                const quizRecord = progress.dayQuizScores?.[deck.day];
+
                 return (
                   <div
                     key={deck.day}
-                    onClick={() => handleStartDailyDeck(deck, false)}
-                    className="cursor-pointer p-4 sm:p-5 rounded-2xl border border-[var(--border)] hover:border-[var(--brand-primary)] bg-[var(--surface)] hover:bg-[var(--surface-soft)] transition-all flex flex-col justify-between gap-3 shadow-sm hover:shadow-md group active:scale-[0.99]"
+                    className="p-4 sm:p-5 rounded-2xl border border-[var(--border)] hover:border-[var(--brand-primary)]/50 bg-[var(--surface)] hover:bg-[var(--surface-soft)] transition-all flex flex-col justify-between gap-3 shadow-sm hover:shadow-md group"
                   >
                     <div className="flex flex-col gap-2">
                       <div className="flex items-center justify-between">
@@ -928,9 +938,15 @@ export function LearnClient() {
                           <span className={`text-[10px] px-2 py-0.5 rounded-md border font-medium ${catBadge}`}>
                             {catLabel}
                           </span>
-                          <span className="text-[11px] font-mono text-[var(--text-secondary)] font-medium">
-                            {unmasteredCount > 0 ? `${unmasteredCount} Sisa` : "Semua Dikuasai ✓"}
-                          </span>
+                          {quizRecord?.passed ? (
+                            <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20">
+                              Lulus ({quizRecord.score}/{quizRecord.total})
+                            </span>
+                          ) : (
+                            <span className="text-[11px] font-mono text-[var(--text-secondary)] font-medium">
+                              {unmasteredCount > 0 ? `${unmasteredCount} Sisa` : "Semua Dikuasai"}
+                            </span>
+                          )}
                         </div>
                       </div>
 
@@ -948,46 +964,56 @@ export function LearnClient() {
                       </p>
                     </div>
 
-                    <div className="pt-2.5 border-t border-[var(--border)]/70 flex items-center justify-between text-xs">
+                    <div className="pt-3 border-t border-[var(--border)]/70 flex flex-col gap-2.5">
                       {/* Mini Progress */}
-                      <div className="flex items-center gap-2">
-                        <div className="w-12 h-1.5 rounded-full bg-[var(--surface-soft)] overflow-hidden">
-                          <div
-                            className={`h-full transition-all ${
-                              isAllMastered ? "bg-emerald-500" : "bg-[var(--brand-primary)]"
-                            }`}
-                            style={{
-                              width: `${Math.round((masteredCount / deck.cardIds.length) * 100)}%`,
-                            }}
-                          />
+                      <div className="flex items-center justify-between text-xs">
+                        <div className="flex items-center gap-2">
+                          <div className="w-14 h-1.5 rounded-full bg-[var(--surface-soft)] overflow-hidden">
+                            <div
+                              className={`h-full transition-all ${
+                                isAllMastered ? "bg-emerald-500" : "bg-[var(--brand-primary)]"
+                              }`}
+                              style={{
+                                width: `${Math.round((masteredCount / deck.cardIds.length) * 100)}%`,
+                              }}
+                            />
+                          </div>
+                          <span className="text-[11px] font-mono text-[var(--text-secondary)]">
+                            {masteredCount}/{deck.cardIds.length} Dikuasai
+                          </span>
                         </div>
-                        <span className="text-[11px] font-mono text-[var(--text-secondary)]">
-                          {masteredCount}/{deck.cardIds.length}
-                        </span>
-                      </div>
 
-                      <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
                         {masteredCount > 0 && (
                           <button
                             type="button"
                             onClick={() => handleStartDailyDeck(deck, true)}
-                            title="Ulangi semua 10 kartu dari awal"
-                            className="p-1 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors rounded"
+                            title="Ulangi semua kartu dari awal"
+                            className="text-[11px] text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors flex items-center gap-1"
                           >
-                            <RotateCcw size={12} />
+                            <RotateCcw size={11} />
+                            <span>Ulangi</span>
                           </button>
                         )}
+                      </div>
+
+                      {/* Action Buttons: Flashcard + Ujian CBT */}
+                      <div className="grid grid-cols-2 gap-2 pt-1">
                         <button
                           type="button"
                           onClick={() => handleStartDailyDeck(deck, false)}
-                          className={`inline-flex items-center gap-1 font-bold text-xs ${
-                            isAllMastered
-                              ? "text-emerald-600 dark:text-emerald-400"
-                              : "text-[var(--brand-primary)] group-hover:underline"
-                          }`}
+                          className="py-2 px-3 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] hover:bg-[var(--surface)] font-bold text-xs text-[var(--text-primary)] transition-all flex items-center justify-center gap-1.5 active:scale-[0.98]"
                         >
-                          <span>{isAllMastered ? "Review (10)" : `Lanjut (${unmasteredCount})`}</span>
-                          <ChevronRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
+                          <Layers className="w-3.5 h-3.5 text-[var(--brand-primary)]" />
+                          <span>{isAllMastered ? "Flashcard" : `Belajar (${unmasteredCount})`}</span>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => setDayQuizModalDeck(deck)}
+                          className="py-2 px-3 rounded-xl bg-[var(--brand-primary)]/10 hover:bg-[var(--brand-primary)]/20 text-[var(--brand-primary)] border border-[var(--brand-primary)]/30 font-bold text-xs transition-all flex items-center justify-center gap-1.5 active:scale-[0.98]"
+                        >
+                          <CheckCircle2 className="w-3.5 h-3.5" />
+                          <span>{quizRecord?.passed ? "Uji Ulang" : "Ujian CBT"}</span>
                         </button>
                       </div>
                     </div>
@@ -1257,6 +1283,17 @@ export function LearnClient() {
             </button>
           </div>
         </div>
+      )}
+
+      {/* Day Exam Modal */}
+      {dayQuizModalDeck && (
+        <FeDayQuizModal
+          deck={dayQuizModalDeck}
+          deckCards={getCardsForDay(dayQuizModalDeck.day)}
+          nextDeck={FE_DAILY_DECKS.find((d) => d.day === dayQuizModalDeck.day + 1)}
+          onClose={() => setDayQuizModalDeck(null)}
+          onPassQuiz={handlePassDayQuiz}
+        />
       )}
     </div>
   );

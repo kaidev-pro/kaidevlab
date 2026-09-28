@@ -11,6 +11,7 @@ import {
   RotateCcw,
   Trophy,
   ArrowRight,
+  ArrowLeft,
   ChevronLeft,
   ChevronRight,
   BookOpen,
@@ -589,14 +590,24 @@ export function QuizView({
         )}
 
         {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 w-full print:hidden">
+        <div className="flex flex-col sm:flex-row items-center gap-3 w-full print:hidden">
+          {onBackToMenu && (
+            <button
+              type="button"
+              onClick={onBackToMenu}
+              className="w-full sm:flex-1 py-3.5 px-4 rounded-2xl border border-[var(--border)] hover:bg-[var(--surface-soft)] text-[var(--text-primary)] text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-1.5"
+            >
+              <ArrowLeft size={14} /> Kembali ke Menu Utama
+            </button>
+          )}
+
           {onOpenMistakeNotebook && (
             <button
               type="button"
               onClick={onOpenMistakeNotebook}
-              className="w-full sm:flex-1 py-4 rounded-2xl border border-rose-500/30 hover:border-rose-500 bg-rose-500/5 hover:bg-rose-500/10 text-rose-500 text-sm font-bold transition-all shadow-sm flex items-center justify-center gap-2"
+              className="w-full sm:flex-1 py-3.5 px-4 rounded-2xl border border-rose-500/30 hover:border-rose-500 bg-rose-500/5 hover:bg-rose-500/10 text-rose-500 text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-1.5"
             >
-              <BookOpen size={16} /> Buka Buku Soal Salah (ノート)
+              <BookOpen size={14} /> Buku Soal Salah (ノート)
             </button>
           )}
 
@@ -606,17 +617,17 @@ export function QuizView({
               setIsReviewMode(true);
               setCurrentIndex(0);
             }}
-            className="w-full sm:flex-1 py-4 rounded-2xl border border-[var(--border)] hover:border-[var(--brand-primary)] bg-[var(--surface)] text-[var(--text-primary)] text-sm font-bold transition-all shadow-sm flex items-center justify-center gap-2"
+            className="w-full sm:flex-1 py-3.5 px-4 rounded-2xl border border-[var(--border)] hover:border-[var(--brand-primary)] bg-[var(--surface)] text-[var(--text-primary)] text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-1.5"
           >
-            <BookOpen size={16} /> Tinjau Seluruh Pembahasan & Terjemahan (見直し)
+            <BookOpen size={14} /> Tinjau Pembahasan (見直し)
           </button>
 
           <button
             type="button"
             onClick={() => handleReset(examMode)}
-            className="w-full sm:flex-1 py-4 rounded-2xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white text-sm font-bold transition-all shadow-md flex items-center justify-center gap-2"
+            className="w-full sm:flex-1 py-3.5 px-4 rounded-2xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white text-xs font-bold transition-all shadow-md flex items-center justify-center gap-1.5"
           >
-            <RotateCcw size={16} /> Ulangi Simulasi (Coba Lagi)
+            <RotateCcw size={14} /> Ulangi Simulasi
           </button>
         </div>
       </motion.div>
@@ -640,9 +651,20 @@ export function QuizView({
           >
             ← Kembali ke Sertifikat & Hasil
           </button>
-          <span className="text-xs sm:text-sm font-bold text-[var(--text-secondary)]">
-            Review Soal {currentIndex + 1} / {questions.length}
-          </span>
+          <div className="flex items-center gap-3">
+            <span className="text-xs sm:text-sm font-bold text-[var(--text-secondary)]">
+              Review Soal {currentIndex + 1} / {questions.length}
+            </span>
+            {onBackToMenu && (
+              <button
+                type="button"
+                onClick={onBackToMenu}
+                className="text-xs font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors px-2.5 py-1 rounded-lg border border-[var(--border)]"
+              >
+                Kembali ke Menu
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Question Selector Strip */}

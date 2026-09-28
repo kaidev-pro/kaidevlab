@@ -141,6 +141,13 @@ export function FlashcardView({
   const [soundEffects, setSoundEffects] = useState(true);
   const [isSpeaking, setIsSpeaking] = useState(false);
 
+  // Reset card state whenever cards list changes
+  useEffect(() => {
+    setCurrentIndex(0);
+    setIsFlipped(false);
+    setShowAnalogy(false);
+  }, [cards]);
+
   // Reset analogy state whenever card changes
   useEffect(() => {
     setShowAnalogy(false);
@@ -152,8 +159,9 @@ export function FlashcardView({
     audioRef.current = createAudioFeedback();
   }, []);
 
-  const currentCard = cards[currentIndex];
-  const isLastCard = currentIndex === cards.length - 1;
+  const safeIndex = cards.length > 0 ? Math.min(currentIndex, cards.length - 1) : 0;
+  const currentCard = cards[safeIndex];
+  const isLastCard = cards.length > 0 && safeIndex === cards.length - 1;
 
   // Swipe motion tracking
   const x = useMotionValue(0);

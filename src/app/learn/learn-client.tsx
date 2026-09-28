@@ -293,6 +293,7 @@ export function LearnClient() {
   const [searchQuery, setSearchQuery] = useState("");
   const [sessionCompleted, setSessionCompleted] = useState(false);
   const [sessionReviewedCount, setSessionReviewedCount] = useState(0);
+  const [sessionCards, setSessionCards] = useState<FECard[]>([]);
 
   const handlePassDayQuiz = (score: number, total: number, nextDay?: number) => {
     if (!dayQuizModalDeck) return;
@@ -431,6 +432,33 @@ export function LearnClient() {
     setActiveMode(mode);
     setSessionCompleted(false);
     setSessionReviewedCount(0);
+
+    let filtered: FECard[] = [];
+    if (mode === "quick10") {
+      filtered = [...FE_CARDS].sort(() => 0.5 - Math.random()).slice(0, 10);
+    } else if (
+      mode === "technology" ||
+      mode === "management" ||
+      mode === "strategy" ||
+      mode === "vocab"
+    ) {
+      filtered = FE_CARDS.filter((c) => c.category === mode);
+    } else if (mode === "review") {
+      const reviewSet = new Set(progress?.reviewCardIds || []);
+      filtered = FE_CARDS.filter((c) => reviewSet.has(c.id));
+      if (filtered.length === 0) {
+        filtered = FE_CARDS.slice(0, 5);
+      }
+    } else if (mode === "starred") {
+      const starredSet = new Set(progress?.starredCardIds || []);
+      filtered = FE_CARDS.filter((c) => starredSet.has(c.id));
+      if (filtered.length === 0) {
+        filtered = FE_CARDS.slice(0, 5);
+      }
+    } else {
+      filtered = FE_CARDS;
+    }
+    setSessionCards(filtered);
   };
 
   const handleStartDailyDeck = (deck: FEDailyDeck, forceAll = false) => {
@@ -440,6 +468,11 @@ export function LearnClient() {
     setActiveMode(null);
     setSessionCompleted(false);
     setSessionReviewedCount(0);
+
+    const dayCards = getCardsForDay(deck.day);
+    const unmastered = dayCards.filter((c) => !progress?.masteredCardIds?.includes(c.id));
+    const toStudy = !forceAll && unmastered.length > 0 ? unmastered : dayCards;
+    setSessionCards(toStudy);
   };
 
   const handleStartSingleCard = (card: FECard) => {
@@ -449,6 +482,7 @@ export function LearnClient() {
     setActiveMode("all");
     setSessionCompleted(false);
     setSessionReviewedCount(0);
+    setSessionCards([card]);
   };
 
   const handleRateCard = (cardId: string, category: string, rating: CardRating) => {
@@ -487,6 +521,13 @@ export function LearnClient() {
   const handleRestartCurrentSession = () => {
     setSessionCompleted(false);
     setSessionReviewedCount(0);
+    if (selectedDayDeck) {
+      handleStartDailyDeck(selectedDayDeck, true);
+    } else if (activeMode) {
+      handleStartSession(activeMode);
+    } else if (singleCardDrill) {
+      handleStartSingleCard(singleCardDrill);
+    }
   };
 
   const handleBackToMenu = () => {
@@ -494,8 +535,10 @@ export function LearnClient() {
     setSelectedDayDeck(null);
     setSingleCardDrill(null);
     setSessionCompleted(false);
+    setSessionCards([]);
   };
 
+  const currentDrillCards = sessionCards.length > 0 ? sessionCards : activeCards;
   const isDrillActive = Boolean(activeMode || selectedDayDeck);
 
   return (
@@ -532,7 +575,7 @@ export function LearnClient() {
               {selectedDayDeck ? (
                 <span className="inline-flex items-center gap-1.5">
                   <Calendar size={13} className="text-[var(--brand-primary)] shrink-0" />
-                  <span>{selectedDayDeck.titleId} ({activeCards.length} {txt.cardUnit})</span>
+                  <span>{selectedDayDeck.titleId} ({currentDrillCards.length} {txt.cardUnit})</span>
                 </span>
               ) : (
                 <>
@@ -550,7 +593,7 @@ export function LearnClient() {
           </div>
 
           <FlashcardView
-            cards={activeCards}
+            cards={currentDrillCards}
             onRateCard={handleRateCard}
             masteredIds={progress.masteredCardIds}
             reviewIds={progress.reviewCardIds}
@@ -567,7 +610,7 @@ export function LearnClient() {
       {/* ==================================================== */}
       {isDrillActive && sessionCompleted && (
         <SessionSummaryModal
-          totalReviewed={sessionReviewedCount || activeCards.length}
+          totalReviewed={sessionReviewedCount || currentDrillCards.length}
           streak={progress.streak}
           onRestart={handleRestartCurrentSession}
           onBackToDashboard={handleBackToMenu}
@@ -1305,6 +1348,7 @@ export function LearnClient() {
           nextDeck={FE_DAILY_DECKS.find((d) => d.day === dayQuizModalDeck.day + 1)}
           onClose={() => setDayQuizModalDeck(null)}
           onPassQuiz={handlePassDayQuiz}
+          onStartNextDeck={(next) => setDayQuizModalDeck(next)}
         />
       )}
     </div>

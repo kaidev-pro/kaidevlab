@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   CheckCircle2,
@@ -32,6 +32,7 @@ interface FeDayQuizModalProps {
   nextDeck?: FEDailyDeck;
   onClose: () => void;
   onPassQuiz: (score: number, total: number, nextDay?: number) => void;
+  onStartNextDeck?: (nextDeck: FEDailyDeck) => void;
 }
 
 interface FeQuizQuestion {
@@ -81,6 +82,7 @@ export function FeDayQuizModal({
   nextDeck,
   onClose,
   onPassQuiz,
+  onStartNextDeck,
 }: FeDayQuizModalProps) {
   const { speak } = useJapaneseTts();
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -92,7 +94,18 @@ export function FeDayQuizModal({
   >([]);
   const [isFinished, setIsFinished] = useState(false);
 
-  // Generate test questions from all cards in the deck
+  // Close modal on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
+  // Generate test questions once per deck.day (stable across parent re-renders)
   const questions: FeQuizQuestion[] = useMemo(() => {
     if (deckCards.length === 0) return [];
 
@@ -105,12 +118,13 @@ export function FeDayQuizModal({
       if (isClue) {
         // Clue -> Term
         const correct = `${card.termJp} (${card.termEn})`;
-        const otherCards = shuffle(
-          FE_CARDS.filter((c) => c.id !== card.id && c.category === card.category)
-        ).slice(0, 3);
+        const catCards = FE_CARDS.filter((c) => c.id !== card.id && c.category === card.category);
+        const fallbackCards = FE_CARDS.filter((c) => c.id !== card.id);
+        const poolToSample = catCards.length >= 3 ? catCards : fallbackCards;
+        const otherCards = shuffle(poolToSample).slice(0, 3);
 
         const distractorOptions = otherCards.map((c) => `${c.termJp} (${c.termEn})`);
-        const options = shuffle([correct, ...distractorOptions]);
+        const options = shuffle(Array.from(new Set([correct, ...distractorOptions])));
 
         return {
           id: `quiz-clue-${card.id}`,
@@ -141,7 +155,7 @@ export function FeDayQuizModal({
         ).slice(0, 3);
 
         const distractorOptions = otherCards.map((c) => c.definitionId);
-        const options = shuffle([correct, ...distractorOptions]);
+        const options = shuffle(Array.from(new Set([correct, ...distractorOptions])));
 
         return {
           id: `quiz-term-${card.id}`,
@@ -182,57 +196,105 @@ export function FeDayQuizModal({
         };
       }
     });
-  }, [deckCards, speak]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [deck.day]);
 
   const [activeQuestions, setActiveQuestions] = useState<FeQuizQuestion[]>([]);
 
   useEffect(() => {
     setActiveQuestions(questions);
     setCurrentIdx(0);
+    setSelectedOpt(null);
+    setIsAnswerChecked(false);
     setScore(0);
     setUserAnswers([]);
     setIsFinished(false);
-  }, [questions]);
+  }, [deck.day, questions]);
 
   const currentQ = activeQuestions[currentIdx];
 
-  const handleSelectOption = (opt: string) => {
-    if (isAnswerChecked || !currentQ) return;
-    setSelectedOpt(opt);
-    setIsAnswerChecked(true);
+  const handleSelectOption = useCallback(
+    (opt: string) => {
+      if (isAnswerChecked || !currentQ) return;
+      setSelectedOpt(opt);
+      setIsAnswerChecked(true);
 
-    const isCorrect = opt === currentQ.correctAnswer;
-    if (isCorrect) {
-      setScore((s) => s + 1);
-      playTone(587.33, "sine", 0.12); // D5
-    } else {
-      playTone(220, "triangle", 0.18); // A3 error thud
-    }
-
-    setUserAnswers((prev) => [
-      ...prev,
-      { question: currentQ, selected: opt, isCorrect },
-    ]);
-
-    // Auto advance after short feedback window
-    setTimeout(() => {
-      if (currentIdx + 1 < activeQuestions.length) {
-        setCurrentIdx((idx) => idx + 1);
-        setSelectedOpt(null);
-        setIsAnswerChecked(false);
+      const isCorrect = opt === currentQ.correctAnswer;
+      if (isCorrect) {
+        setScore((s) => s + 1);
+        playTone(587.33, "sine", 0.12); // D5
       } else {
-        const finalScore = score + (isCorrect ? 1 : 0);
-        setIsFinished(true);
-
-        const totalQ = activeQuestions.length;
-        const passed = totalQ > 0 ? finalScore / totalQ >= 0.8 : false;
-        if (passed) {
-          playVictoryFanfare();
-          onPassQuiz(finalScore, totalQ, nextDeck?.day);
-        }
+        playTone(220, "triangle", 0.18); // A3 error thud
       }
-    }, 280);
-  };
+
+      const updatedAnswers = [
+        ...userAnswers,
+        { question: currentQ, selected: opt, isCorrect },
+      ];
+      setUserAnswers(updatedAnswers);
+
+      // Auto advance after short feedback window
+      setTimeout(() => {
+        if (currentIdx + 1 < activeQuestions.length) {
+          setCurrentIdx((idx) => idx + 1);
+          setSelectedOpt(null);
+          setIsAnswerChecked(false);
+        } else {
+          const finalScore = updatedAnswers.filter((a) => a.isCorrect).length;
+          setScore(finalScore);
+          setIsFinished(true);
+
+          const totalQ = activeQuestions.length;
+          const passed = totalQ > 0 ? finalScore / totalQ >= 0.8 : false;
+          if (passed) {
+            playVictoryFanfare();
+          }
+
+          // Only record official score and unlock next deck if this was a full exam, not a partial remedial
+          const isRemedial = activeQuestions.length < questions.length;
+          if (!isRemedial) {
+            onPassQuiz(finalScore, totalQ, nextDeck?.day);
+          }
+        }
+      }, 320);
+    },
+    [
+      isAnswerChecked,
+      currentQ,
+      userAnswers,
+      currentIdx,
+      activeQuestions.length,
+      questions.length,
+      onPassQuiz,
+      nextDeck?.day,
+    ]
+  );
+
+  // Keyboard navigation (Escape to close, 1-4 or A-D to select)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (isFinished || isAnswerChecked || !currentQ) return;
+
+      const key = e.key.toLowerCase();
+      let optIdx = -1;
+      if (key === "1" || key === "a") optIdx = 0;
+      else if (key === "2" || key === "b") optIdx = 1;
+      else if (key === "3" || key === "c") optIdx = 2;
+      else if (key === "4" || key === "d") optIdx = 3;
+
+      if (optIdx >= 0 && optIdx < currentQ.options.length) {
+        handleSelectOption(currentQ.options[optIdx]);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose, isFinished, isAnswerChecked, currentQ, handleSelectOption]);
 
   const handleRestartQuiz = () => {
     setActiveQuestions(shuffle(questions));
@@ -262,17 +324,23 @@ export function FeDayQuizModal({
   if (!currentQ && !isFinished) return null;
 
   const totalQuestions = activeQuestions.length;
+  const isRemedial = totalQuestions < questions.length;
   const progressPercent = totalQuestions > 0 ? (currentIdx / totalQuestions) * 100 : 0;
-  const scorePercent = totalQuestions > 0 ? Math.round((score / totalQuestions) * 100) : 0;
+  const finalCorrect = userAnswers.filter((a) => a.isCorrect).length;
+  const scorePercent = totalQuestions > 0 ? Math.round((finalCorrect / totalQuestions) * 100) : 0;
   const isPassed = scorePercent >= 80;
   const wrongAnswers = userAnswers.filter((a) => !a.isCorrect);
 
   return (
-    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md">
+    <div
+      className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md"
+      onClick={onClose}
+    >
       <motion.div
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.96 }}
+        onClick={(e) => e.stopPropagation()}
         className="w-full max-w-2xl bg-[var(--surface-primary)] border border-[var(--border-subtle)] rounded-3xl shadow-2xl flex flex-col max-h-[92vh] overflow-hidden relative text-[var(--text-primary)]"
       >
         {/* ==================================================== */}
@@ -388,16 +456,18 @@ export function FeDayQuizModal({
 
               <div>
                 <h4 className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)]">
-                  {score} / {totalQuestions} Soal ({scorePercent}%)
+                  {finalCorrect} / {totalQuestions} Soal ({scorePercent}%)
                 </h4>
                 <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1">
-                  {isPassed
+                  {isRemedial
+                    ? "Sesi Remedial Soal Selesai. Ambil ujian lengkap 10 soal untuk mencatat nilai kelulusan resmi."
+                    : isPassed
                     ? "Kelulusan Terpenuhi (Ambang batas min. 80%)"
                     : "Belum Memenuhi Ambang Batas 80% Kelulusan"}
                 </p>
               </div>
 
-              {isPassed && nextDeck && (
+              {!isRemedial && isPassed && nextDeck && (
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-bold">
                   <Unlock className="w-4 h-4" />
                   <span>Day {nextDeck.day.toString().padStart(2, "0")} Telah Terbuka</span>
@@ -406,25 +476,80 @@ export function FeDayQuizModal({
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
-              <button
-                type="button"
-                onClick={handleRestartQuiz}
-                className="w-full sm:flex-1 py-3 px-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface-secondary)] hover:bg-[var(--surface-secondary)]/80 text-xs font-bold flex items-center justify-center gap-2 transition-colors"
-              >
-                <RotateCcw className="w-4 h-4" />
-                <span>Ulangi Ujian Lengkap</span>
-              </button>
+            <div className="flex flex-col sm:flex-row items-center gap-2.5 pt-2">
+              {isPassed ? (
+                <>
+                  <button
+                    type="button"
+                    onClick={onClose}
+                    className="w-full sm:flex-1 py-3 px-4 rounded-xl border border-[var(--border-subtle)] text-xs font-bold hover:bg-[var(--surface-secondary)] text-[var(--text-primary)] transition-colors"
+                  >
+                    Tutup & Kembali ke Jadwal
+                  </button>
 
-              {wrongAnswers.length > 0 && (
-                <button
-                  type="button"
-                  onClick={handleRetestMistakesOnly}
-                  className="w-full sm:flex-1 py-3 px-4 rounded-xl bg-[var(--brand-primary)] hover:opacity-95 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all"
-                >
-                  <RotateCcw className="w-4 h-4" />
-                  <span>Uji Ulang {wrongAnswers.length} Soal Keliru</span>
-                </button>
+                  {!isRemedial && nextDeck && onStartNextDeck && (
+                    <button
+                      type="button"
+                      onClick={() => onStartNextDeck(nextDeck)}
+                      className="w-full sm:flex-1 py-3 px-4 rounded-xl bg-[var(--brand-primary)] hover:opacity-95 text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-all shadow-sm"
+                    >
+                      <span>Lanjut Ujian Day {nextDeck.day.toString().padStart(2, "0")}</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  )}
+
+                  {isRemedial && (
+                    <button
+                      type="button"
+                      onClick={handleRestartQuiz}
+                      className="w-full sm:flex-1 py-3 px-4 rounded-xl bg-[var(--brand-primary)] hover:opacity-95 text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-all shadow-sm"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" />
+                      <span>Mulai Ujian Lengkap 10 Soal</span>
+                    </button>
+                  )}
+
+                  {wrongAnswers.length > 0 && (
+                    <button
+                      type="button"
+                      onClick={handleRetestMistakesOnly}
+                      className="w-full sm:flex-1 py-3 px-4 rounded-xl bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/30 text-xs font-bold flex items-center justify-center gap-1.5 transition-colors"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" />
+                      <span>Uji {wrongAnswers.length} Soal Keliru</span>
+                    </button>
+                  )}
+                </>
+              ) : (
+                <>
+                  <button
+                    type="button"
+                    onClick={onClose}
+                    className="w-full sm:flex-1 py-3 px-4 rounded-xl border border-[var(--border-subtle)] text-xs font-bold hover:bg-[var(--surface-secondary)] text-[var(--text-primary)] transition-colors"
+                  >
+                    Tutup & Pelajari Ulang
+                  </button>
+
+                  {wrongAnswers.length > 0 && (
+                    <button
+                      type="button"
+                      onClick={handleRetestMistakesOnly}
+                      className="w-full sm:flex-1 py-3 px-4 rounded-xl bg-[var(--brand-primary)] hover:opacity-95 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm transition-all"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" />
+                      <span>Uji {wrongAnswers.length} Soal Keliru</span>
+                    </button>
+                  )}
+
+                  <button
+                    type="button"
+                    onClick={handleRestartQuiz}
+                    className="w-full sm:flex-1 py-3 px-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface-secondary)] hover:bg-[var(--surface-secondary)]/80 text-xs font-bold flex items-center justify-center gap-1.5 transition-colors"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                    <span>Ulangi Ujian Lengkap</span>
+                  </button>
+                </>
               )}
             </div>
 

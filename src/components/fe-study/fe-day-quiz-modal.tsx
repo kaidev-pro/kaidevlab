@@ -138,14 +138,7 @@ export function FeDayQuizModal({
                 Kata Kunci Penentu Jawaban Ujian FE
               </span>
               <div className="text-base sm:text-lg font-medium text-[var(--text-primary)] leading-[2.2] bg-[var(--surface-secondary)]/50 p-4 rounded-2xl border border-[var(--border-subtle)]">
-                &ldquo;
-                <RubyTerm
-                  rubyText={autoAnnotateRuby(card.keyDifferentiator)}
-                  fallbackText={card.keyDifferentiator}
-                  showFurigana={true}
-                  className="inline leading-[2.2]"
-                />
-                &rdquo;
+                &ldquo;{card.keyDifferentiator}&rdquo;
               </div>
               <p className="text-xs text-[var(--text-secondary)]">
                 Konsep atau teknologi manakah yang paling tepat dengan ciri di atas?
@@ -174,11 +167,7 @@ export function FeDayQuizModal({
             <div className="space-y-3">
               <div className="flex items-center gap-2">
                 <span className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] tracking-wide font-japanese">
-                  <RubyTerm
-                    rubyText={card.ruby}
-                    fallbackText={card.termJp}
-                    showFurigana={true}
-                  />
+                  {card.termJp}
                 </span>
                 <button
                   type="button"

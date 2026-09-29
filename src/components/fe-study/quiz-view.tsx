@@ -1037,20 +1037,6 @@ export function QuizView({
             <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
               <button
                 type="button"
-                onClick={() => setShowFurigana((prev) => !prev)}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-bold transition-all ${
-                  showFurigana
-                    ? "bg-[var(--brand-primary)] text-white border-[var(--brand-primary)] shadow-sm"
-                    : "border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-soft)]"
-                }`}
-                title="Tampilkan / Sembunyikan Furigana (ルビ)"
-              >
-                <Languages size={13} />
-                <span>ルビ {showFurigana ? "ON" : "OFF"}</span>
-              </button>
-
-              <button
-                type="button"
                 onClick={() => speak(currentQ.questionJp, `cbt-q-${currentQ.id}`)}
                 className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-bold transition-all ${
                   activeSpeechId === `cbt-q-${currentQ.id}`
@@ -1092,11 +1078,7 @@ export function QuizView({
               【問題文】
             </span>
             <h3 className="text-[15px] sm:text-[18px] md:text-[20px] font-bold text-[var(--text-primary)] leading-[1.9] sm:leading-[2.1] tracking-[0.02em] select-text">
-              <RubyTerm
-                rubyText={autoAnnotateRuby(currentQ.questionJp)}
-                fallbackText={currentQ.questionJp}
-                showFurigana={showFurigana}
-              />
+              {currentQ.questionJp}
             </h3>
           </div>
 
@@ -1134,11 +1116,7 @@ export function QuizView({
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
                         <p className="text-xs sm:text-base md:text-[16.5px] leading-[1.75] sm:leading-[1.85] tracking-[0.02em] font-medium pt-0.5 text-[var(--text-primary)]">
-                          <RubyTerm
-                            rubyText={autoAnnotateRuby(opt.textJp)}
-                            fallbackText={opt.textJp}
-                            showFurigana={showFurigana}
-                          />
+                          {opt.textJp}
                         </p>
                         <button
                           type="button"
@@ -1493,7 +1471,7 @@ export function QuizView({
           </div>
 
           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-            {/* Furigana Toggle */}
+            {/* Furigana Toggle for Explanations */}
             <button
               type="button"
               onClick={() => setShowFurigana((prev) => !prev)}
@@ -1502,10 +1480,10 @@ export function QuizView({
                   ? "bg-[var(--brand-primary)] text-white border-[var(--brand-primary)] shadow-sm"
                   : "bg-[var(--surface-soft)] text-[var(--text-secondary)] border-[var(--border)] hover:text-[var(--text-primary)]"
               }`}
-              title="Tampilkan / Sembunyikan Furigana (ルビ)"
+              title="Tampilkan / Sembunyikan Furigana pada Penjelasan (解説ルビ)"
             >
               <Languages size={13} />
-              <span>ルビ {showFurigana ? "ON" : "OFF"}</span>
+              <span>ルビ解説 {showFurigana ? "ON" : "OFF"}</span>
             </button>
 
             {/* Audio Question Speaker */}
@@ -1541,11 +1519,7 @@ export function QuizView({
             </button>
           </div>
           <h3 className="text-[15px] sm:text-[18px] md:text-[20px] font-bold text-[var(--text-primary)] leading-[1.9] sm:leading-[2.1] tracking-[0.02em] select-text">
-            <RubyTerm
-              rubyText={autoAnnotateRuby(currentQ.questionJp)}
-              fallbackText={currentQ.questionJp}
-              showFurigana={showFurigana}
-            />
+            {currentQ.questionJp}
           </h3>
         </div>
 
@@ -1589,11 +1563,7 @@ export function QuizView({
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
                         <p className="text-xs sm:text-base md:text-[16.5px] font-medium leading-[1.75] sm:leading-[1.85] tracking-[0.02em] pt-0.5">
-                          <RubyTerm
-                            rubyText={autoAnnotateRuby(opt.textJp)}
-                            fallbackText={opt.textJp}
-                            showFurigana={showFurigana}
-                          />
+                          {opt.textJp}
                         </p>
                         <button
                           type="button"

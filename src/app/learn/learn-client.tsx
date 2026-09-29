@@ -54,6 +54,8 @@ import { FeDayQuizModal } from "@/components/fe-study/fe-day-quiz-modal";
 import { TracerView } from "@/components/fe-study/tracer-view";
 import { CheatsheetView } from "@/components/fe-study/cheatsheet-view";
 import { WrongQuestionsView } from "@/components/fe-study/wrong-questions-view";
+import { SpeedMatchView } from "@/components/fe-study/speed-match-view";
+import { FeTechPath } from "@/components/fe-study/fe-tech-path";
 import { RubyTerm } from "@/components/fe-study/ruby-term";
 import { autoAnnotateRuby } from "@/lib/fe-furigana";
 import { FeCandidateIdCard } from "@/components/fe-study/fe-candidate-id-card";
@@ -63,7 +65,7 @@ import {
   getWrongNotebookStats,
   WrongQuestionsStore,
 } from "@/lib/fe-wrong-questions-storage";
-import { QuizQuestion } from "@/data/fe-quiz-data";
+import { QuizQuestion, FE_QUIZ_QUESTIONS } from "@/data/fe-quiz-data";
 import { useLanguage } from "@/lib/i18n/context";
 
 const LEARN_I18N = {
@@ -388,6 +390,22 @@ export function LearnClient() {
   }, []);
 
   const [forceReviewAllDayDeck, setForceReviewAllDayDeck] = useState(false);
+  const [speedMatchCards, setSpeedMatchCards] = useState<FECard[] | null>(null);
+  const [speedMatchTitle, setSpeedMatchTitle] = useState<string>("");
+  const [feRoadmapViewMode, setFeRoadmapViewMode] = useState<"path" | "grid">("path");
+
+  const handleStartTierQuiz = (tierNumber: number, title: string) => {
+    let tierCategory: "technology" | "management" | "strategy" = "technology";
+    if (tierNumber === 3) tierCategory = "management";
+    if (tierNumber === 4) tierCategory = "strategy";
+
+    let tierQuestions = FE_QUIZ_QUESTIONS.filter((q) => q.category === tierCategory);
+    if (tierQuestions.length === 0) tierQuestions = FE_QUIZ_QUESTIONS.slice(0, 10);
+    const picked = [...tierQuestions].sort(() => 0.5 - Math.random()).slice(0, 10);
+
+    setMistakeDrillQuestions(picked);
+    setActiveTab("quiz");
+  };
 
   // Filter cards based on selected mode
   const activeCards = useMemo(() => {
@@ -558,6 +576,7 @@ export function LearnClient() {
     setSingleCardDrill(null);
     setSessionCompleted(false);
     setSessionCards([]);
+    setSpeedMatchCards(null);
   };
 
   const currentDrillCards = sessionCards.length > 0 ? sessionCards : activeCards;
@@ -580,9 +599,23 @@ export function LearnClient() {
       </nav>
 
       {/* ==================================================== */}
+      {/* SPEED MATCH DRILL SESSION (MATCH MADNESS DUOLINGO)  */}
+      {/* ==================================================== */}
+      {speedMatchCards && (
+        <SpeedMatchView
+          cards={speedMatchCards}
+          title={speedMatchTitle}
+          onBack={() => setSpeedMatchCards(null)}
+          onRecordScore={() => {
+            refreshProgress();
+          }}
+        />
+      )}
+
+      {/* ==================================================== */}
       {/* ACTIVE DRILL SESSION (CATEGORY, DAILY DECK, QUICK10) */}
       {/* ==================================================== */}
-      {isDrillActive && !sessionCompleted && (
+      {isDrillActive && !speedMatchCards && !sessionCompleted && (
         <div className="flex flex-col gap-6">
           <div className="flex items-center justify-between pb-4 border-b border-[var(--border)] gap-2">
             <button
@@ -642,7 +675,7 @@ export function LearnClient() {
       {/* ==================================================== */}
       {/* MODE 3: MAIN HUB DASHBOARD                           */}
       {/* ==================================================== */}
-      {!isDrillActive && (
+      {!isDrillActive && !speedMatchCards && (
         <div className="flex flex-col gap-6 sm:gap-8 md:gap-10 min-w-0 max-w-full">
           {/* Hero Section */}
           <div className="flex flex-col gap-4 max-w-3xl">
@@ -917,6 +950,34 @@ export function LearnClient() {
 
               {/* Overall Deck Mastery Counter & Mastery Mode Toggle */}
               <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto shrink-0">
+                {/* View Mode Toggle: Tech Path vs Grid */}
+                <div className="flex items-center p-1 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-xs">
+                  <button
+                    type="button"
+                    onClick={() => setFeRoadmapViewMode("path")}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
+                      feRoadmapViewMode === "path"
+                        ? "bg-[var(--brand-primary)] text-white shadow-xs"
+                        : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                    }`}
+                  >
+                    <Zap size={13} />
+                    <span>Peta Jalur</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setFeRoadmapViewMode("grid")}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
+                      feRoadmapViewMode === "grid"
+                        ? "bg-[var(--brand-primary)] text-white shadow-xs"
+                        : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                    }`}
+                  >
+                    <Layers size={13} />
+                    <span>Daftar Kartu</span>
+                  </button>
+                </div>
+
                 <button
                   type="button"
                   onClick={handleToggleFeMasteryMode}
@@ -948,6 +1009,22 @@ export function LearnClient() {
               </div>
             </div>
 
+            {feRoadmapViewMode === "path" ? (
+              <FeTechPath
+                progress={progress}
+                onStartDeck={(deck, forceReview) => handleStartDailyDeck(deck, forceReview)}
+                onStartSpeedMatch={(deck) => {
+                  const deckCards = FE_CARDS.filter((c) => deck.cardIds.includes(c.id));
+                  setSpeedMatchCards(deckCards);
+                  setSpeedMatchTitle(`Day ${deck.day.toString().padStart(2, "0")}: Speed Match`);
+                }}
+                onStartDayQuiz={(deck) => setDayQuizModalDeck(deck)}
+                onStartTierQuiz={(tierNumber, title) => {
+                  handleStartTierQuiz(tierNumber, title);
+                }}
+              />
+            ) : (
+              <>
             {/* Active Day Focus Mission (Dominant Card at Top) */}
             {activeDayDeck && (() => {
               const activeMasteredCount = activeDayDeck.cardIds.filter((id) =>
@@ -1035,11 +1112,23 @@ export function LearnClient() {
                         <span>{activeIsAllMastered ? `Pelajari Ulang Day ${activeDayDeck.day}` : `Mulai Hari ${activeDayDeck.day} Sekarang (${activeUnmasteredCount} Sisa) →`}</span>
                       </button>
 
-                      <div className="grid grid-cols-2 gap-2">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const deckCards = FE_CARDS.filter((c) => activeDayDeck.cardIds.includes(c.id));
+                            setSpeedMatchCards(deckCards);
+                            setSpeedMatchTitle(`Day ${activeDayDeck.day.toString().padStart(2, "0")}: Speed Match`);
+                          }}
+                          className="py-2 px-3 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30 font-semibold text-xs transition-all flex items-center justify-center gap-1.5 active:scale-[0.98] cursor-pointer"
+                        >
+                          <Zap className="w-3.5 h-3.5" />
+                          <span>Speed Match</span>
+                        </button>
                         <button
                           type="button"
                           onClick={() => setDayQuizModalDeck(activeDayDeck)}
-                          className="py-2 px-3 rounded-xl bg-[var(--surface)] hover:bg-[var(--surface-soft)] text-[var(--text-primary)] border border-[var(--border)] font-semibold text-xs transition-all flex items-center justify-center gap-1.5 active:scale-[0.98]"
+                          className="py-2 px-3 rounded-xl bg-[var(--surface)] hover:bg-[var(--surface-soft)] text-[var(--text-primary)] border border-[var(--border)] font-semibold text-xs transition-all flex items-center justify-center gap-1.5 active:scale-[0.98] cursor-pointer"
                         >
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
                           <span>{activeQuizRecord?.passed ? "Uji Ulang CBT" : "Ujian CBT"}</span>
@@ -1048,7 +1137,7 @@ export function LearnClient() {
                           <button
                             type="button"
                             onClick={() => handleStartDailyDeck(activeDayDeck, true)}
-                            className="py-2 px-3 rounded-xl bg-[var(--surface)] hover:bg-[var(--surface-soft)] text-[var(--text-secondary)] border border-[var(--border)] font-semibold text-xs transition-all flex items-center justify-center gap-1.5 active:scale-[0.98]"
+                            className="py-2 px-3 rounded-xl bg-[var(--surface)] hover:bg-[var(--surface-soft)] text-[var(--text-secondary)] border border-[var(--border)] font-semibold text-xs transition-all flex items-center justify-center gap-1.5 active:scale-[0.98] cursor-pointer"
                           >
                             <RotateCcw className="w-3.5 h-3.5" />
                             <span>Reset Hari</span>
@@ -1242,6 +1331,8 @@ export function LearnClient() {
               })}
             </div>
             )}
+            </>
+            )}
           </div>
 
           {/* Quick Action: Start 10-Cards Drill (Atomic Habits) */}
@@ -1261,13 +1352,27 @@ export function LearnClient() {
               </p>
             </div>
 
-            <button
-              type="button"
-              onClick={() => handleStartSession("quick10")}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white text-sm font-bold tracking-wide shadow-md hover:shadow-lg transition-all active:scale-98 whitespace-nowrap"
-            >
-              <Zap size={16} /> {txt.dailyBtn}
-            </button>
+            <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full sm:w-auto">
+              <button
+                type="button"
+                onClick={() => {
+                  const quickCards = [...FE_CARDS].sort(() => 0.5 - Math.random()).slice(0, 10);
+                  setSpeedMatchCards(quickCards);
+                  setSpeedMatchTitle("Quick 10 Match Blitz (60 Detik)");
+                }}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-600 dark:text-amber-400 border border-amber-500/30 text-sm font-bold tracking-wide transition-all active:scale-98 whitespace-nowrap cursor-pointer shadow-xs"
+              >
+                <Zap size={16} /> <span>Speed Match (60s Blitz)</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleStartSession("quick10")}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white text-sm font-bold tracking-wide shadow-md hover:shadow-lg transition-all active:scale-98 whitespace-nowrap cursor-pointer"
+              >
+                <Layers size={16} /> {txt.dailyBtn}
+              </button>
+            </div>
           </div>
 
           {/* Progress Tracker Card */}

@@ -24,7 +24,9 @@ import {
   Volume2,
   VolumeX,
   Languages,
+  CreditCard,
 } from "lucide-react";
+import { FeCandidateIdCard } from "@/components/fe-study/fe-candidate-id-card";
 import { FE_QUIZ_QUESTIONS, QuizQuestion } from "@/data/fe-quiz-data";
 import {
   recordQuestionAttempt,
@@ -151,6 +153,7 @@ export function QuizView({
   const [isReviewMode, setIsReviewMode] = useState(false);
   const [candidateName, setCandidateName] = useState("Kai");
   const [certificateId, setCertificateId] = useState("");
+  const [credentialView, setCredentialView] = useState<"idcard" | "certificate">("idcard");
 
   const currentQ = questions[currentIndex] || questions[0];
 
@@ -515,79 +518,133 @@ export function QuizView({
           </div>
         </div>
 
-        {/* Visual Certificate (Rendered if Passed) */}
-        {examStats.isPassed && (
-          <div className="relative p-8 md:p-14 rounded-3xl border-2 border-emerald-500/40 bg-gradient-to-br from-[var(--surface)] via-[var(--surface-soft)] to-[var(--surface)] shadow-2xl overflow-hidden print:border-black print:bg-white text-center flex flex-col items-center gap-6">
-            <div className="absolute top-4 right-4 text-emerald-500/10 font-serif font-black text-8xl md:text-9xl pointer-events-none select-none">
-              合格
-            </div>
+        {/* Visual Credential: ID Card & Certificate Switcher */}
+        <div className="w-full flex flex-col items-center gap-5 mt-3">
+          {/* Switcher Tabs */}
+          <div className="flex items-center justify-center gap-1.5 p-1.5 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] max-w-md w-full print:hidden">
+            <button
+              type="button"
+              onClick={() => setCredentialView("idcard")}
+              className={`flex-1 py-2 px-3.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 ${
+                credentialView === "idcard"
+                  ? "bg-[var(--surface)] text-[var(--text-primary)] shadow-sm border border-[var(--border)]"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              }`}
+            >
+              <CreditCard size={14} className="text-emerald-500" />
+              <span>Kartu Peserta (ID Card)</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setCredentialView("certificate")}
+              className={`flex-1 py-2 px-3.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 ${
+                credentialView === "certificate"
+                  ? "bg-[var(--surface)] text-[var(--text-primary)] shadow-sm border border-[var(--border)]"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              }`}
+            >
+              <Award size={14} className="text-amber-500" />
+              <span>Sertifikat Kelulusan</span>
+            </button>
+          </div>
 
-            <div className="flex flex-col items-center gap-2">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 text-xs font-bold uppercase tracking-widest">
-                <Award size={15} />
-                CERTIFICATE OF READINESS · 模擬試験 合格証明書
+          {credentialView === "idcard" ? (
+            <FeCandidateIdCard
+              candidateName={candidateName}
+              candidateId={certificateId}
+              examMode={examMode}
+              score={examStats.finalScore}
+              total={examStats.total}
+              percentage={examStats.percentage}
+              isPassed={examStats.isPassed}
+              categoryStats={examStats.catStats}
+              onNameChange={(name) => setCandidateName(name)}
+              className="w-full"
+            />
+          ) : (
+            <div className="relative w-full max-w-3xl p-8 md:p-14 rounded-3xl border-2 border-emerald-500/40 bg-gradient-to-br from-[var(--surface)] via-[var(--surface-soft)] to-[var(--surface)] shadow-2xl overflow-hidden print:border-black print:bg-white text-center flex flex-col items-center gap-6">
+              <div className="absolute top-4 right-4 text-emerald-500/10 font-serif font-black text-8xl md:text-9xl pointer-events-none select-none">
+                合格
               </div>
-              <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[var(--text-primary)] font-serif mt-2 tracking-tight">
-                基本情報技術者試験 (FE CBT)
-              </h3>
-              <p className="text-xs sm:text-sm text-[var(--text-secondary)]">
-                Fundamental Information Technology Engineer Examination · Simulation Readiness
-              </p>
-            </div>
 
-            <div className="my-2">
-              <p className="text-xs text-[var(--text-secondary)]">Diberikan kepada:</p>
-              <div className="flex items-center justify-center gap-2 mt-1">
-                <input
-                  type="text"
-                  value={candidateName}
-                  onChange={(e) => setCandidateName(e.target.value)}
-                  className="text-2xl md:text-3xl font-bold font-serif text-[var(--brand-primary)] bg-transparent border-b border-[var(--brand-primary)]/40 text-center px-3 py-1 focus:outline-none focus:border-[var(--brand-primary)]"
-                  placeholder="Nama Kandidat"
+              {/* Official Gold Seal Accent */}
+              <div className="w-16 h-16 rounded-full border-2 border-amber-400 shadow-md overflow-hidden bg-slate-900">
+                <img
+                  src="/fe-study/gold-seal.jpg"
+                  alt="Official Seal"
+                  className="w-full h-full object-cover"
                 />
               </div>
-            </div>
 
-            <p className="text-xs sm:text-sm text-[var(--text-secondary)] max-w-xl leading-relaxed">
-              Telah berhasil menyelesaikan simulasi ujian CBT resmi dengan skor akurasi{" "}
-              <b className="text-[var(--text-primary)]">{examStats.percentage}%</b>, memenuhi ambang batas kelulusan standar
-              IPA Jepang untuk kualifikasi visa 技人国 (Engineer / Specialist in Humanities).
-            </p>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full pt-5 border-t border-[var(--border)] text-xs sm:text-sm">
-              <div>
-                <p className="text-xs text-[var(--text-secondary)]">Metode Ujian</p>
-                <p className="font-mono font-bold text-[var(--text-primary)] mt-0.5">
-                  {examMode === "mock" ? "PROMETRIC CBT" : "PRACTICE DRILL"}
+              <div className="flex flex-col items-center gap-2">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 text-xs font-bold uppercase tracking-widest">
+                  <Award size={15} />
+                  CERTIFICATE OF READINESS · 模擬試験 合格証明書
+                </div>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[var(--text-primary)] font-serif mt-2 tracking-tight">
+                  基本情報技術者試験 (FE CBT)
+                </h3>
+                <p className="text-xs sm:text-sm text-[var(--text-secondary)]">
+                  Fundamental Information Technology Engineer Examination · Simulation Readiness
                 </p>
               </div>
-              <div>
-                <p className="text-xs text-[var(--text-secondary)]">Skor Akhir</p>
-                <p className="font-mono font-bold text-emerald-500 mt-0.5">
-                  {examStats.finalScore} / {examStats.total} ({examStats.percentage}%)
-                </p>
-              </div>
-              <div>
-                <p className="text-xs text-[var(--text-secondary)]">Status Kelulusan</p>
-                <p className="font-bold text-emerald-500 mt-0.5">合格 (PASSED)</p>
-              </div>
-              <div>
-                <p className="text-xs text-[var(--text-secondary)]">No. Sertifikat</p>
-                <p className="font-mono font-bold text-[var(--text-primary)] mt-0.5">{certificateId}</p>
-              </div>
-            </div>
 
-            <div className="pt-2 print:hidden">
-              <button
-                type="button"
-                onClick={() => window.print()}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--surface)] hover:bg-[var(--surface-soft)] border border-[var(--border)] text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all shadow-sm"
-              >
-                <Printer size={15} /> Cetak / Simpan Sertifikat (PDF)
-              </button>
+              <div className="my-2">
+                <p className="text-xs text-[var(--text-secondary)]">Diberikan kepada:</p>
+                <div className="flex items-center justify-center gap-2 mt-1">
+                  <input
+                    type="text"
+                    value={candidateName}
+                    onChange={(e) => setCandidateName(e.target.value)}
+                    className="text-2xl md:text-3xl font-bold font-serif text-[var(--brand-primary)] bg-transparent border-b border-[var(--brand-primary)]/40 text-center px-3 py-1 focus:outline-none focus:border-[var(--brand-primary)]"
+                    placeholder="Nama Kandidat"
+                  />
+                </div>
+              </div>
+
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] max-w-xl leading-relaxed">
+                Telah berhasil menyelesaikan simulasi ujian CBT resmi dengan skor akurasi{" "}
+                <b className="text-[var(--text-primary)]">{examStats.percentage}%</b>, memenuhi ambang batas kelulusan standar
+                IPA Jepang untuk kualifikasi visa 技人国 (Engineer / Specialist in Humanities).
+              </p>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full pt-5 border-t border-[var(--border)] text-xs sm:text-sm">
+                <div>
+                  <p className="text-xs text-[var(--text-secondary)]">Metode Ujian</p>
+                  <p className="font-mono font-bold text-[var(--text-primary)] mt-0.5">
+                    {examMode === "mock" ? "PROMETRIC CBT" : "PRACTICE DRILL"}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs text-[var(--text-secondary)]">Skor Akhir</p>
+                  <p className="font-mono font-bold text-emerald-500 mt-0.5">
+                    {examStats.finalScore} / {examStats.total} ({examStats.percentage}%)
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs text-[var(--text-secondary)]">Status Kelulusan</p>
+                  <p className="font-bold text-emerald-500 mt-0.5">
+                    {examStats.isPassed ? "合格 (PASSED)" : "修了 (COMPLETED)"}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs text-[var(--text-secondary)]">No. Sertifikat</p>
+                  <p className="font-mono font-bold text-[var(--text-primary)] mt-0.5">{certificateId}</p>
+                </div>
+              </div>
+
+              <div className="pt-2 print:hidden">
+                <button
+                  type="button"
+                  onClick={() => window.print()}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--surface)] hover:bg-[var(--surface-soft)] border border-[var(--border)] text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all shadow-sm"
+                >
+                  <Printer size={15} /> Cetak / Simpan Sertifikat (PDF)
+                </button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center gap-3 w-full print:hidden">

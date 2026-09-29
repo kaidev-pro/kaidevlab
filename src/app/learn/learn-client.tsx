@@ -30,6 +30,7 @@ import {
   Unlock,
   ShieldCheck,
   Trophy,
+  CreditCard,
 } from "lucide-react";
 import { FE_CARDS, FECard } from "@/data/fe-study-data";
 import {
@@ -52,6 +53,7 @@ import { TracerView } from "@/components/fe-study/tracer-view";
 import { CheatsheetView } from "@/components/fe-study/cheatsheet-view";
 import { WrongQuestionsView } from "@/components/fe-study/wrong-questions-view";
 import { RubyTerm } from "@/components/fe-study/ruby-term";
+import { FeCandidateIdCard } from "@/components/fe-study/fe-candidate-id-card";
 import { FE_DAILY_DECKS, FEDailyDeck, getCardsForDay } from "@/data/fe-daily-decks";
 import {
   loadWrongQuestions,
@@ -111,10 +113,10 @@ const LEARN_I18N = {
     dailyDecksEyebrow: "Porsi Belajar Terstruktur (Bite-Sized)",
     dailyDecksTitle: "Kurikulum Harian 20 Hari (10 Istilah / Hari)",
     dailyDecksDesc: "Bukan kartu acak. 199 materi dikelompokkan tematik 10 kartu per hari agar hafalan melekat kuat, bertahap, dan tidak bikin jenuh.",
-    startDayDeck: "Mulai Hari Ini →",
     dayUnit: "Hari",
     cardUnit: "Kartu",
     deckMastered: "Dikuasai",
+    idCardBtn: "Kartu Peserta (受験者証)",
   },
   ja: {
     back: "セッション終了",
@@ -165,10 +167,10 @@ const LEARN_I18N = {
     dailyDecksEyebrow: "構造化学習プラン（スモールステップ）",
     dailyDecksTitle: "20日間デイリープラン（1日10用語）",
     dailyDecksDesc: "全199用語をテーマ別に10語ずつ分割。ランダム学習の散漫さを防ぎ、体系的な記憶定着を実現します。",
-    startDayDeck: "この日のドリルを開始 →",
     dayUnit: "日目",
     cardUnit: "枚",
     deckMastered: "習得済み",
+    idCardBtn: "受験者証 (IDカード)",
   },
   en: {
     back: "Exit Session",
@@ -219,10 +221,10 @@ const LEARN_I18N = {
     dailyDecksEyebrow: "Structured Daily Plan (Bite-Sized Learning)",
     dailyDecksTitle: "20-Day Daily Plan (10 Terms / Day)",
     dailyDecksDesc: "Master 199 FE exam terms without cognitive overload. Grouped thematically at 10 cards per day for structured retention.",
-    startDayDeck: "Start Today's Deck →",
     dayUnit: "Day",
     cardUnit: "Cards",
     deckMastered: "Mastered",
+    idCardBtn: "Candidate Exam ID",
   }
 };
 
@@ -301,6 +303,7 @@ export function LearnClient() {
     setProgress(updated);
   };
   const [roadmapModal, setRoadmapModal] = useState<RoadmapItem | null>(null);
+  const [isIdCardModalOpen, setIsIdCardModalOpen] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [isInstalled, setIsInstalled] = useState(false);
 
@@ -658,6 +661,15 @@ export function LearnClient() {
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 {txt.trainMode}
               </span>
+
+              <button
+                type="button"
+                onClick={() => setIsIdCardModalOpen(true)}
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-500 text-xs font-semibold transition-all shadow-sm"
+              >
+                <CreditCard size={13} />
+                <span>{txt.idCardBtn}</span>
+              </button>
 
               <a
                 href="/tools/tango-n3/"
@@ -1350,6 +1362,68 @@ export function LearnClient() {
           onPassQuiz={handlePassDayQuiz}
           onStartNextDeck={(next) => setDayQuizModalDeck(next)}
         />
+      )}
+
+      {/* Candidate ID Card Modal */}
+      {isIdCardModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-fade-in overflow-y-auto print:p-0 print:bg-white">
+          <div className="relative w-full max-w-2xl my-auto rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-5 sm:p-7 shadow-2xl flex flex-col items-center gap-6 print:border-none print:shadow-none print:p-0">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between w-full border-b border-[var(--border)] pb-3 print:hidden">
+              <div className="flex items-center gap-2">
+                <CreditCard size={18} className="text-emerald-500" />
+                <h3 className="text-base sm:text-lg font-bold text-[var(--text-primary)]">
+                  Kartu Peserta Ujian Resmi (受験者証)
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsIdCardModalOpen(false)}
+                className="p-1.5 rounded-xl hover:bg-[var(--surface-soft)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+                title="Tutup"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            {/* ID Card Component */}
+            <FeCandidateIdCard
+              candidateName={typeof window !== "undefined" ? localStorage.getItem("kaidevlab_candidate_name") || "Kai" : "Kai"}
+              candidateId={typeof window !== "undefined" ? localStorage.getItem("kaidevlab_cadet_id") || "FE-CBT-2026-X8K92" : "FE-CBT-2026-X8K92"}
+              examMode="hub"
+              score={progress.masteredCardIds.length}
+              total={FE_CARDS.length}
+              percentage={Math.round((progress.masteredCardIds.length / (FE_CARDS.length || 1)) * 100)}
+              isPassed={progress.masteredCardIds.length >= 30}
+              categoryStats={{
+                technology: {
+                  correct: progress.categoryStats.technology?.mastered || 0,
+                  total: FE_CARDS.filter((c) => c.category === "technology").length,
+                },
+                management: {
+                  correct: progress.categoryStats.management?.mastered || 0,
+                  total: FE_CARDS.filter((c) => c.category === "management").length,
+                },
+                strategy: {
+                  correct: progress.categoryStats.strategy?.mastered || 0,
+                  total: FE_CARDS.filter((c) => c.category === "strategy").length,
+                },
+              }}
+              className="w-full"
+            />
+
+            {/* Close button */}
+            <div className="w-full flex justify-end pt-2 border-t border-[var(--border)] print:hidden">
+              <button
+                type="button"
+                onClick={() => setIsIdCardModalOpen(false)}
+                className="px-5 py-2 rounded-xl bg-[var(--surface-soft)] hover:bg-[var(--border)] text-xs font-bold text-[var(--text-primary)] transition-all"
+              >
+                Tutup
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

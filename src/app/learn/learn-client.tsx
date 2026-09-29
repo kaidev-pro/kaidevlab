@@ -31,6 +31,8 @@ import {
   ShieldCheck,
   Trophy,
   CreditCard,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 import { FE_CARDS, FECard } from "@/data/fe-study-data";
 import {
@@ -108,11 +110,11 @@ const LEARN_I18N = {
     reviewDifficult: "Review Kartu Sulit",
     drillAll: "Drill Seluruh Materi (199 Kartu)",
     tipTitle: "Tips Belajar Efektif:",
-    tipDesc: "Otak mengingat 3x lebih kuat saat kamu berusaha menebak dulu sebelum membalik kartu (Active Recall).",
+    tipDesc: "Coba ingat jawabannya sebelum membuka kartu. Active recall membantu memperkuat kemampuan mengingat kembali informasi.",
     tipRef: "Rujukan: Make It Stick (Brown et al.)",
     dailyDecksEyebrow: "Porsi Belajar Terstruktur (Bite-Sized)",
-    dailyDecksTitle: "Kurikulum Harian 20 Hari (10 Istilah / Hari)",
-    dailyDecksDesc: "Bukan kartu acak. 199 materi dikelompokkan tematik 10 kartu per hari agar hafalan melekat kuat, bertahap, dan tidak bikin jenuh.",
+    dailyDecksTitle: "20-Day Core Concepts Sprint (10 Istilah / Hari)",
+    dailyDecksDesc: "Kurikulum terarah 20 hari untuk menguasai 199 konsep kunci ujian FE. Tiap hari fokus pada 10 kartu tematik agar materi melekat kuat.",
     dayUnit: "Hari",
     cardUnit: "Kartu",
     deckMastered: "Dikuasai",
@@ -162,10 +164,10 @@ const LEARN_I18N = {
     reviewDifficult: "苦手カード復習",
     drillAll: "全出題範囲ドリル (199枚)",
     tipTitle: "効果的な学習のコツ:",
-    tipDesc: "答えを見る前に自力で思い出す練習（アクティブリコール）を行うことで、記憶の定着率は3倍向上します。",
+    tipDesc: "カードをめくる前に自力で思い出す練習（アクティブリコール）を行うことで、記憶の定着が強化されます。",
     tipRef: "参考文献: 『Make It Stick（学び方の科学）』",
     dailyDecksEyebrow: "構造化学習プラン（スモールステップ）",
-    dailyDecksTitle: "20日間デイリープラン（1日10用語）",
+    dailyDecksTitle: "20-Day Core Concepts Sprint (1日10用語)",
     dailyDecksDesc: "全199用語をテーマ別に10語ずつ分割。ランダム学習の散漫さを防ぎ、体系的な記憶定着を実現します。",
     dayUnit: "日目",
     cardUnit: "枚",
@@ -216,10 +218,10 @@ const LEARN_I18N = {
     reviewDifficult: "Review Difficult Cards",
     drillAll: "Drill All Cards (199 Cards)",
     tipTitle: "Effective Study Tip:",
-    tipDesc: "Your brain retains concepts 3x longer when you force yourself to recall before flipping the card (Active Recall).",
+    tipDesc: "Try recalling the answer before flipping the card. Active recall reinforces long-term retention and memory retrieval.",
     tipRef: "Reference: Make It Stick (Brown et al.)",
     dailyDecksEyebrow: "Structured Daily Plan (Bite-Sized Learning)",
-    dailyDecksTitle: "20-Day Daily Plan (10 Terms / Day)",
+    dailyDecksTitle: "20-Day Core Concepts Sprint (10 Terms / Day)",
     dailyDecksDesc: "Master 199 FE exam terms without cognitive overload. Grouped thematically at 10 cards per day for structured retention.",
     dayUnit: "Day",
     cardUnit: "Cards",
@@ -304,8 +306,24 @@ export function LearnClient() {
   };
   const [roadmapModal, setRoadmapModal] = useState<RoadmapItem | null>(null);
   const [isIdCardModalOpen, setIsIdCardModalOpen] = useState(false);
+  const [isFeRoadmapExpanded, setIsFeRoadmapExpanded] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [isInstalled, setIsInstalled] = useState(false);
+
+  // Active Day Deck: first unlocked day with unmastered cards, or latest unlocked
+  const activeDayDeck = useMemo(() => {
+    const unlocked = progress?.unlockedDeckDays || [1];
+    for (const dayNum of unlocked) {
+      const deck = FE_DAILY_DECKS.find((d) => d.day === dayNum);
+      if (!deck) continue;
+      const mastered = deck.cardIds.filter((id) => progress?.masteredCardIds?.includes(id)).length;
+      if (mastered < deck.cardIds.length) {
+        return deck;
+      }
+    }
+    const maxUnlocked = Math.max(...unlocked, 1);
+    return FE_DAILY_DECKS.find((d) => d.day === maxUnlocked) || FE_DAILY_DECKS[0];
+  }, [progress]);
 
   // PWA Install prompt listener
   useEffect(() => {
@@ -924,8 +942,137 @@ export function LearnClient() {
               </div>
             </div>
 
-            {/* Daily Decks Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3.5 pt-1">
+            {/* Active Day Focus Mission (Dominant Card at Top) */}
+            {activeDayDeck && (() => {
+              const activeMasteredCount = activeDayDeck.cardIds.filter((id) =>
+                progress?.masteredCardIds?.includes(id)
+              ).length;
+              const activeTotalCount = activeDayDeck.cardIds.length;
+              const activeIsAllMastered = activeMasteredCount === activeTotalCount;
+              const activeUnmasteredCount = activeTotalCount - activeMasteredCount;
+              const activeQuizRecord = progress.dayQuizScores?.[activeDayDeck.day];
+              const pct = Math.round((activeMasteredCount / activeTotalCount) * 100);
+
+              let catBadge = "bg-blue-500/10 text-blue-500 border-blue-500/20";
+              let catLabel = "テクノロジ";
+              if (activeDayDeck.category === "management") {
+                catBadge = "bg-emerald-500/10 text-emerald-500 border-emerald-500/20";
+                catLabel = "マネジメント";
+              } else if (activeDayDeck.category === "strategy") {
+                catBadge = "bg-amber-500/10 text-amber-500 border-amber-500/20";
+                catLabel = "ストラテジ";
+              } else if (activeDayDeck.category === "vocab") {
+                catBadge = "bg-purple-500/10 text-purple-500 border-purple-500/20";
+                catLabel = "設問・語彙";
+              }
+
+              return (
+                <div className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-[var(--surface-soft)] border-2 border-[var(--brand-primary)]/40 shadow-lg relative overflow-hidden">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                    <div className="flex items-center gap-2">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-primary)] text-white text-xs font-black tracking-wider uppercase shadow-sm">
+                        <Sparkles size={13} />
+                        <span>Misi Aktif Hari Ini</span>
+                      </span>
+                      <span className="text-xs font-mono font-extrabold px-2.5 py-0.5 rounded-lg bg-[var(--surface)] border border-[var(--border)] text-[var(--text-primary)]">
+                        DAY {activeDayDeck.day.toString().padStart(2, "0")}
+                      </span>
+                      <span className={`text-[11px] px-2 py-0.5 rounded-md border font-medium ${catBadge}`}>
+                        {catLabel}
+                      </span>
+                    </div>
+                    {activeQuizRecord?.passed && (
+                      <span className="text-xs font-mono px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20 w-fit">
+                        CBT Lulus ({activeQuizRecord.score}/{activeQuizRecord.total})
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-center">
+                    <div className="lg:col-span-2 flex flex-col gap-2">
+                      <h4 className="text-xl sm:text-2xl font-black text-[var(--text-primary)] font-serif leading-tight">
+                        {activeDayDeck.titleId}
+                      </h4>
+                      <p className="text-xs sm:text-sm font-mono text-[var(--brand-primary)] font-medium">
+                        {activeDayDeck.titleJp}
+                      </p>
+                      <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed mt-1">
+                        {activeDayDeck.descriptionId}
+                      </p>
+
+                      {/* Progress bar */}
+                      <div className="pt-2 flex flex-col gap-1.5">
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="font-medium text-[var(--text-secondary)]">Progres Hari Ini</span>
+                          <span className="font-mono font-bold text-[var(--text-primary)]">
+                            {activeMasteredCount} / {activeTotalCount} Dikuasai ({pct}%)
+                          </span>
+                        </div>
+                        <div className="w-full h-2.5 rounded-full bg-[var(--surface)] border border-[var(--border)] overflow-hidden">
+                          <div
+                            className={`h-full transition-all duration-500 ${
+                              activeIsAllMastered ? "bg-emerald-500" : "bg-[var(--brand-primary)]"
+                            }`}
+                            style={{ width: `${pct}%` }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-2.5 justify-center">
+                      <button
+                        type="button"
+                        onClick={() => handleStartDailyDeck(activeDayDeck, false)}
+                        className="w-full py-3 px-5 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
+                      >
+                        <Layers className="w-4 h-4" />
+                        <span>{activeIsAllMastered ? `Pelajari Ulang Day ${activeDayDeck.day}` : `Mulai Hari ${activeDayDeck.day} Sekarang (${activeUnmasteredCount} Sisa) →`}</span>
+                      </button>
+
+                      <div className="grid grid-cols-2 gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setDayQuizModalDeck(activeDayDeck)}
+                          className="py-2 px-3 rounded-xl bg-[var(--surface)] hover:bg-[var(--surface-soft)] text-[var(--text-primary)] border border-[var(--border)] font-semibold text-xs transition-all flex items-center justify-center gap-1.5 active:scale-[0.98]"
+                        >
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+                          <span>{activeQuizRecord?.passed ? "Uji Ulang CBT" : "Ujian CBT"}</span>
+                        </button>
+                        {activeMasteredCount > 0 && (
+                          <button
+                            type="button"
+                            onClick={() => handleStartDailyDeck(activeDayDeck, true)}
+                            className="py-2 px-3 rounded-xl bg-[var(--surface)] hover:bg-[var(--surface-soft)] text-[var(--text-secondary)] border border-[var(--border)] font-semibold text-xs transition-all flex items-center justify-center gap-1.5 active:scale-[0.98]"
+                          >
+                            <RotateCcw className="w-3.5 h-3.5" />
+                            <span>Reset Hari</span>
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
+
+            {/* Accordion Toggle Bar */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-[var(--border)]">
+              <span className="text-xs text-[var(--text-secondary)] font-medium">
+                Day {activeDayDeck?.day || 1} dari 20 · {Math.min(100, Math.round(((progress?.masteredCardIds?.length || 0) / (FE_CARDS.length || 1)) * 100))}% Selesai Total
+              </span>
+              <button
+                type="button"
+                onClick={() => setIsFeRoadmapExpanded((prev) => !prev)}
+                className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--surface-soft)] text-xs font-bold text-[var(--text-primary)] transition-all shadow-sm active:scale-95"
+              >
+                <span>{isFeRoadmapExpanded ? "Sembunyikan Daftar 20 Hari" : "Lihat Seluruh 20 Hari"}</span>
+                {isFeRoadmapExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+              </button>
+            </div>
+
+            {/* Collapsible 20-Day Grid */}
+            {isFeRoadmapExpanded && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3.5 pt-1">
               {FE_DAILY_DECKS.map((deck) => {
                 const masteredCount = deck.cardIds.filter((id) =>
                   progress?.masteredCardIds?.includes(id)
@@ -1088,6 +1235,7 @@ export function LearnClient() {
                 );
               })}
             </div>
+            )}
           </div>
 
           {/* Quick Action: Start 10-Cards Drill (Atomic Habits) */}

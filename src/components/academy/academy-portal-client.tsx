@@ -21,6 +21,8 @@ import {
   Smartphone,
   ExternalLink,
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
   Layers,
   GraduationCap,
   Star,
@@ -31,163 +33,109 @@ import {
   AlertCircle,
   X,
   RefreshCw,
+  Clock,
+  Calendar,
+  CreditCard,
+  Play,
+  Bookmark,
+  FileText,
+  User,
 } from "lucide-react";
 import { loadTangoProgress } from "@/lib/tango-n3-storage";
 import { loadStudyProgress } from "@/lib/fe-study-storage";
-import { TANGO_N3_CARDS } from "@/data/tango-n3-data";
+import { TANGO_N3_CARDS, TANGO_N3_CHAPTERS } from "@/data/tango-n3-data";
 import { FE_CARDS } from "@/data/fe-study-data";
+import { FE_DAILY_DECKS } from "@/data/fe-daily-decks";
+import { FeCandidateIdCard } from "@/components/fe-study/fe-candidate-id-card";
 import {
   downloadFullBackupFile,
   restoreFullBackup,
-  encodeCompactSyncToken,
-  decodeCompactSyncToken,
-  applyCompactSyncPayload,
-  generateQrCodeDataUrl,
   CompactSyncPayload,
 } from "@/lib/cross-device-sync";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/context";
 
-type TrackFilter = "all" | "japanese" | "english" | "web" | "ai" | "library";
-
 const PORTAL_I18N = {
   id: {
-    eyebrow: "Ruang Belajar & Riset Kaidevlab",
-    heroTitle: "Ruang Belajar Mandiri & Perpustakaan Digital.",
-    heroDesc:
-      "Tempat aku latihan serius — bahasa Jepang buat kerja & ujian, plus software engineering dan AI. Dicatat dan dipakai langsung, bukan sekadar teori.",
+    osBadge: "Personal Learning Operating System",
+    welcomePrefix: "Selamat datang kembali,",
+    heroSub: "Target harian: ±25 menit untuk menjaga konsistensi belajar bahasa Jepang & rekayasa sistem.",
+    todayMissionTitle: "Misi Belajar Hari Ini",
+    todayMissionBadge: "Daily Mission",
+    estTime: "± 25 Menit",
+    primaryCta: "Mulai Daily Session",
+    reviewDueTitle: "Antrean Review Berkala",
+    reviewDueAction: "Mulai Review Sekarang",
+    noReviewDue: "Semua review selesai. Tidak ada materi yang jatuh tempo hari ini.",
+    continueSectionTitle: "Lanjutkan Belajar Terakhir",
+    continueSectionDesc: "Akses 1-klik langsung ke modul dan bab yang sedang kamu kerjakan.",
+    continueBtn: "Lanjutkan",
+    tracksTitle: "Jalur Pembelajaran Aktif",
+    tracksDesc: "Kurikulum terstruktur dengan metode active recall dan penguncian materi adaptif.",
+    roadmapTitle: "Rencana Riset & Lab",
+    roadmapDesc: "Kurikulum dalam tahap perancangan materi.",
+    studyToolsTitle: "Peralatan Belajar & Lab",
+    studyToolsDesc: "Simulator ujian, kalkulator rumus, dan alat bantu analisis kode.",
     syncBtn: "Hubungkan Device",
-    streakSuffix: "Hari Streak",
+    openPassBtn: "Buka KAI-PASS (ID Card)",
+    streakSuffix: "Hari Beruntun",
     masteredSuffix: "Dikuasai",
-    noProgressYet: "Belum mulai — mulai drill pertama",
-    allTracks: "Semua Track",
-    activeTracksTitle: "Track Pembelajaran Aktif",
-    activeTracksDesc: "Kurikulum interaktif siap pakai dengan sistem kartu pintar dan kuis.",
-    roadmapTitle: "Roadmap & Rencana Lab",
-    roadmapDesc: "Kurikulum yang sedang dalam tahap riset dan perancangan materi.",
-    statusActive: "Aktif",
-    statusSoon: "Segera",
-    statusPlanned: "Rencana",
-    catJapanese: "Bahasa Jepang",
-    catItExam: "Ujian IT Jepang",
-    catEnglish: "Bahasa Inggris",
-    catWeb: "Web Dev",
-    catAi: "AI & Agen",
-    catLibrary: "Perpustakaan",
-    tangoDesc:
-      "Kurikulum kosakata resmi sesuai buku fisik Shinkanzen. Dilengkapi kolokasi, audio native TTS, smart card queue, dan ujian per bab.",
-    tangoNotStarted: "1800 Kosakata · Belum dimulai",
-    tangoCta: "Buka Ruang Belajar N3",
-    feDesc:
-      "Persiapan ujian sertifikasi IT negara Jepang dan syarat visa kerja. Dilengkapi tracer algoritma, kuis CBT, dan penguncian materi harian adaptif.",
-    feNotStarted: "199 Konsep · Belum dimulai",
-    feCta: "Buka Ruang Belajar FE",
-    libraryDesc:
-      "Kumpulan rumus hitungan ujian IT dan kalkulator interaktif: ketersediaan sistem, MTBF/MTTR, waktu akses memori, kalkulator BEP, dan panduan subnetting CIDR.",
-    libraryStats: "Akses Terbuka",
-    libraryCta: "Buka Perpustakaan Digital",
-    englishDesc:
-      "Kosakata teknis sistem, frasa arsitektur cloud, kolokasi dokumentasi open-source, dan simulasi technical interview standar global.",
-    englishPhase: "Tahap Riset Silabus",
-    webDesc:
-      "Konsep mendalam TypeScript, lifecycle rendering React, optimasi web performance, internal caching, dan arsitektur Next.js modern.",
-    webPhase: "Rencana Kurikulum",
-    aiDesc:
-      "Rancang bangun agen otonom, pipeline RAG produksi, tool-calling berstandar schema, prompt engineering terstruktur, dan evaluasi model LLM.",
-    aiPhase: "Rencana Kurikulum",
-    progressLabel: "Progres Belajar",
+    disclaimerN3: "Materi latihan untuk mendampingi pembelajaran 新完全マスター単語 N3. KaidevLab tidak berafiliasi resmi dengan penerbit buku.",
+    disclaimerFe: "Persiapan Fundamental IT Engineer Examination (FE) untuk mendukung pengembangan karier IT di Jepang.",
   },
   en: {
-    eyebrow: "Kaidevlab Learning & Research Hub",
-    heroTitle: "Self-Study Academy & Digital Library.",
-    heroDesc:
-      "Where I practice seriously — Japanese for work and certification, plus software engineering and AI. Built and used daily, not just theory.",
+    osBadge: "Personal Learning Operating System",
+    welcomePrefix: "Welcome back,",
+    heroSub: "Daily target: ~25 minutes to maintain steady mastery in Japanese & systems engineering.",
+    todayMissionTitle: "Today's Learning Mission",
+    todayMissionBadge: "Daily Mission",
+    estTime: "~25 Minutes",
+    primaryCta: "Start Daily Session",
+    reviewDueTitle: "Spaced Review Queue",
+    reviewDueAction: "Start Due Reviews",
+    noReviewDue: "All reviews up to date. No concepts due today.",
+    continueSectionTitle: "Continue Learning",
+    continueSectionDesc: "Jump straight back into your active module and chapter.",
+    continueBtn: "Continue",
+    tracksTitle: "Active Study Tracks",
+    tracksDesc: "Structured curricula powered by active recall and adaptive mastery.",
+    roadmapTitle: "Research & Lab Roadmap",
+    roadmapDesc: "Curricula under active research and syllabus design.",
+    studyToolsTitle: "Study Tools & Labs",
+    studyToolsDesc: "Exam simulators, formula calculators, and code tracer utilities.",
     syncBtn: "Connect Device",
+    openPassBtn: "View KAI-PASS (ID Card)",
     streakSuffix: "Day Streak",
     masteredSuffix: "Mastered",
-    noProgressYet: "Not started — start your first drill",
-    allTracks: "All Tracks",
-    activeTracksTitle: "Active Study Tracks",
-    activeTracksDesc: "Interactive curricula ready for immediate practice with smart cards and quizzes.",
-    roadmapTitle: "Lab Roadmap & Research",
-    roadmapDesc: "Curricula currently under research and syllabus design.",
-    statusActive: "Live",
-    statusSoon: "Coming Soon",
-    statusPlanned: "Planned",
-    catJapanese: "Japanese",
-    catItExam: "IT Exam",
-    catEnglish: "Tech English",
-    catWeb: "Web Dev",
-    catAi: "AI & Agents",
-    catLibrary: "Library",
-    tangoDesc:
-      "Official vocabulary curriculum following the physical Shinkanzen textbook. Equipped with collocations, native TTS audio, smart queue, and chapter quizzes.",
-    tangoNotStarted: "1800 Vocabulary · Not started",
-    tangoCta: "Open N3 Study Room",
-    feDesc:
-      "Preparation for Japan’s national IT certification and engineer visa requirements. Includes algorithm tracer, CBT quizzes, and adaptive daily locking.",
-    feNotStarted: "199 Concepts · Not started",
-    feCta: "Open FE Study Gym",
-    libraryDesc:
-      "Interactive formulas and calculators: system availability, MTBF/MTTR, memory access time, break-even point, and CIDR subnetting guide.",
-    libraryStats: "Open Access",
-    libraryCta: "Open Digital Library",
-    englishDesc:
-      "System vocabulary, cloud architecture phrases, open-source documentation collocations, and global technical interview simulations.",
-    englishPhase: "Syllabus Research",
-    webDesc:
-      "Deep TypeScript patterns, React rendering lifecycle, web performance budgets, caching internals, and modern Next.js architecture.",
-    webPhase: "Curriculum Planned",
-    aiDesc:
-      "Building autonomous agents, production RAG pipelines, schema-based tool calling, structured prompting, and LLM evaluation.",
-    aiPhase: "Curriculum Planned",
-    progressLabel: "Study Progress",
+    disclaimerN3: "Study companion material for Shin Kanzen Master Tango N3. KaidevLab is not officially affiliated with the publisher.",
+    disclaimerFe: "Fundamental IT Engineer Examination (FE) preparation to advance your engineering career in Japan.",
   },
   ja: {
-    eyebrow: "学習＆リサーチポータル",
-    heroTitle: "自習型アカデミー＆デジタルライブラリ。",
-    heroDesc:
-      "仕事や試験のための日本語、ソフトウェア工学、AIの実践学習道場。単なる理論ではなく、自ら構築し日々活用するスペース。",
+    osBadge: "パーソナル学習オペレーティングシステム",
+    welcomePrefix: "おかえりなさい、",
+    heroSub: "本日の目標: 約25分間の学習で確実な記憶定着とスキルアップを図ります。",
+    todayMissionTitle: "本日の学習ミッション",
+    todayMissionBadge: "デイリーミッション",
+    estTime: "約25分",
+    primaryCta: "デイリーセッションを開始",
+    reviewDueTitle: "復習キュー",
+    reviewDueAction: "今すぐ復習を開始",
+    noReviewDue: "本日の復習はすべて完了しています。",
+    continueSectionTitle: "前回の続きから学習",
+    continueSectionDesc: "現在進行中のモジュールや章へ1クリックで再開できます。",
+    continueBtn: "再開する",
+    tracksTitle: "公開中の学習トラック",
+    tracksDesc: "アクティブリコールと適応型定着度判定に基づく実践カリキュラム。",
+    roadmapTitle: "研究開発ロードマップ",
+    roadmapDesc: "現在シラバス研究・設計中の学習カリキュラム。",
+    studyToolsTitle: "学習ツール・ラボ",
+    studyToolsDesc: "CBT模試シミュレータ、公式計算ツール、擬似言語トレーサー。",
     syncBtn: "端末同期",
+    openPassBtn: "KAI-PASS（受験者証）を表示",
     streakSuffix: "日連続",
     masteredSuffix: "習得",
-    noProgressYet: "未開始 — 最初の演習を始めよう",
-    allTracks: "すべてのトラック",
-    activeTracksTitle: "公開中の学習トラック",
-    activeTracksDesc: "スマートカードとクイズを備えた、すぐに学習可能な実践カリキュラム。",
-    roadmapTitle: "ロードマップ・研究開発",
-    roadmapDesc: "現在シラバス策定および教材研究中のカリキュラム。",
-    statusActive: "公開中",
-    statusSoon: "近日公開",
-    statusPlanned: "計画中",
-    catJapanese: "日本語",
-    catItExam: "IT国家試験",
-    catEnglish: "技術英語",
-    catWeb: "Web開発",
-    catAi: "AI・エージェント",
-    catLibrary: "ライブラリ",
-    tangoDesc:
-      "新完全マスター単語に準拠した公式語彙カリキュラム。連語、ネイティブTTS音声、出題キュー、各章の修了テストを完備。",
-    tangoNotStarted: "全1800語 · 未開始",
-    tangoCta: "N3学習ルームを開く",
-    feDesc:
-      "日本のIT国家資格および技人国ビザ要件対策。アルゴリズムトレーサー、CBT模試、デイリーアンロック機能を搭載。",
-    feNotStarted: "全199概念 · 未開始",
-    feCta: "FE学習ジムを開く",
-    libraryDesc:
-      "稼働率、MTBF/MTTR、実効アクセス時間、損益分岐点計算機、およびCIDRサブネット表を備えたインタラクティブ公式集。",
-    libraryStats: "常時利用可能",
-    libraryCta: "デジタルライブラリを開く",
-    englishDesc:
-      "システム設計語彙、クラウド基盤フレーズ、OSSドキュメント連語、および技術面接シミュレーション。",
-    englishPhase: "シラバス研究中",
-    webDesc:
-      "TypeScript深層、Reactレンダリングライフサイクル、Webパフォーマンス設計、キャッシュ構造、Next.jsアーキテクチャ。",
-    webPhase: "カリキュラム計画中",
-    aiDesc:
-      "自律型エージェント開発、本番RAGパイプライン、Tool-calling、構造化プロンプト、LLMモデル評価。",
-    aiPhase: "カリキュラム計画中",
-    progressLabel: "学習進捗",
+    disclaimerN3: "新完全マスター単語N3の学習を支援するための自主学習教材です。公式出版社とは提携していません。",
+    disclaimerFe: "日本でのITキャリア形成を支援する基本情報技術者試験（FE）対策カリキュラム。",
   },
 };
 
@@ -195,108 +143,121 @@ export function AcademyPortalClient() {
   const { locale } = useLanguage();
   const t = PORTAL_I18N[locale] || PORTAL_I18N.id;
 
-  const [filter, setFilter] = useState<TrackFilter>("all");
-  const [tangoStats, setTangoStats] = useState({ mastered: 0, total: 1800, streak: 0 });
-  const [feStats, setFeStats] = useState({ mastered: 0, total: 199, streak: 0 });
+  const [userName, setUserName] = useState("Kai");
+  const [cadetId, setCadetId] = useState("KAI-PASS-7829");
+  const [tangoStats, setTangoStats] = useState({ mastered: 0, total: 1800, streak: 0, reviewCount: 0 });
+  const [feStats, setFeStats] = useState({ mastered: 0, total: 199, streak: 0, reviewCount: 0 });
+  const [activeFeDayNumber, setActiveFeDayNumber] = useState(1);
+  const [activeTangoChapterId, setActiveTangoChapterId] = useState("noun-general-1");
+  const [roadmapOpen, setRoadmapOpen] = useState(false);
+
+  // Modals
   const [syncModalOpen, setSyncModalOpen] = useState(false);
+  const [idCardModalOpen, setIdCardModalOpen] = useState(false);
+  const [dailySessionModalOpen, setDailySessionModalOpen] = useState(false);
+
+  // Sync state
   const [syncTab, setSyncTab] = useState<"qr" | "file">("qr");
   const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
   const [syncUrl, setSyncUrl] = useState<string>("");
   const [copiedSyncLink, setCopiedSyncLink] = useState(false);
-  const [copiedSyncCode, setCopiedSyncCode] = useState(false);
   const [restoreMessage, setRestoreMessage] = useState<{ text: string; error?: boolean } | null>(null);
   const [incomingSync, setIncomingSync] = useState<CompactSyncPayload | null>(null);
   const [appliedSyncSuccess, setAppliedSyncSuccess] = useState(false);
-  const [cadetId, setCadetId] = useState("KAI-PASS-7829");
 
-  // Reload live statistics
+  // Load and refresh statistics
   const reloadStats = useCallback(() => {
     try {
       const tProg = loadTangoProgress();
+      const feProg = loadStudyProgress();
+
       setTangoStats({
         mastered: tProg.masteredCardIds?.length || 0,
         total: TANGO_N3_CARDS.length,
         streak: tProg.streak || 0,
+        reviewCount: tProg.reviewCardIds?.length || 0,
       });
 
-      const feProg = loadStudyProgress();
       setFeStats({
         mastered: feProg.masteredCardIds?.length || 0,
         total: FE_CARDS.length,
         streak: feProg.streak || 0,
+        reviewCount: feProg.reviewCardIds?.length || 0,
       });
 
-      const savedId = localStorage.getItem("kaidevlab_cadet_id");
-      if (savedId) {
-        setCadetId(savedId);
-      } else {
-        const newId = `KAI-${Math.floor(1000 + Math.random() * 9000)}-PASS`;
-        localStorage.setItem("kaidevlab_cadet_id", newId);
-        setCadetId(newId);
-      }
-    } catch {}
-  }, []);
+      // Active FE Day
+      const unlockedDays = feProg.unlockedDeckDays?.length ? feProg.unlockedDeckDays : [1];
+      setActiveFeDayNumber(Math.max(...unlockedDays));
 
-  useEffect(() => {
-    reloadStats();
-    window.addEventListener("storage", reloadStats);
-    return () => window.removeEventListener("storage", reloadStats);
-  }, [reloadStats]);
+      // Active Tango Chapter
+      const unlockedChs = tProg.unlockedChapterIds?.length ? tProg.unlockedChapterIds : ["noun-general-1"];
+      const lastUnlockedCh = unlockedChs[unlockedChs.length - 1] || "noun-general-1";
+      setActiveTangoChapterId(lastUnlockedCh);
 
-  // Check for incoming sync in URL (?sync=...)
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    try {
-      const params = new URLSearchParams(window.location.search);
-      const syncParam = params.get("sync");
-      if (syncParam) {
-        const decoded = decodeCompactSyncToken(syncParam);
-        if (decoded) {
-          setIncomingSync(decoded);
+      // User & Cadet ID
+      if (typeof window !== "undefined") {
+        const savedName = localStorage.getItem("kaidevlab_candidate_name");
+        if (savedName) setUserName(savedName);
+
+        const savedId = localStorage.getItem("kaidevlab_cadet_id");
+        if (savedId) {
+          setCadetId(savedId);
+        } else {
+          const newId = `KAI-PASS-${Math.floor(1000 + Math.random() * 9000)}`;
+          localStorage.setItem("kaidevlab_cadet_id", newId);
+          setCadetId(newId);
         }
       }
-    } catch {}
+    } catch (err) {
+      console.error("Failed to load learning stats", err);
+    }
   }, []);
 
-  // Generate QR code when modal opens
   useEffect(() => {
-    if (syncModalOpen) {
-      try {
-        const token = encodeCompactSyncToken();
-        const base = typeof window !== "undefined" ? window.location.origin : "https://kaidevlab.com";
-        const full = `${base}/learn/?sync=${encodeURIComponent(token)}`;
-        setSyncUrl(full);
-        generateQrCodeDataUrl(full).then(setQrDataUrl);
-      } catch (err) {
-        console.error("Failed to generate QR sync URL", err);
-      }
-    }
-  }, [syncModalOpen]);
-
-  // Close modals on Escape key
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setSyncModalOpen(false);
-        setIncomingSync(null);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
-  const handleApplyIncomingSync = () => {
-    if (!incomingSync) return;
-    applyCompactSyncPayload(incomingSync);
-    setIncomingSync(null);
-    setAppliedSyncSuccess(true);
-    setTimeout(() => setAppliedSyncSuccess(false), 4000);
-
-    if (typeof window !== "undefined") {
-      window.history.replaceState({}, "", window.location.pathname);
-    }
     reloadStats();
-  };
+  }, [reloadStats]);
+
+  // Active FE Deck metadata
+  const activeFeDeck = useMemo(() => {
+    return FE_DAILY_DECKS.find((d) => d.day === activeFeDayNumber) || FE_DAILY_DECKS[0];
+  }, [activeFeDayNumber]);
+
+  // Mastered count in current FE deck
+  const activeFeDeckMasteredCount = useMemo(() => {
+    if (!activeFeDeck) return 0;
+    const feProg = loadStudyProgress();
+    return activeFeDeck.cardIds.filter((id) => feProg.masteredCardIds?.includes(id)).length;
+  }, [activeFeDeck]);
+
+  // Active Tango Chapter metadata
+  const activeTangoChapter = useMemo(() => {
+    return (
+      TANGO_N3_CHAPTERS.find((c) => c.id === activeTangoChapterId) ||
+      TANGO_N3_CHAPTERS.find((c) => c.id === "noun-general-1") ||
+      TANGO_N3_CHAPTERS[0]
+    );
+  }, [activeTangoChapterId]);
+
+  // Mastered count in current Tango chapter
+  const activeTangoChapterMasteredCount = useMemo(() => {
+    if (!activeTangoChapter) return 0;
+    const tProg = loadTangoProgress();
+    const chapterCards = TANGO_N3_CARDS.slice(activeTangoChapter.startNum - 1, activeTangoChapter.endNum);
+    return chapterCards.filter((c) => tProg.masteredCardIds?.includes(c.id)).length;
+  }, [activeTangoChapter]);
+
+  const totalMastered = tangoStats.mastered + feStats.mastered;
+  const globalStreak = Math.max(tangoStats.streak, feStats.streak, 1);
+  const totalDueReview = tangoStats.reviewCount + feStats.reviewCount;
+
+  // Cadet Rank computation
+  const cadetRank = useMemo(() => {
+    if (totalMastered >= 1500) return { title: "Grand Scholar", tier: "Level 5" };
+    if (totalMastered >= 800) return { title: "Cognitive Architect", tier: "Level 4" };
+    if (totalMastered >= 300) return { title: "Systems Pioneer", tier: "Level 3" };
+    if (totalMastered >= 50) return { title: "Lab Researcher", tier: "Level 2" };
+    return { title: "Cadet Explorer", tier: "Level 1" };
+  }, [totalMastered]);
 
   const handleCopySyncLink = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard && syncUrl) {
@@ -325,146 +286,52 @@ export function AcademyPortalClient() {
     reader.readAsText(file);
   };
 
-  const totalMastered = tangoStats.mastered + feStats.mastered;
-  const globalStreak = Math.max(tangoStats.streak, feStats.streak, 1);
-
-  // Cadet Rank computation
-  const cadetRank = useMemo(() => {
-    if (totalMastered >= 1500) return { title: "Grand Scholar", tier: "Level 5" };
-    if (totalMastered >= 800) return { title: "Cognitive Architect", tier: "Level 4" };
-    if (totalMastered >= 300) return { title: "Systems Pioneer", tier: "Level 3" };
-    if (totalMastered >= 50) return { title: "Lab Researcher", tier: "Level 2" };
-    return { title: "Cadet Explorer", tier: "Level 1" };
-  }, [totalMastered]);
-
-  // Active study tracks (Ready for immediate drill)
-  const activeTracks = [
-    {
-      id: "tango-n3",
-      category: "japanese" as const,
-      statusLabel: t.statusActive,
-      categoryLabel: t.catJapanese,
-      title: "Shin Kanzen Master Tango N3",
-      description: t.tangoDesc,
-      stats:
-        tangoStats.mastered === 0
-          ? t.tangoNotStarted
-          : `${tangoStats.mastered} / ${tangoStats.total} ${t.masteredSuffix}`,
-      percent: Math.round((tangoStats.mastered / (tangoStats.total || 1)) * 100),
-      href: "/tools/tango-n3/",
-      cta: t.tangoCta,
-      icon: Languages,
-      color: "from-blue-500/20 via-sky-500/10 to-transparent",
-    },
-    {
-      id: "fe-study",
-      category: "japanese" as const,
-      statusLabel: t.statusActive,
-      categoryLabel: t.catItExam,
-      title: "FE Study Hub",
-      description: t.feDesc,
-      stats:
-        feStats.mastered === 0
-          ? t.feNotStarted
-          : `${feStats.mastered} / ${feStats.total} ${t.masteredSuffix}`,
-      percent: Math.round((feStats.mastered / (feStats.total || 1)) * 100),
-      href: "/tools/fe-study/",
-      cta: t.feCta,
-      icon: Terminal,
-      color: "from-emerald-500/20 via-teal-500/10 to-transparent",
-    },
-    {
-      id: "library-shelf",
-      category: "library" as const,
-      statusLabel: t.statusActive,
-      categoryLabel: t.catLibrary,
-      title: "Digital Library & Formulas",
-      description: t.libraryDesc,
-      stats: t.libraryStats,
-      percent: 100,
-      href: "/tools/library/",
-      cta: t.libraryCta,
-      icon: Layers,
-      color: "from-rose-500/20 via-pink-500/10 to-transparent",
-    },
-  ];
-
-  // Roadmap tracks (Under research / upcoming)
-  const roadmapTracks = [
-    {
-      id: "english-tech",
-      category: "english" as const,
-      statusLabel: t.statusSoon,
-      categoryLabel: t.catEnglish,
-      title: "English for Tech Engineers",
-      description: t.englishDesc,
-      phase: t.englishPhase,
-      icon: BookOpen,
-      color: "from-amber-500/20 via-orange-500/10 to-transparent",
-    },
-    {
-      id: "web-dev",
-      category: "web" as const,
-      statusLabel: t.statusPlanned,
-      categoryLabel: t.catWeb,
-      title: "Web Engineering Fundamentals",
-      description: t.webDesc,
-      phase: t.webPhase,
-      icon: Code2,
-      color: "from-purple-500/20 via-indigo-500/10 to-transparent",
-    },
-    {
-      id: "ai-engineer",
-      category: "ai" as const,
-      statusLabel: t.statusPlanned,
-      categoryLabel: t.catAi,
-      title: "AI Engineering & Agents",
-      description: t.aiDesc,
-      phase: t.aiPhase,
-      icon: Brain,
-      color: "from-cyan-500/20 via-blue-500/10 to-transparent",
-    },
-  ];
-
-  const filteredActiveTracks = useMemo(() => {
-    if (filter === "all") return activeTracks;
-    return activeTracks.filter((t) => t.category === filter);
-  }, [filter, activeTracks]);
-
-  const filteredRoadmapTracks = useMemo(() => {
-    if (filter === "all") return roadmapTracks;
-    return roadmapTracks.filter((t) => t.category === filter);
-  }, [filter, roadmapTracks]);
-
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 py-8 sm:py-12 md:py-16 space-y-8 sm:space-y-10">
+    <div className="w-full max-w-5xl mx-auto px-4 py-6 sm:py-10 md:py-12 space-y-7 sm:space-y-9 min-w-0">
       {/* ==================================================== */}
-      {/* 1. HERO (UNCLUTTERED, HONEST TONE)                   */}
+      {/* 1. HERO: PERSONAL GREETING & TODAY SUMMARY           */}
       {/* ==================================================== */}
-      <div className="space-y-3 sm:space-y-4 max-w-3xl">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] text-xs font-bold uppercase tracking-wider">
-          <GraduationCap className="w-3.5 h-3.5" />
-          <span>{t.eyebrow}</span>
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-2 border-b border-[var(--border-subtle)]/70">
+        <div className="space-y-1.5">
+          <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-[11px] font-bold uppercase tracking-wider">
+            <GraduationCap className="w-3.5 h-3.5" />
+            <span>{t.osBadge}</span>
+          </div>
+
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--text-primary)] font-serif">
+            {t.welcomePrefix} <span className="text-[var(--brand-primary)]">{userName}</span>.
+          </h1>
+
+          <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed max-w-2xl">
+            {t.heroSub}
+          </p>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[var(--text-primary)] font-serif leading-[1.18]">
-          {t.heroTitle}
-        </h1>
-
-        <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
-          {t.heroDesc}
-        </p>
+        {/* Date Stamp */}
+        <div className="text-xs font-mono text-[var(--text-tertiary)] flex items-center gap-1.5 shrink-0">
+          <Calendar className="w-3.5 h-3.5" />
+          <span>
+            {new Date().toLocaleDateString(locale === "ja" ? "ja-JP" : locale === "en" ? "en-US" : "id-ID", {
+              weekday: "long",
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })}
+          </span>
+        </div>
       </div>
 
       {/* ==================================================== */}
-      {/* 2. COMPACT GAMIFICATION & SYNC STATUS BAR (ONE ROW)  */}
+      {/* 2. COMPACT KAI-PASS IDENTITY BAR                     */}
       {/* ==================================================== */}
-      <div className="p-3 sm:px-5 sm:py-3 rounded-2xl bg-[var(--surface-primary)] border border-[var(--border-subtle)] flex flex-wrap items-center justify-between gap-3 text-xs shadow-xs">
+      <div className="p-3.5 sm:px-5 sm:py-3.5 rounded-2xl bg-[var(--surface-primary)] border border-emerald-500/30 shadow-sm flex flex-wrap items-center justify-between gap-3 text-xs relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-48 h-full bg-gradient-to-l from-emerald-500/10 to-transparent pointer-events-none" />
+
         {/* Left: ID & Rank */}
-        <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
+        <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap relative z-10">
           <div className="flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="font-mono font-bold text-[var(--text-primary)] tracking-wide">
+            <span className="font-mono font-extrabold text-[var(--text-primary)] tracking-wide">
               {cadetId}
             </span>
           </div>
@@ -472,32 +339,28 @@ export function AcademyPortalClient() {
           <span className="text-[var(--text-secondary)] font-medium">
             {cadetRank.tier} · <b className="text-[var(--text-primary)]">{cadetRank.title}</b>
           </span>
+          <span className="text-[var(--border-subtle)]">|</span>
+          <span className="inline-flex items-center gap-1 text-amber-500 font-bold">
+            <Flame className="w-3.5 h-3.5 fill-amber-500" />
+            <span>{globalStreak} {t.streakSuffix}</span>
+          </span>
         </div>
 
-        {/* Right: Progress Summary & Sync Button */}
-        <div className="flex items-center gap-3.5 flex-wrap">
-          {totalMastered > 0 ? (
-            <div className="flex items-center gap-3 text-xs">
-              <span className="inline-flex items-center gap-1.5 text-amber-500 font-bold">
-                <Flame className="w-3.5 h-3.5 fill-amber-500" />
-                <span>
-                  {globalStreak} {t.streakSuffix}
-                </span>
-              </span>
-              <span className="text-[var(--text-tertiary)] font-mono">
-                {totalMastered} {t.masteredSuffix}
-              </span>
-            </div>
-          ) : (
-            <span className="text-[var(--text-tertiary)] text-xs">
-              {t.noProgressYet}
-            </span>
-          )}
+        {/* Right: Quick Passport Actions */}
+        <div className="flex items-center gap-2 relative z-10">
+          <button
+            type="button"
+            onClick={() => setIdCardModalOpen(true)}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-500 font-bold text-xs transition-colors shadow-xs"
+          >
+            <CreditCard className="w-3.5 h-3.5" />
+            <span>{t.openPassBtn}</span>
+          </button>
 
           <button
             type="button"
             onClick={() => setSyncModalOpen(true)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[var(--brand-primary)]/10 hover:bg-[var(--brand-primary)]/20 text-[var(--brand-primary)] font-bold text-xs transition-colors shrink-0"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[var(--surface-secondary)] hover:bg-[var(--surface-secondary)]/80 text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)] text-xs font-semibold transition-colors"
           >
             <QrCode className="w-3.5 h-3.5" />
             <span>{t.syncBtn}</span>
@@ -506,230 +369,571 @@ export function AcademyPortalClient() {
       </div>
 
       {/* ==================================================== */}
-      {/* 3. CATEGORY SEGMENTED PILLS                           */}
+      {/* 3. DAILY MISSION (PRIMARY LEARNING ANCHOR)           */}
       {/* ==================================================== */}
-      <div className="flex items-center border-b border-[var(--border-subtle)] pb-3 overflow-x-auto no-scrollbar gap-2">
-        <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-[var(--surface-secondary)]/50 border border-[var(--border-subtle)] min-w-max">
-          <button
-            onClick={() => setFilter("all")}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
-              filter === "all"
-                ? "bg-[var(--surface-primary)] text-[var(--brand-primary)] shadow-sm"
-                : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            {t.allTracks} (6)
-          </button>
-          <button
-            onClick={() => setFilter("japanese")}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-1.5 ${
-              filter === "japanese"
-                ? "bg-[var(--surface-primary)] text-[var(--brand-primary)] shadow-sm"
-                : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            <Languages className="w-3.5 h-3.5" />
-            <span>{t.catJapanese} (2)</span>
-          </button>
-          <button
-            onClick={() => setFilter("library")}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-1.5 ${
-              filter === "library"
-                ? "bg-[var(--surface-primary)] text-[var(--brand-primary)] shadow-sm"
-                : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            <Layers className="w-3.5 h-3.5" />
-            <span>{t.catLibrary} (1)</span>
-          </button>
-          <button
-            onClick={() => setFilter("english")}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-1.5 ${
-              filter === "english"
-                ? "bg-[var(--surface-primary)] text-[var(--brand-primary)] shadow-sm"
-                : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            <BookOpen className="w-3.5 h-3.5" />
-            <span>{t.catEnglish} (1)</span>
-          </button>
-          <button
-            onClick={() => setFilter("web")}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-1.5 ${
-              filter === "web"
-                ? "bg-[var(--surface-primary)] text-[var(--brand-primary)] shadow-sm"
-                : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            <Code2 className="w-3.5 h-3.5" />
-            <span>{t.catWeb} (1)</span>
-          </button>
-          <button
-            onClick={() => setFilter("ai")}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-1.5 ${
-              filter === "ai"
-                ? "bg-[var(--surface-primary)] text-[var(--brand-primary)] shadow-sm"
-                : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            <Brain className="w-3.5 h-3.5" />
-            <span>{t.catAi} (1)</span>
-          </button>
-        </div>
-      </div>
-
-      {/* ==================================================== */}
-      {/* 4. ACTIVE STUDY TRACKS GRID                          */}
-      {/* ==================================================== */}
-      {filteredActiveTracks.length > 0 && (
-        <section className="space-y-4">
-          <div className="flex items-end justify-between">
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] font-serif">
-                {t.activeTracksTitle}
-              </h2>
-              <p className="text-xs text-[var(--text-secondary)] mt-0.5">
-                {t.activeTracksDesc}
-              </p>
+      <section className="p-6 sm:p-7 rounded-3xl border-2 border-emerald-500/40 bg-gradient-to-br from-[var(--surface-primary)] via-[var(--surface-primary)] to-[#06241a]/20 shadow-md flex flex-col justify-between gap-6 relative overflow-hidden">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+          <div className="space-y-1">
+            <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 text-xs font-bold uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>{t.todayMissionBadge}</span>
             </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filteredActiveTracks.map((track) => {
-              const Icon = track.icon;
-
-              return (
-                <div
-                  key={track.id}
-                  className="p-6 rounded-3xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] flex flex-col justify-between transition-all hover:border-[var(--brand-primary)]/40 hover:shadow-lg relative overflow-hidden group"
-                >
-                  {/* Subtle Background Accent */}
-                  <div
-                    className={`absolute top-0 right-0 w-36 h-36 bg-gradient-to-br ${track.color} rounded-bl-full pointer-events-none opacity-40 group-hover:opacity-75 transition-opacity`}
-                  />
-
-                  <div className="space-y-4 relative z-10">
-                    {/* Standardized Dual Badges: Status + Category */}
-                    <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-2xl bg-[var(--surface-secondary)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--brand-primary)] group-hover:scale-105 transition-transform shadow-xs">
-                        <Icon className="w-5 h-5" />
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
-                          {track.statusLabel}
-                        </span>
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full border border-[var(--border-subtle)] bg-[var(--surface-secondary)] text-[var(--text-tertiary)] uppercase tracking-wider">
-                          {track.categoryLabel}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Title */}
-                    <div>
-                      <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-[var(--brand-primary)] transition-colors leading-snug">
-                        {track.title}
-                      </h3>
-                    </div>
-
-                    {/* Description (No number duplication) */}
-                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                      {track.description}
-                    </p>
-                  </div>
-
-                  {/* Bottom Progress & Action Button */}
-                  <div className="pt-5 mt-4 border-t border-[var(--border-subtle)]/70 space-y-3 relative z-10">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-[11px] text-[var(--text-tertiary)] font-medium">
-                        {t.progressLabel}
-                      </span>
-                      <span className="font-mono font-bold text-[var(--text-primary)]">
-                        {track.stats}
-                      </span>
-                    </div>
-
-                    <a
-                      href={track.href}
-                      className="w-full py-2.5 px-4 rounded-2xl bg-[var(--brand-primary)] hover:opacity-95 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all active:scale-[0.98]"
-                    >
-                      <span>{track.cta}</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </a>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-      )}
-
-      {/* ==================================================== */}
-      {/* 5. ROADMAP SECTION (SEPARATE FROM ACTIVE TRACKS)     */}
-      {/* ==================================================== */}
-      {filteredRoadmapTracks.length > 0 && (
-        <section className="space-y-4 pt-4 border-t border-[var(--border-subtle)]">
-          <div>
-            <h2 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] font-serif">
-              {t.roadmapTitle}
+            <h2 className="text-xl sm:text-2xl font-extrabold text-[var(--text-primary)] font-serif">
+              {t.todayMissionTitle}
             </h2>
-            <p className="text-xs text-[var(--text-secondary)] mt-0.5">
-              {t.roadmapDesc}
+            <p className="text-xs text-[var(--text-secondary)]">
+              Rekomendasi porsi belajar seimbang hari ini untuk menjaga hafalan dan kesiapan ujian.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-            {filteredRoadmapTracks.map((track) => {
-              const Icon = track.icon;
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-[var(--surface-secondary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-secondary)] self-start">
+            <Clock className="w-3.5 h-3.5 text-emerald-500" />
+            <span>{t.estTime}</span>
+          </div>
+        </div>
 
-              return (
+        {/* 3 Activity Items */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 text-xs">
+          {/* Item 1: FE Day */}
+          <div className="p-4 rounded-2xl bg-[var(--surface-secondary)]/60 border border-[var(--border-subtle)] flex flex-col justify-between gap-2.5">
+            <div className="space-y-1">
+              <span className="text-[10px] font-mono font-bold text-emerald-500 uppercase tracking-wider block">
+                Track FE · Hari {activeFeDayNumber}
+              </span>
+              <h4 className="font-bold text-[var(--text-primary)] text-sm leading-snug line-clamp-1">
+                {activeFeDeck.titleId.replace(/^Hari \d+:\s*/, "")}
+              </h4>
+              <p className="text-[11px] text-[var(--text-secondary)] line-clamp-2 leading-relaxed">
+                {activeFeDeck.descriptionId}
+              </p>
+            </div>
+            <div className="pt-2 border-t border-[var(--border-subtle)]/60 flex items-center justify-between text-[11px]">
+              <span className="text-[var(--text-tertiary)]">Target Sesi:</span>
+              <span className="font-mono font-bold text-[var(--text-primary)]">
+                {activeFeDeckMasteredCount} / 10 Konsep
+              </span>
+            </div>
+          </div>
+
+          {/* Item 2: N3 Chapter */}
+          <div className="p-4 rounded-2xl bg-[var(--surface-secondary)]/60 border border-[var(--border-subtle)] flex flex-col justify-between gap-2.5">
+            <div className="space-y-1">
+              <span className="text-[10px] font-mono font-bold text-sky-500 uppercase tracking-wider block">
+                Track JLPT N3 · Bab {activeTangoChapter.badge}
+              </span>
+              <h4 className="font-bold text-[var(--text-primary)] text-sm leading-snug line-clamp-1">
+                {activeTangoChapter.title}
+              </h4>
+              <p className="text-[11px] text-[var(--text-secondary)] line-clamp-2 leading-relaxed">
+                {activeTangoChapter.desc}
+              </p>
+            </div>
+            <div className="pt-2 border-t border-[var(--border-subtle)]/60 flex items-center justify-between text-[11px]">
+              <span className="text-[var(--text-tertiary)]">Target Sesi:</span>
+              <span className="font-mono font-bold text-[var(--text-primary)]">
+                {activeTangoChapterMasteredCount} / 40 Kata
+              </span>
+            </div>
+          </div>
+
+          {/* Item 3: Review Queue */}
+          <div className="p-4 rounded-2xl bg-[var(--surface-secondary)]/60 border border-[var(--border-subtle)] flex flex-col justify-between gap-2.5">
+            <div className="space-y-1">
+              <span className="text-[10px] font-mono font-bold text-amber-500 uppercase tracking-wider block">
+                Spaced Repetition
+              </span>
+              <h4 className="font-bold text-[var(--text-primary)] text-sm leading-snug">
+                Antrean Review Harian
+              </h4>
+              <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
+                {totalDueReview > 0
+                  ? `${totalDueReview} item telah jatuh tempo review untuk mempertahankan daya ingat jangka panjang.`
+                  : "Belum ada item yang jatuh tempo. Daya ingatmu dalam kondisi prima."}
+              </p>
+            </div>
+            <div className="pt-2 border-t border-[var(--border-subtle)]/60 flex items-center justify-between text-[11px]">
+              <span className="text-[var(--text-tertiary)]">Status Antrean:</span>
+              <span className={`font-mono font-bold ${totalDueReview > 0 ? "text-amber-500" : "text-emerald-500"}`}>
+                {totalDueReview} Menunggu
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* PRIMARY CTA BAR */}
+        <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
+          <button
+            type="button"
+            onClick={() => setDailySessionModalOpen(true)}
+            className="w-full sm:flex-1 py-3.5 px-6 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 transition-all active:scale-[0.99]"
+          >
+            <Play className="w-4 h-4 fill-slate-950" />
+            <span>{t.primaryCta}</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+      </section>
+
+      {/* ==================================================== */}
+      {/* 4. CONTINUE LEARNING (QUICK RESUME CARDS)            */}
+      {/* ==================================================== */}
+      <section className="space-y-4">
+        <div>
+          <h2 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] font-serif">
+            {t.continueSectionTitle}
+          </h2>
+          <p className="text-xs text-[var(--text-secondary)] mt-0.5">
+            {t.continueSectionDesc}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* FE Resume Card */}
+          <div className="p-5 rounded-3xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] flex flex-col justify-between gap-4 transition-all hover:border-emerald-500/40">
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/30 uppercase tracking-wider">
+                  FE Cognitive Gym
+                </span>
+                <span className="text-xs font-mono font-bold text-[var(--text-secondary)]">
+                  Hari {activeFeDayNumber} / 20
+                </span>
+              </div>
+              <h3 className="text-base font-bold text-[var(--text-primary)] leading-snug">
+                {activeFeDeck.titleId}
+              </h3>
+              <p className="text-xs text-[var(--text-secondary)] line-clamp-2 leading-relaxed">
+                {activeFeDeck.descriptionId}
+              </p>
+            </div>
+
+            <div className="space-y-2 pt-2 border-t border-[var(--border-subtle)]/70">
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-[11px] text-[var(--text-tertiary)]">Progres Hari Ini:</span>
+                <span className="font-mono font-bold text-emerald-500">
+                  {Math.round((activeFeDeckMasteredCount / 10) * 100)}% ({activeFeDeckMasteredCount}/10)
+                </span>
+              </div>
+              <div className="w-full h-1.5 rounded-full bg-[var(--surface-secondary)] overflow-hidden">
                 <div
-                  key={track.id}
-                  className="p-5 rounded-3xl border border-[var(--border-subtle)]/70 bg-[var(--surface-primary)]/70 flex flex-col justify-between gap-4 relative overflow-hidden group hover:border-[var(--border-subtle)] transition-colors"
+                  className="h-full bg-emerald-500 rounded-full transition-all"
+                  style={{ width: `${(activeFeDeckMasteredCount / 10) * 100}%` }}
+                />
+              </div>
+              <a
+                href="/tools/fe-study/"
+                className="w-full mt-2 py-2.5 px-4 rounded-xl bg-[var(--surface-secondary)] hover:bg-[var(--surface-secondary)]/80 text-[var(--text-primary)] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
+              >
+                <span>Lanjutkan Hari {activeFeDayNumber} →</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Tango N3 Resume Card */}
+          <div className="p-5 rounded-3xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] flex flex-col justify-between gap-4 transition-all hover:border-sky-500/40">
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-500 border border-sky-500/30 uppercase tracking-wider">
+                  JLPT N3 Tango
+                </span>
+                <span className="text-xs font-mono font-bold text-[var(--text-secondary)]">
+                  Bab {activeTangoChapter.badge} / 46
+                </span>
+              </div>
+              <h3 className="text-base font-bold text-[var(--text-primary)] leading-snug">
+                {activeTangoChapter.title}
+              </h3>
+              <p className="text-xs text-[var(--text-secondary)] line-clamp-2 leading-relaxed">
+                {activeTangoChapter.desc}
+              </p>
+            </div>
+
+            <div className="space-y-2 pt-2 border-t border-[var(--border-subtle)]/70">
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-[11px] text-[var(--text-tertiary)]">Progres Bab Ini:</span>
+                <span className="font-mono font-bold text-sky-500">
+                  {Math.round((activeTangoChapterMasteredCount / 40) * 100)}% ({activeTangoChapterMasteredCount}/40)
+                </span>
+              </div>
+              <div className="w-full h-1.5 rounded-full bg-[var(--surface-secondary)] overflow-hidden">
+                <div
+                  className="h-full bg-sky-500 rounded-full transition-all"
+                  style={{ width: `${(activeTangoChapterMasteredCount / 40) * 100}%` }}
+                />
+              </div>
+              <a
+                href="/tools/tango-n3/"
+                className="w-full mt-2 py-2.5 px-4 rounded-xl bg-[var(--surface-secondary)] hover:bg-[var(--surface-secondary)]/80 text-[var(--text-primary)] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
+              >
+                <span>Lanjutkan Bab {activeTangoChapter.badge} →</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================================================== */}
+      {/* 5. ACTIVE TRACKS OVERVIEW                            */}
+      {/* ==================================================== */}
+      <section className="space-y-4">
+        <div>
+          <h2 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] font-serif">
+            {t.tracksTitle}
+          </h2>
+          <p className="text-xs text-[var(--text-secondary)] mt-0.5">
+            {t.tracksDesc}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {/* Track 1: FE Study Hub */}
+          <div className="p-6 rounded-3xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] flex flex-col justify-between gap-5 relative overflow-hidden group hover:border-emerald-500/40 transition-all shadow-xs">
+            <div className="space-y-3 relative z-10">
+              <div className="flex items-center justify-between">
+                <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 flex items-center justify-center">
+                  <Terminal className="w-5 h-5" />
+                </div>
+                <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-500 uppercase tracking-wider">
+                  Aktif · 199 Konsep
+                </span>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-emerald-500 transition-colors">
+                  FE Study Hub (基本情報技術者試験)
+                </h3>
+                <p className="text-xs text-[var(--text-secondary)] mt-1.5 leading-relaxed">
+                  {t.disclaimerFe}
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-3 pt-4 border-t border-[var(--border-subtle)]/70 relative z-10">
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-[11px] text-[var(--text-tertiary)]">Total Kurikulum Dikuasai:</span>
+                <span className="font-mono font-bold text-[var(--text-primary)]">
+                  {feStats.mastered} / {feStats.total} ({Math.round((feStats.mastered / (feStats.total || 1)) * 100)}%)
+                </span>
+              </div>
+              <a
+                href="/tools/fe-study/"
+                className="w-full py-2.5 px-4 rounded-xl bg-[var(--brand-primary)] hover:opacity-95 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all"
+              >
+                <span>Buka Ruang Belajar FE</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Track 2: Tango N3 */}
+          <div className="p-6 rounded-3xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] flex flex-col justify-between gap-5 relative overflow-hidden group hover:border-sky-500/40 transition-all shadow-xs">
+            <div className="space-y-3 relative z-10">
+              <div className="flex items-center justify-between">
+                <div className="w-10 h-10 rounded-2xl bg-sky-500/10 border border-sky-500/20 text-sky-500 flex items-center justify-center">
+                  <Languages className="w-5 h-5" />
+                </div>
+                <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-500 uppercase tracking-wider">
+                  Aktif · 1.800 Kata
+                </span>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-sky-500 transition-colors">
+                  JLPT N3 Tango (新完全マスター)
+                </h3>
+                <p className="text-xs text-[var(--text-secondary)] mt-1.5 leading-relaxed">
+                  {t.disclaimerN3}
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-3 pt-4 border-t border-[var(--border-subtle)]/70 relative z-10">
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-[11px] text-[var(--text-tertiary)]">Total Kosakata Dikuasai:</span>
+                <span className="font-mono font-bold text-[var(--text-primary)]">
+                  {tangoStats.mastered} / {tangoStats.total} ({Math.round((tangoStats.mastered / (tangoStats.total || 1)) * 100)}%)
+                </span>
+              </div>
+              <a
+                href="/tools/tango-n3/"
+                className="w-full py-2.5 px-4 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all"
+              >
+                <span>Buka Ruang Belajar N3</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Collapsible Research Roadmap */}
+        <div className="pt-2">
+          <button
+            type="button"
+            onClick={() => setRoadmapOpen(!roadmapOpen)}
+            className="w-full p-4 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-secondary)]/40 hover:bg-[var(--surface-secondary)]/70 flex items-center justify-between text-xs font-semibold text-[var(--text-secondary)] transition-colors"
+          >
+            <div className="flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-[var(--brand-primary)]" />
+              <span className="font-bold text-[var(--text-primary)]">{t.roadmapTitle}</span>
+              <span className="text-[11px] text-[var(--text-tertiary)]">
+                (Tech English, Web Engineering, AI & Agents)
+              </span>
+            </div>
+            {roadmapOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </button>
+
+          {roadmapOpen && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 mt-3 pt-1">
+              <div className="p-4 rounded-2xl border border-[var(--border-subtle)]/60 bg-[var(--surface-primary)] space-y-1.5 text-xs">
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-[var(--text-primary)]">English for Tech</span>
+                  <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-500 font-bold">Riset Silabus</span>
+                </div>
+                <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
+                  Kosakata arsitektur cloud, dokumentasi open-source, dan simulasi technical interview global.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-2xl border border-[var(--border-subtle)]/60 bg-[var(--surface-primary)] space-y-1.5 text-xs">
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-[var(--text-primary)]">Web Engineering</span>
+                  <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-500 font-bold">Rencana</span>
+                </div>
+                <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
+                  TypeScript mendalam, React rendering lifecycle, web performance budget, dan arsitektur Next.js.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-2xl border border-[var(--border-subtle)]/60 bg-[var(--surface-primary)] space-y-1.5 text-xs">
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-[var(--text-primary)]">AI Engineering</span>
+                  <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-500 font-bold">Rencana</span>
+                </div>
+                <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
+                  Rancang bangun agen otonom, pipeline RAG produksi, schema-based tool calling, dan evaluasi model.
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ==================================================== */}
+      {/* 6. STUDY TOOLS & LABS GRID                           */}
+      {/* ==================================================== */}
+      <section className="space-y-4">
+        <div>
+          <h2 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] font-serif">
+            {t.studyToolsTitle}
+          </h2>
+          <p className="text-xs text-[var(--text-secondary)] mt-0.5">
+            {t.studyToolsDesc}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-xs">
+          {/* Tool 1: Kakomon CBT */}
+          <a
+            href="/tools/fe-study/?tab=quiz"
+            className="p-4 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-emerald-500/40 hover:shadow-sm transition-all flex flex-col justify-between gap-3 group"
+          >
+            <div className="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
+              <FileQuestion className="w-4 h-4" />
+            </div>
+            <div>
+              <h4 className="font-bold text-[var(--text-primary)] group-hover:text-emerald-500 transition-colors">
+                Kakomon CBT
+              </h4>
+              <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
+                Simulasi ujian CBT resmi 60 / 120 soal dengan batas waktu.
+              </p>
+            </div>
+          </a>
+
+          {/* Tool 2: Pseudocode Tracer */}
+          <a
+            href="/tools/fe-study/?tab=tracer"
+            className="p-4 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-cyan-500/40 hover:shadow-sm transition-all flex flex-col justify-between gap-3 group"
+          >
+            <div className="w-8 h-8 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center">
+              <Terminal className="w-4 h-4" />
+            </div>
+            <div>
+              <h4 className="font-bold text-[var(--text-primary)] group-hover:text-cyan-500 transition-colors">
+                Pseudocode Tracer
+              </h4>
+              <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
+                Simulator eksekusi baris pseudocode untuk soal 科目B.
+              </p>
+            </div>
+          </a>
+
+          {/* Tool 3: Formula Lab */}
+          <a
+            href="/tools/library/"
+            className="p-4 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-rose-500/40 hover:shadow-sm transition-all flex flex-col justify-between gap-3 group"
+          >
+            <div className="w-8 h-8 rounded-xl bg-rose-500/10 text-rose-500 flex items-center justify-center">
+              <Layers className="w-4 h-4" />
+            </div>
+            <div>
+              <h4 className="font-bold text-[var(--text-primary)] group-hover:text-rose-500 transition-colors">
+                Formula Lab
+              </h4>
+              <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
+                Kalkulator rumus MTBF, availability, dan subnetting CIDR.
+              </p>
+            </div>
+          </a>
+
+          {/* Tool 4: Mistake Notebook */}
+          <a
+            href="/tools/fe-study/?tab=mistakes"
+            className="p-4 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-amber-500/40 hover:shadow-sm transition-all flex flex-col justify-between gap-3 group"
+          >
+            <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center">
+              <Bookmark className="w-4 h-4" />
+            </div>
+            <div>
+              <h4 className="font-bold text-[var(--text-primary)] group-hover:text-amber-500 transition-colors">
+                Catatan Salah
+              </h4>
+              <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
+                Kompilasi soal-soal kuis yang pernah salah untuk evaluasi.
+              </p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      {/* ==================================================== */}
+      {/* MODAL 1: DAILY SESSION LAUNCHER                      */}
+      {/* ==================================================== */}
+      <AnimatePresence>
+        {dailySessionModalOpen && (
+          <div
+            className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md"
+            onClick={() => setDailySessionModalOpen(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-md bg-[var(--surface-primary)] border border-[var(--border-subtle)] rounded-3xl p-6 space-y-5 shadow-2xl"
+            >
+              <div className="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)]">
+                <div className="flex items-center gap-2">
+                  <Play className="w-4 h-4 text-emerald-500 fill-emerald-500" />
+                  <h3 className="text-base font-bold text-[var(--text-primary)]">
+                    Pilih Sesi Belajar Hari Ini
+                  </h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setDailySessionModalOpen(false)}
+                  className="p-1 rounded-lg text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"
                 >
-                  <div className="space-y-3 relative z-10">
-                    {/* Header: Icon & Dual Badges */}
-                    <div className="flex items-center justify-between">
-                      <div className="w-8 h-8 rounded-xl bg-[var(--surface-secondary)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-secondary)]">
-                        <Icon className="w-4 h-4" />
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400 uppercase tracking-wider">
-                          {track.statusLabel}
-                        </span>
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full border border-[var(--border-subtle)] bg-[var(--surface-secondary)] text-[var(--text-tertiary)] uppercase tracking-wider">
-                          {track.categoryLabel}
-                        </span>
-                      </div>
-                    </div>
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
 
-                    {/* Title */}
-                    <h3 className="text-base font-bold text-[var(--text-primary)] leading-snug">
-                      {track.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                      {track.description}
+              <div className="space-y-3 text-xs">
+                {/* Option 1: FE Day */}
+                <a
+                  href="/tools/fe-study/"
+                  className="p-4 rounded-2xl border border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500/20 flex items-center justify-between gap-3 transition-colors block"
+                >
+                  <div>
+                    <span className="text-[10px] font-mono font-bold text-emerald-500 uppercase block">
+                      Rekomendasi Utama
+                    </span>
+                    <h4 className="font-bold text-[var(--text-primary)] text-sm">
+                      FE Cognitive Gym: Hari {activeFeDayNumber}
+                    </h4>
+                    <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
+                      {activeFeDeck.titleId.replace(/^Hari \d+:\s*/, "")} (10 Konsep)
                     </p>
                   </div>
+                  <ArrowRight className="w-4 h-4 text-emerald-500 shrink-0" />
+                </a>
 
-                  {/* Phase Status Strip (No fake CTA) */}
-                  <div className="pt-3 border-t border-[var(--border-subtle)]/60 flex items-center justify-between text-xs font-mono text-[var(--text-tertiary)]">
-                    <span className="flex items-center gap-1.5">
-                      <Lock className="w-3 h-3" />
-                      <span>{track.phase}</span>
+                {/* Option 2: Tango N3 */}
+                <a
+                  href="/tools/tango-n3/"
+                  className="p-4 rounded-2xl border border-sky-500/30 bg-sky-500/10 hover:bg-sky-500/20 flex items-center justify-between gap-3 transition-colors block"
+                >
+                  <div>
+                    <span className="text-[10px] font-mono font-bold text-sky-500 uppercase block">
+                      Target Kosakata
                     </span>
-                    <span>Lab Research</span>
+                    <h4 className="font-bold text-[var(--text-primary)] text-sm">
+                      JLPT N3 Tango: Bab {activeTangoChapter.badge}
+                    </h4>
+                    <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
+                      {activeTangoChapter.title} (40 Kosakata)
+                    </p>
                   </div>
-                </div>
-              );
-            })}
+                  <ArrowRight className="w-4 h-4 text-sky-500 shrink-0" />
+                </a>
+              </div>
+            </motion.div>
           </div>
-        </section>
+        )}
+      </AnimatePresence>
+
+      {/* ==================================================== */}
+      {/* MODAL 2: KAI-PASS CANDIDATE ID CARD MODAL            */}
+      {/* ==================================================== */}
+      {idCardModalOpen && (
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-fade-in overflow-y-auto print:p-0 print:bg-white">
+          <div className="relative w-full max-w-2xl my-auto rounded-3xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] p-5 sm:p-7 shadow-2xl flex flex-col items-center gap-6 print:border-none print:shadow-none print:p-0">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between w-full border-b border-[var(--border-subtle)] pb-3 print:hidden">
+              <div className="flex items-center gap-2">
+                <CreditCard className="w-5 h-5 text-emerald-500" />
+                <h3 className="text-base sm:text-lg font-bold text-[var(--text-primary)]">
+                  KAI-PASS · Paspor Belajar & Identitas Resmi (受験者証)
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIdCardModalOpen(false)}
+                className="p-1.5 rounded-xl hover:bg-[var(--surface-secondary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+                title="Tutup"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* ID Card Component */}
+            <FeCandidateIdCard
+              candidateName={userName}
+              candidateId={cadetId}
+              examMode="hub"
+              score={totalMastered}
+              total={feStats.total + tangoStats.total}
+              percentage={Math.round((totalMastered / ((feStats.total + tangoStats.total) || 1)) * 100)}
+              isPassed={totalMastered >= 50}
+              className="w-full"
+            />
+
+            {/* Close button */}
+            <div className="w-full flex justify-end pt-2 border-t border-[var(--border-subtle)] print:hidden">
+              <button
+                type="button"
+                onClick={() => setIdCardModalOpen(false)}
+                className="px-5 py-2 rounded-xl bg-[var(--surface-secondary)] hover:bg-[var(--border-subtle)] text-xs font-bold text-[var(--text-primary)] transition-all"
+              >
+                Tutup
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
       {/* ==================================================== */}
-      {/* 4. CROSS-DEVICE SYNC MODAL                           */}
+      {/* MODAL 3: CROSS-DEVICE SYNC MODAL                     */}
       {/* ==================================================== */}
       <AnimatePresence>
         {syncModalOpen && (
@@ -755,7 +959,7 @@ export function AcademyPortalClient() {
                       Sinkronisasi Antar-Perangkat
                     </h3>
                     <p className="text-[11px] text-[var(--text-tertiary)]">
-                      Hubungkan HP dan laptop tanpa login
+                      Hubungkan HP dan laptop tanpa login akun
                     </p>
                   </div>
                 </div>
@@ -802,7 +1006,6 @@ export function AcademyPortalClient() {
                 <div className="space-y-3 text-center pt-1">
                   <div className="p-3 rounded-2xl bg-white inline-block shadow-sm border border-slate-200/80 mx-auto">
                     {qrDataUrl ? (
-                      // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={qrDataUrl}
                         alt="QR Code Sinkronisasi"
@@ -908,75 +1111,6 @@ export function AcademyPortalClient() {
               <div className="pt-2 border-t border-[var(--border-subtle)] flex items-center justify-between text-xs font-mono text-[var(--text-tertiary)]">
                 <span>Pass ID: {cadetId}</span>
                 <span>PWA Offline Ready</span>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-
-      {/* ==================================================== */}
-      {/* 5. INCOMING SYNC PROMPT MODAL (DETECTED FROM URL)    */}
-      {/* ==================================================== */}
-      <AnimatePresence>
-        {incomingSync && (
-          <div
-            className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md"
-            onClick={() => setIncomingSync(null)}
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-md max-h-[90vh] overflow-y-auto no-scrollbar bg-[var(--surface-primary)] border border-[var(--border-subtle)] rounded-3xl p-5 sm:p-6 space-y-4 shadow-2xl"
-            >
-              <div className="text-center space-y-2">
-                <div className="w-12 h-12 mx-auto rounded-2xl bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 flex items-center justify-center">
-                  <RefreshCw className="w-6 h-6 animate-spin-slow" />
-                </div>
-                <h3 className="text-lg font-bold text-[var(--text-primary)]">
-                  Sinkronisasi Progres Terdeteksi
-                </h3>
-                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                  Tautan ini berisi data progres belajar dari perangkat lain. Apakah kamu ingin menerapkan data ini ke perangkat sekarang?
-                </p>
-              </div>
-
-              {/* Summary of incoming data */}
-              <div className="p-4 rounded-2xl bg-[var(--surface-secondary)]/50 border border-[var(--border-subtle)] space-y-2 text-xs font-mono">
-                <div className="flex items-center justify-between">
-                  <span className="text-[var(--text-tertiary)]">ID Cadet Asal:</span>
-                  <span className="font-bold text-[var(--brand-primary)]">{incomingSync.cid}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-[var(--text-tertiary)]">Kosakata N3 Dikuasai:</span>
-                  <span className="font-bold text-[var(--text-primary)]">{incomingSync.tm.length} Kata</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-[var(--text-tertiary)]">Konsep FE Dikuasai:</span>
-                  <span className="font-bold text-[var(--text-primary)]">{incomingSync.fm.length} Konsep</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-[var(--text-tertiary)]">Streak Belajar:</span>
-                  <span className="font-bold text-amber-500">{incomingSync.st} Hari</span>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3 pt-2">
-                <button
-                  type="button"
-                  onClick={() => setIncomingSync(null)}
-                  className="py-2.5 px-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface-secondary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-xs font-bold transition-colors"
-                >
-                  Abaikan
-                </button>
-                <button
-                  type="button"
-                  onClick={handleApplyIncomingSync}
-                  className="py-2.5 px-4 rounded-xl bg-[var(--brand-primary)] hover:opacity-95 text-white text-xs font-bold transition-opacity"
-                >
-                  Terapkan Data
-                </button>
               </div>
             </motion.div>
           </div>

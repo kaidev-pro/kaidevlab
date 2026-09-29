@@ -133,6 +133,7 @@ export function FlashcardView({
   streak,
   onFinishSession,
 }: FlashcardViewProps) {
+  const [activeDeck, setActiveDeck] = useState<FECard[]>(cards);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
   const [isFlipped, setIsFlipped] = useState(false);
@@ -143,6 +144,7 @@ export function FlashcardView({
 
   // Reset card state whenever cards list changes
   useEffect(() => {
+    setActiveDeck(cards);
     setCurrentIndex(0);
     setIsFlipped(false);
     setShowAnalogy(false);
@@ -159,9 +161,9 @@ export function FlashcardView({
     audioRef.current = createAudioFeedback();
   }, []);
 
-  const safeIndex = cards.length > 0 ? Math.min(currentIndex, cards.length - 1) : 0;
-  const currentCard = cards[safeIndex];
-  const isLastCard = cards.length > 0 && safeIndex === cards.length - 1;
+  const safeIndex = activeDeck.length > 0 ? Math.min(currentIndex, activeDeck.length - 1) : 0;
+  const currentCard = activeDeck[safeIndex];
+  const isLastCard = activeDeck.length > 0 && safeIndex === activeDeck.length - 1;
 
   // Swipe motion tracking
   const x = useMotionValue(0);
@@ -187,7 +189,12 @@ export function FlashcardView({
 
       onRateCard(currentCard.id, currentCard.category, rating);
 
-      if (isLastCard) {
+      const willRequeue = rating === "forgot";
+      if (willRequeue) {
+        setActiveDeck((prev) => [...prev, currentCard]);
+      }
+
+      if (isLastCard && !willRequeue) {
         if (onFinishSession) onFinishSession();
       } else {
         setDirection(1);
@@ -200,14 +207,14 @@ export function FlashcardView({
   );
 
   const handleNext = useCallback(() => {
-    if (currentIndex < cards.length - 1) {
+    if (currentIndex < activeDeck.length - 1) {
       if (soundEffects && audioRef.current) audioRef.current.playFlip();
       setDirection(1);
       setIsFlipped(false);
       setCurrentIndex((prev) => prev + 1);
       x.set(0);
     }
-  }, [currentIndex, cards.length, soundEffects, x]);
+  }, [currentIndex, activeDeck.length, soundEffects, x]);
 
   const handlePrev = useCallback(() => {
     if (currentIndex > 0) {
@@ -315,7 +322,7 @@ export function FlashcardView({
       <div className="flex items-center justify-between gap-4 text-xs font-medium text-[var(--text-secondary)]">
         <div className="flex items-center gap-3">
           <span className="font-mono text-sm font-semibold text-[var(--text-primary)]">
-            {currentIndex + 1} <span className="opacity-40">/ {cards.length}</span>
+            {currentIndex + 1} <span className="opacity-40">/ {activeDeck.length}</span>
           </span>
           {streak > 0 && (
             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-500 font-medium">
@@ -375,7 +382,7 @@ export function FlashcardView({
         <motion.div
           className="h-full bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-glow)]"
           initial={{ width: 0 }}
-          animate={{ width: `${((currentIndex + 1) / cards.length) * 100}%` }}
+          animate={{ width: `${((currentIndex + 1) / activeDeck.length) * 100}%` }}
           transition={{ duration: 0.35, ease: "easeOut" }}
         />
       </div>
@@ -743,7 +750,7 @@ export function FlashcardView({
             <button
               type="button"
               onClick={handleNext}
-              disabled={currentIndex === cards.length - 1}
+              disabled={currentIndex === activeDeck.length - 1}
               className="inline-flex items-center justify-center gap-1 px-3 sm:px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none transition-all active:scale-95 shrink-0"
               title="Kartu Berikutnya"
             >

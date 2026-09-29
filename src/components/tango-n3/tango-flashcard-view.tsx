@@ -254,7 +254,12 @@ export function TangoFlashcardView({
             : [...prev.mistakeCards, currentCard],
       }));
 
-      if (isLastCard) {
+      const willRequeue = rating === "forgot";
+      if (willRequeue) {
+        setActiveDeck((prev) => [...prev, currentCard]);
+      }
+
+      if (isLastCard && !willRequeue) {
         setIsSessionFinished(true);
       } else {
         setDirection(1);

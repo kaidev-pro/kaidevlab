@@ -31,6 +31,9 @@ import {
   Trophy,
   Award,
   ShieldCheck,
+  ChevronDown,
+  ChevronUp,
+  Info,
 } from "lucide-react";
 import {
   TANGO_N3_CARDS,
@@ -73,6 +76,7 @@ export function TangoN3Client() {
     cards: TangoN3Card[];
     nextChapter?: TangoChapter;
   } | null>(null);
+  const [isChaptersAccordionExpanded, setIsChaptersAccordionExpanded] = useState(false);
 
   useEffect(() => {
     setProgress(loadTangoProgress());
@@ -80,6 +84,22 @@ export function TangoN3Client() {
 
   const weakCards = useMemo(() => getWeakCards(progress, TANGO_N3_CARDS), [progress]);
   const srs = useMemo(() => getSrsSchedules(progress, TANGO_N3_CARDS), [progress]);
+
+  // Active Chapter: first unlocked chapter that is not fully mastered, or last unlocked
+  const activeChapter = useMemo(() => {
+    const unlocked = progress.unlockedChapterIds || ["ch-01"];
+    for (const chId of unlocked) {
+      const ch = TANGO_N3_CHAPTERS.find((c) => c.id === chId);
+      if (!ch) continue;
+      const chCards = TANGO_N3_CARDS.filter((c) => c.chapterId === ch.id);
+      const chMastered = chCards.filter((c) => progress.masteredCardIds.includes(c.id)).length;
+      if (chMastered < chCards.length) {
+        return ch;
+      }
+    }
+    const lastUnlockedId = unlocked[unlocked.length - 1] || "ch-01";
+    return TANGO_N3_CHAPTERS.find((c) => c.id === lastUnlockedId) || TANGO_N3_CHAPTERS[0];
+  }, [progress.unlockedChapterIds, progress.masteredCardIds]);
 
   const handleRateCard = useCallback(
     (cardId: string, chapterId: string, rating: CardRating) => {
@@ -487,81 +507,124 @@ export function TangoN3Client() {
           {/* TAB 1: DAFTAR BAB & TOPIK */}
           {activeViewTab === "chapters" && (
             <div className="space-y-6">
-              {/* Part Filter Switcher */}
-              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--border-subtle)] pb-4">
-                <div>
-                  <h2 className="text-base font-bold text-[var(--text-primary)] flex items-center gap-2">
-                    <Layers className="w-4 h-4 text-[var(--brand-primary)]" />
-                    <span>Daftar Bab & Topik Buku</span>
-                  </h2>
-                  <p className="text-xs text-[var(--text-secondary)] mt-0.5">
-                    Pilih bab untuk mulai belajar via Flashcards atau tes langsung Kuis CBT.
+              {/* Non-Affiliation Disclaimer Banner */}
+              <div className="p-3.5 sm:p-4 rounded-2xl bg-[var(--surface-secondary)]/70 border border-[var(--border-subtle)] flex items-start gap-3 text-xs text-[var(--text-secondary)]">
+                <Info className="w-4 h-4 text-[var(--brand-primary)] shrink-0 mt-0.5" />
+                <div className="space-y-0.5">
+                  <p className="font-bold text-[var(--text-primary)]">
+                    Pemberitahuan Pendamping Belajar Mandiri
+                  </p>
+                  <p className="leading-relaxed">
+                    KaidevLab tidak berafiliasi resmi dengan penerbit 新完全マスター. Materi dirancang secara independen sebagai pendamping belajar mandiri untuk akselerasi persiapan ujian JLPT N3.
                   </p>
                 </div>
-
-                <div className="flex flex-wrap items-center gap-1 p-1 rounded-xl bg-[var(--surface-secondary)] border border-[var(--border-subtle)] text-xs">
-                  <button
-                    onClick={() => setSelectedPart("all")}
-                    className={`px-3 py-1 rounded-lg font-medium transition-colors ${
-                      selectedPart === "all"
-                        ? "bg-[var(--surface-primary)] text-[var(--text-primary)] shadow-xs"
-                        : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-                    }`}
-                  >
-                    Semua ({TANGO_N3_CHAPTERS.length})
-                  </button>
-                  <button
-                    onClick={() => setSelectedPart("noun")}
-                    className={`px-3 py-1 rounded-lg font-medium transition-colors ${
-                      selectedPart === "noun"
-                        ? "bg-[var(--surface-primary)] text-[var(--text-primary)] shadow-xs"
-                        : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-                    }`}
-                  >
-                    名詞 (Kata Benda)
-                  </button>
-                  <button
-                    onClick={() => setSelectedPart("verb")}
-                    className={`px-3 py-1 rounded-lg font-medium transition-colors ${
-                      selectedPart === "verb"
-                        ? "bg-[var(--surface-primary)] text-[var(--text-primary)] shadow-xs"
-                        : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-                    }`}
-                  >
-                    動詞 (Kata Kerja)
-                  </button>
-                  <button
-                    onClick={() => setSelectedPart("adj")}
-                    className={`px-3 py-1 rounded-lg font-medium transition-colors ${
-                      selectedPart === "adj"
-                        ? "bg-[var(--surface-primary)] text-[var(--text-primary)] shadow-xs"
-                        : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-                    }`}
-                  >
-                    形容詞・副詞 (Sifat & Ket.)
-                  </button>
-                  <button
-                    onClick={() => setSelectedPart("idiom")}
-                    className={`px-3 py-1 rounded-lg font-medium transition-colors ${
-                      selectedPart === "idiom"
-                        ? "bg-[var(--surface-primary)] text-[var(--text-primary)] shadow-xs"
-                        : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-                    }`}
-                  >
-                    慣用句・カタカナ (Ungkapan)
-                  </button>
-                  <button
-                    onClick={() => setSelectedPart("affix")}
-                    className={`px-3 py-1 rounded-lg font-medium transition-colors ${
-                      selectedPart === "affix"
-                        ? "bg-[var(--surface-primary)] text-[var(--text-primary)] shadow-xs"
-                        : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-                    }`}
-                  >
-                    接辞・接続詞 (Imbuhan)
-                  </button>
-                </div>
               </div>
+
+              {/* Active Chapter Focus Mission (Dominant Card at Top) */}
+              {activeChapter && (() => {
+                const chapterCards = TANGO_N3_CARDS.filter((c) => c.chapterId === activeChapter.id);
+                const chapterMastered = chapterCards.filter((c) => progress.masteredCardIds.includes(c.id)).length;
+                const chapterTotal = chapterCards.length;
+                const isAllMastered = chapterMastered === chapterTotal;
+                const unmasteredCount = chapterTotal - chapterMastered;
+                const quizRecord = progress.chapterQuizScores?.[activeChapter.id];
+                const pct = Math.round((chapterMastered / (chapterTotal || 1)) * 100);
+                const chIndex = TANGO_N3_CHAPTERS.findIndex((item) => item.id === activeChapter.id);
+                const nextCh = chIndex < TANGO_N3_CHAPTERS.length - 1 ? TANGO_N3_CHAPTERS[chIndex + 1] : undefined;
+
+                return (
+                  <div className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-[var(--surface-primary)] border-2 border-[var(--brand-primary)]/40 shadow-lg relative overflow-hidden">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                      <div className="flex items-center gap-2">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-primary)] text-white text-xs font-black tracking-wider uppercase shadow-sm">
+                          <Sparkles size={13} />
+                          <span>Bab Aktif Hari Ini</span>
+                        </span>
+                        <span className="text-xs font-mono font-extrabold px-2.5 py-0.5 rounded-lg bg-[var(--surface-secondary)] border border-[var(--border-subtle)] text-[var(--text-primary)]">
+                          {activeChapter.badge}
+                        </span>
+                        <span className="text-[11px] px-2 py-0.5 rounded-md bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-subtle)] font-medium">
+                          {activeChapter.partTitle}
+                        </span>
+                      </div>
+                      {quizRecord?.passed && (
+                        <span className="text-xs font-mono px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20 w-fit">
+                          Lulus Tes ({quizRecord.score}/{quizRecord.total})
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-center">
+                      <div className="lg:col-span-2 flex flex-col gap-2">
+                        <h3 className="text-2xl sm:text-3xl font-black text-[var(--text-primary)] font-serif leading-tight">
+                          {activeChapter.title}
+                        </h3>
+                        <p className="text-xs sm:text-sm font-mono text-[var(--brand-primary)] font-medium">
+                          No. {activeChapter.startNum} — {activeChapter.endNum} ({chapterTotal} Kosakata)
+                        </p>
+                        <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                          {activeChapter.desc}
+                        </p>
+
+                        {/* Progress bar */}
+                        <div className="pt-2 flex flex-col gap-1.5">
+                          <div className="flex items-center justify-between text-xs">
+                            <span className="font-medium text-[var(--text-secondary)]">Progres Penguasaan Bab</span>
+                            <span className="font-mono font-bold text-[var(--text-primary)]">
+                              {chapterMastered} / {chapterTotal} Kosakata ({pct}%)
+                            </span>
+                          </div>
+                          <div className="w-full h-2.5 rounded-full bg-[var(--surface-secondary)] border border-[var(--border-subtle)] overflow-hidden">
+                            <div
+                              className={`h-full transition-all duration-500 ${
+                                isAllMastered ? "bg-emerald-500" : "bg-[var(--brand-primary)]"
+                              }`}
+                              style={{ width: `${pct}%` }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-col gap-2.5 justify-center">
+                        <button
+                          type="button"
+                          onClick={() => startChapterStudy(activeChapter, false, "flashcard")}
+                          className="w-full py-3 px-5 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
+                        >
+                          <Layers className="w-4 h-4" />
+                          <span>{isAllMastered ? `Pelajari Ulang ${activeChapter.badge}` : `Mulai Belajar ${activeChapter.badge} (${unmasteredCount} Sisa) →`}</span>
+                        </button>
+
+                        <div className="grid grid-cols-2 gap-2">
+                          <button
+                            type="button"
+                            onClick={() => startChapterStudy(activeChapter, false, "quiz")}
+                            className="py-2 px-3 rounded-xl bg-[var(--surface-secondary)] hover:bg-[var(--surface-primary)] text-[var(--text-primary)] border border-[var(--border-subtle)] font-semibold text-xs transition-all flex items-center justify-center gap-1.5 active:scale-[0.98]"
+                          >
+                            <CheckCircle2 className="w-3.5 h-3.5 text-purple-500" />
+                            <span>Kuis Bab</span>
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setQuizChapterModal({
+                                chapter: activeChapter,
+                                cards: chapterCards,
+                                nextChapter: nextCh,
+                              })
+                            }
+                            className="py-2 px-3 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/30 font-semibold text-xs transition-all flex items-center justify-center gap-1.5 active:scale-[0.98]"
+                          >
+                            <Trophy className="w-3.5 h-3.5 text-amber-500" />
+                            <span>Tes Kelulusan</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })()}
 
               {/* Mastery Progression Banner */}
               <div className="p-4 sm:p-5 rounded-2xl bg-[var(--surface-primary)] border border-[var(--border-subtle)] flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
@@ -613,8 +676,108 @@ export function TangoN3Client() {
                 </div>
               </div>
 
-              {/* Chapter Decks Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Accordion Toggle Bar */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 border-t border-[var(--border-subtle)]">
+                <div className="flex items-center gap-2">
+                  <Layers className="w-4 h-4 text-[var(--brand-primary)]" />
+                  <span className="text-xs font-bold text-[var(--text-primary)]">
+                    Daftar Kurikulum 46 Bab
+                  </span>
+                  <span className="text-xs text-[var(--text-secondary)] font-medium">
+                    · {(progress.unlockedChapterIds || ["ch-01"]).length} / {TANGO_N3_CHAPTERS.length} Bab Terbuka
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsChaptersAccordionExpanded((prev) => !prev)}
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:bg-[var(--surface-secondary)] text-xs font-bold text-[var(--text-primary)] transition-all shadow-xs active:scale-95"
+                >
+                  <span>{isChaptersAccordionExpanded ? "Sembunyikan Daftar 46 Bab" : "Lihat Seluruh 46 Bab"}</span>
+                  {isChaptersAccordionExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                </button>
+              </div>
+
+              {/* Collapsible Chapters Directory */}
+              {isChaptersAccordionExpanded && (
+                <div className="space-y-6 pt-2">
+                  {/* Part Filter Switcher */}
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--border-subtle)] pb-4">
+                    <div>
+                      <h2 className="text-base font-bold text-[var(--text-primary)] flex items-center gap-2">
+                        <Layers className="w-4 h-4 text-[var(--brand-primary)]" />
+                        <span>Filter Berdasarkan Jenis Kata (品詞)</span>
+                      </h2>
+                      <p className="text-xs text-[var(--text-secondary)] mt-0.5">
+                        Pilih kategori untuk memfokuskan daftar bab yang ingin dipelajari.
+                      </p>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-1 p-1 rounded-xl bg-[var(--surface-secondary)] border border-[var(--border-subtle)] text-xs">
+                      <button
+                        onClick={() => setSelectedPart("all")}
+                        className={`px-3 py-1 rounded-lg font-medium transition-colors ${
+                          selectedPart === "all"
+                            ? "bg-[var(--surface-primary)] text-[var(--text-primary)] shadow-xs"
+                            : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                        }`}
+                      >
+                        Semua ({TANGO_N3_CHAPTERS.length})
+                      </button>
+                      <button
+                        onClick={() => setSelectedPart("noun")}
+                        className={`px-3 py-1 rounded-lg font-medium transition-colors ${
+                          selectedPart === "noun"
+                            ? "bg-[var(--surface-primary)] text-[var(--text-primary)] shadow-xs"
+                            : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                        }`}
+                      >
+                        名詞 (Kata Benda)
+                      </button>
+                      <button
+                        onClick={() => setSelectedPart("verb")}
+                        className={`px-3 py-1 rounded-lg font-medium transition-colors ${
+                          selectedPart === "verb"
+                            ? "bg-[var(--surface-primary)] text-[var(--text-primary)] shadow-xs"
+                            : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                        }`}
+                      >
+                        動詞 (Kata Kerja)
+                      </button>
+                      <button
+                        onClick={() => setSelectedPart("adj")}
+                        className={`px-3 py-1 rounded-lg font-medium transition-colors ${
+                          selectedPart === "adj"
+                            ? "bg-[var(--surface-primary)] text-[var(--text-primary)] shadow-xs"
+                            : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                        }`}
+                      >
+                        形容詞・副詞 (Sifat & Ket.)
+                      </button>
+                      <button
+                        onClick={() => setSelectedPart("idiom")}
+                        className={`px-3 py-1 rounded-lg font-medium transition-colors ${
+                          selectedPart === "idiom"
+                            ? "bg-[var(--surface-primary)] text-[var(--text-primary)] shadow-xs"
+                            : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                        }`}
+                      >
+                        慣用句・カタカナ (Ungkapan)
+                      </button>
+                      <button
+                        onClick={() => setSelectedPart("affix")}
+                        className={`px-3 py-1 rounded-lg font-medium transition-colors ${
+                          selectedPart === "affix"
+                            ? "bg-[var(--surface-primary)] text-[var(--text-primary)] shadow-xs"
+                            : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                        }`}
+                      >
+                        接辞・接続詞 (Imbuhan)
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Chapter Decks Grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {TANGO_N3_CHAPTERS.filter(
                   (ch) => selectedPart === "all" || ch.partId === selectedPart
                 ).map((ch, idx) => {
@@ -786,7 +949,7 @@ export function TangoN3Client() {
                             <Trophy className="w-3.5 h-3.5 text-amber-500" />
                             <span>
                               {quizRecord?.passed
-                                ? `Uji Ulang Kelulusan (★ Lulus ${quizRecord.score}/${quizRecord.total})`
+                                ? `Uji Ulang Kelulusan (Lulus ${quizRecord.score}/${quizRecord.total})`
                                 : `Uji Kelulusan Bab (Full ${chapterCards.length} Soal)`}
                             </span>
                           </button>
@@ -798,6 +961,8 @@ export function TangoN3Client() {
               </div>
             </div>
           )}
+        </div>
+      )}
 
           {/* TAB 2: JADWAL REVIEW (SRS) */}
           {activeViewTab === "srs" && (

@@ -25,6 +25,7 @@ import {
 import { FECard, CATEGORY_LABELS } from "@/data/fe-study-data";
 import { CardRating } from "@/lib/fe-study-storage";
 import { RubyTerm } from "@/components/fe-study/ruby-term";
+import { autoAnnotateRuby } from "@/lib/fe-furigana";
 
 interface FlashcardViewProps {
   cards: FECard[];
@@ -613,9 +614,14 @@ export function FlashcardView({
                       <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[var(--text-secondary)] font-bold mb-1">
                         Definisi Inti
                       </p>
-                      <p className="text-xs sm:text-sm md:text-[15px] text-[var(--text-primary)] leading-relaxed font-sans">
-                        {currentCard.definitionId}
-                      </p>
+                      <div className="text-xs sm:text-sm md:text-[15px] text-[var(--text-primary)] leading-[2.1] font-sans">
+                        <RubyTerm
+                          rubyText={autoAnnotateRuby(currentCard.definitionId)}
+                          fallbackText={currentCard.definitionId}
+                          showFurigana={showFurigana}
+                          className="inline leading-[2.1]"
+                        />
+                      </div>
                     </div>
 
                     {/* Kata Kunci Ujian FE */}
@@ -624,9 +630,14 @@ export function FlashcardView({
                         <BookOpen size={12} />
                         Kata Kunci Ujian FE (キーワード)
                       </p>
-                      <p className="text-xs md:text-sm text-[var(--text-primary)] font-medium leading-relaxed">
-                        {currentCard.keyDifferentiator}
-                      </p>
+                      <div className="text-xs md:text-sm text-[var(--text-primary)] font-medium leading-[2.2]">
+                        <RubyTerm
+                          rubyText={autoAnnotateRuby(currentCard.keyDifferentiator)}
+                          fallbackText={currentCard.keyDifferentiator}
+                          showFurigana={showFurigana}
+                          className="inline leading-[2.2]"
+                        />
+                      </div>
                     </div>
 
                     {/* Analogi Visual ala Kitami-shiki (Collapsible Accordion) */}

@@ -23,6 +23,7 @@ import {
 import { FEDailyDeck } from "@/data/fe-daily-decks";
 import { FECard, FE_CARDS } from "@/data/fe-study-data";
 import { RubyTerm } from "@/components/fe-study/ruby-term";
+import { autoAnnotateRuby } from "@/lib/fe-furigana";
 import { ConfettiBurst, playVictoryFanfare } from "@/components/fe-study/confetti-burst";
 import { useJapaneseTts } from "@/lib/use-japanese-tts";
 
@@ -136,9 +137,16 @@ export function FeDayQuizModal({
               <span className="text-[11px] font-mono uppercase tracking-wider text-amber-500 font-bold block">
                 Kata Kunci Penentu Jawaban Ujian FE
               </span>
-              <p className="text-base sm:text-lg font-medium text-[var(--text-primary)] leading-relaxed bg-[var(--surface-secondary)]/50 p-4 rounded-2xl border border-[var(--border-subtle)]">
-                &ldquo;{card.keyDifferentiator}&rdquo;
-              </p>
+              <div className="text-base sm:text-lg font-medium text-[var(--text-primary)] leading-[2.2] bg-[var(--surface-secondary)]/50 p-4 rounded-2xl border border-[var(--border-subtle)]">
+                &ldquo;
+                <RubyTerm
+                  rubyText={autoAnnotateRuby(card.keyDifferentiator)}
+                  fallbackText={card.keyDifferentiator}
+                  showFurigana={true}
+                  className="inline leading-[2.2]"
+                />
+                &rdquo;
+              </div>
               <p className="text-xs text-[var(--text-secondary)]">
                 Konsep atau teknologi manakah yang paling tepat dengan ciri di atas?
               </p>
@@ -599,9 +607,16 @@ export function FeDayQuizModal({
                         </button>
                       </div>
 
-                      {/* Promp Reference */}
-                      <div className="text-xs text-[var(--text-secondary)]">
-                        <b>Soal:</b> &ldquo;{item.question.promptText}&rdquo;
+                      {/* Prompt Reference */}
+                      <div className="text-xs text-[var(--text-secondary)] leading-[2.1]">
+                        <b>Soal:</b> &ldquo;
+                        <RubyTerm
+                          rubyText={autoAnnotateRuby(item.question.promptText)}
+                          fallbackText={item.question.promptText}
+                          showFurigana={true}
+                          className="inline leading-[2.1]"
+                        />
+                        &rdquo;
                       </div>
 
                       {/* User's Choice vs Correct Answer */}
@@ -623,7 +638,14 @@ export function FeDayQuizModal({
                             <span className="font-bold text-amber-500 block uppercase text-[10px]">
                               Kata Kunci Penentu Jawaban Ujian:
                             </span>
-                            {item.question.card.keyDifferentiator}
+                            <div className="mt-1 leading-[2.2]">
+                              <RubyTerm
+                                rubyText={autoAnnotateRuby(item.question.card.keyDifferentiator)}
+                                fallbackText={item.question.card.keyDifferentiator}
+                                showFurigana={true}
+                                className="inline leading-[2.2]"
+                              />
+                            </div>
                           </div>
                         )}
                         {item.question.card.analogy && (

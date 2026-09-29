@@ -61,7 +61,7 @@ export function WrongQuestionsView({
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
   const [confirmResetModal, setConfirmResetModal] = useState(false);
-  const [showFurigana, setShowFurigana] = useState(false);
+  const [showFurigana, setShowFurigana] = useState(true);
   const { speak, stop, isSpeaking, activeSpeechId } = useJapaneseTts();
 
   // Stop audio on unmount
@@ -579,15 +579,26 @@ export function WrongQuestionsView({
                         <span className="text-xs font-bold text-[var(--brand-primary)] uppercase tracking-wider flex items-center gap-1.5">
                           <BookOpen size={14} className="shrink-0" /> Inti Pembahasan Resmi (解説 - Kaisetsu)
                         </span>
-                        <p className="text-sm sm:text-[15px] text-[var(--text-secondary)] leading-[1.85]">
-                          {question.summaryExplanation}
-                        </p>
+                        <div className="text-sm sm:text-[15px] text-[var(--text-secondary)] leading-[2.2]">
+                          <RubyTerm
+                            rubyText={autoAnnotateRuby(question.summaryExplanation)}
+                            fallbackText={question.summaryExplanation}
+                            showFurigana={showFurigana}
+                            className="inline leading-[2.2]"
+                          />
+                        </div>
 
                         <div className="mt-2 pt-2 border-t border-[var(--border)] flex items-start gap-2">
                           <Sparkles size={15} className="text-amber-500 shrink-0 mt-0.5" />
-                          <p className="text-xs sm:text-sm font-semibold text-[var(--text-primary)]">
-                            <span className="text-amber-500">Kunci Ujian:</span> {question.keyTakeaway}
-                          </p>
+                          <div className="text-xs sm:text-sm font-semibold text-[var(--text-primary)] leading-[2.2]">
+                            <span className="text-amber-500">Kunci Ujian:</span>{" "}
+                            <RubyTerm
+                              rubyText={autoAnnotateRuby(question.keyTakeaway)}
+                              fallbackText={question.keyTakeaway}
+                              showFurigana={showFurigana}
+                              className="inline leading-[2.2]"
+                            />
+                          </div>
                         </div>
                       </div>
 
@@ -631,9 +642,14 @@ export function WrongQuestionsView({
                                   )}
                                 </div>
                               </div>
-                              <p className="text-[11px] opacity-80 leading-relaxed mt-0.5">
-                                {opt.explanation}
-                              </p>
+                              <div className="text-[11px] opacity-80 leading-[2.1] mt-0.5">
+                                <RubyTerm
+                                  rubyText={autoAnnotateRuby(opt.explanation)}
+                                  fallbackText={opt.explanation}
+                                  showFurigana={showFurigana}
+                                  className="inline leading-[2.1]"
+                                />
+                              </div>
                             </div>
                           ))}
                         </div>

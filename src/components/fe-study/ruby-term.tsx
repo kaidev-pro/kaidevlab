@@ -50,7 +50,7 @@ export function RubyTerm({
     const furigana = match[2];
 
     nodes.push(
-      <ruby key={`ruby-${match.index}`} className="ruby-term mx-[1px]">
+      <ruby key={`ruby-${match.index}`} className="ruby-term mx-[0.5px]">
         {kanji}
         {showFurigana && (
           <rt
@@ -73,5 +73,5 @@ export function RubyTerm({
     );
   }
 
-  return <span className={className ? className : "inline-block leading-relaxed"}>{nodes}</span>;
+  return <span className={className ? className : "inline leading-relaxed"}>{nodes}</span>;
 }

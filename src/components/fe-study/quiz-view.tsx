@@ -57,7 +57,7 @@ export function QuizView({
 }: QuizViewProps) {
   const [examMode, setExamMode] = useState<ExamMode>(initialMode);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [showFurigana, setShowFurigana] = useState(false);
+  const [showFurigana, setShowFurigana] = useState(true);
   const { speak, stop, isSpeaking, activeSpeechId } = useJapaneseTts();
 
   // Stop audio speech when question changes or mode changes
@@ -860,7 +860,14 @@ export function QuizView({
                         </button>
                       </div>
                       {opt.textEnId && <p className="text-xs sm:text-sm opacity-80 mt-1">{opt.textEnId}</p>}
-                      <p className="text-xs sm:text-sm opacity-90 mt-1.5 italic leading-relaxed">{opt.explanation}</p>
+                      <div className="text-xs sm:text-sm opacity-90 mt-1.5 italic leading-[2.1]">
+                        <RubyTerm
+                          rubyText={autoAnnotateRuby(opt.explanation)}
+                          fallbackText={opt.explanation}
+                          showFurigana={showFurigana}
+                          className="inline leading-[2.1]"
+                        />
+                      </div>
                     </div>
                   </div>
                 );
@@ -873,11 +880,22 @@ export function QuizView({
             <span className="text-xs sm:text-sm font-bold text-[var(--brand-primary)] uppercase tracking-wider flex items-center gap-2">
               <BookOpen size={16} /> Ringkasan Pembahasan Resmi (解説 - Kaisetsu)
             </span>
-            <p className="text-sm sm:text-base text-[var(--text-primary)] leading-[1.85]">
-              {currentQ.summaryExplanation}
-            </p>
-            <div className="p-3.5 sm:p-4 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-              <b className="text-[var(--brand-primary)]">Kunci Ujian FE:</b> {currentQ.keyTakeaway}
+            <div className="text-sm sm:text-base text-[var(--text-primary)] leading-[2.2]">
+              <RubyTerm
+                rubyText={autoAnnotateRuby(currentQ.summaryExplanation)}
+                fallbackText={currentQ.summaryExplanation}
+                showFurigana={showFurigana}
+                className="inline leading-[2.2]"
+              />
+            </div>
+            <div className="p-3.5 sm:p-4 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-xs sm:text-sm text-[var(--text-secondary)] leading-[2.2]">
+              <b className="text-[var(--brand-primary)]">Kunci Ujian FE:</b>{" "}
+              <RubyTerm
+                rubyText={autoAnnotateRuby(currentQ.keyTakeaway)}
+                fallbackText={currentQ.keyTakeaway}
+                showFurigana={showFurigana}
+                className="inline leading-[2.2]"
+              />
             </div>
           </div>
 
@@ -1683,22 +1701,44 @@ export function QuizView({
               <span className="text-xs font-bold text-[var(--text-primary)] uppercase tracking-wider block mb-2">
                 Inti Penjelasan (解説 - Kaisetsu):
               </span>
-              <p className="text-sm sm:text-[15.5px] text-[var(--text-primary)]/90 leading-[1.85] tracking-[0.01em]">
-                {currentQ.summaryExplanation}
-              </p>
+              <div className="text-sm sm:text-[15.5px] text-[var(--text-primary)]/90 leading-[2.2] tracking-[0.01em]">
+                <RubyTerm
+                  rubyText={autoAnnotateRuby(currentQ.summaryExplanation)}
+                  fallbackText={currentQ.summaryExplanation}
+                  showFurigana={showFurigana}
+                  className="inline leading-[2.2]"
+                />
+              </div>
             </div>
 
             {/* Analysis of User's Selection if Wrong */}
             {!isPracticeCorrect && practiceSelectedKey && (
-              <div className="p-4 sm:p-5 rounded-2xl bg-rose-500/10 border border-rose-500/25 text-xs sm:text-sm text-rose-600 dark:text-rose-300 leading-[1.8]">
+              <div className="p-4 sm:p-5 rounded-2xl bg-rose-500/10 border border-rose-500/25 text-xs sm:text-sm text-rose-600 dark:text-rose-300 leading-[2.1]">
                 <b>Mengapa Pilihan 【 {practiceSelectedKey} 】 Salah:</b>{" "}
-                {currentQ.options.find((o) => o.key === practiceSelectedKey)?.explanation}
+                {(() => {
+                  const wrongOpt = currentQ.options.find((o) => o.key === practiceSelectedKey);
+                  if (!wrongOpt?.explanation) return null;
+                  return (
+                    <RubyTerm
+                      rubyText={autoAnnotateRuby(wrongOpt.explanation)}
+                      fallbackText={wrongOpt.explanation}
+                      showFurigana={showFurigana}
+                      className="inline leading-[2.1]"
+                    />
+                  );
+                })()}
               </div>
             )}
 
             {/* Key Takeaway Pill */}
-            <div className="p-4 rounded-2xl bg-[var(--surface)] border border-[var(--border)] text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-              <b className="text-[var(--brand-primary)]">Kunci Ujian (Active Recall):</b> {currentQ.keyTakeaway}
+            <div className="p-4 rounded-2xl bg-[var(--surface)] border border-[var(--border)] text-xs sm:text-sm text-[var(--text-secondary)] leading-[2.2]">
+              <b className="text-[var(--brand-primary)]">Kunci Ujian (Active Recall):</b>{" "}
+              <RubyTerm
+                rubyText={autoAnnotateRuby(currentQ.keyTakeaway)}
+                fallbackText={currentQ.keyTakeaway}
+                showFurigana={showFurigana}
+                className="inline leading-[2.2]"
+              />
             </div>
 
             <button

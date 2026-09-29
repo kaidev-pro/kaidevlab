@@ -55,6 +55,7 @@ import { TracerView } from "@/components/fe-study/tracer-view";
 import { CheatsheetView } from "@/components/fe-study/cheatsheet-view";
 import { WrongQuestionsView } from "@/components/fe-study/wrong-questions-view";
 import { RubyTerm } from "@/components/fe-study/ruby-term";
+import { autoAnnotateRuby } from "@/lib/fe-furigana";
 import { FeCandidateIdCard } from "@/components/fe-study/fe-candidate-id-card";
 import { FE_DAILY_DECKS, FEDailyDeck, getCardsForDay } from "@/data/fe-daily-decks";
 import {
@@ -860,9 +861,14 @@ export function LearnClient() {
                             <RubyTerm rubyText={card.ruby} fallbackText={card.termJp} />
                           </h4>
                           <p className="text-xs text-[var(--text-secondary)] font-medium mt-0.5">{card.termEn}</p>
-                          <p className="text-xs text-[var(--text-primary)]/85 mt-1.5 line-clamp-2 leading-relaxed">
-                            {card.definitionId}
-                          </p>
+                          <div className="text-xs text-[var(--text-primary)]/85 mt-1.5 line-clamp-2 leading-[1.9]">
+                            <RubyTerm
+                              rubyText={autoAnnotateRuby(card.definitionId)}
+                              fallbackText={card.definitionId}
+                              showFurigana={true}
+                              className="inline leading-[1.9]"
+                            />
+                          </div>
                         </div>
                         <div className="pt-2 border-t border-[var(--border)]/60 flex items-center justify-between">
                           <span className="text-[10px] text-amber-500 font-medium flex items-center gap-1">

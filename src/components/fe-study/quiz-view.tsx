@@ -531,7 +531,7 @@ export function QuizView({
                   : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               }`}
             >
-              <CreditCard size={14} className="text-emerald-500" />
+              <CreditCard size={14} className="text-sky-400" />
               <span>Kartu Peserta (ID Card)</span>
             </button>
             <button

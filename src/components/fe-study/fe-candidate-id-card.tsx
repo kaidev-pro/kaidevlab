@@ -103,7 +103,7 @@ export function FeCandidateIdCard({
       width: 160,
       margin: 1,
       color: {
-        dark: "#064e3b",
+        dark: "#0c1b33",
         light: "#ffffff",
       },
     })
@@ -168,8 +168,8 @@ export function FeCandidateIdCard({
       canvas.width = width;
       canvas.height = height;
 
-      // Draw background
-      ctx.fillStyle = "#090d16";
+      // Draw background - Midnight Navy
+      ctx.fillStyle = "#070b14";
       ctx.fillRect(0, 0, width, height);
 
       // Load background guilloche image
@@ -182,13 +182,13 @@ export function FeCandidateIdCard({
       });
 
       if (bgImg.width) {
-        ctx.globalAlpha = 0.45;
+        ctx.globalAlpha = 0.55;
         ctx.drawImage(bgImg, 0, 0, width, height);
         ctx.globalAlpha = 1.0;
       }
 
-      // Rounded border & metallic gradient frame
-      ctx.strokeStyle = "#10b981";
+      // Rounded border & metallic gradient frame - Cyber Cobalt / Sky
+      ctx.strokeStyle = "#38bdf8";
       ctx.lineWidth = 4;
       ctx.beginPath();
       if (typeof ctx.roundRect === "function") {
@@ -199,10 +199,10 @@ export function FeCandidateIdCard({
       ctx.stroke();
 
       // Top Header bar
-      ctx.fillStyle = "rgba(6, 78, 59, 0.4)";
+      ctx.fillStyle = "rgba(12, 27, 51, 0.7)";
       ctx.fillRect(20, 20, width - 40, 100);
 
-      ctx.fillStyle = "#34d399";
+      ctx.fillStyle = "#38bdf8";
       ctx.font = "bold 20px -apple-system, BlinkMacSystemFont, sans-serif";
       ctx.fillText("独立行政法人 情報処理推進機構 (IPA 準拠) · 日本国家IT資格", 46, 58);
 
@@ -242,9 +242,9 @@ export function FeCandidateIdCard({
       const photoW = 210;
       const photoH = 260;
 
-      ctx.fillStyle = "#0f172a";
+      ctx.fillStyle = "#0a1020";
       ctx.fillRect(photoX, photoY, photoW, photoH);
-      ctx.strokeStyle = "#34d399";
+      ctx.strokeStyle = "#38bdf8";
       ctx.lineWidth = 3;
       ctx.strokeRect(photoX, photoY, photoW, photoH);
 
@@ -261,7 +261,7 @@ export function FeCandidateIdCard({
         }
       } else {
         // Default silhouette avatar
-        ctx.fillStyle = "#1e293b";
+        ctx.fillStyle = "#0f172a";
         ctx.fillRect(photoX + 2, photoY + 2, photoW - 4, photoH - 4);
         ctx.fillStyle = "#64748b";
         ctx.font = "bold 24px sans-serif";
@@ -301,7 +301,7 @@ export function FeCandidateIdCard({
       ctx.font = "16px sans-serif";
       ctx.fillText("REGISTRATION NO · 受験者番号", infoX, 270);
 
-      ctx.fillStyle = "#34d399";
+      ctx.fillStyle = "#38bdf8";
       ctx.font = "bold 26px monospace";
       ctx.fillText(candidateId, infoX, 305);
 
@@ -330,7 +330,7 @@ export function FeCandidateIdCard({
       ctx.fillStyle = "#94a3b8";
       ctx.font = "15px sans-serif";
       ctx.fillText("READINESS STATUS · 判定", infoX + 320, 435);
-      ctx.fillStyle = isPassed ? "#10b981" : "#f59e0b";
+      ctx.fillStyle = isPassed ? "#38bdf8" : "#f59e0b";
       ctx.font = "bold 22px sans-serif";
       ctx.fillText(isPassed ? "合格認定 · PASSED" : "受講中 · IN PROGRESS", infoX + 320, 465);
 
@@ -356,7 +356,7 @@ export function FeCandidateIdCard({
         });
         if (qrImg.width) {
           ctx.drawImage(qrImg, width - 200, 470, 140, 140);
-          ctx.strokeStyle = "#10b981";
+          ctx.strokeStyle = "#38bdf8";
           ctx.lineWidth = 2;
           ctx.strokeRect(width - 202, 468, 144, 144);
         }
@@ -393,7 +393,7 @@ export function FeCandidateIdCard({
       <div className="flex flex-wrap items-center justify-between gap-3 w-full max-w-[620px] px-2 print:hidden">
         <div className="flex items-center gap-2">
           <span className="text-xs font-bold uppercase tracking-wider text-[var(--text-secondary)] flex items-center gap-1.5">
-            <CreditCard size={14} className="text-emerald-500" />
+            <CreditCard size={14} className="text-sky-400" />
             Kartu Peserta Ujian Resmi (受験者証)
           </span>
         </div>
@@ -404,7 +404,7 @@ export function FeCandidateIdCard({
             onClick={() => setIsFlipped(!isFlipped)}
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--surface-soft)] text-xs font-bold text-[var(--text-primary)] transition-all shadow-sm"
           >
-            <RotateCw size={13} className="text-emerald-500" />
+            <RotateCw size={13} className="text-sky-400" />
             {isFlipped ? "Lihat Bagian Depan" : "Balik Kartu (Belakang)"}
           </button>
 
@@ -412,7 +412,7 @@ export function FeCandidateIdCard({
             type="button"
             onClick={handleDownloadCardPng}
             disabled={isDownloading}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-xs font-bold text-emerald-500 transition-all shadow-sm disabled:opacity-50"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-sky-500/30 bg-sky-500/10 hover:bg-sky-500/20 text-xs font-bold text-sky-400 transition-all shadow-sm disabled:opacity-50"
           >
             <Download size={13} />
             {isDownloading ? "Menyiapkan File..." : "Unduh Kartu (PNG)"}
@@ -443,10 +443,10 @@ export function FeCandidateIdCard({
           }}
         >
           {/* ============================================================== */}
-          {/* FRONT SIDE */}
+          {/* FRONT SIDE - Midnight Navy & Cyber Cobalt */}
           {/* ============================================================== */}
           <div
-            className="w-full relative rounded-3xl border-2 border-emerald-500/40 bg-slate-950 text-white shadow-2xl overflow-hidden p-5 sm:p-7 md:p-8 flex flex-col justify-between gap-5"
+            className="w-full relative rounded-3xl border-2 border-sky-400/40 bg-[#070b14] text-white shadow-[0_0_35px_rgba(14,165,233,0.18)] overflow-hidden p-5 sm:p-7 md:p-8 flex flex-col justify-between gap-5"
             style={{
               backfaceVisibility: "hidden",
               backgroundImage: "url('/fe-study/card-guilloche-bg.jpg')",
@@ -454,12 +454,12 @@ export function FeCandidateIdCard({
               backgroundPosition: "center",
             }}
           >
-            {/* Dark glassmorphic overlay for contrast */}
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-950/90 via-slate-950/85 to-[#06241a]/90 backdrop-blur-[2px] pointer-events-none" />
+            {/* Dark glassmorphic navy overlay for contrast */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#070b14]/95 via-[#0b1329]/90 to-[#0e1e3e]/95 backdrop-blur-[1px] pointer-events-none" />
 
-            {/* Subtle holographic foil shine */}
-            <div className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-emerald-500/15 blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-32 -right-32 w-80 h-80 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
+            {/* Subtle holographic foil cobalt shine */}
+            <div className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-sky-500/15 blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-32 -right-32 w-80 h-80 rounded-full bg-blue-600/15 blur-3xl pointer-events-none" />
 
             {/* Top Lanyard Slot Graphic */}
             <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-2 rounded-full bg-slate-800/80 border border-slate-700/60 shadow-inner flex items-center justify-center">
@@ -467,14 +467,14 @@ export function FeCandidateIdCard({
             </div>
 
             {/* CARD HEADER */}
-            <div className="relative z-10 flex items-start justify-between gap-4 pt-1 border-b border-emerald-500/25 pb-4">
+            <div className="relative z-10 flex items-start justify-between gap-4 pt-1 border-b border-sky-500/25 pb-4">
               <div className="flex flex-col">
-                <span className="text-[10px] sm:text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase">
+                <span className="text-[10px] sm:text-xs font-mono font-bold tracking-widest text-sky-400 uppercase">
                   独立行政法人 情報処理推進機構 (IPA 準拠) · 国家IT資格
                 </span>
-                <h3 className="text-base sm:text-lg md:text-xl font-extrabold font-serif tracking-tight text-white mt-0.5 flex items-center gap-2">
+                <h3 className="text-base sm:text-lg md:text-xl font-extrabold font-serif tracking-tight text-white mt-0.5 flex items-center gap-2 drop-shadow-sm">
                   基本情報技術者試験 (FE CBT)
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono font-semibold border border-emerald-500/40">
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-200 font-mono font-semibold border border-sky-400/40">
                     CANDIDATE PASS
                   </span>
                 </h3>
@@ -482,14 +482,14 @@ export function FeCandidateIdCard({
 
               {/* Official Gold Seal Badge Asset */}
               <div className="relative group shrink-0">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-amber-400/80 shadow-[0_0_15px_rgba(251,191,36,0.3)] overflow-hidden bg-slate-900 transition-transform duration-300 group-hover:scale-105">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-amber-400/80 shadow-[0_0_15px_rgba(251,191,36,0.35)] overflow-hidden bg-slate-900 transition-transform duration-300 group-hover:scale-105">
                   <img
                     src="/fe-study/gold-seal.jpg"
                     alt="Official Japanese IT Certification Seal"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border border-slate-900 flex items-center justify-center shadow">
+                <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-sky-500 border border-slate-900 flex items-center justify-center shadow">
                   <BadgeCheck size={10} className="text-white" />
                 </div>
               </div>
@@ -500,7 +500,7 @@ export function FeCandidateIdCard({
               {/* Photo & IC Smart Chip Column (Cols 1-4) */}
               <div className="col-span-4 sm:col-span-3 flex flex-col items-center gap-2.5">
                 {/* Photo Frame */}
-                <div className="relative group w-24 h-28 sm:w-28 sm:h-32 rounded-xl border-2 border-emerald-400/60 bg-slate-900 overflow-hidden shadow-lg flex items-center justify-center">
+                <div className="relative group w-24 h-28 sm:w-28 sm:h-32 rounded-xl border-2 border-sky-400/70 bg-slate-950 overflow-hidden shadow-[0_0_15px_rgba(56,189,248,0.2)] flex items-center justify-center">
                   {avatarImage ? (
                     <img
                       src={avatarImage}
@@ -521,7 +521,7 @@ export function FeCandidateIdCard({
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
                     title="Ganti Foto Paspor / Foto Profil"
-                    className="absolute inset-0 bg-slate-950/70 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center gap-1 transition-opacity text-[10px] font-semibold text-emerald-300 cursor-pointer print:hidden"
+                    className="absolute inset-0 bg-slate-950/75 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center gap-1 transition-opacity text-[10px] font-semibold text-sky-300 cursor-pointer print:hidden"
                   >
                     <Camera size={16} />
                     <span>Ubah Foto</span>
@@ -553,7 +553,7 @@ export function FeCandidateIdCard({
                     <button
                       type="button"
                       onClick={() => setIsEditingName(!isEditingName)}
-                      className="text-[10px] text-emerald-400 hover:text-emerald-300 font-mono underline print:hidden"
+                      className="text-[10px] text-sky-400 hover:text-sky-300 font-mono underline print:hidden"
                     >
                       {isEditingName ? "Batal" : "Edit Nama"}
                     </button>
@@ -565,14 +565,14 @@ export function FeCandidateIdCard({
                         type="text"
                         value={currentName}
                         onChange={(e) => setCurrentName(e.target.value)}
-                        className="bg-slate-900 border border-emerald-400/60 rounded px-2 py-0.5 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-emerald-300 w-full"
+                        className="bg-slate-900 border border-sky-400/60 rounded px-2 py-0.5 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-sky-300 w-full"
                         placeholder="Nama Lengkap"
                         autoFocus
                       />
                       <button
                         type="button"
                         onClick={handleSaveName}
-                        className="px-2.5 py-1 rounded bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs"
+                        className="px-2.5 py-1 rounded bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs"
                       >
                         Simpan
                       </button>
@@ -580,7 +580,7 @@ export function FeCandidateIdCard({
                   ) : (
                     <div className="text-lg sm:text-2xl font-bold font-serif text-white tracking-wide mt-0.5 flex items-center gap-2">
                       <span>{currentName.toUpperCase()}</span>
-                      <span className="text-xs font-mono font-normal text-emerald-400">
+                      <span className="text-xs font-mono font-normal text-sky-400">
                         (認証済)
                       </span>
                     </div>
@@ -593,16 +593,16 @@ export function FeCandidateIdCard({
                     REGISTRATION NUMBER · 受験者番号
                   </span>
                   <div className="flex items-center gap-2 mt-0.5">
-                    <span className="text-sm sm:text-base font-mono font-extrabold text-emerald-300 tracking-wider">
+                    <span className="text-sm sm:text-base font-mono font-extrabold text-sky-300 tracking-wider">
                       {candidateId}
                     </span>
                     <button
                       type="button"
                       onClick={handleCopyId}
                       title="Salin Nomor Ujian"
-                      className="text-slate-400 hover:text-emerald-400 transition-colors p-1 print:hidden"
+                      className="text-slate-400 hover:text-sky-400 transition-colors p-1 print:hidden"
                     >
-                      {copiedId ? <Check size={13} className="text-emerald-400" /> : <Copy size={13} />}
+                      {copiedId ? <Check size={13} className="text-sky-400" /> : <Copy size={13} />}
                     </button>
                   </div>
                 </div>
@@ -639,7 +639,7 @@ export function FeCandidateIdCard({
                     </span>
                     <span
                       className={`font-bold text-[11px] sm:text-xs flex items-center gap-1 ${
-                        isPassed ? "text-emerald-400" : "text-amber-400"
+                        isPassed ? "text-sky-400" : "text-amber-400"
                       }`}
                     >
                       <CheckCircle2 size={12} />
@@ -651,7 +651,7 @@ export function FeCandidateIdCard({
             </div>
 
             {/* CARD FOOTER (Barcode, Hanko & QR) */}
-            <div className="relative z-10 flex items-end justify-between pt-3 border-t border-emerald-500/20">
+            <div className="relative z-10 flex items-end justify-between pt-3 border-t border-sky-500/20">
               {/* Barcode representation */}
               <div className="flex flex-col gap-0.5">
                 <div className="flex items-center gap-[2.5px] h-8 opacity-85">
@@ -681,7 +681,7 @@ export function FeCandidateIdCard({
               {/* Dynamic QR Code */}
               <div className="relative">
                 {qrCodeDataUrl ? (
-                  <div className="w-14 h-14 bg-white p-1 rounded-lg border border-emerald-500/50 shadow flex items-center justify-center">
+                  <div className="w-14 h-14 bg-white p-1 rounded-lg border border-sky-400/50 shadow-[0_0_10px_rgba(56,189,248,0.15)] flex items-center justify-center">
                     <img
                       src={qrCodeDataUrl}
                       alt="Verification QR Code"
@@ -698,10 +698,10 @@ export function FeCandidateIdCard({
           </div>
 
           {/* ============================================================== */}
-          {/* BACK SIDE */}
+          {/* BACK SIDE - Midnight Navy & Cyber Cobalt */}
           {/* ============================================================== */}
           <div
-            className="w-full absolute inset-0 rounded-3xl border-2 border-emerald-500/40 bg-slate-950 text-white shadow-2xl overflow-hidden p-5 sm:p-7 md:p-8 flex flex-col justify-between gap-4"
+            className="w-full absolute inset-0 rounded-3xl border-2 border-sky-400/40 bg-[#070b14] text-white shadow-[0_0_35px_rgba(14,165,233,0.18)] overflow-hidden p-5 sm:p-7 md:p-8 flex flex-col justify-between gap-4"
             style={{
               backfaceVisibility: "hidden",
               transform: "rotateY(180deg)",
@@ -711,11 +711,11 @@ export function FeCandidateIdCard({
             }}
           >
             {/* Dark glassmorphic overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-950/95 via-slate-950/90 to-[#071d15]/95 backdrop-blur-[2px] pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#070b14]/95 via-[#091124]/90 to-[#0e1e3e]/95 backdrop-blur-[1px] pointer-events-none" />
 
             {/* Magnetic Stripe */}
-            <div className="relative z-10 -mx-8 -mt-2 bg-gradient-to-r from-black via-zinc-900 to-black h-9 border-y border-zinc-800 shadow-inner flex items-center px-6">
-              <span className="text-[8px] font-mono tracking-widest text-zinc-600 uppercase">
+            <div className="relative z-10 -mx-8 -mt-2 bg-gradient-to-r from-black via-slate-900 to-black h-9 border-y border-zinc-800 shadow-inner flex items-center px-6">
+              <span className="text-[8px] font-mono tracking-widest text-slate-400 uppercase">
                 IPA JAPAN IT EXAMINATION SYSTEM · CBT CONTACTLESS CREDENTIAL
               </span>
             </div>
@@ -727,13 +727,13 @@ export function FeCandidateIdCard({
               </div>
               <div className="text-right font-mono text-[10px] text-slate-400">
                 <span className="block text-[8px] uppercase">SEC CODE</span>
-                <span className="font-bold text-emerald-400">IPA-824</span>
+                <span className="font-bold text-sky-400">IPA-824</span>
               </div>
             </div>
 
             {/* Competency Domain Progress (From actual exam stats or syllabus) */}
             <div className="relative z-10 flex flex-col gap-2">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-400">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-sky-400">
                 3 PILAR KOMPETENSI IPA JAPAN (シラバス達成度)
               </span>
 
@@ -741,7 +741,7 @@ export function FeCandidateIdCard({
               <div className="flex flex-col gap-1">
                 <div className="flex justify-between text-xs">
                   <span className="text-slate-300 font-semibold">テクノロジ系 (Technology)</span>
-                  <span className="font-mono text-emerald-400 font-bold">
+                  <span className="font-mono text-sky-400 font-bold">
                     {categoryStats?.technology
                       ? `${Math.round(
                           (categoryStats.technology.correct / (categoryStats.technology.total || 1)) * 100
@@ -751,7 +751,7 @@ export function FeCandidateIdCard({
                 </div>
                 <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-emerald-500 rounded-full"
+                    className="h-full bg-sky-500 rounded-full shadow-[0_0_8px_rgba(14,165,233,0.5)]"
                     style={{
                       width: categoryStats?.technology
                         ? `${(categoryStats.technology.correct / (categoryStats.technology.total || 1)) * 100}%`
@@ -775,7 +775,7 @@ export function FeCandidateIdCard({
                 </div>
                 <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-cyan-500 rounded-full"
+                    className="h-full bg-cyan-500 rounded-full shadow-[0_0_8px_rgba(6,182,212,0.5)]"
                     style={{
                       width: categoryStats?.management
                         ? `${(categoryStats.management.correct / (categoryStats.management.total || 1)) * 100}%`
@@ -799,7 +799,7 @@ export function FeCandidateIdCard({
                 </div>
                 <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-indigo-500 rounded-full"
+                    className="h-full bg-indigo-500 rounded-full shadow-[0_0_8px_rgba(99,102,241,0.5)]"
                     style={{
                       width: categoryStats?.strategy
                         ? `${(categoryStats.strategy.correct / (categoryStats.strategy.total || 1)) * 100}%`
@@ -828,10 +828,10 @@ export function FeCandidateIdCard({
       {/* Quick Action Guide */}
       <div className="flex items-center justify-center gap-4 text-xs text-[var(--text-secondary)] print:hidden">
         <span className="inline-flex items-center gap-1">
-          <Eye size={13} className="text-emerald-500" /> Klik "Balik Kartu" untuk melihat silabus & kompetensi
+          <Eye size={13} className="text-sky-400" /> Klik "Balik Kartu" untuk melihat silabus & kompetensi
         </span>
         <span className="inline-flex items-center gap-1">
-          <Camera size={13} className="text-emerald-500" /> Arahkan kursor ke foto untuk mengganti foto
+          <Camera size={13} className="text-sky-400" /> Arahkan kursor ke foto untuk mengganti foto
         </span>
       </div>
     </div>

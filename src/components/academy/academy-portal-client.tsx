@@ -360,13 +360,13 @@ export function AcademyPortalClient() {
       {/* ==================================================== */}
       {/* 2. COMPACT KAI-PASS IDENTITY BAR                     */}
       {/* ==================================================== */}
-      <div className="p-3.5 sm:px-5 sm:py-3.5 rounded-2xl bg-[var(--surface-primary)] border border-emerald-500/30 shadow-sm flex flex-wrap items-center justify-between gap-3 text-xs relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-48 h-full bg-gradient-to-l from-emerald-500/10 to-transparent pointer-events-none" />
+      <div className="p-3.5 sm:px-5 sm:py-3.5 rounded-2xl bg-[var(--surface-primary)] border border-sky-500/30 shadow-sm flex flex-wrap items-center justify-between gap-3 text-xs relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-48 h-full bg-gradient-to-l from-sky-500/10 to-transparent pointer-events-none" />
 
         {/* Left: ID & Rank */}
         <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap relative z-10">
           <div className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-sky-500 animate-pulse" />
             <span className="font-mono font-extrabold text-[var(--text-primary)] tracking-wide">
               {cadetId}
             </span>
@@ -394,11 +394,11 @@ export function AcademyPortalClient() {
                 title={`${day.dateKey} (${day.dayName}): ${day.count} item dipelajari`}
                 className={`w-3.5 h-3.5 rounded-xs transition-colors ${
                   day.count >= 20
-                    ? "bg-emerald-500"
+                    ? "bg-sky-500"
                     : day.count >= 10
-                    ? "bg-emerald-600/80"
+                    ? "bg-sky-600/80"
                     : day.count > 0
-                    ? "bg-emerald-500/40"
+                    ? "bg-sky-500/40"
                     : "bg-[var(--border-subtle)]/40"
                 }`}
               />
@@ -411,7 +411,7 @@ export function AcademyPortalClient() {
           <button
             type="button"
             onClick={() => setIdCardModalOpen(true)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-500 font-bold text-xs transition-colors shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-sky-500/40 bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 font-bold text-xs transition-colors shadow-xs"
           >
             <CreditCard className="w-3.5 h-3.5" />
             <span>{t.openPassBtn}</span>
@@ -1058,7 +1058,7 @@ export function AcademyPortalClient() {
             {/* Modal Header */}
             <div className="flex items-center justify-between w-full border-b border-[var(--border-subtle)] pb-3 print:hidden">
               <div className="flex items-center gap-2">
-                <CreditCard className="w-5 h-5 text-emerald-500" />
+                <CreditCard className="w-5 h-5 text-sky-400" />
                 <h3 className="text-base sm:text-lg font-bold text-[var(--text-primary)]">
                   KAI-PASS · Paspor Belajar & Identitas Resmi (受験者証)
                 </h3>

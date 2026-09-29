@@ -683,7 +683,7 @@ export function LearnClient() {
               <button
                 type="button"
                 onClick={() => setIsIdCardModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-500 text-xs font-semibold transition-all shadow-sm"
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 text-sky-400 text-xs font-semibold transition-all shadow-sm"
               >
                 <CreditCard size={13} />
                 <span>{txt.idCardBtn}</span>
@@ -1519,7 +1519,7 @@ export function LearnClient() {
             {/* Modal Header */}
             <div className="flex items-center justify-between w-full border-b border-[var(--border)] pb-3 print:hidden">
               <div className="flex items-center gap-2">
-                <CreditCard size={18} className="text-emerald-500" />
+                <CreditCard size={18} className="text-sky-400" />
                 <h3 className="text-base sm:text-lg font-bold text-[var(--text-primary)]">
                   Kartu Peserta Ujian Resmi (受験者証)
                 </h3>

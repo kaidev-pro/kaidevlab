@@ -21,6 +21,7 @@ import {
   BadgeCheck,
   Eye,
   RefreshCw,
+  Edit3,
 } from "lucide-react";
 
 export interface FeCandidateIdCardProps {
@@ -455,7 +456,7 @@ export function FeCandidateIdCard({
             }}
           >
             {/* Dark glassmorphic navy overlay for contrast */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#070b14]/95 via-[#0b1329]/90 to-[#0e1e3e]/95 backdrop-blur-[1px] pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#070b14]/78 via-[#0b1329]/72 to-[#0e1e3e]/78 backdrop-blur-[0.5px] pointer-events-none" />
 
             {/* Subtle holographic foil cobalt shine */}
             <div className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-sky-500/15 blur-3xl pointer-events-none" />
@@ -472,12 +473,17 @@ export function FeCandidateIdCard({
                 <span className="text-[10px] sm:text-xs font-mono font-bold tracking-widest text-sky-400 uppercase">
                   独立行政法人 情報処理推進機構 (IPA 準拠) · 国家IT資格
                 </span>
-                <h3 className="text-base sm:text-lg md:text-xl font-extrabold font-serif tracking-tight text-white mt-0.5 flex items-center gap-2 drop-shadow-sm">
-                  基本情報技術者試験 (FE CBT)
+                <div
+                  role="heading"
+                  aria-level={3}
+                  style={{ color: "#ffffff" }}
+                  className="text-base sm:text-lg md:text-xl font-extrabold font-serif tracking-tight text-white mt-0.5 flex items-center gap-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]"
+                >
+                  <span style={{ color: "#ffffff" }}>基本情報技術者試験 (FE CBT)</span>
                   <span className="text-[10px] px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-200 font-mono font-semibold border border-sky-400/40">
                     CANDIDATE PASS
                   </span>
-                </h3>
+                </div>
               </div>
 
               {/* Official Gold Seal Badge Asset */}
@@ -553,9 +559,11 @@ export function FeCandidateIdCard({
                     <button
                       type="button"
                       onClick={() => setIsEditingName(!isEditingName)}
-                      className="text-[10px] text-sky-400 hover:text-sky-300 font-mono underline print:hidden"
+                      style={{ fontSize: "11px" }}
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-sky-500/15 hover:bg-sky-500/25 border border-sky-400/40 text-sky-300 hover:text-white font-mono text-[11px] font-semibold transition-all shadow-xs cursor-pointer print:hidden"
                     >
-                      {isEditingName ? "Batal" : "Edit Nama"}
+                      <Edit3 size={11} className="text-sky-400" />
+                      <span>{isEditingName ? "Batal" : "Edit Nama"}</span>
                     </button>
                   </div>
 
@@ -578,8 +586,11 @@ export function FeCandidateIdCard({
                       </button>
                     </div>
                   ) : (
-                    <div className="text-lg sm:text-2xl font-bold font-serif text-white tracking-wide mt-0.5 flex items-center gap-2">
-                      <span>{currentName.toUpperCase()}</span>
+                    <div
+                      style={{ color: "#ffffff" }}
+                      className="text-lg sm:text-2xl font-bold font-serif text-white tracking-wide mt-0.5 flex items-center gap-2"
+                    >
+                      <span style={{ color: "#ffffff" }}>{currentName.toUpperCase()}</span>
                       <span className="text-xs font-mono font-normal text-sky-400">
                         (認証済)
                       </span>
@@ -711,7 +722,7 @@ export function FeCandidateIdCard({
             }}
           >
             {/* Dark glassmorphic overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#070b14]/95 via-[#091124]/90 to-[#0e1e3e]/95 backdrop-blur-[1px] pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#070b14]/80 via-[#091124]/75 to-[#0e1e3e]/80 backdrop-blur-[0.5px] pointer-events-none" />
 
             {/* Magnetic Stripe */}
             <div className="relative z-10 -mx-8 -mt-2 bg-gradient-to-r from-black via-slate-900 to-black h-9 border-y border-zinc-800 shadow-inner flex items-center px-6">

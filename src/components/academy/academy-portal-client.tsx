@@ -150,6 +150,8 @@ export function AcademyPortalClient() {
   const [activeFeDayNumber, setActiveFeDayNumber] = useState(1);
   const [activeTangoChapterId, setActiveTangoChapterId] = useState("noun-general-1");
   const [roadmapOpen, setRoadmapOpen] = useState(false);
+  const [feProgress, setFeProgress] = useState<any>(null);
+  const [tangoProgress, setTangoProgress] = useState<any>(null);
 
   // Modals
   const [syncModalOpen, setSyncModalOpen] = useState(false);
@@ -170,6 +172,9 @@ export function AcademyPortalClient() {
     try {
       const tProg = loadTangoProgress();
       const feProg = loadStudyProgress();
+
+      setTangoProgress(tProg);
+      setFeProgress(feProg);
 
       setTangoStats({
         mastered: tProg.masteredCardIds?.length || 0,
@@ -259,6 +264,37 @@ export function AcademyPortalClient() {
     return { title: "Cadet Explorer", tier: "Level 1" };
   }, [totalMastered]);
 
+  // Weak items needing attention (Section 21)
+  const weakConcepts = useMemo(() => {
+    const feWeak = (feProgress?.reviewCardIds || [])
+      .map((id: string) => FE_CARDS.find((c) => c.id === id))
+      .filter(Boolean)
+      .slice(0, 4);
+    const tangoWeak = (tangoProgress?.reviewCardIds || [])
+      .map((id: string) => TANGO_N3_CARDS.find((c) => c.id === id))
+      .filter(Boolean)
+      .slice(0, 4);
+    return { feWeak, tangoWeak };
+  }, [feProgress?.reviewCardIds, tangoProgress?.reviewCardIds]);
+
+  // Activity 7-Day Calendar (Section 24)
+  const activityPast7Days = useMemo(() => {
+    const days = [];
+    for (let i = 6; i >= 0; i--) {
+      const d = new Date();
+      d.setDate(d.getDate() - i);
+      const dateKey = d.toISOString().split("T")[0];
+      const feCount = feProgress?.dailyReviews?.[dateKey] || 0;
+      const tangoCount = tangoProgress?.dailyReviews?.[dateKey] || 0;
+      const count = feCount + tangoCount;
+      const dayName = d.toLocaleDateString(locale === "ja" ? "ja-JP" : locale === "en" ? "en-US" : "id-ID", {
+        weekday: "short",
+      });
+      days.push({ dateKey, dayName, count });
+    }
+    return days;
+  }, [feProgress?.dailyReviews, tangoProgress?.dailyReviews, locale]);
+
   const handleCopySyncLink = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard && syncUrl) {
       navigator.clipboard.writeText(syncUrl);
@@ -344,6 +380,30 @@ export function AcademyPortalClient() {
             <Flame className="w-3.5 h-3.5 fill-amber-500" />
             <span>{globalStreak} {t.streakSuffix}</span>
           </span>
+        </div>
+
+        {/* Middle: 7-Day Activity Heatstrip (Section 24) */}
+        <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[var(--surface-secondary)]/60 border border-[var(--border-subtle)] text-xs relative z-10">
+          <span className="text-[10px] font-bold text-[var(--text-tertiary)] uppercase tracking-wider">
+            7 Hari:
+          </span>
+          <div className="flex items-center gap-1">
+            {activityPast7Days.map((day) => (
+              <div
+                key={day.dateKey}
+                title={`${day.dateKey} (${day.dayName}): ${day.count} item dipelajari`}
+                className={`w-3.5 h-3.5 rounded-xs transition-colors ${
+                  day.count >= 20
+                    ? "bg-emerald-500"
+                    : day.count >= 10
+                    ? "bg-emerald-600/80"
+                    : day.count > 0
+                    ? "bg-emerald-500/40"
+                    : "bg-[var(--border-subtle)]/40"
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Right: Quick Passport Actions */}
@@ -573,7 +633,114 @@ export function AcademyPortalClient() {
       </section>
 
       {/* ==================================================== */}
-      {/* 5. ACTIVE TRACKS OVERVIEW                            */}
+      {/* 5. REVIEW CENTER & WEAK CONCEPTS (SECTION 21)        */}
+      {/* ==================================================== */}
+      <section className="p-5 sm:p-7 rounded-3xl bg-[var(--surface-primary)] border border-amber-500/30 shadow-sm space-y-5 relative overflow-hidden">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-500 text-xs font-bold uppercase tracking-wider">
+                <RotateCcw className="w-3 h-3" />
+                <span>Review Center</span>
+              </span>
+              <span className="text-xs font-mono font-bold text-[var(--text-secondary)]">
+                {totalDueReview} Item Jatuh Tempo Hari Ini
+              </span>
+            </div>
+            <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] font-serif">
+              Penguatan Memori Jangka Panjang (Spaced Repetition)
+            </h3>
+            <p className="text-xs text-[var(--text-secondary)] max-w-2xl leading-relaxed">
+              Konsep dan kosakata yang diulang tepat saat memori mulai memudar akan melekat lebih permanen daripada menghafal ulang dari nol.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2 shrink-0">
+            <a
+              href="/tools/fe-study/?tab=flashcards&mode=review"
+              className="px-3.5 py-2 rounded-xl bg-[var(--surface-secondary)] hover:bg-[var(--surface-secondary)]/80 text-[var(--text-primary)] border border-[var(--border-subtle)] text-xs font-bold flex items-center gap-1.5 transition-colors"
+            >
+              <span>Review FE ({feStats.reviewCount})</span>
+            </a>
+            <a
+              href="/tools/tango-n3/?tab=srs"
+              className="px-3.5 py-2 rounded-xl bg-[var(--surface-secondary)] hover:bg-[var(--surface-secondary)]/80 text-[var(--text-primary)] border border-[var(--border-subtle)] text-xs font-bold flex items-center gap-1.5 transition-colors"
+            >
+              <span>Review N3 ({tangoStats.reviewCount})</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Needs Attention / Weak concepts list */}
+        {(weakConcepts.feWeak.length > 0 || weakConcepts.tangoWeak.length > 0) ? (
+          <div className="pt-3 border-t border-[var(--border-subtle)]/70 space-y-3">
+            <span className="text-xs font-bold text-[var(--text-primary)] flex items-center gap-1.5">
+              <AlertCircle className="w-3.5 h-3.5 text-amber-500" />
+              <span>Perlu Perhatian Khusus (Weak Items):</span>
+            </span>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+              {weakConcepts.feWeak.map((card: any) => (
+                <a
+                  key={card.id}
+                  href={`/tools/fe-study/?card=${card.id}`}
+                  className="p-3 rounded-xl bg-[var(--surface-secondary)]/70 hover:bg-[var(--surface-secondary)] border border-[var(--border-subtle)] hover:border-amber-500/40 transition-all flex flex-col justify-between gap-1.5 group"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-500 font-bold">
+                      FE IT
+                    </span>
+                    <span className="text-[10px] font-mono text-amber-500 font-bold">
+                      Review
+                    </span>
+                  </div>
+                  <div>
+                    <h5 className="font-bold text-xs text-[var(--text-primary)] group-hover:text-amber-500 transition-colors line-clamp-1">
+                      {card.termId}
+                    </h5>
+                    <p className="text-[11px] font-mono text-[var(--text-secondary)] line-clamp-1">
+                      {card.termJp}
+                    </p>
+                  </div>
+                </a>
+              ))}
+
+              {weakConcepts.tangoWeak.map((card: any) => (
+                <a
+                  key={card.id}
+                  href={`/tools/tango-n3/?search=${encodeURIComponent(card.word)}`}
+                  className="p-3 rounded-xl bg-[var(--surface-secondary)]/70 hover:bg-[var(--surface-secondary)] border border-[var(--border-subtle)] hover:border-amber-500/40 transition-all flex flex-col justify-between gap-1.5 group"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-sky-500/10 text-sky-500 font-bold">
+                      N3 Vocab
+                    </span>
+                    <span className="text-[10px] font-mono text-amber-500 font-bold">
+                      Review
+                    </span>
+                  </div>
+                  <div>
+                    <h5 className="font-bold text-xs text-[var(--text-primary)] group-hover:text-amber-500 transition-colors line-clamp-1">
+                      {card.word} ({card.reading})
+                    </h5>
+                    <p className="text-[11px] text-[var(--text-secondary)] line-clamp-1">
+                      {card.meaningId}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="pt-3 border-t border-[var(--border-subtle)]/70 flex items-center gap-2 text-xs text-[var(--text-secondary)]">
+            <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+            <span>Semua konsep yang pernah dipelajari dalam kondisi ingatan prima. Tidak ada catatan kelemahan aktif.</span>
+          </div>
+        )}
+      </section>
+
+      {/* ==================================================== */}
+      {/* 6. ACTIVE TRACKS OVERVIEW                            */}
       {/* ==================================================== */}
       <section className="space-y-4">
         <div>
@@ -917,6 +1084,46 @@ export function AcademyPortalClient() {
               isPassed={totalMastered >= 50}
               className="w-full"
             />
+
+            {/* KAI-PASS Passport Detailed Metrics (Section 25) */}
+            <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-2.5 print:hidden">
+              <div className="p-3 rounded-2xl bg-[var(--surface-secondary)]/70 border border-[var(--border-subtle)] flex flex-col justify-between">
+                <span className="text-[10px] uppercase font-bold text-[var(--text-tertiary)]">FE Dikuasai</span>
+                <span className="text-sm font-mono font-extrabold text-[var(--text-primary)] mt-1">
+                  <b className="text-emerald-500">{feStats.mastered}</b> / {feStats.total}
+                </span>
+                <span className="text-[10px] text-[var(--text-tertiary)] mt-0.5">
+                  {Math.round((feStats.mastered / (feStats.total || 1)) * 100)}% Selesai
+                </span>
+              </div>
+
+              <div className="p-3 rounded-2xl bg-[var(--surface-secondary)]/70 border border-[var(--border-subtle)] flex flex-col justify-between">
+                <span className="text-[10px] uppercase font-bold text-[var(--text-tertiary)]">N3 Dikuasai</span>
+                <span className="text-sm font-mono font-extrabold text-[var(--text-primary)] mt-1">
+                  <b className="text-sky-500">{tangoStats.mastered}</b> / {tangoStats.total}
+                </span>
+                <span className="text-[10px] text-[var(--text-tertiary)] mt-0.5">
+                  {Math.round((tangoStats.mastered / (tangoStats.total || 1)) * 100)}% Selesai
+                </span>
+              </div>
+
+              <div className="p-3 rounded-2xl bg-[var(--surface-secondary)]/70 border border-[var(--border-subtle)] flex flex-col justify-between">
+                <span className="text-[10px] uppercase font-bold text-[var(--text-tertiary)]">Streak Belajar</span>
+                <span className="text-sm font-mono font-extrabold text-amber-500 mt-1 flex items-center gap-1">
+                  <Flame className="w-3.5 h-3.5 fill-amber-500" />
+                  <span>{globalStreak} Hari</span>
+                </span>
+                <span className="text-[10px] text-[var(--text-tertiary)] mt-0.5">Konsistensi Harian</span>
+              </div>
+
+              <div className="p-3 rounded-2xl bg-[var(--surface-secondary)]/70 border border-[var(--border-subtle)] flex flex-col justify-between">
+                <span className="text-[10px] uppercase font-bold text-[var(--text-tertiary)]">Jatuh Tempo</span>
+                <span className={`text-sm font-mono font-extrabold mt-1 ${totalDueReview > 0 ? "text-amber-500" : "text-emerald-500"}`}>
+                  {totalDueReview} Item
+                </span>
+                <span className="text-[10px] text-[var(--text-tertiary)] mt-0.5">SRS Review Queue</span>
+              </div>
+            </div>
 
             {/* Close button */}
             <div className="w-full flex justify-end pt-2 border-t border-[var(--border-subtle)] print:hidden">

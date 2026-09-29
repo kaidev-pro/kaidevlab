@@ -21,7 +21,8 @@ const widgetTranslations = {
     notStarted: "Not started — start first drill",
     notStartedBadge: "199 Terms",
     srs: "Spaced Repetition System",
-    openHub: "Open Study Gym",
+    openHub: "Open Learning Hub",
+    continueLearning: "Continue Learning",
   },
   id: {
     tracker: "Live Study Tracker · 基本情報",
@@ -37,7 +38,8 @@ const widgetTranslations = {
     notStarted: "Belum mulai — mulai drill pertama",
     notStartedBadge: "199 Istilah",
     srs: "Metode Spaced Repetition",
-    openHub: "Buka Study Gym",
+    openHub: "Buka Learning Hub",
+    continueLearning: "Lanjut Belajar",
   },
   ja: {
     tracker: "学習進捗トラッカー · 基本情報",
@@ -53,7 +55,8 @@ const widgetTranslations = {
     notStarted: "未開始 — 最初の演習を始めよう",
     notStartedBadge: "全199語",
     srs: "間隔反復学習システム (SRS)",
-    openHub: "スタディジムを開く",
+    openHub: "学習ハブを開く",
+    continueLearning: "学習を再開する",
   },
 };
 
@@ -126,7 +129,7 @@ export function FeLiveWidget() {
           href="/learn"
           className="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--brand-primary)] hover:text-[var(--brand-hover)] transition-colors group"
         >
-          <span>{t.openHub}</span>
+          <span>{mastered > 0 ? t.continueLearning : t.openHub}</span>
           <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
         </a>
       </div>

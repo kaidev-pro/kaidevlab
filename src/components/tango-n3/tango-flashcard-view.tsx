@@ -42,6 +42,8 @@ interface TangoFlashcardViewProps {
   onToggleStar?: (cardId: string) => void;
   streak: number;
   onFinishSession?: () => void;
+  onGraduateAll?: () => void;
+  isWeakSession?: boolean;
 }
 
 // ==========================================
@@ -139,6 +141,8 @@ export function TangoFlashcardView({
   onToggleStar,
   streak,
   onFinishSession,
+  onGraduateAll,
+  isWeakSession,
 }: TangoFlashcardViewProps) {
   const [activeDeck, setActiveDeck] = useState<TangoN3Card[]>(cards);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -331,6 +335,8 @@ export function TangoFlashcardView({
         masteredCount={sessionStats.mastered}
         reviewCount={sessionStats.review}
         streak={streak}
+        onGraduateAll={onGraduateAll}
+        isWeakSession={isWeakSession}
         onRestart={() => {
           setCurrentIndex(0);
           setIsFlipped(false);
@@ -884,13 +890,16 @@ export function TangoFlashcardView({
 
             <button
               type="button"
-              onClick={handleNext}
-              disabled={currentIndex === activeDeck.length - 1}
-              className="inline-flex items-center justify-center gap-1 px-3 sm:px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none transition-all active:scale-95 shrink-0 cursor-pointer"
-              title="Kartu Berikutnya"
+              onClick={isLastCard ? () => setIsSessionFinished(true) : handleNext}
+              className={`inline-flex items-center justify-center gap-1 px-3 sm:px-4 py-2.5 rounded-xl border text-xs font-semibold transition-all active:scale-95 shrink-0 cursor-pointer ${
+                isLastCard
+                  ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20"
+                  : "border-[var(--border)] hover:border-[var(--brand-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              }`}
+              title={isLastCard ? "Selesaikan Sesi" : "Kartu Berikutnya"}
             >
-              <span className="hidden sm:inline">Berikutnya</span>
-              <ChevronRight size={16} />
+              <span className="hidden sm:inline">{isLastCard ? "Selesai" : "Berikutnya"}</span>
+              {isLastCard ? <CheckCircle2 size={16} /> : <ChevronRight size={16} />}
             </button>
           </div>
         )}

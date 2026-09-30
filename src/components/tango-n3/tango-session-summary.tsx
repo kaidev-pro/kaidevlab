@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, Flame, RotateCcw, ArrowLeft, CheckCircle2, AlertCircle, ArrowRight } from "lucide-react";
+import { Award, Flame, RotateCcw, ArrowLeft, CheckCircle2, AlertCircle, ArrowRight, CheckCheck } from "lucide-react";
 import { ConfettiBurst } from "@/components/fe-study/confetti-burst";
 
 interface TangoSessionSummaryProps {
@@ -12,6 +12,8 @@ interface TangoSessionSummaryProps {
   onRestart: () => void;
   onReviewMistakes?: () => void;
   onBackToDashboard: () => void;
+  onGraduateAll?: () => void;
+  isWeakSession?: boolean;
 }
 
 export function TangoSessionSummary({
@@ -22,6 +24,8 @@ export function TangoSessionSummary({
   onRestart,
   onReviewMistakes,
   onBackToDashboard,
+  onGraduateAll,
+  isWeakSession,
 }: TangoSessionSummaryProps) {
   const scorePercent =
     totalReviewed > 0 ? Math.round((masteredCount / totalReviewed) * 100) : 0;
@@ -109,6 +113,17 @@ export function TangoSessionSummary({
 
         {/* Action Buttons */}
         <div className="flex flex-col w-full gap-2.5 pt-2">
+          {onGraduateAll && (
+            <button
+              type="button"
+              onClick={onGraduateAll}
+              className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold shadow-md hover:shadow-lg transition-all active:scale-98"
+            >
+              <CheckCheck className="w-4 h-4" />
+              <span>Luluskan Semua {totalReviewed} Kata dari Daftar Sering Salah</span>
+            </button>
+          )}
+
           {reviewCount > 0 && onReviewMistakes && (
             <button
               type="button"

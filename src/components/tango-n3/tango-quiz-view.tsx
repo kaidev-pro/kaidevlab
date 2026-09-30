@@ -24,6 +24,8 @@ interface TangoQuizViewProps {
   onFinishQuiz?: () => void;
   streak: number;
   onRateCard?: (cardId: string, chapterId: string, rating: CardRating) => void;
+  onGraduateAll?: () => void;
+  isWeakSession?: boolean;
 }
 
 interface QuizItem {
@@ -105,6 +107,8 @@ export function TangoQuizView({
   onFinishQuiz,
   streak,
   onRateCard,
+  onGraduateAll,
+  isWeakSession,
 }: TangoQuizViewProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
@@ -316,6 +320,8 @@ export function TangoQuizView({
         masteredCount={correctCount}
         reviewCount={wrongCount}
         streak={streak}
+        onGraduateAll={onGraduateAll}
+        isWeakSession={isWeakSession}
         onRestart={() => {
           setCurrentIndex(0);
           setSelectedOptionId(null);

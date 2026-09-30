@@ -34,6 +34,7 @@ import {
   ChevronDown,
   ChevronUp,
   Info,
+  CheckCheck,
 } from "lucide-react";
 import {
   TANGO_N3_CARDS,
@@ -50,6 +51,8 @@ import {
   getSrsSchedules,
   recordChapterQuizResult,
   setMasteryMode,
+  graduateAllWeakCards,
+  graduateSingleWeakCard,
   CardRating,
   TangoProgress,
   DEFAULT_TANGO_PROGRESS,
@@ -127,6 +130,19 @@ export function TangoN3Client() {
     },
     [quizChapterModal]
   );
+
+  const handleGraduateAllWeak = useCallback(() => {
+    const updated = graduateAllWeakCards();
+    setProgress(updated);
+    if (activeMode?.includes("Sering Salah")) {
+      setActiveMode(null);
+    }
+  }, [activeMode]);
+
+  const handleGraduateSingleWeak = useCallback((cardId: string) => {
+    const updated = graduateSingleWeakCard(cardId);
+    setProgress(updated);
+  }, []);
 
   const handleToggleMasteryMode = useCallback(() => {
     const nextMode = !progress.masteryModeEnabled;
@@ -262,7 +278,17 @@ export function TangoN3Client() {
                 </span>
               </div>
             </div>
-            <div className="text-right shrink-0">
+            <div className="text-right shrink-0 flex items-center gap-2">
+              {activeMode?.includes("Sering Salah") && (
+                <button
+                  onClick={handleGraduateAllWeak}
+                  className="hidden xs:inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-bold hover:bg-emerald-500/20 transition-all shadow-xs"
+                  title="Tandai semua kata sering salah ini sudah hafal & hapus dari daftar"
+                >
+                  <CheckCheck className="w-3.5 h-3.5" />
+                  <span>Luluskan Semua</span>
+                </button>
+              )}
               <span className="text-xs font-mono font-bold text-[var(--text-secondary)]">
                 {activeCards.length} Kartu
               </span>
@@ -275,6 +301,8 @@ export function TangoN3Client() {
               streak={progress.streak}
               onRateCard={handleRateCard}
               onFinishQuiz={() => setActiveMode(null)}
+              onGraduateAll={activeMode?.includes("Sering Salah") ? handleGraduateAllWeak : undefined}
+              isWeakSession={activeMode?.includes("Sering Salah")}
             />
           ) : (
             <TangoFlashcardView
@@ -286,6 +314,8 @@ export function TangoN3Client() {
               onToggleStar={handleToggleStar}
               streak={progress.streak}
               onFinishSession={() => setActiveMode(null)}
+              onGraduateAll={activeMode?.includes("Sering Salah") ? handleGraduateAllWeak : undefined}
+              isWeakSession={activeMode?.includes("Sering Salah")}
             />
           )}
         </div>
@@ -401,13 +431,23 @@ export function TangoN3Client() {
               </button>
 
               {weakCards.length > 0 && (
-                <button
-                  onClick={() => startSession(selectedStudyTab === "quiz" ? "Kuis Kata Sering Salah" : "Drill Kata Sering Salah", weakCards, selectedStudyTab)}
-                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 text-xs font-bold hover:bg-rose-500/20 transition-colors"
-                >
-                  <ShieldAlert className="w-3.5 h-3.5 text-rose-500" />
-                  <span>Sering Salah ({weakCards.length})</span>
-                </button>
+                <div className="inline-flex items-center gap-1">
+                  <button
+                    onClick={() => startSession(selectedStudyTab === "quiz" ? "Kuis Kata Sering Salah" : "Drill Kata Sering Salah", weakCards, selectedStudyTab)}
+                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 text-xs font-bold hover:bg-rose-500/20 transition-colors"
+                  >
+                    <ShieldAlert className="w-3.5 h-3.5 text-rose-500" />
+                    <span>Sering Salah ({weakCards.length})</span>
+                  </button>
+                  <button
+                    onClick={handleGraduateAllWeak}
+                    title="Tandai semua kata sering salah ini sudah hafal & bersihkan dari daftar"
+                    className="inline-flex items-center gap-1 px-2.5 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 text-xs font-bold transition-colors shadow-xs"
+                  >
+                    <CheckCheck className="w-3.5 h-3.5" />
+                    <span className="hidden sm:inline">Luluskan</span>
+                  </button>
+                </div>
               )}
 
               {reviewCount > 0 && (
@@ -1087,9 +1127,9 @@ export function TangoN3Client() {
               {/* Bank Kata Sering Salah (if any) */}
               {weakCards.length > 0 && (
                 <div className="p-5 rounded-3xl border border-rose-500/30 bg-rose-500/5 shadow-sm space-y-3">
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div className="flex items-center gap-2.5">
-                      <div className="p-2 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400">
+                      <div className="p-2 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 shrink-0">
                         <ShieldAlert className="w-4 h-4" />
                       </div>
                       <div>
@@ -1097,16 +1137,26 @@ export function TangoN3Client() {
                           Bank Kata Sering Salah ({weakCards.length} Kosakata)
                         </h3>
                         <p className="text-xs text-[var(--text-secondary)]">
-                          Kosakata yang tercatat pernah keliru saat kuis atau flashcard.
+                          Kosakata yang pernah keliru. Latih ulang atau luluskan jika sudah hafal.
                         </p>
                       </div>
                     </div>
-                    <button
-                      onClick={() => startSession("Drill Kata Sering Salah", weakCards, selectedStudyTab)}
-                      className="px-3.5 py-1.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold transition-colors shadow-xs"
-                    >
-                      Latih Semua ({weakCards.length})
-                    </button>
+                    <div className="flex items-center gap-2 self-end sm:self-auto">
+                      <button
+                        onClick={handleGraduateAllWeak}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-xs font-bold transition-colors shadow-xs"
+                        title="Tandai semua kata ini sudah hafal & hapus dari daftar sering salah"
+                      >
+                        <CheckCheck className="w-3.5 h-3.5" />
+                        <span>Luluskan Semua</span>
+                      </button>
+                      <button
+                        onClick={() => startSession(selectedStudyTab === "quiz" ? "Kuis Kata Sering Salah" : "Drill Kata Sering Salah", weakCards, selectedStudyTab)}
+                        className="px-3.5 py-1.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold transition-colors shadow-xs"
+                      >
+                        Latih Semua ({weakCards.length})
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}
@@ -1226,6 +1276,16 @@ export function TangoN3Client() {
                           </div>
 
                           <div className="flex items-center gap-2 self-end sm:self-center shrink-0">
+                            {mistakeCount > 0 && (
+                              <button
+                                onClick={() => handleGraduateSingleWeak(card.id)}
+                                className="px-2.5 py-1.5 rounded-xl text-xs font-bold border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 transition-colors"
+                                title="Tandai kata ini sudah hafal & hapus dari daftar Sering Salah"
+                              >
+                                ✓ Lulus
+                              </button>
+                            )}
+
                             <button
                               onClick={() => handleToggleStar(card.id)}
                               className={`p-2 rounded-xl border border-[var(--border-subtle)] hover:bg-[var(--surface-secondary)] transition-colors ${

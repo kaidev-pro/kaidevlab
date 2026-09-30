@@ -331,3 +331,68 @@ export function setMasteryMode(enabled: boolean): TangoProgress {
   return updated;
 }
 
+export function graduateAllWeakCards(): TangoProgress {
+  const current = loadTangoProgress();
+  const today = getTodayString();
+  const mastered = new Set(current.masteredCardIds || []);
+  const review = new Set(current.reviewCardIds || []);
+  const cardMistakes = { ...(current.cardMistakes || {}) };
+  const cardSuccessStreaks = { ...(current.cardSuccessStreaks || {}) };
+  const cardBox = { ...(current.cardBox || {}) };
+  const cardNextReview = { ...(current.cardNextReview || {}) };
+
+  for (const cardId of Object.keys(cardMistakes)) {
+    mastered.add(cardId);
+    review.delete(cardId);
+    delete cardMistakes[cardId];
+    cardSuccessStreaks[cardId] = (cardSuccessStreaks[cardId] || 0) + 1;
+    cardBox[cardId] = Math.max(cardBox[cardId] || 1, 2);
+    cardNextReview[cardId] = addDays(today, 3);
+  }
+
+  const updated: TangoProgress = {
+    ...current,
+    masteredCardIds: Array.from(mastered),
+    reviewCardIds: Array.from(review),
+    cardMistakes,
+    cardSuccessStreaks,
+    cardBox,
+    cardNextReview,
+  };
+
+  saveTangoProgress(updated);
+  return updated;
+}
+
+export function graduateSingleWeakCard(cardId: string): TangoProgress {
+  const current = loadTangoProgress();
+  const today = getTodayString();
+  const mastered = new Set(current.masteredCardIds || []);
+  const review = new Set(current.reviewCardIds || []);
+  const cardMistakes = { ...(current.cardMistakes || {}) };
+  const cardSuccessStreaks = { ...(current.cardSuccessStreaks || {}) };
+  const cardBox = { ...(current.cardBox || {}) };
+  const cardNextReview = { ...(current.cardNextReview || {}) };
+
+  mastered.add(cardId);
+  review.delete(cardId);
+  delete cardMistakes[cardId];
+  cardSuccessStreaks[cardId] = (cardSuccessStreaks[cardId] || 0) + 1;
+  cardBox[cardId] = Math.max(cardBox[cardId] || 1, 2);
+  cardNextReview[cardId] = addDays(today, 3);
+
+  const updated: TangoProgress = {
+    ...current,
+    masteredCardIds: Array.from(mastered),
+    reviewCardIds: Array.from(review),
+    cardMistakes,
+    cardSuccessStreaks,
+    cardBox,
+    cardNextReview,
+  };
+
+  saveTangoProgress(updated);
+  return updated;
+}
+
+

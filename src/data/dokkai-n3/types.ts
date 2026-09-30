@@ -45,7 +45,7 @@ export interface DokkaiPassage {
     termJp: string;
     furigana: string;
     meaningId: string;
-    level: "N3" | "N2" | "N1" | "FE-IT";
+    level: "N5" | "N4" | "N3" | "N2" | "N1" | "FE-IT";
   }[];
   questions: DokkaiQuestion[];
 }

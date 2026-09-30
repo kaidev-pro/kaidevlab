@@ -706,4 +706,936 @@ export const DOKKAI_PASSAGES: DokkaiPassage[] = [
       },
     ],
   },
+
+  // =========================================================================
+  // PILAR 2: 実践編 追加ユニット (短文・中文・長文・情報検索)
+  // =========================================================================
+  {
+    "id": "drill-short-02",
+    "chapterNumber": 9,
+    "category": "short",
+    "categoryLabel": "実践編 · 短文読解 (Teks Pendek)",
+    "titleJp": "業務打ち合わせの日程変更について",
+    "titleId": "Pemberitahuan Perubahan Jadwal Rapat Kerja",
+    "techniqueTag": "ビジネス連絡・要件の把握",
+    "techniqueDescription": "Pada memo atau email bisnis (短文), fokus utama selalu ada pada 3 hal: 1) Alasan perubahan (変更の理由), 2) Kapan dan apa jadwal barunya (新しい日程), dan 3) Apa tindakan yang diminta dari penerima (返信や連絡の依頼). Kalimat instruksi/permohonan biasanya berada di akhir wacana.",
+    "sentences": [
+      {
+        "id": "s1",
+        "textJp": "営業部員各位：来週火曜日（10月15日）14時より予定しておりました新商品に関する業務打ち合わせですが、担当役員の出張日程が急遽変更となったため、以下の通り日時を延期させていただきます。",
+        "textId": "Kepada seluruh staf bagian sales: Mengenai rapat koordinasi produk baru yang dijadwalkan Selasa depan (15 Okt) pukul 14.00, karena jadwal dinas luar direktur terkait mendadak berubah, maka waktu rapat ditunda sebagai berikut."
+      },
+      {
+        "id": "s2",
+        "textJp": "変更後の日時は【10月17日（木）10:30〜12:00】、場所は第2会議室（変更なし）となります。",
+        "textId": "Waktu setelah perubahan adalah 【Kamis, 17 Oktober 10.30 - 12.00】, bertempat di Ruang Rapat 2 (tidak ada perubahan ruangan)."
+      },
+      {
+        "id": "s3",
+        "textJp": "なお、新しい日程でご都合が合わない方は、本日17時までに調整担当の田中までメールにてご連絡ください。",
+        "textId": "Adapun bagi yang berhalangan hadir pada jadwal baru tersebut, mohon hubungi Tanaka (penanggung jawab penyesuaian jadwal) melalui email paling lambat hari ini pukul 17.00.",
+        "isKeySentence": true
+      },
+      {
+        "id": "s4",
+        "textJp": "特にご連絡がない場合は、上記の日程でご出席いただけるものとして進行いたしますのでご了承ください。",
+        "textId": "Jika tidak ada kabar, kami anggap Anda dapat menghadiri rapat sesuai jadwal di atas."
+      }
+    ],
+    "passageTranslation": "Kepada seluruh staf bagian sales: Mengenai rapat koordinasi produk baru yang dijadwalkan Selasa depan (15 Okt) pukul 14.00, karena jadwal dinas luar direktur terkait mendadak berubah, maka waktu rapat ditunda sebagai berikut.\nWaktu setelah perubahan adalah 【Kamis, 17 Oktober 10.30 - 12.00】, bertempat di Ruang Rapat 2 (tidak ada perubahan ruangan).\nAdapun bagi yang berhalangan hadir pada jadwal baru tersebut, mohon hubungi Tanaka (penanggung jawab penyesuaian jadwal) melalui email paling lambat hari ini pukul 17.00.\nJika tidak ada kabar, kami anggap Anda dapat menghadiri rapat sesuai jadwal di atas.",
+    "vocabulary": [
+      {
+        "termJp": "延期",
+        "furigana": "えんき",
+        "meaningId": "Penundaan jadwal ke tanggal lain",
+        "level": "N3"
+      },
+      {
+        "termJp": "急遽",
+        "furigana": "きゅうきょ",
+        "meaningId": "Mendadak / tergesa-gesa tanpa diduga",
+        "level": "N1"
+      },
+      {
+        "termJp": "役員",
+        "furigana": "やくいん",
+        "meaningId": "Pejabat eksekutif / dewan direksi perusahaan",
+        "level": "N2"
+      },
+      {
+        "termJp": "出張",
+        "furigana": "しゅっちょう",
+        "meaningId": "Perjalanan dinas bisnis luar kota",
+        "level": "N4"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-drill-short-02-1",
+        "questionNumber": 1,
+        "questionJp": "このメールを受け取った営業部員は、まず何をしなければなりませんか。",
+        "questionTranslation": "Apa yang harus dilakukan pertama kali oleh staf sales setelah menerima email ini?",
+        "clueSentenceIndex": 2,
+        "techniqueTip": "Perhatikan syarat di kalimat 3: 'ご都合が合わない方は...田中までメールにてご連絡ください'. Artinya hanya yang tidak bisa hadir yang wajib kirim email sebelum jam 17:00.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "新しい日程（17日木曜）で参加できない場合のみ、本日17時までに田中に連絡する。",
+            "textId": "Hanya jika tidak bisa hadir di jadwal baru (Kamis 17 Okt), menghubungi Tanaka sebelum jam 17.00 hari ini.",
+            "explanation": "Benar! Surat tersebut menyatakan '新しい日程でご都合が合わない方は、本日17時までに...ご連絡ください' dan jika tidak ada kabar dianggap bisa hadir.",
+            "isCorrect": true
+          },
+          {
+            "key": "2",
+            "textJp": "出席できるかどうかにかかわらず、部員全員が本日17時までに田中へ返信メールを送る。",
+            "textId": "Terlepas bisa hadir atau tidak, seluruh staf wajib mengirim email balasan ke Tanaka sebelum jam 17.00 hari ini.",
+            "explanation": "Salah (Jebakan '全員'). Email menyatakan jika tidak ada kabar dianggap hadir, jadi yang bisa hadir tidak perlu membalas.",
+            "isCorrect": false
+          },
+          {
+            "key": "3",
+            "textJp": "役員の出張日程を確認してから、第2会議室の予約手続きを変更する。",
+            "textId": "Memeriksa jadwal dinas direktur terlebih dahulu lalu mengubah reservasi Ruang Rapat 2.",
+            "explanation": "Salah. Ruang rapat sudah dipastikan tidak berubah (第2会議室・変更なし).",
+            "isCorrect": false
+          },
+          {
+            "key": "4",
+            "textJp": "10月15日の14時に第2会議室に集まり、日程の再調整について相談する。",
+            "textId": "Berkumpul di Ruang Rapat 2 pada 15 Oktober pukul 14.00 untuk membicarakan penyesuaian ulang.",
+            "explanation": "Salah. Rapat tanggal 15 Oktober tersebut sudah resmi dibatalkan dan ditunda ke tanggal 17 Oktober.",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    "id": "drill-medium-01",
+    "chapterNumber": 10,
+    "category": "medium",
+    "categoryLabel": "実践編 · 中文読解 (Teks Menengah)",
+    "titleJp": "職場における「あいさつ」の力",
+    "titleId": "Kekuatan Salam di Lingkungan Kerja",
+    "techniqueTag": "段落展開と結論の把握",
+    "techniqueDescription": "Teks 中文 (350~450 karakter) memiliki alur runtut: Paragraf 1 membuka topik, Paragraf 2 memberi bukti empiris/analisis perbandingan, dan Paragraf 3 menarik kesimpulan opini. Kerjakan soal nomor demi nomor sesuai letak paragrafnya.",
+    "sentences": [
+      {
+        "id": "s1",
+        "textJp": "あいさつは、人が社会で生活していく上で最も基本的で、当たり前のマナーだと考えられている。",
+        "textId": "Salam dianggap sebagai tata krama paling mendasar dan lumrah bagi manusia dalam menjalani kehidupan bermasyarakat."
+      },
+      {
+        "id": "s2",
+        "textJp": "しかし、職場でのあいさつには、単に礼儀正しさを示すこと以上の大きな効果が存在している。",
+        "textId": "Namun, salam di tempat kerja memiliki manfaat besar yang jauh melampaui sekadar menunjukkan kesopanan.",
+        "isKeySentence": true
+      },
+      {
+        "id": "s3",
+        "textJp": "毎朝明るい声で「おはようございます」と言葉を交わすだけで、職場の緊張感が和らぎ、お互いの心理的な距離が自然と縮まるのだ。",
+        "textId": "Hanya dengan saling menyapa 'selamat pagi' dengan ceria setiap hari, ketegangan di kantor mereda dan jarak psikologis antarpegawai menyusut alami."
+      },
+      {
+        "id": "s4",
+        "textJp": "実際に、あいさつが活発に行われているチームでは、仕事の連絡や相談がスムーズに進みやすいという調査結果もある。",
+        "textId": "Faktanya, ada hasil survei yang menunjukkan bahwa pada tim yang aktif bertukar salam, komunikasi dan koordinasi kerja berjalan jauh lebih lancar."
+      },
+      {
+        "id": "s5",
+        "textJp": "声をかけやすい雰囲気が日常的に作られているため、ミスやトラブルが発生した際にも、一人で抱え込まずに素早く周囲に共有できるからである。",
+        "textId": "Hal ini karena suasana yang mudah diajak bicara tercipta secara rutin, sehingga ketika terjadi kesalahan atau masalah, mereka tidak memendamnya sendirian melainkan cepat berbagi ke sekitarnya.",
+        "isKeySentence": true
+      },
+      {
+        "id": "s6",
+        "textJp": "反対に、互いに無言で過ごす職場では、小さな疑問があっても質問することをためらってしまい、結果として重大な失敗につながる恐れがある。",
+        "textId": "Sebaliknya, di tempat kerja yang saling hening tanpa tegur sapa, orang akan ragu bertanya meski ada keraguan kecil, yang berisiko berujung pada kegagalan fatal."
+      },
+      {
+        "id": "s7",
+        "textJp": "つまり、あいさつとは形式的な規則ではなく、円滑なチームワークと安全な業務を支えるための最も手軽で強力なコミュニケーション手段なのである。",
+        "textId": "Dengan kata lain, salam bukanlah aturan formalitas belaka, melainkan sarana komunikasi paling praktis dan ampuh untuk menopang kerja tim yang harmonis dan kelancaran operasional kerja yang aman.",
+        "isKeySentence": true
+      }
+    ],
+    "passageTranslation": "Salam dianggap sebagai tata krama paling mendasar bagi manusia dalam bermasyarakat. Namun, salam di tempat kerja memiliki manfaat besar yang melampaui sekadar kesopanan.\nHanya dengan saling menyapa 'selamat pagi' secara ceria setiap hari, ketegangan di kantor mereda dan jarak psikologis antarpegawai menyusut alami.\nFaktanya, penelitian membuktikan bahwa pada tim yang aktif bertukar salam, koordinasi kerja berjalan jauh lebih lancar. Karena suasana yang ramah tercipta rutin, saat terjadi masalah pegawai tidak memendamnya sendirian melainkan lekas melapor.\nSebaliknya di kantor yang sunyi tanpa tegur sapa, orang ragu bertanya meski ada keraguan kecil sehingga berisiko menjadi kegagalan fatal.\nDengan kata lain, salam bukan aturan formalitas kaku, melainkan sarana komunikasi paling praktis dan ampuh untuk menjaga keselamatan dan keharmonisan kerja tim.",
+    "vocabulary": [
+      {
+        "termJp": "礼儀",
+        "furigana": "れいぎ",
+        "meaningId": "Tata krama / kesopanan etika",
+        "level": "N3"
+      },
+      {
+        "termJp": "緊張感",
+        "furigana": "きんちょうかん",
+        "meaningId": "Rasa tegang / atmosfer kaku",
+        "level": "N2"
+      },
+      {
+        "termJp": "和らぐ",
+        "furigana": "やわらぐ",
+        "meaningId": "Mereda / menjadi rileks tenang",
+        "level": "N2"
+      },
+      {
+        "termJp": "抱え込む",
+        "furigana": "かかえこむ",
+        "meaningId": "Memendam / menanggung masalah sendirian",
+        "level": "N2"
+      },
+      {
+        "termJp": "ためらう",
+        "furigana": "ためらう",
+        "meaningId": "Ragu-ragu / bimbang untuk melangkah",
+        "level": "N2"
+      },
+      {
+        "termJp": "形式的",
+        "furigana": "けいしきてき",
+        "meaningId": "Hanya bersifat formalitas luaran belaka",
+        "level": "N2"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-drill-med-01-1",
+        "questionNumber": 1,
+        "questionJp": "文中の「単に礼儀正しさを示すこと以上の大きな効果」とは、具体的にどのようなことですか。",
+        "questionTranslation": "Apa hal konkret yang dimaksud dengan 'manfaat besar yang melampaui sekadar kesopanan' pada teks?",
+        "clueSentenceIndex": 2,
+        "techniqueTip": "Lihat kalimat tepat setelah kata '大きな効果': '職場の緊張感が和らぎ、お互いの心理的な距離が自然と縮まるのだ'.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "毎朝あいさつを交わすことで職場の緊張がほぐれ、社員同士の心理的な距離が近くなること。",
+            "textId": "Saling bertegur sapa setiap pagi meredakan ketegangan kantor dan mendekatkan jarak psikologis antarkaryawan.",
+            "explanation": "Benar! Kalimat ke-3 secara gamblang menjelaskan efek tersebut: ketegangan mereda dan jarak psikologis mencair.",
+            "isCorrect": true
+          },
+          {
+            "key": "2",
+            "textJp": "礼儀正しく大きな声であいさつすることで、上司からの評価や給料が上がること。",
+            "textId": "Menyapa dengan suara keras dan sopan akan menaikkan penilaian dan gaji dari atasan.",
+            "explanation": "Salah. Penulis tidak pernah membahas tentang kenaikan gaji atau penilaian atasan.",
+            "isCorrect": false
+          },
+          {
+            "key": "3",
+            "textJp": "形式的な規則を厳格に守ることで、職場の厳しい規律を維持できること。",
+            "textId": "Mempertahankan kedisiplinan kantor yang ketat dengan menaati aturan formalitas secara tegas.",
+            "explanation": "Salah. Paragraf terakhir justru menegaskan bahwa salam 'bukanlah aturan formalitas belaka' (形式的な規則ではない).",
+            "isCorrect": false
+          },
+          {
+            "key": "4",
+            "textJp": "無言で仕事に専念する環境を作り、個人の作業効率を限界まで高められること。",
+            "textId": "Menciptakan lingkungan kerja tanpa suara agar efisiensi kerja individu meningkat maksimal.",
+            "explanation": "Salah. Penulis justru mengkritik lingkungan tanpa tegur sapa (無言で過ごす職場) karena berbahaya memicu kesalahan.",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "id": "q-drill-med-01-2",
+        "questionNumber": 2,
+        "questionJp": "あいさつが活発なチームでミスやトラブルへの対応が素早いのはなぜですか。",
+        "questionTranslation": "Mengapa tim yang aktif bertukar salam cepat dalam menangani kesalahan dan masalah?",
+        "clueSentenceIndex": 4,
+        "techniqueTip": "Cari kalimat penjelas sebab di kalimat 5: perhatikan kata penghubung '〜からである'.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "普段から気軽に話し合える雰囲気があり、問題を一人で悩まず周囲へすぐ共有できるから。",
+            "textId": "Karena terbiasa dengan suasana yang mudah diajak bicara, sehingga tidak memendam masalah sendirian melainkan lekas membaginya.",
+            "explanation": "Benar! Kalimat 5 menyebutkan: 声をかけやすい雰囲気が日常的に作られているため、ミスやトラブルが発生した際にも一人で抱え込まずに素早く周囲に共有できるからである.",
+            "isCorrect": true
+          },
+          {
+            "key": "2",
+            "textJp": "毎朝のあいさつの際に、その日の業務計画やミス防止策をすべて話し合うから。",
+            "textId": "Karena saat salam pagi, seluruh rencana kerja dan pencegahan kesalahan didiskusikan lengkap.",
+            "explanation": "Salah. Teks hanya menyebut salam mencairkan suasana agar mudah diajak bicara, bukan rapat perencanaan penuh.",
+            "isCorrect": false
+          },
+          {
+            "key": "3",
+            "textJp": "互いに明るくあいさつを交わしていれば、業務上のミスが全く発生しなくなるから。",
+            "textId": "Karena jika saling menyapa dengan ceria, kesalahan operasional tidak akan terjadi sama sekali.",
+            "explanation": "Salah (Ekstrem). Teks menyatakan saat terjadi kesalahan (ミスが発生した際にも) penanganannya lebih cepat, bukan tidak ada kesalahan sama sekali.",
+            "isCorrect": false
+          },
+          {
+            "key": "4",
+            "textJp": "チーム内にどんな重大なトラブルでも一人で解決できる責任者がいるから。",
+            "textId": "Karena di dalam tim selalu ada satu penanggung jawab yang bisa menyelesaikan segala masalah sendiri.",
+            "explanation": "Salah. Teks menekankan pentingnya kerja tim dan berbagi ke orang sekitar, bukan memikul sendirian.",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "id": "q-drill-med-01-3",
+        "questionNumber": 3,
+        "questionJp": "筆者がこの文章で最も伝えたい主張はどれですか。",
+        "questionTranslation": "Pesan utama manakah yang paling ingin disampaikan penulis melalui wacana ini?",
+        "clueSentenceIndex": 6,
+        "techniqueTip": "Cek kalimat kesimpulan terakhir yang diawali kata 'つまり' (dengan kata lain).",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "あいさつは単なる形式ではなく、円滑な連携と安全な業務を支える強力な手段である。",
+            "textId": "Salam bukan sekadar formalitas, melainkan sarana ampuh yang menopang kerja tim harmonis dan keamanan operasional kerja.",
+            "explanation": "Benar! Kalimat pamungkas teks (kalimat 7): あいさつとは形式的な規則ではなく、円滑なチームワークと安全な業務を支えるための最も手軽で強力なコミュニケーション手段なのである.",
+            "isCorrect": true
+          },
+          {
+            "key": "2",
+            "textJp": "仕事で重大なミスをしてしまったときは、何よりもまず朝一番のあいさつで謝罪すべきだ。",
+            "textId": "Saat membuat kesalahan besar, hal pertama yang harus dilakukan adalah meminta maaf saat salam pagi.",
+            "explanation": "Salah. Teks tidak membahas tata cara minta maaf saat berbuat salah.",
+            "isCorrect": false
+          },
+          {
+            "key": "3",
+            "textJp": "職場の秩序を守るためには、社員全員にあいさつの作法を厳しく教育することが不可欠だ。",
+            "textId": "Untuk menjaga ketertiban, mutlak diperlukan pelatihan etika salam yang tegas kepada seluruh karyawan.",
+            "explanation": "Salah. Penulis justru menekankan salam yang alami untuk mencairkan ketegangan, bukan aturan kaku yang dipaksakan.",
+            "isCorrect": false
+          },
+          {
+            "key": "4",
+            "textJp": "人間関係を深めるためには、あいさつよりも仕事後の飲み会などの場を優先すべきだ。",
+            "textId": "Untuk mempererat hubungan, pertemuan santai/minum setelah jam kerja lebih diutamakan daripada sekadar salam.",
+            "explanation": "Salah. Teks sama sekali tidak menyebutkan acara minum atau kegiatan di luar jam kerja.",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    "id": "drill-medium-02",
+    "chapterNumber": 11,
+    "category": "medium",
+    "categoryLabel": "実践編 · 中文読解 (Teks Menengah)",
+    "titleJp": "睡眠と学習のメカニズム",
+    "titleId": "Mekanisme Tidur dan Proses Belajar",
+    "techniqueTag": "実験データと対比の分析",
+    "techniqueDescription": "Pada wacana berbasis penelitian/eksperimen, kenali dua kutub yang dibandingkan (対比): kelompok perlakuan cukup tidur (グループA) vs kelompok kurang tidur (グループB). Cari hubungan sebab-akibat antara waktu tidur dan daya ingat jangka panjang.",
+    "sentences": [
+      {
+        "id": "s1",
+        "textJp": "試験の前夜、少しでも長く勉強しようと睡眠時間を削って徹夜をした経験を持つ人は少なくないだろう。",
+        "textId": "Banyak orang mungkin pernah punya pengalaman begadang semalaman memangkas waktu tidur demi belajar lebih lama menjelang ujian."
+      },
+      {
+        "id": "s2",
+        "textJp": "しかし近年の脳科学の研究によれば、このような「睡眠を削る学習法」は、記憶の定着という観点から見ると極めて非効率的であることが分かってきた。",
+        "textId": "Namun menurut riset neurosains beberapa tahun terakhir, metode belajar dengan mengorbankan tidur ini terbukti sangat tidak efisien ditinjau dari sisi pengendapan ingatan.",
+        "isKeySentence": true
+      },
+      {
+        "id": "s3",
+        "textJp": "ある大学の研究チームが行った実験では、同じ新しい知識を学んだ後、「すぐに8時間の十分な睡眠をとったグループA」と、「夜遅くまで復習を続け、4時間しか眠らなかったグループB」の翌日のテスト成績を比較した。",
+        "textId": "Dalam eksperimen salah satu universitas, setelah mempelajari materi baru yang sama, peneliti membandingkan nilai tes keesokan harinya antara 'Kelompok A yang langsung tidur cukup 8 jam' dan 'Kelompok B yang terus mengulang materi hingga larut malam dan hanya tidur 4 jam'."
+      },
+      {
+        "id": "s4",
+        "textJp": "その結果、学習時間が短かったにもかかわらず、しっかり睡眠をとったグループAの方が、圧倒的に高い正答率を記録したのである。",
+        "textId": "Hasilnya, meskipun waktu belajarnya lebih sedikit, Kelompok A yang tidur nyenyak justru mencatatkan persentase jawaban benar yang jauh lebih tinggi secara telak.",
+        "isKeySentence": true
+      },
+      {
+        "id": "s5",
+        "textJp": "人間の脳は、眠っている間にその日取り入れた情報を整理し、短期的な記憶から長期間残る記憶へと変換・固定する働きを持っている。",
+        "textId": "Otak manusia memiliki fungsi menata informasi yang masuk hari itu selama tidur, lalu mengonversi dan menguncinya dari memori jangka pendek menjadi memori jangka panjang."
+      },
+      {
+        "id": "s6",
+        "textJp": "つまり、十分な睡眠をとらないということは、せっかく詰め込んだ知識を脳の引き出しにしっかりと仕舞わないまま放置するようなものなのだ。",
+        "textId": "Dengan kata lain, kurang tidur sama halnya dengan menjejalkan pengetahuan ke dalam kepala tetapi membiarkannya berserakan tanpa menyimpannya rapi di laci memori."
+      },
+      {
+        "id": "s7",
+        "textJp": "高い学習成果を継続して出したいのであれば、起きている時間の長さだけにとらわれず、良質な睡眠を学習計画の重要な一部として組み込む賢さが必要である。",
+        "textId": "Jika ingin mempertahankan prestasi belajar yang tinggi secara berkesinambungan, kita dituntut bijak untuk tidak terpaku hanya pada durasi saat terjaga, melainkan memasukkan tidur berkualitas sebagai bagian krusial dari jadwal belajar.",
+        "isKeySentence": true
+      }
+    ],
+    "passageTranslation": "Banyak orang pernah begadang memangkas waktu tidur demi belajar menjelang ujian. Namun menurut riset sains otak, metode ini terbukti sangat tidak efisien untuk mengingat materi.\nDalam sebuah eksperimen, setelah mempelajari materi yang sama, Kelompok A tidur cukup 8 jam, sedangkan Kelompok B terus belajar larut malam dan hanya tidur 4 jam. Hasilnya, Kelompok A yang belajarnya lebih singkat justru mencatat skor jauh lebih unggul.\nSaat kita terlelap, otak menyortir dan mengunci informasi dari memori jangka pendek ke jangka panjang. Tidak tidur sama saja menaruh barang tanpa menyimpannya ke dalam laci.\nJika ingin hasil belajar maksimal, jangan hanya terpaku pada lamanya jam belajar, melainkan jadikanlah tidur berkualitas sebagai pilar rencana belajar Anda.",
+    "vocabulary": [
+      {
+        "termJp": "削る",
+        "furigana": "けずる",
+        "meaningId": "Memangkas / mengurangi porsi",
+        "level": "N2"
+      },
+      {
+        "termJp": "徹夜",
+        "furigana": "てつや",
+        "meaningId": "Begadang semalaman tanpa tidur",
+        "level": "N3"
+      },
+      {
+        "termJp": "極めて",
+        "furigana": "きわめて",
+        "meaningId": "Amat sangat / luar biasa",
+        "level": "N2"
+      },
+      {
+        "termJp": "圧倒的",
+        "furigana": "あっとうてき",
+        "meaningId": "Secara telak / luar biasa unggul",
+        "level": "N2"
+      },
+      {
+        "termJp": "変換",
+        "furigana": "へんかん",
+        "meaningId": "Konversi wujud / alih bentuk",
+        "level": "N2"
+      },
+      {
+        "termJp": "組み込む",
+        "furigana": "くみこむ",
+        "meaningId": "Memasukkan ke dalam komponen/agenda",
+        "level": "N2"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-drill-med-02-1",
+        "questionNumber": 1,
+        "questionJp": "実験の結果について、本文の説明と合致しているものはどれですか。",
+        "questionTranslation": "Pernyataan manakah yang paling sesuai dengan hasil eksperimen pada teks?",
+        "clueSentenceIndex": 3,
+        "techniqueTip": "Cek perbandingan di kalimat 4: '学習時間が短かったにもかかわらず、しっかり睡眠をとったグループAの方が、圧倒的に高い正答率を記録した'.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "睡眠時間をしっかり確保したグループAの方が、勉強時間は短くてもテストの正答率が高かった。",
+            "textId": "Kelompok A yang mengamankan waktu tidur cukup, mencatat akurasi tes lebih tinggi meski durasi belajarnya lebih singkat.",
+            "explanation": "Benar! Kalimat 4 menyatakan secara gamblang bahwa Kelompok A (tidur 8 jam) meraih nilai jauh lebih tinggi daripada Kelompok B yang memaksakan belajar sampai larut malam.",
+            "isCorrect": true
+          },
+          {
+            "key": "2",
+            "textJp": "夜遅くまで復習を続けたグループBの方が、覚えた情報量が多かったため成績が優れていた。",
+            "textId": "Kelompok B yang mengulang materi hingga larut malam memiliki nilai lebih unggul karena volume materi yang dihafal lebih banyak.",
+            "explanation": "Salah. Hasil eksperimen justru menunjukkan kebalikannya: Kelompok B kalah telak.",
+            "isCorrect": false
+          },
+          {
+            "key": "3",
+            "textJp": "8時間眠ったグループAと4時間しか眠らなかったグループBの間で、テスト成績に差は出なかった。",
+            "textId": "Antara Kelompok A (tidur 8 jam) dan Kelompok B (tidur 4 jam) tidak ditemukan perbedaan hasil tes.",
+            "explanation": "Salah. Ada perbedaan telak (圧倒的に高い正答率).",
+            "isCorrect": false
+          },
+          {
+            "key": "4",
+            "textJp": "試験の前夜に徹夜をして勉強時間を最大まで増やすことが、最も高い学習効果をもたらした。",
+            "textId": "Begadang semalaman demi memaksimalkan jam belajar menjelang ujian terbukti memberi dampak belajar paling maksimal.",
+            "explanation": "Salah. Penulis menyatakan begadang adalah cara yang 'amat sangat tidak efisien' (極めて非効率的).",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "id": "q-drill-med-02-2",
+        "questionNumber": 2,
+        "questionJp": "文中の「脳の引き出しにしっかりと仕舞わないまま放置するようなもの」とはどういう意味ですか。",
+        "questionTranslation": "Apa arti dari kiasan 'membiarkan pengetahuan tanpa menyimpannya ke dalam laci otak'?",
+        "clueSentenceIndex": 5,
+        "techniqueTip": "Kiasan ini menjelaskan kalimat 5: otak mengubah ingatan jangka pendek ke jangka panjang saat tidur. Jika tidak tidur, maka ingatan tidak tersimpan permanen.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "睡眠不足によって、せっかく学んだ情報が長期的な記憶として脳内に定着しない状態のこと。",
+            "textId": "Kondisi di mana informasi yang sudah dipelajari gagal mengendap sebagai memori jangka panjang di otak akibat kurang tidur.",
+            "explanation": "Benar! Kalimat sebelumnya menjelaskan bahwa tidur berfungsi mengubah memori jangka pendek menjadi memori permanen. Jika tidak tidur, ilmu tidak tersimpan di 'laci ingatan'.",
+            "isCorrect": true
+          },
+          {
+            "key": "2",
+            "textJp": "勉強が終わった後に使ったノートや参考書を机の上に散らかしたまま片付けないこと。",
+            "textId": "Kebiasaan malas membereskan buku catatan atau modul di atas meja belajar setelah selesai.",
+            "explanation": "Salah. Ungkapan tersebut adalah analogi proses biologis otak (比喩), bukan tentang kebiasaan merapikan meja fisik.",
+            "isCorrect": false
+          },
+          {
+            "key": "3",
+            "textJp": "覚えた知識をすぐにテストで思い出せなくなり、脳が容量オーバーを起こすこと。",
+            "textId": "Kondisi otak mengalami kelebihan kapasitas sehingga mendadak blank saat tes.",
+            "explanation": "Salah. Fokus kiasan ini bukan kapasitas otak meledak, melainkan kegagalan penyimpanan informasi ke ingatan jangka panjang.",
+            "isCorrect": false
+          },
+          {
+            "key": "4",
+            "textJp": "睡眠中に過去の不要な記憶がすべて自動的に消去されてなくなってしまう現象のこと。",
+            "textId": "Fenomena di mana seluruh memori lama yang tidak berguna terhapus otomatis saat tidur.",
+            "explanation": "Salah. Teks membahas penguncian materi baru yang dipelajari, bukan penghapusan memori lama.",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "id": "q-drill-med-02-3",
+        "questionNumber": 3,
+        "questionJp": "筆者が効果的な学習のために読者に提案していることはどれですか。",
+        "questionTranslation": "Saran apakah yang diajukan oleh penulis untuk pembelajaran yang efektif?",
+        "clueSentenceIndex": 6,
+        "techniqueTip": "Perhatikan kalimat penutup: '良質な睡眠を学習計画の重要な一部として組み込む賢さが必要である'.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "勉強時間の長さだけにこだわらず、質の高い睡眠を学習計画の大切な要素として取り入れること。",
+            "textId": "Tidak hanya terpaku pada lamanya jam belajar, melainkan menyertakan tidur berkualitas sebagai elemen krusial rencana belajar.",
+            "explanation": "Benar! Paragraf penutup menegaskan: '起きている時間の長さだけにとらわれず、良質な睡眠を学習計画の重要な一部として組み込む賢さが必要である'.",
+            "isCorrect": true
+          },
+          {
+            "key": "2",
+            "textJp": "試験の直前には新しい知識の学習を一切やめて、昼間の時間帯だけに睡眠をとること。",
+            "textId": "Menghentikan total mempelajari hal baru sebelum ujian dan hanya tidur di siang hari.",
+            "explanation": "Salah. Penulis tidak menyuruh berhenti belajar hal baru atau hanya tidur di siang hari.",
+            "isCorrect": false
+          },
+          {
+            "key": "3",
+            "textJp": "毎日必ず10時間以上の睡眠をとるために、毎日の勉強時間を半分に削ること。",
+            "textId": "Memangkas separuh jam belajar agar setiap hari bisa tidur lebih dari 10 jam.",
+            "explanation": "Salah. Tidak ada saran untuk mengurangi belajar hingga separuh atau tidur 10 jam.",
+            "isCorrect": false
+          },
+          {
+            "key": "4",
+            "textJp": "試験の直前に徹夜を繰り返して脳に刺激を与え、短期間で暗記を仕上げること。",
+            "textId": "Berulang kali begadang menjelang ujian untuk merangsang otak menghafal kilat.",
+            "explanation": "Salah. Justru cara inilah yang ditentang keras oleh penulis sepanjang artikel.",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    "id": "drill-long-01",
+    "chapterNumber": 12,
+    "category": "long",
+    "categoryLabel": "実践編 · 長文読解 (Teks Panjang)",
+    "titleJp": "「便利さ」の追求と失われたゆとり",
+    "titleId": "Mengejar 'Kemudahan' dan Hilangnya Ketenangan Waktu",
+    "techniqueTag": "長文読解・全体の論理構造",
+    "techniqueDescription": "Teks 長文 (600~800 karakter) menguji stamina membaca wacana utuh. Jangan membaca seluruh teks baru melihat pertanyaan. Kerjakan pertanyaan secara bertahap: Soal 1 untuk Paragraf 1-2, Soal 2 untuk Paragraf 3, Soal 3 untuk Paragraf 4, dan Soal 4 untuk kesimpulan di akhir teks.",
+    "sentences": [
+      {
+        "id": "s1",
+        "textJp": "現代社会は、あらゆる面において「効率」と「スピード」を重視し、科学技術の進歩によって生活は以前と比べて格段に便利になった。",
+        "textId": "Masyarakat modern sangat mengagungkan 'efisiensi' dan 'kecepatan' dalam segala aspek, dan berkat kemajuan ilmu pengetahuan dan teknologi, hidup menjadi jauh lebih praktis dibanding masa lalu."
+      },
+      {
+        "id": "s2",
+        "textJp": "スマートフォンを操作すれば瞬時に世界中の情報にアクセスでき、買い物も自宅にいながらボタン一つで完了する。",
+        "textId": "Cukup mengoperasikan ponsel pintar, kita bisa mengakses informasi dari seluruh dunia dalam sekejap mata, dan berbelanja pun selesai hanya dengan satu sentuhan tombol dari rumah."
+      },
+      {
+        "id": "s3",
+        "textJp": "移動手段の発達や業務の自動化によって、かつて何時間もかかっていた作業がほんの数分で片付く時代になったのだ。",
+        "textId": "Dengan kemajuan sarana transportasi dan otomatisasi pekerjaan, kita telah tiba di era di mana pekerjaan yang dulu memakan waktu berjam-jam kini tuntas hanya dalam hitungan menit."
+      },
+      {
+        "id": "s4",
+        "textJp": "これほどまでに時間を節約できるようになったのだから、私たちは昔の人々と比べて、より多くの自由な時間や心の「ゆとり」を手に入れているはずである。",
+        "textId": "Karena kita telah mampu menghemat waktu sedemikian banyaknya, seharusnya kita memiliki lebih banyak waktu luang dan ketenangan hati dibanding generasi terdahulu.",
+        "isKeySentence": true
+      },
+      {
+        "id": "s5",
+        "textJp": "ところが現実はどうだろうか。多くの現代人は「毎日忙しくて時間がない」「常に何かに追われているようだ」と感じながら生きている。",
+        "textId": "Namun bagaimana dengan kenyataannya? Sebagian besar manusia modern justru menjalani hidup dengan perasaan 'setiap hari sibuk tak punya waktu' atau 'seakan terus-menerus dikejar sesuatu'.",
+        "isKeySentence": true
+      },
+      {
+        "id": "s6",
+        "textJp": "便利になればなるほど、浮いた時間でゆっくり休むのではなく、空いた隙間にさらに別の仕事や予定を詰め込んでしまうからだ。",
+        "textId": "Sebab semakin praktis hidup ini, alih-alih beristirahat dengan waktu yang berhasil dihemat, orang malah menjejali celah waktu yang kosong dengan pekerjaan atau agenda baru lainnya."
+      },
+      {
+        "id": "s7",
+        "textJp": "通信技術の向上によって連絡がすぐに届くようになったことで、深夜や休日であっても仕事の返信を求められ、かえって休む暇を失っている人も少なくない。",
+        "textId": "Dengan pesatnya teknologi komunikasi membuat pesan sampai seketika, banyak orang dituntut membalas urusan kerja bahkan di larut malam atau hari libur, sehingga ironisnya justru kehilangan waktu untuk istirahat."
+      },
+      {
+        "id": "s8",
+        "textJp": "つまり、技術がもたらした「効率化」は私たちを自由にするどころか、より速い生活のペースを強いられるという逆の結果を生み出しているのである。",
+        "textId": "Dengan kata lain, efisiensi yang dihadirkan oleh teknologi bukannya membebaskan kita, melainkan justru membuahkan hasil berkebalikan: memaksa kita tunduk pada ritme hidup yang kian lekas.",
+        "isKeySentence": true
+      },
+      {
+        "id": "s9",
+        "textJp": "本当に豊かな人生を送るために今私たちが考え直すべきなのは、これ以上生活のスピードを上げることではない。",
+        "textId": "Demi meraih kehidupan yang sungguh bermakna dan kaya, hal yang perlu kita renungkan kembali saat ini bukanlah menambah laju kecepatan hidup lebih kencang lagi."
+      },
+      {
+        "id": "s10",
+        "textJp": "むしろ、あえて立ち止まり、効率や損得とは関係のない静かな時間を意図的に確保する勇気を持つことではないだろうか。",
+        "textId": "Melainkan, bukankah kita justru membutuhkan keberanian untuk berani berhenti sejenak, dan sengaja menyisihkan waktu yang hening tanpa terikat pada efisiensi atau untung-rugi?",
+        "isKeySentence": true
+      }
+    ],
+    "passageTranslation": "Masyarakat modern sangat mengagungkan efisiensi dan kecepatan. Berkat teknologi, belanja dan informasi selesai dalam sekejap, dan pekerjaan berjam-jam tuntas dalam hitungan menit.\nDengan waktu yang begitu banyak dihemat, seharusnya manusia modern punya lebih banyak waktu luang dan ketenangan batin dibanding orang zaman dahulu.\nNamun kenyataannya berbanding terbalik: banyak orang merasa selalu sibuk dan dikejar-kejar waktu. Pasalnya, waktu luang yang didapat tidak dipakai istirahat, melainkan dijejali tugas baru.\nPesan instan membuat orang dituntut membalas email bahkan di hari libur. Efisiensi bukan memerdekakan kita, melainkan memaksa kita hidup dalam tempo yang kian tergesa-gesa.\nAgar hidup sungguh bermakna, solusinya bukan mempercepat laju hidup lagi, melainkan berani berhenti sejenak dan sengaja meluangkan waktu tenang tanpa hitungan untung rugi.",
+    "vocabulary": [
+      {
+        "termJp": "ゆとり",
+        "furigana": "ゆとり",
+        "meaningId": "Ketenangan / kelonggaran waktu dan batin",
+        "level": "N3"
+      },
+      {
+        "termJp": "格段",
+        "furigana": "かくだん",
+        "meaningId": "Jauh lebih luar biasa / perbedaannya mencolok",
+        "level": "N2"
+      },
+      {
+        "termJp": "節約",
+        "furigana": "せつやく",
+        "meaningId": "Penghematan pengeluaran/waktu",
+        "level": "N3"
+      },
+      {
+        "termJp": "追われる",
+        "furigana": "おわれる",
+        "meaningId": "Dikejar-kejar waktu / tugas menumpuk",
+        "level": "N2"
+      },
+      {
+        "termJp": "強いられる",
+        "furigana": "しいられる",
+        "meaningId": "Dipaksa / terpaksa harus menerima",
+        "level": "N2"
+      },
+      {
+        "termJp": "意図的",
+        "furigana": "いとてき",
+        "meaningId": "Secara sengaja / berkesadaran penuh",
+        "level": "N2"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-drill-long-01-1",
+        "questionNumber": 1,
+        "questionJp": "第1段落において、筆者が述べている現代社会の現状として最も適切なものはどれですか。",
+        "questionTranslation": "Pada paragraf pertama, manakah yang paling tepat menggambarkan situasi masyarakat modern menurut penulis?",
+        "clueSentenceIndex": 0,
+        "techniqueTip": "Cek kalimat 1-3: fokus pada '技術の進歩によって生活は以前と比べて格段に便利になった'.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "科学技術や移動手段の進歩によって様々な作業が素早く完了し、生活が非常に便利になった。",
+            "textId": "Berkat kemajuan teknologi dan sarana transportasi, beragam pekerjaan tuntas cepat dan hidup jadi amat praktis.",
+            "explanation": "Benar! Kalimat 1 sampai 3 menjabarkan kemajuan teknologi ponsel, otomatisasi, dan belanja yang membuat hidup jauh lebih praktis dan cepat.",
+            "isCorrect": true
+          },
+          {
+            "key": "2",
+            "textJp": "スマートフォンの普及によって、世界中の人々と直接対面して会話する機会が増加した。",
+            "textId": "Dengan ponsel pintar, kesempatan bertemu dan mengobrol tatap muka langsung dengan orang sedunia meningkat.",
+            "explanation": "Salah. Teks menyebutkan akses informasi dan belanja dari rumah, bukan bertemu tatap muka fisik.",
+            "isCorrect": false
+          },
+          {
+            "key": "3",
+            "textJp": "業務の自動化が進んだ結果、多くの人々が仕事を失って深刻な社会問題になっている。",
+            "textId": "Akibat otomatisasi pekerjaan, banyak orang kehilangan pekerjaan dan memicu masalah sosial serius.",
+            "explanation": "Salah. Teks membahas pekerjaan selesai lebih cepat, bukan tentang pemutusan hubungan kerja.",
+            "isCorrect": false
+          },
+          {
+            "key": "4",
+            "textJp": "現代社会ではスピードを追うことよりも、昔ながらの伝統的なやり方が再評価されている。",
+            "textId": "Di masyarakat modern, cara tradisional masa lalu dinilai kembali melebihi kecepatan.",
+            "explanation": "Salah. Kalimat 1 menegaskan bahwa saat ini efisiensi dan kecepatan justru sangat diutamakan (効率とスピードを重視).",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "id": "q-drill-long-01-2",
+        "questionNumber": 2,
+        "questionJp": "「ところが現実はどうだろうか」とあるが、筆者は何が予想と異なっていると述べていますか。",
+        "questionTranslation": "Mengenai kalimat 'Namun bagaimana dengan kenyataannya?', apa yang dinilai penulis berbeda dari perkiraan?",
+        "clueSentenceIndex": 4,
+        "techniqueTip": "Bandingkan kalimat 4 (perkiraan: harusnya punya waktu luang) dengan kalimat 5 (kenyataan: justru merasa sibuk dikejar waktu).",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "時間を大幅に節約できるようになったはずなのに、多くの人が昔よりも時間に追われて忙しく感じていること。",
+            "textId": "Seharusnya bisa menghemat banyak waktu, namun banyak orang justru merasa semakin dikejar waktu dan sibuk dibanding masa lalu.",
+            "explanation": "Benar! Penulis mengontraskan harapan 'harusnya punya waktu luang' (心のゆとりを手に入れているはず) dengan kenyataan 'merasa terus dikejar waktu' (常に何かに追われているようだ).",
+            "isCorrect": true
+          },
+          {
+            "key": "2",
+            "textJp": "自宅にいながら買い物ができるようになったのに、実際には店舗へ足を運ぶ人が急増したこと。",
+            "textId": "Meski belanja dari rumah sudah bisa, nyatanya orang yang pergi ke toko fisik justru melonjak drastis.",
+            "explanation": "Salah. Teks tidak pernah menyinggung tentang lonjakan pengunjung toko fisik.",
+            "isCorrect": false
+          },
+          {
+            "key": "3",
+            "textJp": "休日が増えたことによって、かえって退屈でやるべきことを見つけられない若者が増えたこと。",
+            "textId": "Karena hari libur bertambah, banyak pemuda yang merasa bosan dan tak tahu harus berbuat apa.",
+            "explanation": "Salah. Teks menyatakan orang justru tidak punya waktu istirahat (休む暇を失っている), bukan kelebihan waktu luang.",
+            "isCorrect": false
+          },
+          {
+            "key": "4",
+            "textJp": "最新の通信技術が発達しても、スマートフォンを使いこなせない高齢者が取り残されていること。",
+            "textId": "Kendati teknologi maju, lansia yang tak mahir ponsel pintar justru tersisihkan.",
+            "explanation": "Salah. Isu kesulitan penggunaan ponsel bagi lansia tidak dibahas sama sekali dalam teks.",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "id": "q-drill-long-01-3",
+        "questionNumber": 3,
+        "questionJp": "文中の「逆の結果を生み出している」とは、具体的にどのような現象を指していますか。",
+        "questionTranslation": "Fenomena apakah yang secara konkret dimaksud dengan 'membuahkan hasil yang berkebalikan' pada teks?",
+        "clueSentenceIndex": 7,
+        "techniqueTip": "Cek kalimat 8: perhatikan kontras antara '私たちを自由にする' (membebaskan kita) vs 'より速い生活のペースを強いられる' (dipaksa ritme yang lebih cepat).",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "効率化によって自由な時間が増えるはずが、生活のテンポがさらに加速して休む暇がなくなっていること。",
+            "textId": "Efisiensi yang seharusnya memperbanyak waktu santai justru mempercepat tempo hidup hingga kehilangan kesempatan istirahat.",
+            "explanation": "Benar! Kalimat 8 menjelaskan: '技術がもたらした効率化は私たちを自由にするどころか、より速い生活のペースを強いられるという逆の結果を生み出している'.",
+            "isCorrect": true
+          },
+          {
+            "key": "2",
+            "textJp": "深夜に仕事のメッセージをやり取りすることで、同僚との人間関係が著しく悪化してしまうこと。",
+            "textId": "Saling berbalas pesan kerja larut malam merusak hubungan antarrekan kerja secara drastis.",
+            "explanation": "Salah. Teks menyebutkan terganggunya waktu istirahat, bukan permusuhan dengan rekan kerja.",
+            "isCorrect": false
+          },
+          {
+            "key": "3",
+            "textJp": "電卓や機械に頼りすぎたせいで、人間の記憶力や計算能力が以前よりも著しく退化したこと。",
+            "textId": "Terlalu bergantung pada mesin kalkulator menyebabkan daya ingat dan hitung manusia menurun tajam.",
+            "explanation": "Salah. Penulis tidak membahas penurunan kemampuan kognitif otak.",
+            "isCorrect": false
+          },
+          {
+            "key": "4",
+            "textJp": "予定をたくさん詰め込みすぎた結果、どの仕事も中途半端になって成果が出せなくなること。",
+            "textId": "Terlalu banyak memasukkan agenda kerja menyebabkan pekerjaan menjadi setengah matang dan tanpa hasil.",
+            "explanation": "Salah. Teks berfokus pada hilangnya ketenangan batin dan istirahat, bukan kualitas teknis hasil pekerjaan.",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "id": "q-drill-long-01-4",
+        "questionNumber": 4,
+        "questionJp": "筆者がこの文章全体を通じて最も訴えたいメッセージはどれですか。",
+        "questionTranslation": "Pesan utama apakah yang paling ingin disuarakan penulis lewat keseluruhan wacana ini?",
+        "clueSentenceIndex": 9,
+        "techniqueTip": "Lihat dua kalimat terakhir di akhir esai: '生活のスピードを上げることではない...あえて立ち止まり、効率や損得とは関係のない静かな時間を意図的に確保する勇気を持つことではないだろうか'.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "これ以上便利さやスピードを追うのではなく、意識して立ち止まり静かな時間を確保する勇気を持つべきだ。",
+            "textId": "Alih-alih terus mengejar kepraktisan dan kecepatan, kita harus punya keberanian untuk berhenti sejenak dan menyisihkan waktu yang tenang.",
+            "explanation": "Benar! Paragraf penutup adalah klimaks opini penulis: keberanian untuk berhenti sejenak dan menyisihkan waktu tenang tanpa terikat untung rugi efisiensi.",
+            "isCorrect": true
+          },
+          {
+            "key": "2",
+            "textJp": "スマートフォンやインターネットの利用を直ちにやめて、昔のような自然な暮らしに戻るべきだ。",
+            "textId": "Kita harus segera berhenti memakai ponsel pintar dan internet untuk kembali ke cara hidup alami masa lalu.",
+            "explanation": "Salah (Ekstrem). Penulis tidak menyuruh membuang teknologi secara radikal.",
+            "isCorrect": false
+          },
+          {
+            "key": "3",
+            "textJp": "浮いた隙間時間を最大限に活用して勉強に励むことこそが、人生を豊かにする最善の方法である。",
+            "textId": "Memanfaatkan waktu luang semaksimal mungkin untuk terus belajar adalah kunci terbaik memperkaya hidup.",
+            "explanation": "Salah. Justru menjejali setiap detik kosong dengan aktivitas tanpa istirahat adalah hal yang dikritik oleh penulis.",
+            "isCorrect": false
+          },
+          {
+            "key": "4",
+            "textJp": "休日に仕事の連絡を送ってくる取引先や会社に対しては、厳重に抗議して拒否すべきである。",
+            "textId": "Karyawan harus melayangkan protes keras dan menolak perusahaan yang mengirim kontak kerja di hari libur.",
+            "explanation": "Salah. Penulis tidak memberikan anjuran protes hukum atau pembangkangan terhadap perusahaan.",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    "id": "drill-info-02",
+    "chapterNumber": 13,
+    "category": "info_search",
+    "categoryLabel": "実践編 · 情報検索 (Pencarian Informasi)",
+    "titleJp": "宅配便サービスと荷物補償のご案内",
+    "titleId": "Layanan Pengiriman Paket & Ketentuan Kompensasi",
+    "techniqueTag": "複数条件と注釈の照合",
+    "techniqueDescription": "Pada teks 情報検索, lakukan pencocokan cepat: 1) Dimensi & berat barang, 2) Kategori layanan (Normal / Dingin / Hari yang sama), 3) Ketentuan khusus barang berharga atau barang pecah belah pada catatan kaki bertanda bintang (※).",
+    "sentences": [
+      {
+        "id": "s1",
+        "textJp": "【ヤマト急送 宅配便ご利用規定および料金表】",
+        "textId": "【Ketentuan Penggunaan & Tabel Tarif Ekspedisi Pengiriman Yamato Express】"
+      },
+      {
+        "id": "s2",
+        "textJp": "① 普通便（スタンダード）：荷物の3辺合計120cm以内、重量15kgまで。全国一律 900円（翌日〜翌々日配達）。",
+        "textId": "① Paket Reguler (Standard): Total 3 sisi paket maksimal 120 cm, berat maksimal 15 kg. Tarif seragam nasional 900 yen (Pengantaran esok hari s.d. lusa)."
+      },
+      {
+        "id": "s3",
+        "textJp": "② クール冷凍・冷蔵便：生鮮食品や生ケーキ専用。普通便料金に【追加料金 400円】（最大サイズ100cm・重量10kgまで対応）。",
+        "textId": "② Paket Dingin (Kulkas / Freezer): Khusus makanan segar atau kue tart basah. Tarif reguler ditambah 【Biaya tambahan 400 yen】 (Ukuran maksimal 100 cm, berat maksimal 10 kg).",
+        "isKeySentence": true
+      },
+      {
+        "id": "s4",
+        "textJp": "③ スピード当日便：午前10時までの受付完了で、当日夜18時〜21時に配達。普通便料金に【追加料金 600円】（主要都市エリア限定）。",
+        "textId": "③ Paket Kilat Hari yang Sama: Pendaftaran selesai sebelum pukul 10.00, diantar malam hari itu juga jam 18.00 - 21.00. Tarif reguler ditambah 【Biaya tambahan 600 yen】 (Khusus area kota besar)."
+      },
+      {
+        "id": "s5",
+        "textJp": "※割れ物および精密機器をお送りの際は、窓口にて無料の専用衝撃吸収緩衝材をご利用いただけます。",
+        "textId": "※Untuk barang pecah belah dan perangkat presisi, bahan peredam benturan khusus gratis tersedia di loket pengiriman."
+      },
+      {
+        "id": "s6",
+        "textJp": "※パソコン・タブレット等の精密機器および貴重品は、伝票への事前申告により最高30万円まで全額補償されます。ただし、これらをクール便で送ることはできません。",
+        "textId": "※Perangkat presisi seperti komputer/laptop/tablet serta barang berharga akan diganti rugi penuh hingga maksimal 300.000 yen jika dilaporkan terlebih dahulu pada resi. Namun demikian, barang-barang ini TIDAK DAPAT dikirim menggunakan paket Dingin (Cool).",
+        "isKeySentence": true
+      }
+    ],
+    "passageTranslation": "【Ketentuan Penggunaan & Tabel Tarif Yamato Express】\n① Reguler: 3 sisi maksimal 120cm, berat max 15kg. Tarif 900 yen (sampai esok s.d. lusa).\n② Paket Dingin (Kulkas/Freezer): Khusus makanan segar & kue. Tarif reguler + tambahan 400 yen (max 100cm, 10kg).\n③ Paket Hari yang Sama: Daftar sebelum jam 10 pagi, sampai malam itu juga (18.00-21.00). Tarif reguler + tambahan 600 yen.\n※Tersedia kardus dan busa pelindung gratis untuk barang rapuh di loket.\n※Laptop dan barang berharga dijamin kompensasi sampai 300.000 yen jika dideklarasikan di resi, namun dilarang dikirim lewat paket Dingin.",
+    "vocabulary": [
+      {
+        "termJp": "生鮮食品",
+        "furigana": "せいせんしょくひん",
+        "meaningId": "Makanan segar (daging/ikan/sayuran basah)",
+        "level": "N2"
+      },
+      {
+        "termJp": "精密機器",
+        "furigana": "せいみつきき",
+        "meaningId": "Perangkat elektronik presisi (komputer/kamera)",
+        "level": "N2"
+      },
+      {
+        "termJp": "補償",
+        "furigana": "ほしょう",
+        "meaningId": "Ganti rugi / santunan kompensasi finansial",
+        "level": "N2"
+      },
+      {
+        "termJp": "貴重品",
+        "furigana": "きちょうひん",
+        "meaningId": "Barang berharga tinggi",
+        "level": "N3"
+      },
+      {
+        "termJp": "引き受け",
+        "furigana": "ひきうけ",
+        "meaningId": "Penerimaan / pemrosesan barang titipan",
+        "level": "N2"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-drill-info-02-1",
+        "questionNumber": 1,
+        "questionJp": "高橋さんは、実家の母親に手作りの生ケーキ（サイズ：30cm×25cm×20cm、重さ2.5kg）を冷たい状態のまま送りたいと考えています。利用すべきサービスと合計料金の組合せはどれですか。",
+        "questionTranslation": "Takahashi ingin mengirim kue basah buatan sendiri (ukuran 30x25x20cm, berat 2.5kg) dalam keadaan dingin ke ibunya di kampung. Kombinasi paket dan biaya total yang tepat adalah?",
+        "clueSentenceIndex": 2,
+        "techniqueTip": "Cek 3 hal: 1) Dimensi kue: 30+25+20 = 75cm (di bawah batas 100cm). 2) Berat: 2.5kg (di bawah batas 10kg). 3) Tarif: Butuh pendingin -> Paket ② クール便 = Reguler 900 yen + Biaya Dingin 400 yen = 1.300 yen.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "クール便を利用し、合計料金は 1,300円",
+            "textId": "Menggunakan Paket Dingin (Cool), dengan biaya total 1.300 yen.",
+            "explanation": "Benar! Ukuran 75cm dan berat 2.5kg memenuhi batas maksimal paket dingin (100cm・10kg). Biaya: 900 yen (dasar) + 400 yen (tambahan dingin) = 1.300 yen.",
+            "isCorrect": true
+          },
+          {
+            "key": "2",
+            "textJp": "普通便（スタンダード）を利用し、合計料金は 900円",
+            "textId": "Menggunakan Paket Reguler, dengan total biaya 900 yen.",
+            "explanation": "Salah. Paket reguler tidak memiliki fasilitas pendingin sehingga kue segar bisa rusak mencair.",
+            "isCorrect": false
+          },
+          {
+            "key": "3",
+            "textJp": "クール便を利用し、追加料金のみの 400円",
+            "textId": "Menggunakan Paket Dingin, hanya membayar biaya tambahannya saja 400 yen.",
+            "explanation": "Salah. Biaya 400 yen adalah tarif tambahan yang harus digabung dengan tarif dasar paket reguler (900 yen).",
+            "isCorrect": false
+          },
+          {
+            "key": "4",
+            "textJp": "スピード当日便とクール便を併用し、合計料金は 1,900円",
+            "textId": "Menggabungkan Paket Hari yang Sama dan Paket Dingin seharga 1.900 yen.",
+            "explanation": "Salah. Pengirim hanya meminta dikirim dingin dalam keadaan segar ke kampung (実家), tidak meminta layanan kilat hari yang sama yang terbatas di kota besar.",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "id": "q-drill-info-02-2",
+        "questionNumber": 2,
+        "questionJp": "修理のために自分のノートパソコン（時価15万円）を郵送したい場合、規定に従って正しく説明しているものはどれですか。",
+        "questionTranslation": "Jika ingin mengirim laptop pribadi (senilai 150.000 yen) untuk diservis, manakah penjelasan yang benar menurut aturan?",
+        "clueSentenceIndex": 5,
+        "techniqueTip": "Cek catatan kaki terakhir (※): Laptop adalah精密機器 (perangkat presisi), dapat kompensasi s.d 300.000 yen jika dilaporkan di resi, tetapi 'クール便での引き受けはできません'.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "伝票に事前申告すれば最高30万円まで補償の対象となるが、クール便で送ることはできない。",
+            "textId": "Jika dideklarasikan di awal pada resi, dijamin kompensasi s.d. 300.000 yen, namun tidak dapat dikirim dengan Paket Dingin.",
+            "explanation": "Benar! Sesuai catatan kaki: laptop bernilai 15万円 berada di bawah batas kompensasi 30万円, dan ada larangan tegas 'クール便での引き受けはできません'.",
+            "isCorrect": true
+          },
+          {
+            "key": "2",
+            "textJp": "ノートパソコンなどの精密機器は衝撃に弱いため、ヤマト急送では一切引き受けを断っている。",
+            "textId": "Perangkat presisi seperti laptop rentan benturan sehingga Yamato Express menolak pengirimannya sama sekali.",
+            "explanation": "Salah. Yamato Express menerima pengiriman dan bahkan menyediakan bahan peredam benturan gratis di loket.",
+            "isCorrect": false
+          },
+          {
+            "key": "3",
+            "textJp": "パソコンの輸送には必ずスピード当日便の追加料金（600円）を支払わなければならない。",
+            "textId": "Untuk pengiriman komputer, wajib membayar biaya tambahan Paket Kilat Hari yang Sama (600 yen).",
+            "explanation": "Salah. Pengiriman komputer dapat menggunakan paket reguler 900 yen tanpa harus memilih paket当日便.",
+            "isCorrect": false
+          },
+          {
+            "key": "4",
+            "textJp": "精密機器は申告をしなくても自動的に最高30万円まで全額補償される。",
+            "textId": "Perangkat presisi otomatis dijamin ganti rugi s.d. 300.000 yen tanpa perlu pelaporan di muka.",
+            "explanation": "Salah. Catatan kaki mewajibkan pelaporan terlebih dahulu pada resi (伝票への事前申告により).",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  }
 ];

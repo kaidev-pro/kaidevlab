@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import {
   BookOpen,
@@ -17,22 +17,178 @@ import {
   Flame,
   FileText,
   Compass,
+  Target,
+  Calendar,
+  Zap,
+  Brain,
+  TrendingUp,
+  Star,
+  RotateCcw,
+  Play,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 import { loadTangoProgress } from "@/lib/tango-n3-storage";
 import { loadDokkaiProgress } from "@/components/dokkai-n3/dokkai-storage";
 import { DOKKAI_PASSAGES } from "@/data/dokkai-n3/passages";
 
+// ───────── Study Plan Logic ─────────
+const DAYS_JP = ["日", "月", "火", "水", "木", "金", "土"];
+const DAYS_ID = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+
+interface DailyPlan {
+  dayIndex: number; // 0=Sun..6=Sat
+  tangoTask: string;
+  tangoIcon: React.ReactNode;
+  dokkaiTask: string;
+  dokkaiIcon: React.ReactNode;
+  focusLabel: string;
+  isLightDay: boolean; // review-only day
+}
+
+function getWeeklyPlan(): DailyPlan[] {
+  return [
+    {
+      dayIndex: 0,
+      tangoTask: "🔄 Weak Cards marathon — perbaiki kelemahan",
+      tangoIcon: <RotateCcw size={14} />,
+      dokkaiTask: "Review passage yang di-bookmark",
+      dokkaiIcon: <Star size={14} />,
+      focusLabel: "Hari Perbaikan",
+      isLightDay: true,
+    },
+    {
+      dayIndex: 1,
+      tangoTask: "1 bab baru + SRS review",
+      tangoIcon: <Zap size={14} />,
+      dokkaiTask: "1 passage teknik dasar",
+      dokkaiIcon: <Brain size={14} />,
+      focusLabel: "Materi Fresh",
+      isLightDay: false,
+    },
+    {
+      dayIndex: 2,
+      tangoTask: "SRS review only — konsolidasi",
+      tangoIcon: <RotateCcw size={14} />,
+      dokkaiTask: "1 passage teknik dasar",
+      dokkaiIcon: <Brain size={14} />,
+      focusLabel: "Konsolidasi",
+      isLightDay: true,
+    },
+    {
+      dayIndex: 3,
+      tangoTask: "1 bab baru + SRS review",
+      tangoIcon: <Zap size={14} />,
+      dokkaiTask: "1 passage latihan format ujian",
+      dokkaiIcon: <Target size={14} />,
+      focusLabel: "Combo Vocab + Latihan",
+      isLightDay: false,
+    },
+    {
+      dayIndex: 4,
+      tangoTask: "SRS review only — konsolidasi",
+      tangoIcon: <RotateCcw size={14} />,
+      dokkaiTask: "1 cerita bacaan (読んでみよう)",
+      dokkaiIcon: <BookOpen size={14} />,
+      focusLabel: "Relaksasi + Immersion",
+      isLightDay: true,
+    },
+    {
+      dayIndex: 5,
+      tangoTask: "1 bab baru + SRS review",
+      tangoIcon: <Zap size={14} />,
+      dokkaiTask: "1 passage latihan format ujian",
+      dokkaiIcon: <Target size={14} />,
+      focusLabel: "Sprint Akhir Minggu",
+      isLightDay: false,
+    },
+    {
+      dayIndex: 6,
+      tangoTask: "📝 Kuis bab — unlock chapter berikutnya",
+      tangoIcon: <Award size={14} />,
+      dokkaiTask: "1-2 cerita bacaan santai",
+      dokkaiIcon: <BookOpen size={14} />,
+      focusLabel: "Validasi Penguasaan",
+      isLightDay: false,
+    },
+  ];
+}
+
+type StudyPhase = {
+  phase: number;
+  label: string;
+  weekRange: string;
+  tangoTarget: string;
+  dokkaiTarget: string;
+  checkpoint: string;
+  color: string;
+};
+
+const MILESTONES: StudyPhase[] = [
+  {
+    phase: 1,
+    label: "Fondasi Kosakata",
+    weekRange: "Minggu 1-6",
+    tangoTarget: "Hafal 1.000+ kata (Bab 1-25)",
+    dokkaiTarget: "Selesai 6 teknik dasar",
+    checkpoint: "Kuis bab rata-rata ≥80%",
+    color: "#3b82f6",
+  },
+  {
+    phase: 2,
+    label: "Ekspansi & Praktik",
+    weekRange: "Minggu 7-10",
+    tangoTarget: "1.500+ kata (Bab 26-40)",
+    dokkaiTarget: "Semua format Dokkai dikerjakan",
+    checkpoint: "Akurasi Dokkai ≥70%",
+    color: "#f59e0b",
+  },
+  {
+    phase: 3,
+    label: "Penguatan & Bunpou",
+    weekRange: "Minggu 11-14",
+    tangoTarget: "1.800 kata tuntas (Bab 41-46)",
+    dokkaiTarget: "Bunpou dimulai + review total",
+    checkpoint: "Semua SRS ≥ Box 3",
+    color: "#10b981",
+  },
+  {
+    phase: 4,
+    label: "Simulasi Ujian",
+    weekRange: "Minggu 15-16",
+    tangoTarget: "Review final Box 1-2",
+    dokkaiTarget: "Full mock test",
+    checkpoint: "Simulasi 60 menit → selesai 50 menit",
+    color: "#8b5cf6",
+  },
+];
+
+function determineCurrentPhase(masteredCount: number, dokkaiCompleted: number): number {
+  if (masteredCount >= 1500 && dokkaiCompleted >= 8) return 3;
+  if (masteredCount >= 1000 && dokkaiCompleted >= 6) return 2;
+  if (masteredCount >= 500) return 1;
+  return 0;
+}
+
 export function N3SuiteClient() {
-  const [tangoStats, setTangoStats] = useState({ mastered: 0, total: 1800, chaptersUnlocked: 1 });
-  const [dokkaiStats, setDokkaiStats] = useState({ completed: 0, total: DOKKAI_PASSAGES.length, accuracy: 0 });
+  const [tangoStats, setTangoStats] = useState({ mastered: 0, total: 1800, chaptersUnlocked: 1, streak: 0, weakCount: 0 });
+  const [dokkaiStats, setDokkaiStats] = useState({ completed: 0, total: DOKKAI_PASSAGES.length, accuracy: 0, bookmarked: 0 });
+  const [showWeeklyDetail, setShowWeeklyDetail] = useState(false);
 
   useEffect(() => {
     // Load Tango stats
     const tProg = loadTangoProgress();
+    const reviewSet = new Set(tProg.reviewCardIds || []);
+    const masteredSet = new Set(tProg.masteredCardIds || []);
+    const weakCount = Object.keys(tProg.cardMistakes || {}).filter(
+      (id) => (tProg.cardMistakes[id] || 0) > 0 && (!masteredSet.has(id) || reviewSet.has(id))
+    ).length;
     setTangoStats({
       mastered: tProg.masteredCardIds?.length || 0,
       total: 1800,
       chaptersUnlocked: tProg.unlockedChapterIds?.length || 1,
+      streak: tProg.streak || 0,
+      weakCount,
     });
 
     // Load Dokkai stats
@@ -42,8 +198,20 @@ export function N3SuiteClient() {
       completed: dProg.completedPassageIds?.length || 0,
       total: DOKKAI_PASSAGES.length,
       accuracy: acc,
+      bookmarked: dProg.bookmarkedPassageIds?.length || 0,
     });
   }, []);
+
+  const today = new Date();
+  const dayIndex = today.getDay(); // 0=Sun..6=Sat
+  const weeklyPlan = useMemo(() => getWeeklyPlan(), []);
+  const todayPlan = weeklyPlan[dayIndex];
+  const currentPhase = determineCurrentPhase(tangoStats.mastered, dokkaiStats.completed);
+
+  // Calculate daily cycle progress estimate
+  const tangoPercent = Math.round((tangoStats.mastered / (tangoStats.total || 1)) * 100);
+  const dokkaiPercent = Math.round((dokkaiStats.completed / (dokkaiStats.total || 1)) * 100);
+  const overallPercent = Math.round((tangoPercent * 0.5 + dokkaiPercent * 0.5));
 
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--text-primary)] pb-24 font-sans">
@@ -140,6 +308,347 @@ export function N3SuiteClient() {
           </div>
         </div>
 
+        {/* ══════════════════════════════════════════════════════════════════
+            📅 TODAY'S STUDY PLAN — The Core Feature
+            ══════════════════════════════════════════════════════════════════ */}
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] tracking-tight flex items-center gap-2">
+                <Calendar size={20} className="text-[var(--brand-primary)]" />
+                Rencana Belajar Hari Ini
+              </h3>
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)]">
+                {DAYS_ID[dayIndex]}, {today.toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" })}
+                {" · "}
+                <span className="font-bold text-[var(--brand-primary)]">{todayPlan.focusLabel}</span>
+              </p>
+            </div>
+            {tangoStats.streak > 0 && (
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20">
+                <Flame size={14} className="text-orange-500" />
+                <span className="text-xs font-bold text-orange-600 dark:text-orange-400">
+                  {tangoStats.streak} hari streak
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Daily 3-Phase Cycle Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Phase 1: Tango SRS + New */}
+            <div className="group p-5 rounded-2xl bg-[var(--surface)] border border-[var(--border)] hover:border-blue-500/40 transition-all shadow-sm hover:shadow-md">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center text-xs font-bold">
+                    01
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-500">Fase 1</div>
+                    <div className="text-xs font-bold text-[var(--text-primary)]">Tango · 10 menit</div>
+                  </div>
+                </div>
+                <Clock size={14} className="text-[var(--text-secondary)]" />
+              </div>
+              <div className="p-3 rounded-xl bg-blue-500/5 border border-blue-500/10 mb-3">
+                <div className="flex items-center gap-2 text-xs text-[var(--text-primary)] font-medium">
+                  {todayPlan.tangoIcon}
+                  <span>{todayPlan.tangoTask}</span>
+                </div>
+              </div>
+              <Link
+                href="/tools/tango-n3"
+                className="w-full py-2.5 rounded-xl bg-[var(--surface-soft)] hover:bg-blue-500 text-[var(--text-primary)] hover:text-white border border-[var(--border)] hover:border-blue-500 text-[11px] font-bold transition-all flex items-center justify-center gap-1.5"
+              >
+                <Play size={12} />
+                Mulai Tango
+              </Link>
+            </div>
+
+            {/* Phase 2: Dokkai */}
+            <div className="group p-5 rounded-2xl bg-[var(--surface)] border border-[var(--border)] hover:border-amber-500/40 transition-all shadow-sm hover:shadow-md">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-xs font-bold">
+                    02
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-500">Fase 2</div>
+                    <div className="text-xs font-bold text-[var(--text-primary)]">Dokkai · 15 menit</div>
+                  </div>
+                </div>
+                <Clock size={14} className="text-[var(--text-secondary)]" />
+              </div>
+              <div className="p-3 rounded-xl bg-amber-500/5 border border-amber-500/10 mb-3">
+                <div className="flex items-center gap-2 text-xs text-[var(--text-primary)] font-medium">
+                  {todayPlan.dokkaiIcon}
+                  <span>{todayPlan.dokkaiTask}</span>
+                </div>
+              </div>
+              <Link
+                href="/tools/dokkai-n3"
+                className="w-full py-2.5 rounded-xl bg-[var(--surface-soft)] hover:bg-amber-500 text-[var(--text-primary)] hover:text-white border border-[var(--border)] hover:border-amber-500 text-[11px] font-bold transition-all flex items-center justify-center gap-1.5"
+              >
+                <Play size={12} />
+                Mulai Dokkai
+              </Link>
+            </div>
+
+            {/* Phase 3: Weak Cards */}
+            <div className="group p-5 rounded-2xl bg-[var(--surface)] border border-[var(--border)] hover:border-rose-500/40 transition-all shadow-sm hover:shadow-md">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-xl bg-rose-500/10 text-rose-500 flex items-center justify-center text-xs font-bold">
+                    03
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-rose-500">Fase 3</div>
+                    <div className="text-xs font-bold text-[var(--text-primary)]">Review · 5 menit</div>
+                  </div>
+                </div>
+                <Clock size={14} className="text-[var(--text-secondary)]" />
+              </div>
+              <div className="p-3 rounded-xl bg-rose-500/5 border border-rose-500/10 mb-3">
+                <div className="flex items-center gap-2 text-xs text-[var(--text-primary)] font-medium">
+                  <RotateCcw size={14} />
+                  <span>
+                    {tangoStats.weakCount > 0
+                      ? `Perbaiki ${tangoStats.weakCount} kata lemah`
+                      : "Belum ada weak cards — lanjut review SRS!"}
+                  </span>
+                </div>
+              </div>
+              <Link
+                href="/tools/tango-n3"
+                className="w-full py-2.5 rounded-xl bg-[var(--surface-soft)] hover:bg-rose-500 text-[var(--text-primary)] hover:text-white border border-[var(--border)] hover:border-rose-500 text-[11px] font-bold transition-all flex items-center justify-center gap-1.5"
+              >
+                <Play size={12} />
+                Weak Cards
+              </Link>
+            </div>
+          </div>
+
+          {/* Weekly Rotation Expander */}
+          <button
+            type="button"
+            onClick={() => setShowWeeklyDetail(!showWeeklyDetail)}
+            className="w-full py-3 rounded-2xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--brand-primary)]/40 transition-all flex items-center justify-center gap-2 text-xs font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+          >
+            <Calendar size={14} />
+            <span>Lihat Rotasi Mingguan Lengkap</span>
+            {showWeeklyDetail ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+          </button>
+
+          {showWeeklyDetail && (
+            <div className="overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm animate-in slide-in-from-top-2 fade-in duration-300">
+              <div className="overflow-x-auto">
+                <table className="w-full text-xs">
+                  <thead>
+                    <tr className="bg-[var(--surface-soft)] border-b border-[var(--border)]">
+                      <th className="px-4 py-3 text-left font-bold text-[var(--text-secondary)] uppercase tracking-wider">Hari</th>
+                      <th className="px-4 py-3 text-left font-bold text-blue-500 uppercase tracking-wider">Tango</th>
+                      <th className="px-4 py-3 text-left font-bold text-amber-500 uppercase tracking-wider">Dokkai / Reading</th>
+                      <th className="px-4 py-3 text-center font-bold text-[var(--text-secondary)] uppercase tracking-wider">Fokus</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {weeklyPlan.map((plan, i) => {
+                      // Reorder to Mon-Sun
+                      const reordered = [1, 2, 3, 4, 5, 6, 0];
+                      const idx = reordered[i];
+                      const p = weeklyPlan[idx];
+                      const isToday = idx === dayIndex;
+                      return (
+                        <tr
+                          key={idx}
+                          className={`border-b border-[var(--border)] last:border-0 transition-colors ${
+                            isToday
+                              ? "bg-[var(--brand-primary)]/5 border-l-2 border-l-[var(--brand-primary)]"
+                              : "hover:bg-[var(--surface-soft)]/50"
+                          }`}
+                        >
+                          <td className="px-4 py-3 font-bold text-[var(--text-primary)]">
+                            <div className="flex items-center gap-2">
+                              <span className="w-6 h-6 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[10px] font-mono font-bold">
+                                {DAYS_JP[idx]}
+                              </span>
+                              <span>{DAYS_ID[idx]}</span>
+                              {isToday && (
+                                <span className="px-1.5 py-0.5 rounded-md bg-[var(--brand-primary)] text-white text-[9px] font-bold">
+                                  HARI INI
+                                </span>
+                              )}
+                            </div>
+                          </td>
+                          <td className="px-4 py-3 text-[var(--text-secondary)]">
+                            <div className="flex items-center gap-1.5">
+                              {p.tangoIcon}
+                              <span>{p.tangoTask}</span>
+                            </div>
+                          </td>
+                          <td className="px-4 py-3 text-[var(--text-secondary)]">
+                            <div className="flex items-center gap-1.5">
+                              {p.dokkaiIcon}
+                              <span>{p.dokkaiTask}</span>
+                            </div>
+                          </td>
+                          <td className="px-4 py-3 text-center">
+                            <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                              p.isLightDay
+                                ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                                : "bg-blue-500/10 text-blue-600 dark:text-blue-400"
+                            }`}>
+                              {p.focusLabel}
+                            </span>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* ══════════════════════════════════════════════════════════════════
+            🏁 MILESTONE TRACKER
+            ══════════════════════════════════════════════════════════════════ */}
+        <div className="space-y-4">
+          <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] tracking-tight flex items-center gap-2">
+            <TrendingUp size={20} className="text-[var(--brand-primary)]" />
+            Milestone & Target 16 Minggu
+          </h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {MILESTONES.map((ms) => {
+              const isActive = ms.phase - 1 === currentPhase;
+              const isDone = ms.phase - 1 < currentPhase;
+              const isFuture = ms.phase - 1 > currentPhase;
+              return (
+                <div
+                  key={ms.phase}
+                  className={`relative p-5 rounded-2xl border transition-all ${
+                    isActive
+                      ? "bg-[var(--surface)] border-2 shadow-md"
+                      : isDone
+                      ? "bg-[var(--surface)] border-[var(--border)] opacity-80"
+                      : "bg-[var(--surface-soft)]/50 border-[var(--border)] opacity-60"
+                  }`}
+                  style={{
+                    borderColor: isActive ? ms.color : undefined,
+                  }}
+                >
+                  {isActive && (
+                    <div
+                      className="absolute -top-2.5 left-4 px-2.5 py-0.5 rounded-full text-white text-[10px] font-bold uppercase tracking-wider"
+                      style={{ backgroundColor: ms.color }}
+                    >
+                      Fase Saat Ini
+                    </div>
+                  )}
+                  {isDone && (
+                    <div className="absolute -top-2.5 left-4 px-2.5 py-0.5 rounded-full bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+                      <Check size={10} />
+                      Selesai
+                    </div>
+                  )}
+
+                  <div className="flex items-center gap-2 mb-3 mt-1">
+                    <div
+                      className="w-8 h-8 rounded-xl flex items-center justify-center text-white text-xs font-bold"
+                      style={{ backgroundColor: ms.color }}
+                    >
+                      {ms.phase}
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-[var(--text-primary)]">{ms.label}</div>
+                      <div className="text-[10px] text-[var(--text-secondary)] font-mono">{ms.weekRange}</div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 text-[11px] text-[var(--text-secondary)]">
+                    <div className="flex items-start gap-1.5">
+                      <span className="text-blue-500 mt-0.5 shrink-0">語</span>
+                      <span>{ms.tangoTarget}</span>
+                    </div>
+                    <div className="flex items-start gap-1.5">
+                      <span className="text-amber-500 mt-0.5 shrink-0">読</span>
+                      <span>{ms.dokkaiTarget}</span>
+                    </div>
+                    <div className="pt-1 border-t border-[var(--border)]">
+                      <div className="flex items-center gap-1">
+                        <CheckCircle2 size={11} className="text-emerald-500 shrink-0" />
+                        <span className="font-medium">{ms.checkpoint}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* ══════════════════════════════════════════════════════════════════
+            🧠 STUDY PRINCIPLES (Compact)
+            ══════════════════════════════════════════════════════════════════ */}
+        <div className="p-6 rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-sm space-y-4">
+          <h3 className="text-base sm:text-lg font-bold text-[var(--text-primary)] flex items-center gap-2">
+            <Brain size={18} className="text-[var(--brand-primary)]" />
+            4 Prinsip Efisiensi Belajar
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)]">
+              <div className="flex items-center gap-2 mb-1.5">
+                <div className="w-6 h-6 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center">
+                  <RotateCcw size={12} />
+                </div>
+                <span className="text-xs font-bold text-[var(--text-primary)]">Spaced Repetition (SRS)</span>
+              </div>
+              <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
+                Jangan skip review Box 1-2! Kerjakan kartu yang jatuh tempo hari ini <b>pertama</b> sebelum bab baru.
+                Leitner system sudah built-in di Tango.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)]">
+              <div className="flex items-center gap-2 mb-1.5">
+                <div className="w-6 h-6 rounded-lg bg-amber-500/10 text-amber-500 flex items-center justify-center">
+                  <Layers size={12} />
+                </div>
+                <span className="text-xs font-bold text-[var(--text-primary)]">Interleaving (Campur)</span>
+              </div>
+              <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
+                Jangan belajar Tango saja tanpa Dokkai. Kosakata dari Tango akan <b>&ldquo;hidup&rdquo;</b> saat muncul di konteks passage Dokkai.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)]">
+              <div className="flex items-center gap-2 mb-1.5">
+                <div className="w-6 h-6 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
+                  <Target size={12} />
+                </div>
+                <span className="text-xs font-bold text-[var(--text-primary)]">Active Recall (Ingat Aktif)</span>
+              </div>
+              <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
+                Selalu jawab soal <b>sebelum</b> lihat penjelasan. Di flashcard, ingat arti <b>sebelum</b> flip kartu. Kanji Popover hanya untuk verifikasi.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)]">
+              <div className="flex items-center gap-2 mb-1.5">
+                <div className="w-6 h-6 rounded-lg bg-violet-500/10 text-violet-500 flex items-center justify-center">
+                  <BookOpen size={12} />
+                </div>
+                <span className="text-xs font-bold text-[var(--text-primary)]">Extensive → Intensive</span>
+              </div>
+              <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
+                Cerita bacaan (読んでみよう) = baca santai untuk feel. Dokkai passage = bedah mendalam setiap kalimat dan jebakan soal.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* 3 Core Modules Grid */}
         <div className="space-y-4">
           <div>
@@ -182,13 +691,13 @@ export function N3SuiteClient() {
                   <div className="flex items-center justify-between">
                     <span>Kemajuan Hafalan:</span>
                     <b className="text-[var(--text-primary)]">
-                      {Math.round((tangoStats.mastered / (tangoStats.total || 1)) * 100)}%
+                      {tangoPercent}%
                     </b>
                   </div>
                   <div className="w-full h-1.5 rounded-full bg-[var(--border)] overflow-hidden">
                     <div
                       className="h-full bg-blue-500 transition-all duration-500"
-                      style={{ width: `${Math.round((tangoStats.mastered / (tangoStats.total || 1)) * 100)}%` }}
+                      style={{ width: `${tangoPercent}%` }}
                     />
                   </div>
                 </div>
@@ -215,7 +724,7 @@ export function N3SuiteClient() {
                     読解
                   </span>
                   <span className="px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[11px] font-bold mr-16">
-                    8 Bab Tersedia
+                    {dokkaiStats.total} Bab Tersedia
                   </span>
                 </div>
 
@@ -243,7 +752,7 @@ export function N3SuiteClient() {
                   <div className="w-full h-1.5 rounded-full bg-[var(--border)] overflow-hidden">
                     <div
                       className="h-full bg-amber-500 transition-all duration-500"
-                      style={{ width: `${Math.round((dokkaiStats.completed / (dokkaiStats.total || 1)) * 100)}%` }}
+                      style={{ width: `${dokkaiPercent}%` }}
                     />
                   </div>
                 </div>
@@ -297,6 +806,56 @@ export function N3SuiteClient() {
                 Akan Hadir di Fase Berikutnya
               </button>
             </div>
+          </div>
+        </div>
+
+        {/* ══════════════════════════════════════════════════════════════════
+            💡 STUDY TIPS — Time-Based Recommendations
+            ══════════════════════════════════════════════════════════════════ */}
+        <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[var(--surface)] to-[var(--surface-soft)]/30 border border-[var(--border)] shadow-sm space-y-5">
+          <h3 className="text-base sm:text-lg font-bold text-[var(--text-primary)] flex items-center gap-2">
+            <Sparkles size={18} className="text-amber-500" />
+            Tips: Kapan Waktu Belajar Paling Efektif?
+          </h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="p-4 rounded-2xl bg-[var(--surface)] border border-[var(--border)]">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-lg">🌅</span>
+                <span className="text-xs font-bold text-[var(--text-primary)]">Pagi (Sebelum Kerja)</span>
+              </div>
+              <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
+                <b>SRS Review + Tango baru</b> — Otak segar, memori jangka panjang optimal untuk hafal kata baru.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-[var(--surface)] border border-[var(--border)]">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-lg">☀️</span>
+                <span className="text-xs font-bold text-[var(--text-primary)]">Siang (Istirahat)</span>
+              </div>
+              <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
+                <b>1 cerita bacaan santai</b> — Immersion ringan tanpa tekanan, jaga ritme belajar.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-[var(--surface)] border border-[var(--border)]">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-lg">🌙</span>
+                <span className="text-xs font-bold text-[var(--text-primary)]">Malam (Sebelum Tidur)</span>
+              </div>
+              <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
+                <b>Dokkai 1 passage</b> — Konsolidasi memori saat tidur. Otak memproses info terakhir sebelum istirahat.
+              </p>
+            </div>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/15">
+            <p className="text-xs text-[var(--text-primary)] font-medium leading-relaxed">
+              <b className="text-amber-600 dark:text-amber-400">💡 Kunci Utama:</b> Konsistensi &gt; Durasi.
+              <b> 30 menit setiap hari</b> jauh lebih efektif daripada 3 jam sekali seminggu.
+              Pertahankan streak Tango sebagai motivasi! 🔥
+            </p>
           </div>
         </div>
 

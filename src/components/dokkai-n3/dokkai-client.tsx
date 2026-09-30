@@ -9,20 +9,13 @@ import {
   Languages,
   CheckCircle2,
   XCircle,
-  HelpCircle,
   ChevronLeft,
   ChevronRight,
   Bookmark,
   Sparkles,
   Lightbulb,
-  Layers,
-  ArrowRight,
   ArrowLeft,
-  RotateCcw,
-  Eye,
-  EyeOff,
   Check,
-  ListOrdered,
 } from "lucide-react";
 import { DOKKAI_PASSAGES } from "@/data/dokkai-n3/passages";
 import { DokkaiPassage, DokkaiCategory } from "@/data/dokkai-n3/types";
@@ -42,7 +35,6 @@ export function DokkaiClient() {
   const [selectedPassageId, setSelectedPassageId] = useState<string>(passages[0]?.id || "");
   const [activeCategoryFilter, setActiveCategoryFilter] = useState<"all" | DokkaiCategory | "bookmarks">("all");
   const [showFurigana, setShowFurigana] = useState(true);
-  const [showTranslation, setShowTranslation] = useState(false);
   const [showVocabList, setShowVocabList] = useState(false);
 
   // Selected question answers for active passage
@@ -174,20 +166,6 @@ export function DokkaiClient() {
               <span>ルビ {showFurigana ? "ON" : "OFF"}</span>
             </button>
 
-            {/* Translation Toggle */}
-            <button
-              type="button"
-              onClick={() => setShowTranslation((prev) => !prev)}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-bold transition-all ${
-                showTranslation
-                  ? "bg-amber-500 text-white border-amber-500 shadow-sm"
-                  : "bg-[var(--surface-soft)] text-[var(--text-secondary)] border-[var(--border)] hover:text-[var(--text-primary)]"
-              }`}
-              title="Tampilkan / Sembunyikan Terjemahan Teks"
-            >
-              {showTranslation ? <EyeOff size={13} /> : <Eye size={13} />}
-              <span className="hidden sm:inline">Terjemahan</span>
-            </button>
 
             {/* Bookmark Button */}
             <button
@@ -241,6 +219,30 @@ export function DokkaiClient() {
             }`}
           >
             短文 (Teks Pendek)
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveCategoryFilter("medium")}
+            className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all ${
+              activeCategoryFilter === "medium"
+                ? "bg-[var(--brand-primary)] text-white border-[var(--brand-primary)] font-bold shadow-xs"
+                : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+            }`}
+          >
+            中文 (Teks Sedang)
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveCategoryFilter("long")}
+            className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all ${
+              activeCategoryFilter === "long"
+                ? "bg-[var(--brand-primary)] text-white border-[var(--brand-primary)] font-bold shadow-xs"
+                : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+            }`}
+          >
+            長文 (Teks Panjang)
           </button>
 
           <button
@@ -445,26 +447,7 @@ export function DokkaiClient() {
                 </div>
               </div>
 
-              {/* Collapsible Indonesian Translation */}
-              <AnimatePresence>
-                {showTranslation && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="p-4 sm:p-5 rounded-2xl bg-amber-500/5 border border-amber-500/20 space-y-2">
-                      <span className="text-xs font-bold text-amber-500 uppercase tracking-wider flex items-center gap-1.5">
-                        <Languages size={13} /> Terjemahan Bahasa Indonesia:
-                      </span>
-                      <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed whitespace-pre-line">
-                        {activePassage.passageTranslation}
-                      </p>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+
 
               {/* Collapsible Vocabulary List */}
               <AnimatePresence>
@@ -554,9 +537,6 @@ export function DokkaiClient() {
                         showFurigana={showFurigana}
                       />
                     </h3>
-                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed italic">
-                      {q.questionTranslation}
-                    </p>
                   </div>
 
                   {/* 4 Interactive Options */}
@@ -605,24 +585,37 @@ export function DokkaiClient() {
                                 showFurigana={showFurigana}
                               />
                             </p>
-                            <p className="text-[11px] text-[var(--text-secondary)] opacity-80 mt-0.5 leading-snug">
-                              {opt.textId}
-                            </p>
                           </div>
                         </button>
                       );
                     })}
                   </div>
 
-                  {/* Remedial & Analytical Explanation Box (Revealed after Answer) */}
-                  {isAnswered && (
+                  {/* Result: Correct → brief celebration | Wrong → full explanation */}
+                  {isAnswered && isUserCorrect && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 flex items-center gap-3 mt-2"
+                    >
+                      <CheckCircle2 size={20} className="text-emerald-500 shrink-0" />
+                      <div className="text-xs">
+                        <b className="text-emerald-600 dark:text-emerald-400">正解！よくできました！</b>
+                        <span className="text-[var(--text-secondary)] ml-1.5">
+                          Jawaban benar. Lanjut ke soal berikutnya!
+                        </span>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {isAnswered && !isUserCorrect && (
                     <motion.div
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
                       className="p-4 sm:p-5 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] flex flex-col gap-3 mt-2 text-xs"
                     >
                       <div className="flex items-center justify-between pb-2 border-b border-[var(--border)]/70">
-                        <span className="font-bold text-[var(--brand-primary)] uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="font-bold text-rose-500 uppercase tracking-wider flex items-center gap-1.5">
                           <Sparkles size={13} /> Bedah Jawaban & Analisis Jebakan:
                         </span>
                         <span className="font-bold text-emerald-500">
@@ -638,6 +631,8 @@ export function DokkaiClient() {
                             className={`p-2.5 rounded-xl border leading-relaxed ${
                               opt.isCorrect
                                 ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-700 dark:text-emerald-300"
+                                : userSelectedKey === opt.key
+                                ? "bg-rose-500/10 border-rose-500/30 text-rose-700 dark:text-rose-300"
                                 : "bg-[var(--surface)] border-[var(--border)] text-[var(--text-secondary)]"
                             }`}
                           >

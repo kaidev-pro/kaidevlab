@@ -79,6 +79,26 @@ export function loadTangoProgress(): TangoProgress {
     if (loaded.masteryModeEnabled === undefined) {
       loaded.masteryModeEnabled = true;
     }
+
+    // Auto-clean: Kartu yang sudah berstatus mastered dan tidak sedang butuh review
+    // otomatis lulus dari daftar cardMistakes (Sering Salah)
+    if (loaded.cardMistakes && loaded.masteredCardIds) {
+      const reviewSet = new Set(loaded.reviewCardIds || []);
+      const masteredSet = new Set(loaded.masteredCardIds || []);
+      let mistakesCleaned = false;
+      const cleanedMistakes = { ...loaded.cardMistakes };
+      for (const cardId of Object.keys(cleanedMistakes)) {
+        if (masteredSet.has(cardId) && !reviewSet.has(cardId)) {
+          delete cleanedMistakes[cardId];
+          mistakesCleaned = true;
+        }
+      }
+      if (mistakesCleaned) {
+        loaded.cardMistakes = cleanedMistakes;
+        saveTangoProgress(loaded);
+      }
+    }
+
     return loaded;
   } catch {
     return DEFAULT_TANGO_PROGRESS;
@@ -133,6 +153,7 @@ export function recordTangoReview(
   if (rating === "mastered") {
     mastered.add(cardId);
     review.delete(cardId);
+    delete cardMistakes[cardId]; // Lulus dari daftar sering salah
     const prevStreak = cardSuccessStreaks[cardId] || 0;
     cardSuccessStreaks[cardId] = prevStreak + 1;
     const currentBox = cardBox[cardId] || 1;
@@ -217,8 +238,10 @@ export function getWeakCards<T extends { id: string }>(
   allCards: T[]
 ): T[] {
   const mistakes = progress.cardMistakes || {};
+  const mastered = new Set(progress.masteredCardIds || []);
+  const review = new Set(progress.reviewCardIds || []);
   return allCards
-    .filter((c) => (mistakes[c.id] || 0) > 0)
+    .filter((c) => (mistakes[c.id] || 0) > 0 && (!mastered.has(c.id) || review.has(c.id)))
     .sort((a, b) => (mistakes[b.id] || 0) - (mistakes[a.id] || 0));
 }
 

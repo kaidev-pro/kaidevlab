@@ -58,6 +58,7 @@ import { SpeedMatchView } from "@/components/fe-study/speed-match-view";
 import { FeTechPath } from "@/components/fe-study/fe-tech-path";
 import { RubyTerm } from "@/components/fe-study/ruby-term";
 import { autoAnnotateRuby } from "@/lib/fe-furigana";
+import { KanjiLookupModal } from "@/components/fe-study/kanji-lookup-modal";
 import { FeCandidateIdCard } from "@/components/fe-study/fe-candidate-id-card";
 import { FE_DAILY_DECKS, FEDailyDeck, getCardsForDay } from "@/data/fe-daily-decks";
 import {
@@ -1684,6 +1685,9 @@ export function LearnClient() {
           </div>
         </div>
       )}
+
+      {/* Instant Kanji Lookup & Vocabulary Popover */}
+      <KanjiLookupModal />
     </div>
   );
 }

@@ -1,11 +1,13 @@
 "use client";
 
 import React from "react";
+import { openKanjiLookup } from "@/lib/fe-kanji-lookup-store";
 
 interface RubyTermProps {
   rubyText?: string;
   fallbackText: string;
   showFurigana?: boolean;
+  enableLookup?: boolean;
   className?: string;
   rtClassName?: string;
 }
@@ -17,11 +19,13 @@ interface RubyTermProps {
  * - Non-kanji terms (e.g. "SQLインジェクション") render as clean plain text.
  * - Kanji terms render with native ruby furigana centered precisely over the kanji.
  * - When showFurigana is false, the furigana is hidden cleanly without layout shifting.
+ * - Tap / click any kanji compound to trigger the instant Kanji Lookup Popover.
  */
 export function RubyTerm({
   rubyText,
   fallbackText,
   showFurigana = true,
+  enableLookup = true,
   className = "",
   rtClassName = "",
 }: RubyTermProps) {
@@ -50,11 +54,27 @@ export function RubyTerm({
     const furigana = match[2];
 
     nodes.push(
-      <ruby key={`ruby-${match.index}`} className="ruby-term mx-[0.5px]">
+      <ruby
+        key={`ruby-${match.index}`}
+        onClick={
+          enableLookup
+            ? (e) => {
+                e.stopPropagation();
+                openKanjiLookup(kanji, furigana);
+              }
+            : undefined
+        }
+        className={`ruby-term mx-[0.5px] ${
+          enableLookup
+            ? "cursor-pointer border-b border-dashed border-[var(--brand-primary)]/40 hover:border-[var(--brand-primary)] hover:text-[var(--brand-primary)] transition-all rounded-xs px-0.5 active:scale-95"
+            : ""
+        }`}
+        title={enableLookup ? `${kanji} (${furigana}) · Ketuk untuk melihat arti` : undefined}
+      >
         {kanji}
         {showFurigana && (
           <rt
-            className={`text-[0.48em] leading-none font-normal tracking-tight text-[var(--brand-primary)] select-none ${rtClassName}`}
+            className={`text-[0.48em] leading-none font-normal tracking-tight text-[var(--brand-primary)] select-none pointer-events-none ${rtClassName}`}
             style={{ rubyPosition: "over" }}
           >
             {furigana}

@@ -296,9 +296,20 @@ export function TangoN3Client() {
           <div className="relative overflow-hidden rounded-3xl p-6 sm:p-8 border border-[var(--border-subtle)] bg-[var(--surface-primary)] shadow-sm">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="max-w-xl space-y-2">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] text-xs font-bold">
-                  <BookOpen className="w-3.5 h-3.5" />
-                  <span>改訂版 新完全マスター単語 N3 (2021年 重要1800語)</span>
+                <div className="flex flex-wrap items-center gap-2">
+                  <a
+                    href="/tools/n3-suite"
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--surface-secondary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)] text-xs font-bold transition-all"
+                  >
+                    <span>← JLPT N3 Suite</span>
+                  </a>
+                  <a
+                    href="/tools/dokkai-n3"
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-xs font-bold transition-all hover:bg-amber-500/20"
+                  >
+                    <BookOpen className="w-3 h-3" />
+                    <span>Dokkai N3 (読解)</span>
+                  </a>
                 </div>
                 <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[var(--text-primary)]">
                   Shin Kanzen Master Tango Hub

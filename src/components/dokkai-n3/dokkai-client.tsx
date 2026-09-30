@@ -423,7 +423,7 @@ export function DokkaiClient() {
                         }`}
                       >
                         <RubyTerm
-                          rubyText={autoAnnotateRuby(sentence.textJp)}
+                          rubyText={sentence.ruby || autoAnnotateRuby(sentence.textJp)}
                           fallbackText={sentence.textJp}
                           showFurigana={showFurigana}
                           className="inline leading-[2.3] sm:leading-[2.5]"

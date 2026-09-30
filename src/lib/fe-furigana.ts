@@ -1216,6 +1216,8 @@ export const FE_KANJI_DICT: [string, string][] = [
   ["緩衝材", "[緩衝材:かんしょうざい]"],
 
   // ── 汎用日本語 (各課で共通で出る語彙) ──
+  ["日本人", "[日本人:にほんじん]"],
+  ["日常会話", "[日常会話:にちじょうかいわ]"],
   ["理由", "[理由:りゆう]"],
   ["言葉", "[言葉:ことば]"],
   ["相手", "[相手:あいて]"],
@@ -1239,9 +1241,14 @@ function escapeRegExp(str: string): string {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
+// Sort compounds by length DESCENDING so longer compounds (e.g. 日本人) always match before subcompounds (e.g. 本人)
+const SORTED_DICT_KEYS = [...FE_KANJI_DICT]
+  .map(([k]) => k)
+  .sort((a, b) => b.length - a.length);
+
 // Match either existing bracket ruby syntax [...] OR any dictionary compound
 const DICT_REGEX = new RegExp(
-  "(\\[[^\\]]+\\])|(" + FE_KANJI_DICT.map(([k]) => escapeRegExp(k)).join("|") + ")",
+  "(\\[[^\\]]+\\])|(" + SORTED_DICT_KEYS.map((k) => escapeRegExp(k)).join("|") + ")",
   "g"
 );
 

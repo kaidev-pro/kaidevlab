@@ -27,6 +27,7 @@ export interface DokkaiSentence {
   id: string;
   textJp: string;
   textId: string;
+  ruby?: string; // Curated bracket ruby specifically targeting N3/N2 difficult vocabulary
   isKeySentence?: boolean; // Kalimat inti / opini penulis
 }
 

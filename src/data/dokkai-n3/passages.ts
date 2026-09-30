@@ -18,16 +18,19 @@ export const DOKKAI_PASSAGES: DokkaiPassage[] = [
       {
         id: "s1",
         textJp: "日本人は日常会話の中で、感謝の気持ちを伝える際にも「すみません」という言葉をよく使います。",
+        ruby: "[日本人:にほんじん]は[日常会話:にちじょうかいわ]の中で、[感謝:かんしゃ]の気持ちを[伝:つた]える[際:さい]にも「すみません」という言葉をよく使います。",
         textId: "Orang Jepang dalam percakapan sehari-hari sering menggunakan kata 'sumimasen' bahkan saat menyampaikan rasa terima kasih.",
       },
       {
         id: "s2",
         textJp: "本来「すみません」は謝罪の言葉ですが、相手に余計な手間や時間をかけさせてしまったことに対する恐縮の念が含まれています。",
+        ruby: "[本来:ほんらい]「すみません」は[謝罪:しゃざい]の言葉ですが、相手に[余計:よけい]な[手間:てま]や時間をかけさせてしまったことに対する[恐縮:きょうしゅく]の[念:ねん]が[含:ふく]まれています。",
         textId: "Pada asalnya 'sumimasen' adalah kata permohonan maaf, namun di dalamnya terkandung rasa sungkan karena telah membuat lawan bicara repot atau menyita waktunya.",
       },
       {
         id: "s3",
         textJp: "相手への配慮から自然に出てくるこの習慣は、人間関係を円滑にする知恵の一つと言えるでしょう。",
+        ruby: "相手への[配慮:はいりょ]から自然に出てくるこの習慣は、[人間関係:にんげんかんけい]を[円滑:えんかつ]にする[知恵:ちえ]の一つと言えるでしょう。",
         textId: "Kebiasaan ini yang muncul secara alami dari kepedulian terhadap lawan bicara dapat dikatakan sebagai salah satu kearifan untuk memperlancar hubungan antarmanusia.",
         isKeySentence: true,
       },
@@ -101,22 +104,26 @@ export const DOKKAI_PASSAGES: DokkaiPassage[] = [
       {
         id: "s1",
         textJp: "都会に引っ越してきたばかりの頃、道に迷って困っていた私に、通りすがりのご老人が親切に声をかけてくれました。",
+        ruby: "[都会:とかい]に[引:ひ]っ[越:こ]してきたばかりの[頃:ころ]、道に[迷:まよ]って[困:こま]っていた私に、[通:とお]りすがりのご[老人:ろうじん]が[親切:しんせつ]に声をかけてくれました。",
         textId: "Saat baru saja pindah ke kota besar, ketika saya tersesat dan kebingungan di jalan, seorang kakek tua yang lewat menyapa saya dengan ramah.",
       },
       {
         id: "s2",
         textJp: "スマートフォンの地図を見せても、細かい文字が読みにくそうだったので、駅の名前だけを伝えました。",
+        ruby: "スマートフォンの地図を見せても、細かい文字が読みにくそうだったので、駅の名前だけを伝えました。",
         textId: "Meskipun saya memperlihatkan peta di ponsel cerdas, karena beliau tampak kesulitan membaca tulisan kecil, saya hanya menyebutkan nama stasiunnya.",
       },
       {
         id: "s3",
         textJp: "すると、わざわざ遠回りをして改札口の前まで案内してもらったのです。",
+        ruby: "すると、わざわざ[遠回:とおまわ]りをして[改札口:かいさつぐち]の前まで[案内:あんない]してもらったのです。",
         textId: "Lalu, saya diantarkan sampai ke depan gerbang tiket meskipun beliau harus sengaja memutar jalan jauh.",
         isKeySentence: true,
       },
       {
         id: "s4",
         textJp: "大都会の人は冷たいと聞いていましたが、その温かい親切は今でも忘れられません。",
+        ruby: "大都会の人は[冷:つめ]たいと聞いていましたが、その[温:あたた]かい親切は今でも[忘:わす]れられません。",
         textId: "Saya sempat mendengar orang kota besar itu dingin, namun kebaikan hangat tersebut masih tidak bisa saya lupakan hingga sekarang.",
       },
     ],
@@ -188,22 +195,26 @@ export const DOKKAI_PASSAGES: DokkaiPassage[] = [
       {
         id: "s1",
         textJp: "人間の脳のワーキングメモリ（作業記憶）は、まるで小さな机のようなものです。",
+        ruby: "人間の脳のワーキングメモリ（[作業記憶:さぎょうきおく]）は、まるで小さな机のようなものです。",
         textId: "Memori kerja (working memory) pada otak manusia itu persis seperti sebuah meja kerja kecil.",
       },
       {
         id: "s2",
         textJp: "机の上に本や書類を一度にたくさん広げすぎると、作業スペースがなくなり、効率が一気に落ちてしまいます。",
+        ruby: "机の上に本や[書類:しょるい]を一度にたくさん[広:ひろ]げすぎると、作業スペースがなくなり、[効率:こうりつ]が[一気:いっき]に落ちてしまいます。",
         textId: "Jika Anda membuka terlalu banyak buku dan dokumen sekaligus di atas meja, ruang kerja akan habis dan efisiensi akan langsung anjlok.",
       },
       {
         id: "s3",
         textJp: "同様に、一度に多くの情報を同時に処理しようとすると、脳は容量オーバーになり、判断ミスを起こしやすくなります。",
+        ruby: "[同様:どうよう]に、一度に多くの情報を同時に[処理:しょり]しようとすると、脳は[容量:ようりょう]オーバーになり、[判断:はんだん]ミスを起こしやすくなります。",
         textId: "Demikian pula, jika kita mencoba memproses banyak informasi sekaligus pada waktu yang bersamaan, kapasitas otak akan kelebihan beban dan mudah membuat kesalahan keputusan.",
         isKeySentence: true,
       },
       {
         id: "s4",
         textJp: "集中して高い成果を出すためには、目の前の課題を一つずつ片付けていくことが不可欠です。",
+        ruby: "[集中:しゅうちゅう]して高い[成果:せいか]を出すためには、目の前の[課題:かだい]を一つずつ[片付:かたづ]けていくことが[不可欠:ふかけつ]です。",
         textId: "Untuk fokus dan menghasilkan hasil maksimal, menyelesaikan tugas di depan mata satu per satu adalah hal yang mutlak.",
       },
     ],
@@ -275,22 +286,26 @@ export const DOKKAI_PASSAGES: DokkaiPassage[] = [
       {
         id: "s1",
         textJp: "深夜のコンビニエンスストアは客数が少なく、電気代や人件費などのコストがかさみます。",
+        ruby: "[深夜:しんや]のコンビニエンスストアは[客数:きゃくすう]が少なく、[電気代:でんきだい]や[人件費:じんけんひ]などのコストが[かさみ:かさみ]ます。",
         textId: "Toko swalayan (konbini) di larut malam jumlah pelanggannya sedikit, sementara biaya listrik dan gaji karyawan membengkak.",
       },
       {
         id: "s2",
         textJp: "それにもかかわらず24時間営業を続ける店舗が多いのはなぜでしょうか。",
+        ruby: "それにもかかわらず24時間[営業:えいぎょう]を続ける[店舗:てんぽ]が多いのはなぜでしょうか。",
         textId: "Meskipun demikian, mengapa banyak gerai yang tetap mempertahankan operasional 24 jam?",
       },
       {
         id: "s3",
         textJp: "その最大の理由は、夜間のうちに商品の搬入や陳列、清掃を一斉に行えるためです。",
+        ruby: "その[最大:さいだい]の理由は、[夜間:やかん]のうちに商品の[搬入:はんにゅう]や[陳列:ちんれつ]、[清掃:せいそう]を[一斉:いっせい]に行えるためです。",
         textId: "Alasan terbesarnya adalah karena pada malam hari pengiriman barang, penataan rak display, dan pembersihan dapat dilakukan secara serempak.",
         isKeySentence: true,
       },
       {
         id: "s4",
         textJp: "もし夜間に店を閉めてしまうと、昼間の混雑時に入荷作業をしなければならず、かえって昼間の販売機会を逃すことにつながるからです。",
+        ruby: "もし夜間に店を[閉:し]めてしまうと、昼間の[混雑:こんざつ]時に[入荷作業:にゅうかさぎょう]をしなければならず、かえって昼間の[販売機会:はんばいきかい]を[逃:のが]すことにつながるからです。",
         textId: "Sebab jika toko tutup di malam hari, bongkar muat barang terpaksa dilakukan di siang hari yang ramai pelanggan, yang justru berakibat hilangnya peluang penjualan siang hari.",
       },
     ],
@@ -362,22 +377,26 @@ export const DOKKAI_PASSAGES: DokkaiPassage[] = [
       {
         id: "s1",
         textJp: "電子書籍やオンライン学習は、いつでもどこでも手軽に情報に触れられる点で非常に便利です。",
+        ruby: "[電子書籍:でんししょせき]やオンライン学習は、いつでもどこでも[手軽:てがる]に情報に[触:ふ]れられる点で[非常:ひじょう]に便利です。",
         textId: "E-book dan pembelajaran daring sangat praktis karena kita dapat mengakses informasi dengan mudah kapan pun dan di mana pun.",
       },
       {
         id: "s2",
         textJp: "重い本を持ち運ぶ必要もなく、検索機能を使えば知りたい箇所を瞬時に見つけることができます。",
+        ruby: "重い本を[持:も]ち[運:はこ]ぶ必要もなく、[検索機能:けんさくきのう]を使えば知りたい[箇所:かしょ]を[瞬時:しゅんじ]に見つけることができます。",
         textId: "Kita tidak perlu membawa buku fisik yang berat, dan dengan fitur pencarian kita dapat menemukan bagian yang ingin diketahui seketika.",
       },
       {
         id: "s3",
         textJp: "しかし、深く思考し、知識を自分の中に定着させるという点においては、依然として紙の書籍に軍配が上がります。",
+        ruby: "しかし、深く[思考:しこう]し、知識を自分の中に[定着:ていちゃく]させるという点においては、[依然:いぜん]として紙の書籍に[軍配:ぐんばい]が上がります。",
         textId: "Namun demikian, dalam hal berpikir mendalam dan mengendapkan ilmu ke dalam diri, buku cetak kertas tetap lebih unggul.",
         isKeySentence: true,
       },
       {
         id: "s4",
         textJp: "ページを手でめくる感触や空間的な位置関係の把握が、長期的な記憶の定着を助けるからです。",
+        ruby: "ページを手でめくる[感触:かんしょく]や[空間的:くうかんてき]な[位置関係:いちかんけい]の[把握:はあく]が、[長期的:ちょうきてき]な記憶の定着を[助:たす]けるからです。",
         textId: "Sebab sensasi membalik halaman dengan jari dan pemahaman letak spasial membantu perekaman memori jangka panjang.",
       },
     ],
@@ -449,22 +468,26 @@ export const DOKKAI_PASSAGES: DokkaiPassage[] = [
       {
         id: "s1",
         textJp: "多くの人は失敗を恐れ、できるだけ間違いを犯さないように安全な道を選びがちです。",
+        ruby: "多くの人は失敗を[恐:おそ]れ、できるだけ間違いを[犯:おか]さないように安全な道を選びがちです。",
         textId: "Banyak orang cenderung takut akan kegagalan dan memilih jalan yang aman agar sebisa mungkin tidak melakukan kesalahan.",
       },
       {
         id: "s2",
         textJp: "確かに失敗すれば、一時的に時間を失ったり周囲から批判されたりすることもあるでしょう。",
+        ruby: "確かに失敗すれば、[一時的:いちじてき]に時間を失ったり[周囲:しゅうい]から[批判:ひはん]されたりすることもあるでしょう。",
         textId: "Memang benar jika gagal, kita mungkin kehilangan waktu untuk sementara atau mendapat kritik dari sekitar.",
       },
       {
         id: "s3",
         textJp: "しかし、完璧な準備ができるまで行動を起こさないことこそが、最も深刻な機会損失ではないでしょうか。",
+        ruby: "しかし、[完璧:かんぺき]な準備ができるまで行動を起こさないことこそが、最も[深刻:しんこく]な[機会損失:きかいそんしつ]ではないでしょうか。",
         textId: "Akan tetapi, tidak mengambil tindakan sampai persiapan sempurna selesai, bukankah justru merupakan kehilangan peluang yang paling fatal?",
         isKeySentence: true,
       },
       {
         id: "s4",
         textJp: "失敗から得られる教訓は座学の何倍もの価値があるのですから、私たちはもっと挑戦を恐れない姿勢を持つべきです。",
+        ruby: "失敗から得られる[教訓:きょうくん]は[座学:ざがく]の[何倍:なんばい]もの[価値:かち]があるのですから、私たちはもっと[挑戦:ちょうせん]を恐れない[姿勢:しせい]を持つべきです。",
         textId: "Karena pelajaran dari kegagalan nilainya berlipat ganda dibanding belajar teori, kita seharusnya memiliki sikap yang lebih berani mencoba tanpa takut.",
         isKeySentence: true,
       },
@@ -540,22 +563,26 @@ export const DOKKAI_PASSAGES: DokkaiPassage[] = [
       {
         id: "s1",
         textJp: "社員各位：来月より全社員を対象とした「情報セキュリティ基礎研修」をオンラインにて実施いたします。",
+        ruby: "社員[各位:かくい]：来月より全社員を[対象:たいしょう]とした「情報セキュリティ[基礎研修:きそけんしゅう]」をオンラインにて[実施:じっし]いたします。",
         textId: "Kepada seluruh staf: Mulai bulan depan, 'Pelatihan Dasar Keamanan Informasi' untuk seluruh karyawan akan dilaksanakan secara daring.",
       },
       {
         id: "s2",
         textJp: "受講期間は10月1日から10月20日までとなっておりますので、各自都合の良い時間に社内ポータルサイトから動画を視聴してください。",
+        ruby: "[受講期間:じゅこうきかん]は10月1日から10月20日までとなっておりますので、各自[都合:つごう]の良い時間に社内ポータルサイトから動画を[視聴:しちょう]してください。",
         textId: "Periode pelatihan adalah dari tanggal 1 Oktober hingga 20 Oktober, jadi harap tonton video materi melalui portal intranet perusahaan pada waktu luang masing-masing.",
       },
       {
         id: "s3",
         textJp: "なお、動画視聴後に確認テスト（全10問）を受け、80点以上を取得した時点で修了とみなされます。",
+        ruby: "なお、動画視聴後に確認テスト（全10問）を受け、80点以上を[取得:しゅとく]した時点で[修了:しゅうりょう]とみなされます。",
         textId: "Sebagai catatan, Anda dianggap lulus setelah mengikuti kuis konfirmasi (total 10 soal) seusai menonton video dan mendapatkan nilai 80 poin ke atas.",
         isKeySentence: true,
       },
       {
         id: "s4",
         textJp: "期限までに修了が確認できない場合は、個別再研修の対象となりますのでご注意ください。",
+        ruby: "期限までに修了が確認できない場合は、[個別再研修:こべつさいけんしゅう]の対象となりますのでご注意ください。",
         textId: "Harap diperhatikan bahwa jika kelulusan belum terkonfirmasi hingga batas waktu, Anda akan diwajibkan mengikuti pelatihan ulang perorangan.",
       },
     ],
@@ -627,27 +654,32 @@ export const DOKKAI_PASSAGES: DokkaiPassage[] = [
       {
         id: "s1",
         textJp: "【コワーキングスペース「サクラ」利用プラン一覧】",
+        ruby: "【コワーキングスペース「サクラ」利用プラン[一覧:いちらん]】",
         textId: "【Daftar Paket Penggunaan Ruang Kerja Coworking 'Sakura'】",
       },
       {
         id: "s2",
         textJp: "① ドロップイン（一時利用）：1時間 500円／1日最大 2,000円（事前予約不要・平日9時〜18時のみ）",
+        ruby: "① ドロップイン（[一時利用:いちじりよう]）：1時間 500円／1日最大 2,000円（[事前予約不要:じぜんよやくふよう]・平日9時〜18時のみ）",
         textId: "① Drop-in (Sekali pakai): 500 yen per jam / Maksimal 2.000 yen per hari (Tanpa reservasi, hanya hari kerja jam 09.00 - 18.00).",
       },
       {
         id: "s3",
         textJp: "② ナイト＆ホリデープラン：月額 8,000円（平日18時〜23時および土日祝日の終日利用可能）",
+        ruby: "② ナイト＆ホリデープラン：[月額:げつがく] 8,000円（平日18時〜23時および[土日祝日:どにちしゅくじつ]の[終日:しゅうじつ]利用可能）",
         textId: "② Paket Malam & Hari Libur: 8.000 yen per bulan (Dapat digunakan hari kerja jam 18.00 - 23.00 serta seharian penuh di hari Sabtu, Minggu, dan tanggal merah).",
         isKeySentence: true,
       },
       {
         id: "s4",
         textJp: "③ フルタイムプラン：月額 15,000円（年中無休 24時間利用可能・個室ロッカー無料）",
+        ruby: "③ フルタイムプラン：月額 15,000円（[年中無休:ねんじゅうむきゅう] 24時間利用可能・[個室:こしつ]ロッカー[無料:むりょう]）",
         textId: "③ Paket Full-time: 15.000 yen per bulan (Tersedia 24 jam nonstop sepanjang tahun, loker pribadi gratis).",
       },
       {
         id: "s5",
         textJp: "※学生の方は学生証の提示により、上記すべての月額プランが20％割引となります（一時利用は割引対象外）。",
+        ruby: "※学生の方は[学生証:がくせいしょう]の[提示:ていじ]により、上記すべての月額プランが20％[割引:わりびき]となります（一時利用は[割引対象外:わりびきたいしょうがい]）。",
         textId: "※Bagi pelajar/mahasiswa, dengan menunjukkan kartu pelajar, seluruh paket bulanan di atas mendapat diskon 20% (Penggunaan sekali pakai Drop-in tidak termasuk diskon).",
         isKeySentence: true,
       },
@@ -723,22 +755,26 @@ export const DOKKAI_PASSAGES: DokkaiPassage[] = [
       {
         "id": "s1",
         "textJp": "営業部員各位：来週火曜日（10月15日）14時より予定しておりました新商品に関する業務打ち合わせですが、担当役員の出張日程が急遽変更となったため、以下の通り日時を延期させていただきます。",
+        "ruby": "営業部員[各位:かくい]：来週火曜日（10月15日）14時より予定しておりました新商品に関する業務打ち合わせですが、担当[役員:やくいん]の[出張日程:しゅっちょうにってい]が[急遽:きゅうきょ]変更となったため、以下の通り日時を[延期:えんき]させていただきます。",
         "textId": "Kepada seluruh staf bagian sales: Mengenai rapat koordinasi produk baru yang dijadwalkan Selasa depan (15 Okt) pukul 14.00, karena jadwal dinas luar direktur terkait mendadak berubah, maka waktu rapat ditunda sebagai berikut."
       },
       {
         "id": "s2",
         "textJp": "変更後の日時は【10月17日（木）10:30〜12:00】、場所は第2会議室（変更なし）となります。",
+        "ruby": "変更後の日時は【10月17日（木）10:30〜12:00】、場所は第2会議室（変更なし）となります。",
         "textId": "Waktu setelah perubahan adalah 【Kamis, 17 Oktober 10.30 - 12.00】, bertempat di Ruang Rapat 2 (tidak ada perubahan ruangan)."
       },
       {
         "id": "s3",
         "textJp": "なお、新しい日程でご都合が合わない方は、本日17時までに調整担当の田中までメールにてご連絡ください。",
+        "ruby": "なお、新しい日程でご[都合:つごう]が合わない方は、本日17時までに調整担当の田中までメールにてご連絡ください。",
         "textId": "Adapun bagi yang berhalangan hadir pada jadwal baru tersebut, mohon hubungi Tanaka (penanggung jawab penyesuaian jadwal) melalui email paling lambat hari ini pukul 17.00.",
         "isKeySentence": true
       },
       {
         "id": "s4",
         "textJp": "特にご連絡がない場合は、上記の日程でご出席いただけるものとして進行いたしますのでご了承ください。",
+        "ruby": "特にご連絡がない場合は、上記の日程でご出席いただけるものとして進行いたしますのでご了承ください。",
         "textId": "Jika tidak ada kabar, kami anggap Anda dapat menghadiri rapat sesuai jadwal di atas."
       }
     ],
@@ -824,38 +860,45 @@ export const DOKKAI_PASSAGES: DokkaiPassage[] = [
       {
         "id": "s1",
         "textJp": "あいさつは、人が社会で生活していく上で最も基本的で、当たり前のマナーだと考えられている。",
+        "ruby": "あいさつは、人が社会で生活していく上で最も基本的で、当たり前のマナーだと考えられている。",
         "textId": "Salam dianggap sebagai tata krama paling mendasar dan lumrah bagi manusia dalam menjalani kehidupan bermasyarakat."
       },
       {
         "id": "s2",
         "textJp": "しかし、職場でのあいさつには、単に礼儀正しさを示すこと以上の大きな効果が存在している。",
+        "ruby": "しかし、職場でのあいさつには、単に[礼儀:れいぎ]正しさを示すこと以上の大きな効果が存在している。",
         "textId": "Namun, salam di tempat kerja memiliki manfaat besar yang jauh melampaui sekadar menunjukkan kesopanan.",
         "isKeySentence": true
       },
       {
         "id": "s3",
         "textJp": "毎朝明るい声で「おはようございます」と言葉を交わすだけで、職場の緊張感が和らぎ、お互いの心理的な距離が自然と縮まるのだ。",
+        "ruby": "毎朝明るい声で「おはようございます」と言葉を交わすだけで、職場の[緊張感:きんちょうかん]が[和:やわ]らぎ、お互いの心理的な距離が自然と[縮:ちぢ]まるのだ。",
         "textId": "Hanya dengan saling menyapa 'selamat pagi' dengan ceria setiap hari, ketegangan di kantor mereda dan jarak psikologis antarpegawai menyusut alami."
       },
       {
         "id": "s4",
         "textJp": "実際に、あいさつが活発に行われているチームでは、仕事の連絡や相談がスムーズに進みやすいという調査結果もある。",
+        "ruby": "実際に、あいさつが活発に行われているチームでは、仕事の連絡や相談がスムーズに進みやすいという調査結果もある。",
         "textId": "Faktanya, ada hasil survei yang menunjukkan bahwa pada tim yang aktif bertukar salam, komunikasi dan koordinasi kerja berjalan jauh lebih lancar."
       },
       {
         "id": "s5",
         "textJp": "声をかけやすい雰囲気が日常的に作られているため、ミスやトラブルが発生した際にも、一人で抱え込まずに素早く周囲に共有できるからである。",
+        "ruby": "声をかけやすい雰囲気が日常的に作られているため、ミスやトラブルが発生した際にも、一人で[抱:かか]え[込:こ]まずに素早く周囲に共有できるからである。",
         "textId": "Hal ini karena suasana yang mudah diajak bicara tercipta secara rutin, sehingga ketika terjadi kesalahan atau masalah, mereka tidak memendamnya sendirian melainkan cepat berbagi ke sekitarnya.",
         "isKeySentence": true
       },
       {
         "id": "s6",
         "textJp": "反対に、互いに無言で過ごす職場では、小さな疑問があっても質問することをためらってしまい、結果として重大な失敗につながる恐れがある。",
+        "ruby": "反対に、互いに[無言:むごん]で過ごす職場では、小さな疑問があっても質問することを[ためら:ためら]ってしまい、結果として重大な失敗につながる恐れがある。",
         "textId": "Sebaliknya, di tempat kerja yang saling hening tanpa tegur sapa, orang akan ragu bertanya meski ada keraguan kecil, yang berisiko berujung pada kegagalan fatal."
       },
       {
         "id": "s7",
         "textJp": "つまり、あいさつとは形式的な規則ではなく、円滑なチームワークと安全な業務を支えるための最も手軽で強力なコミュニケーション手段なのである。",
+        "ruby": "つまり、あいさつとは[形式的:けいしきてき]な規則ではなく、[円滑:えんかつ]なチームワークと安全な業務を支えるための最も手軽で強力なコミュニケーション手段なのである。",
         "textId": "Dengan kata lain, salam bukanlah aturan formalitas belaka, melainkan sarana komunikasi paling praktis dan ampuh untuk menopang kerja tim yang harmonis dan kelancaran operasional kerja yang aman.",
         "isKeySentence": true
       }
@@ -1030,38 +1073,45 @@ export const DOKKAI_PASSAGES: DokkaiPassage[] = [
       {
         "id": "s1",
         "textJp": "試験の前夜、少しでも長く勉強しようと睡眠時間を削って徹夜をした経験を持つ人は少なくないだろう。",
+        "ruby": "試験の前夜、少しでも長く勉強しようと[睡眠時間:すいみんじかん]を[削:けず]って[徹夜:てつや]をした経験を持つ人は少なくないだろう。",
         "textId": "Banyak orang mungkin pernah punya pengalaman begadang semalaman memangkas waktu tidur demi belajar lebih lama menjelang ujian."
       },
       {
         "id": "s2",
         "textJp": "しかし近年の脳科学の研究によれば、このような「睡眠を削る学習法」は、記憶の定着という観点から見ると極めて非効率的であることが分かってきた。",
+        "ruby": "しかし近年の[脳科学:のうかがく]の研究によれば、このような「睡眠を削る学習法」は、記憶の[定着:ていちゃく]という観点から見ると[極:きわ]めて[非効率的:ひこうりつてき]であることが分かってきた。",
         "textId": "Namun menurut riset neurosains beberapa tahun terakhir, metode belajar dengan mengorbankan tidur ini terbukti sangat tidak efisien ditinjau dari sisi pengendapan ingatan.",
         "isKeySentence": true
       },
       {
         "id": "s3",
         "textJp": "ある大学の研究チームが行った実験では、同じ新しい知識を学んだ後、「すぐに8時間の十分な睡眠をとったグループA」と、「夜遅くまで復習を続け、4時間しか眠らなかったグループB」の翌日のテスト成績を比較した。",
+        "ruby": "ある大学の研究チームが行った実験では、同じ新しい知識を学んだ後、「すぐに8時間の十分な睡眠をとったグループA」と、「夜遅くまで復習を続け、4時間しか眠らなかったグループB」の翌日のテスト成績を比較した。",
         "textId": "Dalam eksperimen salah satu universitas, setelah mempelajari materi baru yang sama, peneliti membandingkan nilai tes keesokan harinya antara 'Kelompok A yang langsung tidur cukup 8 jam' dan 'Kelompok B yang terus mengulang materi hingga larut malam dan hanya tidur 4 jam'."
       },
       {
         "id": "s4",
         "textJp": "その結果、学習時間が短かったにもかかわらず、しっかり睡眠をとったグループAの方が、圧倒的に高い正答率を記録したのである。",
+        "ruby": "その結果、学習時間が短かったにもかかわらず、しっかり睡眠をとったグループAの方が、[圧倒的:あっとうてき]に高い[正答率:せいとうりつ]を記録したのである。",
         "textId": "Hasilnya, meskipun waktu belajarnya lebih sedikit, Kelompok A yang tidur nyenyak justru mencatatkan persentase jawaban benar yang jauh lebih tinggi secara telak.",
         "isKeySentence": true
       },
       {
         "id": "s5",
         "textJp": "人間の脳は、眠っている間にその日取り入れた情報を整理し、短期的な記憶から長期間残る記憶へと変換・固定する働きを持っている。",
+        "ruby": "人間の脳は、眠っている間にその日取り入れた情報を整理し、短期的な記憶から長期間残る記憶へと[変換:へんかん]・[固定:こてい]する働きを持っている。",
         "textId": "Otak manusia memiliki fungsi menata informasi yang masuk hari itu selama tidur, lalu mengonversi dan menguncinya dari memori jangka pendek menjadi memori jangka panjang."
       },
       {
         "id": "s6",
         "textJp": "つまり、十分な睡眠をとらないということは、せっかく詰め込んだ知識を脳の引き出しにしっかりと仕舞わないまま放置するようなものなのだ。",
+        "ruby": "つまり、十分な睡眠をとらないということは、せっかく詰め込んだ知識を脳の引き出しにしっかりと[仕舞:しま]わないまま[放置:ほうち]するようなものなのだ。",
         "textId": "Dengan kata lain, kurang tidur sama halnya dengan menjejalkan pengetahuan ke dalam kepala tetapi membiarkannya berserakan tanpa menyimpannya rapi di laci memori."
       },
       {
         "id": "s7",
         "textJp": "高い学習成果を継続して出したいのであれば、起きている時間の長さだけにとらわれず、良質な睡眠を学習計画の重要な一部として組み込む賢さが必要である。",
+        "ruby": "高い学習成果を継続して出したいのであれば、起きている時間の長さだけにとらわれず、[良質:りょうしつ]な睡眠を学習計画の重要な一部として[組:く]み[込:こ]む賢さが必要である。",
         "textId": "Jika ingin mempertahankan prestasi belajar yang tinggi secara berkesinambungan, kita dituntut bijak untuk tidak terpaku hanya pada durasi saat terjaga, melainkan memasukkan tidur berkualitas sebagai bagian krusial dari jadwal belajar.",
         "isKeySentence": true
       }
@@ -1236,54 +1286,64 @@ export const DOKKAI_PASSAGES: DokkaiPassage[] = [
       {
         "id": "s1",
         "textJp": "現代社会は、あらゆる面において「効率」と「スピード」を重視し、科学技術の進歩によって生活は以前と比べて格段に便利になった。",
+        "ruby": "現代社会は、あらゆる面において「効率」と「スピード」を重視し、[科学技術:かがくぎじゅつ]の進歩によって生活は以前と比べて[格段:かくだん]に便利になった。",
         "textId": "Masyarakat modern sangat mengagungkan 'efisiensi' dan 'kecepatan' dalam segala aspek, dan berkat kemajuan ilmu pengetahuan dan teknologi, hidup menjadi jauh lebih praktis dibanding masa lalu."
       },
       {
         "id": "s2",
         "textJp": "スマートフォンを操作すれば瞬時に世界中の情報にアクセスでき、買い物も自宅にいながらボタン一つで完了する。",
+        "ruby": "スマートフォンを操作すれば[瞬時:しゅんじ]に世界中の情報にアクセスでき、買い物も自宅にいながらボタン一つで完了する。",
         "textId": "Cukup mengoperasikan ponsel pintar, kita bisa mengakses informasi dari seluruh dunia dalam sekejap mata, dan berbelanja pun selesai hanya dengan satu sentuhan tombol dari rumah."
       },
       {
         "id": "s3",
         "textJp": "移動手段の発達や業務の自動化によって、かつて何時間もかかっていた作業がほんの数分で片付く時代になったのだ。",
+        "ruby": "移動手段の発達や業務の自動化によって、かつて何時間もかかっていた作業がほんの数分で[片付:かたづ]く時代になったのだ。",
         "textId": "Dengan kemajuan sarana transportasi dan otomatisasi pekerjaan, kita telah tiba di era di mana pekerjaan yang dulu memakan waktu berjam-jam kini tuntas hanya dalam hitungan menit."
       },
       {
         "id": "s4",
         "textJp": "これほどまでに時間を節約できるようになったのだから、私たちは昔の人々と比べて、より多くの自由な時間や心の「ゆとり」を手に入れているはずである。",
+        "ruby": "これほどまでに時間を[節約:せつやく]できるようになったのだから、私たちは昔の人々と比べて、より多くの自由な時間や心の「ゆとり」を手に入れているはずである。",
         "textId": "Karena kita telah mampu menghemat waktu sedemikian banyaknya, seharusnya kita memiliki lebih banyak waktu luang dan ketenangan hati dibanding generasi terdahulu.",
         "isKeySentence": true
       },
       {
         "id": "s5",
         "textJp": "ところが現実はどうだろうか。多くの現代人は「毎日忙しくて時間がない」「常に何かに追われているようだ」と感じながら生きている。",
+        "ruby": "ところが現実はどうだろうか。多くの現代人は「毎日忙しくて時間がない」「常に何かに[追:お]われているようだ」と感じながら生きている。",
         "textId": "Namun bagaimana dengan kenyataannya? Sebagian besar manusia modern justru menjalani hidup dengan perasaan 'setiap hari sibuk tak punya waktu' atau 'seakan terus-menerus dikejar sesuatu'.",
         "isKeySentence": true
       },
       {
         "id": "s6",
         "textJp": "便利になればなるほど、浮いた時間でゆっくり休むのではなく、空いた隙間にさらに別の仕事や予定を詰め込んでしまうからだ。",
+        "ruby": "便利になればなるほど、浮いた時間でゆっくり休むのではなく、空いた[隙間:すきま]にさらに別の仕事や予定を詰め込んでしまうからだ。",
         "textId": "Sebab semakin praktis hidup ini, alih-alih beristirahat dengan waktu yang berhasil dihemat, orang malah menjejali celah waktu yang kosong dengan pekerjaan atau agenda baru lainnya."
       },
       {
         "id": "s7",
         "textJp": "通信技術の向上によって連絡がすぐに届くようになったことで、深夜や休日であっても仕事の返信を求められ、かえって休む暇を失っている人も少なくない。",
+        "ruby": "通信技術の向上によって連絡がすぐに届くようになったことで、深夜や休日であっても仕事の返信を求められ、かえって休む暇を失っている人も少なくない。",
         "textId": "Dengan pesatnya teknologi komunikasi membuat pesan sampai seketika, banyak orang dituntut membalas urusan kerja bahkan di larut malam atau hari libur, sehingga ironisnya justru kehilangan waktu untuk istirahat."
       },
       {
         "id": "s8",
         "textJp": "つまり、技術がもたらした「効率化」は私たちを自由にするどころか、より速い生活のペースを強いられるという逆の結果を生み出しているのである。",
+        "ruby": "つまり、技術がもたらした「効率化」は私たちを自由にするどころか、より速い生活のペースを[強:し]いられるという逆の結果を生み出しているのである。",
         "textId": "Dengan kata lain, efisiensi yang dihadirkan oleh teknologi bukannya membebaskan kita, melainkan justru membuahkan hasil berkebalikan: memaksa kita tunduk pada ritme hidup yang kian lekas.",
         "isKeySentence": true
       },
       {
         "id": "s9",
         "textJp": "本当に豊かな人生を送るために今私たちが考え直すべきなのは、これ以上生活のスピードを上げることではない。",
+        "ruby": "本当に豊かな人生を送るために今私たちが考え直すべきなのは、これ以上生活のスピードを上げることではない。",
         "textId": "Demi meraih kehidupan yang sungguh bermakna dan kaya, hal yang perlu kita renungkan kembali saat ini bukanlah menambah laju kecepatan hidup lebih kencang lagi."
       },
       {
         "id": "s10",
         "textJp": "むしろ、あえて立ち止まり、効率や損得とは関係のない静かな時間を意図的に確保する勇気を持つことではないだろうか。",
+        "ruby": "むしろ、あえて立ち止まり、効率や損得とは関係のない静かな時間を[意図的:いとてき]に確保する勇気を持つことではないだろうか。",
         "textId": "Melainkan, bukankah kita justru membutuhkan keberanian untuk berani berhenti sejenak, dan sengaja menyisihkan waktu yang hening tanpa terikat pada efisiensi atau untung-rugi?",
         "isKeySentence": true
       }
@@ -1496,32 +1556,38 @@ export const DOKKAI_PASSAGES: DokkaiPassage[] = [
       {
         "id": "s1",
         "textJp": "【ヤマト急送 宅配便ご利用規定および料金表】",
+        "ruby": "【ヤマト急送 [宅配便:たくはいびん]ご利用規定および料金表】",
         "textId": "【Ketentuan Penggunaan & Tabel Tarif Ekspedisi Pengiriman Yamato Express】"
       },
       {
         "id": "s2",
         "textJp": "① 普通便（スタンダード）：荷物の3辺合計120cm以内、重量15kgまで。全国一律 900円（翌日〜翌々日配達）。",
+        "ruby": "① 普通便（スタンダード）：荷物の3辺合計120cm以内、重量15kgまで。全国[一律:いちりつ] 900円（翌日〜翌々日配達）。",
         "textId": "① Paket Reguler (Standard): Total 3 sisi paket maksimal 120 cm, berat maksimal 15 kg. Tarif seragam nasional 900 yen (Pengantaran esok hari s.d. lusa)."
       },
       {
         "id": "s3",
         "textJp": "② クール冷凍・冷蔵便：生鮮食品や生ケーキ専用。普通便料金に【追加料金 400円】（最大サイズ100cm・重量10kgまで対応）。",
+        "ruby": "② クール冷凍・冷蔵便：[生鮮食品:せいせんしょくひん]や生ケーキ専用。普通便料金に【追加料金 400円】（最大サイズ100cm・重量10kgまで対応）。",
         "textId": "② Paket Dingin (Kulkas / Freezer): Khusus makanan segar atau kue tart basah. Tarif reguler ditambah 【Biaya tambahan 400 yen】 (Ukuran maksimal 100 cm, berat maksimal 10 kg).",
         "isKeySentence": true
       },
       {
         "id": "s4",
         "textJp": "③ スピード当日便：午前10時までの受付完了で、当日夜18時〜21時に配達。普通便料金に【追加料金 600円】（主要都市エリア限定）。",
+        "ruby": "③ スピード当日便：午前10時までの受付完了で、当日夜18時〜21時に配達。普通便料金に【追加料金 600円】（主要都市エリア限定）。",
         "textId": "③ Paket Kilat Hari yang Sama: Pendaftaran selesai sebelum pukul 10.00, diantar malam hari itu juga jam 18.00 - 21.00. Tarif reguler ditambah 【Biaya tambahan 600 yen】 (Khusus area kota besar)."
       },
       {
         "id": "s5",
         "textJp": "※割れ物および精密機器をお送りの際は、窓口にて無料の専用衝撃吸収緩衝材をご利用いただけます。",
+        "ruby": "※割れ物および[精密機器:せいみつきき]をお送りの際は、窓口にて無料の専用衝撃吸収[緩衝材:かんしょうざい]をご利用いただけます。",
         "textId": "※Untuk barang pecah belah dan perangkat presisi, bahan peredam benturan khusus gratis tersedia di loket pengiriman."
       },
       {
         "id": "s6",
         "textJp": "※パソコン・タブレット等の精密機器および貴重品は、伝票への事前申告により最高30万円まで全額補償されます。ただし、これらをクール便で送ることはできません。",
+        "ruby": "※パソコン・タブレット等の精密機器および[貴重品:きちょうひん]は、伝票への事前[申告:しんこく]により最高30万円まで全額[補償:ほしょう]されます。ただし、これらをクール便で送ることはできません。",
         "textId": "※Perangkat presisi seperti komputer/laptop/tablet serta barang berharga akan diganti rugi penuh hingga maksimal 300.000 yen jika dilaporkan terlebih dahulu pada resi. Namun demikian, barang-barang ini TIDAK DAPAT dikirim menggunakan paket Dingin (Cool).",
         "isKeySentence": true
       }

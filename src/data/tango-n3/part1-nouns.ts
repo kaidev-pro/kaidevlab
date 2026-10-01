@@ -638,7 +638,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "えいきょう",
     "ruby": "[影響:えいきょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pengaruh dampak imbas",
+    "meaningId": "Pengaruh, dampak, imbas",
     "meaningEn": "Influence, effect, impact",
     "collocation": {
       "jpRuby": "[社会:しゃかい]に[大:おお]きな[影響:えいきょう]を[与:あた]える",
@@ -686,7 +686,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "おうぼ",
     "ruby": "[応募:おうぼ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pendaftaran aplikasi melamar lowongan",
+    "meaningId": "Pendaftaran aplikasi, melamar lowongan",
     "meaningEn": "Application, entry, enlistment",
     "collocation": {
       "jpRuby": "[求人:きゅうじん]に[応募:おうぼ]する",
@@ -878,7 +878,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かこ",
     "ruby": "[過去:かこ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Masa lalu riwayat silam yang telah lewat",
+    "meaningId": "Masa lalu, riwayat silam yang telah lewat",
     "meaningEn": "The past, bygone days",
     "collocation": {
       "jpRuby": "[過去:かこ]の[失敗:しっぱい]から[学:まな]ぶ",
@@ -974,7 +974,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "えがお",
     "ruby": "[笑顔:えがお]",
     "partOfSpeech": "[名]",
-    "meaningId": "Senyuman wajah riang",
+    "meaningId": "Senyuman, wajah riang",
     "meaningEn": "Smiling face, smile",
     "collocation": {
       "jpRuby": "[笑顔:えがお]で[迎:むか]える",
@@ -998,7 +998,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きおく",
     "ruby": "[記憶:きおく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Ingatan memori rekaman ingatan",
+    "meaningId": "Ingatan, memori, rekaman ingatan",
     "meaningEn": "Memory, recollection",
     "collocation": {
       "jpRuby": "[記憶:きおく]に[残:のこ]る[名場面:めいばめん]",
@@ -1022,7 +1022,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きそく",
     "ruby": "[規則:きそく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Peraturan tata tertib regulasi",
+    "meaningId": "Peraturan, tata tertib, regulasi",
     "meaningEn": "Rule, regulation",
     "collocation": {
       "jpRuby": "[規則:きそく]を[守:まも]る",
@@ -1046,7 +1046,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きたい",
     "ruby": "[期待:きたい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Harapan ekspektasi",
+    "meaningId": "Harapan, ekspektasi",
     "meaningEn": "Expectation, anticipation",
     "collocation": {
       "jpRuby": "[期待:きたい]に[応:こた]える",
@@ -1070,7 +1070,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きのう",
     "ruby": "[機能:きのう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Fungsi kegunaan kapabilitas",
+    "meaningId": "Fungsi, kegunaan, kapabilitas",
     "meaningEn": "Function, feature",
     "collocation": {
       "jpRuby": "[新:あたら]しい[機能:きのう]を[追加:ついか]する",
@@ -1094,7 +1094,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きふ",
     "ruby": "[寄付:きふ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Donasi sumbangan kemanusiaan",
+    "meaningId": "Donasi, sumbangan kemanusiaan",
     "meaningEn": "Donation, contribution",
     "collocation": {
       "jpRuby": "[慈善:じぜん][事業:じぎょう]に[寄付:きふ]する",
@@ -1118,7 +1118,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きぼう",
     "ruby": "[希望:きぼう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Harapan asa cita-cita",
+    "meaningId": "Harapan, asa, cita-cita",
     "meaningEn": "Hope, wish, aspiration",
     "collocation": {
       "jpRuby": "[希望:きぼう]を[持:も]つ",
@@ -1142,7 +1142,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きほん",
     "ruby": "[基本:きほん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Fondasi dasar prinsip dasar",
+    "meaningId": "Fondasi dasar, prinsip dasar",
     "meaningEn": "Foundation, basis, fundamental",
     "collocation": {
       "jpRuby": "[基本:きほん]をしっかり[身:み]につける",
@@ -1166,7 +1166,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きぶん",
     "ruby": "[気分:きぶん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Suasana hati mood rasa tubuh",
+    "meaningId": "Suasana hati, mood, rasa tubuh",
     "meaningEn": "Feeling, mood",
     "collocation": {
       "jpRuby": "[気分:きぶん]が[良:よ]い",
@@ -1190,7 +1190,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きじゅん",
     "ruby": "[基準:きじゅん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Standar patokan tolak ukur",
+    "meaningId": "Standar, patokan, tolak ukur",
     "meaningEn": "Standard, criterion",
     "collocation": {
       "jpRuby": "[判断:はんだん]の[基準:きじゅん]を[定:さだ]める",
@@ -1214,7 +1214,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぎもん",
     "ruby": "[疑問:ぎもん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pertanyaan keraguan rasa penasaran",
+    "meaningId": "Pertanyaan, keraguan, rasa penasaran",
     "meaningEn": "Question, doubt",
     "collocation": {
       "jpRuby": "[疑問:ぎもん]を[抱:いだ]く",
@@ -1238,7 +1238,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぎゃく",
     "ruby": "[逆:ぎゃく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kebalikan sebaliknya arah balik",
+    "meaningId": "Kebalikan, sebaliknya, arah balik",
     "meaningEn": "Opposite, reverse",
     "collocation": {
       "jpRuby": "[逆:ぎゃく]の[方向:ほうこう]へ[進:すす]む",
@@ -1262,7 +1262,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きゅうじょ",
     "ruby": "[救助:きゅうじょ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pertolongan penyelamatan SAR",
+    "meaningId": "Pertolongan, penyelamatan, SAR",
     "meaningEn": "Rescue, relief",
     "collocation": {
       "jpRuby": "[被災者:ひさいしゃ]を[救助:きゅうじょ]する",
@@ -1286,7 +1286,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きゅうよ",
     "ruby": "[給与:きゅうよ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gaji upah imbalan kerja",
+    "meaningId": "Gaji, upah, imbalan kerja",
     "meaningEn": "Salary, wages",
     "collocation": {
       "jpRuby": "[給与:きゅうよ]が[口座:こうざ]に[振:ふ]り[込:こ]まれる",
@@ -1310,7 +1310,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きょうかい",
     "ruby": "[境界:きょうかい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tapal batas garis pembatas",
+    "meaningId": "Tapal batas, garis pembatas",
     "meaningEn": "Boundary, border",
     "collocation": {
       "jpRuby": "[県:けん]の[境界:きょうかい]",
@@ -1334,7 +1334,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きょうつう",
     "ruby": "[共通:きょうつう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Persamaan kebersamaan universal",
+    "meaningId": "Persamaan, kebersamaan, universal",
     "meaningEn": "Common, shared",
     "collocation": {
       "jpRuby": "[共通:きょうつう]の[話題:わだい]",
@@ -1358,7 +1358,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きょうみ",
     "ruby": "[興味:きょうみ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Minat ketertarikan",
+    "meaningId": "Minat, ketertarikan",
     "meaningEn": "Interest",
     "collocation": {
       "jpRuby": "[歴史:れきし]に[興味:きょうみ]がある",
@@ -1382,7 +1382,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きょうりょく",
     "ruby": "[協力:きょうりょく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kerja sama gotong royong",
+    "meaningId": "Kerja sama, gotong, royong",
     "meaningEn": "Cooperation, collaboration",
     "collocation": {
       "jpRuby": "[全員:ぜんいん]で[協力:きょうりょく]する",
@@ -1406,7 +1406,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きょうふ",
     "ruby": "[恐怖:きょうふ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Ketakutan kengerian rasa ngeri",
+    "meaningId": "Ketakutan, kengerian, rasa, ngeri",
     "meaningEn": "Fear, terror, dread",
     "collocation": {
       "jpRuby": "[恐怖:きょうふ]を[感:かん]じる",
@@ -1430,7 +1430,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きょり",
     "ruby": "[距離:きょり]",
     "partOfSpeech": "[名]",
-    "meaningId": "Jarak rentang jarak fisik/sosial",
+    "meaningId": "Jarak, rentang, jarak, fisik/sosial",
     "meaningEn": "Distance, interval",
     "collocation": {
       "jpRuby": "[適度:てきど]な[距離:きょり]を[保:たも]つ",
@@ -1454,7 +1454,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きろく",
     "ruby": "[記録:きろく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Catatan rekor rekam jejak",
+    "meaningId": "Catatan, rekor, rekam jejak",
     "meaningEn": "Record, document",
     "collocation": {
       "jpRuby": "[世界:せかい][記録:きろく]を[更新:こうしん]する",
@@ -1478,7 +1478,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きんじょ",
     "ruby": "[近所:きんじょ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tetangga sekitar lingkungan dekat",
+    "meaningId": "Tetangga, sekitar, lingkungan, dekat",
     "meaningEn": "Neighborhood, vicinity",
     "collocation": {
       "jpRuby": "[近所:きんじょ]の[人:ひと]に[挨拶:あいさつ]する",
@@ -1502,7 +1502,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "くじょう",
     "ruby": "[苦情:くじょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Keluhan komplain rasa keberatan",
+    "meaningId": "Keluhan, komplain, rasa, keberatan",
     "meaningEn": "Complaint, grievance",
     "collocation": {
       "jpRuby": "[騒音:そうおん]の[苦情:くじょう]を[言:い]う",
@@ -1526,7 +1526,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "くふう",
     "ruby": "[工夫:くふう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Akal daya rancang trik cerdik",
+    "meaningId": "Akal, daya, rancang, trik, cerdik",
     "meaningEn": "Ingenuity, device, scheme",
     "collocation": {
       "jpRuby": "[工夫:くふう]を[凝:こ]らす",
@@ -1550,7 +1550,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けいこう",
     "ruby": "[傾向:けいこう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kecenderungan tren tendensi",
+    "meaningId": "Kecenderungan, tren, tendensi",
     "meaningEn": "Tendency, trend",
     "collocation": {
       "jpRuby": "[若者:わかもの]の[傾向:けいこう]",
@@ -1574,7 +1574,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けっしん",
     "ruby": "[決心:けっしん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kemantapan tekad bulat tekad",
+    "meaningId": "Kemantapan, tekad, bulat, tekad",
     "meaningEn": "Determination, resolution",
     "collocation": {
       "jpRuby": "[留学:りゅうがく]の[決心:けっしん]をする",
@@ -1598,7 +1598,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けつろん",
     "ruby": "[結論:けつろん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kesimpulan akhir konklusi",
+    "meaningId": "Kesimpulan, akhir, konklusi",
     "meaningEn": "Conclusion",
     "collocation": {
       "jpRuby": "[結論:けつろん]を[出:だ]す",
@@ -1622,7 +1622,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "げんど",
     "ruby": "[限度:げんど]",
     "partOfSpeech": "[名]",
-    "meaningId": "Batas maksimal limit ambang",
+    "meaningId": "Batas, maksimal, limit, ambang",
     "meaningEn": "Limit, bounds",
     "collocation": {
       "jpRuby": "[我慢:がまん]の[限度:げんど]を[超:こ]える",
@@ -1646,7 +1646,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "げんり",
     "ruby": "[原理:げんり]",
     "partOfSpeech": "[名]",
-    "meaningId": "Prinsip dasar kaidah ilmiah",
+    "meaningId": "Prinsip dasar, kaidah, ilmiah",
     "meaningEn": "Principle, theory",
     "collocation": {
       "jpRuby": "[動作:どうさ]の[原理:げんり]を[学:まな]ぶ",
@@ -1670,7 +1670,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こうかい",
     "ruby": "[後悔:こうかい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penyesalan sesal",
+    "meaningId": "Penyesalan, sesal",
     "meaningEn": "Regret, remorse",
     "collocation": {
       "jpRuby": "[後悔:こうかい]の[念:ねん]にかられる",
@@ -1694,7 +1694,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こうか",
     "ruby": "[効果:こうか]",
     "partOfSpeech": "[名]",
-    "meaningId": "Khasiat efektivitas efek faedah",
+    "meaningId": "Khasiat, efektivitas, efek, faedah",
     "meaningEn": "Effect, efficacy, result",
     "collocation": {
       "jpRuby": "[薬:くすり]の[効果:こうか]が[現:あらわ]れる",
@@ -1718,7 +1718,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こうけん",
     "ruby": "[貢献:こうけん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Sumbangsih kontribusi jasa",
+    "meaningId": "Sumbangsih, kontribusi, jasa",
     "meaningEn": "Contribution, service",
     "collocation": {
       "jpRuby": "[社会:しゃかい]に[貢献:こうけん]する",
@@ -1742,7 +1742,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こうけい",
     "ruby": "[光景:こうけい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pemandangan panorama visual",
+    "meaningId": "Pemandangan, panorama, visual",
     "meaningEn": "Scene, spectacle, sight",
     "collocation": {
       "jpRuby": "[美:うつく]しい[自然:しぜん]の[光景:こうけい]",
@@ -1766,7 +1766,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こうぞう",
     "ruby": "[構造:こうぞう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Struktur arsitektur tatanan",
+    "meaningId": "Struktur, arsitektur, tatanan",
     "meaningEn": "Structure, construction",
     "collocation": {
       "jpRuby": "[建物:たてもの]の[構造:こうぞう]を[調:しら]べる",
@@ -1790,7 +1790,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こうてい",
     "ruby": "[肯定:こうてい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penegasan afirmatif menyetujui",
+    "meaningId": "Penegasan, afirmatif, menyetujui",
     "meaningEn": "Affirmation, positive",
     "collocation": {
       "jpRuby": "[相手:あいて]の[意見:いけん]を[肯定:こうてい]する",
@@ -1814,7 +1814,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こんらん",
     "ruby": "[混乱:こんらん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kekacauan kebingungan kericuhan",
+    "meaningId": "Kekacauan, kebingungan, kericuhan",
     "meaningEn": "Chaos, confusion, turmoil",
     "collocation": {
       "jpRuby": "[現場:げんば]が[混乱:こんらん]する",
@@ -1838,7 +1838,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "さべつ",
     "ruby": "[差別:さべつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Diskriminasi pembedaan perlakuan",
+    "meaningId": "Diskriminasi, pembedaan, perlakuan",
     "meaningEn": "Discrimination, distinction",
     "collocation": {
       "jpRuby": "[不当:ふとう]な[差別:さべつ]をなくす",
@@ -1862,7 +1862,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "さほう",
     "ruby": "[作法:さほう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tata krama etiket sopan santun",
+    "meaningId": "Tata krama, etiket, sopan santun",
     "meaningEn": "Manners, etiquette, propriety",
     "collocation": {
       "jpRuby": "[食事:しょくじ]の[作法:さほう]を[守:まも]る",
@@ -1886,7 +1886,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じじょう",
     "ruby": "[事情:じじょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Situasi kondisi duduk perkara pertimbangan",
+    "meaningId": "Situasi, kondisi, duduk, perkara, pertimbangan",
     "meaningEn": "Circumstances, reasons, conditions",
     "collocation": {
       "jpRuby": "[特別:とくべつ]な[事情:じじょう]がある",
@@ -1910,7 +1910,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じじつ",
     "ruby": "[事実:じじつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Fakta kenyataan riil",
+    "meaningId": "Fakta, kenyataan, riil",
     "meaningEn": "Fact, truth, reality",
     "collocation": {
       "jpRuby": "[事実:じじつ]をありのままに[話:はな]す",
@@ -1934,7 +1934,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しせい",
     "ruby": "[姿勢:しせい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Postur tubuh sikap mental pendirian",
+    "meaningId": "Postur, tubuh, sikap mental, pendirian",
     "meaningEn": "Posture, attitude, stance",
     "collocation": {
       "jpRuby": "[正:ただ]しい[姿勢:しせい]を[保:たも]つ",
@@ -1958,7 +1958,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しかく",
     "ruby": "[資格:しかく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kualifikasi sertifikat lisensi kompetensi",
+    "meaningId": "Kualifikasi, sertifikat, lisensi, kompetensi",
     "meaningEn": "Qualification, license, certificate",
     "collocation": {
       "jpRuby": "[国家:こっか][資格:しかく]を[取得:しゅとく]する",
@@ -1982,7 +1982,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じっさい",
     "ruby": "[実際:じっさい]",
     "partOfSpeech": "[名・副]",
-    "meaningId": "Kenyataan riil fakta keadaan sebenarnya",
+    "meaningId": "Kenyataan, riil, fakta, keadaan, sebenarnya",
     "meaningEn": "Reality, practicality, actual condition",
     "collocation": {
       "jpRuby": "[実際:じっさい]のところどうなのか",
@@ -2006,7 +2006,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しっぱい",
     "ruby": "[失敗:しっぱい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kegagalan kekeliruan",
+    "meaningId": "Kegagalan, kekeliruan",
     "meaningEn": "Failure, mistake",
     "collocation": {
       "jpRuby": "[失敗:しっぱい]を[恐:おそ]れない",
@@ -2030,7 +2030,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しゃっきん",
     "ruby": "[借金:しゃっきん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Utang pinjaman uang",
+    "meaningId": "Utang, pinjaman, uang",
     "meaningEn": "Debt, loan",
     "collocation": {
       "jpRuby": "[借金:しゃっきん]を[返済:へんさい]する",
@@ -2054,7 +2054,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じゅみょう",
     "ruby": "[寿命:じゅみょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Masa pakai usia masa hidup",
+    "meaningId": "Masa, pakai, usia, masa, hidup",
     "meaningEn": "Lifespan, life expectancy",
     "collocation": {
       "jpRuby": "[平均:へいきん][寿命:じゅみょう]が[延:の]びる",
@@ -2078,7 +2078,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じゅんばん",
     "ruby": "[順番:じゅんばん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Giliran urutan antrean",
+    "meaningId": "Giliran, urutan, antrean",
     "meaningEn": "Turn, order, sequence",
     "collocation": {
       "jpRuby": "[順番:じゅんばん]を[待:ま]つ",
@@ -2102,7 +2102,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょうぶ",
     "ruby": "[勝負:しょうぶ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pertandingan laga duel menang-kalah",
+    "meaningId": "Pertandingan, laga, duel, menang-kalah",
     "meaningEn": "Match, contest, game",
     "collocation": {
       "jpRuby": "[真剣:しんけん][勝負:しょうぶ]に[挑:いど]む",
@@ -2126,7 +2126,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょり",
     "ruby": "[処理:しょり]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pemrosesan penanganan pengolahan data",
+    "meaningId": "Pemrosesan, penanganan, pengolahan, data",
     "meaningEn": "Processing, disposal, treatment",
     "collocation": {
       "jpRuby": "[事務:じむ][処理:しょり]を[迅速:じんそく]に[行:おこな]う",
@@ -2150,7 +2150,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょめい",
     "ruby": "[署名:しょめい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tanda tangan tanda tangan persetujuan",
+    "meaningId": "Tanda tangan, tanda tangan, persetujuan",
     "meaningEn": "Signature",
     "collocation": {
       "jpRuby": "[契約書:けいやくしょ]に[署名:しょめい]する",
@@ -2174,7 +2174,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しんり",
     "ruby": "[心理:しんり]",
     "partOfSpeech": "[名]",
-    "meaningId": "Psikologi kejiwaan pola batin",
+    "meaningId": "Psikologi, kejiwaan, pola, batin",
     "meaningEn": "Psychology, state of mind",
     "collocation": {
       "jpRuby": "[人間:にんげん]の[複雑:ふくざつ]な[心理:しんり]",
@@ -2198,7 +2198,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しんよう",
     "ruby": "[信用:しんよう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kepercayaan kredibilitas reputasi",
+    "meaningId": "Kepercayaan, kredibilitas, reputasi",
     "meaningEn": "Trust, confidence, credit",
     "collocation": {
       "jpRuby": "[信用:しんよう]を[得:え]る",
@@ -2222,7 +2222,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "すいせん",
     "ruby": "[推薦:すいせん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Rekomendasi pencalonan",
+    "meaningId": "Rekomendasi, pencalonan",
     "meaningEn": "Recommendation",
     "collocation": {
       "jpRuby": "[教授:きょうじゅ]の[推薦:すいせん]を[受:う]ける",
@@ -2246,7 +2246,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "すいそく",
     "ruby": "[推測:すいそく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Dugaan perkiraan inferensi",
+    "meaningId": "Dugaan, perkiraan, inferensi",
     "meaningEn": "Guess, conjecture, estimation",
     "collocation": {
       "jpRuby": "[原因:げんいん]を[推測:すいそく]する",
@@ -2270,7 +2270,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "すうじ",
     "ruby": "[数字:すうじ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Angka digit nominal angka",
+    "meaningId": "Angka, digit, nominal, angka",
     "meaningEn": "Figure, numeral, digit",
     "collocation": {
       "jpRuby": "[正確:せいかく]な[数字:すうじ]を[出:だ]す",
@@ -2294,7 +2294,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "すんぽう",
     "ruby": "[寸法:すんぽう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Ukuran dimensi panjang lebar",
+    "meaningId": "Ukuran, dimensi, panjang, lebar",
     "meaningEn": "Measurement, dimension",
     "collocation": {
       "jpRuby": "[部屋:へや]の[寸法:すんぽう]を[測:はか]る",
@@ -2318,7 +2318,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せいかく",
     "ruby": "[性格:せいかく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kepribadian karakter watak",
+    "meaningId": "Kepribadian, karakter, watak",
     "meaningEn": "Personality, character",
     "collocation": {
       "jpRuby": "[明:あか]るい[性格:せいかく]",
@@ -2342,7 +2342,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょうたい",
     "ruby": "[正体:しょうたい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Identitas asli wujud sejati",
+    "meaningId": "Identitas, asli, wujud, sejati",
     "meaningEn": "True identity, true character",
     "collocation": {
       "jpRuby": "犯人の[正体:しょうたい]を[暴:あば]く",
@@ -2366,7 +2366,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せきにん",
     "ruby": "[責任:せきにん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tanggung jawab beban moral",
+    "meaningId": "Tanggung, jawab, beban, moral",
     "meaningEn": "Responsibility, liability",
     "collocation": {
       "jpRuby": "[責任:せきにん]を[果:は]たす",
@@ -2390,7 +2390,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かっこう",
     "ruby": "[格好:かっこう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penampilan gaya rupa postur",
+    "meaningId": "Penampilan, gaya, rupa, postur",
     "meaningEn": "Appearance, posture, shape",
     "collocation": {
       "jpRuby": "[格好:かっこう]のいい服を[着:き]る",
@@ -2414,7 +2414,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せんでん",
     "ruby": "[宣伝:せんでん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Iklan promosi publikasi",
+    "meaningId": "Iklan, promosi, publikasi",
     "meaningEn": "Advertising, publicity, propaganda",
     "collocation": {
       "jpRuby": "[新商品:しんしょうひん]を[宣伝:せんでん]する",
@@ -2438,7 +2438,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぜんたい",
     "ruby": "[全体:ぜんたい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Keseluruhan seutuhnya",
+    "meaningId": "Keseluruhan, seutuhnya",
     "meaningEn": "Whole, entire, totality",
     "collocation": {
       "jpRuby": "[全体:ぜんたい]の[意見:いけん]をまとめる",
@@ -2462,7 +2462,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "そしき",
     "ruby": "[組織:そしき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Organisasi struktur lembaga",
+    "meaningId": "Organisasi, struktur, lembaga",
     "meaningEn": "Organization, structure",
     "collocation": {
       "jpRuby": "[組織:そしき]を[改革:かいかく]する",
@@ -2486,7 +2486,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "だんかい",
     "ruby": "[段階:だんかい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tahapan fase jenjang",
+    "meaningId": "Tahapan, fase, jenjang",
     "meaningEn": "Stage, phase, step",
     "collocation": {
       "jpRuby": "[初期:しょき]の[段階:だんかい]",
@@ -2510,7 +2510,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ちえ",
     "ruby": "[知恵:ちえ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kebijaksanaan hikmah akal budi",
+    "meaningId": "Kebijaksanaan, hikmah, akal budi",
     "meaningEn": "Wisdom, wit, intelligence",
     "collocation": {
       "jpRuby": "[生:い]きる[知恵:ちえ]を[学:まな]ぶ",
@@ -2534,7 +2534,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ちしき",
     "ruby": "[知識:ちしき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Wawasan pengetahuan ilmu",
+    "meaningId": "Wawasan, pengetahuan, ilmu",
     "meaningEn": "Knowledge, information",
     "collocation": {
       "jpRuby": "[専門:せんもん][知識:ちしき]を[深:ふか]める",
@@ -2558,7 +2558,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ちゅうもく",
     "ruby": "[注目:ちゅうもく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Perhatian sorotan publik atensi",
+    "meaningId": "Perhatian, sorotan, publik, atensi",
     "meaningEn": "Attention, notice",
     "collocation": {
       "jpRuby": "[世界:せかい]から[注目:ちゅうもく]を[浴:あ]びる",
@@ -2582,7 +2582,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "とくちょう",
     "ruby": "[特徴:とくちょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Ciri khas keunikan keistimewaan",
+    "meaningId": "Ciri, khas, keunikan, keistimewaan",
     "meaningEn": "Feature, characteristic, trait",
     "collocation": {
       "jpRuby": "[製品:せいひん]の[最大:さいだい]の[特徴:とくちょう]をアピールする",
@@ -2606,7 +2606,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "とくちょう",
     "ruby": "[特長:とくちょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Ciri keunggulan fitur utama kelebihan",
+    "meaningId": "Ciri, keunggulan, fitur, utama, kelebihan",
     "meaningEn": "Feature, merit, forte",
     "collocation": {
       "jpRuby": "製品の[特長:とくちょう]を[説明:せつめい]する",
@@ -2630,7 +2630,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "どりょく",
     "ruby": "[どりょく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Ikhtiar kerja keras jerih payah",
+    "meaningId": "Ikhtiar, kerja, keras, jerih, payah",
     "meaningEn": "Effort, endeavor",
     "collocation": {
       "jpRuby": "[日々:ひび]の[努力:どりょく]を[重:かさ]ねる",
@@ -2654,7 +2654,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "なやみ",
     "ruby": "[悩:なや]み",
     "partOfSpeech": "[名]",
-    "meaningId": "Kegundahan kegalauan beban pikiran",
+    "meaningId": "Kegundahan, kegalauan, beban, pikiran",
     "meaningEn": "Trouble, worry, distress",
     "collocation": {
       "jpRuby": "[進路:しんろ]の[悩:なや]みを[相談:そうだん]する",
@@ -2678,7 +2678,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "のうりょく",
     "ruby": "[能力:のうりょく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kemampuan kapabilitas kecakapan",
+    "meaningId": "Kemampuan, kapabilitas, kecakapan",
     "meaningEn": "Ability, capacity, capability",
     "collocation": {
       "jpRuby": "[語学:ごがく][能力:のうりょく]を[伸:の]ばす",
@@ -2702,7 +2702,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はいりょ",
     "ruby": "[配慮:はいりょ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tenggang rasa kepedulian perhatian budi",
+    "meaningId": "Tenggang rasa, kepedulian, perhatian, budi",
     "meaningEn": "Consideration, thoughtfulness",
     "collocation": {
       "jpRuby": "[周囲:しゅうい]への[配慮:はいりょ]を[忘:わす]れない",
@@ -2726,7 +2726,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はっせい",
     "ruby": "[発生:はっせい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kemunculan timbulnya musibah",
+    "meaningId": "Kemunculan, timbulnya, musibah",
     "meaningEn": "Occurrence, outbreak",
     "collocation": {
       "jpRuby": "[事故:じこ]が[発生:はっせい]する",
@@ -2750,7 +2750,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はってん",
     "ruby": "[はってん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Perkembangan kemajuan pertumbuhan pesat",
+    "meaningId": "Perkembangan, kemajuan, pertumbuhan pesat",
     "meaningEn": "Development, growth",
     "collocation": {
       "jpRuby": "[都市:とし]の[急速:きゅうそく]な[発展:はってん]",
@@ -2774,7 +2774,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はんせい",
     "ruby": "[反省:はんせい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Introspeksi diri evaluasi kesalahan",
+    "meaningId": "Introspeksi, diri, evaluasi, kesalahan",
     "meaningEn": "Reflection, reconsideration",
     "collocation": {
       "jpRuby": "[過去:かこ]の[過:あやま]ちを[反省:はんせい]する",
@@ -2798,7 +2798,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はんだん",
     "ruby": "[判断:はんだん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penilaian pertimbangan putusan bijak",
+    "meaningId": "Penilaian, pertimbangan, putusan, bijak",
     "meaningEn": "Judgment, decision",
     "collocation": {
       "jpRuby": "[冷静:れいせい]な[判断:はんだん]を[下:くだ]す",
@@ -2822,7 +2822,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ひげき",
     "ruby": "[悲劇:ひげき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tragedi kisah sedih kepiluan",
+    "meaningId": "Tragedi, kisah, sedih, kepiluan",
     "meaningEn": "Tragedy, disaster",
     "collocation": {
       "jpRuby": "[二度:にど]と[悲劇:ひげき]を繰り返さない",
@@ -2846,7 +2846,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ひひょう",
     "ruby": "[批評:ひひょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kritik ulasan tinjauan karya sastra",
+    "meaningId": "Kritik, ulasan, tinjauan, karya sastra",
     "meaningEn": "Criticism, review",
     "collocation": {
       "jpRuby": "[映画:えいが]の[批評:ひひょう]を[書:か]く",
@@ -2870,7 +2870,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ひみつ",
     "ruby": "[秘密:ひみつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Rahasia rahasia tertutup",
+    "meaningId": "Rahasia, rahasia, tertutup",
     "meaningEn": "Secret, mystery",
     "collocation": {
       "jpRuby": "[秘密:ひみつ]を[守:まも]る",
@@ -2894,7 +2894,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ひょうげん",
     "ruby": "[ひょうげん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Ekspresi ungkapan gaya bertutur",
+    "meaningId": "Ekspresi, ungkapan, gaya, bertutur",
     "meaningEn": "Expression, representation",
     "collocation": {
       "jpRuby": "[豊:ゆた]かな[表現:ひょうげん]",
@@ -2918,7 +2918,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ひょうばん",
     "ruby": "[評判:ひょうばん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Reputasi nama baik buah bibir",
+    "meaningId": "Reputasi, nama, baik, buah, bibir",
     "meaningEn": "Reputation, popularity",
     "collocation": {
       "jpRuby": "[世間:せけん]の[評判:ひょうばん]が[良:よ]い",
@@ -2942,7 +2942,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ほうしん",
     "ruby": "[方針:ほうしん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Haluan garis pedoman kebijakan arah",
+    "meaningId": "Haluan, garis, pedoman, kebijakan, arah",
     "meaningEn": "Policy, course, guideline",
     "collocation": {
       "jpRuby": "[基本:きほん][方針:ほうしん]を[定:さだ]める",
@@ -2966,7 +2966,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けいしき",
     "ruby": "[形式:けいしき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Format formalitas bentuk tata cara",
+    "meaningId": "Format, formalitas, bentuk, tata, cara",
     "meaningEn": "Form, format, formality",
     "collocation": {
       "jpRuby": "[決:き]まった[形式:けいしき]に[従:したが]って[記入:きにゅう]する",
@@ -2990,7 +2990,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "むじゅん",
     "ruby": "[矛盾:むじゅん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kontradiksi bertolak belakang inkonsisten",
+    "meaningId": "Kontradiksi, bertolak, belakang, inkonsisten",
     "meaningEn": "Contradiction, inconsistency",
     "collocation": {
       "jpRuby": "[言動:げんどう]に[矛盾:むじゅん]がある",
@@ -3014,7 +3014,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "やくめ",
     "ruby": "[役目:やくめ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tugas fungsi peran kewajiban",
+    "meaningId": "Tugas, fungsi, peran, kewajiban",
     "meaningEn": "Duty, role, task",
     "collocation": {
       "jpRuby": "[自分:じぶん]の[役目:やくめ]を[果:は]たす",
@@ -3038,7 +3038,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "やくわり",
     "ruby": "[役割:やくわり]",
     "partOfSpeech": "[名]",
-    "meaningId": "Peran andil pembagian tugas",
+    "meaningId": "Peran, andil, pembagian, tugas",
     "meaningEn": "Role, part, assigning of parts",
     "collocation": {
       "jpRuby": "[重要:じゅうよう]な[役割:やくわり]を[担:にな]う",
@@ -3062,7 +3062,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ゆうき",
     "ruby": "[勇気:ゆうき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Keberanian nyali jiwa ksatria",
+    "meaningId": "Keberanian, nyali, jiwa, ksatria",
     "meaningEn": "Courage, bravery, grit",
     "collocation": {
       "jpRuby": "[勇気:ゆうき]を[出:だ]して[告白:こくはく]する",
@@ -3086,7 +3086,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょうはい",
     "ruby": "[勝敗:しょうはい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Menang kalah hasil pertarungan laga",
+    "meaningId": "Menang, kalah, hasil, pertarungan, laga",
     "meaningEn": "Victory or defeat, outcome of match",
     "collocation": {
       "jpRuby": "[勝敗:しょうはい]の[行方:ゆくえ]を[見守:みまも]る",
@@ -3110,7 +3110,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "りかい",
     "ruby": "[りかい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pemahaman pengertian daya tangkap",
+    "meaningId": "Pemahaman, pengertian, daya, tangkap",
     "meaningEn": "Understanding, comprehension",
     "collocation": {
       "jpRuby": "[相互:そうご][理解:りかい]を[深:ふか]める",
@@ -3134,7 +3134,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "りそう",
     "ruby": "[理想:りそう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Cita-cita idaman ideal",
+    "meaningId": "Cita-cita, idaman, ideal",
     "meaningEn": "Ideal",
     "collocation": {
       "jpRuby": "[高:たか]い[理想:りそう]を[掲:かか]げる",
@@ -3158,7 +3158,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "りがい",
     "ruby": "[利害:りがい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Untung rugi kepentingan laba-rugi",
+    "meaningId": "Untung, rugi, kepentingan, laba-rugi",
     "meaningEn": "Interests, stakes, pros and cons",
     "collocation": {
       "jpRuby": "[利害:りがい]が[一致:いっち]する",
@@ -3182,7 +3182,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "りゆう",
     "ruby": "[理由:りゆう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Alasan dalih latar belakang",
+    "meaningId": "Alasan, dalih, latar, belakang",
     "meaningEn": "Reason, pretext, cause",
     "collocation": {
       "jpRuby": "[明確:めいかく]な[理由:りゆう]を[述:の]べる",
@@ -3206,7 +3206,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "りゃく",
     "ruby": "[略:りゃく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Singkatan kependekan abreviasi",
+    "meaningId": "Singkatan, kependekan, abreviasi",
     "meaningEn": "Abbreviation",
     "collocation": {
       "jpRuby": "[正式:せいしき][名称:めいしょう]の[略:りゃく]",
@@ -3230,7 +3230,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "れいがい",
     "ruby": "[例外:れいがい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pengecualian anomali khusus",
+    "meaningId": "Pengecualian, anomali, khusus",
     "meaningEn": "Exception",
     "collocation": {
       "jpRuby": "[例外:れいがい]を[認:みと]めない",
@@ -3254,7 +3254,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "れきし",
     "ruby": "[歴史:れきし]",
     "partOfSpeech": "[名]",
-    "meaningId": "Sejarah babad riwayat lampau",
+    "meaningId": "Sejarah, babad, riwayat, lampau",
     "meaningEn": "History",
     "collocation": {
       "jpRuby": "[長:なが]い[歴史:れきし]を[誇:ほこ]る",
@@ -3278,7 +3278,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "れんぞく",
     "ruby": "[連続:れんぞく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Rangkaian berturut-turut beruntun",
+    "meaningId": "Rangkaian, berturut-turut, beruntun",
     "meaningEn": "Continuation, succession, streak",
     "collocation": {
       "jpRuby": "[３日:みっか][連続:れんぞく]で[雨:あめ]が[降:ふ]る",
@@ -3302,7 +3302,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ろんり",
     "ruby": "[論理:ろんり]",
     "partOfSpeech": "[名]",
-    "meaningId": "Logika nalar alur penalaran",
+    "meaningId": "Logika, nalar, alur, penalaran",
     "meaningEn": "Logic",
     "collocation": {
       "jpRuby": "[論理:ろんり][的:てき]に[考:かんが]える",
@@ -3326,7 +3326,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "わだい",
     "ruby": "[話題:わだい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Topik perbincangan buah bibir pembicaraan",
+    "meaningId": "Topik, perbincangan, buah, bibir, pembicaraan",
     "meaningEn": "Topic of conversation",
     "collocation": {
       "jpRuby": "[話題:わだい]を[変:か]える",
@@ -3350,7 +3350,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "あくえいきょう",
     "ruby": "[悪影響:あくえいきょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pengaruh buruk efek negatif impak buruk",
+    "meaningId": "Pengaruh, buruk, efek, negatif, impak, buruk",
     "meaningEn": "Bad influence, adverse effect",
     "collocation": {
       "jpRuby": "[子供:こども]に[悪影響:あくえいきょう]を[与:あた]える",
@@ -3374,7 +3374,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "あんぴ",
     "ruby": "[安否:あんぴ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kabar keselamatan selamat atau tidak",
+    "meaningId": "Kabar, keselamatan, selamat atau tidak",
     "meaningEn": "Safety, welfare",
     "collocation": {
       "jpRuby": "[家族:かぞく]の[安否:あんぴ]を[確認:かくにん]する",
@@ -3398,7 +3398,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "いこう",
     "ruby": "[意向:いこう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kehendak maksud niat keinginan hati",
+    "meaningId": "Kehendak, maksud, niat, keinginan, hati",
     "meaningEn": "Intention, inclination, wish",
     "collocation": {
       "jpRuby": "[相手:あいて]の[意向:いこう]を[聞:き]く",
@@ -3422,7 +3422,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じたい",
     "ruby": "[事態:じたい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Keadaan genting situasi genting darurat",
+    "meaningId": "Keadaan, genting, situasi, genting, darurat",
     "meaningEn": "Situation, state of affairs (serious)",
     "collocation": {
       "jpRuby": "[緊急:きんきゅう]の[事態:じたい]に[冷静:れいせい]に[対応:たいおう]する",
@@ -3446,7 +3446,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "いかん",
     "ruby": "[遺憾:いかん]",
     "partOfSpeech": "[名・ナ形]",
-    "meaningId": "Rasa sesal sangat disayangkan formal",
+    "meaningId": "Rasa, sesal, sangat, disayangkan, formal",
     "meaningEn": "Regrettable, deplorable",
     "collocation": {
       "jpRuby": "[極:きわ]めて[遺憾:いかん]に[思:おも]う",
@@ -3470,7 +3470,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "いじ",
     "ruby": "[意地:いじ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gengsi keras hati harga diri keras kepala",
+    "meaningId": "Gengsi, keras, hati, harga, diri, keras, kepala",
     "meaningEn": "Stubbornness, pride, obstinacy",
     "collocation": {
       "jpRuby": "[意地:いじ]を[張:は]る",
@@ -3494,7 +3494,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "いと",
     "ruby": "[いと]",
     "partOfSpeech": "[名]",
-    "meaningId": "Maksud niat tujuan tersembunyi",
+    "meaningId": "Maksud, niat, tujuan, tersembunyi",
     "meaningEn": "Intention, aim, purpose",
     "collocation": {
       "jpRuby": "[発言:はつげん]の[意図:いと]を[測:はか]る",
@@ -3518,7 +3518,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "いひょう",
     "ruby": "[意表:いひょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Di luar sangkaan kejutan tak terduga",
+    "meaningId": "Di luar, sangkaan, kejutan, tak, terduga",
     "meaningEn": "Surprise, unexpectedness",
     "collocation": {
       "jpRuby": "[意表:いひょう]を[突:つ]かれる",
@@ -3542,7 +3542,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こんき",
     "ruby": "[根気:こんき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Ketabahan kesabaran ketekunan ulet",
+    "meaningId": "Ketabahan, kesabaran, ketekunan, ulet",
     "meaningEn": "Patience, perseverance, stamina",
     "collocation": {
       "jpRuby": "[根気:こんき]よく[練習:れんしゅう]を[続:つづ]ける",
@@ -3566,7 +3566,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きひん",
     "ruby": "[気品:きひん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Keanggunan wibawa keelokan elegan",
+    "meaningId": "Keanggunan, wibawa, keelokan, elegan",
     "meaningEn": "Grace, elegance, dignity",
     "collocation": {
       "jpRuby": "[気品:きひん]がある[立:た]ち[振:ふ]る[舞:ま]い",
@@ -3590,7 +3590,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けはい",
     "ruby": "[気配:けはい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gelagat firasat hawa tanda-tanda",
+    "meaningId": "Gelagat, firasat, hawa, tanda-tanda",
     "meaningEn": "Sign, indication, hint",
     "collocation": {
       "jpRuby": "[人:ひと]の[気配:けはい]を[感:かん]じる",
@@ -3614,7 +3614,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きび",
     "ruby": "[機微:きび]",
     "partOfSpeech": "[名]",
-    "meaningId": "Seluk-beluk kepekaan nuansa halus batin",
+    "meaningId": "Seluk-beluk, kepekaan, nuansa, halus, batin",
     "meaningEn": "Subtleties, niceties, inner workings",
     "collocation": {
       "jpRuby": "[人情:にんじょう]の[機微:きび]に[通:つう]じる",
@@ -3638,7 +3638,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きぼ",
     "ruby": "[規模:きぼ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Skala cakupan besaran proyek",
+    "meaningId": "Skala, cakupan, besaran, proyek",
     "meaningEn": "Scale, scope",
     "collocation": {
       "jpRuby": "[大:おお]きな[規模:きぼ]で[開催:かいさい]する",
@@ -3662,7 +3662,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きゃっこう",
     "ruby": "[脚光:きゃっこう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Sorotan lampu sorot perhatian panggung",
+    "meaningId": "Sorotan, lampu, sorot, perhatian, panggung",
     "meaningEn": "Spotlight, limelight",
     "collocation": {
       "jpRuby": "[脚光:きゃっこう]を[浴:あ]びる",
@@ -3686,7 +3686,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きゅうよう",
     "ruby": "[休養:きゅうよう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Istirahat pemulihan rehat badan",
+    "meaningId": "Istirahat, pemulihan, rehat, badan",
     "meaningEn": "Rest, recuperation",
     "collocation": {
       "jpRuby": "[十分:じゅうぶん]な[休養:きゅうよう]を[取:と]る",
@@ -3710,7 +3710,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きょてん",
     "ruby": "[拠点:きょてん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pangkalan basis markas operasional",
+    "meaningId": "Pangkalan, basis, markas, operasional",
     "meaningEn": "Base, foothold, hub",
     "collocation": {
       "jpRuby": "[活動:かつどう]の[拠点:きょてん]を[置:お]く",
@@ -3734,7 +3734,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きょひ",
     "ruby": "[拒否:きょひ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penolakan veto menolak tegas",
+    "meaningId": "Penolakan, veto, menolak, tegas",
     "meaningEn": "Rejection, refusal, veto",
     "collocation": {
       "jpRuby": "[要求:ようきゅう]を[拒否:きょひ]する",
@@ -3758,7 +3758,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きょうくん",
     "ruby": "[教訓:きょうくん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pelajaran hikmah ikhtibar moral",
+    "meaningId": "Pelajaran, hikmah, ikhtibar, moral",
     "meaningEn": "Lesson, moral precept",
     "collocation": {
       "jpRuby": "[過去:かこ]の[失敗:しっぱい]を[教訓:きょうくん]にする",
@@ -3782,7 +3782,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きょうぐう",
     "ruby": "[境遇:きょうぐう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Nasib keadaan latar hidup lingkungan",
+    "meaningId": "Nasib, keadaan, latar, hidup, lingkungan",
     "meaningEn": "Circumstances, environment of life",
     "collocation": {
       "jpRuby": "[同:おな]じ[境遇:きょうぐう]の[仲間:なかま]",
@@ -3806,7 +3806,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きょうめい",
     "ruby": "[共鳴:きょうめい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Resonansi simpati sefrekuensi hati",
+    "meaningId": "Resonansi, simpati, sefrekuensi, hati",
     "meaningEn": "Resonance, sympathy",
     "collocation": {
       "jpRuby": "[考:かんが]え[方:かた]に[共鳴:きょうめい]する",
@@ -3830,7 +3830,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ごくい",
     "ruby": "[極意:ごくい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Rahasia inti sari jurus pamungkas",
+    "meaningId": "Rahasia, inti, sari, jurus, pamungkas",
     "meaningEn": "Secret, esoteric core, mystery",
     "collocation": {
       "jpRuby": "[上達:じょうたつ]の[極意:ごくい]を[伝授:でんじゅ]される",
@@ -3854,7 +3854,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こっせつ",
     "ruby": "[骨折:こっせつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Patah tulang fraktur",
+    "meaningId": "Patah, tulang, fraktur",
     "meaningEn": "Bone fracture",
     "collocation": {
       "jpRuby": "[足:あし]の[骨:ほね]を[骨折:こっせつ]する",
@@ -3878,7 +3878,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こんきょ",
     "ruby": "[根拠:こんきょ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Dasar bukti pijakan argumen",
+    "meaningId": "Dasar, bukti, pijakan, argumen",
     "meaningEn": "Basis, ground, foundation",
     "collocation": {
       "jpRuby": "[確:たし]かな[根拠:こんきょ]を[示:しめ]す",
@@ -3902,7 +3902,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こんざつ",
     "ruby": "[混雑:こんざつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kepadatan kesesakan hiruk-pikuk",
+    "meaningId": "Kepadatan, kesesakan, hiruk-pikuk",
     "meaningEn": "Congestion, crowding, jam",
     "collocation": {
       "jpRuby": "[車内:しゃない]が[激:はげ]しく[混雑:こんざつ]する",
@@ -3926,7 +3926,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こんぽん",
     "ruby": "[根本:こんぽん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Akar dasar fundamental pokok mula",
+    "meaningId": "Akar, dasar, fundamental, pokok, mula",
     "meaningEn": "Root, basis, foundation",
     "collocation": {
       "jpRuby": "[根本:こんぽん][的:てき]な[解決:かいけつ]を[目指:めざ]す",
@@ -3950,7 +3950,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "さい",
     "ruby": "[差異:さい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Perbedaan selisih diferensiasi",
+    "meaningId": "Perbedaan, selisih, diferensiasi",
     "meaningEn": "Difference, disparity",
     "collocation": {
       "jpRuby": "[両者:りょうしゃ]の[間:あいだ]に[差異:さい]はない",
@@ -3974,7 +3974,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "さいさん",
     "ruby": "[採算:さいさん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Titik impas kalkulasi laba margin",
+    "meaningId": "Titik, impas, kalkulasi, laba, margin",
     "meaningEn": "Profitability, balance of profit",
     "collocation": {
       "jpRuby": "[採算:さいさん]が[合:あ]うビジネス",
@@ -3998,7 +3998,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "さいげん",
     "ruby": "[再現:さいげん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Rekonstruksi mereka ulang menampilkan kembali",
+    "meaningId": "Rekonstruksi, mereka, ulang, menampilkan, kembali",
     "meaningEn": "Reproduction, reenactment",
     "collocation": {
       "jpRuby": "[事故:じこ]の[現場:げんば]を[再現:さいげん]する",
@@ -4022,7 +4022,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "さいはい",
     "ruby": "[采配:さいはい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Komando arahan taktik kepemimpinan",
+    "meaningId": "Komando, arahan, taktik, kepemimpinan",
     "meaningEn": "Baton of command, direction",
     "collocation": {
       "jpRuby": "[監督:かんとく]の[見事:みごと]な[采配:さいはい]",
@@ -4046,7 +4046,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "さっかく",
     "ruby": "[錯覚:さっかく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Ilusi optik salah lihat salah duga",
+    "meaningId": "Ilusi, optik, salah, lihat, salah, duga",
     "meaningEn": "Illusion, hallucination",
     "collocation": {
       "jpRuby": "[目:め]の[錯覚:さっかく]を[利用:りよう]する",
@@ -4070,7 +4070,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "さんちょう",
     "ruby": "[山頂:さんちょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Puncak bukit puncak gunung",
+    "meaningId": "Puncak, bukit, puncak, gunung",
     "meaningEn": "Summit, mountaintop",
     "collocation": {
       "jpRuby": "[山頂:さんちょう]からの[雄大:ゆうだい]な[眺:なが]め",
@@ -4094,7 +4094,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しかけ",
     "ruby": "[仕掛:しか]け",
     "partOfSpeech": "[名]",
-    "meaningId": "Mekanisme jebakan trik tersembunyi",
+    "meaningId": "Mekanisme, jebakan, trik, tersembunyi",
     "meaningEn": "Device, gimmick, trick",
     "collocation": {
       "jpRuby": "[面白:おもしろ]い[仕掛:しか]けがある[玩具:おもちゃ]",
@@ -4118,7 +4118,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しかく",
     "ruby": "[視覚:しかく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Indra penglihatan visual",
+    "meaningId": "Indra, penglihatan, visual",
     "meaningEn": "Sense of sight, vision",
     "collocation": {
       "jpRuby": "[視覚:しかく][的:てき]な[効果:こうか]を[狙:ねら]う",
@@ -4142,7 +4142,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しこう",
     "ruby": "[試行:しこう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Uji coba coba-coba pengetesan awal",
+    "meaningId": "Uji, coba, coba-coba, pengetesan, awal",
     "meaningEn": "Trial, test, trial run",
     "collocation": {
       "jpRuby": "[試行:しこう][錯誤:さくご]を[繰:く]り[返:かえ]す",
@@ -4166,7 +4166,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しこう",
     "ruby": "[施行:しこう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pemberlakuan penerapan undang-undang",
+    "meaningId": "Pemberlakuan, penerapan, undang-undang",
     "meaningEn": "Enforcement, implementation (law)",
     "collocation": {
       "jpRuby": "[新法:しんぽう]が[来月:らいげつ][施行:しこう]される",
@@ -4190,7 +4190,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しなん",
     "ruby": "[至難:しなん]",
     "partOfSpeech": "[名・ナ形]",
-    "meaningId": "Sangat sulit nyaris mustahil",
+    "meaningId": "Sangat, sulit, nyaris, mustahil",
     "meaningEn": "Extremely difficult",
     "collocation": {
       "jpRuby": "[至難:しなん]の[業:わざ]を[成:な]し[遂:と]げる",
@@ -4214,7 +4214,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しや",
     "ruby": "[視野:しや]",
     "partOfSpeech": "[名]",
-    "meaningId": "Bidang pandang cakrawala wawasan",
+    "meaningId": "Bidang, pandang, cakrawala, wawasan",
     "meaningEn": "Field of vision, outlook",
     "collocation": {
       "jpRuby": "[視野:しや]を[広:ひろ]げる",
@@ -4238,7 +4238,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しゅがん",
     "ruby": "[主眼:しゅがん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Fokus utama titik berat pokok",
+    "meaningId": "Fokus, utama, titik, berat, pokok",
     "meaningEn": "Main point, primary focus",
     "collocation": {
       "jpRuby": "[実用性:じつようせい]に[主眼:しゅがん]を[置:お]く",
@@ -4262,7 +4262,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しゅし",
     "ruby": "[趣旨:しゅし]",
     "partOfSpeech": "[名]",
-    "meaningId": "Maksud inti esensi tujuan pokok",
+    "meaningId": "Maksud, inti, esensi, tujuan, pokok",
     "meaningEn": "Purpose, object, meaning",
     "collocation": {
       "jpRuby": "[企画:きかく]の[趣旨:しゅし]を[説明:せつめい]する",
@@ -4286,7 +4286,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しゅわん",
     "ruby": "[手腕:しゅわん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kepiawaian keahlian manajerial tangan dingin",
+    "meaningId": "Kepiawaian, keahlian, manajerial, tangan, dingin",
     "meaningEn": "Ability, capability, skill",
     "collocation": {
       "jpRuby": "[経営:けいえい]の[手腕:しゅわん]を[発揮:はっき]する",
@@ -4310,7 +4310,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じゅりょう",
     "ruby": "[受領:じゅりょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penerimaan tanda terima resmi",
+    "meaningId": "Penerimaan, tanda, terima, resmi",
     "meaningEn": "Receipt, acceptance",
     "collocation": {
       "jpRuby": "[受領:じゅりょう][書:しょ]に[押印:おういん]する",
@@ -4334,7 +4334,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じょげん",
     "ruby": "[助言:じょげん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Saran nasihat wejangan masukan",
+    "meaningId": "Saran, nasihat, wejangan, masukan",
     "meaningEn": "Advice, suggestion, counsel",
     "collocation": {
       "jpRuby": "[先輩:せんぱい]から[有益:ゆうえき]な[助言:じょげん]をもらう",
@@ -4358,7 +4358,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょみん",
     "ruby": "[庶民:しょみん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Rakyat jelata masyarakat awam",
+    "meaningId": "Rakyat, jelata, masyarakat, awam",
     "meaningEn": "Common people, ordinary citizens",
     "collocation": {
       "jpRuby": "[庶民:しょみん]の[生活:せいかつ]を[知:し]る",
@@ -4382,7 +4382,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょかん",
     "ruby": "[所感:しょかん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kesan pandangan pendapat pribadi",
+    "meaningId": "Kesan, pandangan, pendapat, pribadi",
     "meaningEn": "Impressions, thoughts",
     "collocation": {
       "jpRuby": "[研修:けんしゅう]の[所感:しょかん]を[述:の]べる",
@@ -4406,7 +4406,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょち",
     "ruby": "[処置:しょち]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penanganan tindakan medis darurat",
+    "meaningId": "Penanganan, tindakan, medis, darurat",
     "meaningEn": "Measure, step, medical treatment",
     "collocation": {
       "jpRuby": "[適切:てきせつ]な[処置:しょち]を[施:ほどこ]す",
@@ -4430,7 +4430,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じそんしん",
     "ruby": "[自尊心:じそんしん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Harga diri rasa martabat diri",
+    "meaningId": "Harga, diri, rasa, martabat, diri",
     "meaningEn": "Self-esteem, pride",
     "collocation": {
       "jpRuby": "[自尊心:じそんしん]を[傷:きず]つける",
@@ -4454,7 +4454,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じったい",
     "ruby": "[実態:じったい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kondisi riil fakta keadaan sesungguhnya",
+    "meaningId": "Kondisi, riil, fakta, keadaan, sesungguhnya",
     "meaningEn": "Actual condition, real state",
     "collocation": {
       "jpRuby": "[労働:ろうどう]の[実態:じったい]を[調査:ちょうさ]する",
@@ -4478,7 +4478,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じつりょく",
     "ruby": "[実力:じつりょく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kemampuan nyata kompetensi riil",
+    "meaningId": "Kemampuan, nyata, kompetensi, riil",
     "meaningEn": "True ability, real capability",
     "collocation": {
       "jpRuby": "[実力:じつりょく]を[発揮:はっき]する",
@@ -4502,7 +4502,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しひょう",
     "ruby": "[指標:しひょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Indikator tolok ukur acuan",
+    "meaningId": "Indikator, tolok ukur, acuan",
     "meaningEn": "Indicator, index, benchmark",
     "collocation": {
       "jpRuby": "[経済:けいざい]の[重要:じゅうよう]な[指標:しひょう]",
@@ -4526,7 +4526,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しめい",
     "ruby": "[使命:しめい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Misi tugas mulia amanat luhur",
+    "meaningId": "Misi, tugas, mulia, amanat, luhur",
     "meaningEn": "Mission, errand",
     "collocation": {
       "jpRuby": "[重大:じゅうだい]な[使命:しめい]を[帯:お]びる",
@@ -4550,7 +4550,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょうてん",
     "ruby": "[焦点:しょうてん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Titik fokus poros perhatian pusat telaah",
+    "meaningId": "Titik, fokus, poros, perhatian, pusat, telaah",
     "meaningEn": "Focus, focal point, pivot",
     "collocation": {
       "jpRuby": "[議論:ぎろん]の[焦点:しょうてん]を[絞:しぼ]る",
@@ -4574,7 +4574,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しゅくめい",
     "ruby": "[宿命:しゅくめい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Takdir garis nasib suratan takdir",
+    "meaningId": "Takdir, garis, nasib, suratan, takdir",
     "meaningEn": "Fate, destiny",
     "collocation": {
       "jpRuby": "[逃:に]れられない[宿命:しゅくめい]",
@@ -4598,7 +4598,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じゅどう",
     "ruby": "[受動:じゅどう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Sifat pasif menerima pasif",
+    "meaningId": "Sifat, pasif, menerima, pasif",
     "meaningEn": "Passivity",
     "collocation": {
       "jpRuby": "[受動:じゅどう][的:てき]な[態度:たいど]を[改:あらた]める",
@@ -4622,7 +4622,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じはつ",
     "ruby": "[自発:じはつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Inisiatif mandiri kesadaran sukarela",
+    "meaningId": "Inisiatif, mandiri, kesadaran, sukarela",
     "meaningEn": "Spontaneity, voluntary action",
     "collocation": {
       "jpRuby": "[自発:じはつ][的:てき]に[行動:こうどう]する",
@@ -4646,7 +4646,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じょうせい",
     "ruby": "[情勢:じょうせい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kondisi perpolitikan konstelasi situasi",
+    "meaningId": "Kondisi, perpolitikan, konstelasi, situasi",
     "meaningEn": "Situation, state of affairs",
     "collocation": {
       "jpRuby": "[国際:こくさい][情勢:じょうせい]の[変化:へんか]",
@@ -4670,7 +4670,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じょうちょ",
     "ruby": "[情緒:じょうちょ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Suasana syahdu nuansa puitis emosi rasa",
+    "meaningId": "Suasana, syahdu, nuansa, puitis, emosi, rasa",
     "meaningEn": "Atmosphere, mood, poetic sentiment",
     "collocation": {
       "jpRuby": "[下町:したまち]の[情緒:じょうちょ]が[残:のこ]る",
@@ -4694,7 +4694,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょうごう",
     "ruby": "[照合:しょうごう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pencocokan verifikasi silang data",
+    "meaningId": "Pencocokan, verifikasi, silang, data",
     "meaningEn": "Collation, checking, verification",
     "collocation": {
       "jpRuby": "[指紋:しもん]を[照合:しょうごう]する",
@@ -4718,7 +4718,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょくむ",
     "ruby": "[職務:しょくむ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tugas jabatan dinas kewajiban kantor",
+    "meaningId": "Tugas, jabatan, dinas, kewajiban, kantor",
     "meaningEn": "Professional duties, official business",
     "collocation": {
       "jpRuby": "[職務:しょくむ]を[全:まっと]うする",
@@ -4742,7 +4742,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょとく",
     "ruby": "[所得:しょとく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penghasilan pendapatan kena pajak",
+    "meaningId": "Penghasilan, pendapatan, kena, pajak",
     "meaningEn": "Income, earnings",
     "collocation": {
       "jpRuby": "[所得:しょとく][税:ぜい]を[計算:けいさん]する",
@@ -4766,7 +4766,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しんきょう",
     "ruby": "[心境:しんきょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kondisi batin suasana hati nurani",
+    "meaningId": "Kondisi, batin, suasana hati, nurani",
     "meaningEn": "Mental state, state of mind",
     "collocation": {
       "jpRuby": "[現在:げんざい]の[心境:しんきょう]を[語:かた]る",
@@ -4790,7 +4790,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しんそう",
     "ruby": "[真相:しんそう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kebenaran hakiki fakta perkara sesungguhnya",
+    "meaningId": "Kebenaran, hakiki, fakta, perkara, sesungguhnya",
     "meaningEn": "Truth, real situation, inside facts",
     "collocation": {
       "jpRuby": "[事件:じけん]の[真相:しんそう]を[究明:きゅうめい]する",
@@ -4814,7 +4814,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じんえい",
     "ruby": "[陣営:じんえい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kubu kubu pertahanan faksi",
+    "meaningId": "Kubu, kubu, pertahanan, faksi",
     "meaningEn": "Camp, faction, ranks",
     "collocation": {
       "jpRuby": "[与党:よとう][陣営:じんえい]と[野党:やとう][陣営:じんえい]",
@@ -4838,7 +4838,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せいりょく",
     "ruby": "[勢力:せいりょく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Daya pengaruh kekuatan kekuasaan",
+    "meaningId": "Daya, pengaruh, kekuatan, kekuasaan",
     "meaningEn": "Influence, power, strength",
     "collocation": {
       "jpRuby": "[勢力:せいりょく]を[伸:の]ばす",
@@ -4862,7 +4862,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せきむ",
     "ruby": "[責務:せきむ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kewajiban mengikat tanggung jawab mutlak",
+    "meaningId": "Kewajiban, mengikat, tanggung, jawab, mutlak",
     "meaningEn": "Duty, obligation, responsibility",
     "collocation": {
       "jpRuby": "[重大:じゅうだい]な[責務:せきむ]を[負:お]う",
@@ -4886,7 +4886,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぜせい",
     "ruby": "[是正:ぜせい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Koreksi pembenahan perbaikan ketimpangan",
+    "meaningId": "Koreksi, pembenahan, perbaikan, ketimpangan",
     "meaningEn": "Correction, rectification",
     "collocation": {
       "jpRuby": "[格差:かくさ]を[是正:ぜせい]する",
@@ -4910,7 +4910,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぜんしょ",
     "ruby": "[善処:ぜんしょ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penanganan terbaik ikhtiar maksimal",
+    "meaningId": "Penanganan, terbaik, ikhtiar, maksimal",
     "meaningEn": "Doing one's best, handling properly",
     "collocation": {
       "jpRuby": "[適切:てきせつ]に[善処:ぜんしょ]いたします",
@@ -4934,7 +4934,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "そしつ",
     "ruby": "[素質:そしつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Bakat alami potensi bawaan lahir",
+    "meaningId": "Bakat, alami, potensi, bawaan, lahir",
     "meaningEn": "Talent, aptitude, predisposition",
     "collocation": {
       "jpRuby": "[音楽:おんがく]の[素質:そしつ]がある",
@@ -4958,7 +4958,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "そち",
     "ruby": "[措置:そち]",
     "partOfSpeech": "[名]",
-    "meaningId": "Langkah tindakan kebijakan regulasi",
+    "meaningId": "Langkah, tindakan, kebijakan, regulasi",
     "meaningEn": "Measure, step, action",
     "collocation": {
       "jpRuby": "[緊急:きんきゅう][措置:そち]を[講:こう]じる",
@@ -4982,7 +4982,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "そうじょう",
     "ruby": "[相乗:そうじょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Sinergi efek berlipat ganda",
+    "meaningId": "Sinergi, efek, berlipat, ganda",
     "meaningEn": "Synergy, multiplication",
     "collocation": {
       "jpRuby": "[相乗:そうじょう][効果:こうか]を[生:う]む",
@@ -5006,7 +5006,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "たいせい",
     "ruby": "[態勢:たいせい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kesiap-siagaan postur formasi sistem",
+    "meaningId": "Kesiap-siagaan, postur, formasi, sistem",
     "meaningEn": "Readiness, posture, prepared state",
     "collocation": {
       "jpRuby": "[受:う]け[入:い]れ[態勢:たいせい]を[整:ととの]える",
@@ -5030,7 +5030,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "だきょう",
     "ruby": "[妥協:だきょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kompromi jalan tengah mengalah",
+    "meaningId": "Kompromi, jalan, tengah, mengalah",
     "meaningEn": "Compromise, giving in",
     "collocation": {
       "jpRuby": "[相手:あいて]と[妥協:だきょう]する",
@@ -5054,7 +5054,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "だつぼう",
     "ruby": "[脱帽:だつぼう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Angkat topi salut luar biasa kagum",
+    "meaningId": "Angkat, topi, salut, luar, biasa, kagum",
     "meaningEn": "Taking off hat, taking one's hat off to",
     "collocation": {
       "jpRuby": "[見事:みごと]な[腕前:うでまえ]に[脱帽:だつぼう]する",
@@ -5078,7 +5078,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ちょっかん",
     "ruby": "[直観:ちょっかん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Intuisi firasat batin kilat",
+    "meaningId": "Intuisi, firasat, batin, kilat",
     "meaningEn": "Intuition, immediate perception",
     "collocation": {
       "jpRuby": "[直観:ちょっかん]が[働:はたら]く",
@@ -5102,7 +5102,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ついきゅう",
     "ruby": "[追及:ついきゅう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pengusutan desakan interogasi kesalahan",
+    "meaningId": "Pengusutan, desakan, interogasi, kesalahan",
     "meaningEn": "Investigation, questioning, pursuit",
     "collocation": {
       "jpRuby": "[責任:せきにん]を[追及:ついきゅう]する",
@@ -5126,7 +5126,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "つうこん",
     "ruby": "[痛恨:つうこん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Sesal mendalam terpukul getir",
+    "meaningId": "Sesal, mendalam, terpukul, getir",
     "meaningEn": "Bitter regret, deep grief",
     "collocation": {
       "jpRuby": "[痛恨:つうこん]の[極:きわ]み",
@@ -5150,7 +5150,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょうだく",
     "ruby": "[承諾:しょうだく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Persetujuan kesepakatan akseptasi",
+    "meaningId": "Persetujuan, kesepakatan, akseptasi",
     "meaningEn": "Consent, agreement, acceptance",
     "collocation": {
       "jpRuby": "[条件:じょうけん]を[承諾:しょうだく]する",
@@ -5174,7 +5174,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ていひょう",
     "ruby": "[定評:ていひょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Reputasi mapan diakui luas",
+    "meaningId": "Reputasi, mapan, diakui, luas",
     "meaningEn": "Established reputation",
     "collocation": {
       "jpRuby": "[味:あじ]に[定評:ていひょう]がある[店:みせ]だ",
@@ -5198,7 +5198,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "てきせい",
     "ruby": "[適性:てきせい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kesesuaian bakat kecocokan bidang",
+    "meaningId": "Kesesuaian, bakat, kecocokan, bidang",
     "meaningEn": "Aptitude, fitness, suitability",
     "collocation": {
       "jpRuby": "[仕事:しごと]の[適性:てきせい]を[見極:みきわ]める",
@@ -5222,7 +5222,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "てはい",
     "ruby": "[手配:てはい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pengaturan pemesanan reservasi logistik",
+    "meaningId": "Pengaturan, pemesanan, reservasi, logistik",
     "meaningEn": "Arrangement, preparations",
     "collocation": {
       "jpRuby": "[宿:やど]の[手配:てはい]を[済:す]ませる",
@@ -5246,7 +5246,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "とうじしゃ",
     "ruby": "[当事者:とうじしゃ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pihak yang bersangkutan pihak terkait",
+    "meaningId": "Pihak yang bersangkutan, pihak, terkait",
     "meaningEn": "Person concerned, party involved",
     "collocation": {
       "jpRuby": "[問題:もんだい]の[当事者:とうじしゃ]",
@@ -5270,7 +5270,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "とうせい",
     "ruby": "[統制:とうせい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pengendalian kontrol kedisiplinan komando",
+    "meaningId": "Pengendalian, kontrol, kedisiplinan, komando",
     "meaningEn": "Control, regulation, discipline",
     "collocation": {
       "jpRuby": "[軍隊:ぐんたい]の[規律:きりつ]と[統制:とうせい]",
@@ -5294,7 +5294,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "とくい",
     "ruby": "[特異:とくい]",
     "partOfSpeech": "[名・ナ形]",
-    "meaningId": "Keunikan anomali khas tak lazim",
+    "meaningId": "Keunikan, anomali, khas, tak, lazim",
     "meaningEn": "Singular, peculiar, unique",
     "collocation": {
       "jpRuby": "[特異:とくい]な[性質:せいしつ]を[持:も]つ[物質:ぶっしつ]",
@@ -5318,7 +5318,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はっそう",
     "ruby": "[発想:はっそう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gagasan ide sudut pandang konsep",
+    "meaningId": "Gagasan, ide, sudut pandang, konsep",
     "meaningEn": "Idea, conception, way of thinking",
     "collocation": {
       "jpRuby": "[自由:じゆう]な[発想:はっそう]を[大切:たいせつ]にする",
@@ -5342,7 +5342,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はっしん",
     "ruby": "[発信:はっしん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pengiriman transmisi kabar/informasi",
+    "meaningId": "Pengiriman, transmisi, kabar/informasi",
     "meaningEn": "Transmission, dispatch, broadcasting",
     "collocation": {
       "jpRuby": "[情報:じょうほう]を[世界:せかい]へ[発信:はっしん]する",
@@ -5366,7 +5366,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はきゅう",
     "ruby": "[波及:はきゅう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Riak dampak merembet efek domino",
+    "meaningId": "Riak, dampak, merembet, efek, domino",
     "meaningEn": "Spreading, ripple effect, repercussion",
     "collocation": {
       "jpRuby": "[経済:けいざい][効果:こうか]が[全国:ぜんこく]に[波及:はきゅう]する",
@@ -5390,7 +5390,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ひっぱく",
     "ruby": "[逼迫:ひっぱく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kegentingan krisis tekanan himpitan",
+    "meaningId": "Kegentingan, krisis, tekanan, himpitan",
     "meaningEn": "Stringency, acute crisis, tight situation",
     "collocation": {
       "jpRuby": "[財政:ざいせい]が[逼迫:ひっぱく]する",
@@ -5414,7 +5414,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ひょうり",
     "ruby": "[表裏:ひょうり]",
     "partOfSpeech": "[名]",
-    "meaningId": "Dua sisi mata uang luar-dalam",
+    "meaningId": "Dua, sisi, mata uang, luar-dalam",
     "meaningEn": "Two sides of a coin, inside and outside",
     "collocation": {
       "jpRuby": "[表裏:ひょうり][一体:いったい]の[関係:かんけい]",
@@ -5438,7 +5438,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ほうふ",
     "ruby": "[抱負:ほうふ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Aspirasi tekad harapan tahun baru",
+    "meaningId": "Aspirasi, tekad, harapan, tahun, baru",
     "meaningEn": "Aspiration, ambition, goal",
     "collocation": {
       "jpRuby": "[新年:しんねん]の[抱負:ほうふ]を[語:かた]る",
@@ -5462,7 +5462,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ほんね",
     "ruby": "[本音:ほんね]",
     "partOfSpeech": "[名]",
-    "meaningId": "Isi hati nurani sesungguhnya niat asli",
+    "meaningId": "Isi, hati, nurani, sesungguhnya, niat, asli",
     "meaningEn": "Real intention, true feelings",
     "collocation": {
       "jpRuby": "[本音:ほんね]を[漏:も]らす",
@@ -5486,7 +5486,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "むねん",
     "ruby": "[無念:むねん]",
     "partOfSpeech": "[名・ナ形]",
-    "meaningId": "Sesal duka mendongkol patah harapan",
+    "meaningId": "Sesal, duka, mendongkol, patah, harapan",
     "meaningEn": "Chagrin, regret, mortification",
     "collocation": {
       "jpRuby": "[無念:むねん]の[涙:なみだ]を[呑:の]む",
@@ -5510,7 +5510,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "よか",
     "ruby": "[余暇:よか]",
     "partOfSpeech": "[名]",
-    "meaningId": "Waktu senggang waktu luang berlibur",
+    "meaningId": "Waktu, senggang, waktu luang, berlibur",
     "meaningEn": "Leisure, spare time",
     "collocation": {
       "jpRuby": "[余暇:よか]を[有意義:ゆういぎ]に[過:す]ごす",
@@ -5534,7 +5534,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "よちょう",
     "ruby": "[予兆:よちょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gelagat firasat pertanda awal mula",
+    "meaningId": "Gelagat, firasat, pertanda, awal, mula",
     "meaningEn": "Omen, sign, premonition",
     "collocation": {
       "jpRuby": "[地震:じしん]の[予兆:よちょう]",
@@ -5558,7 +5558,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "よゆう",
     "ruby": "[余裕:よゆう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kelonggaran waktu/dana kelegaan batin",
+    "meaningId": "Kelonggaran, waktu/dana, kelegaan, batin",
     "meaningEn": "Surplus, leeway, composure",
     "collocation": {
       "jpRuby": "[時間:じかん]に[余裕:よゆう]を[持:も]つ",
@@ -5582,7 +5582,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ろんきょ",
     "ruby": "[論拠:ろんきょ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pijakan argumen dalil pembuktian",
+    "meaningId": "Pijakan, argumen, dalil, pembuktian",
     "meaningEn": "Ground of argument, premise",
     "collocation": {
       "jpRuby": "[主張:しゅちょう]の[論拠:ろんきょ]を[明示:めいじ]する",
@@ -5606,7 +5606,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ろんぎ",
     "ruby": "[論議:ろんぎ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Perdebatan wacana diskusi publik",
+    "meaningId": "Perdebatan, wacana, diskusi, publik",
     "meaningEn": "Debate, discussion",
     "collocation": {
       "jpRuby": "[活発:かっぱつ]な[論議:ろんぎ]を[交:か]わす",
@@ -5630,7 +5630,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "わくぐみ",
     "ruby": "[枠組:わくぐ]み",
     "partOfSpeech": "[名]",
-    "meaningId": "Kerangka acuan bingkai tatanan",
+    "meaningId": "Kerangka, acuan, bingkai, tatanan",
     "meaningEn": "Framework, outline",
     "collocation": {
       "jpRuby": "[協調:きょうちょう]の[枠組:わくぐ]みを[作:つく]る",
@@ -5654,7 +5654,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かつあい",
     "ruby": "[割愛:かつあい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penghapusan pemotongan bagian karena waktu",
+    "meaningId": "Penghapusan, pemotongan, bagian, karena, waktu",
     "meaningEn": "Omission, skipping, giving up",
     "collocation": {
       "jpRuby": "[時間:じかん]の[都合:つごう]で[割愛:かつあい]する",
@@ -5678,7 +5678,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こっき",
     "ruby": "[克己:こっき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pengendalian diri menundukkan nafsu",
+    "meaningId": "Pengendalian, diri, menundukkan, nafsu",
     "meaningEn": "Self-control, overcoming self",
     "collocation": {
       "jpRuby": "[克己:こっき][心:しん]を[養:やしな]う",
@@ -5702,7 +5702,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "さいかく",
     "ruby": "[才覚:さいかく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kecerdikan kelihaian akal daya bisnis",
+    "meaningId": "Kecerdikan, kelihaian, akal, daya, bisnis",
     "meaningEn": "Quick wits, resourcefulness, tact",
     "collocation": {
       "jpRuby": "[商売:しょうばい]の[才覚:さいかく]を[発揮:はっき]する",
@@ -5726,7 +5726,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "てじゅん",
     "ruby": "[手順:てじゅん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Prosedur urutan langkah tahapan proses",
+    "meaningId": "Prosedur, urutan, langkah, tahapan, proses",
     "meaningEn": "Procedure, process, operational steps",
     "collocation": {
       "jpRuby": "マニュアルの[手順:てじゅん]に[従:したが]って[操作:そうさ]する",
@@ -5750,7 +5750,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ちょっかん",
     "ruby": "[直感:ちょっかん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Firasat rasa naluriah insting",
+    "meaningId": "Firasat, rasa, naluriah, insting",
     "meaningEn": "Instinct, gut feeling",
     "collocation": {
       "jpRuby": "[直感:ちょっかん]を[信:しん]じる",
@@ -5774,7 +5774,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しゃどう",
     "ruby": "[車道:しゃどう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Badan jalan raya mobil",
+    "meaningId": "Badan, jalan raya, mobil",
     "meaningEn": "Roadway, vehicular lane",
     "collocation": {
       "jpRuby": "[車道:しゃどう]を[渡:わた]る",
@@ -5822,7 +5822,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しんごう",
     "ruby": "[信号:しんごう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Lampu lalu lintas sinyal lampu",
+    "meaningId": "Lampu lalu lintas, sinyal, lampu",
     "meaningEn": "Traffic light, signal",
     "collocation": {
       "jpRuby": "[信号:しんごう]が[青:あお]に[変:か]わる",
@@ -5846,7 +5846,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "おうだんほどう",
     "ruby": "[横断歩道:おうだんほどう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Zebra cross penyeberangan jalan",
+    "meaningId": "Zebra, cross, penyeberangan, jalan",
     "meaningEn": "Pedestrian crossing, zebra zone",
     "collocation": {
       "jpRuby": "[横断歩道:おうだんほどう]を[手:て]を[挙:あ]げて[渡:わた]る",
@@ -5870,7 +5870,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ふみきり",
     "ruby": "[踏切:ふみきり]",
     "partOfSpeech": "[名]",
-    "meaningId": "Perlintasan sebidang kereta api",
+    "meaningId": "Perlintasan, sebidang, kereta api",
     "meaningEn": "Railway crossing",
     "collocation": {
       "jpRuby": "[踏切:ふみきり]が[鳴:な]る",
@@ -5894,7 +5894,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ていきけん",
     "ruby": "[定期券:ていきけん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tiket komuter kartu langganan",
+    "meaningId": "Tiket, komuter, kartu, langganan",
     "meaningEn": "Commuter pass",
     "collocation": {
       "jpRuby": "[通学:つうがく][定期券:ていきけん]を[更新:こうしん]する",
@@ -5918,7 +5918,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かいさつぐち",
     "ruby": "[改札口:かいさつぐち]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gerbang tiket peron stasiun",
+    "meaningId": "Gerbang, tiket, peron, stasiun",
     "meaningEn": "Ticket gate, turnstile",
     "collocation": {
       "jpRuby": "[改札口:かいさつぐち]にICカードをタッチする",
@@ -5942,7 +5942,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しゅうでん",
     "ruby": "[終電:しゅうでん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kereta terakhir rangkaian malam",
+    "meaningId": "Kereta, terakhir, rangkaian, malam",
     "meaningEn": "Last train",
     "collocation": {
       "jpRuby": "[終電:しゅうでん]を[逃:のが]す",
@@ -5966,7 +5966,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しはつ",
     "ruby": "[始発:しはつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kereta pertama pemberangkatan subuh",
+    "meaningId": "Kereta, pertama, pemberangkatan, subuh",
     "meaningEn": "First train, first departure",
     "collocation": {
       "jpRuby": "[始発:しはつ][列車:れっしゃ]に[乗:の]る",
@@ -5990,7 +5990,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かくえきていしゃ",
     "ruby": "[各駅停車:かくえきていしゃ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kereta lokal berhenti di tiap stasiun",
+    "meaningId": "Kereta, lokal, berhenti di tiap, stasiun",
     "meaningEn": "Local train (stops at every station)",
     "collocation": {
       "jpRuby": "[各駅停車:かくえきていしゃ]でのんびり[行:い]く",
@@ -6014,7 +6014,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かいそく",
     "ruby": "[快速:かいそく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kereta cepat rapid semi-ekspres",
+    "meaningId": "Kereta, cepat, rapid, semi-ekspres",
     "meaningEn": "Rapid train",
     "collocation": {
       "jpRuby": "[快速:かいそく][電車:でんしゃ]を[利用:りよう]する",
@@ -6038,7 +6038,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "とっきゅう",
     "ruby": "[特急:とっきゅう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kereta ekspres terbatas",
+    "meaningId": "Kereta, ekspres, terbatas",
     "meaningEn": "Limited express train",
     "collocation": {
       "jpRuby": "[特急:とっきゅう][券:けん]を[事前:じぜん]に[買:か]う",
@@ -6062,7 +6062,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "うんちん",
     "ruby": "[運賃:うんちん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tarif ongkos karcis angkutan",
+    "meaningId": "Tarif, ongkos, karcis, angkutan",
     "meaningEn": "Fare, transport fee",
     "collocation": {
       "jpRuby": "[電車:でんしゃ]の[運賃:うんちん]を[調:しら]べる",
@@ -6086,7 +6086,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ろせん",
     "ruby": "[路線:ろせん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Jalur rute trayek rel/bus",
+    "meaningId": "Jalur, rute, trayek, rel/bus",
     "meaningEn": "Route, transit line",
     "collocation": {
       "jpRuby": "[新:あたら]しい[地下鉄:ちかてつ]の[路線:ろせん]",
@@ -6110,7 +6110,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ていりゅうじょ",
     "ruby": "[停留所:ていりゅうじょ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Halte bus perhentian",
+    "meaningId": "Halte bus, perhentian",
     "meaningEn": "Bus stop, tram stop",
     "collocation": {
       "jpRuby": "[バスの停留所:ばすのていりゅうじょ]で[並:なら]ぶ",
@@ -6134,7 +6134,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じこくひょう",
     "ruby": "[時刻表:じこくひょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Jadwal keberangkatan tabel waktu",
+    "meaningId": "Jadwal, keberangkatan, tabel, waktu",
     "meaningEn": "Timetable, schedule",
     "collocation": {
       "jpRuby": "[駅:えき]の[時刻表:じこくひょう]を[確認:かくにん]する",
@@ -6158,7 +6158,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しゃしょう",
     "ruby": "[車掌:しゃしょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kondektur pengawas kabin kereta",
+    "meaningId": "Kondektur, pengawas, kabin, kereta",
     "meaningEn": "Conductor, train guard",
     "collocation": {
       "jpRuby": "[車掌:しゃしょう]さんが[切符:きっぷ]を[拝見:はいけん]する",
@@ -6182,7 +6182,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "うんてんしゅ",
     "ruby": "[運転手:うんてんしゅ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pengemudi sopir masinis",
+    "meaningId": "Pengemudi, sopir, masinis",
     "meaningEn": "Driver, chauffeur",
     "collocation": {
       "jpRuby": "[タクシーの運転手:たくしーのうんてんしゅ]",
@@ -6206,7 +6206,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ざせき",
     "ruby": "[座席:ざせき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tempat duduk kursi penumpang",
+    "meaningId": "Tempat, duduk, kursi, penumpang",
     "meaningEn": "Seat",
     "collocation": {
       "jpRuby": "[座席:ざせき]を[指定:してい]する",
@@ -6230,7 +6230,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ゆうせんせき",
     "ruby": "[優先席:ゆうせんせき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kursi prioritas lansia/disabilitas",
+    "meaningId": "Kursi, prioritas, lansia/disabilitas",
     "meaningEn": "Priority seat, courtesy seat",
     "collocation": {
       "jpRuby": "[優先席:ゆうせんせき]を[譲:ゆず]る",
@@ -6254,7 +6254,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "あみだな",
     "ruby": "[網棚:あみだな]",
     "partOfSpeech": "[名]",
-    "meaningId": "Rak bagasi jaring atas kursi kereta",
+    "meaningId": "Rak, bagasi, jaring, atas, kursi, kereta",
     "meaningEn": "Luggage rack, parcel rack",
     "collocation": {
       "jpRuby": "[網棚:あみだな]に[荷物:にもつ]を[載:の]せる",
@@ -6278,7 +6278,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "てすり",
     "ruby": "[手すり:てすり]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pegangan tangan railing tangga/bus",
+    "meaningId": "Pegangan, tangan, railing, tangga/bus",
     "meaningEn": "Handrail, banister, grab handle",
     "collocation": {
       "jpRuby": "[手すり:てすり]にしっかりつかまる",
@@ -6302,7 +6302,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "つりかわ",
     "ruby": "[つり革:つりかわ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gantungan tangan pegangan bus/kereta",
+    "meaningId": "Gantungan, tangan, pegangan, bus/kereta",
     "meaningEn": "Strap, hanging strap",
     "collocation": {
       "jpRuby": "[つり革:つりかわ]に[手:て]をかける",
@@ -6326,7 +6326,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "いきさき",
     "ruby": "[行:い]き[先:さき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tempat tujuan destinasi armada",
+    "meaningId": "Tempat, tujuan, destinasi, armada",
     "meaningEn": "Destination",
     "collocation": {
       "jpRuby": "[電車:でんしゃ]の[行:い]き[先:さき]を[確:たし]かめる",
@@ -6350,7 +6350,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けいゆ",
     "ruby": "[経由:けいゆ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Via transit melalui rute",
+    "meaningId": "Via, transit, melalui, rute",
     "meaningEn": "Via, by way of, through",
     "collocation": {
       "jpRuby": "[新宿:しんじゅく][経由:けいゆ]の[電車:でんしゃ]",
@@ -6374,7 +6374,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "つうか",
     "ruby": "[通過:つうか]",
     "partOfSpeech": "[名]",
-    "meaningId": "Melintas lewat melaju langsung",
+    "meaningId": "Melintas, lewat, melaju, langsung",
     "meaningEn": "Passing through, transit",
     "collocation": {
       "jpRuby": "[特急:とっきゅう]が[駅:えき]を[通過:つうか]する",
@@ -6398,7 +6398,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ていしゃ",
     "ruby": "[停車:ていしゃ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Berhenti berhenti stasiun",
+    "meaningId": "Berhenti, berhenti, stasiun",
     "meaningEn": "Stopping (of vehicle), stop",
     "collocation": {
       "jpRuby": "[各駅:かくえき]に[停車:ていしゃ]する",
@@ -6422,7 +6422,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はっしゃ",
     "ruby": "[発車:はっしゃ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Keberangkatan mulai melaju roda",
+    "meaningId": "Keberangkatan, mulai, melaju, roda",
     "meaningEn": "Departure (train/bus)",
     "collocation": {
       "jpRuby": "[ベル]が[鳴:な]り[発車:はっしゃ]する",
@@ -6446,7 +6446,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "おうろ",
     "ruby": "[往路:おうろ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Rute rute berangkat jalan pergi",
+    "meaningId": "Rute, rute, berangkat, jalan, pergi",
     "meaningEn": "Outward journey",
     "collocation": {
       "jpRuby": "[往路:おうろ]は[新幹線:しんかんせん]を[使:つか]う",
@@ -6470,7 +6470,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ふくろ",
     "ruby": "[復路:ふくろ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Rute perjalanan pulang kembali",
+    "meaningId": "Rute, perjalanan, pulang, kembali",
     "meaningEn": "Return journey",
     "collocation": {
       "jpRuby": "[復路:ふくろ]のチケットを[手配:てはい]する",
@@ -6494,7 +6494,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かいそう",
     "ruby": "[回送:かいそう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Bukan dinas tidak membawa penumpang",
+    "meaningId": "Bukan, dinas, tidak, membawa, penumpang",
     "meaningEn": "Out of service, deadheading",
     "collocation": {
       "jpRuby": "[回送:かいそう][電車:でんしゃ]が[入線:にゅうせん]する",
@@ -6518,7 +6518,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "だっせん",
     "ruby": "[脱線:だっせん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Anjlok tergelincir dari rel",
+    "meaningId": "Anjlok, tergelincir dari rel",
     "meaningEn": "Derailment, digression",
     "collocation": {
       "jpRuby": "[列車:れっしゃ]が[脱線:だっせん]する",
@@ -6542,7 +6542,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょうとつ",
     "ruby": "[しょうとつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tabrakan adu hantam benturan",
+    "meaningId": "Tabrakan, adu, hantam, benturan",
     "meaningEn": "Collision, crash",
     "collocation": {
       "jpRuby": "[車:くるま]の[正面:しょうめん][衝突:しょうとつ]",
@@ -6566,7 +6566,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ついとつ",
     "ruby": "[追突:ついとつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tabrakan tabrakan beruntun dari belakang",
+    "meaningId": "Tabrakan, tabrakan, beruntun dari belakang",
     "meaningEn": "Rear-end collision",
     "collocation": {
       "jpRuby": "[後続車:こうぞくしゃ]に[追突:ついとつ]される",
@@ -6590,7 +6590,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せいげんそくど",
     "ruby": "[制限速度:せいげんそくど]",
     "partOfSpeech": "[名]",
-    "meaningId": "Batas kecepatan maksimal berkendara",
+    "meaningId": "Batas, kecepatan, maksimal, berkendara",
     "meaningEn": "Speed limit",
     "collocation": {
       "jpRuby": "[制限速度:せいげんそくど]を[守:まも]る",
@@ -6614,7 +6614,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "いっぽうつうこう",
     "ruby": "[一方通行:いっぽうつうこう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Jalan satu arah",
+    "meaningId": "Jalan, satu, arah",
     "meaningEn": "One-way traffic",
     "collocation": {
       "jpRuby": "[一方通行:いっぽうつうこう]の[道路:どうろ]",
@@ -6662,7 +6662,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しゃこ",
     "ruby": "[車庫:しゃこ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Garasi kandang parkir mobil",
+    "meaningId": "Garasi, kandang, parkir, mobil",
     "meaningEn": "Garage, depot, car shed",
     "collocation": {
       "jpRuby": "[車:くるま]を[車庫:しゃこ]に[入:い]れる",
@@ -6686,7 +6686,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こうさてん",
     "ruby": "[交差点:こうさてん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Persimpangan jalan perempatan",
+    "meaningId": "Persimpangan, jalan, perempatan",
     "meaningEn": "Intersection, crossroads",
     "collocation": {
       "jpRuby": "[交差点:こうさてん]を[右折:うせつ]する",
@@ -6710,7 +6710,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ろけん",
     "ruby": "[路肩:ろけん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Bahu jalan tepian aspal",
+    "meaningId": "Bahu, jalan, tepian, aspal",
     "meaningEn": "Shoulder of a road",
     "collocation": {
       "jpRuby": "[路肩:ろけん]に[車:くるま]を[寄:よ]せる",
@@ -6734,7 +6734,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょうじょう",
     "ruby": "[症状:しょうじょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gejala tanda penyakit",
+    "meaningId": "Gejala, tanda, penyakit",
     "meaningEn": "Symptoms, condition",
     "collocation": {
       "jpRuby": "[風邪:かぜ]の[初期:しょき][症状:しょうじょう]",
@@ -6758,7 +6758,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しんさつ",
     "ruby": "[診察:しんさつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pemeriksaan medis oleh dokter",
+    "meaningId": "Pemeriksaan, medis, oleh, dokter",
     "meaningEn": "Medical examination",
     "collocation": {
       "jpRuby": "[医師:いし]の[診察:しんさつ]を[受:う]ける",
@@ -6782,7 +6782,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ちりょう",
     "ruby": "[治療:ちりょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pengobatan terapi penyembuhan",
+    "meaningId": "Pengobatan, terapi, penyembuhan",
     "meaningEn": "Medical treatment, cure",
     "collocation": {
       "jpRuby": "[虫歯:むしば]の[治療:ちりょう]に[通:かよ]う",
@@ -6806,7 +6806,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しゅじゅつ",
     "ruby": "[しゅじゅつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Operasi bedah medis tindakan bedah",
+    "meaningId": "Operasi, bedah, medis, tindakan, bedah",
     "meaningEn": "Surgical operation, surgery",
     "collocation": {
       "jpRuby": "[大手術:だいしゅじゅつ]を[受:う]ける",
@@ -6830,7 +6830,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょほうせん",
     "ruby": "[処方箋:しょほうせん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Resep obat dari dokter",
+    "meaningId": "Resep, obat dari dokter",
     "meaningEn": "Prescription",
     "collocation": {
       "jpRuby": "[薬局:やっきょく]に[処方箋:しょほうせん]を[出:だ]す",
@@ -6854,7 +6854,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "すいみん",
     "ruby": "[すいみん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tidur istirahat malam lelap",
+    "meaningId": "Tidur, istirahat, malam, lelap",
     "meaningEn": "Sleep",
     "collocation": {
       "jpRuby": "[十分:じゅうぶん]な[睡眠:すいみん]を[取:と]る",
@@ -6878,7 +6878,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "みゃくはく",
     "ruby": "[脈拍:みゃくはく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Denyut nadi detak nadi",
+    "meaningId": "Denyut, nadi, detak, nadi",
     "meaningEn": "Pulse, pulsation",
     "collocation": {
       "jpRuby": "[脈拍:みゃくはく]を[測:はか]る",
@@ -6902,7 +6902,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けつあつ",
     "ruby": "[血圧:けつあつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tekanan darah tensi",
+    "meaningId": "Tekanan darah, tensi",
     "meaningEn": "Blood pressure",
     "collocation": {
       "jpRuby": "[血圧:けつあつ]が[高:たか]い",
@@ -6926,7 +6926,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "たいおんけい",
     "ruby": "[体温計:たいおんけい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Termometer pengukur suhu badan",
+    "meaningId": "Termometer, pengukur, suhu, badan",
     "meaningEn": "Thermometer",
     "collocation": {
       "jpRuby": "[体温計:たいおんけい]で[熱:ねつ]を[測:はか]る",
@@ -6950,7 +6950,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ちゅうしゃ",
     "ruby": "[注射:ちゅうしゃ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Suntikan injeksi medis jarum",
+    "meaningId": "Suntikan, injeksi, medis, jarum",
     "meaningEn": "Injection, shot",
     "collocation": {
       "jpRuby": "[予防:よぼう][接種:せっしゅ]の[注射:ちゅうしゃ]を[打:う]つ",
@@ -6974,7 +6974,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かんぶ",
     "ruby": "[患部:かんぶ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Bagian tubuh yang sakit area luka",
+    "meaningId": "Bagian, tubuh yang sakit, area, luka",
     "meaningEn": "Affected part, diseased part",
     "collocation": {
       "jpRuby": "[患部:かんぶ]を[清潔:せいけつ]に[保:たも]つ",
@@ -6998,7 +6998,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ほうたい",
     "ruby": "[包帯:ほうたい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Perban kain kasa pembalut luka",
+    "meaningId": "Perban, kain, kasa, pembalut, luka",
     "meaningEn": "Bandage, dressing",
     "collocation": {
       "jpRuby": "[包帯:ほうたい]を[巻:ま]く",
@@ -7022,7 +7022,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しっぷ",
     "ruby": "[湿布:しっぷ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Koyo kompres pereda nyeri",
+    "meaningId": "Koyo, kompres, pereda, nyeri",
     "meaningEn": "Compress, poultice, plaster",
     "collocation": {
       "jpRuby": "[腰:こし]に[湿布:しっぷ]を[貼:は]る",
@@ -7046,7 +7046,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "てんてき",
     "ruby": "[点滴:てんてき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Infus cairan infus tetes",
+    "meaningId": "Infus, cairan, infus, tetes",
     "meaningEn": "Intravenous drip, IV",
     "collocation": {
       "jpRuby": "[病院:びょういん]で[点滴:てんてき]を[受:う]ける",
@@ -7070,7 +7070,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ますい",
     "ruby": "[麻酔:ますい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Bius anestesi",
+    "meaningId": "Bius, anestesi",
     "meaningEn": "Anesthesia",
     "collocation": {
       "jpRuby": "[局所:きょくしょ][麻酔:ますい]をかける",
@@ -7094,7 +7094,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ふくさよう",
     "ruby": "[ふくさよう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Efek samping obat reaksi obat",
+    "meaningId": "Efek, samping, obat, reaksi, obat",
     "meaningEn": "Side effect",
     "collocation": {
       "jpRuby": "[薬:くすり]の[副作用:ふくさよう]に[注意:ちゅうい]する",
@@ -7118,7 +7118,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こういしょう",
     "ruby": "[後遺症:こういしょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gejala sisa sequelae komplikasi pasca sembuh",
+    "meaningId": "Gejala, sisa, sequelae, komplikasi, pasca, sembuh",
     "meaningEn": "Aftereffect, sequela",
     "collocation": {
       "jpRuby": "[事故:じこ]の[後遺症:こういしょう]に[悩:なや]む",
@@ -7142,7 +7142,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "でんせん",
     "ruby": "[伝染:でんせん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penularan wabah infeksi menular",
+    "meaningId": "Penularan, wabah, infeksi, menular",
     "meaningEn": "Contagion, infection",
     "collocation": {
       "jpRuby": "[病気:びょうき]が[伝染:でんせん]する",
@@ -7166,7 +7166,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "めんえき",
     "ruby": "[免疫:めんえき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kekebalan tubuh imunitas daya tahan",
+    "meaningId": "Kekebalan, tubuh, imunitas, daya tahan",
     "meaningEn": "Immunity",
     "collocation": {
       "jpRuby": "[免疫:めんえき][力:りょく]を[高:たか]める",
@@ -7190,7 +7190,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こうたい",
     "ruby": "[抗体:こうたい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Antibodi penangkal virus",
+    "meaningId": "Antibodi, penangkal, virus",
     "meaningEn": "Antibody",
     "collocation": {
       "jpRuby": "[ウイルス]に[対:たい]する[抗体:こうたい]ができる",
@@ -7214,7 +7214,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょうどく",
     "ruby": "[消毒:しょうどく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Disinfeksi sterilisasi pembersihan kuman",
+    "meaningId": "Disinfeksi, sterilisasi, pembersihan, kuman",
     "meaningEn": "Disinfection, sterilization",
     "collocation": {
       "jpRuby": "[手:て]と[指:ゆび]をアルコールで[消毒:しょうどく]する",
@@ -7238,7 +7238,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "えいせい",
     "ruby": "[衛生:えいせい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kebersihan sanitasi higienitas",
+    "meaningId": "Kebersihan, sanitasi, higienitas",
     "meaningEn": "Hygiene, sanitation",
     "collocation": {
       "jpRuby": "[衛生:えいせい][管理:かんり]を[徹底:てってい]する",
@@ -7262,7 +7262,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けんこうほけん",
     "ruby": "[健康保険:けんこうほけん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Asuransi kesehatan jaminan medis",
+    "meaningId": "Asuransi, kesehatan, jaminan, medis",
     "meaningEn": "Health insurance",
     "collocation": {
       "jpRuby": "[健康保険:けんこうほけん][証:しょう]を[窓口:まどぐち]に[提示:ていじ]する",
@@ -7286,7 +7286,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "もんしんひょう",
     "ruby": "[問診票:もんしんひょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kuesioner riwayat keluhan medis",
+    "meaningId": "Kuesioner, riwayat, keluhan, medis",
     "meaningEn": "Medical questionnaire",
     "collocation": {
       "jpRuby": "[問診票:もんしんひょう]に[病状:びょうじょう]を[記入:きにゅう]する",
@@ -7310,7 +7310,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "カルテ",
     "ruby": "カルテ",
     "partOfSpeech": "[名]",
-    "meaningId": "Buku rekam medis riwayat pasien",
+    "meaningId": "Buku, rekam, medis, riwayat, pasien",
     "meaningEn": "Medical record, patient chart",
     "collocation": {
       "jpRuby": "[医師:いし]がカルテに[所見:しょけん]を[書:か]き[込:こ]む",
@@ -7334,7 +7334,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "にゅういん",
     "ruby": "[入院:にゅういん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Rawat inap masuk rumah sakit opname",
+    "meaningId": "Rawat inap, masuk, rumah sakit, opname",
     "meaningEn": "Hospitalization",
     "collocation": {
       "jpRuby": "[検査:けんさ]のため[一週間:いっしゅうかん][入院:にゅういん]する",
@@ -7358,7 +7358,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "たいいん",
     "ruby": "[退院:たいいん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Keluar rumah sakit sembuh opname",
+    "meaningId": "Keluar, rumah sakit, sembuh, opname",
     "meaningEn": "Discharge from hospital",
     "collocation": {
       "jpRuby": "[無事:ぶじ]に[退院:たいいん]する",
@@ -7382,7 +7382,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "リハビリ",
     "ruby": "リハビリ",
     "partOfSpeech": "[名]",
-    "meaningId": "Fisioterapi pemulihan fisik rehabilitasi",
+    "meaningId": "Fisioterapi, pemulihan, fisik, rehabilitasi",
     "meaningEn": "Rehabilitation, physical therapy",
     "collocation": {
       "jpRuby": "[歩行:ほこう]の[練習:れんしゅう]でリハビリに[励:はげ]む",
@@ -7406,7 +7406,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けんこうしんだん",
     "ruby": "[健康診断:けんこうしんだん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Cek kesehatan berkala medical checkup",
+    "meaningId": "Cek, kesehatan, berkala, medical, checkup",
     "meaningEn": "Health checkup, medical examination",
     "collocation": {
       "jpRuby": "[年:とし]に[一度:いちど]の[健康診断:けんこうしんだん]を[受:う]ける",
@@ -7430,7 +7430,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "えいよう",
     "ruby": "[栄養:えいよう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gizi nutrisi asupan gizi",
+    "meaningId": "Gizi, nutrisi, asupan, gizi",
     "meaningEn": "Nutrition, nourishment",
     "collocation": {
       "jpRuby": "[栄養:えいよう]のバランスを[考:かんが]えた[食事:しょくじ]",
@@ -7454,7 +7454,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "すいじゃく",
     "ruby": "[衰弱:すいじゃく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kelemahan fisik penurunan daya tubuh",
+    "meaningId": "Kelemahan, fisik, penurunan, daya, tubuh",
     "meaningEn": "Debility, weakness, exhaustion",
     "collocation": {
       "jpRuby": "[体力:たいりょく]が[衰弱:すいじゃく]する",
@@ -7478,7 +7478,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ひろう",
     "ruby": "[ひろう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kelelahan rasa letih badan",
+    "meaningId": "Kelelahan, rasa, letih, badan",
     "meaningEn": "Fatigue, weariness, exhaustion",
     "collocation": {
       "jpRuby": "[慢性:まんせい][的:てき]な[疲労:ひろう]を[感:かん]じる",
@@ -7502,7 +7502,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かろう",
     "ruby": "[過労:かろう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kelelahan berlebih kerja berlebihan",
+    "meaningId": "Kelelahan, berlebih, kerja, berlebihan",
     "meaningEn": "Overwork, strain",
     "collocation": {
       "jpRuby": "[過労:かろう]で[倒:たお]れる",
@@ -7526,7 +7526,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "べんぴ",
     "ruby": "[便秘:べんぴ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Sembelit susah buang air besar",
+    "meaningId": "Sembelit, susah, buang, air, besar",
     "meaningEn": "Constipation",
     "collocation": {
       "jpRuby": "[食物繊維:しょくもつせんい]をとって[便秘:べんぴ]を[解消:かいしょう]する",
@@ -7550,7 +7550,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "げり",
     "ruby": "[下痢:げり]",
     "partOfSpeech": "[名]",
-    "meaningId": "Diare mencret sakit perut",
+    "meaningId": "Diare, mencret, sakit, perut",
     "meaningEn": "Diarrhea",
     "collocation": {
       "jpRuby": "[冷:つめ]たい物の飲み過ぎで[下痢:げり]をする",
@@ -7574,7 +7574,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "めまい",
     "ruby": "[目:め]まい",
     "partOfSpeech": "[名]",
-    "meaningId": "Pusing kliyengan melayang vertigo",
+    "meaningId": "Pusing, kliyengan, melayang, vertigo",
     "meaningEn": "Dizziness, vertigo",
     "collocation": {
       "jpRuby": "[急:きゅう]に立ち上がって[目:め]まいがする",
@@ -7598,7 +7598,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はきけ",
     "ruby": "[吐:は]き[気:け]",
     "partOfSpeech": "[名]",
-    "meaningId": "Rasa mual ingin muntah",
+    "meaningId": "Rasa, mual, ingin, muntah",
     "meaningEn": "Nausea, sickness",
     "collocation": {
       "jpRuby": "[胃:い]の不調で[吐:は]き[気:け]をもよおす",
@@ -7622,7 +7622,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ずつう",
     "ruby": "[頭痛:ずつう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Sakit kepala pusing kepala",
+    "meaningId": "Sakit, kepala, pusing, kepala",
     "meaningEn": "Headache",
     "collocation": {
       "jpRuby": "[激:はげ]しい[頭痛:ずつう]に[悩:なや]まされる",
@@ -7646,7 +7646,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きんにくつう",
     "ruby": "[筋肉痛:きんにくつう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Nyeri otot pegal linu kram",
+    "meaningId": "Nyeri, otot, pegal, linu, kram",
     "meaningEn": "Muscular pain, muscle soreness",
     "collocation": {
       "jpRuby": "[激:はげ]しい運動の翌日に[筋肉痛:きんにくつう]になる",
@@ -7670,7 +7670,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かんせつつう",
     "ruby": "[関節痛:かんせつつう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Nyeri persendian sakit sendi",
+    "meaningId": "Nyeri, persendian, sakit, sendi",
     "meaningEn": "Joint pain, arthralgia",
     "collocation": {
       "jpRuby": "[膝:ひざ]の[関節痛:かんせつつう]を和らげる",
@@ -7694,7 +7694,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しんゆう",
     "ruby": "[親友:しんゆう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Sahabat karib teman sejati",
+    "meaningId": "Sahabat, karib, teman, sejati",
     "meaningEn": "Close friend, best friend",
     "collocation": {
       "jpRuby": "[生涯:しょうがい]の[親友:しんゆう]",
@@ -7718,7 +7718,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ちじん",
     "ruby": "[知人:ちじん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kenalan relasi kenalan biasa",
+    "meaningId": "Kenalan, relasi, kenalan, biasa",
     "meaningEn": "Acquaintance",
     "collocation": {
       "jpRuby": "[知人:ちじん]の[紹介:しょうかい]で[仕事:しごと]を[探:さが]す",
@@ -7742,7 +7742,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "なかま",
     "ruby": "[仲間:なかま]",
     "partOfSpeech": "[名]",
-    "meaningId": "Rekan sekawan kawan seperjuangan",
+    "meaningId": "Rekan, sekawan, kawan, seperjuangan",
     "meaningEn": "Comrade, companion, fellow",
     "collocation": {
       "jpRuby": "[心強:こころづよ]い[仲間:なかま]たち",
@@ -7766,7 +7766,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "みかた",
     "ruby": "[味方:みかた]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pihak yang membela sekutu pendukung",
+    "meaningId": "Pihak yang membela, sekutu, pendukung",
     "meaningEn": "Ally, supporter, taking sides",
     "collocation": {
       "jpRuby": "いつでも[味方:みかた]でいる",
@@ -7790,7 +7790,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せんぱい",
     "ruby": "[先輩:せんぱい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Senior kakak kelas pendahulu",
+    "meaningId": "Senior, kakak, kelas, pendahulu",
     "meaningEn": "Senior, elder",
     "collocation": {
       "jpRuby": "[親切:しんせつ]な[先輩:せんぱい]に[相談:そうだん]する",
@@ -7814,7 +7814,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こうはい",
     "ruby": "[後輩:こうはい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Junior adik kelas penerus",
+    "meaningId": "Junior, adik, kelas, penerus",
     "meaningEn": "Junior",
     "collocation": {
       "jpRuby": "[後輩:こうはい]の[面倒:めんどう]をよく[見:み]る",
@@ -7838,7 +7838,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "どうりょう",
     "ruby": "[どうりょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Rekan sekerja teman sekantor",
+    "meaningId": "Rekan, sekerja, teman, sekantor",
     "meaningEn": "Colleague, coworker",
     "collocation": {
       "jpRuby": "[気:き]の[合:あ]う[同僚:どうりょう]",
@@ -7862,7 +7862,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じょうし",
     "ruby": "[上司:じょうし]",
     "partOfSpeech": "[名]",
-    "meaningId": "Atasan pimpinan bos",
+    "meaningId": "Atasan, pimpinan, bos",
     "meaningEn": "Superior, boss",
     "collocation": {
       "jpRuby": "[尊敬:そんけい]できる[上司:じょうし]",
@@ -7886,7 +7886,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぶか",
     "ruby": "[部下:ぶか]",
     "partOfSpeech": "[名]",
-    "meaningId": "Bawahan staf staf anak buah",
+    "meaningId": "Bawahan, staf, staf, anak, buah",
     "meaningEn": "Subordinate",
     "collocation": {
       "jpRuby": "[部下:ぶか]の[成長:せいちょう]を[見守:みまも]る",
@@ -7910,7 +7910,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "れいぎ",
     "ruby": "[礼儀:れいぎ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Sopan santun tata krama budi pekerti",
+    "meaningId": "Sopan santun, tata krama, budi pekerti",
     "meaningEn": "Etiquette, courtesy, manners",
     "collocation": {
       "jpRuby": "[礼儀:れいぎ][正:ただ]しい[振:ふ]る[舞:ま]い",
@@ -7934,7 +7934,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "おんじん",
     "ruby": "[恩人:おんじん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Orang yang berjasa penolong budi",
+    "meaningId": "Orang yang berjasa, penolong, budi",
     "meaningEn": "Benefactor, patron",
     "collocation": {
       "jpRuby": "[生涯:しょうがい]の[恩人:おんじん]に[感謝:かんしゃ]する",
@@ -7958,7 +7958,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こうい",
     "ruby": "[好意:こうい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Niat baik kebaikan rasa suka",
+    "meaningId": "Niat, baik, kebaikan, rasa, suka",
     "meaningEn": "Goodwill, kindness, affection",
     "collocation": {
       "jpRuby": "[相手:あいて]の[好意:こうい]に[甘:あま]える",
@@ -7982,7 +7982,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "てき",
     "ruby": "[敵:てき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Musuh lawan musuh tanding",
+    "meaningId": "Musuh, lawan, musuh, tanding",
     "meaningEn": "Enemy, rival, opponent",
     "collocation": {
       "jpRuby": "[手強:てづよ]い[敵:てき]に[立:た]ち[向:む]かう",
@@ -8006,7 +8006,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はんりょ",
     "ruby": "[伴侶:はんりょ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pendamping hidup belahan jiwa pasangan",
+    "meaningId": "Pendamping, hidup, belahan, jiwa, pasangan",
     "meaningEn": "Partner, companion, spouse",
     "collocation": {
       "jpRuby": "[人生:じんせい]の[良:よ]き[伴侶:はんりょ]に[巡:めぐ]り[合:あ]う",
@@ -8030,7 +8030,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "どうそうかい",
     "ruby": "[同窓会:どうそうかい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Reuni alumni temu kangen alumni",
+    "meaningId": "Reuni, alumni, temu, kangen, alumni",
     "meaningEn": "Alumni reunion, class reunion",
     "collocation": {
       "jpRuby": "[高校:こうこう]の[同窓会:どうそうかい]に[出席:しゅっせき]する",
@@ -8054,7 +8054,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "おさななじみ",
     "ruby": "[幼馴染:おさななじみ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Teman masa kecil sahabat sejak kanak-kanak",
+    "meaningId": "Teman, masa, kecil, sahabat, sejak, kanak-kanak",
     "meaningEn": "Childhood friend",
     "collocation": {
       "jpRuby": "[近所:きんじょ]の[幼馴染:おさななじみ]",
@@ -8078,7 +8078,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "おんし",
     "ruby": "[恩師:おんし]",
     "partOfSpeech": "[名]",
-    "meaningId": "Guru yang berjasa dosen pembimbing tercinta",
+    "meaningId": "Guru yang berjasa, dosen, pembimbing, tercinta",
     "meaningEn": "Respected teacher, former mentor",
     "collocation": {
       "jpRuby": "[高校:こうこう][時代:じだい]の[恩師:おんし]を[訪:おとず]ねる",
@@ -8102,7 +8102,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せけん",
     "ruby": "[世間:せけん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Masyarakat dunia luar khalayak umum",
+    "meaningId": "Masyarakat, dunia, luar, khalayak, umum",
     "meaningEn": "The world, society, public",
     "collocation": {
       "jpRuby": "[世間:せけん]の[目:め]を[気:き]にする",
@@ -8126,7 +8126,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "にんげんかんけい",
     "ruby": "[人間関係:にんげんかんけい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Hubungan relasi antarmanusia ikatan sosial",
+    "meaningId": "Hubungan, relasi, antarmanusia, ikatan, sosial",
     "meaningEn": "Human relations, interpersonal relationships",
     "collocation": {
       "jpRuby": "[職場:しょくば]の[人間関係:にんげんかんけい]を[円滑:えんかつ]にする",
@@ -8150,7 +8150,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぎり",
     "ruby": "[義理:ぎり]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kewajiban moral hutang budi kekeluargaan semenda",
+    "meaningId": "Kewajiban, moral, hutang, budi, kekeluargaan, semenda",
     "meaningEn": "Moral obligation, duty, in-law",
     "collocation": {
       "jpRuby": "[義理:ぎり]と[人情:にんじょう]を[重:おも]んじる",
@@ -8174,7 +8174,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "にんじょう",
     "ruby": "[人情:にんじょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Welas asih kehangatan rasa kemanusiaan",
+    "meaningId": "Welas, asih, kehangatan, rasa, kemanusiaan",
     "meaningEn": "Humanity, human empathy, sympathy",
     "collocation": {
       "jpRuby": "[温:あたた]かい[人情:にんじょう]に[触:ふ]れる",
@@ -8198,7 +8198,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しんらい",
     "ruby": "[信頼:しんらい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Rasa percaya trust keandalan",
+    "meaningId": "Rasa, percaya, trust, keandalan",
     "meaningEn": "Trust, reliance, confidence",
     "collocation": {
       "jpRuby": "[深:ふか]い[信頼:しんらい][関係:かんけい]を[築:きず]く",
@@ -8222,7 +8222,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ふしん",
     "ruby": "[不信:ふしん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Ketidakpercayaan rasa curiga distrust",
+    "meaningId": "Ketidakpercayaan, rasa, curiga, distrust",
     "meaningEn": "Distrust, suspicion, discredit",
     "collocation": {
       "jpRuby": "[相手:あいて]に[不信:ふしん][感:かん]を[抱:いだ]く",
@@ -8246,7 +8246,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しんぼく",
     "ruby": "[親睦:しんぼく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Keakraban silaturahmi persahabatan hangat",
+    "meaningId": "Keakraban, silaturahmi, persahabatan, hangat",
     "meaningEn": "Friendship, amity, cordiality",
     "collocation": {
       "jpRuby": "[親睦:しんぼく]を[深:ふか]めるためのパーティー",
@@ -8270,7 +8270,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "なかなおり",
     "ruby": "[仲直:なかなお]り",
     "partOfSpeech": "[名]",
-    "meaningId": "Berdamai rukun kembali baikan",
+    "meaningId": "Berdamai, rukun, kembali, baikan",
     "meaningEn": "Reconciliation, making peace",
     "collocation": {
       "jpRuby": "[喧嘩:けんか]のあとに[仲直:なかなお]りする",
@@ -8294,7 +8294,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "あいちゃく",
     "ruby": "[愛着:あいちゃく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Keterikatan kasih sayang rasa sayang pada barang",
+    "meaningId": "Keterikatan, kasih, sayang, rasa, sayang, pada barang",
     "meaningEn": "Attachment, affection",
     "collocation": {
       "jpRuby": "[長年:ながねん]使ったペンに[愛着:あいちゃく]がわく",
@@ -8318,7 +8318,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "どうじょう",
     "ruby": "[同情:どうじょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Rasa iba simpati belas kasihan",
+    "meaningId": "Rasa, iba, simpati, belas, kasihan",
     "meaningEn": "Sympathy, compassion, pity",
     "collocation": {
       "jpRuby": "[被災者:ひさいしゃ]の苦しみに[同情:どうじょう]する",
@@ -8342,7 +8342,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はんかん",
     "ruby": "[反感:はんかん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Rasa antipati kejengkelan penolakan batin",
+    "meaningId": "Rasa, antipati, kejengkelan, penolakan, batin",
     "meaningEn": "Antipathy, ill feeling, resentment",
     "collocation": {
       "jpRuby": "[周囲:しゅうい]の[反感:はんかん]を[買:か]う",
@@ -8366,7 +8366,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きょうかん",
     "ruby": "[共感:きょうかん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Empati resonansi rasa kesamaan rasa",
+    "meaningId": "Empati, resonansi, rasa, kesamaan, rasa",
     "meaningEn": "Empathy, sympathy",
     "collocation": {
       "jpRuby": "[物語:ものがたり]の[主人公:しゅじんこう]に[共感:きょうかん]する",
@@ -8390,7 +8390,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "へんけん",
     "ruby": "[偏見:へんけん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Prasangka buruk stigma bias prasangka",
+    "meaningId": "Prasangka, buruk, stigma, bias, prasangka",
     "meaningEn": "Prejudice, bias",
     "collocation": {
       "jpRuby": "[偏見:へんけん]を[捨:す]てて[人:ひと]と[接:せっ]する",
@@ -8414,7 +8414,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "なかまはずれ",
     "ruby": "[仲間外:なかまはず]れ",
     "partOfSpeech": "[名]",
-    "meaningId": "Pengucilan dikucilkan dari pergaulan",
+    "meaningId": "Pengucilan, dikucilkan dari pergaulan",
     "meaningEn": "Exclusion, being left out",
     "collocation": {
       "jpRuby": "[仲間外:なかまはず]れにされる",
@@ -8438,7 +8438,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "おせじ",
     "ruby": "お[世辞:せじ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pujian basa-basi sanjungan manis",
+    "meaningId": "Pujian, basa-basi, sanjungan, manis",
     "meaningEn": "Flattery, compliment",
     "collocation": {
       "jpRuby": "お[世辞:せじ]を[言:い]う",
@@ -8462,7 +8462,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きがね",
     "ruby": "[気兼:きが]ね",
     "partOfSpeech": "[名]",
-    "meaningId": "Rasa sungkan segan canggung pada orang lain",
+    "meaningId": "Rasa, sungkan, segan, canggung, pada orang, lain",
     "meaningEn": "Hesitation, feeling constrained",
     "collocation": {
       "jpRuby": "[気兼:きが]ねなく過ごせる場所",
@@ -8486,7 +8486,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きくばり",
     "ruby": "[気配:きくば]り",
     "partOfSpeech": "[名]",
-    "meaningId": "Perhatian tenggang rasa kepedulian sekeliling",
+    "meaningId": "Perhatian, tenggang rasa, kepedulian, sekeliling",
     "meaningEn": "Attentiveness, consideration",
     "collocation": {
       "jpRuby": "[細:こま]やかな[気配:きくば]りができる人",
@@ -8510,7 +8510,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "そこう",
     "ruby": "[素行:そこう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Perilaku budi pekerti rekam kelakuan",
+    "meaningId": "Perilaku, budi pekerti, rekam, kelakuan",
     "meaningEn": "Conduct, behavior, deportment",
     "collocation": {
       "jpRuby": "[素行:そこう]が[良:よ]い",
@@ -8534,7 +8534,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じんぼう",
     "ruby": "[人望:じんぼう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Karisma wibawa dicintai dihormati khalayak",
+    "meaningId": "Karisma, wibawa, dicintai, dihormati, khalayak",
     "meaningEn": "Popularity, prestige, trust",
     "collocation": {
       "jpRuby": "[人望:じんぼう]が[厚:あつ]いリーダー",
@@ -8558,7 +8558,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ししん",
     "ruby": "[私心:ししん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pamrih kepentingan ego pribadi",
+    "meaningId": "Pamrih, kepentingan, ego, pribadi",
     "meaningEn": "Selfish motive, partiality",
     "collocation": {
       "jpRuby": "[私心:ししん]を[捨:す]てて[公:おおやけ]のために[尽:つ]くす",
@@ -8582,7 +8582,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "めんぼく",
     "ruby": "[面目:めんぼく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Harga diri muka martabat kehormatan",
+    "meaningId": "Harga, diri, muka, martabat, kehormatan",
     "meaningEn": "Face, honor, dignity",
     "collocation": {
       "jpRuby": "[面目:めんぼく]を[保:たも]つ",
@@ -8606,7 +8606,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "おもかげ",
     "ruby": "[面影:おもかげ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Raut sisa paras bayang wajah masa lalu",
+    "meaningId": "Raut, sisa, paras, bayang, wajah, masa lalu",
     "meaningEn": "Vestige, trace, looks",
     "collocation": {
       "jpRuby": "[幼:おさな]い[頃:ころ]の[面影:おもかげ]が[残:のこ]る",
@@ -8630,7 +8630,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きずな",
     "ruby": "[絆:きずな]",
     "partOfSpeech": "[名]",
-    "meaningId": "Ikatan batin pertalian tali persaudaraan",
+    "meaningId": "Ikatan, batin, pertalian, tali, persaudaraan",
     "meaningEn": "Bonds, emotional ties",
     "collocation": {
       "jpRuby": "[固:かた]い[絆:きずな]で[結:むす]ばれる",
@@ -8654,7 +8654,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "がくれき",
     "ruby": "[学歴:がくれき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Latar belakang pendidikan riwayat akademis",
+    "meaningId": "Latar, belakang, pendidikan, riwayat, akademis",
     "meaningEn": "Academic background",
     "collocation": {
       "jpRuby": "[学歴:がくれき]を[問:と]わない[採用:さいよう]",
@@ -8678,7 +8678,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "がくぶ",
     "ruby": "[学部:がくぶ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Fakultas departemen akademik",
+    "meaningId": "Fakultas, departemen, akademik",
     "meaningEn": "Faculty, academic department",
     "collocation": {
       "jpRuby": "[工学部:こうがくぶ]を[専攻:せんこう]する",
@@ -8702,7 +8702,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "がっか",
     "ruby": "[学科:がっか]",
     "partOfSpeech": "[名]",
-    "meaningId": "Program studi jurusan kuliah / ujian teori",
+    "meaningId": "Program, studi, jurusan, kuliah / ujian, teori",
     "meaningEn": "Department, subject, theoretical exam",
     "collocation": {
       "jpRuby": "[情報:じょうほう][科学:かがく][学科:がっか]",
@@ -8726,7 +8726,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こうぎ",
     "ruby": "[講義:こうぎ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kuliah ceramah akademis materi dosen",
+    "meaningId": "Kuliah, ceramah, akademis, materi, dosen",
     "meaningEn": "Lecture",
     "collocation": {
       "jpRuby": "[大学:だいがく]の[講義:こうぎ]を[聴:き]く",
@@ -8750,7 +8750,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きょうじゅ",
     "ruby": "[教授:きょうじゅ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Profesor guru besar akademisi",
+    "meaningId": "Profesor, guru, besar, akademisi",
     "meaningEn": "Professor",
     "collocation": {
       "jpRuby": "[専門:せんもん]の[教授:きょうじゅ]に[指導:しどう]を[仰:あお]ぐ",
@@ -8774,7 +8774,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ろんぶん",
     "ruby": "[論文:ろんぶん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tesis skripsi karya tulis ilmiah jurnal",
+    "meaningId": "Tesis, skripsi, karya, tulis, ilmiah, jurnal",
     "meaningEn": "Thesis, essay, academic paper",
     "collocation": {
       "jpRuby": "[卒業:そつぎょう][論文:ろんぶん]を[執筆:しっぴつ]する",
@@ -8798,7 +8798,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょうがくきん",
     "ruby": "[奨学金:しょうがくきん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Beasiswa tunjangan dana belajar",
+    "meaningId": "Beasiswa, tunjangan, dana, belajar",
     "meaningEn": "Scholarship",
     "collocation": {
       "jpRuby": "[奨学金:しょうがくきん]を[受給:じゅきゅう]する",
@@ -8822,7 +8822,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せいせき",
     "ruby": "[成績:せいせき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Nilai rapor prestasi capaian akademik",
+    "meaningId": "Nilai, rapor, prestasi, capaian, akademik",
     "meaningEn": "Grades, academic record, results",
     "collocation": {
       "jpRuby": "[優秀:ゆうしゅう]な[成績:せいせき]を[収:おさ]める",
@@ -8846,7 +8846,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "たんい",
     "ruby": "[単位:たんい]",
     "partOfSpeech": "[名]",
-    "meaningId": "SKS kredit mata kuliah / satuan unit ukur",
+    "meaningId": "SKS, kredit, mata, kuliah / satuan, unit, ukur",
     "meaningEn": "Credit (university), unit",
     "collocation": {
       "jpRuby": "[卒業:そつぎょう]に[必要:ひつよう]な[単位:たんい]を[修得:しゅうとく]する",
@@ -8870,7 +8870,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きゅうがく",
     "ruby": "[休学:きゅうがく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Cuti kuliah rehat studi sementara",
+    "meaningId": "Cuti, kuliah, rehat, studi, sementara",
     "meaningEn": "Leave of absence from school",
     "collocation": {
       "jpRuby": "[大学:だいがく]を[１年間:いちねんかん][休学:きゅうがく]する",
@@ -8894,7 +8894,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "たいがく",
     "ruby": "[退学:たいがく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Putus studi keluar mengundurkan diri dari kampus",
+    "meaningId": "Putus, studi, keluar, mengundurkan, diri dari kampus",
     "meaningEn": "Dropping out of school, expulsion",
     "collocation": {
       "jpRuby": "[事情:じじょう]により[退学:たいがく]する",
@@ -8918,7 +8918,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "りしゅう",
     "ruby": "[履修:りしゅう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Mengambil mengontrak mata kuliah KRS",
+    "meaningId": "Mengambil, mengontrak, mata, kuliah, KRS",
     "meaningEn": "Taking a class, course enrollment",
     "collocation": {
       "jpRuby": "[必要:ひつよう]な[科目:かもく]を[履修:りしゅう]する",
@@ -8942,7 +8942,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せんこう",
     "ruby": "[専攻:せんこう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Jurusan bidang konsentrasi studi",
+    "meaningId": "Jurusan, bidang, konsentrasi, studi",
     "meaningEn": "Major, academic specialty",
     "collocation": {
       "jpRuby": "[日本:にほん][文学:ぶんがく]を[専攻:せんこう]する",
@@ -8966,7 +8966,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ゼミ",
     "ruby": "ゼミ",
     "partOfSpeech": "[名]",
-    "meaningId": "Seminar penelitian kelompok dosen pembimbing",
+    "meaningId": "Seminar, penelitian, kelompok, dosen, pembimbing",
     "meaningEn": "Seminar class",
     "collocation": {
       "jpRuby": "[教授:きょうじゅ]のゼミに[所属:しょぞく]する",
@@ -8990,7 +8990,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ほしゅう",
     "ruby": "[補習:ほしゅう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kelas tambahan les remediasi",
+    "meaningId": "Kelas, tambahan, les, remediasi",
     "meaningEn": "Supplementary lesson, remedial class",
     "collocation": {
       "jpRuby": "[放課後:ほうかご]に[補習:ほしゅう]を[受:う]ける",
@@ -9014,7 +9014,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "がっしゅく",
     "ruby": "[合宿:がっしゅく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pemusatan latihan kamping belajar bersama",
+    "meaningId": "Pemusatan, latihan, kamping, belajar, bersama",
     "meaningEn": "Training camp, group study retreat",
     "collocation": {
       "jpRuby": "[夏休:なつやす]みに[合宿:がっしゅく]を[行:おこな]う",
@@ -9062,7 +9062,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "すいせんにゅうがく",
     "ruby": "[推薦入学:すいせんにゅうがく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penerimaan mahasiswa jalur prestasi rekomendasi",
+    "meaningId": "Penerimaan, mahasiswa, jalur, prestasi, rekomendasi",
     "meaningEn": "Admission on recommendation",
     "collocation": {
       "jpRuby": "[高校:こうこう]の推薦で大学に[推薦入学:すいせんにゅうがく]する",
@@ -9086,7 +9086,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "へんさち",
     "ruby": "[偏差値:へんさち]",
     "partOfSpeech": "[名]",
-    "meaningId": "Standar deviasi nilai daya saing ujian",
+    "meaningId": "Standar, deviasi, nilai, daya saing, ujian",
     "meaningEn": "Standard score, deviation value",
     "collocation": {
       "jpRuby": "[模擬試験:もぎしけん]の[偏差値:へんさち]を[上:あ]げる",
@@ -9110,7 +9110,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "がんしょ",
     "ruby": "[願書:がんしょ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Formulir berkas lamaran pendaftaran ujian",
+    "meaningId": "Formulir, berkas, lamaran, pendaftaran, ujian",
     "meaningEn": "Application form, written application",
     "collocation": {
       "jpRuby": "[入試:にゅうし]の[願書:がんしょ]を[提出:ていしゅつ]する",
@@ -9134,7 +9134,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じゅけんひょう",
     "ruby": "[受験票:じゅけんひょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kartu tanda peserta ujian kartu tes",
+    "meaningId": "Kartu, tanda, peserta, ujian, kartu, tes",
     "meaningEn": "Admission ticket for examination",
     "collocation": {
       "jpRuby": "[試験:しけん][当日:とうじつ]に[受験票:じゅけんひょう]を[持参:じさん]する",
@@ -9158,7 +9158,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ごうかくつうち",
     "ruby": "[合格通知:ごうかくつうち]",
     "partOfSpeech": "[名]",
-    "meaningId": "Surat pemberitahuan resmi tanda lulus",
+    "meaningId": "Surat, pemberitahuan, resmi, tanda, lulus",
     "meaningEn": "Notice of acceptance, passing letter",
     "collocation": {
       "jpRuby": "[自宅:じたく]に[合格通知:ごうかくつうち]が[届:とど]く",
@@ -9182,7 +9182,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "にゅうがくきん",
     "ruby": "[入学金:にゅうがくきん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Biaya uang pangkal masuk sekolah",
+    "meaningId": "Biaya, uang, pangkal, masuk, sekolah",
     "meaningEn": "Admission fee, enrollment fee",
     "collocation": {
       "jpRuby": "[期日:きじつ]までに[入学金:にゅうがくきん]を[振:ふ]り[込:こ]む",
@@ -9206,7 +9206,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じゅぎょうりょう",
     "ruby": "[授業料:じゅぎょうりょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Uang SPP biaya kuliah",
+    "meaningId": "Uang, SPP, biaya, kuliah",
     "meaningEn": "Tuition fee, school tuition",
     "collocation": {
       "jpRuby": "[年間:ねんかん]の[授業料:じゅぎょうりょう]を[納付:のうふ]する",
@@ -9230,7 +9230,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しゅうりょう",
     "ruby": "[修了:しゅうりょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penyelesaian kelulusan tamat kurikulum",
+    "meaningId": "Penyelesaian, kelulusan, tamat, kurikulum",
     "meaningEn": "Completion (of a course)",
     "collocation": {
       "jpRuby": "[修士:しゅうし][課程:かてい]を[修了:しゅうりょう]する",
@@ -9254,7 +9254,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しゅうし",
     "ruby": "[修士:しゅうし]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gelar master magister S2",
+    "meaningId": "Gelar, master, magister, S2",
     "meaningEn": "Master's degree",
     "collocation": {
       "jpRuby": "[修士:しゅうし][論文:ろんぶん]の[審査:しんさ]に[合格:ごうかく]する",
@@ -9278,7 +9278,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はかせ",
     "ruby": "[博士:はかせ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gelar doktor S3 cendekiawan pakar",
+    "meaningId": "Gelar, doktor, S3, cendekiawan, pakar",
     "meaningEn": "Doctorate, PhD",
     "collocation": {
       "jpRuby": "[博士:はかせ][号:ごう]を[取得:しゅとく]する",
@@ -9302,7 +9302,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けんきゅうしつ",
     "ruby": "[研究室:けんきゅうしつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Ruang riset laboratorium dosen",
+    "meaningId": "Ruang, riset, laboratorium, dosen",
     "meaningEn": "Laboratory, professor's office",
     "collocation": {
       "jpRuby": "[夜遅:よるおそ]くまで[研究室:けんきゅうしつ]に[残:のこ]る",
@@ -9326,7 +9326,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "がっかい",
     "ruby": "[学会:がっかい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Konferensi simposium asosiasi akademik",
+    "meaningId": "Konferensi, simposium, asosiasi, akademik",
     "meaningEn": "Academic society, conference",
     "collocation": {
       "jpRuby": "[国際:こくさい][学会:がっかい]で[発表:はっぴょう]する",
@@ -9350,7 +9350,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぶんけん",
     "ruby": "[文献:ぶんけん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kepustakaan literatur rujukan ilmiah",
+    "meaningId": "Kepustakaan, literatur, rujukan, ilmiah",
     "meaningEn": "Literature, references, documents",
     "collocation": {
       "jpRuby": "[関連:かんれん]する[文献:ぶんけん]を[調:しら]べる",
@@ -9374,7 +9374,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "さんこうしょ",
     "ruby": "[参考書:さんこうしょ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Buku pegangan referensi buku modul",
+    "meaningId": "Buku, pegangan, referensi, buku, modul",
     "meaningEn": "Reference book, study guide",
     "collocation": {
       "jpRuby": "[分:わ]かりやすい[参考書:さんこうしょ]を[選:えら]ぶ",
@@ -9398,7 +9398,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "もぎしけん",
     "ruby": "[模擬試験:もぎしけん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Ujian simulasi tryout",
+    "meaningId": "Ujian, simulasi, tryout",
     "meaningEn": "Mock examination, practice test",
     "collocation": {
       "jpRuby": "[定期:ていき][的:てき]に[模擬試験:もぎしけん]を[受:う]ける",
@@ -9422,7 +9422,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "さいてん",
     "ruby": "[採点:さいてん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penilaian penskoran lembar ujian",
+    "meaningId": "Penilaian, penskoran, lembar, ujian",
     "meaningEn": "Marking, grading",
     "collocation": {
       "jpRuby": "[テスト]を[厳密:げんみつ]に[採点:さいてん]する",
@@ -9446,7 +9446,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きゅうだい",
     "ruby": "[及第:きゅうだい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Lulus mencapai ambang batas nilai cukup",
+    "meaningId": "Lulus, mencapai, ambang, batas, nilai, cukup",
     "meaningEn": "Passing an examination",
     "collocation": {
       "jpRuby": "[及第:きゅうだい][点:てん]をかろうじてクリアする",
@@ -9470,7 +9470,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "らくだい",
     "ruby": "[落第:らくだい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tinggal kelas tidak naik tidak lulus",
+    "meaningId": "Tinggal, kelas, tidak, naik, tidak, lulus",
     "meaningEn": "Failing, staying back, flunking",
     "collocation": {
       "jpRuby": "[単位:たんい]を[落:お]として[落第:らくだい]する",
@@ -9494,7 +9494,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しゅっせきにっすう",
     "ruby": "[出席日数:しゅっせきにっすう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Jumlah hari kehadiran absensi",
+    "meaningId": "Jumlah, hari, kehadiran, absensi",
     "meaningEn": "Number of days attended",
     "collocation": {
       "jpRuby": "[規定:きてい]の[出席日数:しゅっせきにっすう]を[満:み]たす",
@@ -9518,7 +9518,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こうそく",
     "ruby": "[校則:こうそく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tata tertib sekolah peraturan siswa",
+    "meaningId": "Tata tertib, sekolah, peraturan, siswa",
     "meaningEn": "School regulations, school code",
     "collocation": {
       "jpRuby": "[厳:きび]しい[校則:こうそく]を[守:まも]る",
@@ -9542,7 +9542,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "どうきゅうせい",
     "ruby": "[同級生:どうきゅうせい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Teman sekelas kawan seangkatan kelas",
+    "meaningId": "Teman, sekelas, kawan, seangkatan, kelas",
     "meaningEn": "Classmate",
     "collocation": {
       "jpRuby": "[親:した]しい[同級生:どうきゅうせい]と[語:かた]り[合:あ]う",
@@ -9566,7 +9566,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こうない",
     "ruby": "[校内:こうない]",
     "partOfSpeech": "[名]",
-    "meaningId": "Lingkungan area dalam sekolah kampus",
+    "meaningId": "Lingkungan, area, dalam sekolah, kampus",
     "meaningEn": "On campus, within school grounds",
     "collocation": {
       "jpRuby": "[校内:こうない]の[美化:びか]に[努:つと]める",
@@ -9590,7 +9590,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かがいかつどう",
     "ruby": "[課外活動:かがいかつどう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Aktivitas ekstrakurikuler kegiatan luar kelas",
+    "meaningId": "Aktivitas, ekstrakurikuler, kegiatan, luar, kelas",
     "meaningEn": "Extracurricular activities",
     "collocation": {
       "jpRuby": "[積極:せっきょく][的:てき]に[課外活動:かがいかつどう]に[参加:さんか]する",
@@ -9614,7 +9614,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しゅっきん",
     "ruby": "[出勤:しゅっきん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Masuk kerja berangkat kerja",
+    "meaningId": "Masuk, kerja, berangkat, kerja",
     "meaningEn": "Going to work, attendance at work",
     "collocation": {
       "jpRuby": "[毎朝:まいあさ]８時に[出勤:しゅっきん]する",
@@ -9638,7 +9638,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ざんぎょう",
     "ruby": "[残業:ざんぎょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kerja lembur lemburan",
+    "meaningId": "Kerja, lembur, lemburan",
     "meaningEn": "Overtime work",
     "collocation": {
       "jpRuby": "[残業:ざんぎょう]を[減:へ]らす",
@@ -9662,7 +9662,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ゆうきゅうきゅうか",
     "ruby": "[有給休暇:ゆうきゅうきゅうか]",
     "partOfSpeech": "[名]",
-    "meaningId": "Cuti berbayar hak cuti tahunan",
+    "meaningId": "Cuti, berbayar, hak, cuti, tahunan",
     "meaningEn": "Paid leave, annual paid vacation",
     "collocation": {
       "jpRuby": "[有給休暇:ゆうきゅうきゅうか]を[取得:しゅとく]する",
@@ -9686,7 +9686,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けいやく",
     "ruby": "[けいやく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kontrak akad perjanjian bisnis",
+    "meaningId": "Kontrak, akad, perjanjian, bisnis",
     "meaningEn": "Contract, agreement",
     "collocation": {
       "jpRuby": "[正式:せいしき]に[契約:けいやく]を[結:むす]ぶ",
@@ -9710,7 +9710,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きかく",
     "ruby": "[企画:きかく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Perencanaan proposal ide proyek",
+    "meaningId": "Perencanaan, proposal, ide, proyek",
     "meaningEn": "Planning, project, proposal",
     "collocation": {
       "jpRuby": "[新商品:しんしょうひん]の[企画:きかく]を[立:た]てる",
@@ -9734,7 +9734,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じぎょう",
     "ruby": "[じぎょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Usaha bisnis proyek industri",
+    "meaningId": "Usaha, bisnis, proyek, industri",
     "meaningEn": "Business, enterprise, project",
     "collocation": {
       "jpRuby": "[新規:しんき][事業:じぎょう]を[立:た]ち[上:あ]げる",
@@ -9758,7 +9758,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "やくいん",
     "ruby": "[役員:やくいん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Dewan direksi jajaran pimpinan eksekutif",
+    "meaningId": "Dewan, direksi, jajaran, pimpinan, eksekutif",
     "meaningEn": "Executive, director, officer",
     "collocation": {
       "jpRuby": "[取締役:とりしまりやく][役員:やくいん]に[就任:しゅうにん]する",
@@ -9782,7 +9782,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "とりしまりやく",
     "ruby": "[取締役:とりしまりやく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Direktur anggota dewan komisaris",
+    "meaningId": "Direktur, anggota, dewan, komisaris",
     "meaningEn": "Director, board member",
     "collocation": {
       "jpRuby": "[代表:だいひょう][取締役:とりしまりやく][社長:しゃちょう]",
@@ -9806,7 +9806,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょうしん",
     "ruby": "[昇進:しょうしん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kenaikan pangkat promosi jabatan",
+    "meaningId": "Kenaikan, pangkat, promosi, jabatan",
     "meaningEn": "Promotion, rise in rank",
     "collocation": {
       "jpRuby": "[課長:かちょう]に[昇進:しょうしん]する",
@@ -9830,7 +9830,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きゅうりょう",
     "ruby": "[給料:きゅうりょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gaji bulanan bayaran kerja",
+    "meaningId": "Gaji, bulanan, bayaran, kerja",
     "meaningEn": "Salary, pay, wages",
     "collocation": {
       "jpRuby": "[給料:きゅうりょう]が[上:あ]がる",
@@ -9854,7 +9854,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ボーナス",
     "ruby": "ボーナス",
     "partOfSpeech": "[名]",
-    "meaningId": "Bonus tahunan tunjangan hari raya",
+    "meaningId": "Bonus, tahunan, tunjangan, hari, raya",
     "meaningEn": "Bonus",
     "collocation": {
       "jpRuby": "[夏:なつ]のボーナスを[受:う]け[取:と]る",
@@ -9878,7 +9878,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "たいしょくきん",
     "ruby": "[退職金:たいしょくきん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Uang pesangon tunjangan purnatugas",
+    "meaningId": "Uang, pesangon, tunjangan, purnatugas",
     "meaningEn": "Retirement allowance, severance pay",
     "collocation": {
       "jpRuby": "[満額:まんがく]の[退職金:たいしょくきん]を[受:う]け[取:と]る",
@@ -9902,7 +9902,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "めいし",
     "ruby": "[名刺:めいし]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kartu nama bisnis",
+    "meaningId": "Kartu, nama, bisnis",
     "meaningEn": "Business card",
     "collocation": {
       "jpRuby": "[名刺:めいし]を[交換:こうかん]する",
@@ -9926,7 +9926,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かたがき",
     "ruby": "[肩書:かたがき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gelar jabatan titel resmi",
+    "meaningId": "Gelar, jabatan, titel, resmi",
     "meaningEn": "Title, job title, position",
     "collocation": {
       "jpRuby": "[立派:りっぱ]な[肩書:かたがき]を[持:も]つ",
@@ -9950,7 +9950,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "りんぎ",
     "ruby": "[稟議:りんぎ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Persetujuan berjenjang sirkulasi disposisi",
+    "meaningId": "Persetujuan, berjenjang, sirkulasi, disposisi",
     "meaningEn": "Approval circulation, ringi system",
     "collocation": {
       "jpRuby": "[稟議:りんぎ][書:しょ]を[回:まわ]す",
@@ -9974,7 +9974,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けっさい",
     "ruby": "[決裁:けっさい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Persetujuan final ketuk palu pimpinan",
+    "meaningId": "Persetujuan, final, ketuk, palu, pimpinan",
     "meaningEn": "Sanction, final approval, authorization",
     "collocation": {
       "jpRuby": "[部長:ぶちょう]の[決裁:けっさい]を[仰:あお]ぐ",
@@ -9998,7 +9998,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ねまわし",
     "ruby": "[根回:ねまわ]し",
     "partOfSpeech": "[名]",
-    "meaningId": "Lobi awal koordinasi informal di balik layar",
+    "meaningId": "Lobi, awal, koordinasi, informal di balik, layar",
     "meaningEn": "Behind-the-scenes consensus building",
     "collocation": {
       "jpRuby": "[事前:じぜん]に[根回:ねまわ]しをする",
@@ -10022,7 +10022,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せったい",
     "ruby": "[接待:せったい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Jamuan makan bisnis melayani klien",
+    "meaningId": "Jamuan, makan, bisnis, melayani, klien",
     "meaningEn": "Business entertainment, wining and dining",
     "collocation": {
       "jpRuby": "[取引先:とりひきさき]を[接待:せったい]する",
@@ -10046,7 +10046,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "のうき",
     "ruby": "[納期:のうき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tenggat waktu pengiriman barang deadline",
+    "meaningId": "Tenggat, waktu, pengiriman, barang, deadline",
     "meaningEn": "Delivery date, deadline",
     "collocation": {
       "jpRuby": "[納期:のうき]を[厳守:げんしゅ]する",
@@ -10070,7 +10070,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "のうひん",
     "ruby": "[納品:のうひん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pengiriman penyerahan barang pesanan",
+    "meaningId": "Pengiriman, penyerahan, barang, pesanan",
     "meaningEn": "Delivery of goods",
     "collocation": {
       "jpRuby": "[商品:しょうひん]を[倉庫:そうこ]へ[納品:のうひん]する",
@@ -10094,7 +10094,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "みつもり",
     "ruby": "[見積:みつ]もり",
     "partOfSpeech": "[名]",
-    "meaningId": "Estimasi taksiran biaya surat penawaran",
+    "meaningId": "Estimasi, taksiran, biaya, surat, penawaran",
     "meaningEn": "Estimate, quotation",
     "collocation": {
       "jpRuby": "[費用:ひよう]の[見積:みつ]もりを[取:と]る",
@@ -10118,7 +10118,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せいきゅうしょ",
     "ruby": "[請求書:せいきゅうしょ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Faktur tagihan surat tagihan",
+    "meaningId": "Faktur, tagihan, surat, tagihan",
     "meaningEn": "Invoice, bill",
     "collocation": {
       "jpRuby": "[請求書:せいきゅうしょ]を[発行:はっこう]する",
@@ -10142,7 +10142,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "りょうしゅうしょ",
     "ruby": "[領収書:りょうしゅうしょ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kwitansi tanda bukti bayar",
+    "meaningId": "Kwitansi, tanda, bukti, bayar",
     "meaningEn": "Receipt",
     "collocation": {
       "jpRuby": "[経費:けいひ][精算:せいさん]のために[領収書:りょうしゅうしょ]をもらう",
@@ -10166,7 +10166,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けいひ",
     "ruby": "[経費:けいひ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Biaya operasional pengeluaran dinas",
+    "meaningId": "Biaya, operasional, pengeluaran, dinas",
     "meaningEn": "Expenses, costs, expenditure",
     "collocation": {
       "jpRuby": "[交通費:こうつうひ]を[経費:けいひ]で[落:お]とす",
@@ -10190,7 +10190,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "うりあげ",
     "ruby": "[売上:うりあげ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Omzet hasil penjualan",
+    "meaningId": "Omzet, hasil, penjualan",
     "meaningEn": "Sales, turnover",
     "collocation": {
       "jpRuby": "[今月:こんげつ]の[売上:うりあげ]が[伸:の]びる",
@@ -10214,7 +10214,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "りえき",
     "ruby": "[利益:りえき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Laba keuntungan margin bersih",
+    "meaningId": "Laba, keuntungan, margin, bersih",
     "meaningEn": "Profit, gains, benefit",
     "collocation": {
       "jpRuby": "[純:じゅん][利益:りえき]を[確保:かくほ]する",
@@ -10238,7 +10238,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "そんしつ",
     "ruby": "[損失:そんしつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kerugian tekor finansial",
+    "meaningId": "Kerugian, tekor, finansial",
     "meaningEn": "Loss, financial loss",
     "collocation": {
       "jpRuby": "[大:おお]きな[損失:そんしつ]を[出:だ]す",
@@ -10262,7 +10262,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "あかじ",
     "ruby": "[赤字:あかじ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Defisit tekor neraca minus",
+    "meaningId": "Defisit, tekor, neraca, minus",
     "meaningEn": "Deficit, in the red",
     "collocation": {
       "jpRuby": "[今期:こんき]は[赤字:あかじ]に[転落:てんらく]する",
@@ -10286,7 +10286,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "くろじ",
     "ruby": "[黒字:くろじ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Surplus laba neraca positif",
+    "meaningId": "Surplus, laba, neraca, positif",
     "meaningEn": "Surplus, in the black",
     "collocation": {
       "jpRuby": "[大幅:おおはば]な[黒字:くろじ]を[計上:けいじょう]する",
@@ -10310,7 +10310,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "とうさん",
     "ruby": "[倒産:とうさん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kepailitan bangkrut gulung tikar",
+    "meaningId": "Kepailitan, bangkrut, gulung, tikar",
     "meaningEn": "Bankruptcy, corporate insolvency",
     "collocation": {
       "jpRuby": "[会社:かいしゃ]が[倒産:とうさん]する",
@@ -10334,7 +10334,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ばいしゅう",
     "ruby": "[買収:ばいしゅう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Akuisisi pembelian kepemilikan perusahaan",
+    "meaningId": "Akuisisi, pembelian, kepemilikan, perusahaan",
     "meaningEn": "Acquisition, buyout, takeover",
     "collocation": {
       "jpRuby": "[ライバル:らいばる][企業:きぎょう]を[買収:ばいしゅう]する",
@@ -10358,7 +10358,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "がっぺい",
     "ruby": "[合併:がっぺい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Merger penggabungan dua badan usaha",
+    "meaningId": "Merger, penggabungan, dua, badan, usaha",
     "meaningEn": "Merger, amalgamation",
     "collocation": {
       "jpRuby": "[二:ふた]つの[銀行:ぎんこう]が[合併:がっぺい]する",
@@ -10382,7 +10382,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ていけい",
     "ruby": "[ていけい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kemitraan aliansi strategis",
+    "meaningId": "Kemitraan, aliansi, strategis",
     "meaningEn": "Tie-up, business alliance",
     "collocation": {
       "jpRuby": "[業務:ぎょうむ][提携:ていけい]を[結:むす]ぶ",
@@ -10406,7 +10406,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しじょう",
     "ruby": "[市場:しじょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pasar bursa pangsa pasar",
+    "meaningId": "Pasar, bursa, pangsa, pasar",
     "meaningEn": "Market (financial/commercial)",
     "collocation": {
       "jpRuby": "[海外:かいがい][市場:しじょう]へ[進出:しんしゅつ]する",
@@ -10430,7 +10430,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かぶぬし",
     "ruby": "[株主:かぶぬし]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pemegang saham investor ekuitas",
+    "meaningId": "Pemegang, saham, investor, ekuitas",
     "meaningEn": "Shareholder, stockholder",
     "collocation": {
       "jpRuby": "[定期:ていき][株主:かぶぬし][総会:そうかい]を[開催:かいさい]する",
@@ -10454,7 +10454,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はいとう",
     "ruby": "[配当:はいとう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Dividen pembagian keuntungan saham",
+    "meaningId": "Dividen, pembagian, keuntungan, saham",
     "meaningEn": "Dividend, payout",
     "collocation": {
       "jpRuby": "[株主:かぶぬし]に[配当:はいとう]を[出:だ]す",
@@ -10478,7 +10478,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かぶか",
     "ruby": "[株価:かぶか]",
     "partOfSpeech": "[名]",
-    "meaningId": "Harga saham kurs bursa efek",
+    "meaningId": "Harga, saham, kurs, bursa, efek",
     "meaningEn": "Stock price, share price",
     "collocation": {
       "jpRuby": "[株価:かぶか]が[急騰:きゅうとう]する",
@@ -10502,7 +10502,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "とりしまりやくかい",
     "ruby": "[取締役会:とりしまりやくかい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Rapat dewan direksi dewan komisaris",
+    "meaningId": "Rapat, dewan, direksi, dewan, komisaris",
     "meaningEn": "Board of directors meeting",
     "collocation": {
       "jpRuby": "[取締役会:とりしまりやくかい]で[決議:けつぎ]する",
@@ -10526,7 +10526,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しゅうぎょうきそく",
     "ruby": "[就業規則:しゅうぎょうきそく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Peraturan ketenagakerjaan tata tertib kerja",
+    "meaningId": "Peraturan, ketenagakerjaan, tata tertib, kerja",
     "meaningEn": "Work regulations, employment rules",
     "collocation": {
       "jpRuby": "[就業規則:しゅうぎょうきそく]を[確認:かくにん]する",
@@ -10550,7 +10550,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ろうどうくみあい",
     "ruby": "[労働組合:ろうどうくみあい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Serikat buruh serikat pekerja",
+    "meaningId": "Serikat, buruh, serikat, pekerja",
     "meaningEn": "Labor union, trade union",
     "collocation": {
       "jpRuby": "[労働組合:ろうどうくみあい]が[賃上:ちんあ]げを[要求:ようきゅう]する",
@@ -10574,7 +10574,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ふくりこうせい",
     "ruby": "[福利厚生:ふくりこうせい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kesejahteraan karyawan tunjangan fasilitas kantor",
+    "meaningId": "Kesejahteraan, karyawan, tunjangan, fasilitas, kantor",
     "meaningEn": "Employee benefits, welfare programs",
     "collocation": {
       "jpRuby": "[福利厚生:ふくりこうせい]が[充実:じゅうじつ]している[会社:かいしゃ]",
@@ -10598,7 +10598,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ノルマ",
     "ruby": "ノルマ",
     "partOfSpeech": "[名]",
-    "meaningId": "Target kuota beban kerja penjualan",
+    "meaningId": "Target, kuota, beban, kerja, penjualan",
     "meaningEn": "Quota, norm, production target",
     "collocation": {
       "jpRuby": "[月間:げっかん]のノルマを[達成:たっせい]する",
@@ -10622,7 +10622,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "クライアント",
     "ruby": "クライアント",
     "partOfSpeech": "[名]",
-    "meaningId": "Klien pemesan jasa rekanan mitra",
+    "meaningId": "Klien, pemesan, jasa, rekanan, mitra",
     "meaningEn": "Client",
     "collocation": {
       "jpRuby": "クライアントの[要望:ようぼう]を[聞:き]く",
@@ -10646,7 +10646,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "プレゼン",
     "ruby": "プレゼン",
     "partOfSpeech": "[名]",
-    "meaningId": "Presentasi pemaparan materi bisnis",
+    "meaningId": "Presentasi, pemaparan, materi, bisnis",
     "meaningEn": "Presentation",
     "collocation": {
       "jpRuby": "[企画:きかく]のプレゼンを[行:おこな]う",
@@ -10670,7 +10670,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "コンサルタント",
     "ruby": "コンサルタント",
     "partOfSpeech": "[名]",
-    "meaningId": "Konsultan penasihat ahli bisnis",
+    "meaningId": "Konsultan, penasihat, ahli, bisnis",
     "meaningEn": "Consultant, advisor",
     "collocation": {
       "jpRuby": "[経営:けいえい]コンサルタントに[相談:そうだん]する",
@@ -10694,7 +10694,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きこう",
     "ruby": "[きこう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Karakter iklim zona cuaca",
+    "meaningId": "Karakter, iklim, zona, cuaca",
     "meaningEn": "Climate",
     "collocation": {
       "jpRuby": "[温暖:おんだん]な[気候:きこう]",
@@ -10718,7 +10718,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ごうう",
     "ruby": "[豪雨:ごうう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Hujan deras lebat hujan badai",
+    "meaningId": "Hujan, deras, lebat, hujan, badai",
     "meaningEn": "Torrential rain, heavy downpour",
     "collocation": {
       "jpRuby": "[集中:しゅうちゅう][豪雨:ごうう]が[襲:おそ]う",
@@ -10742,7 +10742,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こうずい",
     "ruby": "[洪水:こうずい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Banjir bandang luapan air bah",
+    "meaningId": "Banjir, bandang, luapan, air, bah",
     "meaningEn": "Flood, inundation",
     "collocation": {
       "jpRuby": "[洪水:こうずい]で[町:まち]が[冠水:かんすい]する",
@@ -10766,7 +10766,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じしん",
     "ruby": "[地震:じしん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gempa bumi goncangan tektonik",
+    "meaningId": "Gempa bumi, goncangan, tektonik",
     "meaningEn": "Earthquake",
     "collocation": {
       "jpRuby": "[大:おお]きな[地震:じしん]が[起:お]きる",
@@ -10790,7 +10790,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "つなみ",
     "ruby": "[津波:つなみ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tsunami gelombang pasang dahsyat",
+    "meaningId": "Tsunami, gelombang, pasang, dahsyat",
     "meaningEn": "Tsunami, tidal wave",
     "collocation": {
       "jpRuby": "[大津波:おおつなみ][警報:けいほう]が[発令:はつれい]される",
@@ -10814,7 +10814,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かざん",
     "ruby": "[火山:かざん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gunung berapi gunung api aktif",
+    "meaningId": "Gunung berapi, gunung, api, aktif",
     "meaningEn": "Volcano",
     "collocation": {
       "jpRuby": "[活火山:かっかざん]が[噴火:ふんか]する",
@@ -10838,7 +10838,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ふんか",
     "ruby": "[噴火:ふんか]",
     "partOfSpeech": "[名]",
-    "meaningId": "Erupsi letusan gunung berapi",
+    "meaningId": "Erupsi, letusan, gunung berapi",
     "meaningEn": "Eruption",
     "collocation": {
       "jpRuby": "[火山:かざん]の[大噴火:だいふんか]",
@@ -10862,7 +10862,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "たいふう",
     "ruby": "[たいふう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Topan badai tropis taifun",
+    "meaningId": "Topan, badai, tropis, taifun",
     "meaningEn": "Typhoon",
     "collocation": {
       "jpRuby": "[大型:おおがた]の[台風:たいふう]が[上陸:じょうりく]する",
@@ -10886,7 +10886,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きょうふう",
     "ruby": "[強風:きょうふう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Angin kencang hembusan badai",
+    "meaningId": "Angin, kencang, hembusan, badai",
     "meaningEn": "Strong wind, gale",
     "collocation": {
       "jpRuby": "[強風:きょうふう]で[看板:かんばん]が[飛:と]ばされる",
@@ -10910,7 +10910,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "たつまき",
     "ruby": "[竜巻:たつまき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Puting beliung tornado angin puyuh",
+    "meaningId": "Puting, beliung, tornado, angin, puyuh",
     "meaningEn": "Tornado, waterspout",
     "collocation": {
       "jpRuby": "[巨大:きょだい]な[竜巻:たつまき]が[発生:はっせい]する",
@@ -10934,7 +10934,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かんばつ",
     "ruby": "[干ばつ:かんばつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kekeringan kemarau panjang paceklik",
+    "meaningId": "Kekeringan, kemarau, panjang, paceklik",
     "meaningEn": "Drought",
     "collocation": {
       "jpRuby": "[深刻:しんこく]な[干ばつ:かんばつ]に[見舞:みま]われる",
@@ -10958,7 +10958,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ちきゅうおんだんか",
     "ruby": "[地球温暖化:ちきゅうおんだんか]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pemanasan global kenaikan suhu bumi",
+    "meaningId": "Pemanasan global, kenaikan, suhu, bumi",
     "meaningEn": "Global warming",
     "collocation": {
       "jpRuby": "[地球温暖化:ちきゅうおんだんか]を[防:ふせ]ぐ",
@@ -10982,7 +10982,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "おんしつこうかがす",
     "ruby": "[温室効果ガス:おんしつこうかがす]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gas rumah kaca emisi karbon",
+    "meaningId": "Gas, rumah, kaca, emisi, karbon",
     "meaningEn": "Greenhouse gas",
     "collocation": {
       "jpRuby": "[温室効果ガス:おんしつこうかがす]を[削減:さくげん]する",
@@ -11006,7 +11006,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょうえね",
     "ruby": "[省:しょう]エネ",
     "partOfSpeech": "[名]",
-    "meaningId": "Hemat energi konservasi energi",
+    "meaningId": "Hemat, energi, konservasi, energi",
     "meaningEn": "Energy saving, energy conservation",
     "collocation": {
       "jpRuby": "[省:しょう]エネ[家電:かでん]を[選:えら]ぶ",
@@ -11030,7 +11030,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "さいせいかのうえねるぎー",
     "ruby": "[再生可能エネルギー:さいせいかのうえねるぎー]",
     "partOfSpeech": "[名]",
-    "meaningId": "Energi baru terbarukan EBT",
+    "meaningId": "Energi, baru, terbarukan, EBT",
     "meaningEn": "Renewable energy",
     "collocation": {
       "jpRuby": "[再生可能エネルギー:さいせいかのうえねるぎー]の[普及:ふきゅう]",
@@ -11054,7 +11054,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "たいようこうはつでん",
     "ruby": "[太陽光発電:たいようこうはつでん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pembangkit listrik tenaga surya PLTS",
+    "meaningId": "Pembangkit listrik, tenaga, surya, PLTS",
     "meaningEn": "Solar power generation",
     "collocation": {
       "jpRuby": "[屋根:やね]に[太陽光発電:たいようこうはつでん]を[設置:せっち]する",
@@ -11078,7 +11078,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せいたいけい",
     "ruby": "[生態系:せいたいけい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Ekosistem rantai jaring makanan",
+    "meaningId": "Ekosistem, rantai, jaring, makanan",
     "meaningEn": "Ecosystem",
     "collocation": {
       "jpRuby": "[豊:ゆた]かな[生態系:せいたいけい]を[守:まも]る",
@@ -11102,7 +11102,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぜつめつきぐしゅ",
     "ruby": "[絶滅危惧種:ぜつめつきぐしゅ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Spesies terancam punah satwa langka",
+    "meaningId": "Spesies, terancam, punah, satwa, langka",
     "meaningEn": "Endangered species",
     "collocation": {
       "jpRuby": "[絶滅危惧種:ぜつめつきぐしゅ]に[指定:してい]される",
@@ -11126,7 +11126,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しんりんばっさい",
     "ruby": "[森林伐採:しんりんばっさい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penebangan hutan deforestasi gundul",
+    "meaningId": "Penebangan, hutan, deforestasi, gundul",
     "meaningEn": "Deforestation, forest felling",
     "collocation": {
       "jpRuby": "[過度:かど]な[森林伐採:しんりんばっさい]を[規制:きせい]する",
@@ -11150,7 +11150,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "たいきおせん",
     "ruby": "[大気汚染:たいきおせん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Polusi udara pencemaran udara",
+    "meaningId": "Polusi udara, pencemaran, udara",
     "meaningEn": "Air pollution, atmospheric pollution",
     "collocation": {
       "jpRuby": "[工場:こうじょう]の[煙:けむり]による[大気汚染:たいきおせん]",
@@ -11174,7 +11174,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "すいしつおだく",
     "ruby": "[水質汚濁:すいしつおだく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pencemaran air polusi air limbah",
+    "meaningId": "Pencemaran, air, polusi, air, limbah",
     "meaningEn": "Water pollution",
     "collocation": {
       "jpRuby": "[川:かわ]の[水質汚濁:すいしつおだく]を[防:ふせ]ぐ",
@@ -11198,7 +11198,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かいようぷらすちっく",
     "ruby": "[海洋:かいよう]プラスチック",
     "partOfSpeech": "[名]",
-    "meaningId": "Sampah plastik laut limbah plastik lautan",
+    "meaningId": "Sampah plastik, laut, limbah, plastik, lautan",
     "meaningEn": "Marine plastic waste",
     "collocation": {
       "jpRuby": "[海洋:かいよう]プラスチックごみの[削減:さくげん]",
@@ -11222,7 +11222,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ふほうとうき",
     "ruby": "[不法投棄:ふほうとうき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pembuangan sampah liar ilegal dumping",
+    "meaningId": "Pembuangan, sampah, liar, ilegal, dumping",
     "meaningEn": "Illegal dumping",
     "collocation": {
       "jpRuby": "[粗大:そだい]ごみの[不法投棄:ふほうとうき]を[監視:かんし]する",
@@ -11246,7 +11246,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はいきぶつ",
     "ruby": "[廃棄物:はいきぶつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Limbah buangan sampah industri",
+    "meaningId": "Limbah, buangan, sampah, industri",
     "meaningEn": "Waste matter, refuse, garbage",
     "collocation": {
       "jpRuby": "[産業:さんぎょう][廃棄物:はいきぶつ]を[適正:てきせい]に[処理:しょり]する",
@@ -11270,7 +11270,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せいぶつたようせい",
     "ruby": "[生物多様性:せいぶつたようせい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Keanekaragaman hayati biodiversitas",
+    "meaningId": "Keanekaragaman, hayati, biodiversitas",
     "meaningEn": "Biodiversity",
     "collocation": {
       "jpRuby": "[生物多様性:せいぶつたようせい]の[保全:ほぜん]",
@@ -11294,7 +11294,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しぜんほごく",
     "ruby": "[自然保護区:しぜんほごく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kawasan cagar alam suaka margasatwa",
+    "meaningId": "Kawasan, cagar alam, suaka margasatwa",
     "meaningEn": "Nature reserve, protected area",
     "collocation": {
       "jpRuby": "[国立:こくりつ]の[自然保護区:しぜんほごく]を[散策:さんさく]する",
@@ -11318,7 +11318,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "さんせいう",
     "ruby": "[酸性雨:さんせいう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Hujan asam presipitasi asam",
+    "meaningId": "Hujan, asam, presipitasi, asam",
     "meaningEn": "Acid rain",
     "collocation": {
       "jpRuby": "[酸性雨:さんせいう]で[森林:しんりん]が[枯:か]れる",
@@ -11342,7 +11342,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "さばくか",
     "ruby": "[砂漠化:さばくか]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penyebaran gurun desertifikasi kegersangan",
+    "meaningId": "Penyebaran, gurun, desertifikasi, kegersangan",
     "meaningEn": "Desertification",
     "collocation": {
       "jpRuby": "[土地:とち]の[砂漠化:さばくか]が[進行:しんこう]する",
@@ -11366,7 +11366,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "フロンガス",
     "ruby": "フロンガス",
     "partOfSpeech": "[名]",
-    "meaningId": "Gas freon CFC perusak ozon",
+    "meaningId": "Gas, freon, CFC, perusak, ozon",
     "meaningEn": "CFC gas, freon",
     "collocation": {
       "jpRuby": "フロンガスの[使用:しよう]を[全廃:ぜんぱい]する",
@@ -11390,7 +11390,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "オゾンそう",
     "ruby": "オゾン[層:そう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Lapisan ozon pelindung ultraviolet",
+    "meaningId": "Lapisan, ozon, pelindung, ultraviolet",
     "meaningEn": "Ozone layer",
     "collocation": {
       "jpRuby": "オゾン[層:そう]を[破壊:はかい]する",
@@ -11414,7 +11414,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かんきょうほるもん",
     "ruby": "[環境:かんきょう]ホルモン",
     "partOfSpeech": "[名]",
-    "meaningId": "Pengganggu hormon zat endokrin polutan",
+    "meaningId": "Pengganggu, hormon, zat, endokrin, polutan",
     "meaningEn": "Endocrine disruptor",
     "collocation": {
       "jpRuby": "[環境:かんきょう]ホルモンの[影響:えいきょう]を[調:しら]べる",
@@ -11438,7 +11438,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "リサイクルりつ",
     "ruby": "リサイクル[率:りつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tingkat persentase daur ulang",
+    "meaningId": "Tingkat, persentase, daur ulang",
     "meaningEn": "Recycling rate",
     "collocation": {
       "jpRuby": "ごみのリサイクル[率:りつ]を[上:あ]げる",
@@ -11462,7 +11462,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しげんごみ",
     "ruby": "[資源:しげん]ごみ",
     "partOfSpeech": "[名]",
-    "meaningId": "Sampah daur ulang sampah berharga",
+    "meaningId": "Sampah, daur ulang, sampah, berharga",
     "meaningEn": "Recyclable waste",
     "collocation": {
       "jpRuby": "[資源:しげん]ごみを[分別:ぶんべつ]して[出:だ]す",
@@ -11486,7 +11486,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "もえるごみ",
     "ruby": "[燃:も]えるごみ",
     "partOfSpeech": "[名]",
-    "meaningId": "Sampah organik sampah yang bisa dibakar",
+    "meaningId": "Sampah, organik, sampah yang bisa, dibakar",
     "meaningEn": "Burnable garbage, combustible waste",
     "collocation": {
       "jpRuby": "[燃:も]えるごみと[燃:も]えないごみを[分:わ]ける",
@@ -11510,7 +11510,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "そだいごみ",
     "ruby": "[粗大:そだい]ごみ",
     "partOfSpeech": "[名]",
-    "meaningId": "Sampah berukuran besar perabot rongsok",
+    "meaningId": "Sampah, berukuran, besar, perabot, rongsok",
     "meaningEn": "Bulky waste, oversized garbage",
     "collocation": {
       "jpRuby": "[粗大:そだい]ごみの[収集:しゅうしゅう]を[申:もう]し[込:こ]む",
@@ -11534,7 +11534,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "おんけい",
     "ruby": "[恩恵:おんけい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Berkah rahmat anugerah kemurahan",
+    "meaningId": "Berkah, rahmat, anugerah, kemurahan",
     "meaningEn": "Blessing, grace, benefit, bounty",
     "collocation": {
       "jpRuby": "[大自然:だいしぜん]の[恩恵:おんけい]を[受:う]ける",
@@ -11558,7 +11558,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "たいひ",
     "ruby": "[堆肥:たいひ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kompos pupuk organik alami",
+    "meaningId": "Kompos, pupuk, organik, alami",
     "meaningEn": "Compost",
     "collocation": {
       "jpRuby": "[生:なま]ごみを[堆肥:たいひ]に[変:か]える",
@@ -11582,7 +11582,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せいぶんかいせい",
     "ruby": "[生分解性:せいぶんかいせい]",
     "partOfSpeech": "[名・ナ形]",
-    "meaningId": "Dapat terurai secara alami biodegradable",
+    "meaningId": "Dapat, terurai, secara, alami, biodegradable",
     "meaningEn": "Biodegradability, biodegradable",
     "collocation": {
       "jpRuby": "[生分解性:せいぶんかいせい]のプラスチックを[採用:さいよう]する",
@@ -11606,7 +11606,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しぜんえねるぎー",
     "ruby": "[自然:しぜん]エネルギー",
     "partOfSpeech": "[名]",
-    "meaningId": "Energi alami energi hijau terbarukan",
+    "meaningId": "Energi, alami, energi, hijau, terbarukan",
     "meaningEn": "Natural energy, green energy",
     "collocation": {
       "jpRuby": "[自然:しぜん]エネルギーの[利用:りよう]を[促進:そくしん]する",
@@ -11630,7 +11630,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かんきょうあせすめんと",
     "ruby": "[環境:かんきょう]アセスメント",
     "partOfSpeech": "[名]",
-    "meaningId": "Amdal analisis dampak lingkungan",
+    "meaningId": "Amdal, analisis, dampak, lingkungan",
     "meaningEn": "Environmental impact assessment",
     "collocation": {
       "jpRuby": "[大規模:だいきぼ][開発:かいはつ]の[前:まえ]に[環境:かんきょう]アセスメントを[実施:じっし]する",
@@ -11654,7 +11654,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かーぼんおふせっと",
     "ruby": "カーボンオフセット",
     "partOfSpeech": "[名]",
-    "meaningId": "Kompensasi karbon carbon offset",
+    "meaningId": "Kompensasi, karbon, carbon, offset",
     "meaningEn": "Carbon offset",
     "collocation": {
       "jpRuby": "カーボンオフセットに[取:と]り[組:く]む",
@@ -11678,7 +11678,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "まいくろぷらすちっく",
     "ruby": "マイクロプラスチック",
     "partOfSpeech": "[名]",
-    "meaningId": "Mikroplastik partikel plastik mini",
+    "meaningId": "Mikroplastik, partikel, plastik, mini",
     "meaningEn": "Microplastics",
     "collocation": {
       "jpRuby": "マイクロプラスチックの[汚染:おせん]が[深刻化:しんこくか]する",
@@ -11702,7 +11702,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "えこばっぐ",
     "ruby": "エコバッグ",
     "partOfSpeech": "[名]",
-    "meaningId": "Tas belanja ramah lingkungan tote bag kain",
+    "meaningId": "Tas, belanja, ramah lingkungan, tote, bag, kain",
     "meaningEn": "Eco bag, reusable shopping bag",
     "collocation": {
       "jpRuby": "[買:か]い[物:もの]にエコバッグを[持参:じさん]する",
@@ -11726,7 +11726,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "まいぼとる",
     "ruby": "マイボトル",
     "partOfSpeech": "[名]",
-    "meaningId": "Tumbler botol minum pribadi",
+    "meaningId": "Tumbler, botol, minum, pribadi",
     "meaningEn": "Reusable water bottle, personal bottle",
     "collocation": {
       "jpRuby": "マイボトルに[茶:ちゃ]をいれて[持参:じさん]する",
@@ -11750,7 +11750,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぜろえみっしょん",
     "ruby": "ゼロエミッション",
     "partOfSpeech": "[名]",
-    "meaningId": "Nol emisi nir-emisi limbah nol",
+    "meaningId": "Nol, emisi, nir-emisi, limbah, nol",
     "meaningEn": "Zero emission",
     "collocation": {
       "jpRuby": "工場でゼロエミッションを[達成:たっせい]する",
@@ -11774,7 +11774,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こんだて",
     "ruby": "[献立:こんだて]",
     "partOfSpeech": "[名]",
-    "meaningId": "Susunan menu masakan daftar menu",
+    "meaningId": "Susunan, menu, masakan, daftar, menu",
     "meaningEn": "Menu plan, menu program",
     "collocation": {
       "jpRuby": "[今夜:こんや]の[献立:こんだて]を[考:かんが]える",
@@ -11798,7 +11798,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "すいじ",
     "ruby": "[炊事:すいじ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Masak-memasak urusan dapur kuliner",
+    "meaningId": "Masak-memasak, urusan, dapur, kuliner",
     "meaningEn": "Cooking, kitchen chores",
     "collocation": {
       "jpRuby": "[炊事:すいじ][洗濯:せんたく]をテキパキこなす",
@@ -11822,7 +11822,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かじ",
     "ruby": "[家事:かじ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pekerjaan rumah tangga urusan domestik",
+    "meaningId": "Pekerjaan, rumah tangga, urusan, domestik",
     "meaningEn": "Housework, domestic chores",
     "collocation": {
       "jpRuby": "[夫婦:ふうふ]で[家事:かじ]を[分担:ぶんたん]する",
@@ -11846,7 +11846,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "いくじ",
     "ruby": "[育児:いくじ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pengasuhan anak membesarkan anak",
+    "meaningId": "Pengasuhan, anak, membesarkan, anak",
     "meaningEn": "Childcare, parenting",
     "collocation": {
       "jpRuby": "[育児:いくじ][休暇:きゅうか]を[取得:しゅとく]する",
@@ -11870,7 +11870,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "そうじ",
     "ruby": "[掃除:そうじ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Bersih-bersih pembersihan ruangan",
+    "meaningId": "Bersih-bersih, pembersihan, ruangan",
     "meaningEn": "Cleaning, sweeping",
     "collocation": {
       "jpRuby": "[年末:ねんまつ]の[大掃除:おおそうじ]をする",
@@ -11894,7 +11894,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せんたく",
     "ruby": "[洗濯:せんたく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Mencuci pakaian binatu mencuci baju",
+    "meaningId": "Mencuci, pakaian, binatu, mencuci, baju",
     "meaningEn": "Laundry, washing clothes",
     "collocation": {
       "jpRuby": "[洗濯物:せんたくもの]をベランダに[干:ほ]す",
@@ -11918,7 +11918,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "もようがえ",
     "ruby": "[模様替:もようが]え",
     "partOfSpeech": "[名]",
-    "meaningId": "Menata ulang ruangan mendekorasi ulang",
+    "meaningId": "Menata, ulang, ruangan, mendekorasi, ulang",
     "meaningEn": "Rearranging room, redecorating",
     "collocation": {
       "jpRuby": "[季節:きせつ]の[変:か]わり[目:め]に[模様替:もようが]えをする",
@@ -11942,7 +11942,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ひつじゅひん",
     "ruby": "[必需品:ひつじゅひん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Barang kebutuhan pokok barang wajib",
+    "meaningId": "Barang, kebutuhan, pokok, barang, wajib",
     "meaningEn": "Necessities, essentials",
     "collocation": {
       "jpRuby": "[生活:せいかつ]の[必需品:ひつじゅひん]を[買:か]い[揃:そろ]える",
@@ -11966,7 +11966,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "にちようひん",
     "ruby": "[日用品:にちようひん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Barang keperluan sehari-hari kebutuhan harian",
+    "meaningId": "Barang, keperluan, sehari-hari, kebutuhan, harian",
     "meaningEn": "Daily necessities, sundries",
     "collocation": {
       "jpRuby": "[近所:きんじょ]のドラッグストアで[日用品:にちようひん]を[買:か]う",
@@ -11990,7 +11990,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ちょうみりょう",
     "ruby": "[調味料:ちょうみりょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Bumbu dapur penyedap rasa rempah",
+    "meaningId": "Bumbu, dapur, penyedap, rasa, rempah",
     "meaningEn": "Seasoning, condiment, flavor",
     "collocation": {
       "jpRuby": "[基本:きほん]の[調味料:ちょうみりょう]を[揃:そろ]える",
@@ -12014,7 +12014,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょうみきげん",
     "ruby": "[賞味期限:しょうみきげん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Batas kualitas rasa terbaik tanggal best-before",
+    "meaningId": "Batas, kualitas, rasa, terbaik, tanggal, best-before",
     "meaningEn": "Best-before date",
     "collocation": {
       "jpRuby": "[賞味期限:しょうみきげん]が[切:き]れる[前:まえ]に[食:た]べる",
@@ -12038,7 +12038,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょうひきげん",
     "ruby": "[消費期限:しょうひきげん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Batas kedaluwarsa konsumsi tanggal aman kedaluwarsa",
+    "meaningId": "Batas, kedaluwarsa, konsumsi, tanggal, aman, kedaluwarsa",
     "meaningEn": "Expiration date, use-by date",
     "collocation": {
       "jpRuby": "[消費期限:しょうひきげん]をしっかり[確認:かくにん]する",
@@ -12062,7 +12062,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ほぞんしょく",
     "ruby": "[保存食:ほぞんしょく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Makanan awetan persediaan makanan tahan lama",
+    "meaningId": "Makanan, awetan, persediaan, makanan, tahan, lama",
     "meaningEn": "Preserved food, emergency rations",
     "collocation": {
       "jpRuby": "[地震:じしん]に[備:そな]えて[保存食:ほぞんしょく]を[蓄:たくわ]える",
@@ -12086,7 +12086,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "れいとう",
     "ruby": "[冷凍:れいとう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pembekuan dibekukan pendinginan ekstrem",
+    "meaningId": "Pembekuan, dibekukan, pendinginan, ekstrem",
     "meaningEn": "Freezing, frozen storage",
     "collocation": {
       "jpRuby": "[食材:しょくざい]を[小分:こわ]けにして[冷凍:れいとう]する",
@@ -12110,7 +12110,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かいとう",
     "ruby": "[解凍:かいとう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pencairan makanan beku melumerkan es",
+    "meaningId": "Pencairan, makanan, beku, melumerkan, es",
     "meaningEn": "Thawing, defrosting",
     "collocation": {
       "jpRuby": "[電子:でんし]レンジで[肉:にく]を[解凍:かいとう]する",
@@ -12134,7 +12134,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ゆげ",
     "ruby": "[湯気:ゆげ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Uap panas asap air panas",
+    "meaningId": "Uap, panas, asap, air, panas",
     "meaningEn": "Steam, vapor",
     "collocation": {
       "jpRuby": "[鍋:なべ]から[白:しろ]い[湯気:ゆげ]が[立:た]ち[上:あ]がる",
@@ -12158,7 +12158,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "なまごみ",
     "ruby": "[生:なま]ゴミ",
     "partOfSpeech": "[名]",
-    "meaningId": "Sampah basah organik sampah sisa dapur",
+    "meaningId": "Sampah, basah, organik, sampah, sisa, dapur",
     "meaningEn": "Kitchen waste, wet garbage",
     "collocation": {
       "jpRuby": "[生:なま]ゴミの[臭:にお]いを[防:ふせ]ぐ",
@@ -12182,7 +12182,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぶんべつ",
     "ruby": "[分別:ぶんべつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pemilahan pembagian kategori sampah",
+    "meaningId": "Pemilahan, pembagian, kategori, sampah",
     "meaningEn": "Sorting, separation of garbage",
     "collocation": {
       "jpRuby": "ゴミをルールに[従:したが]って[分別:ぶんべつ]する",
@@ -12206,7 +12206,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "そだいごみ",
     "ruby": "[粗大:そだい]ゴミ",
     "partOfSpeech": "[名]",
-    "meaningId": "Sampah ukuran besar barang rongsokan besar",
+    "meaningId": "Sampah, ukuran, besar, barang, rongsokan, besar",
     "meaningEn": "Bulky garbage, oversized waste",
     "collocation": {
       "jpRuby": "[古:ふる]くなったソファーを[粗大:そだい]ゴミに出す",
@@ -12230,7 +12230,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しげんごみ",
     "ruby": "[資源:しげん]ゴミ",
     "partOfSpeech": "[名]",
-    "meaningId": "Sampah daur ulang sampah bernilai sumber daya",
+    "meaningId": "Sampah, daur ulang, sampah, bernilai, sumber daya",
     "meaningEn": "Recyclable garbage",
     "collocation": {
       "jpRuby": "ビンや缶を[資源:しげん]ゴミの[日:ひ]に[出:だ]す",
@@ -12254,7 +12254,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "すいどうこうねつひ",
     "ruby": "[水道光熱費:すいどうこうねつひ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Biaya utilitas air listrik dan gas",
+    "meaningId": "Biaya utilitas, air, listrik dan gas",
     "meaningEn": "Utility expenses (water, electricity, gas)",
     "collocation": {
       "jpRuby": "[毎月:まいつき]の[水道光熱費:すいどうこうねつひ]を[節約:せつやく]する",
@@ -12278,7 +12278,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "やちん",
     "ruby": "[家賃:やちん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Uang sewa rumah biaya kontrakan",
+    "meaningId": "Uang, sewa, rumah, biaya, kontrakan",
     "meaningEn": "Rent, apartment rental fee",
     "collocation": {
       "jpRuby": "[毎月:まいつき][末日:まつじつ]までに[家賃:やちん]を[振:ふ]り[込:こ]む",
@@ -12302,7 +12302,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しききん",
     "ruby": "[敷金:しききん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Uang jaminan sewa deposit sewa hunian",
+    "meaningId": "Uang, jaminan, sewa, deposit, sewa, hunian",
     "meaningEn": "Security deposit",
     "collocation": {
       "jpRuby": "アパートの[契約:けいやく]の[際:さい]に[敷金:しききん]を[納:おさ]める",
@@ -12326,7 +12326,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "れいきん",
     "ruby": "[礼金:れいきん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Uang terima kasih pemilik rumah uang kunci",
+    "meaningId": "Uang, terima, kasih, pemilik, rumah, uang, kunci",
     "meaningEn": "Key money (to landlord)",
     "collocation": {
       "jpRuby": "[敷金:しききん]・[礼金:れいきん]なしの[物件:ぶっけん]を[選:えら]ぶ",
@@ -12350,7 +12350,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ものほし",
     "ruby": "[物干:ものほ]し",
     "partOfSpeech": "[名]",
-    "meaningId": "Tempat gantungan jemuran jemuran pakaian",
+    "meaningId": "Tempat, gantungan, jemuran, jemuran, pakaian",
     "meaningEn": "Clothesline, drying rack",
     "collocation": {
       "jpRuby": "[物干:ものほ]し竿に[洗濯物:せんたくもの]をかける",
@@ -12374,7 +12374,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ほこり",
     "ruby": "[埃:ほこり]",
     "partOfSpeech": "[名]",
-    "meaningId": "Debu kotoran partikel halus",
+    "meaningId": "Debu, kotoran, partikel, halus",
     "meaningEn": "Dust",
     "collocation": {
       "jpRuby": "テレビの[裏:うら]に[溜:た]まった[埃:ほこり]を[拭:ふ]き[取:と]る",
@@ -12398,7 +12398,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かび",
     "ruby": "カビ",
     "partOfSpeech": "[名]",
-    "meaningId": "Jamur jamur lembap lumut kapang",
+    "meaningId": "Jamur, jamur, lembap, lumut, kapang",
     "meaningEn": "Mold, mildew",
     "collocation": {
       "jpRuby": "[浴室:よくしつ]のタイルに生えたカビを[取:と]る",
@@ -12422,7 +12422,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しっけ",
     "ruby": "[湿気:しっけ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kelembapan udara rasa lengket lembap",
+    "meaningId": "Kelembapan udara, rasa, lengket, lembap",
     "meaningEn": "Moisture, humidity",
     "collocation": {
       "jpRuby": "[部屋:へや]の[湿気:しっけ]を[除湿機:じょしつき]で[取:と]る",
@@ -12446,7 +12446,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かんき",
     "ruby": "[換気:かんき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Ventilasi pergantian sirkulasi udara",
+    "meaningId": "Ventilasi, pergantian, sirkulasi, udara",
     "meaningEn": "Ventilation, airing out",
     "collocation": {
       "jpRuby": "[窓:まど]を[開:あ]けて[部屋:へや]の[換気:かんき]をする",
@@ -12470,7 +12470,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せんざい",
     "ruby": "[洗剤:せんざい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Detergen sabun pembersih cairan pencuci",
+    "meaningId": "Detergen, sabun, pembersih, cairan, pencuci",
     "meaningEn": "Detergent, cleanser",
     "collocation": {
       "jpRuby": "[食器:しょっき]を[台所:だいどころ][用:よう]の[洗剤:せんざい]で[洗:あら]う",
@@ -12518,7 +12518,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はり",
     "ruby": "[針:はり]",
     "partOfSpeech": "[名]",
-    "meaningId": "Jarum jahit jarum pentul",
+    "meaningId": "Jarum, jahit, jarum, pentul",
     "meaningEn": "Needle, pin",
     "collocation": {
       "jpRuby": "[針:はり]に[糸:いと]を[通:とお]す",
@@ -12542,7 +12542,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "いと",
     "ruby": "[糸:いと]",
     "partOfSpeech": "[名]",
-    "meaningId": "Benang helai benang jahit",
+    "meaningId": "Benang, helai, benang, jahit",
     "meaningEn": "Thread, yarn",
     "collocation": {
       "jpRuby": "シャツのボタンを[同:おな]じ[色:いろ]の[糸:いと]で[縫:ぬ]う",
@@ -12566,7 +12566,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ふきん",
     "ruby": "[布巾:ふきん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kain lap piring serbet lap meja makan",
+    "meaningId": "Kain, lap, piring, serbet, lap, meja, makan",
     "meaningEn": "Dishcloth, tea towel",
     "collocation": {
       "jpRuby": "[濡:ぬ]れた[布巾:ふきん]でテーブルをきれいに[拭:ふ]く",
@@ -12590,7 +12590,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぞうきん",
     "ruby": "[雑巾:ぞうきん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kain pel lap lantai kain pembersih kotoran",
+    "meaningId": "Kain, pel, lap, lantai, kain, pembersih, kotoran",
     "meaningEn": "Dust cloth, cleaning rag",
     "collocation": {
       "jpRuby": "[雑巾:ぞうきん]をバケツの[水:みず]で[固:かた]く[絞:しぼ]る",
@@ -12614,7 +12614,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "だいどころ",
     "ruby": "[台所:だいどころ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Dapur ruang memasak tempat olah makanan",
+    "meaningId": "Dapur, ruang, memasak, tempat, olah, makanan",
     "meaningEn": "Kitchen",
     "collocation": {
       "jpRuby": "[台所:だいどころ]に[立:た]って[夕飯:ゆうはん]を[作:つく]る",
@@ -12638,7 +12638,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "いま",
     "ruby": "[居間:いま]",
     "partOfSpeech": "[名]",
-    "meaningId": "Ruang keluarga ruang tamu santai",
+    "meaningId": "Ruang, keluarga, ruang tamu, santai",
     "meaningEn": "Living room, sitting room",
     "collocation": {
       "jpRuby": "[家族:かぞく]そろって[居間:いま]でテレビを[見:み]る",
@@ -12662,7 +12662,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しんしつ",
     "ruby": "[寝室:しんしつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kamar tidur ruang istirahat malam",
+    "meaningId": "Kamar tidur, ruang, istirahat, malam",
     "meaningEn": "Bedroom",
     "collocation": {
       "jpRuby": "[静:しず]かで[落:お]ち[着:つ]いた[寝室:しんしつ]で[休:やす]む",
@@ -12686,7 +12686,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "げんかん",
     "ruby": "[玄関:げんかん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pintu masuk lobi depan teras dalam rumah",
+    "meaningId": "Pintu, masuk, lobi, depan, teras, dalam rumah",
     "meaningEn": "Entrance hall, foyer, vestibule",
     "collocation": {
       "jpRuby": "[玄関:げんかん]で[靴:くつ]をきれいに[揃:そろ]える",
@@ -12710,7 +12710,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ろうか",
     "ruby": "[廊下:ろうか]",
     "partOfSpeech": "[名]",
-    "meaningId": "Lorong rumah koridor jalan antar-ruang",
+    "meaningId": "Lorong, rumah, koridor, jalan, antar-ruang",
     "meaningEn": "Corridor, hallway",
     "collocation": {
       "jpRuby": "[廊下:ろうか]をバタバタ[走:はし]らない",
@@ -12734,7 +12734,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "えんげき",
     "ruby": "[演劇:えんげき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Seni teater sandiwara pertunjukan pentas",
+    "meaningId": "Seni, teater, sandiwara, pertunjukan, pentas",
     "meaningEn": "Drama, theater, play",
     "collocation": {
       "jpRuby": "[劇場:げきじょう]で[本格的:ほんかくてき]な[演劇:えんげき]を[鑑賞:かんしょう]する",
@@ -12758,7 +12758,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かんしょう",
     "ruby": "[鑑賞:かんしょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Apresiasi menikmati karya seni musik lukisan",
+    "meaningId": "Apresiasi, menikmati, karya seni, musik, lukisan",
     "meaningEn": "Appreciation, enjoying (art/music)",
     "collocation": {
       "jpRuby": "[休日:きゅうじつ]の[趣味:しゅみ]は[映画:えいが][鑑賞:かんしょう]だ",
@@ -12782,7 +12782,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "さつえい",
     "ruby": "[撮影:さつえい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pengambilan gambar pemotretan syuting rekaman",
+    "meaningId": "Pengambilan, gambar, pemotretan, syuting, rekaman",
     "meaningEn": "Filming, shooting, photographing",
     "collocation": {
       "jpRuby": "[旅先:たびさき]の[美:うつく]しい[風景:ふうけい]を[撮影:さつえい]する",
@@ -12806,7 +12806,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "とざん",
     "ruby": "[登山:とざん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Mendaki gunung kegiatan pendakian gunung",
+    "meaningId": "Mendaki, gunung, kegiatan, pendakian, gunung",
     "meaningEn": "Mountain climbing, mountaineering",
     "collocation": {
       "jpRuby": "[本格的:ほんかくてき]な[登山:とざん]の[装備:そうび]を[整:ととの]える",
@@ -12830,7 +12830,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きょうぎ",
     "ruby": "[競技:きょうぎ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pertandingan olahraga perlombaan kompetisi",
+    "meaningId": "Pertandingan, olahraga, perlombaan, kompetisi",
     "meaningEn": "Game, match, athletic competition",
     "collocation": {
       "jpRuby": "[新:あたら]しい[競技:きょうぎ]のルールを[覚:おぼ]える",
@@ -12854,7 +12854,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "でんとう",
     "ruby": "[伝統:でんとう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tradisi adat warisan turun-temurun",
+    "meaningId": "Tradisi, adat, warisan, turun-temurun",
     "meaningEn": "Tradition, heritage",
     "collocation": {
       "jpRuby": "[古:ふる]くから[受:う]け[継:つ]がれた[伝統:でんとう]を[守:まも]る",
@@ -12878,7 +12878,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "げいのう",
     "ruby": "[芸能:げいのう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Seni pertunjukan dunia hiburan panggung",
+    "meaningId": "Seni, pertunjukan, dunia, hiburan, panggung",
     "meaningEn": "Performing arts, public entertainment",
     "collocation": {
       "jpRuby": "[日本:にほん]の[伝統:でんとう][芸能:げいのう]に[興味:きょうみ]を[持:も]つ",
@@ -12902,7 +12902,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かぶき",
     "ruby": "[歌舞伎:かぶき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kabuki teater klasik Jepang berhias mencolok",
+    "meaningId": "Kabuki, teater, klasik, Jepang, berhias, mencolok",
     "meaningEn": "Kabuki, traditional Japanese drama",
     "collocation": {
       "jpRuby": "[銀座:ぎんざ]の[劇場:げきじょう]で[歌舞伎:かぶき]を[初:はじ]めて[観劇:かんげき]する",
@@ -12926,7 +12926,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "のう",
     "ruby": "[能:のう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Noh teater topeng klasik spiritual Jepang",
+    "meaningId": "Noh, teater, topeng, klasik, spiritual, Jepang",
     "meaningEn": "Noh theater, classical masked drama",
     "collocation": {
       "jpRuby": "[幽玄:ゆうげん]な[美:うつく]しさを[持:も]つ[能:のう]の[舞台:ぶたい]",
@@ -12950,7 +12950,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "さどう",
     "ruby": "[茶道:さどう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Upacara minum teh seni tata cara seduh teh",
+    "meaningId": "Upacara, minum, teh, seni, tata, cara, seduh, teh",
     "meaningEn": "Tea ceremony, Way of Tea",
     "collocation": {
       "jpRuby": "[茶道:さどう]の[作法:さほう]を[基礎:きそ]から[学:まな]ぶ",
@@ -12974,7 +12974,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かどう",
     "ruby": "[華道:かどう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Ikebana seni merangkai bunga estetis",
+    "meaningId": "Ikebana, seni, merangkai, bunga, estetis",
     "meaningEn": "Flower arrangement, Ikebana",
     "collocation": {
       "jpRuby": "[生:い]け[花:ばな]・[華道:かどう]の[教室:きょうしつ]に[通:かよ]う",
@@ -12998,7 +12998,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょどう",
     "ruby": "[書道:しょどう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kaligrafi seni menulis aksara kuas Jepang",
+    "meaningId": "Kaligrafi, seni, menulis, aksara, kuas, Jepang",
     "meaningEn": "Japanese calligraphy, Shodo",
     "collocation": {
       "jpRuby": "[筆:ふで]と[墨:すみ]を[使:つか]って[書道:しょどう]の[腕:うで]を[磨:みが]く",
@@ -13022,7 +13022,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こうげい",
     "ruby": "[工芸:こうげい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kriya kerajinan tangan seni rupa terapan",
+    "meaningId": "Kriya, kerajinan, tangan, seni, rupa, terapan",
     "meaningEn": "Craft, handicraft, industrial art",
     "collocation": {
       "jpRuby": "[地域:ちいき]の[伝統:でんとう][工芸:こうげい][品:ひん]を[買:か]う",
@@ -13046,7 +13046,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "とうげい",
     "ruby": "[陶芸:とうげい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tembikar kerajinan seni keramik porselen",
+    "meaningId": "Tembikar, kerajinan, seni, keramik, porselen",
     "meaningEn": "Ceramics, pottery",
     "collocation": {
       "jpRuby": "[陶芸:とうげい][教室:きょうしつ]で[自分:じぶん]の[茶碗:ちゃわん]を[作:つく]る",
@@ -13070,7 +13070,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ちょうこく",
     "ruby": "[彫刻:ちょうこく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Seni patung ukiran pahatan patung",
+    "meaningId": "Seni, patung, ukiran, pahatan, patung",
     "meaningEn": "Sculpture, carving, engraving",
     "collocation": {
       "jpRuby": "[公園:こうえん]に[設置:せっち]された[銅像:どうぞう]や[彫刻:ちょうこく]",
@@ -13094,7 +13094,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かいが",
     "ruby": "[絵画:かいが]",
     "partOfSpeech": "[名]",
-    "meaningId": "Lukisan karya seni lukis gambar kanvas",
+    "meaningId": "Lukisan, karya seni, lukis, gambar, kanvas",
     "meaningEn": "Painting, picture",
     "collocation": {
       "jpRuby": "[有名:ゆうめい]な[西洋:せいよう][絵画:かいが]を[見学:けんがく]する",
@@ -13118,7 +13118,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "てんらんかい",
     "ruby": "[展覧会:てんらんかい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pameran eksibisi karya seni pameran rupa",
+    "meaningId": "Pameran, eksibisi, karya seni, pameran, rupa",
     "meaningEn": "Exhibition, art show",
     "collocation": {
       "jpRuby": "[近代:きんだい]アートの[特別:とくべつ][展覧会:てんらんかい]に[行:い]く",
@@ -13142,7 +13142,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はくぶつかん",
     "ruby": "[博物館:はくぶつかん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Museum sejarah fosil peradaban bangsa",
+    "meaningId": "Museum, sejarah, fosil, peradaban, bangsa",
     "meaningEn": "Museum (history/science)",
     "collocation": {
       "jpRuby": "[国立:こくりつ][科学:かがく][博物館:はくぶつかん]で[恐竜:きょうりゅう]の[化石:かせき]を[見:み]る",
@@ -13166,7 +13166,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "びじゅつかん",
     "ruby": "[美術館:びじゅつかん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Museum seni galeri seni rupa",
+    "meaningId": "Museum, seni, galeri, seni, rupa",
     "meaningEn": "Art museum, art gallery",
     "collocation": {
       "jpRuby": "[週末:しゅうまつ]に[静:しず]かな[美術館:びじゅつかん]で過ごす",
@@ -13190,7 +13190,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "すいぞくかん",
     "ruby": "[水族館:すいぞくかん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Akuarium raksasa wahana biota laut",
+    "meaningId": "Akuarium, raksasa, wahana, biota, laut",
     "meaningEn": "Aquarium",
     "collocation": {
       "jpRuby": "[水族館:すいぞくかん]でイルカのショーを[見:み]る",
@@ -13214,7 +13214,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "げきじょう",
     "ruby": "[劇場:げきじょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gedung teater panggung sandiwara pertunjukan",
+    "meaningId": "Gedung, teater, panggung, sandiwara, pertunjukan",
     "meaningEn": "Theater, playhouse",
     "collocation": {
       "jpRuby": "[歴史:れきし]ある[劇場:げきじょう]のバルコニー[席:せき]に[座:すわ]る",
@@ -13238,7 +13238,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かんきゃく",
     "ruby": "[観客:かんきゃく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penonton hadirin pemirsa penikmat teater",
+    "meaningId": "Penonton, hadirin, pemirsa, penikmat, teater",
     "meaningEn": "Audience, spectator",
     "collocation": {
       "jpRuby": "[熱心:ねっしん]な[観客:かんきゃく]から[大:おお]きな[拍手:はくしゅ]が[送:おく]られる",
@@ -13262,7 +13262,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "まく",
     "ruby": "[幕:まく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tirai panggung adegan babak pementasan",
+    "meaningId": "Tirai, panggung, adegan, babak, pementasan",
     "meaningEn": "Curtain (stage), act",
     "collocation": {
       "jpRuby": "ステージの[幕:まく]が[静:しず]かに[開:あ]く",
@@ -13286,7 +13286,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しゅやく",
     "ruby": "[主役:しゅやく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pemeran utama tokoh pahlawan lakon sentral",
+    "meaningId": "Pemeran, utama, tokoh, pahlawan, lakon, sentral",
     "meaningEn": "Leading role, protagonist",
     "collocation": {
       "jpRuby": "[映画:えいが]の[主役:しゅやく]に[抜擢:ばってき]される",
@@ -13310,7 +13310,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "わきやく",
     "ruby": "[脇役:わきやく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pemeran pembantu pendukung karakter figuran",
+    "meaningId": "Pemeran, pembantu, pendukung, karakter, figuran",
     "meaningEn": "Supporting role, minor character",
     "collocation": {
       "jpRuby": "[個性:こせい][的:てき]な[脇役:わきやく]が[物語:ものがたり]を[盛:も]り[上:あ]げる",
@@ -13334,7 +13334,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かんとく",
     "ruby": "[監督:かんとく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Sutradara pengarah film pelatih tim manajer",
+    "meaningId": "Sutradara, pengarah, film, pelatih, tim, manajer",
     "meaningEn": "Director, film director, coach",
     "collocation": {
       "jpRuby": "[有名:ゆうめい]な[映画:えいが][監督:かんとく]の[最新:さいしん][作:さく]",
@@ -13358,7 +13358,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "えんそう",
     "ruby": "[演奏:えんそう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Permainan musik performa alat instrumen",
+    "meaningId": "Permainan, musik, performa, alat, instrumen",
     "meaningEn": "Musical performance, playing instrument",
     "collocation": {
       "jpRuby": "ピアノの[見事:みごと]な[演奏:えんそう]に[聴:き]き[入:い]る",
@@ -13382,7 +13382,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "がっしょう",
     "ruby": "[合唱:がっしょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Paduan suara koor bernyanyi bersama",
+    "meaningId": "Paduan, suara, koor, bernyanyi, bersama",
     "meaningEn": "Chorus, choir, choral singing",
     "collocation": {
       "jpRuby": "クラスみんなで[合唱:がっしょう][曲:きょく]を[歌:うた]う",
@@ -13406,7 +13406,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はくしゅ",
     "ruby": "[拍手:はくしゅ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tepuk tangan aplaus riuh gemuruh",
+    "meaningId": "Tepuk, tangan, aplaus, riuh, gemuruh",
     "meaningEn": "Applause, clapping",
     "collocation": {
       "jpRuby": "[会場:かいじょう]から[割:わ]れんばかりの[拍手:はくしゅ]が[起:お]こる",
@@ -13430,7 +13430,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "アンコール",
     "ruby": "アンコール",
     "partOfSpeech": "[名]",
-    "meaningId": "Encore permintaan lagu ulangan tambahan",
+    "meaningId": "Encore, permintaan, lagu, ulangan, tambahan",
     "meaningEn": "Encore",
     "collocation": {
       "jpRuby": "ファンからのアンコールに[応:こた]えて[再:ふたた]び[登場:とうじょう]する",
@@ -13454,7 +13454,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "よせん",
     "ruby": "[予選:よせん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Babak penyisihan babak pra-kualifikasi",
+    "meaningId": "Babak, penyisihan, babak, pra-kualifikasi",
     "meaningEn": "Preliminary match, qualifying round",
     "collocation": {
       "jpRuby": "[厳:きび]しい[予選:よせん]リーグを[勝:か]ち[抜:ぬ]く",
@@ -13478,7 +13478,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けっしょう",
     "ruby": "[決勝:けっしょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Babak final penentuan gelar juara puncak",
+    "meaningId": "Babak, final, penentuan, gelar, juara, puncak",
     "meaningEn": "Final match, finals",
     "collocation": {
       "jpRuby": "[決勝:けっしょう][戦:せん]でライバルと[激突:げきとつ]する",
@@ -13502,7 +13502,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しんぱん",
     "ruby": "[審判:しんぱん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Wasit juri pengadil laga pengadilan",
+    "meaningId": "Wasit, juri, pengadil, laga, pengadilan",
     "meaningEn": "Referee, umpire, judge",
     "collocation": {
       "jpRuby": "[審判:しんぱん]の[判定:はんてい]に[従:したが]う",
@@ -13526,7 +13526,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せんしゅ",
     "ruby": "[選手:せんしゅ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Atlet pemain olahragawan peserta laga",
+    "meaningId": "Atlet, pemain, olahragawan, peserta, laga",
     "meaningEn": "Player, athlete",
     "collocation": {
       "jpRuby": "[日本:にほん][代表:だいひょう]の[選手:せんしゅ]に[選:えら]ばれる",
@@ -13550,7 +13550,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "おうえん",
     "ruby": "[応援:おうえん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Dukungan sorakan suporter yel-yel penyemangat",
+    "meaningId": "Dukungan, sorakan, suporter, yel-yel, penyemangat",
     "meaningEn": "Cheering, support, backing",
     "collocation": {
       "jpRuby": "スタンドから[大声:おおごえ]でチームを[応援:おうえん]する",
@@ -13574,7 +13574,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "さんさく",
     "ruby": "[散策:さんさく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Jalan-jalan santai jalan bertamasya keliling",
+    "meaningId": "Jalan-jalan, santai, jalan, bertamasya, keliling",
     "meaningEn": "Strolling, leisurely walk",
     "collocation": {
       "jpRuby": "[古:ふる]い[町並:まちな]みをのんびり[散策:さんさく]する",
@@ -13598,7 +13598,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かんこう",
     "ruby": "[観光:かんこう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pariwisata wisata tamasya pelancongan",
+    "meaningId": "Pariwisata, wisata, tamasya, pelancongan",
     "meaningEn": "Sightseeing, tourism",
     "collocation": {
       "jpRuby": "[海外:かいがい]からの[観光:かんこう][客:きゃく]を案内する",
@@ -13622,7 +13622,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "めいしょ",
     "ruby": "[名所:めいしょ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tempat wisata terkenal objek wisata mashur",
+    "meaningId": "Tempat, wisata, terkenal, objek, wisata, mashur",
     "meaningEn": "Famous spot, scenic place",
     "collocation": {
       "jpRuby": "[全国:ぜんこく]の[桜:さくら]の[名所:めいしょ]を[巡:めぐ]る",
@@ -13646,7 +13646,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "おんせん",
     "ruby": "[温泉:おんせん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pemandian air panas alami onsen sumber air panas",
+    "meaningId": "Pemandian, air, panas, alami, onsen, sumber, air, panas",
     "meaningEn": "Hot springs, onsen",
     "collocation": {
       "jpRuby": "[露天風呂:ろてんぶろ]のある[温泉:おんせん][旅館:りょかん]に[泊:と]まる",
@@ -13670,7 +13670,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きねんひん",
     "ruby": "[記念品:きねんひん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Cenderamata suvenir kenang-kenangan tanda mata",
+    "meaningId": "Cenderamata, suvenir, kenang-kenangan, tanda, mata",
     "meaningEn": "Souvenir, keepsake, memento",
     "collocation": {
       "jpRuby": "[創立:そうりつ][記念:きねん]の[記念品:きねんひん]を[配:くば]る",
@@ -13694,7 +13694,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せいさく",
     "ruby": "[政策:せいさく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kebijakan garis haluan tindakan pemerintah",
+    "meaningId": "Kebijakan, garis, haluan, tindakan, pemerintah",
     "meaningEn": "Policy, political measures",
     "collocation": {
       "jpRuby": "[政府:せいふ]が[新:あたら]しい[経済:けいざい][政策:せいさく]を[打:う]ち[出:だ]す",
@@ -13718,7 +13718,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ほうりつ",
     "ruby": "[法律:ほうりつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Undang-undang hukum peraturan yuridis",
+    "meaningId": "Undang-undang, hukum, peraturan, yuridis",
     "meaningEn": "Law, statute, legislation",
     "collocation": {
       "jpRuby": "[法律:ほうりつ]に[基:づ]いて[厳正:げんせい]に[処理:しょり]する",
@@ -13742,7 +13742,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けんり",
     "ruby": "[権利:けんり]",
     "partOfSpeech": "[名]",
-    "meaningId": "Hak kuasa wewenang asasi legal",
+    "meaningId": "Hak, kuasa, wewenang, asasi, legal",
     "meaningEn": "Right, privilege",
     "collocation": {
       "jpRuby": "[基本:きほん][的:てき][人権:じんけん]という[固有:こゆう]の[権利:けんり]を[守:まも]る",
@@ -13766,7 +13766,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぎむ",
     "ruby": "[義務:ぎむ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kewajiban keharusan fardhu tuntutan",
+    "meaningId": "Kewajiban, keharusan, fardhu, tuntutan",
     "meaningEn": "Duty, obligation, responsibility",
     "collocation": {
       "jpRuby": "[納税:のうぜい]の[義務:ぎむ]を[果:は]たす",
@@ -13790,7 +13790,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せいど",
     "ruby": "[制度:せいど]",
     "partOfSpeech": "[名]",
-    "meaningId": "Sistem kelembagaan pranata tatanan aturan",
+    "meaningId": "Sistem, kelembagaan, pranata, tatanan, aturan",
     "meaningEn": "System, institution, regime",
     "collocation": {
       "jpRuby": "[社会:しゃかい][保障:ほしょう]の[制度:せいど]を[改革:かいかく]する",
@@ -13814,7 +13814,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けんぽう",
     "ruby": "[憲法:けんぽう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Konstitusi undang-undang dasar negara",
+    "meaningId": "Konstitusi, undang-undang, dasar, negara",
     "meaningEn": "Constitution",
     "collocation": {
       "jpRuby": "[日本国:にほんこく][憲法:けんぽう]の[基本:きほん][原則:げんそく]",
@@ -13838,7 +13838,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じょうやく",
     "ruby": "[条約:じょうやく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Traktat perjanjian internasional pakta konvensi",
+    "meaningId": "Traktat, perjanjian, internasional, pakta, konvensi",
     "meaningEn": "Treaty, pact, international agreement",
     "collocation": {
       "jpRuby": "[二国間:にこくかん]の[平和:へいわ][条約:じょうやく]を[締結:ていけつ]する",
@@ -13862,7 +13862,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せんきょ",
     "ruby": "[選挙:せんきょ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pemilihan umum pemilu pemungutan suara rakyat",
+    "meaningId": "Pemilihan umum, pemilu, pemungutan, suara, rakyat",
     "meaningEn": "Election",
     "collocation": {
       "jpRuby": "[衆議院:しゅうぎいん][議員:ぎいん]の[総選挙:そうせんきょ]が[行:おこな]われる",
@@ -13886,7 +13886,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "とうひょう",
     "ruby": "[投票:とうひょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pemberian suara mencoblos mencoblos surat suara",
+    "meaningId": "Pemberian, suara, mencoblos, mencoblos, surat, suara",
     "meaningEn": "Voting, casting ballot",
     "collocation": {
       "jpRuby": "[期日前:きじつまえ][投票:とうひょう]を[利用:りよう]する",
@@ -13910,7 +13910,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こうほしゃ",
     "ruby": "[候補者:こうほしゃ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Calon kandidat kontestan pemilu",
+    "meaningId": "Calon, kandidat, kontestan, pemilu",
     "meaningEn": "Candidate, applicant, nominee",
     "collocation": {
       "jpRuby": "[選挙:せんきょ]に[立候補:りっこうほ]した[候補者:こうほしゃ]の[演説:えんぜつ]を[聞:き]く",
@@ -13934,7 +13934,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぎいん",
     "ruby": "[議員:ぎいん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Anggota parlemen wakil rakyat dewan legislatif",
+    "meaningId": "Anggota, parlemen, wakil, rakyat, dewan, legislatif",
     "meaningEn": "Diet member, legislator, member of parliament",
     "collocation": {
       "jpRuby": "[国会:こっかい][議員:ぎいん]が[法案:ほうあん]について[審議:しんぎ]する",
@@ -13958,7 +13958,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こっかい",
     "ruby": "[国会:こっかい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Parlemen nasional lembaga legislatif parlemen Jepang",
+    "meaningId": "Parlemen, nasional, lembaga, legislatif, parlemen, Jepang",
     "meaningEn": "National Diet, parliament",
     "collocation": {
       "jpRuby": "[通常:つうじょう][国会:こっかい]が[招集:しょうしゅう]される",
@@ -13982,7 +13982,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せいふ",
     "ruby": "[政府:せいふ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pemerintah kabinet pemerintahan pusat",
+    "meaningId": "Pemerintah, kabinet, pemerintahan pusat",
     "meaningEn": "Government, administration",
     "collocation": {
       "jpRuby": "[政府:せいふ]が[公式:こうしき]な[見解:けんかい]を[発表:はっぴょう]する",
@@ -14006,7 +14006,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しゅしょう",
     "ruby": "[首相:しゅしょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Perdana menteri kepala pemerintahan eksekutif",
+    "meaningId": "Perdana menteri, kepala, pemerintahan, eksekutif",
     "meaningEn": "Prime Minister, premier",
     "collocation": {
       "jpRuby": "[内閣:ないかく][総理大臣:そうりだいじん]（[首相:しゅしょう]）が[記者会見:きしゃかいけん]を[開:ひら]く",
@@ -14030,7 +14030,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "だいじん",
     "ruby": "[大臣:だいじん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Menteri kabinet menteri pembantu presiden/PM",
+    "meaningId": "Menteri kabinet, menteri pembantu, presiden/PM",
     "meaningEn": "Cabinet minister",
     "collocation": {
       "jpRuby": "[外務:がいむ][大臣:だいじん]が[外国:がいこく]の[要人:ようじん]と[会談:かいだん]する",
@@ -14054,7 +14054,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "さいばん",
     "ruby": "[裁判:さいばん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Sidang pengadilan peradilan perkara hukum",
+    "meaningId": "Sidang pengadilan, peradilan, perkara hukum",
     "meaningEn": "Trial, court trial, justice",
     "collocation": {
       "jpRuby": "[裁判:さいばん]で[真実:しんじつ]を[明:あき]らかにする",
@@ -14078,7 +14078,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はんけつ",
     "ruby": "[判決:はんけつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Putusan vonis hakim ketetapan majelis",
+    "meaningId": "Putusan, vonis hakim, ketetapan majelis",
     "meaningEn": "Verdict, court decision, sentence",
     "collocation": {
       "jpRuby": "[裁判官:さいばんかん]が[無罪:むざい]の[判決:はんけつ]を[言:い]い[渡:わた]す",
@@ -14102,7 +14102,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "そしょう",
     "ruby": "[訴訟:そしょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gugatan hukum perkara sengketa perdata pidana",
+    "meaningId": "Gugatan hukum, perkara sengketa, perdata, pidana",
     "meaningEn": "Lawsuit, litigation, legal action",
     "collocation": {
       "jpRuby": "[損害:そんがい][賠償:ばいしょう]を[求:もと]めて[訴訟:そしょう]を[起:お]こす",
@@ -14126,7 +14126,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ひがいしゃ",
     "ruby": "[被害者:ひがいしゃ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Korban pihak yang menderita kerugian",
+    "meaningId": "Korban, pihak yang menderita, kerugian",
     "meaningEn": "Victim, injured party",
     "collocation": {
       "jpRuby": "[事故:じこ]の[被害者:ひがいしゃ]を[手厚:てあつ]く[救済:きゅうさい]する",
@@ -14150,7 +14150,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かがいしゃ",
     "ruby": "[加害者:かがいしゃ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pelaku kejahatan pihak penyerang penabrak",
+    "meaningId": "Pelaku kejahatan, pihak, penyerang, penabrak",
     "meaningEn": "Perpetrator, assailant, offender",
     "collocation": {
       "jpRuby": "[加害者:かがいしゃ]が[罪:つみ]を[認:みと]めて[謝罪:しゃざい]する",
@@ -14174,7 +14174,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けいき",
     "ruby": "[景気:けいき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kondisi ekonomi situasi geliat pasar",
+    "meaningId": "Kondisi ekonomi, situasi geliat pasar",
     "meaningEn": "Business climate, economic conditions",
     "collocation": {
       "jpRuby": "[景気:けいき]が[回復:かいふく]の[兆:きざ]しを[見:み]せる",
@@ -14198,7 +14198,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ふきょう",
     "ruby": "[不況:ふきょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Resesi kelesuan ekonomi krisis moneter",
+    "meaningId": "Resesi, kelesuan ekonomi, krisis moneter",
     "meaningEn": "Recession, depression, slump",
     "collocation": {
       "jpRuby": "[深刻:しんこく]な[不況:ふきょう]から[脱出:だっしゅつ]する",
@@ -14222,7 +14222,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こうきょう",
     "ruby": "[好況:こうきょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Masa makmur ledakan ekonomi pertumbuhan pesat",
+    "meaningId": "Masa makmur, ledakan ekonomi, pertumbuhan pesat",
     "meaningEn": "Boom, economic prosperity",
     "collocation": {
       "jpRuby": "[未曽有:みぞう]の[好況:こうきょう]に[沸:わ]く[産業:さんぎょう]",
@@ -14246,7 +14246,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぶっか",
     "ruby": "[物価:ぶっか]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tingkat harga barang biaya komoditas",
+    "meaningId": "Tingkat harga barang, biaya komoditas",
     "meaningEn": "Commodity prices, cost of living",
     "collocation": {
       "jpRuby": "[物価:ぶっか]の[急激:きゅうげき]な[上昇:じょうしょう]を[抑:おさ]える",
@@ -14270,7 +14270,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ざいせい",
     "ruby": "[財政:ざいせい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Keuangan negara tata kelola fiskal anggaran",
+    "meaningId": "Keuangan negara, tata kelola fiskal anggaran",
     "meaningEn": "Public finance, fiscal budget",
     "collocation": {
       "jpRuby": "[国:くに]の[財政:ざいせい]を[健全:けんぜん]にする",
@@ -14294,7 +14294,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "よさん",
     "ruby": "[予算:よさん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Anggaran belanja plafon biaya anggaran",
+    "meaningId": "Anggaran belanja, plafon biaya anggaran",
     "meaningEn": "Budget, estimate",
     "collocation": {
       "jpRuby": "[来年度:らいねんど]の[予算:よさん]を[編成:へんせい]する",
@@ -14318,7 +14318,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぼうえき",
     "ruby": "[貿易:ぼうえき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Perdagangan luar negeri ekspor impor internasional",
+    "meaningId": "Perdagangan luar negeri, ekspor impor internasional",
     "meaningEn": "Foreign trade, foreign commerce",
     "collocation": {
       "jpRuby": "[海外:かいがい]との[貿易:ぼうえき][摩擦:まさつ]を[解消:かいしょう]する",
@@ -14342,7 +14342,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かんぜい",
     "ruby": "[関税:かんぜい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Tarif bea masuk bea cukai pajak impor",
+    "meaningId": "Tarif bea masuk, bea cukai, pajak impor",
     "meaningEn": "Customs duty, tariff",
     "collocation": {
       "jpRuby": "[輸入:ゆにゅう][品:ひん]に[関税:かんぜい]をかける",
@@ -14366,7 +14366,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かわせ",
     "ruby": "[為替:かわせ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Valuta asing kurs penukaran devisa",
+    "meaningId": "Valuta asing, kurs penukaran devisa",
     "meaningEn": "Foreign exchange, money order",
     "collocation": {
       "jpRuby": "[外国:がいこく][為替:かわせ][相場:そうば]の[変動:へんどう]を[注視:ちゅうし]する",
@@ -14390,7 +14390,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "えんだか",
     "ruby": "[円高:えんだか]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penguatan kurs nilai Yen apresiasi mata uang",
+    "meaningId": "Penguatan, kurs, nilai, Yen, apresiasi, mata uang",
     "meaningEn": "Strong Yen, Yen appreciation",
     "collocation": {
       "jpRuby": "[急激:きゅうげき]な[円高:えんだか]が[輸出:ゆしゅつ][企業:きぎょう]を[直撃:ちょくげき]する",
@@ -14414,7 +14414,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "えんやす",
     "ruby": "[円安:えんやす]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pelemahan kurs nilai Yen depresiasi mata uang",
+    "meaningId": "Pelemahan, kurs, nilai, Yen, depresiasi, mata uang",
     "meaningEn": "Weak Yen, Yen depreciation",
     "collocation": {
       "jpRuby": "[歴史:れきし][的:てき]な[円安:えんやす]の[水準:すいじゅん]",
@@ -14438,7 +14438,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かぶしき",
     "ruby": "[株式:かぶしき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Saham surat berharga porsi kepemilikan modal",
+    "meaningId": "Saham, surat berharga, porsi kepemilikan modal",
     "meaningEn": "Stock, share, equity",
     "collocation": {
       "jpRuby": "[証券:しょうけん][取引所:とりひきじょ]で[株式:かぶしき]を[売買:ばいばい]する",
@@ -14462,7 +14462,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "とうし",
     "ruby": "[投資:とうし]",
     "partOfSpeech": "[名]",
-    "meaningId": "Investasi penanaman modal pembiayaan",
+    "meaningId": "Investasi, penanaman modal, pembiayaan",
     "meaningEn": "Investment, financing",
     "collocation": {
       "jpRuby": "[将来:しょうらい]のために[投資:とうし]を[始:はじ]める",
@@ -14486,7 +14486,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けいひん",
     "ruby": "[景品:けいひん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Hadiah bonus hadiah promo suvenir undian",
+    "meaningId": "Hadiah, bonus, hadiah promo, suvenir undian",
     "meaningEn": "Giveaway, free gift, promotional item",
     "collocation": {
       "jpRuby": "[抽選:ちゅうせん]で豪華な[景品:けいひん]が当たる",
@@ -14510,7 +14510,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "よろん",
     "ruby": "[世論:よろん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Opini publik suara masyarakat pandangan khalayak",
+    "meaningId": "Opini publik, suara masyarakat, pandangan khalayak",
     "meaningEn": "Public opinion, popular voice",
     "collocation": {
       "jpRuby": "[世論:よろん]の[動向:どうこう]を[調査:ちょうさ]する",
@@ -14534,7 +14534,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かくさ",
     "ruby": "[格差:かくさ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kesenjangan jurang pemisah disparitas sosial",
+    "meaningId": "Kesenjangan, jurang pemisah, disparitas sosial",
     "meaningEn": "Gap, disparity, inequality",
     "collocation": {
       "jpRuby": "[所得:しょとく]の[格差:かくさ]を[是正:ぜせい]する",
@@ -14558,7 +14558,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ひんこん",
     "ruby": "[貧困:ひんこん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kemiskinan kemelaratan serba kekurangan",
+    "meaningId": "Kemiskinan, kemelaratan, serba kekurangan",
     "meaningEn": "Poverty, destitution",
     "collocation": {
       "jpRuby": "[子供:こども]の[貧困:ひんこん][問題:もんだい]に[取:と]り[組:く]む",
@@ -14582,7 +14582,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "しょうしか",
     "ruby": "[少子化:しょうしか]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penurunan tingkat kelahiran berkurangnya angka anak",
+    "meaningId": "Penurunan tingkat kelahiran, berkurangnya angka anak",
     "meaningEn": "Declining birthrate",
     "collocation": {
       "jpRuby": "[少子化:しょうしか]に[歯止:はど]めをかける",
@@ -14606,7 +14606,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "こうれいか",
     "ruby": "[高齢化:こうれいか]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penuaan populasi membludaknya kaum lanjut usia",
+    "meaningId": "Penuaan populasi, membludaknya kaum lanjut usia",
     "meaningEn": "Aging society, demographic aging",
     "collocation": {
       "jpRuby": "[世界:せかい]で[最:もっと]も[高齢化:こうれいか]が[進:すす]んだ[社会:しゃかい]",
@@ -14630,7 +14630,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ふくし",
     "ruby": "[福祉:ふくし]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kesejahteraan sosial jaminan sosial santunan",
+    "meaningId": "Kesejahteraan sosial, jaminan sosial, santunan",
     "meaningEn": "Welfare, social well-being",
     "collocation": {
       "jpRuby": "[地域:ちいき]の[社会:しゃかい][福祉:ふくし]を[充実:じゅうじつ]させる",
@@ -14654,7 +14654,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "つうしん",
     "ruby": "[通信:つうしん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Telekomunikasi transmisi sinyal pengiriman data",
+    "meaningId": "Telekomunikasi, transmisi sinyal, pengiriman data",
     "meaningEn": "Telecommunication, transmission",
     "collocation": {
       "jpRuby": "[高速:こうそく]な[大容量:だいようりょう][通信:つうしん]を[利用:りよう]する",
@@ -14678,7 +14678,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "たんまつ",
     "ruby": "[端末:たんまつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Perangkat terminal gawai gawai digital pengguna",
+    "meaningId": "Perangkat terminal, gawai, gawai digital pengguna",
     "meaningEn": "Device terminal, digital terminal",
     "collocation": {
       "jpRuby": "[携帯:けいたい][端末:たんまつ]を[操作:そうさ]する",
@@ -14702,7 +14702,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けんさく",
     "ruby": "[検索:けんさく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pencarian perambanan penelusuran kata kunci",
+    "meaningId": "Pencarian, perambanan, penelusuran, kata kunci",
     "meaningEn": "Search, retrieval, looking up",
     "collocation": {
       "jpRuby": "インターネットで[情報:じょうほう]を[検索:けんさく]する",
@@ -14726,7 +14726,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "あんごう",
     "ruby": "[暗号:あんごう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kriptografi enkripsi kode rahasia sandi",
+    "meaningId": "Kriptografi, enkripsi, kode rahasia, sandi",
     "meaningEn": "Cipher, code, encryption",
     "collocation": {
       "jpRuby": "[重要:じゅうよう]なデータを[暗号:あんごう]で[保護:ほご]する",
@@ -14750,7 +14750,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じんこうちのう",
     "ruby": "[人工知能:じんこうちのう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kecerdasan buatan teknologi AI sistem cerdas",
+    "meaningId": "Kecerdasan buatan, teknologi, AI, sistem, cerdas",
     "meaningEn": "Artificial intelligence, AI",
     "collocation": {
       "jpRuby": "[人工知能:じんこうちのう]が[画像:がぞう]を[自動:じどう]で[認識:にんしき]する",
@@ -14774,7 +14774,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "うちゅう",
     "ruby": "[宇宙:うちゅう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Luar angkasa antariksa jagat raya kosmos",
+    "meaningId": "Luar angkasa, antariksa, jagat raya, kosmos",
     "meaningEn": "Outer space, cosmos, universe",
     "collocation": {
       "jpRuby": "[宇宙:うちゅう][空間:くうかん]にロケットを[打:う]ち[上:あ]げる",
@@ -14798,7 +14798,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はつめい",
     "ruby": "[発明:はつめい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penemuan baru invensi karya orisinal pertama",
+    "meaningId": "Penemuan baru, invensi, karya orisinal, pertama",
     "meaningEn": "Invention, innovative creation",
     "collocation": {
       "jpRuby": "[画期:かっき][的:てき]な[新技術:しんぎじゅつ]を[発明:はつめい]する",
@@ -14822,7 +14822,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "はっけん",
     "ruby": "[発見:はっけん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penemuan hal baru menyingkap fenomena riset",
+    "meaningId": "Penemuan hal baru, menyingkap fenomena riset",
     "meaningEn": "Discovery, finding",
     "collocation": {
       "jpRuby": "[新種:しんしゅ]の[生物:せいぶつ]を[深海:しんかい]で[発見:はっけん]する",
@@ -14846,7 +14846,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かいはつ",
     "ruby": "[開発:かいはつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Pengembangan riset rekayasa pembuatan produk",
+    "meaningId": "Pengembangan, riset rekayasa, pembuatan produk",
     "meaningEn": "Development, R&D",
     "collocation": {
       "jpRuby": "[環境:かんきょう]に[優:やさ]しい[新素材:しんそざい]を[開発:かいはつ]する",
@@ -14870,7 +14870,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じっけん",
     "ruby": "[実験:じっけん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Eksperimen uji laboratorium uji coba ilmiah",
+    "meaningId": "Eksperimen, uji laboratorium, uji coba ilmiah",
     "meaningEn": "Experiment, scientific test",
     "collocation": {
       "jpRuby": "[研究室:けんきゅうしつ]で[化学:かがく][実験:じっけん]を[行:おこな]う",
@@ -14894,7 +14894,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けんきゅう",
     "ruby": "[研究:けんきゅう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Penelitian riset kajian ilmiah telaah mendalam",
+    "meaningId": "Penelitian, riset, kajian ilmiah, telaah mendalam",
     "meaningEn": "Research, study, investigation",
     "collocation": {
       "jpRuby": "[大学:だいがく]で[再生:さいせい][医療:いりょう]の[研究:けんきゅう]に[打:う]ち[込:こ]む",
@@ -14918,7 +14918,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ちょうさ",
     "ruby": "[調査:ちょうさ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Investigasi survei penelusuran pemeriksaan data",
+    "meaningId": "Investigasi, survei, penelusuran, pemeriksaan data",
     "meaningEn": "Investigation, survey, inquiry",
     "collocation": {
       "jpRuby": "[市場:しじょう]のニーズを[徹底的:てっていてき]に[調査:ちょうさ]する",
@@ -14942,7 +14942,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぶんせき",
     "ruby": "[分析:ぶんせき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Analisis telaah penguraian data bedah data",
+    "meaningId": "Analisis, telaah, penguraian data, bedah data",
     "meaningEn": "Analysis",
     "collocation": {
       "jpRuby": "[集:あつ]めたデータをコンピューターで[分析:ぶんせき]する",
@@ -14966,7 +14966,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "とうけい",
     "ruby": "[統計:とうけい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Statistik data berkala tabulasi angka sensus",
+    "meaningId": "Statistik, data berkala, tabulasi angka, sensus",
     "meaningEn": "Statistics, statistical census",
     "collocation": {
       "jpRuby": "[最新:さいしん]の[統計:とうけい]データをグラフにまとめる",
@@ -14990,7 +14990,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かせつ",
     "ruby": "[仮説:かせつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Hipotesis praduga awal teori asumsi kerja",
+    "meaningId": "Hipotesis, praduga awal, teori, asumsi kerja",
     "meaningEn": "Hypothesis, theoretical assumption",
     "collocation": {
       "jpRuby": "[新:あたら]しい[仮説:かせつ]を[立:た]てて[検証:けんしょう]する",
@@ -15014,7 +15014,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けんしょう",
     "ruby": "[検証:けんしょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Verifikasi pembuktian validasi pengujian kebenaran",
+    "meaningId": "Verifikasi, pembuktian, validasi, pengujian kebenaran",
     "meaningEn": "Verification, validation",
     "collocation": {
       "jpRuby": "[理論:りろん]の[正:ただ]しさを[検証:けんしょう]する",
@@ -15038,7 +15038,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かんさつ",
     "ruby": "[観察:かんさつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Observasi pengamatan pemantauan cermat",
+    "meaningId": "Observasi, pengamatan, pemantauan cermat",
     "meaningEn": "Observation",
     "collocation": {
       "jpRuby": "[植物:しょくぶつ]の[成長:せいちょう]を[定期的:ていきてき]に[観察:かんさつ]する",
@@ -15062,7 +15062,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "りろん",
     "ruby": "[理論:りろん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Teori landasan teoretis dalil ilmiah",
+    "meaningId": "Teori, landasan teoretis, dalil ilmiah",
     "meaningEn": "Theory, theoretical foundation",
     "collocation": {
       "jpRuby": "[理論:りろん]と[実践:じっせん]を[結:むす]びつける",
@@ -15086,7 +15086,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かがく",
     "ruby": "[科学:かがく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Sains ilmu pengetahuan alam sains empiris",
+    "meaningId": "Sains, ilmu pengetahuan, alam, sains, empiris",
     "meaningEn": "Science",
     "collocation": {
       "jpRuby": "[現代:げんだい][科学:かがく]の[力:ちから]で[難病:なんびょう]を[克服:こくふく]する",
@@ -15110,7 +15110,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぶつり",
     "ruby": "[物理:ぶつり]",
     "partOfSpeech": "[名]",
-    "meaningId": "Fisika ilmu fisika hukum gerak dan energi",
+    "meaningId": "Fisika, ilmu fisika, hukum gerak dan energi",
     "meaningEn": "Physics",
     "collocation": {
       "jpRuby": "[物理:ぶつり]の[法則:ほうそく]に[従:したが]って[計算:けいさん]する",
@@ -15134,7 +15134,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かがく",
     "ruby": "[化学:かがく]",
     "partOfSpeech": "[名]",
-    "meaningId": "Kimia ilmu senyawa kimia zat dan reaksi",
+    "meaningId": "Kimia, ilmu, senyawa kimia, zat dan reaksi",
     "meaningEn": "Chemistry",
     "collocation": {
       "jpRuby": "[化学:かがく][反応:はんのう]によって[熱:ねつ]が[発生:はっせい]する",
@@ -15158,7 +15158,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "せいぶつ",
     "ruby": "[生物:せいぶつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Makhluk hidup organisme flora fauna biologi",
+    "meaningId": "Makhluk hidup, organisme, flora fauna, biologi",
     "meaningEn": "Living organism, biology, creature",
     "collocation": {
       "jpRuby": "[地球:ちきゅう][上:じょう]のすべての[生物:せいぶつ]を[大切:たいせつ]にする",
@@ -15182,7 +15182,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "わくせい",
     "ruby": "[惑星:わくせい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Planet benda langit pengorbit bintang surya",
+    "meaningId": "Planet, benda langit pengorbit, bintang, surya",
     "meaningEn": "Planet",
     "collocation": {
       "jpRuby": "[太陽:たいよう]の[周:まわ]りを[回:まわ]る[八:はっ]つの[惑星:わくせい]",
@@ -15206,7 +15206,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "えいせい",
     "ruby": "[衛星:えいせい]",
     "partOfSpeech": "[名]",
-    "meaningId": "Satelit bulan alami atau satelit buatan bumi",
+    "meaningId": "Satelit, bulan alami atau satelit buatan bumi",
     "meaningEn": "Satellite, artificial satellite, moon",
     "collocation": {
       "jpRuby": "[人工:じんこう][衛星:えいせい]から[気象:きしょう]データを[受信:じゅしん]する",
@@ -15230,7 +15230,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぼうえんきょう",
     "ruby": "[望遠鏡:ぼうえんきょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Teleskop teropong bintang jarak jauh",
+    "meaningId": "Teleskop, teropong bintang, jarak jauh",
     "meaningEn": "Telescope",
     "collocation": {
       "jpRuby": "[天体:てんたい][望遠鏡:ぼうえんきょう]で[土星:どせい]の[輪:わ]を[観察:かんさつ]する",
@@ -15254,7 +15254,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "けんびきょう",
     "ruby": "[顕微鏡:けんびきょう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Mikroskop alat pembesar benda mikroskopis",
+    "meaningId": "Mikroskop, alat pembesar benda mikroskopis",
     "meaningEn": "Microscope",
     "collocation": {
       "jpRuby": "[電子:でんし][顕微鏡:けんびきょう]でウイルスの[構造:こうぞう]を[見:み]る",
@@ -15278,7 +15278,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぶっしつ",
     "ruby": "[物質:ぶっしつ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Zat materi kebendaan bahan material",
+    "meaningId": "Zat, materi kebendaan, bahan material",
     "meaningEn": "Substance, matter, material",
     "collocation": {
       "jpRuby": "[未知:みち]の[新:あたら]しい[物質:ぶっしつ]を[合成:ごうせい]する",
@@ -15302,7 +15302,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "げんし",
     "ruby": "[原子:げんし]",
     "partOfSpeech": "[名]",
-    "meaningId": "Atom partikel dasar penyusun molekul",
+    "meaningId": "Atom, partikel dasar penyusun molekul",
     "meaningEn": "Atom",
     "collocation": {
       "jpRuby": "[原子:げんし]の[核:かく]の[周:まわ]りを[電子:でんし]が[回:まわ]る",
@@ -15326,7 +15326,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "ぶんし",
     "ruby": "[分子:ぶんし]",
     "partOfSpeech": "[名]",
-    "meaningId": "Molekul gabungan ikatan atom kimia",
+    "meaningId": "Molekul, gabungan ikatan atom kimia",
     "meaningEn": "Molecule",
     "collocation": {
       "jpRuby": "[水:みず]は[水素:すいそ]と[酸素:さんそ]の[分子:ぶんし]からなる",
@@ -15350,7 +15350,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "деんぱ",
     "ruby": "[電波:でんぱ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Gelombang radio sinyal elektromagnetik nirkabel",
+    "meaningId": "Gelombang radio, sinyal elektromagnetik nirkabel",
     "meaningEn": "Radio wave, electric wave",
     "collocation": {
       "jpRuby": "[携帯:けいたい][電話:でんわ]の[電波:でんぱ]が[届:とど]かない[場所:ばしょ]",
@@ -15374,7 +15374,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "でんりゅう",
     "ruby": "[電流:でんりゅう]",
     "partOfSpeech": "[名]",
-    "meaningId": "Arus listrik aliran muatan elektron",
+    "meaningId": "Arus listrik, aliran muatan elektron",
     "meaningEn": "Electric current",
     "collocation": {
       "jpRuby": "[回路:かいろ]に[強:つよ]い[電流:でんりゅう]が[流:なが]れる",
@@ -15398,7 +15398,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "じき",
     "ruby": "[磁気:じき]",
     "partOfSpeech": "[名]",
-    "meaningId": "Magnetisme daya magnet medan magnetik",
+    "meaningId": "Magnetisme, daya magnet, medan magnetik",
     "meaningEn": "Magnetism, magnetic force",
     "collocation": {
       "jpRuby": "[強力:きょうりょく]な[磁気:じき]を[帯:お]びたマグネット",
@@ -15422,7 +15422,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "そうち",
     "ruby": "[装置:そうち]",
     "partOfSpeech": "[名]",
-    "meaningId": "Perangkat aparatus peranti mesin instalasi",
+    "meaningId": "Perangkat, aparatus, peranti, mesin, instalasi",
     "meaningEn": "Apparatus, device, equipment",
     "collocation": {
       "jpRuby": "[安全:あんぜん][装置:そうち]が[作動:さどう]して[機械:きかい]が[止:と]まる",
@@ -15446,7 +15446,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "かいろ",
     "ruby": "[回路:かいろ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Sirkuit rangkaian listrik jalur elektrik",
+    "meaningId": "Sirkuit, rangkaian listrik, jalur elektrik",
     "meaningEn": "Circuit (electric)",
     "collocation": {
       "jpRuby": "[電子:でんし][回路:かいろ]を[設計:せっけい]する",
@@ -15470,7 +15470,7 @@ export const PART1_NOUNS: TangoN3Card[] = [
     "reading": "きばん",
     "ruby": "[基盤:きばん]",
     "partOfSpeech": "[名]",
-    "meaningId": "Papan sirkuit fondasi basis infrastruktur",
+    "meaningId": "Papan sirkuit, fondasi, basis, infrastruktur",
     "meaningEn": "Circuit board, base, infrastructure",
     "collocation": {
       "jpRuby": "[産業:さんぎょう]の[発展:はってん]を[支:ささ]える[強固:きょうこ]な[基盤:きばん]",

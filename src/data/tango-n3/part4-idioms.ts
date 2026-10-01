@@ -542,7 +542,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "みみがはやい",
     "ruby": "[耳:みみ]が[早:はや]い",
     "partOfSpeech": "[連語]",
-    "meaningId": "Cepat mendengar kabar / berita",
+    "meaningId": "Cepat mendengar kabar, berwawasan informasi",
     "meaningEn": "Quick of hearing, well-informed",
     "collocation": {
       "jpRuby": "[情報:じょうほう]に[耳:みみ]が[早:はや]い",
@@ -614,7 +614,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "はなでわらう",
     "ruby": "[鼻:はな]で[笑:わら]う",
     "partOfSpeech": "[連語]",
-    "meaningId": "Tertawa sinis mengejek",
+    "meaningId": "Tertawa sinis, mengejek",
     "meaningEn": "To laugh scornfully, to sniff at",
     "collocation": {
       "jpRuby": "[真剣:しんけん]な[提案:ていあん]を[鼻:はな]で[笑:わら]う",
@@ -806,7 +806,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "くちをにごす",
     "ruby": "[口:くち]を[濁:にご]す",
     "partOfSpeech": "[連語]",
-    "meaningId": "Bicara berbelit-belit tidak tegas",
+    "meaningId": "Bicara berbelit-belit, tidak tegas",
     "meaningEn": "To speak vaguely, to fudge",
     "collocation": {
       "jpRuby": "[真相:しんそう]について[口:くち]を[濁:にご]す",
@@ -1022,7 +1022,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "てをうつ",
     "ruby": "[手:て]を[打:う]つ",
     "partOfSpeech": "[連語]",
-    "meaningId": "Mengambil langkah antisipasi / tindakan",
+    "meaningId": "Mengambil langkah antisipasi, tindakan",
     "meaningEn": "To take measures, to strike a deal",
     "collocation": {
       "jpRuby": "[早急:さっきゅう]に[手:て]を[打:う]つ",
@@ -1142,7 +1142,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "あしをひっぱる",
     "ruby": "[足:あし]を[引:ひ]っ[張:ぱ]る",
     "partOfSpeech": "[連語]",
-    "meaningId": "Menghambat kemajuan tim, menjegal",
+    "meaningId": "Angkat tangan, menyerah kalah",
     "meaningEn": "To hold back, to sabotage others",
     "collocation": {
       "jpRuby": "チームの[足:あし]を[引:ひ]っぱる",
@@ -1190,7 +1190,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "うでをみがく",
     "ruby": "[腕:うで]を[磨:みが]く",
     "partOfSpeech": "[連語]",
-    "meaningId": "Mengasah keahlian / ketrampilan",
+    "meaningId": "Kewalahan, di luar kendali",
     "meaningEn": "To polish one's skills",
     "collocation": {
       "jpRuby": "[料理:りょうり]の[腕:うで]を[磨:みが]く",
@@ -1238,7 +1238,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "かたをおとす",
     "ruby": "[肩:かた]を[落:お]とす",
     "partOfSpeech": "[連語]",
-    "meaningId": "Terkulai lesu karena kecewa",
+    "meaningId": "Bekerja sama, bergandengan tangan",
     "meaningEn": "To drop one's shoulders in disappointment",
     "collocation": {
       "jpRuby": "[試験:しけん]に[落:お]ちて[肩:かた]を[落:お]とす",
@@ -1382,7 +1382,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "はらをたてる",
     "ruby": "[腹:はら]を[立:た]てる",
     "partOfSpeech": "[連語]",
-    "meaningId": "Marah tersinggung, naik pitam",
+    "meaningId": "Mengulurkan tangan bantuan, membantu",
     "meaningEn": "To take offense, to get angry",
     "collocation": {
       "jpRuby": "[理不尽:りふじん]なことに[腹:はら]を[立:た]てる",
@@ -1406,7 +1406,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "はらをわる",
     "ruby": "[腹:はら]を[割:わ]る",
     "partOfSpeech": "[連語]",
-    "meaningId": "Bicara jujur blak-blakan dari hati ke hati",
+    "meaningId": "Banyak permintaan, laris manis",
     "meaningEn": "To speak frankly, to open one's heart",
     "collocation": {
       "jpRuby": "[腹:はら]を[割:わ]って[話:はな]し[合:あ]う",
@@ -1454,7 +1454,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "きがきく",
     "ruby": "[気:き]が[利:き]く",
     "partOfSpeech": "[連語]",
-    "meaningId": "Peka perhatian, cekatan tahu situasi",
+    "meaningId": "Menyisihkan uang, merogoh kantong",
     "meaningEn": "Attentive, tactful, considerate",
     "collocation": {
       "jpRuby": "[細:こま]かいところまで[気:き]が[利:き]く",
@@ -1574,7 +1574,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "きになる",
     "ruby": "[気:き]になる",
     "partOfSpeech": "[連語]",
-    "meaningId": "Menjadi kepikiran, merasa penasaran",
+    "meaningId": "Menghabiskan waktu, biaya bolak-balik",
     "meaningEn": "To be on one's mind, to worry about",
     "collocation": {
       "jpRuby": "[結果:けっか]がどうなったか[気:き]になる",
@@ -1670,7 +1670,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "きをうしなう",
     "ruby": "[気:き]を[失:うしな]う",
     "partOfSpeech": "[連語]",
-    "meaningId": "Pingsan, hilang kesadaran",
+    "meaningId": "Patah hati, putus asa",
     "meaningEn": "To lose consciousness, to faint",
     "collocation": {
       "jpRuby": "[暑:あつ]さで[気:き]を[失:うしな]う",
@@ -1718,7 +1718,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "みをひく",
     "ruby": "[身:み]を[引:ひ]く",
     "partOfSpeech": "[連語]",
-    "meaningId": "Mengundurkan diri demi kebaikan bersama",
+    "meaningId": "Lega hati, bernapas lega",
     "meaningEn": "To step down, to resign",
     "collocation": {
       "jpRuby": "[一線:いっせん]から[身:み]を[引:ひ]く",
@@ -1790,7 +1790,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "いきがきれる",
     "ruby": "[息:いき]が[切:き]れる",
     "partOfSpeech": "[連語]",
-    "meaningId": "Napas terengah-engah / kehabisan tenaga di tengah jalan",
+    "meaningId": "Memperhatikan, menjaga perasaan",
     "meaningEn": "To be out of breath, to run out of steam",
     "collocation": {
       "jpRuby": "[階段:かいだん]を[上:のぼ]って[息:いき]が[切:き]れる",
@@ -1814,7 +1814,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "いきをのむ",
     "ruby": "[息:いき]をのむ",
     "partOfSpeech": "[連語]",
-    "meaningId": "Menahan napas kagum / tegang",
+    "meaningId": "Merasa cocok, sehati",
     "meaningEn": "To hold one's breath, breathtaking",
     "collocation": {
       "jpRuby": "[息:いき]をのむほどの[美:うつく]しさ",
@@ -1862,7 +1862,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "こしをぬかす",
     "ruby": "[腰:こし]を[抜:ぬ]かす",
     "partOfSpeech": "[連語]",
-    "meaningId": "Lemas tak sanggup berdiri karena terkejut luar biasa",
+    "meaningId": "Penuh perhatian, ramah melayani",
     "meaningEn": "To be paralyzed with fright",
     "collocation": {
       "jpRuby": "[驚:おどろ]きのあまり[腰:こし]を[抜:ぬ]かす",
@@ -1886,7 +1886,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ほねをおる",
     "ruby": "[骨:ほね]を[折:お]る",
     "partOfSpeech": "[連語]",
-    "meaningId": "Bersusah payah berupaya keras",
+    "meaningId": "Bersemangat tinggi, antusias",
     "meaningEn": "To take great pains, to exert oneself",
     "collocation": {
       "jpRuby": "[問題:もんだい]の[解決:かいけつ]に[骨:ほね]を[折:お]る",
@@ -1934,7 +1934,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "どきどき",
     "ruby": "どきどき",
     "partOfSpeech": "[副]",
-    "meaningId": "Deg-degan berdebar",
+    "meaningId": "Berhati-hati waspada, menaruh curiga",
     "meaningEn": "Thumping, heart pounding",
     "collocation": {
       "jpRuby": "[胸:むね]がどきどきする",
@@ -1958,7 +1958,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "わくわく",
     "ruby": "わくわく",
     "partOfSpeech": "[副]",
-    "meaningId": "Gembira antusias menanti",
+    "meaningId": "Pikiran teralihkan, tidak fokus",
     "meaningEn": "Thrilled, excited",
     "collocation": {
       "jpRuby": "わくわくしながら[待:ま]つ",
@@ -1982,7 +1982,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "はらはら",
     "ruby": "はらはら",
     "partOfSpeech": "[副]",
-    "meaningId": "Cemas waswas melihat situasi tegang",
+    "meaningId": "Menyadari, teringat",
     "meaningEn": "On edge, in suspense",
     "collocation": {
       "jpRuby": "[見:み]ていてはらはらする",
@@ -2006,7 +2006,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "いらいら",
     "ruby": "いらいら",
     "partOfSpeech": "[副]",
-    "meaningId": "Kesal gregetan tidak sabar",
+    "meaningId": "Merasa enggan, berat hati",
     "meaningEn": "Irritated, annoyed",
     "collocation": {
       "jpRuby": "渋滞でいらいらする",
@@ -2030,7 +2030,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ほっと",
     "ruby": "ほっと",
     "partOfSpeech": "[副]",
-    "meaningId": "Lega bernapas lepas",
+    "meaningId": "Kehilangan kesadaran, pingsan",
     "meaningEn": "Relieved",
     "collocation": {
       "jpRuby": "ほっと[一安心:ひとあんしん]する",
@@ -2102,7 +2102,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "がっかり",
     "ruby": "がっかり",
     "partOfSpeech": "[副]",
-    "meaningId": "Kecewa patah arang",
+    "meaningId": "Kecewa, patah arang",
     "meaningEn": "Disappointed, disheartened",
     "collocation": {
       "jpRuby": "[結果:けっか]にがっかりする",
@@ -2222,7 +2222,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ふらふら",
     "ruby": "ふらふら",
     "partOfSpeech": "[副]",
-    "meaningId": "Goyah sempoyongan / gamang",
+    "meaningId": "Gemetar ketakutan, menggigil kedinginan",
     "meaningEn": "Dizzily, unsteady",
     "collocation": {
       "jpRuby": "[頭:あたま]がふらふらする",
@@ -2270,7 +2270,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "そわそわ",
     "ruby": "そわそわ",
     "partOfSpeech": "[副]",
-    "meaningId": "Gelisah tak bisa diam gelagapan",
+    "meaningId": "Mondar-mandir cemas, resah gelisah",
     "meaningEn": "Restless, fidgety",
     "collocation": {
       "jpRuby": "そわそわして[落:お]ち[着:つ]かない",
@@ -2366,7 +2366,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "おもいきって",
     "ruby": "[思:おも]い[切:き]って",
     "partOfSpeech": "[副]",
-    "meaningId": "Memberanikan diri, nekad mengambil langkah",
+    "meaningId": "Merasa lega, tenang",
     "meaningEn": "Boldly, taking the plunge",
     "collocation": {
       "jpRuby": "[思:おも]い[切:き]って[告白:こくはく]する",
@@ -2390,7 +2390,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "しゃきっと",
     "ruby": "しゃきっと",
     "partOfSpeech": "[副]",
-    "meaningId": "Tegap segar bugar bersemangat",
+    "meaningId": "Tersentak kaget, tersadar tiba-tiba",
     "meaningEn": "Crisp, refreshed, straight and neat",
     "collocation": {
       "jpRuby": "背筋を伸ばしてしゃきっと[立:た]つ",
@@ -2438,7 +2438,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ぐずぐず",
     "ruby": "ぐずぐず",
     "partOfSpeech": "[副]",
-    "meaningId": "Lamban menunda-nunda",
+    "meaningId": "Kaget tiba-tiba, terperanjat",
     "meaningEn": "Slowly, procrastinating",
     "collocation": {
       "jpRuby": "ぐずぐず[言:い]う / ぐずぐずする",
@@ -2462,7 +2462,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "うろうろ",
     "ruby": "うろうろ",
     "partOfSpeech": "[副]",
-    "meaningId": "Mondar-mandir tersesat / bingung",
+    "meaningId": "Lega hati, plong",
     "meaningEn": "Aimlessly, wandering",
     "collocation": {
       "jpRuby": "[道:みち]に迷ってうろうろする",
@@ -2510,7 +2510,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "すやすや",
     "ruby": "すやすや",
     "partOfSpeech": "[副]",
-    "meaningId": "Tidur lelap tenang (bayi)",
+    "meaningId": "Kesal mendongkol, jengkel",
     "meaningEn": "Sleeping peacefully",
     "collocation": {
       "jpRuby": "すやすや[眠:ねむ]る",
@@ -2558,7 +2558,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "しくしく",
     "ruby": "しくしく",
     "partOfSpeech": "[副]",
-    "meaningId": "Menangis tersedu-sedu / nyeri melilit",
+    "meaningId": "Muak, bosan mendengar",
     "meaningEn": "Sobbing quietly, dull pain",
     "collocation": {
       "jpRuby": "しくしく[泣:な]く",
@@ -2582,7 +2582,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "めそめそ",
     "ruby": "めそめそ",
     "partOfSpeech": "[副]",
-    "meaningId": "Cengeng meratap sedih",
+    "meaningId": "Malu tersipu, canggung",
     "meaningEn": "Whimpering, crying easily",
     "collocation": {
       "jpRuby": "いつまでもめそめそするな",
@@ -2630,7 +2630,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ぷんぷん",
     "ruby": "ぷんぷん",
     "partOfSpeech": "[副]",
-    "meaningId": "Menyengat bau / merajuk cemberut",
+    "meaningId": "Gemas kesal, geregetan",
     "meaningEn": "Stinking, angrily pouting",
     "collocation": {
       "jpRuby": "ぷんぷん[怒:おこ]る",
@@ -2678,7 +2678,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ぎょっと",
     "ruby": "ぎょっと",
     "partOfSpeech": "[副]",
-    "meaningId": "Terkejut ngeri kaget mendadak",
+    "meaningId": "Gelisah menanti, tidak sabar",
     "meaningEn": "Startled, spooked",
     "collocation": {
       "jpRuby": "ぎょっとする",
@@ -2702,7 +2702,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ぞっと",
     "ruby": "ぞっと",
     "partOfSpeech": "[副]",
-    "meaningId": "Bergidik ngeri merinding",
+    "meaningId": "Ragu-ragu bimbang, gamang",
     "meaningEn": "Shivering with fear, horrified",
     "collocation": {
       "jpRuby": "[考:かんが]えただけでぞっとする",
@@ -2822,7 +2822,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "うっかり",
     "ruby": "うっかり",
     "partOfSpeech": "[副]",
-    "meaningId": "Tanpa sengaja lalai khilaf",
+    "meaningId": "Cemas gelisah, khawatir",
     "meaningEn": "Carelessly, inadvertently",
     "collocation": {
       "jpRuby": "うっかり[忘:わす]れる",
@@ -2846,7 +2846,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "がっしり",
     "ruby": "がっしり",
     "partOfSpeech": "[副]",
-    "meaningId": "Tegap kekar berotot kuat",
+    "meaningId": "Jengkel kesal, mendidih",
     "meaningEn": "Sturdily, solidly built",
     "collocation": {
       "jpRuby": "がっしりした[体格:たいかく]",
@@ -2918,7 +2918,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ずらりと",
     "ruby": "ずらりと",
     "partOfSpeech": "[副]",
-    "meaningId": "Berjejer panjang berderet rapi",
+    "meaningId": "Berbisik-bisik, kasak-kusuk",
     "meaningEn": "In a long line, in a row",
     "collocation": {
       "jpRuby": "ずらりと[並:なら]ぶ",
@@ -2942,7 +2942,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ばらばら",
     "ruby": "ばらばら",
     "partOfSpeech": "[副]",
-    "meaningId": "Terpencar berantakan tak seragam",
+    "meaningId": "Tersenyum simpul, menyeringai",
     "meaningEn": "Scattered, disjointed",
     "collocation": {
       "jpRuby": "意見がばらばらだ",
@@ -2966,7 +2966,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ぼろぼろ",
     "ruby": "ぼろぼろ",
     "partOfSpeech": "[副]",
-    "meaningId": "Koyak robek compang-camping / hancur",
+    "meaningId": "Tersenyum riang, semringah",
     "meaningEn": "Worn out, tattered, in tatters",
     "collocation": {
       "jpRuby": "ぼろぼろの[服:ふく]",
@@ -2990,7 +2990,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ぴかぴか",
     "ruby": "ぴかぴか",
     "partOfSpeech": "[副]",
-    "meaningId": "Berkilau mengkilap cemerlang",
+    "meaningId": "Tersenyum ramah, manis",
     "meaningEn": "Glittering, sparkling, shiny",
     "collocation": {
       "jpRuby": "ぴかぴかに[磨:みが]く",
@@ -3014,7 +3014,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ぺらぺら",
     "ruby": "ぺらぺら",
     "partOfSpeech": "[副]",
-    "meaningId": "Fasih lancar lidah / tipis kertas",
+    "meaningId": "Tertawa terbahak-bahak, terpingkal-pingkal",
     "meaningEn": "Fluently / flimsy",
     "collocation": {
       "jpRuby": "英語がぺらぺらだ",
@@ -3038,7 +3038,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ぶつぶつ",
     "ruby": "ぶつぶつ",
     "partOfSpeech": "[副]",
-    "meaningId": "Menggerutu komat-kamit / bintik",
+    "meaningId": "Menggerutu, komat-kamit / berbintik-bintik",
     "meaningEn": "Muttering, grumbling",
     "collocation": {
       "jpRuby": "ぶつぶつ[文句:もんく]を言う",
@@ -3062,7 +3062,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ごちゃごちゃ",
     "ruby": "ごちゃごちゃ",
     "partOfSpeech": "[副]",
-    "meaningId": "Berantakan campur aduk kacau",
+    "meaningId": "Bicara ceplas-ceplos, lancar",
     "meaningEn": "Messy, jumbled up",
     "collocation": {
       "jpRuby": "部屋がごちゃごちゃしている",
@@ -3086,7 +3086,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "めちゃくちゃ",
     "ruby": "めちゃくちゃ",
     "partOfSpeech": "[副]",
-    "meaningId": "Kacau balau amburadul / luar biasa",
+    "meaningId": "Bicara terbata-bata, gagap",
     "meaningEn": "Messy, chaotic, absurd",
     "collocation": {
       "jpRuby": "めちゃくちゃに[壊:こわ]れる",
@@ -3110,7 +3110,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ぴったり",
     "ruby": "ぴったり",
     "partOfSpeech": "[副]",
-    "meaningId": "Pas persis tepat sesuai",
+    "meaningId": "Menangis tersedu-sedu, mengisak",
     "meaningEn": "Exactly, tightly, snugly",
     "collocation": {
       "jpRuby": "サイズがぴったりだ",
@@ -3134,7 +3134,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ぎりぎり",
     "ruby": "ぎりぎり",
     "partOfSpeech": "[副]",
-    "meaningId": "Mepet di batas akhir pas-pasan",
+    "meaningId": "Merengek-rengek, cengeng",
     "meaningEn": "At the last moment, barely",
     "collocation": {
       "jpRuby": "ぎりぎりで[間:ま]に[合:あ]う",
@@ -3158,7 +3158,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ごろごろ",
     "ruby": "ごろごろ",
     "partOfSpeech": "[副]",
-    "meaningId": "Berguling santai di rumah / bunyi gemuruh",
+    "meaningId": "Tertidur pulas, lelap",
     "meaningEn": "Rolling, idling around",
     "collocation": {
       "jpRuby": "[家:いえ]でごろごろする",
@@ -3182,7 +3182,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ゆらゆら",
     "ruby": "ゆらゆら",
     "partOfSpeech": "[副]",
-    "meaningId": "Bergoyang terombang-ambing perlahan",
+    "meaningId": "Mengantuk berat, terkantuk-kantuk",
     "meaningEn": "Swaying, swinging gently",
     "collocation": {
       "jpRuby": "[炎:ほのお]がゆらゆら揺れる",
@@ -3206,7 +3206,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ふらりと",
     "ruby": "ふらりと",
     "partOfSpeech": "[副]",
-    "meaningId": "Singgah tiba-tiba tanpa tujuan",
+    "meaningId": "Tertidur lelap, nyenyak",
     "meaningEn": "Aimlessly, casually popping in",
     "collocation": {
       "jpRuby": "ふらりと[立:た]ち[寄:よ]る",
@@ -3230,7 +3230,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ふと",
     "ruby": "ふと",
     "partOfSpeech": "[副]",
-    "meaningId": "Tiba-tiba terpikir / tanpa sengaja",
+    "meaningId": "Pusing berputar, limbung",
     "meaningEn": "Suddenly, casually, by chance",
     "collocation": {
       "jpRuby": "ふと[思:おも]い[出:だ]す",
@@ -3254,7 +3254,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ばったり",
     "ruby": "ばったり",
     "partOfSpeech": "[副]",
-    "meaningId": "Kebetulan berpapasan bertemu / tumbang",
+    "meaningId": "Pusing berdenyut-denyut, migrain",
     "meaningEn": "By chance meeting / abruptly falling",
     "collocation": {
       "jpRuby": "[道:みち]でばったり[会:あ]う",
@@ -3278,7 +3278,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "さっと",
     "ruby": "さっと",
     "partOfSpeech": "[副]",
-    "meaningId": "Cepat kilat gesit",
+    "meaningId": "Sakit perut melilit, mulas",
     "meaningEn": "Quickly, swiftly",
     "collocation": {
       "jpRuby": "さっと[立:た]ち[上:あ]がる",
@@ -3302,7 +3302,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ざっと",
     "ruby": "ざっと",
     "partOfSpeech": "[副]",
-    "meaningId": "Secara garis besar kasar / sekilas",
+    "meaningId": "Nyeri menusuk-nusuk, ngilu",
     "meaningEn": "Roughly, cursorily",
     "collocation": {
       "jpRuby": "ざっと[計算:けいさん]する",
@@ -3326,7 +3326,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "じっと",
     "ruby": "じっと",
     "partOfSpeech": "[副]",
-    "meaningId": "Diam mematung / menatap tajam",
+    "meaningId": "Perut lapar keroncongan, kosong",
     "meaningEn": "Motionless, intently",
     "collocation": {
       "jpRuby": "じっと[見:み]つめる",
@@ -3350,7 +3350,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "もたもた",
     "ruby": "もたもた",
     "partOfSpeech": "[副]",
-    "meaningId": "Lamban lelet bertele-tele tidak cekatan",
+    "meaningId": "Tenggorokan haus dahaga, kering",
     "meaningEn": "Slowly, clumsily, dawdling",
     "collocation": {
       "jpRuby": "もたもたしていると[電車:でんしゃ]に[乗:の]り[遅:おく]れる",
@@ -3374,7 +3374,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ちらりと",
     "ruby": "ちらりと",
     "partOfSpeech": "[副]",
-    "meaningId": "Meliwatkan pandangan sekilas",
+    "meaningId": "Makan lahap, bernafsu",
     "meaningEn": "Glancing at",
     "collocation": {
       "jpRuby": "ちらりと[見:み]る",
@@ -3398,7 +3398,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "じっくり",
     "ruby": "じっくり",
     "partOfSpeech": "[副]",
-    "meaningId": "Mendalam seksama penuh pertimbangan",
+    "meaningId": "Gemetar lemas, lunglai",
     "meaningEn": "Deliberately, thoroughly",
     "collocation": {
       "jpRuby": "じっくり[考:かんが]える",
@@ -3422,7 +3422,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "たっぷり",
     "ruby": "たっぷり",
     "partOfSpeech": "[副]",
-    "meaningId": "Berlimpah ruah puas",
+    "meaningId": "Penuh sesak, berjejal rapat",
     "meaningEn": "Plentiful, full, ample",
     "collocation": {
       "jpRuby": "時間がたっぷりある",
@@ -3446,7 +3446,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "びっしり",
     "ruby": "びっしり",
     "partOfSpeech": "[副]",
-    "meaningId": "Penuh berjejal berbaris rapat tanpa ada celah",
+    "meaningId": "Penuh berjejal, berbaris rapat tanpa ada celah",
     "meaningEn": "Closely packed, crowded, crammed without gap",
     "collocation": {
       "jpRuby": "手帳に予定がびっしり[書:か]き[込:こ]まれている",
@@ -3470,7 +3470,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "かすかに",
     "ruby": "かすかに",
     "partOfSpeech": "[副]",
-    "meaningId": "Sayup-sayup samar terasa",
+    "meaningId": "Sayup-sayup, samar terasa",
     "meaningEn": "Faintly, dimly",
     "collocation": {
       "jpRuby": "かすかに[聞:き]こえる",
@@ -3494,7 +3494,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "うっすら",
     "ruby": "うっすら",
     "partOfSpeech": "[副]",
-    "meaningId": "Tipis-tipis samar",
+    "meaningId": "Tipis-tipis, samar",
     "meaningEn": "Thinly, faintly",
     "collocation": {
       "jpRuby": "うっすら[雪:ゆき]が積もる",
@@ -3518,7 +3518,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "すらすら",
     "ruby": "すらすら",
     "partOfSpeech": "[副]",
-    "meaningId": "Lancar mengalir tanpa jeda",
+    "meaningId": "Lancar mengalir, tanpa jeda",
     "meaningEn": "Smoothly, effortlessly",
     "collocation": {
       "jpRuby": "すらすら[読:よ]む",
@@ -3542,7 +3542,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "だらだら",
     "ruby": "だらだら",
     "partOfSpeech": "[副]",
-    "meaningId": "Bermalas-malasan / menetes mengalir",
+    "meaningId": "Bermalas-malasan / menetes, mengalir",
     "meaningEn": "Sluggishly, trickling",
     "collocation": {
       "jpRuby": "だらだらと[過:す]ごす",
@@ -3566,7 +3566,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "のろのろ",
     "ruby": "のろのろ",
     "partOfSpeech": "[副]",
-    "meaningId": "Merayap lambat lamban",
+    "meaningId": "Merayap lambat, lamban",
     "meaningEn": "Sluggishly, creeping",
     "collocation": {
       "jpRuby": "のろのろ[運転:うんてん]",
@@ -3590,7 +3590,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "すたすた",
     "ruby": "すたすた",
     "partOfSpeech": "[副]",
-    "meaningId": "Berjalan cepat bergegas",
+    "meaningId": "Berjalan cepat, bergegas",
     "meaningEn": "Walking briskly",
     "collocation": {
       "jpRuby": "すたすた[歩:ある]く",
@@ -3614,7 +3614,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "とんとん",
     "ruby": "とんとん",
     "partOfSpeech": "[副]",
-    "meaningId": "Mengetuk pelan / impas seimbang",
+    "meaningId": "Mengetuk pelan / impas, seimbang",
     "meaningEn": "Tapping / breaking even",
     "collocation": {
       "jpRuby": "ドアをとんとんと[叩:たた]く",
@@ -3638,7 +3638,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "どんどん",
     "ruby": "どんどん",
     "partOfSpeech": "[副]",
-    "meaningId": "Gencar pesat terus-menerus berturut",
+    "meaningId": "Gencar, pesat, terus-menerus, berturut-turut",
     "meaningEn": "Rapidly, steadily, one after another",
     "collocation": {
       "jpRuby": "どんどん[増:ふ]える",
@@ -3662,7 +3662,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ぐんぐん",
     "ruby": "ぐんぐん",
     "partOfSpeech": "[副]",
-    "meaningId": "Melesat melaju kencang",
+    "meaningId": "Melesat, melaju kencang",
     "meaningEn": "Steadily, rapidly accelerating",
     "collocation": {
       "jpRuby": "ぐんぐん[伸:の]びる",
@@ -3686,7 +3686,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "めきめき",
     "ruby": "めきめき",
     "partOfSpeech": "[副]",
-    "meaningId": "Maju pesat terlihat nyata",
+    "meaningId": "Maju pesat, terlihat nyata",
     "meaningEn": "Remarkably, noticeably",
     "collocation": {
       "jpRuby": "めきめき[上達:じょうたつ]する",
@@ -3734,7 +3734,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ばりばり",
     "ruby": "ばりばり",
     "partOfSpeech": "[副]",
-    "meaningId": "Kerja energik tangguh / renyah garing",
+    "meaningId": "Kerja energik, tangguh / renyah, garing",
     "meaningEn": "Energetically, hard-working",
     "collocation": {
       "jpRuby": "ばりばり[働:はたら]く",
@@ -3758,7 +3758,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "きらきら",
     "ruby": "きらきら",
     "partOfSpeech": "[副]",
-    "meaningId": "Berkilau-kilau gemerlap",
+    "meaningId": "Berkilau-kilau, gemerlap",
     "meaningEn": "Twinkling, sparkling",
     "collocation": {
       "jpRuby": "[星:ほし]がきらきら光る",
@@ -3782,7 +3782,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "さらさら",
     "ruby": "さらさら",
     "partOfSpeech": "[副]",
-    "meaningId": "Mulus lembut gemerisik / mengalir lancar",
+    "meaningId": "Mulus lembut, gemerisik / mengalir lancar",
     "meaningEn": "Silky, smooth, rustling",
     "collocation": {
       "jpRuby": "さらさらの[髪:かみ]",
@@ -3806,7 +3806,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ざらざら",
     "ruby": "ざらざら",
     "partOfSpeech": "[副]",
-    "meaningId": "Kasar berpasir parau",
+    "meaningId": "Kasar, berpasir, parau",
     "meaningEn": "Rough, gritty",
     "collocation": {
       "jpRuby": "手がざらざらしている",
@@ -3830,7 +3830,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "じめじめ",
     "ruby": "じめじめ",
     "partOfSpeech": "[副]",
-    "meaningId": "Lembap basah pengap",
+    "meaningId": "Lembap, basah, pengap",
     "meaningEn": "Damp, humid, clammy",
     "collocation": {
       "jpRuby": "じめじめした[天気:てんき]",
@@ -3950,7 +3950,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "プロジェクト",
     "ruby": "プロジェクト",
     "partOfSpeech": "[名]",
-    "meaningId": "Proyek kegiatan",
+    "meaningId": "Proyek, kegiatan terencana",
     "meaningEn": "Project",
     "collocation": {
       "jpRuby": "プロジェクトを[立:た]ち[上:あ]げる",
@@ -3998,7 +3998,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ミーティング",
     "ruby": "ミーティング",
     "partOfSpeech": "[名]",
-    "meaningId": "Rapat temu kerja",
+    "meaningId": "Rapat, temu kerja",
     "meaningEn": "Meeting",
     "collocation": {
       "jpRuby": "ミーティングを[開:ひら]く",
@@ -4022,7 +4022,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "システム",
     "ruby": "システム",
     "partOfSpeech": "[名]",
-    "meaningId": "Sistem tatanan kerja",
+    "meaningId": "Sistem, tatanan kerja",
     "meaningEn": "System",
     "collocation": {
       "jpRuby": "システムを[導入:どうにゅう]する",
@@ -4070,7 +4070,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "マニュアル",
     "ruby": "マニュアル",
     "partOfSpeech": "[名]",
-    "meaningId": "Buku panduan manual kerja",
+    "meaningId": "Buku panduan, manual kerja",
     "meaningEn": "Manual, handbook",
     "collocation": {
       "jpRuby": "マニュアルを[読:よ]む",
@@ -4166,7 +4166,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "クレーム",
     "ruby": "クレーム",
     "partOfSpeech": "[名]",
-    "meaningId": "Komplain keluhan pelanggan",
+    "meaningId": "Komplain, keluhan pelanggan",
     "meaningEn": "Complaint, claim",
     "collocation": {
       "jpRuby": "クレームを[処理:しょり]する",
@@ -4190,7 +4190,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "キャンセル",
     "ruby": "キャンセル",
     "partOfSpeech": "[名]",
-    "meaningId": "Pembatalan pesanan",
+    "meaningId": "Pembatalan, pembatalan pesanan",
     "meaningEn": "Cancellation",
     "collocation": {
       "jpRuby": "キャンセルが[出:で]る",
@@ -4214,7 +4214,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "コスト",
     "ruby": "コスト",
     "partOfSpeech": "[名]",
-    "meaningId": "Biaya ongkos operasional",
+    "meaningId": "Biaya, ongkos operasional",
     "meaningEn": "Cost",
     "collocation": {
       "jpRuby": "コストを[削減:さくげん]する",
@@ -4238,7 +4238,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ターゲット",
     "ruby": "ターゲット",
     "partOfSpeech": "[名]",
-    "meaningId": "Target sasaran pasar",
+    "meaningId": "Target, sasaran pasar",
     "meaningEn": "Target",
     "collocation": {
       "jpRuby": "ターゲットを[絞:しぼ]る",
@@ -4262,7 +4262,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "イメージ",
     "ruby": "イメージ",
     "partOfSpeech": "[名]",
-    "meaningId": "Citra kesan visual",
+    "meaningId": "Citra, kesan visual",
     "meaningEn": "Image, impression",
     "collocation": {
       "jpRuby": "イメージが[良:よ]い",
@@ -4286,7 +4286,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "テーマ",
     "ruby": "テーマ",
     "partOfSpeech": "[名]",
-    "meaningId": "Tema topik bahasan",
+    "meaningId": "Tema, topik bahasan",
     "meaningEn": "Theme, subject",
     "collocation": {
       "jpRuby": "テーマを[決:き]める",
@@ -4310,7 +4310,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "サイン",
     "ruby": "サイン",
     "partOfSpeech": "[名]",
-    "meaningId": "Tanda tangan / sinyal tanda",
+    "meaningId": "Tanda tangan / sinyal, tanda",
     "meaningEn": "Signature, sign",
     "collocation": {
       "jpRuby": "サインをする",
@@ -4334,7 +4334,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "スタッフ",
     "ruby": "スタッフ",
     "partOfSpeech": "[名]",
-    "meaningId": "Staf petugas pegawai",
+    "meaningId": "Staf, petugas, pegawai",
     "meaningEn": "Staff",
     "collocation": {
       "jpRuby": "スタッフを[募集:ぼしゅう]する",
@@ -4382,7 +4382,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "アポイント",
     "ruby": "アポイント",
     "partOfSpeech": "[名]",
-    "meaningId": "Janji temu janji temu bisnis reservasi",
+    "meaningId": "Janji temu, reservasi bisnis",
     "meaningEn": "Appointment, business meeting reservation",
     "collocation": {
       "jpRuby": "[取引先:とりひきさき]にアポイントを[取:と]る",
@@ -4430,7 +4430,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ペース",
     "ruby": "ペース",
     "partOfSpeech": "[名]",
-    "meaningId": "Kecepatan laju ritme",
+    "meaningId": "Kecepatan laju, ritme",
     "meaningEn": "Pace, tempo",
     "collocation": {
       "jpRuby": "自分のペースを[守:まも]る",
@@ -4454,7 +4454,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "バランス",
     "ruby": "バランス",
     "partOfSpeech": "[名]",
-    "meaningId": "Keseimbangan harmoni",
+    "meaningId": "Keseimbangan, harmoni",
     "meaningEn": "Balance",
     "collocation": {
       "jpRuby": "バランスを[崩:くず]す / 保つ",
@@ -4478,7 +4478,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ショック",
     "ruby": "ショック",
     "partOfSpeech": "[名]",
-    "meaningId": "Keterkejutan batin guncangan",
+    "meaningId": "Keterkejutan batin, guncangan",
     "meaningEn": "Shock",
     "collocation": {
       "jpRuby": "ショックを[受:う]ける",
@@ -4502,7 +4502,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ストレス",
     "ruby": "ストレス",
     "partOfSpeech": "[名]",
-    "meaningId": "Stres tekanan batin",
+    "meaningId": "Stres, tekanan batin",
     "meaningEn": "Stress",
     "collocation": {
       "jpRuby": "ストレスが[溜:た]まる / [発散:はっさん]する",
@@ -4526,7 +4526,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "リラックス",
     "ruby": "リラックス",
     "partOfSpeech": "[名]",
-    "meaningId": "Rileksasi ketenangan",
+    "meaningId": "Rileksasi, ketenangan",
     "meaningEn": "Relaxation",
     "collocation": {
       "jpRuby": "リラックスした[状態:じょうたい]",
@@ -4550,7 +4550,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ポジティブ",
     "ruby": "ポジティブ",
     "partOfSpeech": "[ナ形]",
-    "meaningId": "Positif berpandangan cerah",
+    "meaningId": "Positif, berpandangan cerah",
     "meaningEn": "Positive, constructive",
     "collocation": {
       "jpRuby": "ポジティブな[思考:しこう]",
@@ -4574,7 +4574,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ネガティブ",
     "ruby": "ネガティブ",
     "partOfSpeech": "[ナ形]",
-    "meaningId": "Negatif pesimis suram",
+    "meaningId": "Negatif, pesimis, suram",
     "meaningEn": "Negative, pessimistic",
     "collocation": {
       "jpRuby": "ネガティブな[感情:かんじょう]",
@@ -4598,7 +4598,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ユニーク",
     "ruby": "ユニーク",
     "partOfSpeech": "[ナ形]",
-    "meaningId": "Unik tiada duanya orisinal",
+    "meaningId": "Unik, tiada duanya, orisinal",
     "meaningEn": "Unique, original",
     "collocation": {
       "jpRuby": "ユニークな[発想:はっそう]",
@@ -4622,7 +4622,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "シンプル",
     "ruby": "シンプル",
     "partOfSpeech": "[ナ形]",
-    "meaningId": "Sederhana ringkas elegan",
+    "meaningId": "Sederhana, ringkas, elegan",
     "meaningEn": "Simple, plain",
     "collocation": {
       "jpRuby": "シンプルなデザイン",
@@ -4646,7 +4646,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "スマート",
     "ruby": "スマート",
     "partOfSpeech": "[ナ形]",
-    "meaningId": "Cerdas luwes / ramping anggun",
+    "meaningId": "Cerdas luwes / ramping, anggun",
     "meaningEn": "Smart, stylish, sleek",
     "collocation": {
       "jpRuby": "スマートな[対応:たいおう]",
@@ -4670,7 +4670,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ダイレクト",
     "ruby": "ダイレクト",
     "partOfSpeech": "[ナ形]",
-    "meaningId": "Langsung tanpa perantara",
+    "meaningId": "Langsung, tanpa perantara",
     "meaningEn": "Direct",
     "collocation": {
       "jpRuby": "ダイレクトに[伝:つた]える",
@@ -4718,7 +4718,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "プライベート",
     "ruby": "プライベート",
     "partOfSpeech": "[名・ナ形]",
-    "meaningId": "Pribadi personal privat",
+    "meaningId": "Pribadi, personal, privat",
     "meaningEn": "Private, personal",
     "collocation": {
       "jpRuby": "プライベートな[時間:じかん]",
@@ -4742,7 +4742,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "キャリア",
     "ruby": "キャリア",
     "partOfSpeech": "[名]",
-    "meaningId": "Karier rekam jejak kerja",
+    "meaningId": "Karier, rekam jejak kerja",
     "meaningEn": "Career",
     "collocation": {
       "jpRuby": "キャリアを[積:つ]む",
@@ -4766,7 +4766,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "グローバル",
     "ruby": "グローバル",
     "partOfSpeech": "[ナ形]",
-    "meaningId": "Global mendunia internasional",
+    "meaningId": "Global, mendunia, internasional",
     "meaningEn": "Global",
     "collocation": {
       "jpRuby": "グローバルな[視点:してん]",
@@ -4790,7 +4790,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ネットワーク",
     "ruby": "ネットワーク",
     "partOfSpeech": "[名]",
-    "meaningId": "Jaringan koneksi konektivitas",
+    "meaningId": "Jaringan, koneksi, konektivitas",
     "meaningEn": "Network",
     "collocation": {
       "jpRuby": "ネットワークを[広:ひろ]げる",
@@ -4814,7 +4814,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "リサイクル",
     "ruby": "リサイクル",
     "partOfSpeech": "[名]",
-    "meaningId": "Daur ulang sampah",
+    "meaningId": "Daur ulang, pengolahan sampah",
     "meaningEn": "Recycling",
     "collocation": {
       "jpRuby": "ペットボトルをリサイクルする",
@@ -4838,7 +4838,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "エコ",
     "ruby": "エコ",
     "partOfSpeech": "[名]",
-    "meaningId": "Ramah lingkungan ekologis",
+    "meaningId": "Ramah lingkungan, ekologis",
     "meaningEn": "Eco-friendly, ecology",
     "collocation": {
       "jpRuby": "エコな[生活:せいかつ]",
@@ -4862,7 +4862,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "エネルギー",
     "ruby": "エネルギー",
     "partOfSpeech": "[名]",
-    "meaningId": "Energi daya",
+    "meaningId": "Energi, daya",
     "meaningEn": "Energy",
     "collocation": {
       "jpRuby": "再生可能エネルギー",
@@ -4886,7 +4886,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ボランティア",
     "ruby": "ボランティア",
     "partOfSpeech": "[名]",
-    "meaningId": "Relawan sukarelawan",
+    "meaningId": "Relawan, sukarelawan",
     "meaningEn": "Volunteer",
     "collocation": {
       "jpRuby": "ボランティア[活動:かつどう]",
@@ -4910,7 +4910,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "インターネット",
     "ruby": "インターネット",
     "partOfSpeech": "[名]",
-    "meaningId": "Internet jejaring siber",
+    "meaningId": "Internet, jejaring siber",
     "meaningEn": "Internet",
     "collocation": {
       "jpRuby": "インターネットに[接続:せつぞく]する",
@@ -4934,7 +4934,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "サイト",
     "ruby": "サイト",
     "partOfSpeech": "[名]",
-    "meaningId": "Situs web laman siber",
+    "meaningId": "Situs web, laman siber",
     "meaningEn": "Website, site",
     "collocation": {
       "jpRuby": "公式サイトを[閲覧:えつらん]する",
@@ -4958,7 +4958,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "パスワード",
     "ruby": "パスワード",
     "partOfSpeech": "[名]",
-    "meaningId": "Kata sandi keamanan",
+    "meaningId": "Kata sandi, kode keamanan",
     "meaningEn": "Password",
     "collocation": {
       "jpRuby": "パスワードを[設定:せってい]する",
@@ -4982,7 +4982,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "アカウント",
     "ruby": "アカウント",
     "partOfSpeech": "[名]",
-    "meaningId": "Akun pengguna profil",
+    "meaningId": "Akun pengguna, profil",
     "meaningEn": "Account",
     "collocation": {
       "jpRuby": "アカウントを[作成:さくせい]する",
@@ -5006,7 +5006,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "アプリ",
     "ruby": "アプリ",
     "partOfSpeech": "[名]",
-    "meaningId": "Aplikasi peranti lunak ponsel",
+    "meaningId": "Aplikasi, peranti lunak ponsel",
     "meaningEn": "Application, app",
     "collocation": {
       "jpRuby": "アプリをダウンロードする",
@@ -5030,7 +5030,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "メール",
     "ruby": "メール",
     "partOfSpeech": "[名]",
-    "meaningId": "Surat elektronik surel pos-el",
+    "meaningId": "Surat elektronik, surel, pos-el",
     "meaningEn": "Email",
     "collocation": {
       "jpRuby": "メールを[送信:そうしん]する",
@@ -5054,7 +5054,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "てんぷ",
     "ruby": "[添付:てんぷ]",
     "partOfSpeech": "[名]",
-    "meaningId": "Lampiran dokumen berkas",
+    "meaningId": "Lampiran, dokumen berkas",
     "meaningEn": "Attachment",
     "collocation": {
       "jpRuby": "ファイルを[添付:てんぷ]する",
@@ -5078,7 +5078,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "クリック",
     "ruby": "クリック",
     "partOfSpeech": "[名]",
-    "meaningId": "Klik tombol tetikus kursor",
+    "meaningId": "Klik tombol, kursor tetikus",
     "meaningEn": "Click",
     "collocation": {
       "jpRuby": "ボタンをクリックする",
@@ -5102,7 +5102,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ダウンロード",
     "ruby": "ダウンロード",
     "partOfSpeech": "[名]",
-    "meaningId": "Unduh berkas daring",
+    "meaningId": "Unduh, unduh berkas daring",
     "meaningEn": "Download",
     "collocation": {
       "jpRuby": "データをダウンロードする",
@@ -5126,7 +5126,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "インストール",
     "ruby": "インストール",
     "partOfSpeech": "[名]",
-    "meaningId": "Pemasangan instalasi program",
+    "meaningId": "Pemasangan, instalasi program",
     "meaningEn": "Install",
     "collocation": {
       "jpRuby": "ソフトをインストールする",
@@ -5150,7 +5150,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "アップロード",
     "ruby": "アップロード",
     "partOfSpeech": "[名]",
-    "meaningId": "Unggah berkas data",
+    "meaningId": "Unggah, unggah berkas data",
     "meaningEn": "Upload",
     "collocation": {
       "jpRuby": "動画をアップロードする",
@@ -5174,7 +5174,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ログイン",
     "ruby": "ログイン",
     "partOfSpeech": "[名]",
-    "meaningId": "Masuk log otentikasi",
+    "meaningId": "Masuk log, otentikasi",
     "meaningEn": "Log in",
     "collocation": {
       "jpRuby": "サイトにログインする",
@@ -5198,7 +5198,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ログアウト",
     "ruby": "ログアウト",
     "partOfSpeech": "[名]",
-    "meaningId": "Keluar log sistem",
+    "meaningId": "Keluar log, keluar sistem",
     "meaningEn": "Log out",
     "collocation": {
       "jpRuby": "マイページからログアウトする",
@@ -5246,7 +5246,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "サポート",
     "ruby": "サポート",
     "partOfSpeech": "[名]",
-    "meaningId": "Dukungan bantuan teknis",
+    "meaningId": "Dukungan, bantuan teknis",
     "meaningEn": "Support, backing",
     "collocation": {
       "jpRuby": "顧客サポート",
@@ -5270,7 +5270,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "サービス",
     "ruby": "サービス",
     "partOfSpeech": "[名]",
-    "meaningId": "Layanan servis / cuma-cuma diskon",
+    "meaningId": "Layanan, servis / cuma-cuma, diskon",
     "meaningEn": "Service, complimentary",
     "collocation": {
       "jpRuby": "サービスが[良:よ]い",
@@ -5294,7 +5294,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "フリー",
     "ruby": "フリー",
     "partOfSpeech": "[名・ナ形]",
-    "meaningId": "Bebas merdeka / gratis cuma-cuma",
+    "meaningId": "Bebas, merdeka / gratis, cuma-cuma",
     "meaningEn": "Free",
     "collocation": {
       "jpRuby": "フリーランスで働く",
@@ -5318,7 +5318,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "セール",
     "ruby": "セール",
     "partOfSpeech": "[名]",
-    "meaningId": "Obral diskon potongan harga",
+    "meaningId": "Obral, diskon potongan harga",
     "meaningEn": "Sale, discount",
     "collocation": {
       "jpRuby": "セールで[安:やす]く買う",
@@ -5342,7 +5342,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "バーゲン",
     "ruby": "バーゲン",
     "partOfSpeech": "[名]",
-    "meaningId": "Obral besar cuci gudang",
+    "meaningId": "Obral besar, cuci gudang",
     "meaningEn": "Bargain sale",
     "collocation": {
       "jpRuby": "バーゲン会場",
@@ -5366,7 +5366,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ブランド",
     "ruby": "ブランド",
     "partOfSpeech": "[名]",
-    "meaningId": "Merek jenama ternama",
+    "meaningId": "Merek, jenama ternama",
     "meaningEn": "Brand",
     "collocation": {
       "jpRuby": "有名ブランド",
@@ -5390,7 +5390,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "トレンド",
     "ruby": "トレンド",
     "partOfSpeech": "[名]",
-    "meaningId": "Tren mode arus kecenderungan",
+    "meaningId": "Tren, mode, arus kecenderungan",
     "meaningEn": "Trend",
     "collocation": {
       "jpRuby": "トレンドを[追:お]う",
@@ -5414,7 +5414,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "センス",
     "ruby": "センス",
     "partOfSpeech": "[名]",
-    "meaningId": "Kepekaan selera cita rasa estetika",
+    "meaningId": "Kepekaan, selera cita rasa estetika",
     "meaningEn": "Sense, taste",
     "collocation": {
       "jpRuby": "センスが[良:よ]い",
@@ -5438,7 +5438,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "スタイル",
     "ruby": "スタイル",
     "partOfSpeech": "[名]",
-    "meaningId": "Gaya hidup pola bentuk proporsi",
+    "meaningId": "Gaya hidup, pola bentuk proporsi",
     "meaningEn": "Style, build",
     "collocation": {
       "jpRuby": "ライフスタイル",
@@ -5462,7 +5462,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "カルチャー",
     "ruby": "カルチャー",
     "partOfSpeech": "[名]",
-    "meaningId": "Kebudayaan tradisi kultur",
+    "meaningId": "Kebudayaan, tradisi, kultur",
     "meaningEn": "Culture",
     "collocation": {
       "jpRuby": "日本のポップカルチャー",
@@ -5486,7 +5486,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "チャリティー",
     "ruby": "チャリティー",
     "partOfSpeech": "[名]",
-    "meaningId": "Amal donasi kebajikan sosial kegiatan amal",
+    "meaningId": "Amal, donasi, kegiatan sosial",
     "meaningEn": "Charity, philanthropic event",
     "collocation": {
       "jpRuby": "チャリティーコンサートを[開催:かいさい]する",
@@ -5534,7 +5534,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "アンケート",
     "ruby": "アンケート",
     "partOfSpeech": "[名]",
-    "meaningId": "Kuesioner angket survei",
+    "meaningId": "Kuesioner, angket survei",
     "meaningEn": "Questionnaire, survey",
     "collocation": {
       "jpRuby": "アンケートに[答:こた]える",
@@ -5558,7 +5558,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "インタビュー",
     "ruby": "インタビュー",
     "partOfSpeech": "[名]",
-    "meaningId": "Wawancara temu duga",
+    "meaningId": "Wawancara, temu duga",
     "meaningEn": "Interview",
     "collocation": {
       "jpRuby": "インタビューを[受:う]ける",
@@ -5582,7 +5582,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "エピソード",
     "ruby": "エピソード",
     "partOfSpeech": "[名]",
-    "meaningId": "Kisah cerita menarik episode",
+    "meaningId": "Kisah, cerita menarik, episode",
     "meaningEn": "Episode, anecdote",
     "collocation": {
       "jpRuby": "面白いエピソード",
@@ -5606,7 +5606,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "アピール",
     "ruby": "アピール",
     "partOfSpeech": "[名]",
-    "meaningId": "Daya tarik menonjolkan diri",
+    "meaningId": "Daya tarik, menonjolkan diri",
     "meaningEn": "Appeal",
     "collocation": {
       "jpRuby": "自分の長所をアピールする",
@@ -5630,7 +5630,7 @@ export const PART4_IDIOMS: TangoN3Card[] = [
     "reading": "ベスト",
     "ruby": "ベスト",
     "partOfSpeech": "[名・ナ形]",
-    "meaningId": "Terbaik usaha maksimal",
+    "meaningId": "Terbaik, usaha maksimal",
     "meaningEn": "Best",
     "collocation": {
       "jpRuby": "ベストを[尽:つ]くす",

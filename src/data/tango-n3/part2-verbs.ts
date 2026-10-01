@@ -374,7 +374,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "あじわう",
     "ruby": "[味:あじ]わう",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menikmati mencicipi meresapi rasa",
+    "meaningId": "Menikmati, mencicipi, meresapi rasa",
     "meaningEn": "To taste, to savor, to relish",
     "collocation": {
       "jpRuby": "[旬:しゅん]の[料理:りょうり]を[味:あじ]わう",
@@ -494,7 +494,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "おろす",
     "ruby": "[降:お]ろす",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menurunkan penumpang/barang",
+    "meaningId": "Menurunkan penumpang / barang",
     "meaningEn": "To unload, to drop off",
     "collocation": {
       "jpRuby": "[荷物:にもつ]を[降:お]ろす",
@@ -662,7 +662,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "またぐ",
     "ruby": "[跨:また]ぐ",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Melangkahi melompati melintasi rintangan",
+    "meaningId": "Melangkahi, melompati, melintasi rintangan",
     "meaningEn": "To step over, to straddle, to cross",
     "collocation": {
       "jpRuby": "[小川:おがわ]を[一歩:いっぽ]で[跨:また]ぐ",
@@ -710,7 +710,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "かわく",
     "ruby": "[渇:かわ]く",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Haus dahaga (tenggorokan)",
+    "meaningId": "Haus, dahaga (tenggorokan)",
     "meaningEn": "To be thirsty",
     "collocation": {
       "jpRuby": "[喉:のど]が[渇:かわ]く",
@@ -734,7 +734,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "くらす",
     "ruby": "[暮:く]らす",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Tinggal hidup menjalani hari",
+    "meaningId": "Tinggal, hidup, menjalani hari",
     "meaningEn": "To live, to make a living",
     "collocation": {
       "jpRuby": "一人で[暮:く]らす",
@@ -806,7 +806,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "さけぶ",
     "ruby": "[叫:さけ]ぶ",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Berteriak lantang berseru",
+    "meaningId": "Berteriak lantang, berseru",
     "meaningEn": "To shout, to yell, to cry out",
     "collocation": {
       "jpRuby": "[大声:おおごえ]で[叫:さけ]ぶ",
@@ -830,7 +830,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ささる",
     "ruby": "[刺:さ]さる",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Tertancap menusuk masuk",
+    "meaningId": "Tertancap, menusuk masuk",
     "meaningEn": "To stick, to get stuck",
     "collocation": {
       "jpRuby": "[指:ゆび]にトゲが[刺:さ]さる",
@@ -926,7 +926,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "さそう",
     "ruby": "[誘:さそ]う",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Mengajak mengajak serta",
+    "meaningId": "Mengajak, mengajak serta",
     "meaningEn": "To invite, to tempt",
     "collocation": {
       "jpRuby": "[食事:しょくじ]に[誘:さそ]う",
@@ -974,7 +974,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "さめる",
     "ruby": "[覚:さ]める",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Terbangun sadar (alami)",
+    "meaningId": "Terbangun, sadar (alami)",
     "meaningEn": "To wake up, to become sober",
     "collocation": {
       "jpRuby": "[酔:よ]いが[覚:さ]める",
@@ -1070,7 +1070,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "しめる",
     "ruby": "[占:し]める",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menduduki porsi/persentase",
+    "meaningId": "Menduduki porsi / persentase",
     "meaningEn": "To occupy, to account for",
     "collocation": {
       "jpRuby": "[過半数:かはんすう]を[占:し]める",
@@ -1094,7 +1094,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "しめる",
     "ruby": "[湿:し]める",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Lembap basah",
+    "meaningId": "Lembap, basah",
     "meaningEn": "To become damp, to moisten",
     "collocation": {
       "jpRuby": "[空気:くうき]が[湿:し]る",
@@ -1118,7 +1118,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ちぢむ",
     "ruby": "[縮:ちぢ]む",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Menyusut menciut",
+    "meaningId": "Menyusut, menciut",
     "meaningEn": "To shrink, to contract",
     "collocation": {
       "jpRuby": "[セーター]が[縮:ちぢ]む",
@@ -1142,7 +1142,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "すくう",
     "ruby": "[救:すく]う",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menyelamatkan nyawa/nasib",
+    "meaningId": "Menyelamatkan nyawa / nasib",
     "meaningEn": "To rescue, to save",
     "collocation": {
       "jpRuby": "[命:いのち]を[救:すく]う",
@@ -1358,7 +1358,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ひたす",
     "ruby": "[浸:ひた]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Merendam mencelupkan ke dalam air cairan",
+    "meaningId": "Merendam, mencelupkan ke dalam air cairan",
     "meaningEn": "To soak, to dip, to immerse",
     "collocation": {
       "jpRuby": "[足:あし]を[温泉:おんせん]に[浸:ひた]す",
@@ -1382,7 +1382,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "たがやす",
     "ruby": "[耕:たがや]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Membajak tanah mencangkul sawah",
+    "meaningId": "Membajak tanah, mencangkul sawah",
     "meaningEn": "To plow, to cultivate, to till",
     "collocation": {
       "jpRuby": "[畑:はたけ]を[耕:たがや]す",
@@ -1622,7 +1622,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ちる",
     "ruby": "[散:ち]る",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Gugur berhamburan rontok",
+    "meaningId": "Gugur, berhamburan, rontok",
     "meaningEn": "To fall (leaves/petals), to scatter",
     "collocation": {
       "jpRuby": "[桜:さくら]が[散:ち]る",
@@ -1718,7 +1718,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "つかまえる",
     "ruby": "[捕:つか]まえる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menangkap ikan/buronan",
+    "meaningId": "Menangkap ikan / buronan",
     "meaningEn": "To catch, to arrest, to seize",
     "collocation": {
       "jpRuby": "[魚:さかな]を[捕:つか]まえる",
@@ -1790,7 +1790,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "つける",
     "ruby": "[浸:つ]ける",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Merendam dalam air/cairan",
+    "meaningId": "Merendam dalam air / cairan",
     "meaningEn": "To soak, to dip, to immerse",
     "collocation": {
       "jpRuby": "[水:みず]に[浸:つ]ける",
@@ -1814,7 +1814,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "だまる",
     "ruby": "[黙:だま]る",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Terdiam membisu tidak mengeluarkan suara",
+    "meaningId": "Terdiam, membisu, tidak mengeluarkan suara",
     "meaningEn": "To be silent, to say nothing",
     "collocation": {
       "jpRuby": "じっと[黙:だま]り[込:こ]む",
@@ -1838,7 +1838,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "つとめる",
     "ruby": "[勤:つと]める",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Bekerja menjadi pegawai di instansi",
+    "meaningId": "Bekerja, menjadi pegawai di instansi",
     "meaningEn": "To work for, to be employed at",
     "collocation": {
       "jpRuby": "[会社:かいしゃ]に[勤:つと]める",
@@ -1862,7 +1862,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "つとめる",
     "ruby": "[努:つと]める",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Berusaha sekuat tenaga berupaya",
+    "meaningId": "Berusaha sekuat tenaga, berupaya",
     "meaningEn": "To endeavor, to strive, to make effort",
     "collocation": {
       "jpRuby": "[問題:もんだい]の解決に[努:つと]める",
@@ -2102,7 +2102,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "とまる",
     "ruby": "[止:と]まる",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Berhenti macet (mesin/gerak)",
+    "meaningId": "Berhenti, macet (mesin/gerak)",
     "meaningEn": "To stop, to come to a halt",
     "collocation": {
       "jpRuby": "[時計:とけい]が[止:と]まる",
@@ -2126,7 +2126,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "とめる",
     "ruby": "[止:と]める",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menghentikan kendaraan/aliran",
+    "meaningId": "Menghentikan kendaraan / aliran",
     "meaningEn": "To stop, to turn off, to park",
     "collocation": {
       "jpRuby": "[車:くるま]を[止:と]める",
@@ -2150,7 +2150,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "とまる",
     "ruby": "[泊:と]まる",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Menginap di hotel/rumah teman",
+    "meaningId": "Menginap di hotel / rumah teman",
     "meaningEn": "To stay overnight",
     "collocation": {
       "jpRuby": "[ホテル]に[泊:と]まる",
@@ -2174,7 +2174,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "とめる",
     "ruby": "[泊:と]める",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menampung memberi tumpangan menginap",
+    "meaningId": "Menampung, memberi tumpangan menginap",
     "meaningEn": "To put up, to give shelter for night",
     "collocation": {
       "jpRuby": "[友達:ともだち]を家に[泊:と]める",
@@ -2222,7 +2222,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "なる",
     "ruby": "[鳴:な]る",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Berdering berbunyi (telepon/petir)",
+    "meaningId": "Berdering, berbunyi (telepon/petir)",
     "meaningEn": "To ring, to sound, to chime",
     "collocation": {
       "jpRuby": "[電話:でんわ]が[鳴:な]る",
@@ -2246,7 +2246,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ならす",
     "ruby": "[鳴:な]らす",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Membunyikan bel klakson",
+    "meaningId": "Membunyikan bel / klakson",
     "meaningEn": "To sound, to ring, to honk",
     "collocation": {
       "jpRuby": "[警笛:けいてき]を[鳴:な]らす",
@@ -2270,7 +2270,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "しめす",
     "ruby": "[示:しめ]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menunjukkan memaparkan memperlihatkan data",
+    "meaningId": "Menunjukkan, memaparkan, memperlihatkan data",
     "meaningEn": "To show, to demonstrate, to indicate",
     "collocation": {
       "jpRuby": "[証拠:しょうこ]を[具体的:ぐたいてき]に[示:しめ]す",
@@ -2294,7 +2294,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "したがう",
     "ruby": "[従:したが]う",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Mematuhi menuruti menaati instruksi aturan",
+    "meaningId": "Mematuhi, menuruti, menaati instruksi aturan",
     "meaningEn": "To obey, to comply with, to follow",
     "collocation": {
       "jpRuby": "[指示:しじ]に[従:したが]って[行動:こうどう]する",
@@ -2318,7 +2318,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ならう",
     "ruby": "[倣:なら]う",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Mencontoh meneladani mengikuti model",
+    "meaningId": "Mencontoh, meneladani, mengikuti model",
     "meaningEn": "To imitate, to follow, to emulate",
     "collocation": {
       "jpRuby": "[前例:ぜんれい]に[倣:なら]う",
@@ -2342,7 +2342,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "なく",
     "ruby": "[鳴:な]く",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Berkicau berbunyi (burung/hewan)",
+    "meaningId": "Berkicau, berbunyi (burung/hewan)",
     "meaningEn": "To sing, to bark, to chirp",
     "collocation": {
       "jpRuby": "[鳥:とり]が[鳴:な]く",
@@ -2366,7 +2366,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "にらむ",
     "ruby": "[睨:にら]む",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Melotot menatap tajam curiga",
+    "meaningId": "Melotot, menatap tajam curiga",
     "meaningEn": "To glare at, to scowl at, to watch keenly",
     "collocation": {
       "jpRuby": "[鋭:するど]い目で[睨:にら]む",
@@ -2390,7 +2390,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ねがう",
     "ruby": "[願:ねが]う",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Memohon berdoa mengharap",
+    "meaningId": "Memohon, berdoa, mengharap",
     "meaningEn": "To wish, to pray, to desire",
     "collocation": {
       "jpRuby": "[平和:へいわ]を[願:ねが]う",
@@ -2414,7 +2414,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "しはらう",
     "ruby": "[支払:しはら]う",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Membayar melunasi tagihan biaya",
+    "meaningId": "Membayar, melunasi tagihan biaya",
     "meaningEn": "To pay",
     "collocation": {
       "jpRuby": "[料金:りょうきん]をカードで[支払:しはら]う",
@@ -2462,7 +2462,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "のぞむ",
     "ruby": "[望:のぞ]む",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Mengharapkan mendambakan bercita-cita",
+    "meaningId": "Mengharapkan, mendambakan, bercita-cita",
     "meaningEn": "To desire, to wish for, to look forward to",
     "collocation": {
       "jpRuby": "[成功:せいこう]を[望:のぞ]む",
@@ -2486,7 +2486,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "のぞく",
     "ruby": "[覗:のぞ]く",
     "partOfSpeech": "[動Ⅰ 自・他]",
-    "meaningId": "Mengintip menjenguk menengok",
+    "meaningId": "Mengintip, menjenguk, menengok",
     "meaningEn": "To peek, to peep, to look down into",
     "collocation": {
       "jpRuby": "[隙間:すきま]から[覗:のぞ]く",
@@ -2606,7 +2606,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "のぼる",
     "ruby": "[昇:のぼ]る",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Terbit naik ke angkasa (matahari)",
+    "meaningId": "Terbit, naik ke angkasa (matahari)",
     "meaningEn": "To rise (sun), to ascend",
     "collocation": {
       "jpRuby": "[太陽:たいよう]が[昇:のぼ]る",
@@ -2630,7 +2630,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "いのる",
     "ruby": "[祈:いの]る",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Berdoa memohon keselamatan",
+    "meaningId": "Berdoa, memohon keselamatan",
     "meaningEn": "To pray, to wish",
     "collocation": {
       "jpRuby": "[合格:ごうかく]を[祈:いの]る",
@@ -2702,7 +2702,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "のりすごす",
     "ruby": "[乗:の]り[過:す]ごす",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Kebablasan terlewat stasiun tujuan di kereta",
+    "meaningId": "Kebablasan, terlewat stasiun tujuan di kereta",
     "meaningEn": "To ride past one's stop, to miss station",
     "collocation": {
       "jpRuby": "[電車:でんしゃ]で[寝過:ねす]ごして[乗:の]り[過:す]ごす",
@@ -2750,7 +2750,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はく",
     "ruby": "[掃:は]く",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menyapu lantai/halaman",
+    "meaningId": "Menyapu lantai / halaman",
     "meaningEn": "To sweep, to brush",
     "collocation": {
       "jpRuby": "[庭:にわ]を[掃:は]く",
@@ -2774,7 +2774,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はく",
     "ruby": "[履:は]く",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Mengenakan sepatu/celana (bagian bawah)",
+    "meaningId": "Mengenakan sepatu / celana (bagian bawah)",
     "meaningEn": "To put on (shoes, trousers)",
     "collocation": {
       "jpRuby": "[靴:くつ]を[履:は]く",
@@ -2822,7 +2822,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はげます",
     "ruby": "[励:はげ]ます",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menyemangati memberi dorongan motivasi",
+    "meaningId": "Menyemangati, memberi dorongan motivasi",
     "meaningEn": "To encourage, to cheer up",
     "collocation": {
       "jpRuby": "[友:とも]を[励:はげ]ます",
@@ -2846,7 +2846,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はげむ",
     "ruby": "[励:はげ]む",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Tekun berupaya keras giat",
+    "meaningId": "Tekun, berupaya keras, giat",
     "meaningEn": "To strive, to work hard at",
     "collocation": {
       "jpRuby": "[研究:けんきゅう]に[励:はげ]む",
@@ -2870,7 +2870,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はさまる",
     "ruby": "[挟:はさ]まる",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Terselip terjepit di antara dua benda",
+    "meaningId": "Terselip, terjepit di antara dua benda",
     "meaningEn": "To get caught between, to be pinched",
     "collocation": {
       "jpRuby": "[扉:とびら]に[手:て]が[挟:はさ]まる",
@@ -2894,7 +2894,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はさむ",
     "ruby": "[挟:はさ]む",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menjepit menyelipkan di sela",
+    "meaningId": "Menjepit, menyelipkan di sela",
     "meaningEn": "To insert, to pinch, to sandwich",
     "collocation": {
       "jpRuby": "[本:ほん]にしおりを[挟:はさ]む",
@@ -2990,7 +2990,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はねる",
     "ruby": "[跳:は]ねる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Melompat menciprat melenting",
+    "meaningId": "Melompat, menciprat, melenting",
     "meaningEn": "To jump, to leap, to splash",
     "collocation": {
       "jpRuby": "[泥:どろ]が[跳:は]ねる",
@@ -3038,7 +3038,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ひえる",
     "ruby": "[冷:ひ]える",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Menjadi dingin bersuhu sejuk",
+    "meaningId": "Menjadi dingin, bersuhu sejuk",
     "meaningEn": "To grow cold, to cool down",
     "collocation": {
       "jpRuby": "[体:からだ]が[冷:ひ]える",
@@ -3062,7 +3062,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ひやす",
     "ruby": "[冷:ひ]やす",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Mendinginkan meredam bengkak",
+    "meaningId": "Mendinginkan, meredam bengkak",
     "meaningEn": "To chill, to cool, to calm down",
     "collocation": {
       "jpRuby": "[頭:あたま]を[冷:ひ]やす",
@@ -3110,7 +3110,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "さます",
     "ruby": "[冷:さ]ます",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Mendinginkan makanan panas meniup",
+    "meaningId": "Mendinginkan makanan panas, meniup",
     "meaningEn": "To let cool, to chill",
     "collocation": {
       "jpRuby": "[熱湯:ねっとう]を[冷:さ]ます",
@@ -3134,7 +3134,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ひかる",
     "ruby": "[光:ひか]る",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Bersinar berkilau gemerlap",
+    "meaningId": "Bersinar, berkilau, gemerlap",
     "meaningEn": "To shine, to glitter, to sparkle",
     "collocation": {
       "jpRuby": "[星:ほし]が[光:ひか]る",
@@ -3182,7 +3182,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ひっかける",
     "ruby": "[引:ひ]っ[掛:か]ける",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menyangkutkan menggantungkan",
+    "meaningId": "Menyangkutkan, menggantungkan",
     "meaningEn": "To hook, to hang, to trap",
     "collocation": {
       "jpRuby": "[服:ふく]をクギに[引:ひ]っ[掛:か]ける",
@@ -3206,7 +3206,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "かたよる",
     "ruby": "[偏:かたよ]る",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Berat sebelah condong tidak seimbang bias",
+    "meaningId": "Berat sebelah, condong, tidak seimbang, bias",
     "meaningEn": "To be biased, to be one-sided, to lean",
     "collocation": {
       "jpRuby": "[栄養:えいよう]が[偏:かたよ]る",
@@ -3230,7 +3230,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "つつむ",
     "ruby": "[包:つつ]む",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Membungkus mengemas hadiah paket",
+    "meaningId": "Membungkus, mengemas hadiah paket",
     "meaningEn": "To wrap, to bundle, to pack",
     "collocation": {
       "jpRuby": "[綺麗:きれい]な[包装紙:ほうそうし]で[包:つつ]む",
@@ -3278,7 +3278,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ふせぐ",
     "ruby": "[防:ふせ]ぐ",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Mencegah menangkal bahaya",
+    "meaningId": "Mencegah, menangkal bahaya",
     "meaningEn": "To defend against, to prevent",
     "collocation": {
       "jpRuby": "[事故:じこ]を[防:ふせ]ぐ",
@@ -3350,7 +3350,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "へる",
     "ruby": "[減:へ]る",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Berkurang menyusut volumenya",
+    "meaningId": "Berkurang, menyusut volumenya",
     "meaningEn": "To decrease, to diminish",
     "collocation": {
       "jpRuby": "[体重:たいじゅう]が[減:へ]る",
@@ -3374,7 +3374,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "へらす",
     "ruby": "[減:へ]らす",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Mengurangi memangkas pengeluaran",
+    "meaningId": "Mengurangi, memangkas pengeluaran",
     "meaningEn": "To reduce, to cut down",
     "collocation": {
       "jpRuby": "[費用:ひよう]を[減:へ]らす",
@@ -3398,7 +3398,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ほる",
     "ruby": "[掘:ほ]る",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menggali lubang/tanah",
+    "meaningId": "Menggali lubang / tanah",
     "meaningEn": "To dig, to excavate",
     "collocation": {
       "jpRuby": "[穴:あな]を[掘:ほ]る",
@@ -3422,7 +3422,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "めぐまれる",
     "ruby": "[恵:めぐ]まれる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Diberkahi dikaruniai cuaca/bakat",
+    "meaningId": "Diberkahi, dikaruniai cuaca / bakat",
     "meaningEn": "To be blessed with, to be favored",
     "collocation": {
       "jpRuby": "[才能:さいのう]に[恵:めぐ]まれる",
@@ -3470,7 +3470,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "めざす",
     "ruby": "[目指:めざ]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menuju membidik tujuan sasaran",
+    "meaningId": "Menuju, membidik tujuan sasaran",
     "meaningEn": "To aim for, to head towards",
     "collocation": {
       "jpRuby": "[頂上:ちょうじょう]を[目指:めざ]す",
@@ -3518,7 +3518,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "もえる",
     "ruby": "[燃:も]える",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Terbakar menyala membara",
+    "meaningId": "Terbakar, menyala, membara",
     "meaningEn": "To burn, to get fired up",
     "collocation": {
       "jpRuby": "[炎:ほのお]が[燃:も]える",
@@ -3566,7 +3566,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "やとう",
     "ruby": "[雇:やと]う",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Mempekerjakan merekrut karyawan",
+    "meaningId": "Mempekerjakan, merekrut karyawan",
     "meaningEn": "To employ, to hire",
     "collocation": {
       "jpRuby": "[新入社員:しんにゅうしゃいん]を[雇:やと]う",
@@ -3614,7 +3614,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "やぶれる",
     "ruby": "[破:やぶ]れる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Robek terkoyak (kertas/celana)",
+    "meaningId": "Robek, terkoyak (kertas/celana)",
     "meaningEn": "To be torn, to rip",
     "collocation": {
       "jpRuby": "[紙:かみ]が[破:やぶ]れる",
@@ -3638,7 +3638,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "やぶれる",
     "ruby": "[敗:やぶ]れる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Kalah takluk dalam pertandingan",
+    "meaningId": "Kalah, takluk dalam pertandingan",
     "meaningEn": "To be defeated, to lose",
     "collocation": {
       "jpRuby": "[試合:しあい]に[敗:やぶ]れる",
@@ -3662,7 +3662,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "やめる",
     "ruby": "[辞:や]める",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Mengundurkan diri pensiun berhenti jabatan",
+    "meaningId": "Mengundurkan diri, pensiun, berhenti jabatan",
     "meaningEn": "To resign, to quit (job/position)",
     "collocation": {
       "jpRuby": "[会社:かいしゃ]を[辞:や]める",
@@ -3710,7 +3710,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "わびる",
     "ruby": "[詫:わ]びる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Meminta maaf memohon ampun",
+    "meaningId": "Meminta maaf, memohon ampun",
     "meaningEn": "To apologize",
     "collocation": {
       "jpRuby": "[非:ひ]を[詫:わ]びる",
@@ -3758,7 +3758,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "さける",
     "ruby": "[裂:さ]ける",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Robek terkoyak terbelah merekah",
+    "meaningId": "Robek, terkoyak, terbelah, merekah",
     "meaningEn": "To split, to tear, to burst open",
     "collocation": {
       "jpRuby": "[着:き]ていたシャツが[裂:さ]ける",
@@ -3854,7 +3854,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "あらためる",
     "ruby": "[改:あらた]める",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Memperbaiki mengoreksi memperbarui",
+    "meaningId": "Memperbaiki, mengoreksi, memperbarui",
     "meaningEn": "To change, to alter, to reform",
     "collocation": {
       "jpRuby": "[態度:たいど]を[改:あらた]める",
@@ -3878,7 +3878,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "あらわれる",
     "ruby": "[現:あらわ]れる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Menampakkan diri muncul di hadapan",
+    "meaningId": "Menampakkan diri, muncul di hadapan",
     "meaningEn": "To appear, to emerge, to show up",
     "collocation": {
       "jpRuby": "[姿:すがた]を[現:あらわ]す",
@@ -3902,7 +3902,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "あらわす",
     "ruby": "[表:あらわ]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Mengekspresikan menyatakan makna lambang",
+    "meaningId": "Mengekspresikan, menyatakan makna lambang",
     "meaningEn": "To express, to represent, to show",
     "collocation": {
       "jpRuby": "[感謝:かんしゃ]の気持ちを[表:あらわ]す",
@@ -3950,7 +3950,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "あずかる",
     "ruby": "[預:あず]かる",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menjaga menerima titipan mengurus",
+    "meaningId": "Menjaga, menerima titipan, mengurus",
     "meaningEn": "To look after, to take care of",
     "collocation": {
       "jpRuby": "[留守:るす]を[預:あず]かる",
@@ -4094,7 +4094,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "おそれる",
     "ruby": "[恐:おそ]れる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Takut gentar mengkhawatirkan",
+    "meaningId": "Takut, gentar, mengkhawatirkan",
     "meaningEn": "To fear, to be afraid of",
     "collocation": {
       "jpRuby": "[失敗:しっぱい]を[恐:おそ]れる",
@@ -4118,7 +4118,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "かれる",
     "ruby": "[枯:か]れる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Layu mongering tandus",
+    "meaningId": "Layu, mengering, tandus",
     "meaningEn": "To wither, to dry up",
     "collocation": {
       "jpRuby": "[木:き]が[枯:か]れる",
@@ -4142,7 +4142,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "こげる",
     "ruby": "[焦:こ]げる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Gosong hangus terpanggang",
+    "meaningId": "Gosong, hangus, terpanggang",
     "meaningEn": "To burn, to get scorched",
     "collocation": {
       "jpRuby": "[魚:さかな]が[焦:こ]げる",
@@ -4166,7 +4166,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "こごえる",
     "ruby": "[凍:こご]える",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Membeku kedinginan kaku",
+    "meaningId": "Membeku, kedinginan, kaku",
     "meaningEn": "To freeze, to be chilled",
     "collocation": {
       "jpRuby": "[手:て]が[凍:こご]える",
@@ -4190,7 +4190,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "あふれる",
     "ruby": "[溢:あふ]れる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Meluap melimpah tumpah ruah",
+    "meaningId": "Meluap, melimpah, tumpah ruah",
     "meaningEn": "To overflow, to brim with",
     "collocation": {
       "jpRuby": "[涙:なみだ]が[溢:あふ]れる",
@@ -4262,7 +4262,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "こぼれる",
     "ruby": "[零:こぼ]れる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Tumpah tercecer merembes keluar",
+    "meaningId": "Tumpah, tercecer, merembes keluar",
     "meaningEn": "To spill, to overflow, to drop",
     "collocation": {
       "jpRuby": "[水:みず]が[零:こぼ]れる",
@@ -4310,7 +4310,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "こめる",
     "ruby": "[込:こ]める",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menaruh mencurahkan segenap rasa perasaan",
+    "meaningId": "Menaruh, mencurahkan segenap rasa perasaan",
     "meaningEn": "To put into, to load (gun)",
     "collocation": {
       "jpRuby": "[心:こころ]を[込:こ]める",
@@ -4334,7 +4334,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "たくわえる",
     "ruby": "[蓄:たくわ]える",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menabung menimbun menumpuk cadangan",
+    "meaningId": "Menabung, menimbun, menumpuk cadangan",
     "meaningEn": "To store, to save up, to cultivate",
     "collocation": {
       "jpRuby": "[力:ちから]を[蓄:たくわ]える",
@@ -4358,7 +4358,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "さまたげる",
     "ruby": "[妨:さまた]げる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menghalangi merintangi mengganggu",
+    "meaningId": "Menghalangi, merintangi, mengganggu",
     "meaningEn": "To disturb, to obstruct, to hinder",
     "collocation": {
       "jpRuby": "[通行:つうこう]を[妨:さまた]げる",
@@ -4382,7 +4382,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "さける",
     "ruby": "[避:さ]ける",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menghindar menjauh dari marabahaya",
+    "meaningId": "Menghindar, menjauh dari marabahaya",
     "meaningEn": "To avoid, to dodge, to shun",
     "collocation": {
       "jpRuby": "[危険:きけん]を[避:さ]ける",
@@ -4406,7 +4406,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "すぐれる",
     "ruby": "[優:すぐ]れる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Unggul menonjol istimewa mutunya",
+    "meaningId": "Unggul, menonjol, istimewa mutunya",
     "meaningEn": "To surpass, to excel, to be superior",
     "collocation": {
       "jpRuby": "[品質:ひんしつ]が[優:すぐ]れている",
@@ -4478,7 +4478,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "きたえる",
     "ruby": "[鍛:きた]える",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Melatih menempa fisik jiwa",
+    "meaningId": "Melatih, menempa fisik dan jiwa",
     "meaningEn": "To train, to temper, to drill",
     "collocation": {
       "jpRuby": "[体:からだ]を[鍛:きた]える",
@@ -4502,7 +4502,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "たえる",
     "ruby": "[絶:た]える",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Terputus padam terhenti punah",
+    "meaningId": "Terputus, padam, terhenti, punah",
     "meaningEn": "To die out, to cease, to be discontinued",
     "collocation": {
       "jpRuby": "[連絡:れんらく]が[絶:た]える",
@@ -4526,7 +4526,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "たやす",
     "ruby": "[絶:た]やす",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Memadamkan membiarkan padam/habis",
+    "meaningId": "Memadamkan, membiarkan padam / habis",
     "meaningEn": "To let die out, to exhaust",
     "collocation": {
       "jpRuby": "[笑顔:えがお]を[絶:た]やさない",
@@ -4550,7 +4550,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "たえる",
     "ruby": "[耐:た]える",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Bertahan sabar menahan derita",
+    "meaningId": "Bertahan, sabar menahan derita",
     "meaningEn": "To endure, to bear, to stand",
     "collocation": {
       "jpRuby": "[苦痛:くつう]に[耐:た]える",
@@ -4574,7 +4574,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "たおれる",
     "ruby": "[倒:たお]れる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Roboh tumbang jatuh pingsan",
+    "meaningId": "Roboh, tumbang, jatuh pingsan",
     "meaningEn": "To fall down, to collapse",
     "collocation": {
       "jpRuby": "[木:き]が[倒:たお]れる",
@@ -4598,7 +4598,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "たおす",
     "ruby": "[倒:たお]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Merobohkan menumbangkan lawan",
+    "meaningId": "Merobohkan, menumbangkan lawan",
     "meaningEn": "To defeat, to knock down, to topple",
     "collocation": {
       "jpRuby": "[敵:てき]を[倒:たお]す",
@@ -4646,7 +4646,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "だく",
     "ruby": "[抱:だ]く",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Memeluk mendekap di dada",
+    "meaningId": "Memeluk, mendekap di dada",
     "meaningEn": "To embrace, to hug, to hold",
     "collocation": {
       "jpRuby": "[子供:こども]を[抱:だ]く",
@@ -4718,7 +4718,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "のべる",
     "ruby": "[述:の]べる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menyatakan memaparkan pendapat",
+    "meaningId": "Menyatakan, memaparkan pendapat",
     "meaningEn": "To state, to express, to mention",
     "collocation": {
       "jpRuby": "[意見:いけん]を[述:の]べる",
@@ -4742,7 +4742,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "うける",
     "ruby": "[受:う]ける",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menerima ujian konsultasi perlakuan",
+    "meaningId": "Menerima ujian / konsultasi / perlakuan",
     "meaningEn": "To receive, to take (exam/advice)",
     "collocation": {
       "jpRuby": "[試験:しけん]を[受:う]ける",
@@ -4790,7 +4790,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はえる",
     "ruby": "[生:は]える",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Tumbuh bertunas (rumput/gigi)",
+    "meaningId": "Tumbuh, bertunas (rumput/gigi)",
     "meaningEn": "To grow, to sprout",
     "collocation": {
       "jpRuby": "[草:くさ]が[生:は]える",
@@ -4838,7 +4838,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "つげる",
     "ruby": "[告:つ]げる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menyampaikan mengabarkan permulaan",
+    "meaningId": "Menyampaikan, mengabarkan permulaan",
     "meaningEn": "To announce, to tell, to signal",
     "collocation": {
       "jpRuby": "[春:はる]の訪れを[告:つ]げる",
@@ -4862,7 +4862,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "とげる",
     "ruby": "[遂:と]げる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Meraih mencapai cita-cita / menuntaskan",
+    "meaningId": "Meraih, mencapai cita-cita / menuntaskan",
     "meaningEn": "To accomplish, to achieve",
     "collocation": {
       "jpRuby": "[目的:もくてき]を[遂:と]げる",
@@ -4886,7 +4886,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ながめる",
     "ruby": "[眺:なが]める",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Memandang menatap lanskap pemandangan",
+    "meaningId": "Memandang, menatap lanskap pemandangan",
     "meaningEn": "To gaze at, to look out over",
     "collocation": {
       "jpRuby": "[景色:けしき]を[眺:なが]める",
@@ -4910,7 +4910,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "なぐさめる",
     "ruby": "[慰:なぐさ]める",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menenangkan hati meredakan duka",
+    "meaningId": "Menenangkan hati, meredakan duka",
     "meaningEn": "To comfort, to soothe",
     "collocation": {
       "jpRuby": "[傷心:しょうしん]を[慰:なぐさ]める",
@@ -4934,7 +4934,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "なまける",
     "ruby": "[怠:なま]ける",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menelantarkan mengabaikan kewajiban",
+    "meaningId": "Menelantarkan, mengabaikan kewajiban",
     "meaningEn": "To neglect, to be lazy",
     "collocation": {
       "jpRuby": "[義務:ぎむ]を[怠:なま]ける",
@@ -4958,7 +4958,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "まぬかれる",
     "ruby": "[免:まぬか]れる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Lolos terhindar terbebas dari sanksi bahaya",
+    "meaningId": "Lolos, terhindar, terbebas dari sanksi bahaya",
     "meaningEn": "To escape, to be spared from, to evade",
     "collocation": {
       "jpRuby": "[大事故:だいじこ]を[奇跡:きせき][的:てき]に[免:まぬか]れる",
@@ -4982,7 +4982,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "のがれる",
     "ruby": "[逃:のが]れる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Lolos luput selamat dari kepungan/bahaya",
+    "meaningId": "Lolos, luput, selamat dari kepungan/bahaya",
     "meaningEn": "To escape, to elude, to get away from",
     "collocation": {
       "jpRuby": "[危機:きき]を[逃:のが]れる",
@@ -5006,7 +5006,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "みだれる",
     "ruby": "[乱:みだ]れる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Kacau berantakan tidak karuan terganggu",
+    "meaningId": "Kacau, berantakan, tidak karuan, terganggu",
     "meaningEn": "To be disarranged, to be disturbed",
     "collocation": {
       "jpRuby": "[ダイヤ]が[乱:みだ]れる",
@@ -5030,7 +5030,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "みだす",
     "ruby": "[乱:みだ]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Mengacaukan merusak ketertiban/suasana",
+    "meaningId": "Mengacaukan, merusak ketertiban / suasana",
     "meaningEn": "To disarrange, to disturb, to disrupt",
     "collocation": {
       "jpRuby": "[秩序:ちつじょ]を[乱:みだ]す",
@@ -5078,7 +5078,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "もとめる",
     "ruby": "[求:もと]める",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Mencari menuntut mendambakan solusi",
+    "meaningId": "Mencari, menuntut, mendambakan solusi",
     "meaningEn": "To seek, to demand, to request",
     "collocation": {
       "jpRuby": "[解決:かいけつ]を[求:もと]める",
@@ -5102,7 +5102,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はがれる",
     "ruby": "[剥:は]がれる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Terkelupas tanggal copot stiker kulit",
+    "meaningId": "Terkelupas, tanggal, copot (stiker/kulit)",
     "meaningEn": "To peel off, to come off, to flake",
     "collocation": {
       "jpRuby": "ポスターが[壁:かべ]から[剥:は]がれる",
@@ -5126,7 +5126,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "よごれる",
     "ruby": "[汚:よご]れる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Kotor ternoda dekil",
+    "meaningId": "Kotor, ternoda, dekil",
     "meaningEn": "To become dirty, to get stained",
     "collocation": {
       "jpRuby": "[服:ふく]が[汚:よご]れる",
@@ -5150,7 +5150,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "よごす",
     "ruby": "[汚:よご]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Mengotori menodai nama baik",
+    "meaningId": "Mengotori, menodai nama baik",
     "meaningEn": "To dirty, to stain, to disgrace",
     "collocation": {
       "jpRuby": "[名誉:めいよ]を[汚:よご]す",
@@ -5174,7 +5174,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ゆれる",
     "ruby": "[揺:ゆ]れる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Bergoyang berayun goyah terombang-ambing",
+    "meaningId": "Bergoyang, berayun, goyah, terombang-ambing",
     "meaningEn": "To shake, to sway, to waver",
     "collocation": {
       "jpRuby": "[船:ふね]が[揺:ゆ]れる",
@@ -5198,7 +5198,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ゆらす",
     "ruby": "[揺:ゆ]らす",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menggoyangkan mengayun kereta bayi",
+    "meaningId": "Menggoyangkan, mengayun kereta bayi",
     "meaningEn": "To shake, to rock, to swing",
     "collocation": {
       "jpRuby": "[揺りかご:ゆりかご]を[揺:ゆ]らす",
@@ -5222,7 +5222,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "わすれる",
     "ruby": "[忘:わす]れる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Lupa melupakan barang/janji",
+    "meaningId": "Lupa, melupakan barang / janji",
     "meaningEn": "To forget, to leave behind",
     "collocation": {
       "jpRuby": "[傘:かさ]を[忘:わす]れる",
@@ -5246,7 +5246,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "われる",
     "ruby": "[割:わ]れる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Terpecah belah berbeda suara mufakat",
+    "meaningId": "Terpecah belah, berbeda suara mufakat",
     "meaningEn": "To divide (opinion), to split",
     "collocation": {
       "jpRuby": "[意見:いけん]が[割:わ]れる",
@@ -5294,7 +5294,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "おとろえる",
     "ruby": "[衰:おとろ]える",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Melemah merosot daya fisiknya",
+    "meaningId": "Melemah, merosot daya fisiknya",
     "meaningEn": "To decline, to wane, to weaken",
     "collocation": {
       "jpRuby": "[体力:たいりょく]が[衰:おとろ]える",
@@ -5318,7 +5318,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ちくせきする",
     "ruby": "[蓄積:ちくせき]する",
     "partOfSpeech": "[動Ⅲ 自・他]",
-    "meaningId": "Menimbun mengumpulkan akumulasi data",
+    "meaningId": "Menimbun, mengumpulkan, akumulasi data",
     "meaningEn": "To accumulate, to store",
     "collocation": {
       "jpRuby": "[疲労:ひろう]が[蓄積:ちくせき]する",
@@ -5342,7 +5342,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "まねく",
     "ruby": "[招:まね]く",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Mengundang menyambut tamu / mengundang musibah",
+    "meaningId": "Mengundang, menyambut tamu / mengundang musibah",
     "meaningEn": "To invite, to cause (trouble), to bring about",
     "collocation": {
       "jpRuby": "[友人:ゆうじん]を[自宅:じたく]に[招:まね]く",
@@ -5366,7 +5366,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "みる",
     "ruby": "[診:み]る",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Memeriksa mendiagnosis pasien medis",
+    "meaningId": "Memeriksa, mendiagnosis pasien medis",
     "meaningEn": "To examine (medically), to diagnose",
     "collocation": {
       "jpRuby": "[患者:かんじゃ]を[診:み]る",
@@ -5390,7 +5390,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "にる",
     "ruby": "[煮:に]る",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Merebus merebus kuah sayur sup",
+    "meaningId": "Merebus, merebus kuah sayur sup",
     "meaningEn": "To boil, to simmer, to stew",
     "collocation": {
       "jpRuby": "[野菜:やさい]を[煮:に]る",
@@ -5414,7 +5414,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "にる",
     "ruby": "[似:に]る",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Mirip serupa parasnya",
+    "meaningId": "Mirip, serupa parasnya",
     "meaningEn": "To resemble, to look like",
     "collocation": {
       "jpRuby": "[親:おや]に[似:に]る",
@@ -5438,7 +5438,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "いる",
     "ruby": "[射:い]る",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Memanah menembakkan busur panah",
+    "meaningId": "Memanah, menembakkan busur panah",
     "meaningEn": "To shoot (arrow)",
     "collocation": {
       "jpRuby": "[的:まと]を[射:い]る",
@@ -5462,7 +5462,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "いる",
     "ruby": "[居:い]る",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Berada tinggal berdiam di tempat",
+    "meaningId": "Berada, tinggal, berdiam di tempat",
     "meaningEn": "To be, to exist (animate)",
     "collocation": {
       "jpRuby": "[家:いえ]に[居:い]る",
@@ -5486,7 +5486,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "こころみる",
     "ruby": "[試:こころ]みる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Mencoba menguji coba metode baru",
+    "meaningId": "Mencoba, menguji coba metode baru",
     "meaningEn": "To try, to attempt, to test",
     "collocation": {
       "jpRuby": "[新実験:しんじっけん]を[試:こころ]みる",
@@ -5510,7 +5510,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ひきいる",
     "ruby": "[率:ひき]いる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Memimpin mengepalai rombongan pasukan",
+    "meaningId": "Memimpin, mengepalai rombongan pasukan",
     "meaningEn": "To lead, to spearhead, to command",
     "collocation": {
       "jpRuby": "[部隊:ぶたい]を[率:ひき]いる",
@@ -5534,7 +5534,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はじる",
     "ruby": "[恥:は]じる",
     "partOfSpeech": "[動Ⅱ 自・他]",
-    "meaningId": "Malu tersipu merasa hina bersalah",
+    "meaningId": "Malu tersipu, merasa hina, bersalah",
     "meaningEn": "To feel ashamed of",
     "collocation": {
       "jpRuby": "[言動:げんどう]を[恥:は]じる",
@@ -5558,7 +5558,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "くちる",
     "ruby": "[朽:く]ちる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Lapuk membusuk hancur dimakan usia",
+    "meaningId": "Lapuk, membusuk, hancur dimakan usia",
     "meaningEn": "To rot, to decay, to crumble away",
     "collocation": {
       "jpRuby": "[倒木:とうぼく]が[朽:く]ちる",
@@ -5582,7 +5582,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "やわらげる",
     "ruby": "[和:やわ]らげる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Meredakan melembutkan menenteramkan",
+    "meaningId": "Meredakan, melembutkan, menenteramkan",
     "meaningEn": "To soften, to relieve, to soothe",
     "collocation": {
       "jpRuby": "[痛:いた]みを[和:やわ]らげる[薬:くすり]",
@@ -5606,7 +5606,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "みちる",
     "ruby": "[満:み]ちる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Penuh terisi meluap memuncak",
+    "meaningId": "Penuh, terisi, meluap, memuncak",
     "meaningEn": "To be full of, to rise (tide)",
     "collocation": {
       "jpRuby": "[自信:じしん]に[満:み]ちる",
@@ -5630,7 +5630,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "のびる",
     "ruby": "[伸:の]びる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Melesat meningkat tajam penjualannya",
+    "meaningId": "Melesat, meningkat tajam penjualannya",
     "meaningEn": "To expand, to increase",
     "collocation": {
       "jpRuby": "[売上:うりあげ]が[伸:の]びる",
@@ -5678,7 +5678,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "さびる",
     "ruby": "[錆:さ]びる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Berkarat berkarat besi",
+    "meaningId": "Berkarat, berkarat besi",
     "meaningEn": "To rust, to become rusty",
     "collocation": {
       "jpRuby": "[鉄:てつ]が[錆:さ]びる",
@@ -5702,7 +5702,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ほろびる",
     "ruby": "[滅:ほろ]びる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Hancur punah runtuh peradabannya",
+    "meaningId": "Hancur, punah, runtuh peradabannya",
     "meaningEn": "To perish, to be ruined, to go extinct",
     "collocation": {
       "jpRuby": "[古代文明:こだいぶんめい]が[滅:ほろ]びる",
@@ -5726,7 +5726,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "いきる",
     "ruby": "[生:い]きる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Hidup menjalani eksistensi bernapas",
+    "meaningId": "Hidup, menjalani eksistensi, bernapas",
     "meaningEn": "To live, to exist",
     "collocation": {
       "jpRuby": "[力強:ちからづよ]く[生:い]きる",
@@ -5750,7 +5750,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "しみる",
     "ruby": "[染:し]みる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Meresap menusuk pedih dingin",
+    "meaningId": "Meresap, menusuk, pedih dingin",
     "meaningEn": "To pierce, to soak in, to sting",
     "collocation": {
       "jpRuby": "[傷口:きずぐち]に[薬:くすり]が[染:し]みる",
@@ -5798,7 +5798,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "おうぼする",
     "ruby": "[応募:おうぼ]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Melamar mendaftar sayembara pekerjaan",
+    "meaningId": "Melamar, mendaftar sayembara pekerjaan",
     "meaningEn": "To apply, to enter for",
     "collocation": {
       "jpRuby": "[求人:きゅうじん]に[応募:おうぼ]する",
@@ -5822,7 +5822,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "かんしゃする",
     "ruby": "[感謝:かんしゃ]する",
     "partOfSpeech": "[動Ⅲ 自・他]",
-    "meaningId": "Berterima kasih mengucap syukur",
+    "meaningId": "Berterima kasih, mengucap syukur",
     "meaningEn": "To thank, to appreciate",
     "collocation": {
       "jpRuby": "[支援:しえん]に[感謝:かんしゃ]する",
@@ -5846,7 +5846,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "けいやくする",
     "ruby": "[契約:けいやく]する",
     "partOfSpeech": "[動Ⅲ 自・他]",
-    "meaningId": "Mengadakan akad kontrak perjanjian",
+    "meaningId": "Mengadakan akad, kontrak perjanjian",
     "meaningEn": "To sign contract, to contract",
     "collocation": {
       "jpRuby": "[保険:ほけん]を[契約:けいやく]する",
@@ -5870,7 +5870,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "しょうとつする",
     "ruby": "[衝突:しょうとつ]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Bertabrakan bentrok berselisih",
+    "meaningId": "Bertabrakan, bentrok, berselisih",
     "meaningEn": "To collide, to clash, to conflict",
     "collocation": {
       "jpRuby": "[意見:いけん]が[衝突:しょうとつ]する",
@@ -5894,7 +5894,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ていしゅつする",
     "ruby": "[提出:ていしゅつ]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Mengumpulkan menyerahkan berkas laporan",
+    "meaningId": "Mengumpulkan, menyerahkan berkas laporan",
     "meaningEn": "To submit, to turn in, to hand in",
     "collocation": {
       "jpRuby": "[課題:かだい]を[提出:ていしゅつ]する",
@@ -5918,7 +5918,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "さんかする",
     "ruby": "[参加:さんか]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Turut serta ikut berpartisipasi",
+    "meaningId": "Turut serta, ikut berpartisipasi",
     "meaningEn": "To participate, to take part, to join",
     "collocation": {
       "jpRuby": "[大会:たいかい]に[参加:さんか]する",
@@ -5942,7 +5942,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "たんとうする",
     "ruby": "[担当:たんとう]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Bertanggung jawab mengemban tugas dinas",
+    "meaningId": "Bertanggung jawab, mengemban tugas dinas",
     "meaningEn": "To take charge of, to be responsible for",
     "collocation": {
       "jpRuby": "[営業:えいぎょう]を[担当:たんとう]する",
@@ -5966,7 +5966,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "どりょくする",
     "ruby": "[努力:どりょく]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Berikhtiar berusaha bekerja keras",
+    "meaningId": "Berikhtiar, berusaha, bekerja keras",
     "meaningEn": "To make effort, to strive",
     "collocation": {
       "jpRuby": "[日々:ひび][努力:どりょく]する",
@@ -5990,7 +5990,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はっけんする",
     "ruby": "[発見:はっけん]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Menemukan mendeteksi hal baru",
+    "meaningId": "Menemukan, mendeteksi hal baru",
     "meaningEn": "To discover, to detect, to find",
     "collocation": {
       "jpRuby": "[新種:しんしゅ]の昆虫を[発見:はっけん]する",
@@ -6014,7 +6014,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ひはんする",
     "ruby": "[批判:ひはん]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Mengkritik mengecam kebijakan",
+    "meaningId": "Mengkritik, mengecam kebijakan",
     "meaningEn": "To criticize, to censure",
     "collocation": {
       "jpRuby": "[政策:せいさく]を[批判:ひはん]する",
@@ -6038,7 +6038,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ひょうげんする",
     "ruby": "[表現:ひょうげん]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Mengekspresikan menuangkan rasa seni",
+    "meaningId": "Mengekspresikan, menuangkan rasa seni",
     "meaningEn": "To express, to represent",
     "collocation": {
       "jpRuby": "[感情:かんじょう]を豊かに[表現:ひょうげん]する",
@@ -6062,7 +6062,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ほしょうする",
     "ruby": "[保証:ほしょう]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Menjamin menggaransi mutu keselamatan",
+    "meaningId": "Menjamin, menggaransi mutu keselamatan",
     "meaningEn": "To guarantee, to assure, to warrant",
     "collocation": {
       "jpRuby": "[品質:ひんしつ]を[保証:ほしょう]する",
@@ -6086,7 +6086,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "まんぞくする",
     "ruby": "[満足:まんぞく]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Merasa puas legawa terpenuhi",
+    "meaningId": "Merasa puas, legawa, terpenuhi",
     "meaningEn": "To be satisfied, to be contented",
     "collocation": {
       "jpRuby": "[結果:けっか]に[満足:まんぞく]する",
@@ -6110,7 +6110,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "よそうする",
     "ruby": "[予想:よそう]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Memperkirakan menduga memprediksi",
+    "meaningId": "Memperkirakan, menduga, memprediksi",
     "meaningEn": "To anticipate, to forecast, to expect",
     "collocation": {
       "jpRuby": "[展開:てんかい]を[予想:よそう]する",
@@ -6134,7 +6134,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "れんらくする",
     "ruby": "[連絡:れんらく]する",
     "partOfSpeech": "[動Ⅲ 自・他]",
-    "meaningId": "Menghubungi mengontak mengabari",
+    "meaningId": "Menghubungi, mengontak, mengabari",
     "meaningEn": "To contact, to inform, to get in touch",
     "collocation": {
       "jpRuby": "[至急:しきゅう][連絡:れんらく]する",
@@ -6158,7 +6158,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "きょうりょくする",
     "ruby": "[協力:きょうりょく]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Bekerja sama bergotong royong",
+    "meaningId": "Bekerja sama, bergotong royong",
     "meaningEn": "To cooperate, to collaborate",
     "collocation": {
       "jpRuby": "[全員:ぜんいん]で[協力:きょうりょく]する",
@@ -6182,7 +6182,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "けんとうする",
     "ruby": "[検討:けんとう]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Mengkaji menelaah mempertimbangkan",
+    "meaningId": "Mengkaji, menelaah, mempertimbangkan",
     "meaningEn": "To examine, to consider, to investigate",
     "collocation": {
       "jpRuby": "[導入:どうにゅう]を[検討:けんとう]する",
@@ -6206,7 +6206,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "こくふくする",
     "ruby": "[克服:こくふく]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Menaklukkan mengatasi kelemahan",
+    "meaningId": "Menaklukkan, mengatasi kelemahan",
     "meaningEn": "To overcome, to conquer, to master",
     "collocation": {
       "jpRuby": "[弱点:じゃくてん]を[克服:こくふく]する",
@@ -6230,7 +6230,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "しゅうちゅうする",
     "ruby": "[集中:しゅうちゅう]する",
     "partOfSpeech": "[動Ⅲ 自・他]",
-    "meaningId": "Berkonsentrasi memusatkan fokus",
+    "meaningId": "Berkonsentrasi, memusatkan fokus",
     "meaningEn": "To concentrate, to focus",
     "collocation": {
       "jpRuby": "[意識:いしき]を[集中:しゅうちゅう]する",
@@ -6254,7 +6254,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はってんする",
     "ruby": "[発展:はってん]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Berkembang maju meluas pesat",
+    "meaningId": "Berkembang, maju, meluas pesat",
     "meaningEn": "To develop, to expand, to flourish",
     "collocation": {
       "jpRuby": "[都市:とし]が[発展:はってん]する",
@@ -6278,7 +6278,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "よぼうする",
     "ruby": "[予防:よぼう]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Mencegah mengantisipasi wabah/penyakit",
+    "meaningId": "Mencegah, mengantisipasi wabah / penyakit",
     "meaningEn": "To prevent, to take precaution",
     "collocation": {
       "jpRuby": "[感染症:かんせんしょう]を[予防:よぼう]する",
@@ -6302,7 +6302,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "おうえんする",
     "ruby": "[応援:おうえん]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Mendukung menyemangati tim suporter",
+    "meaningId": "Mendukung, menyemangati tim suporter",
     "meaningEn": "To support, to cheer for, to root",
     "collocation": {
       "jpRuby": "[選手:せんしゅ]を[応援:おうえん]する",
@@ -6326,7 +6326,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "えんじょする",
     "ruby": "[援助:えんじょ]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Menyokong mendanai memberi donasi",
+    "meaningId": "Menyokong, mendanai, memberi donasi",
     "meaningEn": "To assist, to aid, to support financially",
     "collocation": {
       "jpRuby": "[資金:しきん]を[援助:えんじょ]する",
@@ -6350,7 +6350,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "えんそうする",
     "ruby": "[演奏:えんそう]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Memainkan membawakan musik orkestra",
+    "meaningId": "Memainkan, membawakan musik orkestra",
     "meaningEn": "To perform (music), to play instrument",
     "collocation": {
       "jpRuby": "[名曲:めいきょく]を[演奏:えんそう]する",
@@ -6374,7 +6374,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "えんりょする",
     "ruby": "[遠慮:えんりょ]する",
     "partOfSpeech": "[動Ⅲ 自・他]",
-    "meaningId": "Sungkan menahan diri berhati-hati",
+    "meaningId": "Sungkan, menahan diri, berhati-hati",
     "meaningEn": "To refrain, to hesitate, to hold back",
     "collocation": {
       "jpRuby": "[遠慮:えんりょ]せずに召し上がれ",
@@ -6398,7 +6398,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "えんきする",
     "ruby": "[延期:えんき]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Menunda mengundurkan jadwal tanggal",
+    "meaningId": "Menunda, mengundurkan jadwal tanggal",
     "meaningEn": "To postpone, to defer, to put off",
     "collocation": {
       "jpRuby": "[試合:しあい]を[延期:えんき]する",
@@ -6422,7 +6422,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "へんかする",
     "ruby": "[変化:へんか]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Berubah berganti wujud bentuk",
+    "meaningId": "Berubah, berganti wujud bentuk",
     "meaningEn": "To change, to vary, to transform",
     "collocation": {
       "jpRuby": "[状況:じょうきょう]が[変化:へんか]する",
@@ -6446,7 +6446,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "へんこうする",
     "ruby": "[変更:へんこう]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Mengubah merevisi jadwal isi",
+    "meaningId": "Mengubah, merevisi jadwal isi",
     "meaningEn": "To modify, to alter, to change",
     "collocation": {
       "jpRuby": "[予定:よてい]を[変更:へんこう]する",
@@ -6470,7 +6470,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ほぞんする",
     "ruby": "[保存:ほぞん]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Menyimpan mengawetkan data/makanan",
+    "meaningId": "Menyimpan, mengawetkan data / makanan",
     "meaningEn": "To save (data), to preserve, to store",
     "collocation": {
       "jpRuby": "[ファイル]を[保存:ほぞん]する",
@@ -6494,7 +6494,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "かいけつする",
     "ruby": "[解決:かいけつ]する",
     "partOfSpeech": "[動Ⅲ 自・他]",
-    "meaningId": "Menyelesaikan menuntaskan perkara",
+    "meaningId": "Menyelesaikan, menuntaskan perkara",
     "meaningEn": "To resolve, to settle, to solve",
     "collocation": {
       "jpRuby": "[紛争:ふんそう]を[解決:かいけつ]する",
@@ -6518,7 +6518,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "かいさんする",
     "ruby": "[解散:かいさん]する",
     "partOfSpeech": "[動Ⅲ 自・他]",
-    "meaningId": "Membubarkan diri bubar rapat",
+    "meaningId": "Membubarkan diri, bubar rapat",
     "meaningEn": "To disperse, to dissolve, to break up",
     "collocation": {
       "jpRuby": "[集会:しゅうかい]が[解散:かいさん]する",
@@ -6542,7 +6542,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "かいやくする",
     "ruby": "[解約:かいやく]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Membatalkan akad memutuskan kontrak",
+    "meaningId": "Membatalkan akad, memutuskan kontrak",
     "meaningEn": "To cancel contract, to terminate",
     "collocation": {
       "jpRuby": "[携帯:けいたい]の[契約:けいやく]を[解約:かいやく]する",
@@ -6566,7 +6566,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "かんげいする",
     "ruby": "[歓迎:かんげい]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Menyambut gembira mengalu-alukan",
+    "meaningId": "Menyambut gembira, mengalu-alukan",
     "meaningEn": "To welcome, to give warm reception",
     "collocation": {
       "jpRuby": "[新入生:しんにゅうせい]を[歓迎:かんげい]する",
@@ -6590,7 +6590,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "かんさつする",
     "ruby": "[観察:かんさつ]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Mengamati mengobservasi teliti",
+    "meaningId": "Mengamati, mengobservasi teliti",
     "meaningEn": "To observe, to watch, to monitor",
     "collocation": {
       "jpRuby": "[星:ほし]の動きを[観察:かんさつ]する",
@@ -6614,7 +6614,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "かんどうする",
     "ruby": "[感動:かんどう]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Terharu tersentuh batin terkesan",
+    "meaningId": "Terharu, tersentuh batin, terkesan",
     "meaningEn": "To be deeply moved, to be touched",
     "collocation": {
       "jpRuby": "[名作:めいさく]に[感動:かんどう]する",
@@ -6638,7 +6638,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "かんぱいする",
     "ruby": "[乾杯:かんぱい]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Bersulang mengadu gelas minuman",
+    "meaningId": "Bersulang, mengadu gelas minuman",
     "meaningEn": "To toast, to drink a toast",
     "collocation": {
       "jpRuby": "[成功:せいこう]を祝して[乾杯:かんぱい]する",
@@ -6686,7 +6686,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "きたいする",
     "ruby": "[期待:きたい]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Menaruh harapan mendambakan performa",
+    "meaningId": "Menaruh harapan, mendambakan performa",
     "meaningEn": "To expect, to anticipate, to look forward to",
     "collocation": {
       "jpRuby": "[活躍:かつやく]を[期待:きたい]する",
@@ -6734,7 +6734,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "きにゅうする",
     "ruby": "[記入:きにゅう]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Mengisi menuliskan formulir isian",
+    "meaningId": "Mengisi, menuliskan formulir isian",
     "meaningEn": "To fill in, to write down",
     "collocation": {
       "jpRuby": "[申込書:もうしこみしょ]に[記入:きにゅう]する",
@@ -6758,7 +6758,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "きょうそうする",
     "ruby": "[競争:きょうそう]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Bersaing berkompetisi memperebutkan",
+    "meaningId": "Bersaing, berkompetisi, memperebutkan",
     "meaningEn": "To compete, to vie with",
     "collocation": {
       "jpRuby": "[技術:ぎじゅつ]を[競争:きょうそう]する",
@@ -6782,7 +6782,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "きょうきゅうする",
     "ruby": "[供給:きょうきゅう]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Memasok menyuplai kebutuhan pangan/energi",
+    "meaningId": "Memasok, menyuplai kebutuhan pangan / energi",
     "meaningEn": "To supply, to provide",
     "collocation": {
       "jpRuby": "[電力:でんりょく]を[供給:きょうきゅう]する",
@@ -6806,7 +6806,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "くんれんする",
     "ruby": "[訓練:くんれん]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Melatih mendrill keterampilan tanggap",
+    "meaningId": "Melatih, mendrill keterampilan tanggap",
     "meaningEn": "To train, to drill, to discipline",
     "collocation": {
       "jpRuby": "[避難:ひなん][訓練:くんれん]を[実施:じっし]する",
@@ -6830,7 +6830,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "けいえいする",
     "ruby": "[経営:けいえい]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Mengelola memanajeri bisnis usaha",
+    "meaningId": "Mengelola, memanajeri bisnis usaha",
     "meaningEn": "To manage, to run (business)",
     "collocation": {
       "jpRuby": "[会社:かいしゃ]を[経営:けいえい]する",
@@ -6854,7 +6854,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "けいこくする",
     "ruby": "[警告:けいこく]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Memberi peringatan dini mewanti-wanti",
+    "meaningId": "Memberi peringatan dini, mewanti-wanti",
     "meaningEn": "To warn, to caution, to admonish",
     "collocation": {
       "jpRuby": "[危険:きけん]を[警告:けいこく]する",
@@ -6878,7 +6878,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "けいかくする",
     "ruby": "[計画:けいかく]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Merencanakan merancang agenda",
+    "meaningId": "Merencanakan, merancang agenda",
     "meaningEn": "To plan, to schedule",
     "collocation": {
       "jpRuby": "[旅行:りょこう]を[計画:けいかく]する",
@@ -6902,7 +6902,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "そくていする",
     "ruby": "[測定:そくてい]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Mengukur menakar angka dimensi",
+    "meaningId": "Mengukur, menakar angka dimensi",
     "meaningEn": "To measure, to gauge",
     "collocation": {
       "jpRuby": "[気温:きおん]を[測定:そくてい]する",
@@ -6926,7 +6926,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "せつやくする",
     "ruby": "[節約:せつやく]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Berhemat menghemat pengeluaran/daya",
+    "meaningId": "Berhemat, menghemat pengeluaran / daya",
     "meaningEn": "To economize, to save",
     "collocation": {
       "jpRuby": "[生活費:せいかつひ]を[節約:せつやく]する",
@@ -6950,7 +6950,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "せんたくする",
     "ruby": "[洗濯:せんたく]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Mencuci pakaian binatu",
+    "meaningId": "Mencuci pakaian, binatu",
     "meaningEn": "To wash clothes, to do laundry",
     "collocation": {
       "jpRuby": "[服:ふく]を[洗濯:せんたく]する",
@@ -6974,7 +6974,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "せんたくする",
     "ruby": "[選択:せんたく]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Memilih menentukan pilihan di antara opsi",
+    "meaningId": "Memilih, menentukan pilihan di antara opsi",
     "meaningEn": "To choose, to select",
     "collocation": {
       "jpRuby": "[進路:しんろ]を[選択:せんたく]する",
@@ -6998,7 +6998,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ぞうかする",
     "ruby": "[増加:ぞうか]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Bertambah meningkat kuantitasnya",
+    "meaningId": "Bertambah, meningkat kuantitasnya",
     "meaningEn": "To increase, to grow",
     "collocation": {
       "jpRuby": "[人口:じんこう]が[増加:ぞうか]する",
@@ -7022,7 +7022,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "そうさくする",
     "ruby": "[創作:そうさく]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Menciptakan mengarang karya seni orisinal",
+    "meaningId": "Menciptakan, mengarang karya seni orisinal",
     "meaningEn": "To create, to produce, to write work",
     "collocation": {
       "jpRuby": "[物語:ものがたり]を[創作:そうさく]する",
@@ -7046,7 +7046,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "そんちょうする",
     "ruby": "[尊重:そんちょう]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Menghargai menjunjung tinggi opini",
+    "meaningId": "Menghargai, menjunjung tinggi opini",
     "meaningEn": "To respect, to esteem, to value",
     "collocation": {
       "jpRuby": "[意見:いけん]を[尊重:そんちょう]する",
@@ -7070,7 +7070,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "たっせいする",
     "ruby": "[達成:たっせい]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Meraih mencapai sasaran target",
+    "meaningId": "Meraih, mencapai sasaran target",
     "meaningEn": "To achieve, to attain, to accomplish",
     "collocation": {
       "jpRuby": "[目標:もくひょう]を[達成:たっせい]する",
@@ -7094,7 +7094,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ちゅうもんする",
     "ruby": "[注文:ちゅうもん]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Memesan makanan barang order",
+    "meaningId": "Memesan makanan, barang, order",
     "meaningEn": "To order",
     "collocation": {
       "jpRuby": "[料理:りょうり]を[注文:ちゅうもん]する",
@@ -7118,7 +7118,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ちょうせつする",
     "ruby": "[調節:ちょうせつ]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Menyetel mengatur suhu volume",
+    "meaningId": "Menyetel, mengatur suhu / volume",
     "meaningEn": "To adjust, to regulate, to tune",
     "collocation": {
       "jpRuby": "[温度:おんど]を[調節:ちょうせつ]する",
@@ -7142,7 +7142,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "つうしんする",
     "ruby": "[通信:つうしん]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Berkomunikasi transmisi sinyal data",
+    "meaningId": "Berkomunikasi, transmisi sinyal data",
     "meaningEn": "To communicate, to transmit",
     "collocation": {
       "jpRuby": "[衛星:えいせい]と[通信:つうしん]する",
@@ -7166,7 +7166,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ていこうする",
     "ruby": "[抵抗:ていこう]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Melawan menolak menentang",
+    "meaningId": "Melawan, menolak, menentang",
     "meaningEn": "To resist, to oppose, to defy",
     "collocation": {
       "jpRuby": "[圧力:あつりょく]に[抵抗:ていこう]する",
@@ -7190,7 +7190,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ていあんする",
     "ruby": "[提案:ていあん]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Mengusulkan mengajukan proposal ide",
+    "meaningId": "Mengusulkan, mengajukan proposal ide",
     "meaningEn": "To propose, to suggest",
     "collocation": {
       "jpRuby": "[改善案:かいぜんあん]を[提案:ていあん]する",
@@ -7214,7 +7214,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "てきおうする",
     "ruby": "[適応:てきおう]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Beradaptasi menyesuaikan diri",
+    "meaningId": "Beradaptasi, menyesuaikan diri",
     "meaningEn": "To adapt, to adjust, to acclimate",
     "collocation": {
       "jpRuby": "[環境:かんきょう]に[適応:てきおう]する",
@@ -7238,7 +7238,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "とういつする",
     "ruby": "[統一:とういつ]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Menyatukan menstandardisasi format",
+    "meaningId": "Menyatukan, menstandardisasi format",
     "meaningEn": "To unify, to standardize",
     "collocation": {
       "jpRuby": "[規格:きかく]を[統一:とういつ]する",
@@ -7262,7 +7262,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "とうひょうする",
     "ruby": "[投票:とうひょう]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Memberikan suara memilih pemilu",
+    "meaningId": "Memberikan suara, memilih pemilu",
     "meaningEn": "To vote, to cast a ballot",
     "collocation": {
       "jpRuby": "[清き一票:きよきいっぴょう]を[投票:とうひょう]する",
@@ -7286,7 +7286,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "とうろくする",
     "ruby": "[登録:とうろく]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Mendaftarkan registrasi akun",
+    "meaningId": "Mendaftarkan, registrasi akun",
     "meaningEn": "To register, to sign up, to enroll",
     "collocation": {
       "jpRuby": "[会員:かいいん]に[登録:とうろく]する",
@@ -7310,7 +7310,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "とうちゃくする",
     "ruby": "[到着:とうちゃく]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Tiba sampai di destinasi",
+    "meaningId": "Tiba, sampai di destinasi",
     "meaningEn": "To arrive, to reach destination",
     "collocation": {
       "jpRuby": "[目的地:もくてきち]に[到着:とうちゃく]する",
@@ -7334,7 +7334,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "どくりつする",
     "ruby": "[独立:どくりつ]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Merdeka mandiri berdikari membuka usaha",
+    "meaningId": "Merdeka, mandiri, berdikari membuka usaha",
     "meaningEn": "To become independent, to stand alone",
     "collocation": {
       "jpRuby": "[親:おや]から[独立:どくりつ]する",
@@ -7358,7 +7358,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はっこうする",
     "ruby": "[発行:はっこう]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Menerbitkan mencetak surat izin/buku",
+    "meaningId": "Menerbitkan, mencetak surat izin / buku",
     "meaningEn": "To issue, to publish",
     "collocation": {
       "jpRuby": "[証明書:しょうめいしょ]を[発行:はっこう]する",
@@ -7382,7 +7382,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はっぴょうする",
     "ruby": "[発表:はっぴょう]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Mengumumkan mempublikasikan riset",
+    "meaningId": "Mengumumkan, mempublikasikan riset",
     "meaningEn": "To announce, to present, to publish",
     "collocation": {
       "jpRuby": "[成果:せいか]を[発表:はっぴょう]する",
@@ -7406,7 +7406,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はんたいする",
     "ruby": "[反対:はんたい]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Menolak menentang tidak setuju",
+    "meaningId": "Menolak, menentang, tidak setuju",
     "meaningEn": "To oppose, to object to, to disagree",
     "collocation": {
       "jpRuby": "[計画:けいかく]に[反対:はんたい]する",
@@ -7454,7 +7454,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ひょうかする",
     "ruby": "[評価:ひょうか]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Menilai mengapresiasi menakar mutu",
+    "meaningId": "Menilai, mengapresiasi, menakar mutu",
     "meaningEn": "To evaluate, to assess, to rate",
     "collocation": {
       "jpRuby": "[実績:じっせき]を高く[評価:ひょうか]する",
@@ -7478,7 +7478,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ふきゅうする",
     "ruby": "[普及:ふきゅう]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Menyebar luas memasyarakat lazim",
+    "meaningId": "Menyebar luas, memasyarakat, lazim",
     "meaningEn": "To spread, to become widespread",
     "collocation": {
       "jpRuby": "[スマホ]が[普及:ふきゅう]する",
@@ -7502,7 +7502,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ふっきゅうする",
     "ruby": "[復旧:ふっきゅう]する",
     "partOfSpeech": "[動Ⅲ 自・他]",
-    "meaningId": "Pulih kembali berfungsi semula pascabencana",
+    "meaningId": "Pulih kembali, berfungsi semula pascabencana",
     "meaningEn": "To be restored, to recover",
     "collocation": {
       "jpRuby": "[ダイヤ]が[復旧:ふっきゅう]する",
@@ -7526,7 +7526,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "べんごする",
     "ruby": "[弁護:べんご]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Membela mengadvokasi terdakwa",
+    "meaningId": "Membela, mengadvokasi terdakwa",
     "meaningEn": "To defend, to advocate, to plead for",
     "collocation": {
       "jpRuby": "[被告:ひこく]を[弁護:べんご]する",
@@ -7574,7 +7574,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "めんかいする",
     "ruby": "[面会:めんかい]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Menjenguk menemui tatap muka",
+    "meaningId": "Menjenguk, menemui tatap muka",
     "meaningEn": "To visit (hospital/jail), to have interview",
     "collocation": {
       "jpRuby": "[患者:かんじゃ]と[面会:めんかい]する",
@@ -7598,7 +7598,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ゆうしょうする",
     "ruby": "[優勝:ゆうしょう]する",
     "partOfSpeech": "[動Ⅲ 自]",
-    "meaningId": "Menjadi juara meraih kampiun",
+    "meaningId": "Menjadi juara, meraih kampiun",
     "meaningEn": "To win championship, to finish first",
     "collocation": {
       "jpRuby": "[大会:たいかい]で[優勝:ゆうしょう]する",
@@ -7670,7 +7670,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "りかいする",
     "ruby": "[理解:りかい]する",
     "partOfSpeech": "[動Ⅲ 他]",
-    "meaningId": "Memahami mengerti inti konsep",
+    "meaningId": "Memahami, mengerti inti konsep",
     "meaningEn": "To understand, to comprehend",
     "collocation": {
       "jpRuby": "[意図:いと]を[理解:りかい]する",
@@ -7694,7 +7694,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "うけいれる",
     "ruby": "[受:う]け[入:い]れる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menerima menerima masuk masukan",
+    "meaningId": "Menerima, menerima masuk masukan",
     "meaningEn": "To accept, to receive, to embrace",
     "collocation": {
       "jpRuby": "[留学生:りゅうがくせい]を[受:う]け[入:い]れる",
@@ -7742,7 +7742,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ひきうける",
     "ruby": "[引:ひ]き[受:う]ける",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menyanggupi memikul tanggung jawab tugas",
+    "meaningId": "Menyanggupi, memikul tanggung jawab tugas",
     "meaningEn": "To undertake, to take on, to assume",
     "collocation": {
       "jpRuby": "[面倒:めんどう]な役を[引:ひ]き[受:う]ける",
@@ -7766,7 +7766,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "うちあわせる",
     "ruby": "[打:う]ち[合:あ]わせる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Mengatur rapat koordinasi berdiskusi awal",
+    "meaningId": "Mengatur rapat koordinasi, berdiskusi awal",
     "meaningEn": "To arrange, to discuss in advance",
     "collocation": {
       "jpRuby": "[日程:にってい]を[打:う]ち[合:あ]わせる",
@@ -7790,7 +7790,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "といあわせる",
     "ruby": "[問:と]い[合:あ]わせる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menanyakan menanyakan kepastian informasi",
+    "meaningId": "Menanyakan, mencari kepastian informasi",
     "meaningEn": "To inquire, to make inquiries",
     "collocation": {
       "jpRuby": "[空き状況:あきじょうきょう]を[問:と]い[合:あ]わせる",
@@ -7814,7 +7814,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "もうしこむ",
     "ruby": "[申:もう]し[込:こ]む",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Mengajukan mendaftar reservasi/pernikahan",
+    "meaningId": "Mengajukan, mendaftar reservasi / pernikahan",
     "meaningEn": "To apply for, to propose",
     "collocation": {
       "jpRuby": "[講座:こうざ]に[申:もう]し[込:こ]む",
@@ -7862,7 +7862,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "おもいだす",
     "ruby": "[思:おも]い[出:だ]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Teringat kembali mengingat masa lalu",
+    "meaningId": "Teringat kembali, mengingat masa lalu",
     "meaningEn": "To remember, to recall",
     "collocation": {
       "jpRuby": "[昔:むかし]の思い出を[思:おも]い[出:だ]す",
@@ -7886,7 +7886,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "とびこむ",
     "ruby": "[飛:と]び[込:こ]む",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Melompat mencebur masuk",
+    "meaningId": "Melompat, mencebur masuk",
     "meaningEn": "To jump in, to plunge into",
     "collocation": {
       "jpRuby": "[プール]に[飛:と]び[込:こ]む",
@@ -7910,7 +7910,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "とびだす",
     "ruby": "[飛:と]び[出:だ]す",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Melesat melompat keluar mendadak",
+    "meaningId": "Melesat, melompat keluar mendadak",
     "meaningEn": "To dash out, to spring out",
     "collocation": {
       "jpRuby": "[道:みち]に急に[飛:と]び[出:だ]す",
@@ -7958,7 +7958,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はなしあう",
     "ruby": "[話:はな]し[合:あ]う",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Bermusyawarah berdiskusi bertukar pikiran",
+    "meaningId": "Bermusyawarah, berdiskusi, bertukar pikiran",
     "meaningEn": "To discuss, to talk over",
     "collocation": {
       "jpRuby": "[将来:しょうらい]について[話:はな]し[合:あ]う",
@@ -8006,7 +8006,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "みつめる",
     "ruby": "[見:み]つめる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menatap tajam memandang lekat",
+    "meaningId": "Menatap tajam, memandang lekat",
     "meaningEn": "To gaze at, to stare at",
     "collocation": {
       "jpRuby": "[写真:しゃしん]をじっと[見:み]つめる",
@@ -8054,7 +8054,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "もちあげる",
     "ruby": "[持:も]ち[上:あ]げる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Mengangkat ke atas memuji tinggi",
+    "meaningId": "Mengangkat ke atas, memuji tinggi",
     "meaningEn": "To lift up, to raise, to flatter",
     "collocation": {
       "jpRuby": "[重:おも]い荷物を[持:も]ち[上:あ]げる",
@@ -8078,7 +8078,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "うりきれる",
     "ruby": "[売:う]り[切:き]れる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Ludes terjual habis",
+    "meaningId": "Ludes, terjual habis",
     "meaningEn": "To be sold out",
     "collocation": {
       "jpRuby": "[商品:しょうひん]が[売:う]り[切:き]れる",
@@ -8102,7 +8102,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "のりかえる",
     "ruby": "[乗:の]り[換:か]える",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Transit berganti armada kendaraan",
+    "meaningId": "Transit, berganti armada kendaraan",
     "meaningEn": "To transfer (train/bus), to switch",
     "collocation": {
       "jpRuby": "[電車:でんしゃ]を[乗:の]り[換:か]える",
@@ -8126,7 +8126,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "のりこえる",
     "ruby": "[乗:の]り[越:こ]える",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Melompati mengatasi krisis cobaan",
+    "meaningId": "Melompati, mengatasi krisis cobaan",
     "meaningEn": "To overcome, to surmount",
     "collocation": {
       "jpRuby": "[危機:きき]を[乗:の]り[越:こ]える",
@@ -8150,7 +8150,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "おいかける",
     "ruby": "[追:お]いかける",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Mengejar memburu dari belakang",
+    "meaningId": "Mengejar, memburu dari belakang",
     "meaningEn": "To chase, to run after",
     "collocation": {
       "jpRuby": "[逃:に]げた犬を[追:お]いかける",
@@ -8174,7 +8174,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "おいこす",
     "ruby": "[追:お]い[越:こ]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menyalip mendahului di jalan",
+    "meaningId": "Menyalip, mendahului di jalan",
     "meaningEn": "To overtake, to pass",
     "collocation": {
       "jpRuby": "[前:まえ]の車を[追:お]い[越:こ]す",
@@ -8222,7 +8222,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ひっぱる",
     "ruby": "[引:ひ]っ[張:ぱ]る",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menarik memimpin regu",
+    "meaningId": "Menarik, memimpin regu",
     "meaningEn": "To pull, to lead the team",
     "collocation": {
       "jpRuby": "チームを[引:ひ]っ[張:ぱ]る",
@@ -8246,7 +8246,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "とりあげる",
     "ruby": "[取:と]り[上:あ]げる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Mengangkat tema topik menyita barang",
+    "meaningId": "Mengangkat tema topik, menyita barang",
     "meaningEn": "To take up (topic), to confiscate",
     "collocation": {
       "jpRuby": "[問題:もんだい]をニュースで[取:と]り[上:あ]げる",
@@ -8294,7 +8294,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "とりけす",
     "ruby": "[取:と]り[消:け]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Membatalkan reservasi mencabut pernyataan",
+    "meaningId": "Membatalkan reservasi, mencabut pernyataan",
     "meaningEn": "To cancel, to revoke, to retract",
     "collocation": {
       "jpRuby": "[予約:よやく]を[取:と]り[消:け]す",
@@ -8318,7 +8318,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "とりかえる",
     "ruby": "[取:と]り[替:か]える",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menukar mengganti onderdil rusak",
+    "meaningId": "Menukar, mengganti onderdil rusak",
     "meaningEn": "To replace, to exchange",
     "collocation": {
       "jpRuby": "[電球:でんきゅう]を[取:と]り[替:か]える",
@@ -8342,7 +8342,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "よびかける",
     "ruby": "[呼:よ]びかける",
     "partOfSpeech": "[動Ⅱ 自・他]",
-    "meaningId": "Menyerukan mengimbau masyarakat menyapa",
+    "meaningId": "Menyerukan, mengimbau masyarakat, menyapa",
     "meaningEn": "To call out to, to appeal to",
     "collocation": {
       "jpRuby": "[募金:ぼきん]を[呼:よ]びかける",
@@ -8366,7 +8366,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "よびだす",
     "ruby": "[呼:よ]び[出:だ]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Memanggil menghadap memanggil keluar",
+    "meaningId": "Memanggil menghadap, memanggil keluar",
     "meaningEn": "To summon, to call out",
     "collocation": {
       "jpRuby": "[職員室:しょくいんしつ]へ[呼:よ]び[出:だ]す",
@@ -8390,7 +8390,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "くみあわせる",
     "ruby": "[組:く]み[合:あ]わせる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Memadukan mengombinasikan komponen",
+    "meaningId": "Memadukan, mengombinasikan komponen",
     "meaningEn": "To combine, to join together",
     "collocation": {
       "jpRuby": "[部品:ぶひん]を[組:く]み[合:あ]わせる",
@@ -8414,7 +8414,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "であう",
     "ruby": "[出:で][会:あ]う",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Berjumpa bertemu orang tak disengaja",
+    "meaningId": "Berjumpa, bertemu orang tak disengaja",
     "meaningEn": "To meet, to encounter, to come across",
     "collocation": {
       "jpRuby": "[親友:しんゆう]と[出:で][会:あ]う",
@@ -8438,7 +8438,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "でむかえる",
     "ruby": "[出:で][迎:むか]える",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menjemput menyambut tiba di pintu gerbang",
+    "meaningId": "Menjemput, menyambut tiba di pintu gerbang",
     "meaningEn": "To meet, to welcome arriving guests",
     "collocation": {
       "jpRuby": "[玄関:げんかん]で[出:で][迎:むか]える",
@@ -8462,7 +8462,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "つきあたる",
     "ruby": "[突:つ]き[当:あ]たる",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Mentok di ujung jalan membentur tembok",
+    "meaningId": "Mentok di ujung jalan, membentur tembok",
     "meaningEn": "To run into, to collide with, to reach dead end",
     "collocation": {
       "jpRuby": "[壁:かべ]に[突:つ]き[当:あ]たる",
@@ -8486,7 +8486,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "さしひく",
     "ruby": "[差:さ]し[引:ひ]く",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Memotong memotong saldo pajak",
+    "meaningId": "Memotong, memotong saldo pajak",
     "meaningEn": "To deduct, to take away",
     "collocation": {
       "jpRuby": "[税金:ぜいきん]を[差:さ]し[引:ひ]く",
@@ -8510,7 +8510,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "すれちがう",
     "ruby": "[擦:す]れ[違:ちが]う",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Berpapasan berpapasan jalan / berselisih paham",
+    "meaningId": "Berpapasan jalan / berselisih paham",
     "meaningEn": "To pass each other, to miss each other",
     "collocation": {
       "jpRuby": "[道:みち]で[擦:す]れ[違:ちが]う",
@@ -8534,7 +8534,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "しあがる",
     "ruby": "[仕:し][上:あ]がる",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Rampung selesai tuntas pengerjaan",
+    "meaningId": "Rampung, selesai, tuntas pengerjaan",
     "meaningEn": "To be finished, to be completed",
     "collocation": {
       "jpRuby": "[料理:りょうり]が[仕:し][上:あ]がる",
@@ -8558,7 +8558,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "しあげる",
     "ruby": "[仕:し][上:あ]げる",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menuntaskan menyelesaikan tahap akhir",
+    "meaningId": "Menuntaskan, menyelesaikan tahap akhir",
     "meaningEn": "To finish up, to complete",
     "collocation": {
       "jpRuby": "[作品:さくひん]を[仕:し][上:あ]げる",
@@ -8630,7 +8630,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "もりあがる",
     "ruby": "[盛:も]り[上:あ]がる",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Meriah semarak memuncak gembira",
+    "meaningId": "Meriah, semarak, memuncak gembira",
     "meaningEn": "To swell, to become lively, to peak",
     "collocation": {
       "jpRuby": "[場:ば]が[盛:も]り[上:あ]がる",
@@ -8654,7 +8654,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "みなおす",
     "ruby": "[見:み][直:なお]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Meninjau mengevaluasi ulang memandang lebih baik",
+    "meaningId": "Meninjau, mengevaluasi ulang, memandang lebih baik",
     "meaningEn": "To review, to re-examine, to look better on",
     "collocation": {
       "jpRuby": "[計画:けいかく]を[見:み][直:なお]す",
@@ -8678,7 +8678,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "かきなおす",
     "ruby": "[書:か]き[直:なお]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menulis menulis ulang memperbaiki draf",
+    "meaningId": "Menulis ulang, memperbaiki draf",
     "meaningEn": "To rewrite",
     "collocation": {
       "jpRuby": "[原稿:げんこう]を[書:か]き[直:なお]す",
@@ -8726,7 +8726,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "かんがえなおす",
     "ruby": "[考:かんが]え[直:なお]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Mempertimbangkan memikirkan kembali matang",
+    "meaningId": "Mempertimbangkan, memikirkan kembali matang-matang",
     "meaningEn": "To reconsider, to rethink",
     "collocation": {
       "jpRuby": "[決定:けってい]を[考:かんが]え[直:なお]す",
@@ -8750,7 +8750,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "おもいなおす",
     "ruby": "[思:おも]い[直:なお]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Mengubah pikiran niat semula",
+    "meaningId": "Mengubah pikiran, niat semula",
     "meaningEn": "To change one's mind",
     "collocation": {
       "jpRuby": "[気持:きも]ちを[思:おも]い[直:なお]す",
@@ -8774,7 +8774,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "つくりなおす",
     "ruby": "[作:つく]り[直:なお]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Membuat ulang merombak masakan/benda",
+    "meaningId": "Membuat ulang, merombak masakan / benda",
     "meaningEn": "To remake, to rebuild",
     "collocation": {
       "jpRuby": "[資料:しりょう]を[作:つく]り[直:なお]す",
@@ -8798,7 +8798,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "たてなおす",
     "ruby": "[立:た]て[直:なお]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Membangun menata ulang strategi keuangan",
+    "meaningId": "Membangun, menata ulang strategi keuangan",
     "meaningEn": "To reorganize, to reconstruct, to rebuild",
     "collocation": {
       "jpRuby": "[経営:けいえい]を[立:た]て[直:なお]す",
@@ -8822,7 +8822,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はなしかける",
     "ruby": "[話:はな]しかける",
     "partOfSpeech": "[動Ⅱ 自・他]",
-    "meaningId": "Menyapa memulai pembicaraan",
+    "meaningId": "Menyapa, memulai pembicaraan",
     "meaningEn": "To speak to, to address",
     "collocation": {
       "jpRuby": "[隣:となり]の人に[話:はな]しかける",
@@ -8846,7 +8846,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はたらきかける",
     "ruby": "[働:はたら]きかける",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Mempengaruhi mengajak bertindak bersama",
+    "meaningId": "Mempengaruhi, mengajak bertindak bersama",
     "meaningEn": "To appeal to, to influence, to lobby",
     "collocation": {
       "jpRuby": "[社会:しゃかい]に[働:はたら]きかける",
@@ -8870,7 +8870,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "といかける",
     "ruby": "[問:と]いかける",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Melemparkan pertanyaan menguji nurani",
+    "meaningId": "Melemparkan pertanyaan, menguji nurani",
     "meaningEn": "To ask a question, to pose a question",
     "collocation": {
       "jpRuby": "[自問自答:じもんじとう]して[問:と]いかける",
@@ -8894,7 +8894,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "みせかける",
     "ruby": "[見:み]せかける",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Berpura-pura menyamar berlagak",
+    "meaningId": "Berpura-pura, menyamar, berlagak",
     "meaningEn": "To pretend, to disguise, to feign",
     "collocation": {
       "jpRuby": "[親切:しんせつ]そうに[見:み]せかける",
@@ -8918,7 +8918,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "いいだす",
     "ruby": "[言:い]い[出:だ]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Mulai mengusulkan mengutarakan niat",
+    "meaningId": "Mulai mengusulkan, mengutarakan niat",
     "meaningEn": "To bring up, to break the ice, to suggest",
     "collocation": {
       "jpRuby": "[本音:ほんね]を[言:い]い[出:だ]す",
@@ -8942,7 +8942,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ふりだす",
     "ruby": "[降:ふ]り[出:だ]す",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Mulai turun hujan/salju",
+    "meaningId": "Mulai turun hujan / salju",
     "meaningEn": "To start raining/snowing",
     "collocation": {
       "jpRuby": "[雨:あめ]が突然[降:ふ]り[出:だ]す",
@@ -8966,7 +8966,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ぬけだす",
     "ruby": "[抜:ぬ]け[出:だ]す",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Menyelinap keluar meloloskan diri",
+    "meaningId": "Menyelinap keluar, meloloskan diri",
     "meaningEn": "To slip out, to sneak away",
     "collocation": {
       "jpRuby": "[部屋:へや]をそっと[抜:ぬ]け[出:だ]す",
@@ -8990,7 +8990,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "にげだす",
     "ruby": "[逃:に]げ[出:だ]す",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Melarikan diri kabur terbirit-birit",
+    "meaningId": "Melarikan diri, kabur terbirit-birit",
     "meaningEn": "To run away, to take to one's heels",
     "collocation": {
       "jpRuby": "[危険:きけん]を感じて[逃:に]げ[出:だ]す",
@@ -9014,7 +9014,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "かけだす",
     "ruby": "[駆:か]け[出:だ]す",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Berlari kencang melesat bergegas",
+    "meaningId": "Berlari kencang, melesat, bergegas",
     "meaningEn": "To start running, to dash out",
     "collocation": {
       "jpRuby": "[全力:ぜんりょく]で[駆:か]け[出:だ]す",
@@ -9062,7 +9062,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "つれだす",
     "ruby": "[連:つ]れ[出:だ]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Mengajak mengajak serta pergi keluar",
+    "meaningId": "Mengajak, mengajak serta pergi keluar",
     "meaningEn": "To take someone out",
     "collocation": {
       "jpRuby": "[子供:こども]を公園へ[連:つ]れ[出:だ]す",
@@ -9086,7 +9086,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ひきだす",
     "ruby": "[引:ひ]き[出:だ]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menarik uang tunai mengeluarkan bakat",
+    "meaningId": "Menarik uang tunai, mengeluarkan bakat",
     "meaningEn": "To withdraw (money), to bring out",
     "collocation": {
       "jpRuby": "[預金:よきん]を[引:ひ]き[出:だ]す",
@@ -9110,7 +9110,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "わりこむ",
     "ruby": "[割:わ]り[込:こ]む",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Menyerobot antrean memotong pembicaraan",
+    "meaningId": "Menyerobot antrean, memotong pembicaraan",
     "meaningEn": "To cut into (line/conversation)",
     "collocation": {
       "jpRuby": "[列:れつ]に[割:わ]り[込:こ]む",
@@ -9134,7 +9134,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "おちこむ",
     "ruby": "[落:お]ち[込:こ]む",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Patah semangat terpuruk lesu merosot",
+    "meaningId": "Patah semangat, terpuruk lesu, merosot",
     "meaningEn": "To feel down, to be depressed, to drop",
     "collocation": {
       "jpRuby": "[気分:きぶん]が[落:お]ち[込:こ]む",
@@ -9158,7 +9158,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "とけこむ",
     "ruby": "[溶:と]け[込:こ]む",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Menyatu membaur akrab dengan lingkungan",
+    "meaningId": "Menyatu, membaur akrab dengan lingkungan",
     "meaningEn": "To blend in, to melt into",
     "collocation": {
       "jpRuby": "[地域:ちいき]の輪に[溶:と]け[込:こ]む",
@@ -9182,7 +9182,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "とまりこむ",
     "ruby": "[泊:と]まり[込:こ]む",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Menginap lembur berdiam di kantor",
+    "meaningId": "Menginap lembur, berdiam di kantor",
     "meaningEn": "To stay overnight at work",
     "collocation": {
       "jpRuby": "[研究室:けんきゅうしつ]に[泊:と]まり[込:こ]む",
@@ -9206,7 +9206,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "かけこむ",
     "ruby": "[駆:か]け[込:こ]む",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Berlari masuk menyelinap di detik akhir",
+    "meaningId": "Berlari masuk, menyelinap di detik akhir",
     "meaningEn": "To rush into, to dart into",
     "collocation": {
       "jpRuby": "[電車:でんしゃ]に[駆:か]け[込:こ]む",
@@ -9230,7 +9230,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "つめこむ",
     "ruby": "[詰:つ]め[込:こ]む",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menjejalkan memadatkan barang ke wadah",
+    "meaningId": "Menjejalkan, memadatkan barang ke wadah",
     "meaningEn": "To cram, to stuff, to jam-pack",
     "collocation": {
       "jpRuby": "[知識:ちしき]を頭に[詰:つ]め[込:こ]む",
@@ -9254,7 +9254,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "のりこむ",
     "ruby": "[乗:の]り[込:こ]む",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Menaiki armada masuk ke markas musuh",
+    "meaningId": "Menaiki armada, masuk ke markas musuh",
     "meaningEn": "To board, to march into",
     "collocation": {
       "jpRuby": "[飛行機:ひこうき]に[乗:の]り[込:こ]む",
@@ -9278,7 +9278,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "さしこむ",
     "ruby": "[差:さ]し[込:こ]む",
     "partOfSpeech": "[動Ⅰ 自・他]",
-    "meaningId": "Menyelinap masuk sinar menancapkan kartu",
+    "meaningId": "Menyelinap masuk sinar, menancapkan kartu",
     "meaningEn": "To shine in, to insert",
     "collocation": {
       "jpRuby": "[光:ひかり]が窓から[差:さ]し[込:こ]む",
@@ -9302,7 +9302,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "しみこむ",
     "ruby": "[染:し]み[込:こ]む",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Meresap menembus ke dalam pori/tanah",
+    "meaningId": "Meresap, menembus ke dalam pori / tanah",
     "meaningEn": "To soak into, to penetrate",
     "collocation": {
       "jpRuby": "[雨水:あまみず]が土に[染:し]み[込:こ]む",
@@ -9350,7 +9350,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "のみこむ",
     "ruby": "[呑:の]み[込:こ]む",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menelan bulat-bulat memahami situasi",
+    "meaningId": "Menelan bulat-bulat, memahami situasi",
     "meaningEn": "To swallow, to gulp, to grasp fully",
     "collocation": {
       "jpRuby": "[要領:ようりょう]を[呑:の]み[込:こ]む",
@@ -9374,7 +9374,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "あつまる",
     "ruby": "[集:あつ]まる",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Berkumpul berkerumun (orang/benda)",
+    "meaningId": "Berkumpul, berkerumun (orang/benda)",
     "meaningEn": "To gather, to assemble (intransitive)",
     "collocation": {
       "jpRuby": "[人:ひと]が[集:あつ]まる",
@@ -9398,7 +9398,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "あつめる",
     "ruby": "[集:あつ]める",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Mengumpulkan menghimpun barang/data",
+    "meaningId": "Mengumpulkan, menghimpun barang / data",
     "meaningEn": "To collect, to gather (transitive)",
     "collocation": {
       "jpRuby": "[情報:じょうほう]を[集:あつ]める",
@@ -9422,7 +9422,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "きまる",
     "ruby": "[決:き]まる",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Diputuskan ditetapkan mufakat",
+    "meaningId": "Diputuskan, ditetapkan mufakat",
     "meaningEn": "To be decided, to be settled",
     "collocation": {
       "jpRuby": "[方針:ほうしん]が[決:き]まる",
@@ -9446,7 +9446,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "きめる",
     "ruby": "[決:き]める",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menentukan memutuskan pilihan",
+    "meaningId": "Menentukan, memutuskan pilihan",
     "meaningEn": "To decide, to determine",
     "collocation": {
       "jpRuby": "[進路:しんろ]を[決:き]める",
@@ -9470,7 +9470,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "なおる",
     "ruby": "[直:なお]る",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Sembuh pulih berfungsi normal kembali",
+    "meaningId": "Sembuh, pulih, berfungsi normal kembali",
     "meaningEn": "To be repaired, to get fixed",
     "collocation": {
       "jpRuby": "[機械:きかい]が[直:なお]る",
@@ -9494,7 +9494,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "なおす",
     "ruby": "[直:なお]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Memperbaiki membetulkan kekeliruan",
+    "meaningId": "Memperbaiki, membetulkan kekeliruan",
     "meaningEn": "To fix, to repair, to correct",
     "collocation": {
       "jpRuby": "[時計:とけい]を[直:なお]す",
@@ -9518,7 +9518,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "こわれる",
     "ruby": "[壊:こわ]れる",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Rusak hancur patah",
+    "meaningId": "Rusak, hancur, patah",
     "meaningEn": "To break, to be destroyed",
     "collocation": {
       "jpRuby": "[椅子:いす]が[壊:こわ]れる",
@@ -9542,7 +9542,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "こわす",
     "ruby": "[壊:こわ]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Merusakkan membongkar merusak kesehatan",
+    "meaningId": "Merusakkan, membongkar, merusak kesehatan",
     "meaningEn": "To break, to destroy",
     "collocation": {
       "jpRuby": "[健康:けんこう]を[壊:こわ]す",
@@ -9566,7 +9566,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "わく",
     "ruby": "[沸:わ]く",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Mendidih menggelegak / bergemuruh riuh",
+    "meaningId": "Mendidih, menggelegak / bergemuruh riuh",
     "meaningEn": "To boil, to grow hot, to erupt in cheers",
     "collocation": {
       "jpRuby": "[湯:ゆ]が[沸:わ]く",
@@ -9614,7 +9614,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "なおる",
     "ruby": "[治:なお]る",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Sembuh pulih dari sakit penyakit",
+    "meaningId": "Sembuh, pulih dari sakit penyakit",
     "meaningEn": "To recover, to heal",
     "collocation": {
       "jpRuby": "[病気:びょうき]が[治:なお]る",
@@ -9638,7 +9638,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "なおす",
     "ruby": "[治:なお]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menyembuhkan memulihkan kondisi",
+    "meaningId": "Menyembuhkan, memulihkan kondisi",
     "meaningEn": "To cure, to heal",
     "collocation": {
       "jpRuby": "[虫歯:むしば]を[治:なお]す",
@@ -9662,7 +9662,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "しまる",
     "ruby": "[閉:し]まる",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Tertutup menutup rapat",
+    "meaningId": "Tertutup, menutup rapat",
     "meaningEn": "To close, to shut",
     "collocation": {
       "jpRuby": "[ドア]が[閉:し]まる",
@@ -9686,7 +9686,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "しめる",
     "ruby": "[閉:し]める",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menutup pintu jendela merapatkan",
+    "meaningId": "Menutup pintu jendela, merapatkan",
     "meaningEn": "To shut, to close",
     "collocation": {
       "jpRuby": "[窓:まど]を[閉:し]める",
@@ -9710,7 +9710,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "あく",
     "ruby": "[開:あ]く",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Terbuka merekah terbuka pintunya",
+    "meaningId": "Terbuka, merekah, terbuka pintunya",
     "meaningEn": "To open, to become open",
     "collocation": {
       "jpRuby": "[店:みせ]が[開:あ]く",
@@ -9734,7 +9734,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "あける",
     "ruby": "[開:あ]ける",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Membuka pintu tutup wadah",
+    "meaningId": "Membuka pintu, tutup wadah",
     "meaningEn": "To open, to unlock",
     "collocation": {
       "jpRuby": "[鍵:かぎ]を[開:あ]ける",
@@ -9758,7 +9758,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "つく",
     "ruby": "つく",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Menyala menyala lampunya",
+    "meaningId": "Menyala, menyala lampunya",
     "meaningEn": "To turn on, to be lit",
     "collocation": {
       "jpRuby": "[電気:でんき]がつく",
@@ -9782,7 +9782,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "つける",
     "ruby": "つける",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menyalakan memutar sakelar",
+    "meaningId": "Menyalakan, memutar sakelar",
     "meaningEn": "To turn on, to switch on",
     "collocation": {
       "jpRuby": "[暖房:だんぼう]をつける",
@@ -9806,7 +9806,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "きえる",
     "ruby": "[消:き]える",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Padam mati lenyap hilang",
+    "meaningId": "Padam, mati, lenyap, hilang",
     "meaningEn": "To go out, to vanish, to disappear",
     "collocation": {
       "jpRuby": "[火:ひ]が[消:き]える",
@@ -9830,7 +9830,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "けす",
     "ruby": "[消:け]す",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Memadamkan api mematikan daya",
+    "meaningId": "Memadamkan api, mematikan daya",
     "meaningEn": "To extinguish, to turn off, to erase",
     "collocation": {
       "jpRuby": "[火:ひ]を[消:け]す",
@@ -9854,7 +9854,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "うごく",
     "ruby": "[動:うご]く",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Bergerak berfungsi berjalan",
+    "meaningId": "Bergerak, berfungsi, berjalan",
     "meaningEn": "To move, to operate, to work",
     "collocation": {
       "jpRuby": "[針:はり]が[動:うご]く",
@@ -9878,7 +9878,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "うごかす",
     "ruby": "[動:うご]かす",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menggerakkan mengoperasikan mesin",
+    "meaningId": "Menggerakkan, mengoperasikan mesin",
     "meaningEn": "To move, to operate, to shift",
     "collocation": {
       "jpRuby": "[機械:きかい]を[動:うご]かす",
@@ -9902,7 +9902,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はじまる",
     "ruby": "[始:はじ]まる",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Dimulai mengawali acara",
+    "meaningId": "Dimulai, mengawali acara",
     "meaningEn": "To begin, to start",
     "collocation": {
       "jpRuby": "[授業:じゅぎょう]が[始:はじ]まる",
@@ -9926,7 +9926,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "はじめる",
     "ruby": "[始:はじ]める",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Memulai mengawali aktivitas baru",
+    "meaningId": "Memulai, mengawali aktivitas baru",
     "meaningEn": "To start, to begin, to commence",
     "collocation": {
       "jpRuby": "[仕事:しごと]を[始:はじ]める",
@@ -9950,7 +9950,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "おわる",
     "ruby": "[終:お]わる",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Berakhir usai rampung",
+    "meaningId": "Berakhir, usai, rampung",
     "meaningEn": "To end, to come to an end",
     "collocation": {
       "jpRuby": "[会議:かいぎ]が[終:お]わる",
@@ -9974,7 +9974,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "おえる",
     "ruby": "[終:お]える",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Menuntaskan menyudahi masa tugas",
+    "meaningId": "Menuntaskan, menyudahi masa tugas",
     "meaningEn": "To finish, to complete",
     "collocation": {
       "jpRuby": "[任務:にんむ]を[終:お]える",
@@ -9998,7 +9998,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ふえる",
     "ruby": "[増:ふ]える",
     "partOfSpeech": "[動Ⅱ 自]",
-    "meaningId": "Bertambah melonjak jumlahnya",
+    "meaningId": "Bertambah, melonjak jumlahnya",
     "meaningEn": "To increase, to multiply",
     "collocation": {
       "jpRuby": "[体重:たいじゅう]が[増:ふ]える",
@@ -10022,7 +10022,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "ふやす",
     "ruby": "[増:ふ]やす",
     "partOfSpeech": "[動Ⅰ 他]",
-    "meaningId": "Menambah memperbanyak investasi tabungan",
+    "meaningId": "Menambah, memperbanyak investasi tabungan",
     "meaningEn": "To increase, to add to",
     "collocation": {
       "jpRuby": "[貯金:ちょきん]を[増:ふ]やす",
@@ -10046,7 +10046,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "かわる",
     "ruby": "[変:か]わる",
     "partOfSpeech": "[動Ⅰ 自]",
-    "meaningId": "Berubah bertukar wujud kondisi",
+    "meaningId": "Berubah, bertukar wujud kondisi",
     "meaningEn": "To change, to be transformed",
     "collocation": {
       "jpRuby": "[季節:きせつ]が[変:か]わる",
@@ -10070,7 +10070,7 @@ export const PART2_VERBS: TangoN3Card[] = [
     "reading": "かえる",
     "ruby": "[変:か]える",
     "partOfSpeech": "[動Ⅱ 他]",
-    "meaningId": "Mengubah merombak tata letak pola pikir",
+    "meaningId": "Mengubah, merombak tata letak / pola pikir",
     "meaningEn": "To change, to alter, to reform",
     "collocation": {
       "jpRuby": "[考:かんが]え[方:かた]を[変:か]える",

@@ -30,6 +30,8 @@ export function KanjiLookupModal() {
       ? "bg-amber-500/15 text-amber-500 border-amber-500/30"
       : term.level === "N3"
       ? "bg-emerald-500/15 text-emerald-500 border-emerald-500/30"
+      : term.level === "N4" || term.level === "N5"
+      ? "bg-teal-500/15 text-teal-500 border-teal-500/30"
       : "bg-blue-500/15 text-blue-500 border-blue-500/30";
 
   return (
@@ -65,7 +67,7 @@ export function KanjiLookupModal() {
               </span>
               <span className="text-xs text-[var(--text-secondary)] font-medium flex items-center gap-1">
                 <BookOpen size={12} />
-                Glosarium Kosakata FE
+                {term.contextLabel || (term.level === "FE-IT" ? "Glosarium Kosakata FE" : "Kamus Kosakata & Kanji")}
               </span>
             </div>
 
@@ -82,9 +84,16 @@ export function KanjiLookupModal() {
           {/* Term Display (Big Kanji + Reading + Audio) */}
           <div className="p-4 sm:p-5 rounded-2xl bg-[var(--surface-soft)]/60 border border-[var(--border)] flex items-center justify-between gap-4">
             <div className="flex flex-col gap-1 min-w-0">
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] tracking-wide font-japanese truncate">
-                {term.termJp}
-              </h3>
+              <div className="flex items-center gap-2">
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] tracking-wide font-japanese truncate">
+                  {term.termJp}
+                </h3>
+                {term.partOfSpeech && (
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[var(--surface)] border border-[var(--border)] text-[var(--brand-primary)] shrink-0">
+                    {term.partOfSpeech}
+                  </span>
+                )}
+              </div>
               <p className="text-xs sm:text-sm text-[var(--brand-primary)] font-mono font-semibold">
                 【{term.reading}】 · <span className="opacity-80 italic">{term.romaji}</span>
               </p>
@@ -117,16 +126,35 @@ export function KanjiLookupModal() {
             </span>
             <div className="p-4 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] text-sm sm:text-[15px] leading-relaxed text-[var(--text-primary)] font-medium">
               {term.meaningId}
+              {term.meaningEn && (
+                <div className="mt-2 pt-2 border-t border-[var(--border)]/60 text-xs text-[var(--text-secondary)] flex items-center gap-1.5">
+                  <span className="font-bold text-[10px] uppercase tracking-wider text-[var(--brand-primary)]">EN:</span>
+                  <span>{term.meaningEn}</span>
+                </div>
+              )}
             </div>
           </div>
 
-          {/* Exam Context Tip (If available) */}
+          {/* Collocation (If available) */}
+          {term.collocation && (
+            <div className="p-3.5 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] text-xs text-[var(--text-primary)] space-y-1">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--brand-primary)] block">
+                Pasangan Kata / Kolokasi (連語):
+              </span>
+              <p className="font-semibold text-sm font-japanese">
+                {term.collocation.jpRuby.replace(/\[([^:\]]+):([^\]]+)\]/g, "$1 ($2)")}
+              </p>
+              <p className="text-[var(--text-secondary)] italic">{term.collocation.meaningId}</p>
+            </div>
+          )}
+
+          {/* Exam / Study Tip */}
           {term.examTip && (
             <div className="p-3.5 sm:p-4 rounded-2xl bg-amber-500/10 border border-amber-500/25 flex items-start gap-2.5 text-xs text-amber-700 dark:text-amber-300 leading-relaxed">
               <Lightbulb size={16} className="text-amber-500 shrink-0 mt-0.5" />
               <div>
                 <b className="block text-amber-600 dark:text-amber-400 mb-0.5 uppercase tracking-wide text-[10px]">
-                  Tips Ujian FE:
+                  {term.level === "FE-IT" ? "Tips Ujian FE:" : "Tips Pemahaman & JLPT:"}
                 </b>
                 {term.examTip}
               </div>

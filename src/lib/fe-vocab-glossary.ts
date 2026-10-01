@@ -9,8 +9,19 @@ export interface VocabEntry {
   reading: string;
   romaji: string;
   meaningId: string;
-  level: "N3" | "N2" | "N1" | "FE-IT";
+  meaningEn?: string;
+  partOfSpeech?: string;
+  level: "N5" | "N4" | "N3" | "N2" | "N1" | "FE-IT" | "General";
+  contextLabel?: string;
   examTip?: string;
+  collocation?: {
+    jpRuby: string;
+    meaningId: string;
+  };
+  exampleSentence?: {
+    jpRuby: string;
+    meaningId: string;
+  };
 }
 
 // Hiragana to Romaji converter for dynamic pronunciation guides
@@ -385,59 +396,182 @@ export const FE_VOCAB_GLOSSARY: Record<string, VocabEntry> = {
 };
 
 import { FE_CARDS } from "@/data/fe-study-data";
+import { DOKKAI_VOCAB_GLOSSARY } from "./dokkai-vocab-glossary";
+import { TANGO_N3_CARDS, TangoN3Card } from "@/data/tango-n3-data";
+
+// Fast lookup cache for Tango N3
+const tangoByWord = new Map<string, TangoN3Card>();
+const tangoByReading = new Map<string, TangoN3Card>();
+
+for (const card of TANGO_N3_CARDS) {
+  if (!tangoByWord.has(card.word)) {
+    tangoByWord.set(card.word, card);
+  }
+  if (!tangoByReading.has(card.reading)) {
+    tangoByReading.set(card.reading, card);
+  }
+}
 
 /**
- * Looks up any Japanese kanji term in our dictionary.
- * Searches curated glossary first, then all 129 FE cards, then falls back dynamically.
+ * Looks up any Japanese kanji or vocabulary term in our integrated dictionary.
+ * Priority:
+ * 1. Curated Dokkai reading passage glossary (185 definitions)
+ * 2. Official Shin Kanzen Master Tango N3 dataset (1,800 cards)
+ * 3. Curated FE IT vocabulary glossary & 129 FE Cards
+ * 4. Substring and compound match
+ * 5. Clean, polite dynamic Japanese dictionary fallback
  */
-export function lookupFeTerm(kanji: string, fallbackFurigana?: string): VocabEntry {
+export function lookupFeTerm(
+  kanji: string,
+  fallbackFurigana?: string,
+  context: "dokkai" | "tango" | "fe" | "auto" = "auto"
+): VocabEntry {
   const cleanKanji = kanji.replace(/\[|\]/g, "").trim();
 
-  // 1. Direct match in curated glossary
-  if (FE_VOCAB_GLOSSARY[cleanKanji]) {
-    return FE_VOCAB_GLOSSARY[cleanKanji];
+  // If FE context is explicitly requested, search FE resources first
+  if (context === "fe") {
+    if (FE_VOCAB_GLOSSARY[cleanKanji]) {
+      return {
+        ...FE_VOCAB_GLOSSARY[cleanKanji],
+        contextLabel: "Glosarium Kosakata FE",
+      };
+    }
+    const matchedCard = FE_CARDS.find(
+      (c) =>
+        c.termJp === cleanKanji ||
+        (cleanKanji.length >= 3 && c.termJp.includes(cleanKanji)) ||
+        (c.termJp.length >= 3 && cleanKanji.includes(c.termJp))
+    );
+    if (matchedCard) {
+      const reading = matchedCard.furigana || fallbackFurigana || cleanKanji;
+      return {
+        termJp: cleanKanji,
+        reading,
+        romaji: hiraganaToRomaji(reading),
+        meaningId: `${matchedCard.termEn}: ${matchedCard.definitionId}`,
+        level: "FE-IT",
+        contextLabel: "Glosarium Kosakata FE",
+        examTip: matchedCard.keyDifferentiator
+          ? `Kata Kunci Ujian: ${matchedCard.keyDifferentiator.replace(/\([^)]+\)/g, "").trim()}`
+          : undefined,
+      };
+    }
   }
 
-  // 2. Direct / close match in 129 FE Study Cards
-  const matchedCard = FE_CARDS.find(
+  // 1. Direct match in Dokkai Curated Glossary (highest priority for reading passages)
+  if (DOKKAI_VOCAB_GLOSSARY[cleanKanji]) {
+    const entry = DOKKAI_VOCAB_GLOSSARY[cleanKanji];
+    const reading = entry.reading || fallbackFurigana || cleanKanji;
+    return {
+      termJp: cleanKanji,
+      reading,
+      romaji: hiraganaToRomaji(reading),
+      meaningId: entry.meaningId,
+      level: entry.level,
+      contextLabel: "Kamus Dokkai N3",
+      examTip: entry.tip,
+    };
+  }
+
+  // 2. Direct match in Tango N3 (1,800 official vocabulary cards)
+  const matchedTango =
+    tangoByWord.get(cleanKanji) ||
+    (fallbackFurigana ? tangoByReading.get(fallbackFurigana) : undefined) ||
+    TANGO_N3_CARDS.find(
+      (c) =>
+        c.word === cleanKanji ||
+        (cleanKanji.length >= 2 && c.word.includes(cleanKanji)) ||
+        (c.word.length >= 2 && cleanKanji.includes(c.word))
+    );
+
+  if (matchedTango) {
+    const reading = matchedTango.reading || fallbackFurigana || cleanKanji;
+    return {
+      termJp: cleanKanji,
+      reading,
+      romaji: hiraganaToRomaji(reading),
+      meaningId: matchedTango.meaningId,
+      meaningEn: matchedTango.meaningEn,
+      partOfSpeech: matchedTango.partOfSpeech,
+      level: "N3",
+      contextLabel: "Shin Kanzen Tango N3",
+      examTip: matchedTango.collocation
+        ? `Kolokasi: ${matchedTango.collocation.jpRuby.replace(/\[([^:\]]+):([^\]]+)\]/g, "$1 ($2)")} — ${matchedTango.collocation.meaningId}`
+        : matchedTango.usageNote || undefined,
+      collocation: matchedTango.collocation,
+      exampleSentence: matchedTango.exampleSentence,
+    };
+  }
+
+  // 3. Substring match in Dokkai Curated Glossary
+  for (const [key, entry] of Object.entries(DOKKAI_VOCAB_GLOSSARY)) {
+    if (cleanKanji.includes(key) || (key.length >= 2 && key.includes(cleanKanji))) {
+      const reading = entry.reading || fallbackFurigana || cleanKanji;
+      return {
+        termJp: cleanKanji,
+        reading,
+        romaji: hiraganaToRomaji(reading),
+        meaningId: entry.meaningId,
+        level: entry.level,
+        contextLabel: "Kamus Dokkai N3",
+        examTip: entry.tip,
+      };
+    }
+  }
+
+  // 4. Curated FE Study Glossary (for technical IT terms)
+  if (FE_VOCAB_GLOSSARY[cleanKanji]) {
+    return {
+      ...FE_VOCAB_GLOSSARY[cleanKanji],
+      contextLabel: "Glosarium Kosakata FE",
+    };
+  }
+
+  // 5. FE Study Cards (129 cards)
+  const matchedFeCard = FE_CARDS.find(
     (c) =>
       c.termJp === cleanKanji ||
       (cleanKanji.length >= 3 && c.termJp.includes(cleanKanji)) ||
       (c.termJp.length >= 3 && cleanKanji.includes(c.termJp))
   );
 
-  if (matchedCard) {
-    const reading = matchedCard.furigana || fallbackFurigana || cleanKanji;
+  if (matchedFeCard) {
+    const reading = matchedFeCard.furigana || fallbackFurigana || cleanKanji;
     return {
       termJp: cleanKanji,
       reading,
       romaji: hiraganaToRomaji(reading),
-      meaningId: `${matchedCard.termEn}: ${matchedCard.definitionId}`,
+      meaningId: `${matchedFeCard.termEn}: ${matchedFeCard.definitionId}`,
       level: "FE-IT",
-      examTip: matchedCard.keyDifferentiator
-        ? `Kata Kunci Ujian: ${matchedCard.keyDifferentiator.replace(/\([^)]+\)/g, "").trim()}`
+      contextLabel: "Glosarium Kosakata FE",
+      examTip: matchedFeCard.keyDifferentiator
+        ? `Kata Kunci Ujian: ${matchedFeCard.keyDifferentiator.replace(/\([^)]+\)/g, "").trim()}`
         : undefined,
     };
   }
 
-  // 3. Substring match from curated glossary
+  // 6. Substring match from FE Glossary (technical terms)
   for (const [key, entry] of Object.entries(FE_VOCAB_GLOSSARY)) {
     if (cleanKanji.includes(key) || key.includes(cleanKanji)) {
       return {
         ...entry,
         termJp: cleanKanji,
+        contextLabel: "Glosarium Kosakata FE",
       };
     }
   }
 
-  // 4. Dynamic fallback using furigana
+  // 7. Dynamic clean fallback (polite Japanese dictionary entry, NO misleading FE message!)
   const reading = fallbackFurigana || cleanKanji;
   return {
     termJp: cleanKanji,
     reading,
     romaji: hiraganaToRomaji(reading),
-    meaningId: "Istilah teknis ujian IPA FE Jepang.",
-    level: "FE-IT",
+    meaningId: fallbackFurigana
+      ? `Kosakata bahasa Jepang dibaca "${fallbackFurigana}".`
+      : "Kosakata bahasa Jepang.",
+    level: "N3",
+    contextLabel: context === "fe" ? "Glosarium Kosakata FE" : "Kamus Kosakata Jepang",
     examTip: "Ketuk tombol suara untuk mendengarkan pelafalan audio bahasa Jepang.",
   };
 }

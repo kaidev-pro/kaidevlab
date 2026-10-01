@@ -17,10 +17,14 @@ let globalState: LookupState = {
 
 const listeners = new Set<(state: LookupState) => void>();
 
-export function openKanjiLookup(kanji: string, furigana?: string) {
+export function openKanjiLookup(
+  kanji: string,
+  furigana?: string,
+  context?: "dokkai" | "tango" | "fe" | "auto"
+) {
   triggerHaptic("light");
   playTapSound();
-  const term = lookupFeTerm(kanji, furigana);
+  const term = lookupFeTerm(kanji, furigana, context);
   globalState = {
     isOpen: true,
     term,

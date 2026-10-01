@@ -8,6 +8,7 @@ interface RubyTermProps {
   fallbackText: string;
   showFurigana?: boolean;
   enableLookup?: boolean;
+  context?: "dokkai" | "tango" | "fe" | "auto";
   className?: string;
   rtClassName?: string;
 }
@@ -26,6 +27,7 @@ export function RubyTerm({
   fallbackText,
   showFurigana = true,
   enableLookup = true,
+  context = "auto",
   className = "",
   rtClassName = "",
 }: RubyTermProps) {
@@ -60,7 +62,7 @@ export function RubyTerm({
           enableLookup
             ? (e) => {
                 e.stopPropagation();
-                openKanjiLookup(kanji, furigana);
+                openKanjiLookup(kanji, furigana, context);
               }
             : undefined
         }

@@ -65,6 +65,7 @@ import { TangoQuizView } from "@/components/tango-n3/tango-quiz-view";
 import { TangoReadingView } from "@/components/tango-n3/tango-reading-view";
 import { TangoChapterQuizModal } from "@/components/tango-n3/tango-chapter-quiz-modal";
 import { RubyTerm } from "@/components/fe-study/ruby-term";
+import { KanjiLookupModal } from "@/components/fe-study/kanji-lookup-modal";
 import { useJapaneseTts } from "@/lib/use-japanese-tts";
 
 export function TangoN3Client() {
@@ -1354,6 +1355,9 @@ export function TangoN3Client() {
           }}
         />
       )}
+
+      {/* Kanji & Vocabulary Quick Lookup Modal */}
+      <KanjiLookupModal />
     </div>
   );
 }

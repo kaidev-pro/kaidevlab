@@ -464,6 +464,7 @@ export function DokkaiClient() {
                           rubyText={sentence.ruby || autoAnnotateRuby(sentence.textJp)}
                           fallbackText={sentence.textJp}
                           showFurigana={showFurigana}
+                          context="dokkai"
                           className="inline leading-[2.3] sm:leading-[2.5]"
                         />
                         {/* Sentence TTS trigger button */}
@@ -573,6 +574,7 @@ export function DokkaiClient() {
                         rubyText={autoAnnotateRuby(q.questionJp)}
                         fallbackText={q.questionJp}
                         showFurigana={showFurigana}
+                        context="dokkai"
                       />
                     </h3>
                   </div>
@@ -621,6 +623,7 @@ export function DokkaiClient() {
                                 rubyText={autoAnnotateRuby(opt.textJp)}
                                 fallbackText={opt.textJp}
                                 showFurigana={showFurigana}
+                                context="dokkai"
                               />
                             </p>
                           </div>

@@ -1,8 +1,9 @@
 // Kaidevlab — Service Worker (Offline PWA & Ultra-fast Offline Caching)
-const CACHE_NAME = "kaidevlab-pwa-v16";
+const CACHE_NAME = "kaidevlab-pwa-v17";
 
 const PRECACHE_URLS = [
   "/learn",
+  "/tools/n3-suite",
   "/tools/fe-study",
   "/tools/tango-n3",
   "/tools/dokkai-n3",

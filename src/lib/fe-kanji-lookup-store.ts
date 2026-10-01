@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { lookupFeTerm, VocabEntry } from "./fe-vocab-glossary";
+import { triggerHaptic } from "./haptics";
+import { playTapSound } from "./global-sound";
 
 interface LookupState {
   isOpen: boolean;
@@ -16,6 +18,8 @@ let globalState: LookupState = {
 const listeners = new Set<(state: LookupState) => void>();
 
 export function openKanjiLookup(kanji: string, furigana?: string) {
+  triggerHaptic("light");
+  playTapSound();
   const term = lookupFeTerm(kanji, furigana);
   globalState = {
     isOpen: true,

@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { PwaRegister } from "@/components/pwa-register";
 import { LanguageProvider } from "@/lib/i18n/context";
+import { GlobalPlatformFeatures } from "@/components/global-platform-features";
 import "./globals.css";
 
 const inter = Inter({ variable: "--font-body", subsets: ["latin"] });
@@ -86,6 +87,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <SiteHeader />
           {children}
           <SiteFooter />
+          <GlobalPlatformFeatures />
         </LanguageProvider>
       </body>
     </html>

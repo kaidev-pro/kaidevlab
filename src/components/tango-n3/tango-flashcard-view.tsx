@@ -32,6 +32,8 @@ import { TangoN3Card } from "@/data/tango-n3-data";
 import { CardRating } from "@/lib/tango-n3-storage";
 import { RubyTerm } from "@/components/fe-study/ruby-term";
 import { TangoSessionSummary } from "@/components/tango-n3/tango-session-summary";
+import { triggerHaptic } from "@/lib/haptics";
+import { recordUnifiedActivity } from "@/lib/unified-study-storage";
 
 interface TangoFlashcardViewProps {
   cards: TangoN3Card[];
@@ -231,6 +233,7 @@ export function TangoFlashcardView({
   }, [currentCard, autoSpeakEnabled, isSessionFinished, speakJapanese]);
 
   const handleFlip = useCallback(() => {
+    triggerHaptic("light");
     if (soundEffects && audioRef.current) {
       audioRef.current.playFlip();
     }
@@ -240,6 +243,12 @@ export function TangoFlashcardView({
   const handleRate = useCallback(
     (rating: CardRating) => {
       if (!currentCard) return;
+
+      if (rating === "mastered") triggerHaptic("success");
+      else if (rating === "unsure") triggerHaptic("warning");
+      else triggerHaptic("error");
+
+      recordUnifiedActivity("tango", 1);
 
       if (soundEffects && audioRef.current) {
         if (rating === "mastered") audioRef.current.playMastered();

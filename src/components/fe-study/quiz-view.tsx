@@ -36,6 +36,9 @@ import { RubyTerm } from "@/components/fe-study/ruby-term";
 import { autoAnnotateRuby } from "@/lib/fe-furigana";
 import { useJapaneseTts } from "@/lib/use-japanese-tts";
 import { ConfettiBurst } from "@/components/fe-study/confetti-burst";
+import { triggerHaptic } from "@/lib/haptics";
+import { playSuccessChime, playErrorBuzz } from "@/lib/global-sound";
+import { recordUnifiedActivity } from "@/lib/unified-study-storage";
 
 interface QuizViewProps {
   onBackToMenu: () => void;
@@ -272,7 +275,14 @@ export function QuizView({
     const isCorrect = key === currentQ.correctKey;
     if (isCorrect) {
       setPracticeScore((prev) => prev + 1);
+      triggerHaptic("success");
+      playSuccessChime();
+    } else {
+      triggerHaptic("error");
+      playErrorBuzz();
     }
+
+    recordUnifiedActivity("fe", 1);
     recordQuestionAttempt(currentQ.id, key, isCorrect);
   };
 

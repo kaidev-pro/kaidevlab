@@ -795,7 +795,7 @@
   .entry-link { width: 100%; justify-content: center; }
   .page-hero, .article-header { padding-top: 3rem; }
   .article-body { padding: 1.25rem; border-radius: 20px; }
-  .site-footer { grid-template-columns: 1fr; padding-top: 2rem; }
+  .site-footer { grid-template-columns: 1fr; padding-top: 2rem; padding-bottom: 5.5rem; }
   .footer-links { justify-content: space-between; gap: 1rem; }
   .footer-legal-links { border-left: 0; padding-left: 0; }
   .site-footer small { grid-column: auto; }

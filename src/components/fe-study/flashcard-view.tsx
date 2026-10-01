@@ -26,6 +26,8 @@ import { FECard, CATEGORY_LABELS } from "@/data/fe-study-data";
 import { CardRating } from "@/lib/fe-study-storage";
 import { RubyTerm } from "@/components/fe-study/ruby-term";
 import { autoAnnotateRuby } from "@/lib/fe-furigana";
+import { triggerHaptic } from "@/lib/haptics";
+import { recordUnifiedActivity } from "@/lib/unified-study-storage";
 
 interface FlashcardViewProps {
   cards: FECard[];
@@ -172,6 +174,7 @@ export function FlashcardView({
   const rightBadgeOpacity = useTransform(x, [35, 110], [0, 1]);
   const leftBadgeOpacity = useTransform(x, [-35, -110], [0, 1]);
   const handleFlip = useCallback(() => {
+    triggerHaptic("light");
     if (soundEffects && audioRef.current) {
       audioRef.current.playFlip();
     }
@@ -181,6 +184,12 @@ export function FlashcardView({
   const handleRate = useCallback(
     (rating: CardRating) => {
       if (!currentCard) return;
+
+      if (rating === "mastered") triggerHaptic("success");
+      else if (rating === "unsure") triggerHaptic("warning");
+      else triggerHaptic("error");
+
+      recordUnifiedActivity("fe", 1);
 
       if (soundEffects && audioRef.current) {
         if (rating === "mastered") audioRef.current.playMastered();

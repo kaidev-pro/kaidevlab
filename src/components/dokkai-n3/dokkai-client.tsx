@@ -16,6 +16,7 @@ import {
   Lightbulb,
   ArrowLeft,
   Check,
+  Flame,
 } from "lucide-react";
 import { DOKKAI_PASSAGES } from "@/data/dokkai-n3/passages";
 import { DokkaiPassage, DokkaiCategory } from "@/data/dokkai-n3/types";
@@ -29,6 +30,10 @@ import { RubyTerm } from "@/components/fe-study/ruby-term";
 import { autoAnnotateRuby } from "@/lib/fe-furigana";
 import { useJapaneseTts } from "@/lib/use-japanese-tts";
 import { KanjiLookupModal } from "@/components/fe-study/kanji-lookup-modal";
+import { triggerHaptic } from "@/lib/haptics";
+import { playTapSound, playSuccessChime, playErrorBuzz } from "@/lib/global-sound";
+import { recordUnifiedActivity } from "@/lib/unified-study-storage";
+import { openSyncModal } from "@/lib/global-modals-store";
 
 export function DokkaiClient() {
   const [passages] = useState<DokkaiPassage[]>(DOKKAI_PASSAGES);
@@ -87,8 +92,24 @@ export function DokkaiClient() {
 
       setSelectedAnswers((prev) => ({ ...prev, [questionId]: optionKey }));
 
+      if (isCorrect) {
+        triggerHaptic("success");
+        playSuccessChime();
+      } else {
+        triggerHaptic("error");
+        playErrorBuzz();
+      }
+
+      recordUnifiedActivity("dokkai", 1);
+
       if (clueIndex !== undefined) {
         setHighlightedClueIndex(clueIndex);
+        setTimeout(() => {
+          const el = document.getElementById(`dokkai-sentence-${clueIndex}`);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        }, 120);
       }
 
       // Check if all questions in passage are answered
@@ -108,6 +129,8 @@ export function DokkaiClient() {
   );
 
   const handleToggleBookmark = useCallback(() => {
+    triggerHaptic("light");
+    playTapSound();
     const updated = toggleDokkaiBookmark(activePassage.id);
     setProgress(updated);
   }, [activePassage.id]);
@@ -166,6 +189,20 @@ export function DokkaiClient() {
               <span>ルビ {showFurigana ? "ON" : "OFF"}</span>
             </button>
 
+
+            {/* Sync & Streak Button */}
+            <button
+              type="button"
+              onClick={() => {
+                triggerHaptic("medium");
+                playTapSound();
+                openSyncModal();
+              }}
+              className="p-2 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-500 hover:bg-amber-500/20 text-xs font-bold transition-all active:scale-95 flex items-center gap-1"
+              title="Habit Tracker & Sinkronisasi Perangkat"
+            >
+              <Flame size={15} className="fill-amber-500 animate-pulse" />
+            </button>
 
             {/* Bookmark Button */}
             <button
@@ -416,9 +453,10 @@ export function DokkaiClient() {
                     return (
                       <span
                         key={sentence.id}
+                        id={`dokkai-sentence-${idx}`}
                         className={`inline transition-all rounded px-1 py-0.5 ${
                           isClue
-                            ? "bg-amber-500/20 text-[var(--text-primary)] border-b-2 border-amber-500 font-bold"
+                            ? "bg-amber-500/20 text-[var(--text-primary)] border-b-2 border-amber-500 font-bold scroll-mt-24"
                             : ""
                         }`}
                       >

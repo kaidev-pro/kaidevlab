@@ -2,10 +2,13 @@
 "use client";
 
 import Image from "next/image";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, Moon, Sun, X, Search } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/lib/i18n/context";
 import { LanguageSwitcher } from "./language-switcher";
+import { openCommandPalette } from "@/lib/global-modals-store";
+import { triggerHaptic } from "@/lib/haptics";
+import { playTapSound } from "@/lib/global-sound";
 
 export function SiteHeader() {
   const { t } = useLanguage();
@@ -71,6 +74,20 @@ export function SiteHeader() {
       </nav>
 
       <div className="header-actions">
+        <button
+          className="icon-button command-search-toggle"
+          type="button"
+          onClick={() => {
+            triggerHaptic("light");
+            playTapSound();
+            openCommandPalette();
+          }}
+          aria-label="Cari Cepat (Cmd + K)"
+          title="Cari Cepat (Ctrl + K / Cmd + K)"
+        >
+          <Search size={18} />
+        </button>
+
         <LanguageSwitcher className="hidden sm:inline-flex" />
 
         <button

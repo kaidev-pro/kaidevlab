@@ -58,6 +58,9 @@ import {
   DEFAULT_TANGO_PROGRESS,
 } from "@/lib/tango-n3-storage";
 import { TangoFlashcardView } from "@/components/tango-n3/tango-flashcard-view";
+import { openSyncModal } from "@/lib/global-modals-store";
+import { triggerHaptic } from "@/lib/haptics";
+import { playTapSound } from "@/lib/global-sound";
 import { TangoQuizView } from "@/components/tango-n3/tango-quiz-view";
 import { TangoReadingView } from "@/components/tango-n3/tango-reading-view";
 import { TangoChapterQuizModal } from "@/components/tango-n3/tango-chapter-quiz-modal";
@@ -243,13 +246,20 @@ export function TangoN3Client() {
             <span>Kaidevlab Tools</span>
           </a>
 
-          {/* Streak indicator */}
-          {progress.streak > 0 && (
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-semibold">
-              <Flame className="w-4 h-4 fill-amber-500" />
-              <span>Streak {progress.streak} Hari</span>
-            </div>
-          )}
+          {/* Streak indicator & Sync Trigger */}
+          <button
+            type="button"
+            onClick={() => {
+              triggerHaptic("medium");
+              playTapSound();
+              openSyncModal();
+            }}
+            className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-semibold border border-amber-500/30 transition-all active:scale-95 cursor-pointer shadow-xs"
+            title="Habit Tracker & Sinkronisasi Perangkat"
+          >
+            <Flame className="w-4 h-4 fill-amber-500 animate-pulse" />
+            <span>Streak {progress.streak} Hari · Sync</span>
+          </button>
         </div>
       )}
 

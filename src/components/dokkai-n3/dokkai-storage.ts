@@ -17,7 +17,7 @@ export interface DokkaiProgress {
 
 const STORAGE_KEY = "kaidevlab_dokkai_n3_progress_v1";
 
-const DEFAULT_PROGRESS: DokkaiProgress = {
+export const DEFAULT_DOKKAI_PROGRESS: DokkaiProgress = {
   completedPassageIds: [],
   answeredQuestions: {},
   bookmarkedPassageIds: [],
@@ -26,13 +26,13 @@ const DEFAULT_PROGRESS: DokkaiProgress = {
 };
 
 export function loadDokkaiProgress(): DokkaiProgress {
-  if (typeof window === "undefined") return DEFAULT_PROGRESS;
+  if (typeof window === "undefined") return DEFAULT_DOKKAI_PROGRESS;
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return DEFAULT_PROGRESS;
-    return { ...DEFAULT_PROGRESS, ...JSON.parse(raw) };
+    if (!raw) return DEFAULT_DOKKAI_PROGRESS;
+    return { ...DEFAULT_DOKKAI_PROGRESS, ...JSON.parse(raw) };
   } catch {
-    return DEFAULT_PROGRESS;
+    return DEFAULT_DOKKAI_PROGRESS;
   }
 }
 

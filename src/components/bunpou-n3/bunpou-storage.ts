@@ -18,7 +18,7 @@ export interface BunpouProgress {
 
 const STORAGE_KEY = "kaidevlab_bunpou_n3_progress_v1";
 
-const DEFAULT_PROGRESS: BunpouProgress = {
+export const DEFAULT_BUNPOU_PROGRESS: BunpouProgress = {
   studiedPatternIds: [],
   bookmarkedPatternIds: [],
   answeredQuestions: {},
@@ -27,13 +27,13 @@ const DEFAULT_PROGRESS: BunpouProgress = {
 };
 
 export function loadBunpouProgress(): BunpouProgress {
-  if (typeof window === "undefined") return DEFAULT_PROGRESS;
+  if (typeof window === "undefined") return DEFAULT_BUNPOU_PROGRESS;
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return DEFAULT_PROGRESS;
-    return { ...DEFAULT_PROGRESS, ...JSON.parse(raw) };
+    if (!raw) return DEFAULT_BUNPOU_PROGRESS;
+    return { ...DEFAULT_BUNPOU_PROGRESS, ...JSON.parse(raw) };
   } catch {
-    return DEFAULT_PROGRESS;
+    return DEFAULT_BUNPOU_PROGRESS;
   }
 }
 

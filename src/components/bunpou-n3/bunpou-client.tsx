@@ -30,6 +30,7 @@ import { BUNPOU_ITEMS } from "@/data/bunpou-n3/grammar-items";
 import { BunpouItem, BunpouCategory, BunpouQuestion } from "@/data/bunpou-n3/types";
 import {
   BunpouProgress,
+  DEFAULT_BUNPOU_PROGRESS,
   loadBunpouProgress,
   markPatternAsStudied,
   toggleBunpouBookmark,
@@ -51,7 +52,7 @@ export function BunpouClient() {
   const [activeTab, setActiveTab] = useState<"learn" | "quiz">("learn");
 
   // Progress
-  const [progress, setProgress] = useState<BunpouProgress>(loadBunpouProgress);
+  const [progress, setProgress] = useState<BunpouProgress>(DEFAULT_BUNPOU_PROGRESS);
 
   // Seiretsu interactive state: questionId -> array of chosen item indices
   const [seiretsuSlots, setSeiretsuSlots] = useState<Record<string, number[]>>({});

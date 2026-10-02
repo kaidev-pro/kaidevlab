@@ -22,6 +22,7 @@ import { DOKKAI_PASSAGES } from "@/data/dokkai-n3/passages";
 import { DokkaiPassage, DokkaiCategory } from "@/data/dokkai-n3/types";
 import {
   DokkaiProgress,
+  DEFAULT_DOKKAI_PROGRESS,
   loadDokkaiProgress,
   recordDokkaiAnswer,
   toggleDokkaiBookmark,
@@ -47,7 +48,7 @@ export function DokkaiClient() {
   const [highlightedClueIndex, setHighlightedClueIndex] = useState<number | null>(null);
 
   // Progress
-  const [progress, setProgress] = useState<DokkaiProgress>(loadDokkaiProgress);
+  const [progress, setProgress] = useState<DokkaiProgress>(DEFAULT_DOKKAI_PROGRESS);
 
   // TTS
   const { speak, stop, isSpeaking, activeSpeechId } = useJapaneseTts();

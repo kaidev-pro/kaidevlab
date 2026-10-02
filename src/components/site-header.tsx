@@ -63,7 +63,7 @@ export function SiteHeader() {
           aria-hidden="true"
           fill
           sizes="220px"
-          priority
+          loading="lazy"
         />
       </a>
 

@@ -1,4 +1,4 @@
-import { FE_CARDS, FECard, FECategory } from "./fe-study-data";
+import type { FECategory } from "./fe-study-data";
 
 export interface FEDailyDeck {
   day: number;
@@ -412,9 +412,3 @@ export const FE_DAILY_DECKS: FEDailyDeck[] = [
   }
 ];
 
-export function getCardsForDay(day: number): FECard[] {
-  const deck = FE_DAILY_DECKS.find(d => d.day === day);
-  if (!deck) return [];
-  const cardMap = new Map(FE_CARDS.map(c => [c.id, c]));
-  return deck.cardIds.map(id => cardMap.get(id)).filter((c): c is FECard => Boolean(c));
-}

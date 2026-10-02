@@ -43,8 +43,8 @@ import {
 } from "lucide-react";
 import { loadTangoProgress } from "@/lib/tango-n3-storage";
 import { loadStudyProgress } from "@/lib/fe-study-storage";
-import { TANGO_N3_CARDS, TANGO_N3_CHAPTERS } from "@/data/tango-n3-data";
-import { FE_CARDS } from "@/data/fe-study-data";
+import { TANGO_N3_CHAPTERS } from "@/data/tango-n3/chapters";
+import { FE_TOTAL_CARDS, TANGO_TOTAL_CARDS, tangoCardIdByNumber } from "@/data/learn-stats";
 import { FE_DAILY_DECKS } from "@/data/fe-daily-decks";
 import { FeCandidateIdCard } from "@/components/fe-study/fe-candidate-id-card";
 import {
@@ -152,6 +152,7 @@ export function AcademyPortalClient() {
   const [roadmapOpen, setRoadmapOpen] = useState(false);
   const [feProgress, setFeProgress] = useState<any>(null);
   const [tangoProgress, setTangoProgress] = useState<any>(null);
+  const [mounted, setMounted] = useState(false);
 
   // Modals
   const [syncModalOpen, setSyncModalOpen] = useState(false);
@@ -178,14 +179,14 @@ export function AcademyPortalClient() {
 
       setTangoStats({
         mastered: tProg.masteredCardIds?.length || 0,
-        total: TANGO_N3_CARDS.length,
+        total: TANGO_TOTAL_CARDS,
         streak: tProg.streak || 0,
         reviewCount: tProg.reviewCardIds?.length || 0,
       });
 
       setFeStats({
         mastered: feProg.masteredCardIds?.length || 0,
-        total: FE_CARDS.length,
+        total: FE_TOTAL_CARDS,
         streak: feProg.streak || 0,
         reviewCount: feProg.reviewCardIds?.length || 0,
       });
@@ -222,6 +223,10 @@ export function AcademyPortalClient() {
     reloadStats();
   }, [reloadStats]);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Active FE Deck metadata
   const activeFeDeck = useMemo(() => {
     return FE_DAILY_DECKS.find((d) => d.day === activeFeDayNumber) || FE_DAILY_DECKS[0];
@@ -229,10 +234,9 @@ export function AcademyPortalClient() {
 
   // Mastered count in current FE deck
   const activeFeDeckMasteredCount = useMemo(() => {
-    if (!activeFeDeck) return 0;
-    const feProg = loadStudyProgress();
-    return activeFeDeck.cardIds.filter((id) => feProg.masteredCardIds?.includes(id)).length;
-  }, [activeFeDeck]);
+    if (!activeFeDeck || !feProgress) return 0;
+    return activeFeDeck.cardIds.filter((id) => feProgress.masteredCardIds?.includes(id)).length;
+  }, [activeFeDeck, feProgress]);
 
   // Active Tango Chapter metadata
   const activeTangoChapter = useMemo(() => {
@@ -245,11 +249,14 @@ export function AcademyPortalClient() {
 
   // Mastered count in current Tango chapter
   const activeTangoChapterMasteredCount = useMemo(() => {
-    if (!activeTangoChapter) return 0;
-    const tProg = loadTangoProgress();
-    const chapterCards = TANGO_N3_CARDS.slice(activeTangoChapter.startNum - 1, activeTangoChapter.endNum);
-    return chapterCards.filter((c) => tProg.masteredCardIds?.includes(c.id)).length;
-  }, [activeTangoChapter]);
+    if (!activeTangoChapter || !tangoProgress) return 0;
+    const mastered = new Set<string>(tangoProgress.masteredCardIds || []);
+    let count = 0;
+    for (let n = activeTangoChapter.startNum; n <= activeTangoChapter.endNum; n++) {
+      if (mastered.has(tangoCardIdByNumber(n))) count++;
+    }
+    return count;
+  }, [activeTangoChapter, tangoProgress]);
 
   const totalMastered = tangoStats.mastered + feStats.mastered;
   const globalStreak = Math.max(tangoStats.streak, feStats.streak, 1);
@@ -264,21 +271,45 @@ export function AcademyPortalClient() {
     return { title: "Cadet Explorer", tier: "Level 1" };
   }, [totalMastered]);
 
-  // Weak items needing attention (Section 21)
-  const weakConcepts = useMemo(() => {
-    const feWeak = (feProgress?.reviewCardIds || [])
-      .map((id: string) => FE_CARDS.find((c) => c.id === id))
-      .filter(Boolean)
-      .slice(0, 4);
-    const tangoWeak = (tangoProgress?.reviewCardIds || [])
-      .map((id: string) => TANGO_N3_CARDS.find((c) => c.id === id))
-      .filter(Boolean)
-      .slice(0, 4);
-    return { feWeak, tangoWeak };
+  // Weak items needing attention (Section 21) — data kartu penuh dimuat lazy
+  const [weakCards, setWeakCards] = useState<{ feWeak: any[]; tangoWeak: any[] }>({
+    feWeak: [],
+    tangoWeak: [],
+  });
+
+  useEffect(() => {
+    const feIds: string[] = feProgress?.reviewCardIds || [];
+    const tangoIds: string[] = tangoProgress?.reviewCardIds || [];
+    if (!feIds.length && !tangoIds.length) {
+      setWeakCards({ feWeak: [], tangoWeak: [] });
+      return;
+    }
+    let cancelled = false;
+    (async () => {
+      const [{ FE_CARDS }, { TANGO_N3_CARDS }] = await Promise.all([
+        import("@/data/fe-study-data"),
+        import("@/data/tango-n3-data"),
+      ]);
+      if (cancelled) return;
+      setWeakCards({
+        feWeak: feIds
+          .map((id) => FE_CARDS.find((c) => c.id === id))
+          .filter(Boolean)
+          .slice(0, 4),
+        tangoWeak: tangoIds
+          .map((id) => TANGO_N3_CARDS.find((c) => c.id === id))
+          .filter(Boolean)
+          .slice(0, 4),
+      });
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, [feProgress?.reviewCardIds, tangoProgress?.reviewCardIds]);
 
   // Activity 7-Day Calendar (Section 24)
   const activityPast7Days = useMemo(() => {
+    if (!mounted) return [];
     const days = [];
     for (let i = 6; i >= 0; i--) {
       const d = new Date();
@@ -293,7 +324,7 @@ export function AcademyPortalClient() {
       days.push({ dateKey, dayName, count });
     }
     return days;
-  }, [feProgress?.dailyReviews, tangoProgress?.dailyReviews, locale]);
+  }, [mounted, feProgress?.dailyReviews, tangoProgress?.dailyReviews, locale]);
 
   const handleCopySyncLink = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard && syncUrl) {
@@ -347,12 +378,14 @@ export function AcademyPortalClient() {
         <div className="text-xs font-mono text-[var(--text-tertiary)] flex items-center gap-1.5 shrink-0">
           <Calendar className="w-3.5 h-3.5" />
           <span>
-            {new Date().toLocaleDateString(locale === "ja" ? "ja-JP" : locale === "en" ? "en-US" : "id-ID", {
-              weekday: "long",
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            })}
+            {mounted
+              ? new Date().toLocaleDateString(locale === "ja" ? "ja-JP" : locale === "en" ? "en-US" : "id-ID", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })
+              : "…"}
           </span>
         </div>
       </div>
@@ -388,21 +421,25 @@ export function AcademyPortalClient() {
             7 Hari:
           </span>
           <div className="flex items-center gap-1">
-            {activityPast7Days.map((day) => (
-              <div
-                key={day.dateKey}
-                title={`${day.dateKey} (${day.dayName}): ${day.count} item dipelajari`}
-                className={`w-3.5 h-3.5 rounded-xs transition-colors ${
-                  day.count >= 20
-                    ? "bg-sky-500"
-                    : day.count >= 10
-                    ? "bg-sky-600/80"
-                    : day.count > 0
-                    ? "bg-sky-500/40"
-                    : "bg-[var(--border-subtle)]/40"
-                }`}
-              />
-            ))}
+            {mounted
+              ? activityPast7Days.map((day) => (
+                  <div
+                    key={day.dateKey}
+                    title={`${day.dateKey} (${day.dayName}): ${day.count} item dipelajari`}
+                    className={`w-3.5 h-3.5 rounded-xs transition-colors ${
+                      day.count >= 20
+                        ? "bg-sky-500"
+                        : day.count >= 10
+                        ? "bg-sky-600/80"
+                        : day.count > 0
+                        ? "bg-sky-500/40"
+                        : "bg-[var(--border-subtle)]/40"
+                    }`}
+                  />
+                ))
+              : Array.from({ length: 7 }).map((_, i) => (
+                  <div key={i} className="w-3.5 h-3.5 rounded-xs bg-[var(--border-subtle)]/40" />
+                ))}
           </div>
         </div>
 
@@ -672,7 +709,7 @@ export function AcademyPortalClient() {
         </div>
 
         {/* Needs Attention / Weak concepts list */}
-        {(weakConcepts.feWeak.length > 0 || weakConcepts.tangoWeak.length > 0) ? (
+        {(weakCards.feWeak.length > 0 || weakCards.tangoWeak.length > 0) ? (
           <div className="pt-3 border-t border-[var(--border-subtle)]/70 space-y-3">
             <span className="text-xs font-bold text-[var(--text-primary)] flex items-center gap-1.5">
               <AlertCircle className="w-3.5 h-3.5 text-amber-500" />
@@ -680,7 +717,7 @@ export function AcademyPortalClient() {
             </span>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
-              {weakConcepts.feWeak.map((card: any) => (
+              {weakCards.feWeak.map((card: any) => (
                 <a
                   key={card.id}
                   href={`/tools/fe-study/?card=${card.id}`}
@@ -705,7 +742,7 @@ export function AcademyPortalClient() {
                 </a>
               ))}
 
-              {weakConcepts.tangoWeak.map((card: any) => (
+              {weakCards.tangoWeak.map((card: any) => (
                 <a
                   key={card.id}
                   href={`/tools/tango-n3/?search=${encodeURIComponent(card.word)}`}

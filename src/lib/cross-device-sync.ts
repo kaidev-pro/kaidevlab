@@ -4,8 +4,6 @@ import QRCode from "qrcode";
 import { loadTangoProgress, saveTangoProgress, TangoProgress } from "@/lib/tango-n3-storage";
 import { loadStudyProgress, saveStudyProgress, StudyProgress } from "@/lib/fe-study-storage";
 import { loadWrongQuestions, saveWrongQuestions, WrongQuestionsStore } from "@/lib/fe-wrong-questions-storage";
-import { TANGO_N3_CARDS } from "@/data/tango-n3-data";
-import { FE_CARDS } from "@/data/fe-study-data";
 
 export interface UnifiedBackupPayload {
   version: 1;
@@ -28,13 +26,6 @@ export interface CompactSyncPayload {
   st: number;   // Max streak
   ts: number;   // Timestamp
 }
-
-// Lookup tables for fast integer index compression
-const tangoIdToIdx = new Map<string, number>();
-TANGO_N3_CARDS.forEach((c, i) => tangoIdToIdx.set(c.id, i));
-
-const feIdToIdx = new Map<string, number>();
-FE_CARDS.forEach((c, i) => feIdToIdx.set(c.id, i));
 
 /**
  * Creates a complete full backup of all learning data
@@ -113,7 +104,19 @@ export function restoreFullBackup(jsonContent: string): { success: boolean; mess
 /**
  * Encodes critical progress into a compact base64 string for QR Code & URL sync
  */
-export function encodeCompactSyncToken(): string {
+export async function encodeCompactSyncToken(): Promise<string> {
+  const [{ TANGO_N3_CARDS }, { FE_CARDS }] = await Promise.all([
+    import("@/data/tango-n3-data"),
+    import("@/data/fe-study-data"),
+  ]);
+
+  // Lookup tables for fast integer index compression (dibuat saat dipakai)
+  const tangoIdToIdx = new Map<string, number>();
+  TANGO_N3_CARDS.forEach((c, i) => tangoIdToIdx.set(c.id, i));
+
+  const feIdToIdx = new Map<string, number>();
+  FE_CARDS.forEach((c, i) => feIdToIdx.set(c.id, i));
+
   const cadetId =
     typeof window !== "undefined"
       ? localStorage.getItem("kaidevlab_cadet_id") || "KAI-PASS-USER"
@@ -167,7 +170,7 @@ export function encodeCompactSyncToken(): string {
 /**
  * Decodes a compact sync token from a URL or QR code
  */
-export function decodeCompactSyncToken(token: string): CompactSyncPayload | null {
+export async function decodeCompactSyncToken(token: string): Promise<CompactSyncPayload | null> {
   try {
     let jsonStr = "";
     if (typeof window !== "undefined") {
@@ -179,20 +182,29 @@ export function decodeCompactSyncToken(token: string): CompactSyncPayload | null
     const payload = JSON.parse(jsonStr);
     if (!payload || payload.v !== 1) return null;
 
-    // Convert indices back to card IDs if they are numbers
-    const tmCards: string[] = (payload.tm || [])
-      .map((item: string | number) => {
+    // Convert indices back to card IDs if they are numbers (data dimuat lazy)
+    const tmRaw: Array<string | number> = payload.tm || [];
+    const fmRaw: Array<string | number> = payload.fm || [];
+    const tangoCards = tmRaw.some((item) => typeof item === "number")
+      ? (await import("@/data/tango-n3-data")).TANGO_N3_CARDS
+      : [];
+    const feCards = fmRaw.some((item) => typeof item === "number")
+      ? (await import("@/data/fe-study-data")).FE_CARDS
+      : [];
+
+    const tmCards: string[] = tmRaw
+      .map((item) => {
         if (typeof item === "number") {
-          return TANGO_N3_CARDS[item]?.id || "";
+          return tangoCards[item]?.id || "";
         }
         return item;
       })
       .filter(Boolean);
 
-    const fmCards: string[] = (payload.fm || [])
-      .map((item: string | number) => {
+    const fmCards: string[] = fmRaw
+      .map((item) => {
         if (typeof item === "number") {
-          return FE_CARDS[item]?.id || "";
+          return feCards[item]?.id || "";
         }
         return item;
       })

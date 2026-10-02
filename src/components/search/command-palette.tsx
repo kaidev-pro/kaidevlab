@@ -22,10 +22,6 @@ import {
   Sparkles,
   Languages,
 } from "lucide-react";
-import { TANGO_N3_CARDS } from "@/data/tango-n3-data";
-import { BUNPOU_ITEMS } from "@/data/bunpou-n3/grammar-items";
-import { DOKKAI_PASSAGES } from "@/data/dokkai-n3/passages";
-import { FE_CARDS } from "@/data/fe-study-data";
 import { triggerHaptic, getHapticEnabled, setHapticEnabled } from "@/lib/haptics";
 import { playTapSound, playSuccessChime, getSoundEnabled, setSoundEnabled } from "@/lib/global-sound";
 import { openSyncModal } from "@/lib/global-modals-store";
@@ -55,6 +51,32 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
 
   const [soundOn, setSoundOn] = useState(true);
   const [hapticOn, setHapticOn] = useState(true);
+  const [searchData, setSearchData] = useState<{
+    tango: any[];
+    bunpou: any[];
+    dokkai: any[];
+    fe: any[];
+  } | null>(null);
+
+  // Data pencarian berat dimuat hanya saat palette dibuka —
+  // bukan saat initial load semua halaman (root layout).
+  useEffect(() => {
+    if (!isOpen || searchData) return;
+    let cancelled = false;
+    (async () => {
+      const [{ TANGO_N3_CARDS }, { BUNPOU_ITEMS }, { DOKKAI_PASSAGES }, { FE_CARDS }] = await Promise.all([
+        import("@/data/tango-n3-data"),
+        import("@/data/bunpou-n3/grammar-items"),
+        import("@/data/dokkai-n3/passages"),
+        import("@/data/fe-study-data"),
+      ]);
+      if (cancelled) return;
+      setSearchData({ tango: TANGO_N3_CARDS, bunpou: BUNPOU_ITEMS, dokkai: DOKKAI_PASSAGES, fe: FE_CARDS });
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [isOpen, searchData]);
 
   useEffect(() => {
     if (isOpen) {
@@ -211,7 +233,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
     // If query is empty, return system items
     if (!q) {
       if (activeTab === "tango") {
-        return TANGO_N3_CARDS.slice(0, 15).map((card) => ({
+        return (searchData?.tango || []).slice(0, 15).map((card) => ({
           id: `tango-${card.id}`,
           type: "tango" as const,
           title: `${card.word} (${card.reading})`,
@@ -225,7 +247,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
         }));
       }
       if (activeTab === "bunpou") {
-        return BUNPOU_ITEMS.slice(0, 15).map((item) => ({
+        return (searchData?.bunpou || []).slice(0, 15).map((item) => ({
           id: `bunpou-${item.id}`,
           type: "bunpou" as const,
           title: item.patternJp,
@@ -239,7 +261,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
         }));
       }
       if (activeTab === "dokkai") {
-        return DOKKAI_PASSAGES.map((p) => ({
+        return (searchData?.dokkai || []).map((p) => ({
           id: `dokkai-${p.id}`,
           type: "dokkai" as const,
           title: `${p.titleJp}`,
@@ -253,7 +275,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
         }));
       }
       if (activeTab === "fe") {
-        return FE_CARDS.slice(0, 15).map((card) => ({
+        return (searchData?.fe || []).slice(0, 15).map((card) => ({
           id: `fe-${card.id}`,
           type: "fe" as const,
           title: `${card.termJp} (${card.furigana})`,
@@ -287,7 +309,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
     // Search Bunpou N3
     if (activeTab === "all" || activeTab === "bunpou") {
       let bunpouMatches = 0;
-      for (const item of BUNPOU_ITEMS) {
+      for (const item of searchData?.bunpou || []) {
         if (
           item.patternJp.toLowerCase().includes(q) ||
           item.patternKana.toLowerCase().includes(q) ||
@@ -315,12 +337,12 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
 
     // Search Dokkai
     if (activeTab === "all" || activeTab === "dokkai") {
-      for (const p of DOKKAI_PASSAGES) {
+      for (const p of searchData?.dokkai || []) {
         if (
           p.titleJp.toLowerCase().includes(q) ||
           p.titleId.toLowerCase().includes(q) ||
           p.techniqueTag.toLowerCase().includes(q) ||
-          p.sentences.some((s) => s.textJp.toLowerCase().includes(q) || s.textId.toLowerCase().includes(q))
+          p.sentences.some((s: any) => s.textJp.toLowerCase().includes(q) || s.textId.toLowerCase().includes(q))
         ) {
           results.push({
             id: `dokkai-${p.id}`,
@@ -341,7 +363,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
     // Search FE Cards (up to 20 matches)
     if (activeTab === "all" || activeTab === "fe") {
       let feMatches = 0;
-      for (const card of FE_CARDS) {
+      for (const card of searchData?.fe || []) {
         if (
           card.termJp.toLowerCase().includes(q) ||
           card.furigana.toLowerCase().includes(q) ||
@@ -370,7 +392,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
     // Search Tango N3 Cards (up to 30 matches)
     if (activeTab === "all" || activeTab === "tango") {
       let tangoMatches = 0;
-      for (const card of TANGO_N3_CARDS) {
+      for (const card of searchData?.tango || []) {
         if (
           card.word.toLowerCase().includes(q) ||
           card.reading.toLowerCase().includes(q) ||
@@ -397,7 +419,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
     }
 
     return results;
-  }, [query, activeTab, systemItems, router, onClose]);
+  }, [query, activeTab, systemItems, router, onClose, searchData]);
 
   // Adjust selection bounds
   useEffect(() => {
@@ -485,7 +507,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
             {[
               { id: "all", label: "Semua" },
               { id: "tango", label: "Tango N3 (1.800)" },
-              { id: "bunpou", label: `Bunpou N3 (${BUNPOU_ITEMS.length})` },
+              { id: "bunpou", label: searchData ? `Bunpou N3 (${searchData.bunpou.length})` : "Bunpou N3" },
               { id: "dokkai", label: "Dokkai N3 (13)" },
               { id: "fe", label: "FE IT Exam (150+)" },
               { id: "nav", label: "Navigasi & Aksi" },

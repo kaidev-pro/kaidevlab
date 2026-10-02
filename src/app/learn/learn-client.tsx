@@ -60,7 +60,8 @@ import { RubyTerm } from "@/components/fe-study/ruby-term";
 import { autoAnnotateRuby } from "@/lib/fe-furigana";
 import { KanjiLookupModal } from "@/components/fe-study/kanji-lookup-modal";
 import { FeCandidateIdCard } from "@/components/fe-study/fe-candidate-id-card";
-import { FE_DAILY_DECKS, FEDailyDeck, getCardsForDay } from "@/data/fe-daily-decks";
+import { FE_DAILY_DECKS, FEDailyDeck } from "@/data/fe-daily-decks";
+import { getCardsForDay } from "@/data/fe-deck-cards";
 import {
   loadWrongQuestions,
   getWrongNotebookStats,

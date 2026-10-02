@@ -4,7 +4,7 @@ import { AcademyPortalClient } from "@/components/academy/academy-portal-client"
 export const metadata: Metadata = {
   title: "Kaidevlab Academy & Research Hub — Portal Belajar & Perpustakaan",
   description:
-    "Portal pembelajaran terpadu Kaidevlab. Jelajahi jalur belajar Shin Kanzen Master Tango N3, Fundamental FE Exam, English for Engineers, dan perpustakaan digital interaktif.",
+    "Portal pembelajaran terpadu Kaidevlab. Jelajahi jalur belajar JLPT N3 Suite (Tango, Dokkai, Bunpou), Fundamental FE Exam, English for Engineers, dan perpustakaan digital interaktif.",
 };
 
 export default function LearnPage() {

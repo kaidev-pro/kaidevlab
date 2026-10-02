@@ -1,5 +1,5 @@
-// Shin Kanzen Master Tango N3 (2021 Revised Edition) - Complete 1,800 Vocabulary Dataset
-// Divided into 5 Parts & 46 Chapters according to the official book structure ("sesuai buku")
+// JLPT N3 Tango - Complete 1,800 Vocabulary Dataset
+// Divided into 5 Parts & 46 Chapters with high-yield collocations & contextual reading stories
 
 export * from "./tango-n3/types";
 export * from "./tango-n3/chapters";

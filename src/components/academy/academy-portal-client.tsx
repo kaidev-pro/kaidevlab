@@ -80,7 +80,7 @@ const PORTAL_I18N = {
     openPassBtn: "Buka KAI-PASS (ID Card)",
     streakSuffix: "Hari Beruntun",
     masteredSuffix: "Dikuasai",
-    disclaimerN3: "Materi latihan untuk mendampingi pembelajaran 新完全マスター単語 N3. KaidevLab tidak berafiliasi resmi dengan penerbit buku.",
+    disclaimerN3: "Materi pembelajaran terstruktur untuk persiapan JLPT N3 (単語 · 読解 · 文法).",
     disclaimerFe: "Persiapan Fundamental IT Engineer Examination (FE) untuk mendukung pengembangan karier IT di Jepang.",
   },
   en: {
@@ -107,7 +107,7 @@ const PORTAL_I18N = {
     openPassBtn: "View KAI-PASS (ID Card)",
     streakSuffix: "Day Streak",
     masteredSuffix: "Mastered",
-    disclaimerN3: "Study companion material for Shin Kanzen Master Tango N3. KaidevLab is not officially affiliated with the publisher.",
+    disclaimerN3: "Comprehensive study suite for JLPT N3 preparation (単語 · 読解 · 文法).",
     disclaimerFe: "Fundamental IT Engineer Examination (FE) preparation to advance your engineering career in Japan.",
   },
   ja: {
@@ -134,7 +134,7 @@ const PORTAL_I18N = {
     openPassBtn: "KAI-PASS（受験者証）を表示",
     streakSuffix: "日連続",
     masteredSuffix: "習得",
-    disclaimerN3: "新完全マスター単語N3の学習を支援するための自主学習教材です。公式出版社とは提携していません。",
+    disclaimerN3: "JLPT N3合格を目指す総合学習スイート（単語・読解・文法）。",
     disclaimerFe: "日本でのITキャリア形成を支援する基本情報技術者試験（FE）対策カリキュラム。",
   },
 };
@@ -800,13 +800,13 @@ export function AcademyPortalClient() {
                   <Languages className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-500 uppercase tracking-wider">
-                  Aktif · 1.800 Kata
+                  Aktif · 単語 · 読解 · 文法
                 </span>
               </div>
 
               <div>
                 <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-sky-500 transition-colors">
-                  JLPT N3 Tango (新完全マスター)
+                  JLPT N3 Suite (単語 · 読解 · 文法)
                 </h3>
                 <p className="text-xs text-[var(--text-secondary)] mt-1.5 leading-relaxed">
                   {t.disclaimerN3}
@@ -822,10 +822,10 @@ export function AcademyPortalClient() {
                 </span>
               </div>
               <a
-                href="/tools/tango-n3/"
+                href="/tools/n3-suite/"
                 className="w-full py-2.5 px-4 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all"
               >
-                <span>Buka Ruang Belajar N3</span>
+                <span>Buka JLPT N3 Suite</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>

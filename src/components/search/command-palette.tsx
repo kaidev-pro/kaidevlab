@@ -20,6 +20,7 @@ import {
   VibrateOff,
   Flame,
   Sparkles,
+  Languages,
 } from "lucide-react";
 import { TANGO_N3_CARDS } from "@/data/tango-n3-data";
 import { DOKKAI_PASSAGES } from "@/data/dokkai-n3/passages";
@@ -84,8 +85,8 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       {
         id: "nav-tango",
         type: "nav",
-        title: "Shin Kanzen Tango N3",
-        subtitle: "1.800 kartu kosakata resmi sesuai buku dengan furigana",
+        title: "JLPT N3 Tango (単語 1800)",
+        subtitle: "1.800 kartu kosakata interaktif dengan audio native & furigana",
         badge: "Tango",
         icon: BookOpen,
         onSelect: () => {
@@ -96,12 +97,24 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       {
         id: "nav-dokkai",
         type: "nav",
-        title: "Shin Kanzen Dokkai N3",
-        subtitle: "13 bacaan intensif dengan bedah kalimat & kunci jawaban",
+        title: "JLPT N3 Dokkai (読解)",
+        subtitle: "13 bacaan intensif dengan bedah kalimat & kunci analisis",
         badge: "Dokkai",
         icon: FileText,
         onSelect: () => {
           router.push("/tools/dokkai-n3");
+          onClose();
+        },
+      },
+      {
+        id: "nav-bunpou",
+        type: "nav",
+        title: "JLPT N3 Bunpou (文法)",
+        subtitle: "Pembedah tata bahasa N3, rumus sambungan & susun kalimat bintang ★",
+        badge: "Bunpou",
+        icon: Languages,
+        onSelect: () => {
+          router.push("/tools/bunpou-n3");
           onClose();
         },
       },

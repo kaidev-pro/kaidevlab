@@ -152,14 +152,14 @@ export function DokkaiClient() {
             <div className="min-w-0">
               <div className="flex items-center gap-1.5 sm:gap-2">
                 <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[var(--brand-primary)] truncate">
-                  新完全マスター N3
+                  JLPT N3
                 </span>
                 <span className="text-[10px] sm:text-[11px] px-1.5 sm:px-2 py-0.5 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] font-bold shrink-0">
                   読解
                 </span>
               </div>
               <h1 className="text-xs sm:text-base font-bold text-[var(--text-primary)] tracking-tight truncate">
-                Reading Comprehension
+                N3 Dokkai (読解)
               </h1>
             </div>
           </div>
@@ -169,7 +169,7 @@ export function DokkaiClient() {
             <a
               href="/tools/tango-n3"
               className="hidden md:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] text-xs font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--brand-primary)]/50 transition-all mr-1"
-              title="Buka Modul Kosakata Shin Kanzen Tango N3"
+              title="Buka Modul Kosakata N3 Tango"
             >
               <BookOpen size={13} />
               <span>Tango (単語)</span>
@@ -177,7 +177,7 @@ export function DokkaiClient() {
             <a
               href="/tools/bunpou-n3"
               className="hidden md:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] text-xs font-bold text-[var(--text-secondary)] hover:text-emerald-600 hover:border-emerald-500/50 transition-all mr-1"
-              title="Buka Modul Tata Bahasa Shin Kanzen Bunpou N3"
+              title="Buka Modul Tata Bahasa N3 Bunpou"
             >
               <Sparkles size={13} className="text-emerald-500" />
               <span>Bunpou (文法)</span>
@@ -439,12 +439,12 @@ export function DokkaiClient() {
                   {activePassage.titleId}
                 </p>
 
-                {/* Shin Kanzen Master Technique Callout Box */}
+                {/* JLPT N3 Dokkai Technique Callout Box */}
                 <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-blue-500/10 border border-blue-500/25 flex items-start gap-2 sm:gap-2.5 text-[11px] sm:text-xs text-blue-700 dark:text-blue-300 leading-relaxed">
                   <Lightbulb size={16} className="text-blue-500 shrink-0 mt-0.5" />
                   <div>
                     <b className="block text-blue-600 dark:text-blue-400 mb-0.5 uppercase tracking-wide text-[10px]">
-                      Kunci Teknik Shin Kanzen ({activePassage.techniqueTag}):
+                      Kunci Teknik Analisis ({activePassage.techniqueTag}):
                     </b>
                     {activePassage.techniqueDescription}
                   </div>
@@ -697,7 +697,7 @@ export function DokkaiClient() {
                       {/* Technique Tip */}
                       {q.techniqueTip && (
                         <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-300 leading-relaxed">
-                          <b>Tips Shin Kanzen:</b> {q.techniqueTip}
+                          <b>Tips Analisis:</b> {q.techniqueTip}
                         </div>
                       )}
                     </motion.div>

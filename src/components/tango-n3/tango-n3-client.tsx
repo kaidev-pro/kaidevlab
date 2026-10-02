@@ -351,12 +351,19 @@ export function TangoN3Client() {
                     <BookOpen className="w-3 h-3" />
                     <span>Dokkai N3 (読解)</span>
                   </a>
+                  <a
+                    href="/tools/bunpou-n3"
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-bold transition-all hover:bg-emerald-500/20"
+                  >
+                    <Languages className="w-3 h-3" />
+                    <span>Bunpou N3 (文法)</span>
+                  </a>
                 </div>
                 <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-[var(--text-primary)] font-sans">
-                  Shin Kanzen Master Tango Hub
+                  JLPT N3 Tango (単語 1800)
                 </h1>
                 <p className="text-[var(--text-secondary)] text-xs sm:text-sm leading-relaxed">
-                  Latihan resmi kosakata N3 sesuai buku fisik: dilengkapi kolokasi (連語), furigana, audio native, kuis CBT, dan review berkala.
+                  Latihan terstruktur 1.800 kosakata N3: dilengkapi kolokasi (連語), furigana, audio native, kuis CBT, dan review berkala.
                 </p>
               </div>
 

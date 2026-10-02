@@ -1,4 +1,4 @@
-// Auto-generated 46 Chapters covering all 1800 words of Shin Kanzen Master Tango N3 (2021 Edition)
+// 46 Chapters covering all 1,800 words of JLPT N3 Tango
 export interface TangoChapter {
   id: string;
   partId: "noun" | "verb" | "adj" | "idiom" | "affix";

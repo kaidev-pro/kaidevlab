@@ -245,8 +245,8 @@ export function N3SuiteClient() {
                 <h1 className="text-sm sm:text-base font-bold text-[var(--text-primary)] tracking-tight font-sans">
                   JLPT N3 Suite
                 </h1>
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] font-bold font-japanese shrink-0">
-                  新完全マスター
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] font-bold shrink-0">
+                  単語 · 読解 · 文法
                 </span>
               </div>
               <p className="text-[10px] sm:text-xs text-[var(--text-secondary)] hidden sm:block">
@@ -271,7 +271,7 @@ export function N3SuiteClient() {
         <div className="relative overflow-hidden rounded-3xl border border-[var(--border)] bg-gradient-to-br from-[var(--surface)] via-[var(--surface-soft)]/50 to-[var(--surface)] p-5 sm:p-10 shadow-lg">
           <div className="relative z-10 max-w-2xl space-y-2.5 sm:space-y-3">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[11px] sm:text-xs font-bold uppercase tracking-wider border border-blue-500/20">
-              <Sparkles size={12} /> Kurikulum Resmi Shin Kanzen Master
+              <Sparkles size={12} /> Modul Terpadu Persiapan JLPT N3
             </span>
 
             <h2 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-japanese leading-snug">
@@ -689,7 +689,7 @@ export function N3SuiteClient() {
 
                 <div>
                   <h4 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-[var(--brand-primary)] transition-colors">
-                    Shin Kanzen Tango N3
+                    N3 Tango (単語 1800)
                   </h4>
                   <p className="text-xs text-[var(--brand-primary)] font-mono font-semibold">
                     重要1800語 · Flashcard & Quiz
@@ -744,7 +744,7 @@ export function N3SuiteClient() {
 
                 <div>
                   <h4 className="text-lg font-bold text-[var(--text-primary)]">
-                    Shin Kanzen Dokkai N3
+                    N3 Dokkai (読解)
                   </h4>
                   <p className="text-xs text-[var(--brand-primary)] font-mono font-semibold">
                     文章読解 · Teknik Analisis Teks
@@ -753,7 +753,7 @@ export function N3SuiteClient() {
 
                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                   Latihan dekonstruksi kalimat majemuk: melacak rujukan kata tunjuk (指示語), menemukan subjek yang
-                  dihilangkan, mengidentifikasi analogi, dan bedah opsi jebakan ala buku resmi Shin Kanzen.
+                  dihilangkan, mengidentifikasi analogi, dan bedah opsi jebakan format ujian JLPT N3.
                 </p>
 
                 <div className="p-3 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] text-xs text-[var(--text-secondary)] space-y-1">
@@ -795,7 +795,7 @@ export function N3SuiteClient() {
 
                 <div>
                   <h4 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-emerald-600 transition-colors">
-                    Shin Kanzen Bunpou N3
+                    N3 Bunpou (文法)
                   </h4>
                   <p className="text-xs text-emerald-600 font-mono font-semibold">
                     文法形式 · Tata Bahasa & Partikel

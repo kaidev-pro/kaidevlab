@@ -416,7 +416,7 @@ for (const card of TANGO_N3_CARDS) {
  * Looks up any Japanese kanji or vocabulary term in our integrated dictionary.
  * Priority:
  * 1. Curated Dokkai reading passage glossary (185 definitions)
- * 2. Official Shin Kanzen Master Tango N3 dataset (1,800 cards)
+ * 2. JLPT N3 Tango dataset (1,800 cards)
  * 3. Curated FE IT vocabulary glossary & 129 FE Cards
  * 4. Substring and compound match
  * 5. Clean, polite dynamic Japanese dictionary fallback
@@ -494,7 +494,7 @@ export function lookupFeTerm(
       meaningEn: matchedTango.meaningEn,
       partOfSpeech: matchedTango.partOfSpeech,
       level: "N3",
-      contextLabel: "Shin Kanzen Tango N3",
+      contextLabel: "JLPT N3 Tango",
       examTip: matchedTango.collocation
         ? `Kolokasi: ${matchedTango.collocation.jpRuby.replace(/\[([^:\]]+):([^\]]+)\]/g, "$1 ($2)")} — ${matchedTango.collocation.meaningId}`
         : matchedTango.usageNote || undefined,

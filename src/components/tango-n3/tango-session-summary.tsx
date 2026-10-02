@@ -64,7 +64,7 @@ export function TangoSessionSummary({
               : "Latihan yang Bagus! (お疲れ様)"}
           </h3>
           <p className="text-sm text-[var(--text-secondary)] mt-1.5 leading-relaxed max-w-xs mx-auto">
-            Kamu telah menyelesaikan <b>{totalReviewed} kosakata</b> Shin Kanzen Master N3.
+            Kamu telah menyelesaikan <b>{totalReviewed} kosakata</b> JLPT N3 Tango.
           </p>
         </div>
 

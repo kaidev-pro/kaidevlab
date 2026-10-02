@@ -53,21 +53,21 @@ export interface TangoN3Card {
   meaningId: string;        // Bahasa Indonesia presisi
   meaningEn: string;        // English translation
   
-  // Ciri khas Shin Kanzen Master: Kolokasi / Pasangan Kata (連語)
+  // Fitur Unggulan: Kolokasi / Pasangan Kata (連語)
   collocation?: {
     jpRuby: string;         // e.g. "[家族:かぞく]への[愛:あい]"
     meaningId: string;      // e.g. "cinta kepada keluarga"
   };
   
-  // Kalimat Contoh Resmi Shin Kanzen Master (例文)
+  // Kalimat Contoh Kontekstual (例文)
   exampleSentence: {
     jpRuby: string;         // Kalimat dengan ruby furigana
     meaningId: string;      // Terjemahan kalimat ke bahasa Indonesia
   };
   
-  // Referensi kata terkait di buku (類 / 対 / 関 / 派)
+  // Referensi kata terkait (類 / 対 / 関 / 派)
   references?: TangoReference[];
   
-  // Catatan tips penggunaan khas Shin Kanzen Master
+  // Catatan tips penggunaan & nuansa
   usageNote?: string;
 }

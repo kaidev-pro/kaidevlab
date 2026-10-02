@@ -114,7 +114,7 @@ export function TangoReadingView({ onSelectCardDetail }: TangoReadingViewProps) 
           <div className="space-y-1.5">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] text-xs font-bold">
               <BookOpen className="w-3.5 h-3.5" />
-              <span>「読んでみよう」20 Cerita Resmi Shin Kanzen Master Tango N3</span>
+              <span>「読んでみよう」20 Cerita Latihan Membaca Tango N3</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-black text-[var(--text-primary)] tracking-tight">
               Latihan Membaca Wacana Kontekstual
@@ -656,7 +656,7 @@ export function TangoReadingView({ onSelectCardDetail }: TangoReadingViewProps) 
                 </button>
 
                 <span className="hidden lg:inline-block font-mono text-xs text-[var(--text-tertiary)]">
-                  {activeStory.badge} / 20 Cerita Shin Kanzen Master
+                  {activeStory.badge} / 20 Cerita Latihan Membaca
                 </span>
 
                 <button

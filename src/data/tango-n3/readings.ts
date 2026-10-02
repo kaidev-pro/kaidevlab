@@ -23,7 +23,7 @@ export interface TangoReadingPassage {
   comprehensionQuestions: TangoComprehensionQuestion[];
 }
 
-// 20 Bacaan Resmi Fitur 「読んでみよう」 Shin Kanzen Master Tango N3 (2021 Edition)
+// 20 Bacaan Latihan Wacana 「読んでみよう」 JLPT N3 Tango
 export const TANGO_N3_READINGS: TangoReadingPassage[] = [
   {
     "id": "reading-01",

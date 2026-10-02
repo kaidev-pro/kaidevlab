@@ -1,7 +1,7 @@
 /**
- * Shin Kanzen Dokkai N3 Curated Vocabulary & Kanji Glossary
+ * JLPT N3 Dokkai Curated Vocabulary & Kanji Glossary
  * High-precision Indonesian definitions, readings, and reading comprehension tips
- * for all vocabulary and kanji appearing in Shin Kanzen Dokkai N3 passages.
+ * for all vocabulary and kanji appearing in JLPT N3 Dokkai passages.
  */
 
 export interface DokkaiVocabEntry {

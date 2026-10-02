@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { DokkaiClient } from "@/components/dokkai-n3/dokkai-client";
 
 export const metadata: Metadata = {
-  title: "Shin Kanzen Master Dokkai N3 (新完全マスター読解N3) — Kaidevlab Tools",
+  title: "JLPT N3 Dokkai (読解 · Pemahaman Teks) — Kaidevlab Tools",
   description:
-    "Modul latihan membaca bahasa Jepang Shin Kanzen Master N3 Dokkai lengkap dengan Furigana toggle, Audio native TTS per kalimat, dekonstruksi struktur kalimat, dan analisis jebakan pilihan ganda JLPT.",
+    "Modul latihan membaca bahasa Jepang JLPT N3 Dokkai lengkap dengan Furigana toggle, Audio native TTS per kalimat, dekonstruksi struktur kalimat, dan analisis jebakan pilihan ganda JLPT.",
   alternates: {
     canonical: "/tools/dokkai-n3/",
   },
   openGraph: {
-    title: "Shin Kanzen Master Dokkai N3 (新完全マスター読解N3) — Kaidevlab",
+    title: "JLPT N3 Dokkai (読解 · Pemahaman Teks) — Kaidevlab",
     description:
       "Latihan pemahaman bacaan bahasa Jepang JLPT N3 interaktif dengan Furigana toggle, audio kalimat, penyorot kalimat bukti, dan bedah opsi jebakan.",
     url: "https://kaidevlab.com/tools/dokkai-n3/",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shin Kanzen Master Dokkai N3 (新完全マスター読解N3)",
+    title: "JLPT N3 Dokkai (読解 · Pemahaman Teks)",
     description:
       "Latihan pemahaman bacaan bahasa Jepang JLPT N3 interaktif dengan Furigana toggle, audio kalimat, dan bedah opsi jebakan.",
   },

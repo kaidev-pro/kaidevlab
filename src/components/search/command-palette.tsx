@@ -23,6 +23,7 @@ import {
   Languages,
 } from "lucide-react";
 import { TANGO_N3_CARDS } from "@/data/tango-n3-data";
+import { BUNPOU_ITEMS } from "@/data/bunpou-n3/grammar-items";
 import { DOKKAI_PASSAGES } from "@/data/dokkai-n3/passages";
 import { FE_CARDS } from "@/data/fe-study-data";
 import { triggerHaptic, getHapticEnabled, setHapticEnabled } from "@/lib/haptics";
@@ -31,7 +32,7 @@ import { openSyncModal } from "@/lib/global-modals-store";
 
 interface CommandItem {
   id: string;
-  type: "nav" | "action" | "tango" | "dokkai" | "fe";
+  type: "nav" | "action" | "tango" | "bunpou" | "dokkai" | "fe";
   title: string;
   subtitle: string;
   badge?: string;
@@ -47,7 +48,7 @@ interface CommandPaletteProps {
 export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
   const router = useRouter();
   const [query, setQuery] = useState("");
-  const [activeTab, setActiveTab] = useState<"all" | "tango" | "dokkai" | "fe" | "nav">("all");
+  const [activeTab, setActiveTab] = useState<"all" | "tango" | "bunpou" | "dokkai" | "fe" | "nav">("all");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
@@ -223,6 +224,20 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
           },
         }));
       }
+      if (activeTab === "bunpou") {
+        return BUNPOU_ITEMS.slice(0, 15).map((item) => ({
+          id: `bunpou-${item.id}`,
+          type: "bunpou" as const,
+          title: item.patternJp,
+          subtitle: `${item.meaningId} · ${item.chapterTitle}`,
+          badge: item.categoryLabel,
+          icon: Languages,
+          onSelect: () => {
+            router.push("/tools/bunpou-n3");
+            onClose();
+          },
+        }));
+      }
       if (activeTab === "dokkai") {
         return DOKKAI_PASSAGES.map((p) => ({
           id: `dokkai-${p.id}`,
@@ -265,6 +280,35 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
           (item.badge && item.badge.toLowerCase().includes(q))
         ) {
           results.push(item);
+        }
+      }
+    }
+
+    // Search Bunpou N3
+    if (activeTab === "all" || activeTab === "bunpou") {
+      let bunpouMatches = 0;
+      for (const item of BUNPOU_ITEMS) {
+        if (
+          item.patternJp.toLowerCase().includes(q) ||
+          item.patternKana.toLowerCase().includes(q) ||
+          item.meaningId.toLowerCase().includes(q) ||
+          item.chapterTitle.toLowerCase().includes(q) ||
+          item.coreConcept.toLowerCase().includes(q)
+        ) {
+          results.push({
+            id: `bunpou-${item.id}`,
+            type: "bunpou",
+            title: item.patternJp,
+            subtitle: `${item.meaningId} · ${item.chapterTitle}`,
+            badge: item.categoryLabel,
+            icon: Languages,
+            onSelect: () => {
+              router.push("/tools/bunpou-n3");
+              onClose();
+            },
+          });
+          bunpouMatches++;
+          if (bunpouMatches >= 20) break;
         }
       }
     }
@@ -441,6 +485,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
             {[
               { id: "all", label: "Semua" },
               { id: "tango", label: "Tango N3 (1.800)" },
+              { id: "bunpou", label: "Bunpou N3 (44)" },
               { id: "dokkai", label: "Dokkai N3 (13)" },
               { id: "fe", label: "FE IT Exam (150+)" },
               { id: "nav", label: "Navigasi & Aksi" },

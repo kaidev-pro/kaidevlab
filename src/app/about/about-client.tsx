@@ -297,7 +297,7 @@ export function AboutClient() {
               <li key={item.title}>
                 <strong>
                   {item.link ? (
-                    <a href={item.link} className="hover:text-[var(--brand-primary)] transition-colors">
+                    <a href={item.link} className="inline-flex items-center min-h-6 hover:text-[var(--brand-primary)] transition-colors">
                       {item.title}
                     </a>
                   ) : (

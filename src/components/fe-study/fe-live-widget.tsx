@@ -127,7 +127,7 @@ export function FeLiveWidget() {
         <span className="text-[11px] text-[var(--text-secondary)]">{t.srs}</span>
         <a
           href="/learn/"
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--brand-primary)] hover:text-[var(--brand-hover)] transition-colors group"
+          className="inline-flex items-center gap-1.5 min-h-6 text-xs font-bold text-[var(--brand-primary)] hover:text-[var(--brand-hover)] transition-colors group"
         >
           <span>{mastered > 0 ? t.continueLearning : t.openHub}</span>
           <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />

@@ -87,6 +87,7 @@ export default function Work() {
         {countText}
       </p>
 
+      <h2 className="sr-only">{heading}</h2>
       <div className="work-page-grid">
         {filteredProjects.map((project) => (
           <ProjectCard project={project} key={project.slug} />

@@ -88,7 +88,9 @@ export function SiteHeader() {
           <Search size={18} />
         </button>
 
-        <LanguageSwitcher className="hidden sm:inline-flex" />
+        <div className="hidden sm:block">
+          <LanguageSwitcher />
+        </div>
 
         <button
           className="icon-button theme-toggle"

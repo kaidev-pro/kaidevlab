@@ -136,7 +136,7 @@ export function KaiParallaxHero() {
           <a className="secondary" href="#about">{t.hero.meetKai}</a>
         </div>
         <p className="meta">
-          {t.hero.basedIn} · {t.hero.buildingIndependently} · <a href="https://x.com/Kiminoheroo" target="_blank" rel="noreferrer" style={{ color: "var(--brand-primary)", textDecoration: "underline", textUnderlineOffset: "3px" }}>@Kiminoheroo on X ↗</a>
+          {t.hero.basedIn} · {t.hero.buildingIndependently} · <a href="https://x.com/Kiminoheroo" target="_blank" rel="noreferrer" style={{ color: "var(--brand-primary)", textDecoration: "underline", textUnderlineOffset: "3px", display: "inline-flex", alignItems: "center", minHeight: "24px" }}>@Kiminoheroo on X ↗</a>
         </p>
       </div>
     </div>

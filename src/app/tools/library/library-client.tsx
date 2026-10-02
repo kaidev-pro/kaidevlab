@@ -45,11 +45,11 @@ export function LibraryClient() {
     <div className="w-full max-w-6xl mx-auto px-4 py-8 sm:py-12 space-y-8">
       {/* Navigation Breadcrumbs */}
       <nav className="flex items-center gap-2 text-xs font-mono text-[var(--text-tertiary)]">
-        <Link href="/" className="hover:text-[var(--text-primary)] transition-colors">
+        <Link href="/" className="inline-flex items-center min-h-6 hover:text-[var(--text-primary)] transition-colors">
           Home
         </Link>
         <ChevronRight size={12} className="opacity-40" />
-        <Link href="/learn/" className="hover:text-[var(--text-primary)] transition-colors">
+        <Link href="/learn/" className="inline-flex items-center min-h-6 hover:text-[var(--text-primary)] transition-colors">
           Learn
         </Link>
         <ChevronRight size={12} className="opacity-40" />

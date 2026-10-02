@@ -485,7 +485,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
             {[
               { id: "all", label: "Semua" },
               { id: "tango", label: "Tango N3 (1.800)" },
-              { id: "bunpou", label: "Bunpou N3 (80)" },
+              { id: "bunpou", label: `Bunpou N3 (${BUNPOU_ITEMS.length})` },
               { id: "dokkai", label: "Dokkai N3 (13)" },
               { id: "fe", label: "FE IT Exam (150+)" },
               { id: "nav", label: "Navigasi & Aksi" },

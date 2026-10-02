@@ -5550,5 +5550,2560 @@ export const BUNPOU_ITEMS: BunpouItem[] = [
         "explanation": "Meminta lawan bicara menirukan secara presisi arahan yang diucapkan menggunakan 『動詞 ＋ とおりに』."
       }
     ]
+  },
+
+  // ─────────────────────────────────────────────────────────────
+  // 第20課: 目的・意志・対象 (Maksud & Segmentasi)
+  // ─────────────────────────────────────────────────────────────
+  {
+    "id": "n3-b20-muke",
+    "chapterNumber": 20,
+    "chapterTitle": "第20課: 目的・意志・対象 (Maksud & Segmentasi)",
+    "category": "judgment",
+    "categoryLabel": "対象・用途",
+    "patternJp": "〜向け / 〜向けに / 〜向けの",
+    "patternKana": "むけ / むけに / むけの",
+    "meaningId": "Dikhususkan / Dibuat khusus untuk target tertentu (anak-anak, pemula, pasar global)",
+    "connection": "名詞 ＋ 向けだ / 向けに / 向けの ＋ 名詞",
+    "coreConcept": "Menyatakan bahwa suatu produk, buku, program, atau fasilitas secara sengaja dirancang dari awal untuk melayani segmen target sasaran tertentu.",
+    "cautionNote": "Berbeda dengan 『〜向き』 yang berarti 'secara alami pas karakternya'. 『〜向け』 adalah tindakan niat sengaja si pembuat (desain intensional).",
+    "examples": [
+      {
+        "id": "ex-muke-1",
+        "textJp": "この日本語教材は、非漢字圏の初級学習者向けに特別に編集されている。",
+        "ruby": "この[日本語教材:にほんごきょうざい]は、[非漢字圏:ひかんじけん]の[初級学習者向:しょきゅうがくしゅうしゃむ]けに[特別:とくべつ]に[編集:へんしゅう]されている。",
+        "textId": "Buku ajar bahasa Jepang ini diedit dan dirancang secara khusus untuk target pembelajar tingkat dasar dari kawasan non-kanji.",
+        "contextNote": "Desain buku yang sengaja menyasar target segmen spesifik."
+      },
+      {
+        "id": "ex-muke-2",
+        "textJp": "海外の富裕層向けの高層タワーマンションが、都心部に次々と建設されている。",
+        "ruby": "[海外:かいがい]の[富裕層向:ふゆうそうむ]けの[高層:こうそう]タワーマンションが、[都心部:としんぶ]に[次々:つぎつぎ]と[建設:けんせつ]されている。",
+        "textId": "Apartemen menara mewah yang dikhususkan untuk kalangan berpenghasilan tinggi luar negeri dibangun silih berganti di pusat kota.",
+        "contextNote": "Produk hunian yang secara sengaja membidik pasar kaum berada."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜向き (kecocokan alami)",
+        "summary": "向き = sifat bawaan yang pas secara natural (cocok untuk musim dingin).",
+        "distinctionId": "『〜向け』 adalah produk atau karya yang sengaja dibuat demi target audiens tersebut."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b20-03",
+        "type": "cloze",
+        "questionNumber": 83,
+        "questionJp": "子ども（　　）のアニメだが、奥深いテーマは大人の心にも響く。",
+        "questionRuby": "[子:こ]ども（　　）のアニメだが、[奥深:おくふか]いテーマは[大人:おとな]の[心:こころ]にも[響:ひび]く。",
+        "questionTranslation": "Meskipun anime yang dibuat khusus untuk anak-anak, temanya yang mendalam turut menyentuh hati orang dewasa.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "向け",
+            "textId": "Dikhususkan untuk target sasaran (子ども向け)"
+          },
+          {
+            "key": "2",
+            "textJp": "反面",
+            "textId": "Di sisi lain"
+          },
+          {
+            "key": "3",
+            "textJp": "気味",
+            "textId": "Bergejala"
+          },
+          {
+            "key": "4",
+            "textJp": "せいで",
+            "textId": "Gara-gara"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Karya animasi yang secara sengaja ditargetkan untuk pemirsa anak-anak adalah 『名詞 ＋ 向け』."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b20-muki",
+    "chapterNumber": 20,
+    "chapterTitle": "第20課: 目的・意志・対象 (Maksud & Segmentasi)",
+    "category": "judgment",
+    "categoryLabel": "適合・性質",
+    "patternJp": "〜向き / 〜向きに / 〜向きの",
+    "patternKana": "むき / むきに / むきの",
+    "meaningId": "Cocok / Pas secara alami karakternya untuk...",
+    "connection": "名詞 ＋ 向きだ / 向きに / 向きの ＋ 名詞",
+    "coreConcept": "Menyatakan bahwa sifat, karakter alami, rasa, atau proporsi suatu hal pas dan cocok untuk pengguna, situasi, atau musim tertentu, tanpa memandang apakah barang itu memang sengaja dibuat untuk itu atau tidak.",
+    "cautionNote": "Sering menempel pada kata seperti: 夏向き (pas untuk musim panas), 初心者向き (karakternya cocok untuk pemula), 女性向き (pas untuk wanita).",
+    "examples": [
+      {
+        "id": "ex-muki-1",
+        "textJp": "この通気性の良い生地は、汗をかきやすい日本の蒸し暑い夏向きだ。",
+        "ruby": "この[通気性:つうきせい]の[良:よ]い[生地:きじ]は、[汗:あせ]をかきやすい[日本:にほん]の[蒸:む]し[暑:あつ]い[夏向:なつむ]きだ。",
+        "textId": "Kain dengan sirkulasi udara yang baik ini sangat cocok dan pas karakternya untuk musim panas Jepang yang lembap dan gerah.",
+        "contextNote": "Kecocokan alami karakteristik kain dengan cuaca musim panas."
+      },
+      {
+        "id": "ex-muki-2",
+        "textJp": "彼は穏やかで根気強い性格だから、じっくり人と向き合うカウンセラー向きだ。",
+        "ruby": "[彼:かれ]は[穏:おだ]やかで[根気強:こんきづよ]い[性格:せいかく]だから、じっくり[人:ひと]と[向:む]き[合:あ]うカウンセラー[向:む]きだ。",
+        "textId": "Karena dia berkarakter tenang dan sabar, kepribadiannya sangat cocok menjadi seorang konselor.",
+        "contextNote": "Kecocokan bakat alamiah seseorang dengan profesi tertentu."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜向け",
+        "summary": "向け = dibuat sengaja demi sasaran pasar.",
+        "distinctionId": "『〜向き』 adalah kecocokan atau kepantasan secara alami menurut sifat karakternya."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b20-04",
+        "type": "cloze",
+        "questionNumber": 84,
+        "questionJp": "このワインはフルーティーで飲みやすく、お酒が苦手な人（　　）の味だ。",
+        "questionRuby": "このワインはフルーティーで[飲:の]みやすく、お[酒:さけ]が[苦手:にがて]な[人:ひと]（　　）の[味:あじ]だ。",
+        "questionTranslation": "Anggur ini terasa manis buah dan mudah diminum, rasanya pas cocok bagi orang yang kurang kuat minum alkohol.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "向き",
+            "textId": "Cocok karakternya (苦手な人向き)"
+          },
+          {
+            "key": "2",
+            "textJp": "反面",
+            "textId": "Di sisi lain"
+          },
+          {
+            "key": "3",
+            "textJp": "だらけ",
+            "textId": "Berlumuran"
+          },
+          {
+            "key": "4",
+            "textJp": "がち",
+            "textId": "Cenderung"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Citarasa anggur yang ramah dan pas secara alami bagi peminum pemula diungkapkan dengan 『名詞 ＋ 向き』."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b20-tame-ni",
+    "chapterNumber": 20,
+    "chapterTitle": "第20課: 目的・意志・対象 (Maksud & Segmentasi)",
+    "category": "judgment",
+    "categoryLabel": "目的・動機",
+    "patternJp": "〜ために / 〜ための",
+    "patternKana": "ために / ための",
+    "meaningId": "Demi... (tujuan utama dengan kehendak dan aksi sadar pembicara)",
+    "connection": "動詞辞書形 ＋ ために / ための ＋ 名詞\n名詞＋の ＋ ために / ための ＋ 名詞",
+    "coreConcept": "Menunjukkan cita-cita, ambisi, atau tujuan luhur yang hendak dicapai, di mana pembicara secara sengaja dan aktif melakukan tindakan untuk mewujudkannya.",
+    "cautionNote": "Kata kerja di depan 『ために』 harus berupa kata kerja yang berada dalam kendali kehendak pembicara (意志動詞). Subjek kalimat depan dan belakang harus orang yang sama.",
+    "examples": [
+      {
+        "id": "ex-tameni-1",
+        "textJp": "念願のマイホームを購入するために、毎月コツコツと節約に励んでいる。",
+        "ruby": "[念願:ねんがん]のマイホームを[購入:こうにゅう]するために、[毎月:まいつき]コツコツと[節約:せつやく]に[励:はげ]んでいる。",
+        "textId": "Demi membeli rumah impian yang diidam-idamkan, setiap bulan saya tekun berhemat sedikit demi sedikit.",
+        "contextNote": "Tujuan finansial jangka panjang."
+      },
+      {
+        "id": "ex-tameni-2",
+        "textJp": "これは日本語の聴解力を飛躍的に向上させるための専用アプリです。",
+        "ruby": "これは[日本語:にほんご]の[聴解力:ちょうかいりょく]を[飛躍的:ひやくてき]に[向上:こうじょう]させるための[専用:せんよう]アプリです。",
+        "textId": "Ini adalah aplikasi khusus demi mendongkrak kemampuan menyimak (choukai) bahasa Jepang secara pesat.",
+        "contextNote": "Modifikasi kata benda: 'aplikasi demi tujuan peningkatan skor'."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜ように",
+        "summary": "ように = tujuan kondisi atau potensi (supaya bisa mendengar).",
+        "distinctionId": "『〜ために』 adalah aksi kehendak sadar pembicara (demi membeli rumah, saya menabung)."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b20-08",
+        "type": "cloze",
+        "questionNumber": 85,
+        "questionJp": "夢を叶える（　　）、日々の努力を惜しんではならない。",
+        "questionRuby": "[夢:ゆめ]を[叶:かな]える（　　）、[日々:ひび]の[努力:どりょく]を[惜:お]しんではならない。",
+        "questionTranslation": "Demi mewujudkan impian, kita tidak boleh menyia-nyiakan ikhtiar perjuangan setiap hari.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "ために",
+            "textId": "Demi tujuan sadar (動詞辞書形＋ために)"
+          },
+          {
+            "key": "2",
+            "textJp": "反面",
+            "textId": "Di sisi lain"
+          },
+          {
+            "key": "3",
+            "textJp": "気味",
+            "textId": "Bergejala"
+          },
+          {
+            "key": "4",
+            "textJp": "わりに",
+            "textId": "Untuk ukuran"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Menyatakan tujuan kehendak luhur mewujudkan impian adalah 『動詞辞書形 ＋ ために』."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b20-tsumori-de",
+    "chapterNumber": 20,
+    "chapterTitle": "第20課: 目的・意志・対象 (Maksud & Segmentasi)",
+    "category": "judgment",
+    "categoryLabel": "思い込み・覚悟",
+    "patternJp": "〜つもりで / 〜たつもりで",
+    "patternKana": "つもりで / たつもりで",
+    "meaningId": "Seolah-olah / Bertekad dengan anggapan bahwa...",
+    "connection": "動詞普通形（た形／ている） ＋ つもりで\n名詞＋の ＋ つもりで",
+    "coreConcept": "Melakukan suatu tindakan dengan memasang tekad batin atau menganggap seolah-olah suatu kondisi ekstrem sudah terjadi, padahal kenyataan sebenarnya berbeda (cth: berjuang seolah-olah sudah mati; menabung seolah-olah sudah beli kopi).",
+    "cautionNote": "Bukan sekadar 'berniat', melainkan bersikap mental seolah-olah hal tersebut nyata sebagai sumber motivasi.",
+    "examples": [
+      {
+        "id": "ex-tsumoride-1",
+        "textJp": "死んだつもりで必死に練習に励めば、どんな強敵にも勝てるはずだ。",
+        "ruby": "[死:し]んだつもりで[必死:ひっし]に[練習:れんしゅう]に[励:はげ]めば、どんな[強敵:きょうてき]にも[勝:か]てるはずだ。",
+        "textId": "Bila kita berlatih mati-matian seolah-olah siap mengorbankan nyawa, musuh sekuat apa pun pasti bisa kita kalahkan.",
+        "contextNote": "Sikap tekad membara menganggap diri siap mati."
+      },
+      {
+        "id": "ex-tsumoride-2",
+        "textJp": "外食したつもりでその分のお金を貯金箱に入れ、旅行資金を貯めている。",
+        "ruby": "[外食:がいしょく]したつもりでその[分:ぶん]のお[金:かね]を[貯金箱:ちょきんばこ]に[入:い]れ、[旅行資金:りょこうしきん]を[貯:た]めている。",
+        "textId": "Menganggap seolah-olah saya makan di restoran mewah lalu memasukkan uangnya ke celengan, saya mengumpulkan dana jalan-jalan.",
+        "contextNote": "Metode menabung dengan pura-pura sudah berbelanja."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜つもりだ (niat rencana)",
+        "summary": "つもりだ = berencana melakukan sesuatu di masa depan.",
+        "distinctionId": "『〜たつもりで』 adalah mentalitas berandai-andai dalam melakukan aksi saat ini."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b20-06",
+        "type": "cloze",
+        "questionNumber": 86,
+        "questionJp": "本番の試験の（　　）、時間を厳格に測って模擬試験を解いた。",
+        "questionRuby": "[本番:ほんばん]の[試験:しけん]の（　　）、[時間:じかん]を[厳格:げんかく]に[測:はか]って[模擬試験:もぎしけん]を[解:と]いた。",
+        "questionTranslation": "Dengan anggapan dan keseriusan seolah-olah sedang ujian sungguhan, saya mengukur waktu secara ketat saat mengerjakan simulasi try-out.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "つもりで",
+            "textId": "Seolah-olah memasang sikap mental (名詞+のつもりで)"
+          },
+          {
+            "key": "2",
+            "textJp": "反面で",
+            "textId": "Di sisi lain"
+          },
+          {
+            "key": "3",
+            "textJp": "気味で",
+            "textId": "Bergejala"
+          },
+          {
+            "key": "4",
+            "textJp": "せいで",
+            "textId": "Gara-gara"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Mengerjakan try-out dengan sikap mental seolah-olah menghadapi ujian asli adalah 『名詞 ＋ のつもりで』."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b20-you-ni",
+    "chapterNumber": 20,
+    "chapterTitle": "第20課: 目的・意志・対象 (Maksud & Segmentasi)",
+    "category": "judgment",
+    "categoryLabel": "目的・配慮",
+    "patternJp": "〜ように / 〜ようにと",
+    "patternKana": "ように / ようにと",
+    "meaningId": "Agar / Supaya... (tujuan keadaan yang di luar kendali langsung)",
+    "connection": "動詞辞書形（無意志動詞 / 可能形） ＋ ように\n動詞ナイ形 ＋ ように",
+    "coreConcept": "Menyatakan suatu tujuan atau harapan kondisi masa depan yang diinginkan pembicara, di mana kata kerja di depan 『ように』 adalah kata kerja tanpa kehendak (無意志動詞), bentuk potensi (可能形), atau bentuk negatif (ナイ形).",
+    "cautionNote": "Berbeda dengan 『〜ために』 yang memakai kata kerja berkehendak (意志動詞) dan subjeknya harus sama. 『〜ように』 fokus pada terciptanya suatu kondisi.",
+    "examples": [
+      {
+        "id": "ex-youni-1",
+        "textJp": "後ろの席の人にもよく聞こえるように、大きな声で話してください。",
+        "ruby": "[後:うし]ろの[席:せき]の[人:ひと]にもよく[聞:き]こえるように、[大:おお]きな[声:こえ]で[話:はな]してください。",
+        "textId": "Agar dapat terdengar jelas bahkan oleh orang di kursi belakang, berbicaralah dengan suara yang lantang.",
+        "contextNote": "Tujuan agar kondisi 'terdengar' (bisa terdengar) tercapai."
+      },
+      {
+        "id": "ex-youni-2",
+        "textJp": "風邪をひかないように、暖かくして出かけましょう。",
+        "ruby": "[風邪:かぜ]をひかないように、[暖:あたた]かくして[出:で]かけましょう。",
+        "textId": "Supaya tidak masuk angin/flu, mari kenakan pakaian hangat sebelum bepergian keluar.",
+        "contextNote": "Tujuan negatif menghindari jatuh sakit (ナイ形)."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜ために (demi)",
+        "summary": "ために = subjek memiliki kendali kehendak langsung (cth: beli mobil demi kerja).",
+        "distinctionId": "『〜ように』 digunakan jika kata kerjanya adalah potensi (bisa), otomatis (terlihat/terdengar), atau negatif (jangan sampai)."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b20-01",
+        "type": "cloze",
+        "questionNumber": 87,
+        "questionJp": "忘れない（　　）、手帳にしっかりとメモを取っておいた。",
+        "questionRuby": "[忘:わす]れない（　　）、[手帳:てちょう]にしっかりとメモを[取:と]っておいた。",
+        "questionTranslation": "Supaya tidak lupa, saya mencatat memo dengan rapi di buku agenda.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "ように",
+            "textId": "Supaya jangan sampai (V-nai + ように)"
+          },
+          {
+            "key": "2",
+            "textJp": "ために",
+            "textId": "Demi (kurang tepat untuk V-nai)"
+          },
+          {
+            "key": "3",
+            "textJp": "反面",
+            "textId": "Di sisi lain"
+          },
+          {
+            "key": "4",
+            "textJp": "わりに",
+            "textId": "Untuk ukuran"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Menyatakan tujuan menghindari kelupaan menggunakan bentuk negatif 『動詞ナイ形 ＋ ように』."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b20-you-ni-iu",
+    "chapterNumber": 20,
+    "chapterTitle": "第20課: 目的・意志・対象 (Maksud & Segmentasi)",
+    "category": "judgment",
+    "categoryLabel": "伝達・指示",
+    "patternJp": "〜ように言う / 〜ように頼む",
+    "patternKana": "ようにいう / ようにたのむ",
+    "meaningId": "Menyampaikan pesan agar... / Meminta pihak lain untuk... (kalimat tidak langsung)",
+    "connection": "動詞辞書形 / ない形 ＋ ように言う / 頼む / 伝える",
+    "coreConcept": "Merupakan bentuk penyampaian instruksi, pesan permohonan, atau larangan secara tidak langsung (indirect speech) kepada pihak ketiga.",
+    "cautionNote": "Bentuk pasifnya 『〜ように言われる』 bermakna 'saya disuruh / diperintahkan oleh orang lain agar melakukan hal tersebut'.",
+    "examples": [
+      {
+        "id": "ex-youniiu-1",
+        "textJp": "先生から、明日は絶対に遅刻しないようにときつく言われました。",
+        "ruby": "[先生:せんせい]から、[明日:あした]は[絶対:ぜったい]に[遅刻:ちこく]しないようにときつく[言:い]われました。",
+        "textId": "Saya diperingatkan dengan tegas oleh guru agar besok tidak boleh sekali-kali terlambat.",
+        "contextNote": "Bentuk pasif perintah tidak langsung dari guru."
+      },
+      {
+        "id": "ex-youniiu-2",
+        "textJp": "田中さんに、至急こちらの書類を確認してくださるよう頼んでおきました。",
+        "ruby": "[田中:たなか]さんに、[至急:しきゅう]こちらの[書類:しょるい]をこ[確認:かくにん]してくださるよう[頼:たの]んでおきました。",
+        "textId": "Saya sudah menitip pesan permohonan kepada Tanaka-san agar segera sudi memeriksa berkas dokumen ini.",
+        "contextNote": "Permohonan tidak langsung kepada rekan kerja."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜と直接言う (kutipan langsung)",
+        "summary": "「〜」と言う = mengutip kata per kata dalam tanda kutip.",
+        "distinctionId": "『〜ように言う』 menyampaikan substansi maksud perintah secara elegan tanpa tanda kutip langsung."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b20-07",
+        "type": "seiretsu",
+        "questionNumber": 88,
+        "questionJp": "医者から　＿＿　＿＿　★　＿＿　言われている。",
+        "questionRuby": "[医者:いしゃ]から　＿＿　＿＿　★　＿＿　[言:い]われている。",
+        "questionTranslation": "Saya diperingatkan oleh dokter agar menghentikan kebiasaan merokok demi kesehatan.",
+        "items": [
+          "タバコを",
+          "健康のために",
+          "やめるようにと",
+          "厳しく"
+        ],
+        "correctOrder": [
+          1,
+          0,
+          2,
+          3
+        ],
+        "starPosition": 3,
+        "explanation": "Susunan utuh: 『医者から [健康のために] [タバコを] [やめるようにと] [厳しく] 言われている』. Kata di posisi bintang (★) adalah 『やめるようにと』."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b20-you-ni-suru",
+    "chapterNumber": 20,
+    "chapterTitle": "第20課: 目的・意志・対象 (Maksud & Segmentasi)",
+    "category": "judgment",
+    "categoryLabel": "配慮・習慣",
+    "patternJp": "〜ようにする",
+    "patternKana": "ようにする",
+    "meaningId": "Berupaya membiasakan diri / Mengusahakan agar selalu...",
+    "connection": "動詞辞書形 / ない形 ＋ ようにする\n動詞辞書形 / ない形 ＋ ようにしてください",
+    "coreConcept": "Menyatakan ikhtiar atau komitmen pembicara untuk berusaha sebisa mungkin menjaga kebiasaan atau perilaku tertentu secara berkesinambungan.",
+    "cautionNote": "Bentuk 『〜ようにしてください』 sering digunakan untuk memberikan instruksi, nasihat, atau anjuran halus (misal: dokter menasihati pasien).",
+    "examples": [
+      {
+        "id": "ex-younisuru-1",
+        "textJp": "毎食後には必ず歯を丁寧に磨くようにしている。",
+        "ruby": "[毎食後:まいしょくご]には[必:かなら]ず[歯:は]を[丁寧:ていねい]に[磨:みが]くようにしている。",
+        "textId": "Seusai makan setiap kali, saya selalu berupaya membiasakan diri menggosok gigi dengan teliti.",
+        "contextNote": "Ikhtiar menjaga kebiasaan hidup bersih."
+      },
+      {
+        "id": "ex-younisuru-2",
+        "textJp": "薬の効果を最大限に高めるため、毎日決まった時間に飲むようにしてください。",
+        "ruby": "[薬:くすり]の[効果:こうか]を[最大限:さいだいげん]に[高:たか]めるため、[毎日:まいにち][決:き]まった[時間:じかん]に[飲:の]むようにしてください。",
+        "textId": "Demi memaksimalkan khasiat obat, mohon usahakan untuk meminumnya pada jam yang sama setiap hari.",
+        "contextNote": "Instruksi anjuran medis dari apoteker."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜ことにする (keputusan tegas)",
+        "summary": "ことにする = memutuskan pilihan satu kali di titik awal.",
+        "distinctionId": "『〜ようにする』 menekankan proses ikhtiar dan upaya terus-menerus agar tidak lalai."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b20-05",
+        "type": "cloze",
+        "questionNumber": 89,
+        "questionJp": "夜遅く帰宅したときは、近所迷惑にならないよう静かに（　　）。",
+        "questionRuby": "[夜遅:よるおそ]く[帰宅:きたく]したときは、[近所迷惑:きんじょめいわく]にならないよう[静:しず]かに（　　）。",
+        "questionTranslation": "Saat pulang larut malam, saya selalu berupaya untuk bergerak tenang agar tidak mengganggu tetangga.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "歩くようにしている",
+            "textId": "Berupaya membiasakan jalan pelan"
+          },
+          {
+            "key": "2",
+            "textJp": "歩く反面だ",
+            "textId": "Di sisi lain berjalan"
+          },
+          {
+            "key": "3",
+            "textJp": "歩かざるを得ない",
+            "textId": "Terpaksa berjalan"
+          },
+          {
+            "key": "4",
+            "textJp": "歩く気味だ",
+            "textId": "Bergejala berjalan"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Ikhtiar menjaga tata krama keheningan agar tidak merepotkan tetangga adalah 『動詞辞書形 ＋ ようにしている』."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b20-you-to-suru",
+    "chapterNumber": 20,
+    "chapterTitle": "第20課: 目的・意志・対象 (Maksud & Segmentasi)",
+    "category": "judgment",
+    "categoryLabel": "意志・試み",
+    "patternJp": "〜ようとする / 〜ようとしない",
+    "patternKana": "ようとする / ようとしない",
+    "meaningId": "1) Berupaya hendak... / 2) Tepat di detik hendak... / 3) Sama sekali enggan berupaya",
+    "connection": "動詞意向形（〜よう／〜ろう） ＋ とする / としない",
+    "coreConcept": "Memiliki fungsi: 1) Tepat di detik hendak memulai aksi (ketika hendak naik kereta, pintu menutup). 2) Mengerahkan daya upaya untuk mencapai sesuatu. 3) Bila berbentuk 『〜ようとしない』, bermakna pihak ketiga keras kepala sama sekali tidak mau mencoba.",
+    "cautionNote": "Bentuk negatif 『〜ようとしない』 sering keluar di ujian untuk mendeskripsikan kekecewaan melihat orang lain yang enggan berubah.",
+    "examples": [
+      {
+        "id": "ex-youtosuru-1",
+        "textJp": "電車に乗ろうとしたとき、目の前で無情にもドアが閉まってしまった。",
+        "ruby": "[電車:でんしゃ]に[乗:の]ろうとしたとき、[目:め]の[前:まえ]で[無情:むじょう]にもドアが[閉:し]まってしまった。",
+        "textId": "Tepat di detik hendak melangkah naik ke gerbong kereta, pintunya tanpa ampun tertutup persis di depan mataku.",
+        "contextNote": "Momen tepat di detik hendak memulai tindakan."
+      },
+      {
+        "id": "ex-youtosuru-2",
+        "textJp": "弟は自分の非を認めようとせず、言い訳ばかり並べている。",
+        "ruby": "[弟:おとうと]は[自分:じぶん]の[非:ひ]を[認:みと]めようとせず、[言:い]い[訳:わけ]ばかり[並:なら]べている。",
+        "textId": "Adik laki-lakiku sama sekali tidak mau berupaya mengakui kesalahannya sendiri, dan hanya sibuk membeberkan berbagai alasan.",
+        "contextNote": "Sikap keras kepala orang lain yang enggan berbuat benar."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜ようと思う (berniat)",
+        "summary": "ようと思う = niat di dalam batin.",
+        "distinctionId": "『〜ようとする』 adalah tindakan fisik nyata yang sedang dicoba atau tepat di ambang detik pelaksanaan."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b20-02",
+        "type": "seiretsu",
+        "questionNumber": 90,
+        "questionJp": "家を出ようとした　＿＿　＿＿　★　＿＿　鳴り響いた。",
+        "questionRuby": "[家:いえ]を[出:で]ようとした　＿＿　＿＿　★　＿＿　[鳴:な]り[響:ひび]いた。",
+        "questionTranslation": "Tepat di detik hendak melangkah keluar rumah, tiba-tiba telepon mendadak berdering kencang.",
+        "items": [
+          "電話のベルが",
+          "突然",
+          "その瞬間に",
+          "けたたましく"
+        ],
+        "correctOrder": [
+          2,
+          1,
+          0,
+          3
+        ],
+        "starPosition": 3,
+        "explanation": "Susunan utuh: 『家を出ようとした [その瞬間に] [突然] [電話のベルが] [けたたましく] 鳴り響いた』. Kata di posisi bintang (★) adalah 『電話のベルが』."
+      }
+    ]
+  },
+
+  // ─────────────────────────────────────────────────────────────
+  // 第21課: 時点・推移・完了 (Titik Waktu & Ketuntasan)
+  // ─────────────────────────────────────────────────────────────
+  {
+    "id": "n3-b21-kakeru",
+    "chapterNumber": 21,
+    "chapterTitle": "第21課: 時点・推移・完了 (Titik Waktu & Ketuntasan)",
+    "category": "change",
+    "categoryLabel": "途中・直前",
+    "patternJp": "〜かける / 〜かけの",
+    "patternKana": "かける / かけの",
+    "meaningId": "1) Sedang di tengah jalan (belum tuntas selesai) / 2) Nyaris hampir saja terjadi",
+    "connection": "動詞マス形（マス省く） ＋ かける / かけの ＋ 名詞 / かけだ",
+    "coreConcept": "Menunjukkan: 1) Suatu proses tindakan sudah dimulai namun ditinggalkan di tengah jalan sebelum beres (misal: buku yang baru dibaca separuh, makanan yang belum habis). 2) Sesuatu yang nyaris hampir terjadi (misal: hampir tenggelam).",
+    "cautionNote": "Bila berbentuk modifikasi kata benda: 『〜かけの＋名詞』 (cth: 飲みかけのコーヒー = kopi yang baru diminum separuh).",
+    "examples": [
+      {
+        "id": "ex-kakeru-1",
+        "textJp": "机の上には、読みかけの小説と冷めかけた紅茶がそのまま置かれていた。",
+        "ruby": "[机:つくえ]の[上:うえ]には、[読:よ]みかけの[小説:しょうせつ]と[冷:さ]めかけた[紅茶:こうちゃ]がそのまま[置:お]かれていた。",
+        "textId": "Di atas meja, tergeletak begitu saja novel yang baru dibaca separuh dan teh hitam yang mulai mendingin.",
+        "contextNote": "Buku dan minuman yang belum tuntas ditinggalkan begitu saja."
+      },
+      {
+        "id": "ex-kakeru-2",
+        "textJp": "彼は何か言いかけて口をつぐみ、困ったように視線を落とした。",
+        "ruby": "[彼:かれ]は[何:なに]か[言:い]いかけて[口:くち]をつぐみ、[困:こま]ったように[視線:しせん]を[落:お]とした。",
+        "textId": "Dia sempat hendak mengatakan sesuatu namun mendadak mengatupkan bibirnya rapat-rapat, lalu menundukkan pandangannya serba salah.",
+        "contextNote": "Ucapan yang tertahan di tengah jalan sebelum tuntas terucap."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜切る (menuntaskan)",
+        "summary": "切る = selesai tuntas hingga tetes penghabisan.",
+        "distinctionId": "『〜かける』 adalah kebalikannya: pekerjaan terhenti mengambang di separuh jalan."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b21-06",
+        "type": "cloze",
+        "questionNumber": 91,
+        "questionJp": "誰ですか、ここに（　　）のペットボトルを放置した人は！",
+        "questionRuby": "[誰:だれ]ですか、ここに（　　）のペットボトルを[放置:ほうち]した[人:ひと]は！",
+        "questionTranslation": "Siapa ini orangnya yang menelantarkan botol minuman yang baru diminum separuh di sini!",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "飲みかけ",
+            "textId": "Baru diminum setengah jalan (V-masu + かけ)"
+          },
+          {
+            "key": "2",
+            "textJp": "飲み反面",
+            "textId": "Di sisi lain minum"
+          },
+          {
+            "key": "3",
+            "textJp": "飲み気味",
+            "textId": "Bergejala minum"
+          },
+          {
+            "key": "4",
+            "textJp": "飲みだらけ",
+            "textId": "Berlumuran minum"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Botol minuman yang isinya masih tersisa belum habis diungkapkan dengan 『動詞マス形 ＋ かけ』 -> 『飲みかけのペットボトル』."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b21-kiru",
+    "chapterNumber": 21,
+    "chapterTitle": "第21課: 時点・推移・完了 (Titik Waktu & Ketuntasan)",
+    "category": "degree",
+    "categoryLabel": "完了・極限",
+    "patternJp": "〜切る / 〜切れない",
+    "patternKana": "きる / きれない",
+    "meaningId": "1) Menuntaskan sampai habis tandas / 2) Tak sanggup menghabiskan (negatif)",
+    "connection": "動詞マス形（マス省く） ＋ 切る / 切れる / 切れない",
+    "coreConcept": "Menyatakan melakukan suatu tindakan secara tuntas mutlak sampai ke tetes/lembar penghabisan. Bila berbentuk 『〜切れない』, bermakna kuantitasnya terlampau banyak sehingga mustahil dihabiskan seluruhnya.",
+    "cautionNote": "Sering menempel pada kata kerja seperti: 使い切る (menghabiskan tuntas uang/stamina), 食べ切れない (tak sanggup menghabiskan makanan), 信じ切る (percaya sepenuh hati).",
+    "examples": [
+      {
+        "id": "ex-kiru-1",
+        "textJp": "フルマラソンの過酷な42.195キロを、最後まで笑顔で走り切った。",
+        "ruby": "フルマラソンの[過酷:かこく]な42.195キロを、[最後:さいご]まで[笑顔:えがお]で[走:はし]り[切:き]った。",
+        "textId": "Jarak kejam 42,195 km maraton penuh berhasil kutuntaskan larinya hingga garis akhir dengan senyuman.",
+        "contextNote": "Menuntaskan lari jarak jauh maraton secara sempurna."
+      },
+      {
+        "id": "ex-kiru-2",
+        "textJp": "数え切れないほど多くの星々が、夜空一面にきらめいている。",
+        "ruby": "[数:かぞ]え[切:き]れないほど[多:おお]くの[星々:ほしぼし]が、[夜空一面:よぞらいちめん]にきらめいている。",
+        "textId": "Bintang-gemintang yang sebegitu banyaknya hingga tak sanggup terhitung lagi jumlahnya berkilauan di seantero langit malam.",
+        "contextNote": "Kuantitas tak terhingga (数え切れない)."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜終わる (selesai)",
+        "summary": "終わる = sekadar tanda waktu berakhirnya suatu aksi.",
+        "distinctionId": "『〜切る』 menekankan kepuasan emosional karena telah menguras habis energi atau sumber daya sampai nol."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b21-07",
+        "type": "cloze",
+        "questionNumber": 92,
+        "questionJp": "給料日直前なのに、今月の生活費をもう全部使い（　　）しまった。",
+        "questionRuby": "[給料日直前:きゅうりょうびちょくぜん]なのに、[今月:こんげつ]の[生活費:せいかつひ]をもう[全部使:ぜんぶつか]い（　　）しまった。",
+        "questionTranslation": "Padahal hari gajian baru di depan mata, namun uang belanja bulan ini sudah tandas terpakai habis seluruhnya.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "切って",
+            "textId": "Tandas habis terkuras (使い切ってしまった)"
+          },
+          {
+            "key": "2",
+            "textJp": "かけて",
+            "textId": "Baru terpakai setengah"
+          },
+          {
+            "key": "3",
+            "textJp": "反面で",
+            "textId": "Di sisi lain"
+          },
+          {
+            "key": "4",
+            "textJp": "気味で",
+            "textId": "Bergejala"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Menghabiskan uang sampai saldo nol tandas adalah 『動詞マス形 ＋ 切る』 -> 『使い切ってしまった』."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b21-nuku",
+    "chapterNumber": 21,
+    "chapterTitle": "第21課: 時点・推移・完了 (Titik Waktu & Ketuntasan)",
+    "category": "degree",
+    "categoryLabel": "達成・不屈",
+    "patternJp": "〜抜く (ぬく)",
+    "patternKana": "ぬく",
+    "meaningId": "Berjuang gigih menembus penderitaan/kesulitan hingga ke garis akhir",
+    "connection": "動詞マス形（マス省く） ＋ 抜く",
+    "coreConcept": "Berbeda dengan 『切る』 yang menekankan ketuntasan kuantitas, 『〜抜く』 menekankan kegigihan mental, daya tahan, dan perjuangan pantang menyerah dalam mengatasi rintangan berat hingga tuntas.",
+    "cautionNote": "Sering menempel pada kata kerja berbobot perjuangan: 耐え抜く (bertahan tabah), 考え抜く (berpikir mendalam), 守り抜く (menjaga teguh sampai akhir).",
+    "examples": [
+      {
+        "id": "ex-nuku-1",
+        "textJp": "どんな逆境に立たされても、自らの信念を最後まで守り抜く覚悟だ。",
+        "ruby": "どんな[逆境:ぎゃっきょう]に[立:た]たされても、[自:みずか]らの[信念:しんねん]を[最後:さいご]まで[守:まも]り[抜:ぬ]く[覚悟:かくご]だ。",
+        "textId": "Berada dalam situasi sulit seburuk apa pun, saya bertekad menjaga teguh keyakinan prinsip diri hingga akhir hayat.",
+        "contextNote": "Kegigihan mempertahankan prinsip hidup di tengah badai."
+      },
+      {
+        "id": "ex-nuku-2",
+        "textJp": "何日も悩み抜いた末に、ついに会社を辞めて独立する決断を下した。",
+        "ruby": "[何日:なんにち]も[悩:なや]み[抜:ぬ]いた[末:すえ]に、ついに[会社:かいしゃ]を[辞:や]めて[独立:どくりつ]する[決断:けつだん]を[下:くだ]した。",
+        "textId": "Setelah berhari-hari memeras pikiran dan bergulat batin menembus kegalauan, akhirnya saya mengambil keputusan berani untuk keluar dari kantor dan merintis usaha mandiri.",
+        "contextNote": "Perenungan mendalam yang menguras energi batin (悩み抜いた)."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜切る (habis tuntas)",
+        "summary": "切る = kuantitas/aksi tuntas habis.",
+        "distinctionId": "『〜抜く』 mengandung nilai kepahlawanan: ada penderitaan, rasa sakit, atau rintangan yang berhasil ditembus dengan gigih."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b21-08",
+        "type": "cloze",
+        "questionNumber": 93,
+        "questionJp": "過酷な自然環境の中で、彼らは力を合わせて最後まで生き（　　）。",
+        "questionRuby": "[過酷:かこく]な[自然環境:しぜんかんきょう]の[中:なか]で、[彼:かれ]らは[力:ちから]を[合:あ]わせて[最後:さいご]まで[生:い]き（　　）。",
+        "questionTranslation": "Di tengah bentang alam lingkungan yang kejam ganas, mereka bersatu padu bertahan hidup gigih hingga titik akhir.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "抜いた",
+            "textId": "Berjuang gigih menembus penderitaan (生き抜いた)"
+          },
+          {
+            "key": "2",
+            "textJp": "かけた",
+            "textId": "Baru setengah jalan"
+          },
+          {
+            "key": "3",
+            "textJp": "気味だった",
+            "textId": "Bergejala"
+          },
+          {
+            "key": "4",
+            "textJp": "反面だった",
+            "textId": "Di sisi lain"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Bertahan hidup gigih melewati rintangan ganasnya alam hingga selamat adalah 『動詞マス形 ＋ 抜く』 -> 『生き抜いた』."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b21-te-hajimete",
+    "chapterNumber": 21,
+    "chapterTitle": "第21課: 時点・推移・完了 (Titik Waktu & Ketuntasan)",
+    "category": "time",
+    "categoryLabel": "契機・自覚",
+    "patternJp": "〜てはじめて",
+    "patternKana": "てはじめて",
+    "meaningId": "Baru setelah mengalami A... barulah menyadari nilai pentingnya B",
+    "connection": "動詞テ形 ＋ はじめて",
+    "coreConcept": "Menyatakan bahwa sebelum peristiwa A terjadi, pembicara sama sekali tidak mengerti atau tidak mempedulikannya. Baru setelah benar-benar mengalami A secara langsung, terbitlah kesadaran baru yang membuka mata batinnya.",
+    "cautionNote": "Peristiwa A adalah pengalaman nyata atau cobaan berat (jatuh sakit, hidup mandiri, kehilangan) yang menjadi katalis kesadaran baru.",
+    "examples": [
+      {
+        "id": "ex-tehajimete-1",
+        "textJp": "重い病気にかかってはじめて、普段の健康な体のありがたさを痛感した。",
+        "ruby": "[重:おも]い[病気:びょうき]にかかってはじめて、[普段:ふだん]の[健康:けんこう]な[体:からだ]のありがたさを[痛感:つうかん]した。",
+        "textId": "Baru setelah jatuh sakit parah, barulah aku benar-benar menyadari betapa berharganya nikmat tubuh yang sehat sehari-hari.",
+        "contextNote": "Kesadaran kesehatan yang baru terbuka pasca jatuh sakit."
+      },
+      {
+        "id": "ex-tehajimete-2",
+        "textJp": "海外で一人暮らしを経験してはじめて、家族の温かい支えに感謝するようになった。",
+        "ruby": "[海外:かいがい]で[一人暮:ひとりぐ]らしを[経験:けいけん]してはじめて、[家族:かぞく]の[温:あたた]かい[支:ささ]えに[感謝:かんしゃ]するようになった。",
+        "textId": "Baru setelah merasakan sendiri hidup merantau sendirian di negeri orang, barulah aku menjadi bersyukur atas hangatnya dukungan keluarga.",
+        "contextNote": "Kedewasaan emosional setelah merantau mandiri."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜たあとで (setelah)",
+        "summary": "たあとで = urutan waktu kronologis biasa tanpa ada unsur 'kesadaran baru'.",
+        "distinctionId": "『〜てはじめて』 sarat dengan momen 'pencerahan batin': baru tersadar setelah mengalaminya sendiri."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b21-03",
+        "type": "cloze",
+        "questionNumber": 94,
+        "questionJp": "実際に現場に（　　）、問題の深刻さが浮き彫りになった。",
+        "questionRuby": "[実際:じっさい]に[現場:げんば]に（　　）、[問題:もんだい]の[深刻:しんこく]さが[浮:う]き[彫:ぼ]りになった。",
+        "questionTranslation": "Baru setelah benar-benar turun meninjau langsung ke lapangan, barulah gambaran betapa peliknya masalah tersebut menjadi tersingkap terang.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "足を運んではじめて",
+            "textId": "Baru setelah melangkah ke lokasi (V-te + はじめて)"
+          },
+          {
+            "key": "2",
+            "textJp": "足を運ぶ反面",
+            "textId": "Di sisi lain ke lokasi"
+          },
+          {
+            "key": "3",
+            "textJp": "足を運ぶわりに",
+            "textId": "Untuk ukuran ke lokasi"
+          },
+          {
+            "key": "4",
+            "textJp": "足を運ぶせいで",
+            "textId": "Gara-gara ke lokasi"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Membuka mata atas kepelikan masalah baru setelah mendatangi lokasi secara nyata adalah 『動詞テ形 ＋ はじめて』."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b21-te-irai",
+    "chapterNumber": 21,
+    "chapterTitle": "第21課: 時点・推移・完了 (Titik Waktu & Ketuntasan)",
+    "category": "time",
+    "categoryLabel": "起点・継続",
+    "patternJp": "〜て以来",
+    "patternKana": "ていらい",
+    "meaningId": "Semenjak peristiwa itu terjadi... terus menerus berlangsung sampai saat ini",
+    "connection": "動詞テ形 ＋ 以来\n名詞 ＋ 以来",
+    "coreConcept": "Menandai suatu titik tolak peristiwa di masa lampau, di mana sejak detik itu terjadi hingga saat sekarang kalimat diucapkan, suatu kondisi atau kebiasaan terus bertahan secara konsisten tanpa henti.",
+    "cautionNote": "Tidak boleh digunakan untuk peristiwa yang baru saja terjadi kemarin (harus peristiwa yang sudah berselang cukup lama). Bagian belakang harus keadaan kontinu.",
+    "examples": [
+      {
+        "id": "ex-teirai-1",
+        "textJp": "高校を卒業して以来、彼とは一度も顔を合わせていない。",
+        "ruby": "[高校:こうこう]を[卒業:そつぎょう]して[以来:いらい]、[彼:かれ]とは[一度:いちど]も[顔:かお]を[合:あ]わせていない。",
+        "textId": "Semenjak lulus dari bangku SMA, aku belum pernah bertatap muka sekali pun dengannya hingga detik ini.",
+        "contextNote": "Ketiadaan perjumpaan kontinu sejak kelulusan SMA."
+      },
+      {
+        "id": "ex-teirai-2",
+        "textJp": "昨年の夏に日本を訪れて以来、日本文化の魅力にすっかり夢中になっている。",
+        "ruby": "[昨年:さくねん]の[夏:なつ]に[日本:にほん]を[訪:おとず]れて[以来:いらい]、[日本文化:にほんぶんか]の[魅力:みりょく]にすっかり[夢中:むちゅう]になっている。",
+        "textId": "Semenjak mengunjungi Jepang pada musim panas tahun lalu, saya benar-benar jatuh hati terpesona pada daya pikat kebudayaan Jepang.",
+        "contextNote": "Kecintaan budaya yang terus berlanjut sejak kunjungan pertama."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜てから (setelah)",
+        "summary": "てから = urutan waktu biasa (cth: habis makan tidur).",
+        "distinctionId": "『〜て以来』 menuntut kondisi belakangnya terus bersambung tanpa putus sampai saat ini."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b21-04",
+        "type": "cloze",
+        "questionNumber": 95,
+        "questionJp": "あの事故を（　　）、車の運転には人一倍慎重になっている。",
+        "questionRuby": "あの[事故:じこ]を（　　）、[車:くるま]の[運転:うんてん]には[人一倍慎重:ひといちばいしんちょう]になっている。",
+        "questionTranslation": "Semenjak mengalami kecelakaan waktu itu, saya menjadi berkali-kali lipat lebih berhati-hati saat menyetir mobil.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "経験して以来",
+            "textId": "Semenjak mengalami (V-te + 以来)"
+          },
+          {
+            "key": "2",
+            "textJp": "経験する反面",
+            "textId": "Di sisi lain"
+          },
+          {
+            "key": "3",
+            "textJp": "経験する気味",
+            "textId": "Bergejala"
+          },
+          {
+            "key": "4",
+            "textJp": "経験するうちに",
+            "textId": "Mumpung"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Titik tolak perubahan kebiasaan menyetir hati-hati yang terus terjaga sejak insiden tabrakan adalah 『動詞テ形 ＋ 以来』."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b21-tokoro",
+    "chapterNumber": 21,
+    "chapterTitle": "第21課: 時点・推移・完了 (Titik Waktu & Ketuntasan)",
+    "category": "time",
+    "categoryLabel": "瞬間・局面",
+    "patternJp": "〜ところ（へ・に・を）",
+    "patternKana": "ところへ / ところに / ところを",
+    "meaningId": "Tepat di detik momen... (disapa, tertangkap basah, atau disergap kejadian lain)",
+    "connection": "動詞辞書形 / た形 / ている形 ＋ ところ（へ／に／を）",
+    "coreConcept": "Menandai titik detik waktu yang sangat spesifik ketika suatu tindakan sedang atau baru saja terjadi, lalu tiba-tiba ada peristiwa lain yang menyela atau menyergap momen tersebut.",
+    "cautionNote": "Perhatikan partikelnya: 『〜ところを』 biasanya dipakai saat ditangkap basah atau disapa (cth: 居眠りしているところを見つかった = ketahuan pas sedang tertidur).",
+    "examples": [
+      {
+        "id": "ex-tokoro-1",
+        "textJp": "授業中にこっそり早弁を食べているところを、運悪く先生に見つかってしまった。",
+        "ruby": "[授業中:じゅぎょうちゅう]にこっそり[早弁:はやべん]を[食:た]べているところを、[運悪:うんわる]く[先生:せんせい]に[見:み]つかってしまった。",
+        "textId": "Tepat di detik momen asyik menyantap bekal diam-diam saat jam pelajaran, sialnya saya tertangkap basah oleh guru.",
+        "contextNote": "Tertangkap basah tepat di momen kejadian rahasia."
+      },
+      {
+        "id": "ex-tokoro-2",
+        "textJp": "お忙しいところをお時間を割いていただき、誠にありがとうございます。",
+        "ruby": "お[忙:いそが]しいところをお[時間:じかん]を[割:さ]いていただき、[誠:まこと]にありがとうございます。",
+        "textId": "Tepat di saat Bapak/Ibu sedang amat sibuk, terima kasih sebesar-besarnya atas kesediaannya meluangkan waktu berharga.",
+        "contextNote": "Frasa etika bisnis memohon maaf atas waktu sibuk mitra."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜とき (saat)",
+        "summary": "とき = penunjuk waktu umum.",
+        "distinctionId": "『〜ところを』 mengabadikan momen 'pas di detik kejadian yang sedang berlangsung'."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b21-05",
+        "type": "seiretsu",
+        "questionNumber": 96,
+        "questionJp": "出かけようとしていた　＿＿　＿＿　★　＿＿　足止めを食らった。",
+        "questionRuby": "[出:で]かけようとしていた　＿＿　＿＿　★　＿＿　[足止:あしど]めを[食:く]らった。",
+        "questionTranslation": "Tepat saat hendak melangkah bepergian keluar, seorang tamu mendadak berkunjung hingga langkahku tertahan.",
+        "items": [
+          "ところへ",
+          "突然の",
+          "来客があり",
+          "急な"
+        ],
+        "correctOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "starPosition": 3,
+        "explanation": "Susunan utuh: 『出かけようとしていた [ところへ] [突然の] [来客があり] [急な] 足止めを食らった』. Kata di posisi bintang (★) adalah 『来客があり』."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b21-tsutsu",
+    "chapterNumber": 21,
+    "chapterTitle": "第21課: 時点・推移・完了 (Titik Waktu & Ketuntasan)",
+    "category": "contrast",
+    "categoryLabel": "逆接・同時",
+    "patternJp": "〜つつ / 〜つつも",
+    "patternKana": "つつ / つつも",
+    "meaningId": "1) Sambil... (formal dari ながら) / 2) Meskipun menyadari... namun tetap berbuat sebaliknya",
+    "connection": "動詞マス形（マス省く） ＋ つつ（も）",
+    "coreConcept": "Memiliki 2 arti: 1) Melakukan dua aksi secara simultan dalam ragam tulisan (formal dari 『ながら』). 2) Pertentangan batin: meskipun dalam lubuk hatinya menyadari bahwa hal itu salah/buruk, namun tindakannya tetap bertolak belakang.",
+    "cautionNote": "Arti ke-2 (pertentangan nurani) sangat sering diujikan di soal JLPT N3 dengan kata kerja kognisi: 知りつつ (meski tahu), 思いつつ (meski memikirkan).",
+    "examples": [
+      {
+        "id": "ex-tsutsu-1",
+        "textJp": "健康によくないと知りつつも、夜食のラーメンをやめられない。",
+        "ruby": "[健康:けんこう]によくないと[知:し]りつつも、[夜食:やしょく]のラーメンをやめられない。",
+        "textId": "Meskipun sadar betul tidak baik bagi kesehatan tubuh, saya tetap saja tak sanggup menghentikan godaan makan mi ramen larut malam.",
+        "contextNote": "Arti 2: Kontradiksi nurani vs kebiasaan makan malam."
+      },
+      {
+        "id": "ex-tsutsu-2",
+        "textJp": "過去の苦い失敗を反省しつつ、前を向いて歩みを進めなければならない。",
+        "ruby": "[過去:かこ]の[苦:にが]い[失敗:しっぱい]を[反省:はんせい]しつつ、[前:まえ]を[向:む]いて[歩:あゆ]みを[進:すす]めなければならない。",
+        "textId": "Sambil merenungi dan memetik pelajaran dari pahitnya kegagalan masa lalu, kita harus terus melangkah maju menatap masa depan.",
+        "contextNote": "Arti 1: Melakukan dua refleksi aksi secara bersamaan."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜ながら (sambil)",
+        "summary": "ながら = ragam lisan umum.",
+        "distinctionId": "『〜つつ（も）』 adalah ragam sastrawi/tertulis yang kuat menyuarakan pergulatan nurani batin manusia."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b21-02",
+        "type": "cloze",
+        "questionNumber": 97,
+        "questionJp": "危険だと（　　）も、好奇心に負けて立ち入り禁止区域に入ってしまった。",
+        "questionRuby": "[危険:きけん]だと（　　）も、[好奇心:こうきしん]に[負:ま]けて[立:た]ち[入:い]り[禁止区域:きんしくいき]に[入:はい]ってしまった。",
+        "questionTranslation": "Meskipun tahu betul bahwa itu berbahaya, kalah oleh rasa penasaran saya malah masuk ke area terlarang.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "知りつつ",
+            "textId": "Meskipun menyadari (知る -> 知りつつも)"
+          },
+          {
+            "key": "2",
+            "textJp": "知る反面",
+            "textId": "Di sisi lain tahu"
+          },
+          {
+            "key": "3",
+            "textJp": "知るわりに",
+            "textId": "Untuk ukuran tahu"
+          },
+          {
+            "key": "4",
+            "textJp": "知る気味",
+            "textId": "Bergejala tahu"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Pergulatan batin di mana subjek tahu bahaya namun tetap melanggar adalah 『動詞マス形 ＋ つつも』 -> 『知りつつも』."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b21-tsutsu-aru",
+    "chapterNumber": 21,
+    "chapterTitle": "第21課: 時点・推移・完了 (Titik Waktu & Ketuntasan)",
+    "category": "change",
+    "categoryLabel": "推移・進行",
+    "patternJp": "〜つつある",
+    "patternKana": "つつある",
+    "meaningId": "Sedang dalam proses bergerak menuju... (perubahan tren bertahap yang terus berlangsung)",
+    "connection": "動詞マス形（マス省く） ＋ つつある",
+    "coreConcept": "Merupakan ragam bahasa formal berita atau artikel untuk melukiskan suatu fenomena alam, sosial, atau ekonomi yang sedang mengalami pergeseran arah secara bertahap saat ini.",
+    "cautionNote": "Hanya menempel pada kata kerja perubahan (変化動詞) seperti: 回復する, 増加する, 悪化する, 消え去る, 明ける.",
+    "examples": [
+      {
+        "id": "ex-tsutsuaru-1",
+        "textJp": "長引く不況を脱し、景気は緩やかに回復しつつあると発表された。",
+        "ruby": "[長引:ながび]く[不況:ふきょう]を[脱:だっ]し、[景気:けいき]は[緩:ゆる]やかに[回復:かいふく]しつつあると[発表:はっぴょう]された。",
+        "textId": "Lepas dari resesi ekonomi yang berkepanjangan, diumumkan bahwa kondisi perekonomian kini sedang dalam proses pulih secara perlahan.",
+        "contextNote": "Tren makroekonomi yang sedang bergulir ke arah positif."
+      },
+      {
+        "id": "ex-tsutsuaru-2",
+        "textJp": "医療技術の進歩により、不治の病と恐れられた病気も克服されつつある。",
+        "ruby": "[医療技術:いりょうぎじゅつ]の[進歩:しんぽ]により、[不治:ふじ]の[病:やまい]と[恐:おそ]れられた[病気:びょうき]も[克服:こくふく]されつつある。",
+        "textId": "Berkat kemajuan teknologi medis, penyakit yang dahulu ditakuti sebagai momok tak tersembuhkan kini sedang dalam proses ditaklukkan.",
+        "contextNote": "Proses perkembangan sejarah penaklukan penyakit."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜ている (sedang)",
+        "summary": "ている = ragam biasa untuk kondisi sedang berlangsung.",
+        "distinctionId": "『〜つつある』 bernuansa lebih anggun dan formal, khusus menyoroti dinamika perubahan bertahap."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b21-01",
+        "type": "cloze",
+        "questionNumber": 98,
+        "questionJp": "春の気配が近づき、厳しい冬の寒さも和らぎ（　　）。",
+        "questionRuby": "[春:はる]の[気配:けはい]が[近:ちか]づき、[厳:きび]しい[冬:ふゆ]の[寒:さむ]さも[和:やわ]らぎ（　　）。",
+        "questionTranslation": "Hawa musim semi semakin mendekat, dan dinginnya musim dingin yang menggigit pun sedang dalam proses mereda perlahan.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "つつある",
+            "textId": "Sedang dalam proses perubahan (V-masu + つつある)"
+          },
+          {
+            "key": "2",
+            "textJp": "反面だ",
+            "textId": "Di sisi lain"
+          },
+          {
+            "key": "3",
+            "textJp": "わりにだ",
+            "textId": "Untuk ukuran"
+          },
+          {
+            "key": "4",
+            "textJp": "せいで",
+            "textId": "Gara-gara"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Menyatakan hawa dingin yang sedang dalam fase mereda secara bertahap adalah 『和らぎつつある』."
+      }
+    ]
+  },
+
+  // ─────────────────────────────────────────────────────────────
+  // 第22課: 使役受動・促し・伝達 (Perintah & Perasaan Terpaksa)
+  // ─────────────────────────────────────────────────────────────
+  {
+    "id": "n3-b22-o-ni-naru",
+    "chapterNumber": 22,
+    "chapterTitle": "第22課: 使役受動・促し・伝達 (Perintah & Perasaan Terpaksa)",
+    "category": "judgment",
+    "categoryLabel": "敬語・尊敬",
+    "patternJp": "お〜になる / ご〜になる",
+    "patternKana": "お〜になる / ご〜になる",
+    "meaningId": "Melakukan (Bentuk hormat standar / Sonkeigo)",
+    "connection": "お ＋ 動詞マス形語幹 ＋ になる (Kata kerja asli Jepang / 和語)\nご ＋ 漢語名詞 ＋ になる (Kata kerja Kanji Sino-Jepang / 漢語)",
+    "coreConcept": "Bentuk penghormatan standar (尊敬語) untuk meninggikan derajat perbuatan pihak yang dihormati (atasan, guru, tamu, atau pelanggan).",
+    "cautionNote": "HANYA boleh digunakan untuk perbuatan orang lain yang dihormati, JANGAN PERNAH dipakai untuk perbuatan diri sendiri.",
+    "examples": [
+      {
+        "id": "ex-oninaru-1",
+        "textJp": "社長はもう新幹線の切符をお取りになりましたか。",
+        "ruby": "[社長:しゃ|ちょう]はもう[新幹線:しん|かん|せん]の[切符:きっぷ]をお[取:と]りになりましたか。",
+        "textId": "Apakah Bapak Direktur sudah memesan tiket Shinkansen-nya?",
+        "contextNote": "Bentuk hormat reguler dari 取る."
+      },
+      {
+        "id": "ex-oninaru-2",
+        "textJp": "こちらの新しいカタログをご利用になりましたか。",
+        "ruby": "こちらの[新:あたら]しいカタログをご[利用:り|よう]になりましたか。",
+        "textId": "Apakah Anda sudah menggunakan/melihat katalog baru kami ini?",
+        "contextNote": "ご + 漢語 + になる."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "お〜する (Kenjougo)",
+        "summary": "お〜する = merendahkan diri sendiri melayani orang lain.",
+        "distinctionId": "お〜になる = meninggikan tindakan pihak lain yang dihormati."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b22-03",
+        "type": "cloze",
+        "questionNumber": 99,
+        "questionJp": "先生は昨日のニュースをお（　　）になりましたか。",
+        "questionRuby": "[先生:せん|せい]は[昨日:きのう]のニュースをお（　　）になりましたか。",
+        "questionTranslation": "Apakah Bapak Guru sudah mendengarkan berita kemarin?",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "聞く",
+            "textId": "Bentuk kamus"
+          },
+          {
+            "key": "2",
+            "textJp": "聞き",
+            "textId": "Stem ます"
+          },
+          {
+            "key": "3",
+            "textJp": "聞いて",
+            "textId": "Bentuk te"
+          },
+          {
+            "key": "4",
+            "textJp": "聞かせ",
+            "textId": "Bentuk kausatif"
+          }
+        ],
+        "correctKey": "2",
+        "explanation": "Rumus Sonkeigo reguler adalah お + V(stem ます) + になる → お聞きになりましたか."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b22-o-suru",
+    "chapterNumber": 22,
+    "chapterTitle": "第22課: 使役受動・促し・伝達 (Perintah & Perasaan Terpaksa)",
+    "category": "judgment",
+    "categoryLabel": "敬語・謙譲",
+    "patternJp": "お〜する / ご〜する (お〜いたす)",
+    "patternKana": "お〜する / ご〜する",
+    "meaningId": "Melakukan (Bentuk merendah diri / Kenjougo)",
+    "connection": "お ＋ 動詞マス形語幹 ＋ する / いたす\nご ＋ 漢語名詞 ＋ する / いたす",
+    "coreConcept": "Pola bahasa merendahkan diri (謙譲語) saat pembicara atau anggota kelompoknya melakukan suatu tindakan yang ditujukan untuk melayani pihak yang dihormati.",
+    "cautionNote": "HANYA untuk tindakan diri sendiri / kelompok kita. Jangan pernah gunakan untuk tindakan lawan bicara.",
+    "examples": [
+      {
+        "id": "ex-osuru-1",
+        "textJp": "重そうな荷物ですね。私がお持ちしましょう。",
+        "ruby": "[重:おも]そうな[荷物:に|もつ]ですね。[私:わたし]がお[持:も]ちしましょう。",
+        "textId": "Koper Anda terlihat sangat berat ya. Biar saya bantu bawakan.",
+        "contextNote": "Bantuan santun dengan お〜する."
+      },
+      {
+        "id": "ex-osuru-2",
+        "textJp": "明日の午後に改めてご連絡いたします。",
+        "ruby": "[明日:あした]の[午後:ご|ご]に[改:あらた]めてご[連絡:れん|らく]いたします。",
+        "textId": "Besok siang saya akan menghubungi Anda kembali secara resmi.",
+        "contextNote": "ご〜いたす (ragam bisnis sangat formal)."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜てあげる (Memberi kebaikan)",
+        "summary": "〜てあげる memberi kesan merendahkan martabat jika dipakai ke atasan/klien.",
+        "distinctionId": "Gunakan selalu お〜する / お〜いたす saat melayani pihak luar/atasan."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b22-04",
+        "type": "cloze",
+        "questionNumber": 100,
+        "questionJp": "駅まで車でお送り（　　）。どうぞお乗りください。",
+        "questionRuby": "[駅:えき]まで[車:くるま]でお[送:おく]り（　　）。どうぞお[乗:の]りください。",
+        "questionTranslation": "Biar saya antar sampai stasiun dengan mobil. Silakan masuk.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "になりましょう",
+            "textId": "Sonkeigo (salah untuk diri sendiri)"
+          },
+          {
+            "key": "2",
+            "textJp": "しましょう",
+            "textId": "Kenjougo (merendah melayani)"
+          },
+          {
+            "key": "3",
+            "textJp": "いただきましょう",
+            "textId": "Meminta bantuan"
+          },
+          {
+            "key": "4",
+            "textJp": "なさい",
+            "textId": "Perintah atasan"
+          }
+        ],
+        "correctKey": "2",
+        "explanation": "Karena pembicara sendiri yang mengantar lawan bicara, pola Kenjougo yang tepat adalah お送りしましょう."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b22-saserareru",
+    "chapterNumber": 22,
+    "chapterTitle": "第22課: 使役受動・促し・伝達 (Perintah & Perasaan Terpaksa)",
+    "category": "judgment",
+    "categoryLabel": "使役受動・強制",
+    "patternJp": "〜させられる / 〜される",
+    "patternKana": "させられる / される",
+    "meaningId": "Dipaksa / terpaksa melakukan (tanpa kehendak sendiri)",
+    "connection": "動詞使役受動形 (V-saserareru / V-sareru)\n【Grup 1】: 行く → 行かされる, 飲む → 飲まされる (khusus berakhiran す: 話す → 話させられる)\n【Grup 2】: 食べる → 食べさせられる\n【Grup 3】: する → させられる、来る → こさせられる",
+    "coreConcept": "Mengekspresikan perasaan terpaksa atau dipaksa melakukan suatu tindakan oleh pihak lain di luar kehendak diri sendiri. Selain paksaan fisik, juga kerap digunakan saat suatu hal secara spontan menggerakkan batin kita (misal: 考えさせられる = dibuat merenung mendalam).",
+    "cautionNote": "Untuk kata kerja Grup 1, bentuk ringkas 〜される (行かされる, 待たされる) jauh lebih sering dipakai dalam ujian dan percakapan. Hati-hati: kata kerja berakhiran 〜す wajib memakai 〜させられる.",
+    "examples": [
+      {
+        "id": "ex-saserareru-1",
+        "textJp": "子供のころ、母に嫌いな野菜を食べさせられた。",
+        "ruby": "[子供:こ|ども]のころ、[母:はは]に[嫌:きら]いな[野菜:や|さい]を[食:た]べさせられた。",
+        "textId": "Waktu kecil, aku dipaksa oleh ibuku memakan sayuran yang tidak kusukai.",
+        "contextNote": "Bentuk kausatif pasif Grup 2: 食べる → 食べさせられる."
+      },
+      {
+        "id": "ex-saserareru-2",
+        "textJp": "昨日は上司に深夜まで付き合わされて、今日はとても眠い。",
+        "ruby": "[昨日:きのう]は[上司:じょう|し]に[深夜:しん|や]まで[付:つ]き[合:あ]わされて、[今日:きょう]はとても[眠:ねむ]い。",
+        "textId": "Kemarin aku dipaksa menemani bos minum-minum hingga larut malam, hari ini rasanya sangat mengantuk.",
+        "contextNote": "Bentuk ringkas Grup 1: 付き合う → 付き合わされる."
+      },
+      {
+        "id": "ex-saserareru-3",
+        "textJp": "この映画を見て、命の大切さについて深く考えさせられた。",
+        "ruby": "この[映画:えい|が]を[見:み]て、[命:いのち]の[大切:たい|せつ]さについて[深:ふか]く[考:かんが]えさせられた。",
+        "textId": "Setelah menonton film ini, saya terdorong/dibuat untuk merenungi arti penting sebuah kehidupan.",
+        "contextNote": "Spontanitas batin: 考えさせられる (dibuat berpikir)."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜（さ）せる (Kausatif aktif)",
+        "summary": "〜（さ）せる = menyuruh pihak lain melakukan.",
+        "distinctionId": "〜（さ）せられる = subjek menjadi korban yang dipaksa/disuruh oleh orang lain."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b22-01",
+        "type": "cloze",
+        "questionNumber": 101,
+        "questionJp": "カラオケで先輩に無理矢理歌を（　　）、とても恥ずかしかった。",
+        "questionRuby": "カラオケで[先輩:せん|ぱい]に[無理矢理:む|り|やり][歌:うた]を（　　）、とても[恥:は]ずかしかった。",
+        "questionTranslation": "Di tempat karaoke aku dipaksa bernyanyi oleh seniorku, rasanya sangat malu.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "歌わせた",
+            "textId": "Menyuruh bernyanyi (Kausatif aktif)"
+          },
+          {
+            "key": "2",
+            "textJp": "歌わされた",
+            "textId": "Dipaksa bernyanyi (Kausatif pasif)"
+          },
+          {
+            "key": "3",
+            "textJp": "歌われた",
+            "textId": "Dinyanyikan (Pasif murni)"
+          },
+          {
+            "key": "4",
+            "textJp": "歌うようにした",
+            "textId": "Berusaha bernyanyi"
+          }
+        ],
+        "correctKey": "2",
+        "explanation": "Karena subjek dipaksa oleh seniornya (先輩に) menyanyikan lagu, bentuk yang tepat adalah kausatif pasif Grup 1: 歌わされた."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b22-tamae",
+    "chapterNumber": 22,
+    "chapterTitle": "第22課: 使役受動・促し・伝達 (Perintah & Perasaan Terpaksa)",
+    "category": "judgment",
+    "categoryLabel": "促し・指示",
+    "patternJp": "〜たまえ",
+    "patternKana": "たまえ",
+    "meaningId": "Lakukanlah / Kerjakanlah (perintah halus berwibawa pria senior)",
+    "connection": "動詞マス形語幹 ＋ たまえ",
+    "coreConcept": "Bentuk perintah bernuansa kebapakan/senior yang biasanya diucapkan oleh pria berkedudukan lebih tinggi (dosen, manajer senior) kepada anak buah atau juniornya.",
+    "cautionNote": "Khas bahasa pria atasan. Jangan pernah ditujukan kepada atasan atau orang yang setara dalam hubungan formal.",
+    "examples": [
+      {
+        "id": "ex-tamae-1",
+        "textJp": "まだ時間はあるから、もっとゆっくり考えたまえ。",
+        "ruby": "まだ[時間:じ|かん]はあるから、もっとゆっくり[考:かんが]えたまえ。",
+        "textId": "Waktunya masih ada kok, pikirkanlah baik-baik dengan lebih tenang.",
+        "contextNote": "Instruksi menenangkan dari mentor senior."
+      },
+      {
+        "id": "ex-tamae-2",
+        "textJp": "準備ができたら、すぐに私の部屋に来たまえ。",
+        "ruby": "[準備:じゅん|び]ができたら、すぐに[私:わたし]の[部屋:へ|や]に[来:き]たまえ。",
+        "textId": "Jika persiapannya sudah selesai, segeralah datang ke ruanganku.",
+        "contextNote": "Perintah halus atasan: 来る → 来たまえ."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜なさい (Perintah)",
+        "summary": "〜なさい sering dipakai guru sekolah atau ibu rumah tangga.",
+        "distinctionId": "〜たまえ khas dipakai figur atasan laki-laki di kantor atau akademisi."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b22-06",
+        "type": "cloze",
+        "questionNumber": 102,
+        "questionJp": "君、遠慮しないで何でも質問し（　　）。",
+        "questionRuby": "[君:きみ]、[遠慮:えん|りょ]しないで[何:なん]でも[質問:しつ|もん]し（　　）。",
+        "questionTranslation": "Kamu, jangan sungkan dan tanyakanlah apa saja.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "たまえ",
+            "textId": "Perintah halus pria atasan"
+          },
+          {
+            "key": "2",
+            "textJp": "たまらない",
+            "textId": "Sangat emosional tak tertahankan"
+          },
+          {
+            "key": "3",
+            "textJp": "かねない",
+            "textId": "Bisa berakibat buruk"
+          },
+          {
+            "key": "4",
+            "textJp": "っこない",
+            "textId": "Pasti mustahil"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Pola instruksi bersahabat dari atasan: 質問し ＋ たまえ → 質問したまえ."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b22-te-goran",
+    "chapterNumber": 22,
+    "chapterTitle": "第22課: 使役受動・促し・伝達 (Perintah & Perasaan Terpaksa)",
+    "category": "judgment",
+    "categoryLabel": "促し・助言",
+    "patternJp": "〜てごらん / 〜てごらんなさい",
+    "patternKana": "てごらん / てごらんなさい",
+    "meaningId": "Cobalah lakukan... (dorongan santai dari senior/orang tua)",
+    "connection": "動詞テ形 ＋ ごらん / ごらんなさい",
+    "coreConcept": "Digunakan oleh orang tua kepada anak, guru kepada murid kecil, atau senior kepada bawahan akrab untuk menyuruh atau mendorong mereka mencoba melakukan sesuatu (sinonim santai dari 〜てみなさい).",
+    "cautionNote": "Tidak boleh digunakan kepada orang yang kedudukannya lebih tinggi atau orang asing yang harus dihormati.",
+    "examples": [
+      {
+        "id": "ex-tegoran-1",
+        "textJp": "とても美味しいケーキだから、一口食べてごらん。",
+        "ruby": "とても[美味:おい]しいケーキだから、[一口:ひと|くち][食:た]べてごらん。",
+        "textId": "Kue ini enak sekali lho, coba cicipi sesuap.",
+        "contextNote": "Ajakan mencicipi secara ramah."
+      },
+      {
+        "id": "ex-tegoran-2",
+        "textJp": "分からない言葉があったら、自分で辞書を引いてごらんなさい。",
+        "ruby": "[分:わ]からない[言葉:こと|ば]があったら、[自分:じ|ぶん]で[辞書:じ|しょ]を[引:ひ]いてごらんなさい。",
+        "textId": "Kalau ada kata yang belum kamu pahami, coba buka kamus sendiri dulu sana.",
+        "contextNote": "Arahan mendidik dari orang tua ke anak."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜てみてください (Coba lakukan)",
+        "summary": "〜てみてください = ragam sopan netral untuk siapa saja.",
+        "distinctionId": "〜てごらん = instruksi/dorongan dari posisi superior kepada anak/bawahan."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b22-05",
+        "type": "cloze",
+        "questionNumber": 103,
+        "questionJp": "怖がらないで、自分の力でやって（　　）。",
+        "questionRuby": "[怖:こわ]がらないで、[自分:じ|ぶん]の[力:ちから]でやって（　　）。",
+        "questionTranslation": "Jangan takut, cobalah lakukan sendiri dengan kekuatanmu.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "ごらん",
+            "textId": "Dorongan mencoba (〜てごらん)"
+          },
+          {
+            "key": "2",
+            "textJp": "くださる",
+            "textId": "Bentuk hormat pihak lain"
+          },
+          {
+            "key": "3",
+            "textJp": "もらう",
+            "textId": "Menerima jasa"
+          },
+          {
+            "key": "4",
+            "textJp": "いらっしゃる",
+            "textId": "Bentuk hormat pergi/ada"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Pola dorongan mencoba untuk bawahan/anak kecil adalah やってごらん."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b22-te-hoshii",
+    "chapterNumber": 22,
+    "chapterTitle": "第22課: 使役受動・促し・伝達 (Perintah & Perasaan Terpaksa)",
+    "category": "judgment",
+    "categoryLabel": "希望・要求",
+    "patternJp": "〜てほしい / 〜てもらいたい",
+    "patternKana": "てほしい / てもらいたい",
+    "meaningId": "Ingin agar orang lain melakukan sesuatu",
+    "connection": "動詞テ形 ＋ ほしい / もらいたい\n動詞ナイ形 ＋ で ＋ ほしい / もらいたい",
+    "coreConcept": "Digunakan ketika pembicara mengharapkan orang lain (lawan bicara atau pihak ketiga) yang melakukan suatu perbuatan demi kebaikan pembicara atau situasi bersama.",
+    "cautionNote": "Pola 〜たい untuk keinginan tindakan diri sendiri, sedangkan 〜てほしい mengharapkan orang LAIN yang bertindak. Pelaku tindakan ditandai dengan partikel に.",
+    "examples": [
+      {
+        "id": "ex-tehoshii-1",
+        "textJp": "先生、このレポートの日本語をチェックしてほしいのですが。",
+        "ruby": "[先生:せん|せい]、このレポートの[日本語:に|ほん|ご]をチェックしてほしいのですが。",
+        "textId": "Pak Guru, saya ingin Bapak berkenan memeriksa bahasa Jepang di laporan saya ini.",
+        "contextNote": "Permohonan sopan kepada guru."
+      },
+      {
+        "id": "ex-tehoshii-2",
+        "textJp": "大切な話し合いだから、絶対に遅刻しないでほしい。",
+        "ruby": "[大切:たい|せつ]な[話:はな]し[合:あ]いだから、[絶対:ぜっ|たい]に[遅刻:ち|こく]しないでほしい。",
+        "textId": "Karena ini diskusi penting, aku ingin kalian sama sekali tidak terlambat.",
+        "contextNote": "Harapan agar orang lain TIDAK melakukan sesuatu (V-naide hoshii)."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜たい (Ingin)",
+        "summary": "〜たい = keinginan diri sendiri untuk bertindak.",
+        "distinctionId": "〜てほしい = keinginan agar pihak lain yang melakukan tindakan tersebut."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b22-02",
+        "type": "cloze",
+        "questionNumber": 104,
+        "questionJp": "もっとたくさんの若者にこの活動に（　　）。",
+        "questionRuby": "もっとたくさんの[若者:わか|もの]にこの[活動:かつ|どう]に（　　）。",
+        "questionTranslation": "Saya ingin lebih banyak anak muda berpartisipasi dalam kegiatan ini.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "参加したい",
+            "textId": "Saya sendiri ingin berpartisipasi"
+          },
+          {
+            "key": "2",
+            "textJp": "参加してほしい",
+            "textId": "Ingin agar mereka berpartisipasi"
+          },
+          {
+            "key": "3",
+            "textJp": "参加させる",
+            "textId": "Membuat berpartisipasi"
+          },
+          {
+            "key": "4",
+            "textJp": "参加したがる",
+            "textId": "Tampak ingin berpartisipasi"
+          }
+        ],
+        "correctKey": "2",
+        "explanation": "Karena mengharapkan pihak lain (若者に) yang berpartisipasi, pola yang tepat adalah 〜てほしい."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b22-te-kure-to",
+    "chapterNumber": 22,
+    "chapterTitle": "第22課: 使役受動・促し・伝達 (Perintah & Perasaan Terpaksa)",
+    "category": "judgment",
+    "categoryLabel": "伝達・引用",
+    "patternJp": "〜てくれと頼まれる / 言われる",
+    "patternKana": "てくれとたのまれる / いわれる",
+    "meaningId": "Diminta / disuruh (secara tidak langsung) untuk...",
+    "connection": "動詞テ形 ＋ くれと ＋ 頼まれる / 言われる\n動詞ナイ形 ＋ でくれと ＋ 頼まれる / 言われる",
+    "coreConcept": "Bentuk kutipan tidak langsung untuk meneruskan permintaan orang lain. Orang tersebut berkata '...te kure!' (Tolong lakukan!), dan pembicara menyampaikannya kepada pihak lain bahwa ia diminta melakukan hal tersebut.",
+    "cautionNote": "Bagian di depan と bernuansa kasual (〜てくれ), tetapi kalimat utuh dapat diakhiri dengan bentuk sopan 頼まれました.",
+    "examples": [
+      {
+        "id": "ex-tekureto-1",
+        "textJp": "友達に引っ越しを手伝ってくれと頼まれた。",
+        "ruby": "[友達:とも|だち]に[引越:ひっ|こ]しを[手伝:て|つだ]ってくれと[頼:たの]まれた。",
+        "textId": "Saya diminta oleh teman untuk membantu pindahan rumahnya.",
+        "contextNote": "Meneruskan permintaan teman: 手伝ってくれ."
+      },
+      {
+        "id": "ex-tekureto-2",
+        "textJp": "先生に教室では日本語だけで話してくれと言われました。",
+        "ruby": "[先生:せん|せい]に[教室:きょう|しつ]では[日本語:に|ほん|ご]だけで[話:はな]してくれと[言:い]われました。",
+        "textId": "Kami diberitahu oleh guru agar berbicara hanya dalam bahasa Jepang di kelas.",
+        "contextNote": "Instruksi tidak langsung dari pengajar."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜ように頼まれる (Disuruh agar)",
+        "summary": "〜ように頼まれる = ragam kutipan objektif umum.",
+        "distinctionId": "〜てくれと頼まれる = lebih menangkap bunyi ucapan asli orang yang meminta secara langsung."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b22-07",
+        "type": "cloze",
+        "questionNumber": 105,
+        "questionJp": "妻に仕事の帰りに牛乳を買って（　　）と頼まれた。",
+        "questionRuby": "[妻:つま]に[仕事:し|ごと]の[帰:かえ]りに[牛乳:ぎゅう|にゅう]を[買:か]って（　　）と[頼:たの]まれた。",
+        "questionTranslation": "Aku diminta oleh istriku untuk membelikan susu sepulang kerja.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "くれ",
+            "textId": "Permintaan santai (〜てくれと頼まれる)"
+          },
+          {
+            "key": "2",
+            "textJp": "あげ",
+            "textId": "Memberi"
+          },
+          {
+            "key": "3",
+            "textJp": "もらい",
+            "textId": "Menerima"
+          },
+          {
+            "key": "4",
+            "textJp": "ほしい",
+            "textId": "Keinginan"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Pola meneruskan permintaan: 買って ＋ くれと頼まれた."
+      }
+    ]
+  },
+
+  // ─────────────────────────────────────────────────────────────
+  // 第23課: 論理・推量・主張 (Kepastian Logis & Sikap Batin)
+  // ─────────────────────────────────────────────────────────────
+  {
+    "id": "n3-b23-hazu-da",
+    "chapterNumber": 23,
+    "chapterTitle": "第23課: 論理・推量・主張 (Kepastian Logis & Sikap Batin)",
+    "category": "judgment",
+    "categoryLabel": "推量・確信",
+    "patternJp": "〜はずだ",
+    "patternKana": "はずだ",
+    "meaningId": "Seharusnya / mestinya pasti (berdasarkan logika / jadwal)",
+    "connection": "動詞・イ形容詞普通形 ＋ はずだ\nナ形容詞 ＋ な ＋ はずだ\n名詞 ＋ の ＋ はずだ",
+    "coreConcept": "Menyatakan keyakinan kuat bahwa sesuatu semestinya terjadi demikian berdasarkan jadwal, data, alasan logis, atau bukti yang objektif.",
+    "cautionNote": "Untuk kata benda (名詞) wajib memakai の (休みの[はず:は|ず]だ), dan untuk な形容詞 gunakan な (元気なはずだ).",
+    "examples": [
+      {
+        "id": "ex-hazuda-1",
+        "textJp": "彼は10年も日本に住んでいたのだから、日本語が上手なはずだ。",
+        "ruby": "[彼:かれ]は10[年:ねん]も[日本:に|ほん]に[住:す]んでいたのだから、[日本語:に|ほん|ご]が[上手:じょう|ず]なはずだ。",
+        "textId": "Karena dia tinggal di Jepang selama 10 tahun, mestinya bahasa Jepangnya mahir.",
+        "contextNote": "Kesimpulan logis dari pengalaman 10 tahun."
+      },
+      {
+        "id": "ex-hazuda-2",
+        "textJp": "電車はあと5分で到着するはずです。",
+        "ruby": "[電車:でん|しゃ]はあと5[分:ふん]で[到着:とう|ちゃく]するはずです。",
+        "textId": "Kereta seharusnya tiba dalam 5 menit lagi.",
+        "contextNote": "Berdasarkan jadwal keberangkatan resmi."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜に違いない (Pasti)",
+        "summary": "に違いない = keyakinan intuisi subjektif pembicara tanpa harus berlandaskan jadwal.",
+        "distinctionId": "はずだ = kepastian berdasarkan penalaran logis objektif atau jadwal teratur."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b23-01",
+        "type": "cloze",
+        "questionNumber": 106,
+        "questionJp": "会議は午後2時から始まる（　　）ですが、まだ誰も来ていません。",
+        "questionRuby": "[会議:かい|ぎ]は[午後:ご|ご]2[時:じ]から[始:はじ]まる（　　）ですが、まだ[誰:だれ]も[来:き]ていません。",
+        "questionTranslation": "Rapatnya seharusnya mulai jam 2 siang, tapi belum ada seorang pun yang datang.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "はず",
+            "textId": "Seharusnya berdasarkan jadwal (はずだ)"
+          },
+          {
+            "key": "2",
+            "textJp": "わけ",
+            "textId": "Wajar/alasan logis (わけだ)"
+          },
+          {
+            "key": "3",
+            "textJp": "こと",
+            "textId": "Hal/fakta"
+          },
+          {
+            "key": "4",
+            "textJp": "もの",
+            "textId": "Benda/karena"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Menyatakan harapan yang seharusnya terjadi berdasarkan jadwal yang telah ditetapkan: はずです."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b23-hazu-ga-nai",
+    "chapterNumber": 23,
+    "chapterTitle": "第23課: 論理・推量・主張 (Kepastian Logis & Sikap Batin)",
+    "category": "judgment",
+    "categoryLabel": "推量・確信",
+    "patternJp": "〜はずがない",
+    "patternKana": "はずがない",
+    "meaningId": "Pasti tidak mungkin / mustahil",
+    "connection": "動詞・イ形容詞普通形 ＋ はずがない\nナ形容詞 ＋ な ＋ はずがない\n名詞 ＋ の ＋ はずがない",
+    "coreConcept": "Menyatakan penolakan tegas pembicara bahwa sesuatu hal mustahil terjadi, didasari oleh logika, akal sehat, atau kepribadian orang tersebut (sinonim kuat: 〜わけがない).",
+    "cautionNote": "Jangan tertukar dengan 〜ないはずだ (seharusnya tidak terjadi), sedangkan 〜はずがない berarti 'sama sekali mustahil/tidak masuk akal jika terjadi'.",
+    "examples": [
+      {
+        "id": "ex-hazuganai-1",
+        "textJp": "あんなに真面目な彼が、嘘をつくはずがない。",
+        "ruby": "あんなに[真面目:ま|じめ]な[彼:かれ]が、[嘘:うそ]をつくはずがない。",
+        "textId": "Orang serajin dan sejujur dia tidak mungkin berbohong.",
+        "contextNote": "Mustahil secara sifat kepribadiannya."
+      },
+      {
+        "id": "ex-hazuganai-2",
+        "textJp": "まだ練習を始めたばかりなのだから、すぐにできるはずがない。",
+        "ruby": "まだ[練習:れん|しゅう]を[始:はじ]めたばかりなのだから、すぐにできるはずがない。",
+        "textId": "Karena baru saja mulai latihan, mana mungkin bisa langsung mahir.",
+        "contextNote": "Logika proses belajar yang membutuhkan waktu."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜っこない (Pasti mustahil lisan)",
+        "summary": "っこない = ragam lisan santai bernada emosional subjektif pembicara.",
+        "distinctionId": "はずがない = kemustahilan berdasarkan alasan rasional dan bukti yang masuk akal."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b23-02",
+        "type": "cloze",
+        "questionNumber": 107,
+        "questionJp": "こんなに難しい試験で満点を取れる（　　）。",
+        "questionRuby": "こんなに[難:むずか]しい[試験:し|けん]で[満点:まん|てん]を[取:と]れる（　　）。",
+        "questionTranslation": "Pada ujian sesulit ini, mana mungkin bisa mendapatkan nilai sempurna.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "はずがない",
+            "textId": "Pasti tidak mungkin (〜はずがない)"
+          },
+          {
+            "key": "2",
+            "textJp": "べきではない",
+            "textId": "Seharusnya tidak boleh"
+          },
+          {
+            "key": "3",
+            "textJp": "にほかならない",
+            "textId": "Tidak lain dan tidak bukan"
+          },
+          {
+            "key": "4",
+            "textJp": "にすぎない",
+            "textId": "Hanya sebatas"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Menyatakan kemustahilan logis meraih skor sempurna: はずがない."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b23-kke",
+    "chapterNumber": 23,
+    "chapterTitle": "第23課: 論理・推量・主張 (Kepastian Logis & Sikap Batin)",
+    "category": "judgment",
+    "categoryLabel": "確認・想起",
+    "patternJp": "〜っけ",
+    "patternKana": "っけ",
+    "meaningId": "...kan ya? (mengingat-ingat kembali fakta masa lalu)",
+    "connection": "動詞・イ形容詞タ形 ＋ っけ\n名詞・ナ形容詞 ＋ だ / だった ＋ っけ\n丁寧体: 〜ましたっけ / 〜でしたっけ",
+    "coreConcept": "Partikel akhir percakapan santai yang digunakan saat pembicara berusaha memanggil kembali informasi masa lalu yang samar-samar atau agak terlupa untuk dikonfirmasi ke diri sendiri atau lawan bicara.",
+    "cautionNote": "Hampir selalu menempel pada bentuk lampau (~ta / ~datta). Jangan gunakan bentuk kamus sekarang.",
+    "examples": [
+      {
+        "id": "ex-kke-1",
+        "textJp": "明日の会議の集合時間、何時だったっけ？",
+        "ruby": "[明日:あした]の[会議:かい|ぎ]の[集合:しゅう|ごう][時間:じ|かん]、[何時:なん|じ]だったっけ？",
+        "textId": "Waktu kumpul rapat besok itu tadi jam berapa kan ya?",
+        "contextNote": "Konfirmasi jadwal yang agak terlupa."
+      },
+      {
+        "id": "ex-kke-2",
+        "textJp": "田中さんの誕生日は来週でしたっけ？",
+        "ruby": "[田中:た|なか]さんの[誕生日:たん|じょう|び]は[来週:らい|しゅう]でしたっけ？",
+        "textId": "Ulang tahun Tanaka-san minggu depan kan ya?",
+        "contextNote": "Bentuk sopan konfirmasi: でしたっけ."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜よね (Kan ya)",
+        "summary": "よね = meminta persetujuan atas fakta yang sedang disadari saat ini.",
+        "distinctionId": "っけ = khusus untuk mengingat informasi masa lalu yang sedang terlupa."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b23-05",
+        "type": "cloze",
+        "questionNumber": 108,
+        "questionJp": "あれ、駅前のあの本屋、いつ（　　）っけ？ もう閉まっているね。",
+        "questionRuby": "あれ、[駅前:えき|まえ]のあの[本屋:ほん|や]、いつ（　　）っけ？ もう[閉:し]まっているね。",
+        "questionTranslation": "Eh, toko buku di depan stasiun itu kapan tutupnya ya? Sekarang sudah tutup ya.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "閉まる",
+            "textId": "Bentuk kamus"
+          },
+          {
+            "key": "2",
+            "textJp": "閉まった",
+            "textId": "Bentuk lampau (〜た＋っけ)"
+          },
+          {
+            "key": "3",
+            "textJp": "閉まり",
+            "textId": "Stem mas"
+          },
+          {
+            "key": "4",
+            "textJp": "閉める",
+            "textId": "Bentuk transitif"
+          }
+        ],
+        "correctKey": "2",
+        "explanation": "Pola mengingat kembali fakta yang telah terjadi menempel pada bentuk lampau: 閉まったっけ."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b23-mai",
+    "chapterNumber": 23,
+    "chapterTitle": "第23課: 論理・推量・主張 (Kepastian Logis & Sikap Batin)",
+    "category": "judgment",
+    "categoryLabel": "否定意志・推量",
+    "patternJp": "〜まい / 〜まいか",
+    "patternKana": "まい / まいか",
+    "meaningId": "1. Tidak akan berniat lagi; 2. Bukankah...?",
+    "connection": "【否定意志 (Niat negatif)】: 動詞辞書形 (Grup 1) ＋ まい / 動詞ナイ形語幹 (Grup 2/3) ＋ まい\n※する → すまい / するまい、来る → こまい / くるまい\n【否定推量 (Dugaan retoris)】: 〜ではあるまいか",
+    "coreConcept": "(1) Tekad batin yang keras untuk TIDAK akan melakukan hal itu lagi (sinonim: もう絶対に〜しない); (2) Dugaan retoris formal bahwa kemungkinan hal tersebut terjadi (〜ではあるまいか = bukankah begitu?).",
+    "cautionNote": "Bernuansa tulisan formal, sastra, atau tekad monolog batin yang kuat.",
+    "examples": [
+      {
+        "id": "ex-mai-1",
+        "textJp": "あんなまずい店には、二度と行くまい。",
+        "ruby": "あんなまずい[店:みせ]には、[二度:に|ど]と[行:い]くまい。",
+        "textId": "Ke restoran seburuk itu, aku bersumpah tidak akan pernah datang lagi.",
+        "contextNote": "Tekad batin negatif mutlak."
+      },
+      {
+        "id": "ex-mai-2",
+        "textJp": "このままでは地球温暖化がさらに進むのではあるまいか。",
+        "ruby": "このままでは[地球:ち|きゅう][温暖化:おん|だん|か]がさらに[進:すす]むのではあるまいか。",
+        "textId": "Jika dibiarkan seperti ini, bukankah pemanasan global akan semakin bertambah parah?",
+        "contextNote": "Dugaan retoris formal: ではあるまいか."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜ないつもりだ (Tidak berencana)",
+        "summary": "ないつもりだ = rencana biasa dalam kehidupan sehari-hari.",
+        "distinctionId": "まい = sumpah/tekad batin yang sangat keras dan bersungguh-sungguh."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b23-06",
+        "type": "cloze",
+        "questionNumber": 109,
+        "questionJp": "こんなにひどい目に遭ったのだから、もう彼を信用する（　　）。",
+        "questionRuby": "こんなにひどい[目:め]に[遭:あ]ったのだから、もう[彼:かれ]を[信用:しん|よう]する（　　）。",
+        "questionTranslation": "Setelah mengalami kejadian seburuk ini, aku bersumpah tidak akan mempercayainya lagi.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "まい",
+            "textId": "Tekad tidak berniat lagi (〜まい)"
+          },
+          {
+            "key": "2",
+            "textJp": "ものか",
+            "textId": "Mana mungkin mau (lisan)"
+          },
+          {
+            "key": "3",
+            "textJp": "べきだ",
+            "textId": "Seharusnya"
+          },
+          {
+            "key": "4",
+            "textJp": "はずだ",
+            "textId": "Semestinya"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Menyatakan sumpah batin tidak akan mempercayai lagi: 信用するまい."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b23-ni-hoka-naranai",
+    "chapterNumber": 23,
+    "chapterTitle": "第23課: 論理・推量・主張 (Kepastian Logis & Sikap Batin)",
+    "category": "judgment",
+    "categoryLabel": "主張・断定",
+    "patternJp": "〜にほかならない",
+    "patternKana": "にほかならない",
+    "meaningId": "Tidak lain dan tidak bukan adalah...",
+    "connection": "名詞 ＋ にほかならない\n動詞普通形 ＋ から ＋ にほかならない",
+    "coreConcept": "Pola penegasan tegas (断定) dalam ragam tulisan atau pidato formal untuk menekankan bahwa satu-satunya penyebab, alasan utama, atau esensi dari suatu peristiwa adalah hal tersebut, bukan faktor lainnya.",
+    "cautionNote": "Sangat formal. Sering berpasangan dengan 〜のは: 『〜のは、…からにほかならない』.",
+    "examples": [
+      {
+        "id": "ex-hokanaranai-1",
+        "textJp": "今回のプロジェクトの成功は、チーム全員の努力の結果にほかならない。",
+        "ruby": "[今回:こん|かい]のプロジェクトの[成功:せい|こう]は、チーム[全員:ぜん|いん]の[努力:ど|りょく]の[結果:けっ|か]にほかならない。",
+        "textId": "Keberhasilan proyek kali ini tidak lain dan tidak bukan adalah hasil kerja keras seluruh anggota tim.",
+        "contextNote": "Penegasan penyebab tunggal kesuksesan."
+      },
+      {
+        "id": "ex-hokanaranai-2",
+        "textJp": "彼が厳しく注意したのは、君に成長してほしいからにほかならない。",
+        "ruby": "[彼:かれ]が[厳:きび]しく[注意:ちゅう|い]したのは、[君:きみ]に[成長:せい|ちょう]してほしいからにほかならない。",
+        "textId": "Alasan dia menegurmu dengan tegas tiada lain karena dia ingin kamu berkembang.",
+        "contextNote": "Penegasan niat baik sejati di balik tindakan."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜にすぎない (Hanya sebatas)",
+        "summary": "にすぎない = merendahkan signifikansi ('hanya sebatas itu').",
+        "distinctionId": "にほかならない = mengangkat penegasan mutlak ('pasti itulah esensinya!')."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b23-03",
+        "type": "cloze",
+        "questionNumber": 110,
+        "questionJp": "彼が合格できたのは、毎日夜遅くまで勉強した努力の成果（　　）。",
+        "questionRuby": "[彼:かれ]が[合格:ごう|かく]できたのは、[毎日:まい|にち][夜:よる][遅:おそ]くまで[勉強:べん|きょう]した[努力:ど|りょく]の[成果:せい|か]（　　）。",
+        "questionTranslation": "Lulusnya dia tidak lain dan tidak bukan adalah buah dari kerja keras belajar hingga larut malam setiap hari.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "にすぎない",
+            "textId": "Hanya sekadar"
+          },
+          {
+            "key": "2",
+            "textJp": "にほかならない",
+            "textId": "Tiada lain adalah (にほかならない)"
+          },
+          {
+            "key": "3",
+            "textJp": "にちがいない",
+            "textId": "Pasti begitu"
+          },
+          {
+            "key": "4",
+            "textJp": "に沿って",
+            "textId": "Sesuai dengan"
+          }
+        ],
+        "correctKey": "2",
+        "explanation": "Pola penegasan bahwa hasil kelulusan tiada lain adalah buah usahanya: にほかならない."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b23-ni-soui-nai",
+    "chapterNumber": 23,
+    "chapterTitle": "第23課: 論理・推量・主張 (Kepastian Logis & Sikap Batin)",
+    "category": "judgment",
+    "categoryLabel": "推量・確信",
+    "patternJp": "〜に相違ない",
+    "patternKana": "にそういない",
+    "meaningId": "Pasti tidak salah lagi (formal dari 〜に違いない)",
+    "connection": "動詞・イ形容詞普通形 ＋ に相違ない\nナ形容詞語幹 / 名詞 ＋ に相違ない (tanpa だ)",
+    "coreConcept": "Secara harfiah bermakna 'tidak ada perbedaan/kesalahan (相違がない)'. Menyatakan kepastian mutlak tanpa keraguan sedikit pun dari sudut pandang pembicara.",
+    "cautionNote": "Ragam bahasa tertulis kaku dan formal tinggi (sering muncul di laporan resmi, investigasi, atau wacana hukum).",
+    "examples": [
+      {
+        "id": "ex-souinai-1",
+        "textJp": "現場に残された指紋から判断して、犯人は彼に相違ない。",
+        "ruby": "[現場:げん|ば]に[残:のこ]された[指紋:し|もん]から[判断:はん|だん]して、[犯人:はん|にん]は[彼:かれ]に[相違:そう|い]ない。",
+        "textId": "Menilai dari sidik jari yang tertinggal di TKP, pelakunya pasti tidak salah lagi adalah dia.",
+        "contextNote": "Kepastian mutlak dalam penyelidikan resmi."
+      },
+      {
+        "id": "ex-souinai-2",
+        "textJp": "この新技術が将来の産業に大きな変革をもたらすことに相違ない。",
+        "ruby": "この[新技術:しん|ぎ|じゅつ]が[将来:しょう|らい]の[産業:さん|ぎょう]に[大:おお]きな[変革:へん|かく]をもたらすことに[相違:そう|い]ない。",
+        "textId": "Teknologi baru ini pasti tidak salah lagi akan membawa transformasi besar bagi industri masa depan.",
+        "contextNote": "Pernyataan tertulis resmi berbobot tinggi."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜に違いない (Pasti)",
+        "summary": "に違いない = sangat umum digunakan dalam percakapan lisan maupun tulisan.",
+        "distinctionId": "に相違ない = ragam tertulis formal dan formalitasnya lebih tinggi."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b23-07",
+        "type": "cloze",
+        "questionNumber": 111,
+        "questionJp": "彼の実力からすれば、今度の試験にも上位で合格する（　　）。",
+        "questionRuby": "[彼:かれ]の[実力:じつ|りょく]からすれば、[今度:こん|ど]の[試験:し|けん]にも[上位:じょう|い]で[合格:ごう|かく]する（　　）。",
+        "questionTranslation": "Menilik kemampuannya yang nyata, ia pasti tidak salah lagi akan lulus dengan peringkat atas pada ujian kali ini.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "に相違ない",
+            "textId": "Pasti tidak salah lagi (に相違ない)"
+          },
+          {
+            "key": "2",
+            "textJp": "にすぎない",
+            "textId": "Hanya sekadar"
+          },
+          {
+            "key": "3",
+            "textJp": "にほかならない",
+            "textId": "Tidak lain dan tidak bukan"
+          },
+          {
+            "key": "4",
+            "textJp": "にわたる",
+            "textId": "Mencakup rentang"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Keyakinan pasti tanpa keraguan: 合格するに相違ない."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b23-ni-suginai",
+    "chapterNumber": 23,
+    "chapterTitle": "第23課: 論理・推量・主張 (Kepastian Logis & Sikap Batin)",
+    "category": "judgment",
+    "categoryLabel": "限定・評価",
+    "patternJp": "〜にすぎない",
+    "patternKana": "にすぎない",
+    "meaningId": "Hanya sebatas / tidak lebih dari sekadar...",
+    "connection": "動詞普通形 ＋ にすぎない\n名詞 ＋ にすぎない\nナ形容詞である ＋ にすぎない",
+    "coreConcept": "Digunakan untuk menyatakan bahwa suatu hal tidak memiliki nilai tinggi, berskala kecil, atau hanya sekadar hal biasa tanpa perlu dibesar-besarkan.",
+    "cautionNote": "Sering diawali dengan kata 単に (tanni = semata-mata) atau ただ (hanya): 『ただの〜にすぎない』.",
+    "examples": [
+      {
+        "id": "ex-suginai-1",
+        "textJp": "これは私の個人的な意見にすぎません。",
+        "ruby": "これは[私:わたし]の[個人的:こ|じん|てき]な[意見:い|けん]にすぎません。",
+        "textId": "Ini semata-mata hanyalah opini pribadi saya saja (tidak mewakili lembaga resmi).",
+        "contextNote": "Sikap merendah atas pendapat sendiri."
+      },
+      {
+        "id": "ex-suginai-2",
+        "textJp": "アルバイトの立場にすぎない私には、その決定を下す権限はない。",
+        "ruby": "アルバイトの[立場:たち|ば]にすぎない[私:わたし]には、その[決定:けっ|てい]を[下:くだ]す[権限:けん|げん]はない。",
+        "textId": "Saya yang posisinya hanya sebatas pekerja paruh waktu, tidak memiliki wewenang untuk mengambil keputusan tersebut.",
+        "contextNote": "Membatasi status wewenang."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜だけだ (Hanya)",
+        "summary": "だけだ = membatasi jumlah atau tindakan secara netral.",
+        "distinctionId": "にすぎない = mengandung penilaian evaluatif bahwa bobotnya rendah/remeh."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b23-04",
+        "type": "cloze",
+        "questionNumber": 112,
+        "questionJp": "私はただ言われたことをやった（　　）、特別なことは何もしていません。",
+        "questionRuby": "[私:わたし]はただ[言:い]われたことをやった（　　）、[特別:とく|べつ]なことは[何:なに]もしていません。",
+        "questionTranslation": "Saya hanya sekadar melakukan apa yang disuruh, sama sekali tidak melakukan hal istimewa.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "にすぎず",
+            "textId": "Hanya sebatas (にすぎない)"
+          },
+          {
+            "key": "2",
+            "textJp": "にほかならず",
+            "textId": "Tiada lain adalah"
+          },
+          {
+            "key": "3",
+            "textJp": "に沿って",
+            "textId": "Sesuai pedoman"
+          },
+          {
+            "key": "4",
+            "textJp": "にしたがって",
+            "textId": "Seiring dengan"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Menyatakan kerendahan hati bahwa tindakannya hanya sebatas melakukan instruksi biasa: やったにすぎず."
+      }
+    ]
+  },
+
+  // ─────────────────────────────────────────────────────────────
+  // 第24課: 譲歩・前提・話題 (Pengandaian, Batasan & Topik)
+  // ─────────────────────────────────────────────────────────────
+  {
+    "id": "n3-b24-ni-shitemo",
+    "chapterNumber": 24,
+    "chapterTitle": "第24課: 譲歩・前提・話題 (Pengandaian, Batasan & Topik)",
+    "category": "contrast",
+    "categoryLabel": "事実・譲歩",
+    "patternJp": "〜にしても",
+    "patternKana": "にしても",
+    "meaningId": "Bahkan jika / bagaimanapun keadaannya...",
+    "connection": "動詞・イ形容詞普通形 ＋ にしても\nナ形容詞語幹 / 名詞 ＋ にしても (tanpa だ)",
+    "coreConcept": "Mengakui suatu fakta atau kondisi sebagai konsesi, namun tetap merasa bahwa hal tersebut melampaui batas kewajaran, tidak dapat dibenarkan, atau kesimpulan pembicara tidak berubah. Sering mengekspresikan kritik ringan.",
+    "cautionNote": "Sering muncul bentuk ganda 〜にしても〜にしても (baik A maupun B).",
+    "examples": [
+      {
+        "id": "ex-nishitemo-1",
+        "textJp": "冗談にしても、そんな失礼なことを言うべきではない。",
+        "ruby": "[冗談:じょう|だん]にしても、そんな[失礼:しつ|れい]なことを[言:い]うべきではない。",
+        "textId": "Bahkan sekalipun itu hanya lelucon, kamu tidak pantas mengatakan hal sekurang ajar itu.",
+        "contextNote": "Kritik atas lelucon yang melampaui batas wajar."
+      },
+      {
+        "id": "ex-nishitemo-2",
+        "textJp": "忙しいにしても、一言連絡ぐらいはできるはずだ。",
+        "ruby": "[忙:いそが]しいにしても、[一言:ひと|こと][連絡:れん|らく]ぐらいはできるはずだ。",
+        "textId": "Bahkan jika sibuk sekalipun, semestinya setidaknya bisa memberi kabar sepatah kata.",
+        "contextNote": "Alasan sibuk tidak membenarkan ketiadaan kabar."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜にしては (Untuk ukuran)",
+        "summary": "にしては = membandingkan dengan standar umum (cth: untuk ukuran anak kecil, pintar sekali).",
+        "distinctionId": "にしても = konsesi atas suatu kondisi (bahkan jika demikian, tetap ada batasan)."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b24-02",
+        "type": "cloze",
+        "questionNumber": 113,
+        "questionJp": "いくら安い（　　）、こんなにたくさんの量は必要ないよ。",
+        "questionRuby": "いくら[安:やす]い（　　）、こんなにたくさんの[量:りょう]は[必要:ひつ|よう]ないよ。",
+        "questionTranslation": "Betapapun murahnya, kita tidak butuh porsi sebanyak ini lho.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "にしても",
+            "textId": "Bahkan jika demikian (〜にしても)"
+          },
+          {
+            "key": "2",
+            "textJp": "にしては",
+            "textId": "Untuk ukuran standar"
+          },
+          {
+            "key": "3",
+            "textJp": "にとって",
+            "textId": "Bagi sudut pandang"
+          },
+          {
+            "key": "4",
+            "textJp": "にかけて",
+            "textId": "Sampai rentang"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Berpasangan dengan いくら〜にしても (betapapun murahnya): 安いにしても."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b24-ppanashi",
+    "chapterNumber": 24,
+    "chapterTitle": "第24課: 譲歩・前提・話題 (Pengandaian, Batasan & Topik)",
+    "category": "judgment",
+    "categoryLabel": "状態・放置",
+    "patternJp": "〜っぱなし",
+    "patternKana": "っぱなし",
+    "meaningId": "Dibiarkan begitu saja tanpa dibereskan",
+    "connection": "動詞マス形語幹 ＋ っぱなし",
+    "coreConcept": "Menyatakan bahwa suatu perbuatan dilakukan, tetapi keadaan setelahnya dibiarkan begitu saja tanpa dirapikan, ditutup, atau dibereskan sebagaimana mestinya. Biasanya mengandung nada teguran, keluhan, atau ketidaknyamanan pembicara terhadap kelalaian tersebut.",
+    "cautionNote": "Hanya menempel pada stem kata kerja (ます形語幹). Pada kata kerja intransitif seperti 立ちっぱなし artinya 'berdiri terus-menerus tanpa istirahat duduk'.",
+    "examples": [
+      {
+        "id": "ex-ppanashi-1",
+        "textJp": "テレビをつけっぱなしで寝てしまった。",
+        "ruby": "テレビをつけっぱなしで[寝:ね]てしまった。",
+        "textId": "Saya ketiduran dengan televisi dibiarkan menyala begitu saja.",
+        "contextNote": "Kelalaian membiarkan barang elektronik menyala."
+      },
+      {
+        "id": "ex-ppanashi-2",
+        "textJp": "満員電車で2時間も立ちっぱなしだったので、足がパンパンだ。",
+        "ruby": "[満員電車:まん|いん|でん|しゃ]で2[時間:じ|かん]も[立:た]ちっぱなしだったので、[足:あし]がパンパンだ。",
+        "textId": "Karena harus terus berdiri selama 2 jam di kereta yang padat, kakiku pegal sekali.",
+        "contextNote": "Kondisi fisik terus-menerus tanpa jeda (立ちっぱなし)."
+      },
+      {
+        "id": "ex-ppanashi-3",
+        "textJp": "脱いだ服を脱ぎっぱなしにしないで、ちゃんと片付けなさい！",
+        "ruby": "[脱:ぬ]いだ[服:ふく]を[脱:ぬ]ぎっぱなしにしないで、ちゃんと[片付:かた|づ]けなさい！",
+        "textId": "Jangan biarkan pakaian yang kamu lepas berserakan begitu saja, rapikan baik-baik!",
+        "contextNote": "Teguran atas kebiasaan membiarkan pakaian berserakan."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜たまま (Dalam kondisi tetap)",
+        "summary": "たまま = deskripsi netral tanpa nada keluhan emosional.",
+        "distinctionId": "っぱなし = hampir selalu mengandung nada keluhan, rasa lelah, atau teguran atas kelalaian."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b24-06",
+        "type": "cloze",
+        "questionNumber": 114,
+        "questionJp": "エアコンを（　　）にして外出したため、電気代が高くなってしまった。",
+        "questionRuby": "エアコンを（　　）にして[外出:がい|しゅつ]したため、[電気代:でん|き|だい]が[高:たか]くなってしまった。",
+        "questionTranslation": "Karena pergi keluar dengan AC dibiarkan menyala begitu saja, tagihan listrik jadi mahal.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "つけっぱなし",
+            "textId": "Dibiarkan menyala (〜っぱなし)"
+          },
+          {
+            "key": "2",
+            "textJp": "つけたまま",
+            "textId": "Dalam kondisi menyala (netral)"
+          },
+          {
+            "key": "3",
+            "textJp": "つけがち",
+            "textId": "Cenderung menyala"
+          },
+          {
+            "key": "4",
+            "textJp": "つけ気味",
+            "textId": "Agak sedikit menyala"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Menyatakan kelalaian membiarkan pendingin ruangan terus menyala tanpa dimatikan: つけっぱなし."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b24-to-ittemo",
+    "chapterNumber": 24,
+    "chapterTitle": "第24課: 譲歩・前提・話題 (Pengandaian, Batasan & Topik)",
+    "category": "contrast",
+    "categoryLabel": "限定・譲歩",
+    "patternJp": "〜といっても",
+    "patternKana": "といっても",
+    "meaningId": "Meskipun dibilang... (namun kenyataannya tidak sehebat bayangan)",
+    "connection": "動詞・イ形容詞普通形 ＋ といっても\nナ形容詞語幹 / 名詞 ＋ といっても (tanpa だ)",
+    "coreConcept": "Digunakan ketika pembicara membatasi ekspektasi lawan bicara agar tidak membayangkan hal yang berlebihan. Menyatakan bahwa faktanya memang begitu, tetapi skala atau kualitas sebenarnya jauh lebih sederhana.",
+    "cautionNote": "Klausa setelah といっても hampir selalu diikuti fakta sederhana atau batasan yang mengecilkan ekspektasi.",
+    "examples": [
+      {
+        "id": "ex-toittemo-1",
+        "textJp": "料理ができるといっても、簡単な卵焼きが作れる程度です。",
+        "ruby": "[料理:りょう|り]ができるといっても、[簡単:かん|たん]な[卵焼:たまご|や]きが[作:つく]れる[程度:てい|ど]です。",
+        "textId": "Meskipun saya bilang bisa memasak, itu hanya sebatas bisa membuat telur dadar sederhana saja.",
+        "contextNote": "Membatasi ekspektasi kepandaian memasak."
+      },
+      {
+        "id": "ex-toittemo-2",
+        "textJp": "今週は忙しいといっても、先週のピークほどではありません。",
+        "ruby": "[今週:こん|しゅう]は[忙:いそが]しいといっても、[先週:せん|しゅう]のピークほどではありません。",
+        "textId": "Meskipun dibilang minggu ini sibuk, tidaklah sepadat puncak minggu lalu.",
+        "contextNote": "Mengklarifikasi derajat kesibukan."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜とはいえ (Kendati demikian)",
+        "summary": "とはいえ = ragam formal tertulis N2.",
+        "distinctionId": "といっても = ragam umum percakapan dan tulisan N3."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b24-03",
+        "type": "cloze",
+        "questionNumber": 115,
+        "questionJp": "家を買ったといっても、とても（　　）中古のマンションです。",
+        "questionRuby": "[家:いえ]を[買:か]ったといっても、とても（　　）[中古:ちゅう|こ]のマンションです。",
+        "questionTranslation": "Meskipun dibilang membeli rumah, itu hanyalah apartemen bekas yang sangat kecil dan tua.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "小さくて古い",
+            "textId": "Kecil dan tua (merendahkan ekspektasi)"
+          },
+          {
+            "key": "2",
+            "textJp": "豪華で広い",
+            "textId": "Mewah dan luas"
+          },
+          {
+            "key": "3",
+            "textJp": "新築で綺麗な",
+            "textId": "Baru dibangun dan bersih"
+          },
+          {
+            "key": "4",
+            "textJp": "駅前の超高層",
+            "textId": "Gedung pencakar langit depan stasiun"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Karena berpola 〜といっても, kelanjutan kalimat harus membatasi atau merendahkan bayangan mewah: 小さくて古い."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b24-to-iu-no-wa",
+    "chapterNumber": 24,
+    "chapterTitle": "第24課: 譲歩・前提・話題 (Pengandaian, Batasan & Topik)",
+    "category": "judgment",
+    "categoryLabel": "定義・説明",
+    "patternJp": "〜というのは / 〜とは",
+    "patternKana": "というのは / とは",
+    "meaningId": "Yang dimaksud dengan... / Definisi dari...",
+    "connection": "名詞 ＋ というのは / とは\n文末: 〜ことだ / 〜意味だ / 〜からだ",
+    "coreConcept": "Digunakan untuk mengangkat suatu kata, istilah baru, atau konsep untuk mendefinisikan artinya, atau untuk menjelaskan alasan/sebab dari suatu situasi yang baru disebutkan (というのは〜からだ).",
+    "cautionNote": "〜とは adalah versi yang lebih ringkas dan tertulis dari というのは.",
+    "examples": [
+      {
+        "id": "ex-toiu-1",
+        "textJp": "「円高」というのは、円の価値が他の通貨に対して高くなることです。",
+        "ruby": "「[円高:えん|だか]」というのは、[円:えん]の[価値:か|ち]が[他:ほか]の[通貨:つう|か]に[対:たい]して[高:たか]くなることです。",
+        "textId": "Yang dimaksud dengan 'Endaka' adalah menguatnya nilai mata uang Yen terhadap mata uang asing lainnya.",
+        "contextNote": "Mendefinisikan konsep keuangan."
+      },
+      {
+        "id": "ex-toiu-2",
+        "textJp": "昨日学校を休んだ。というのは、急に高熱が出たからだ。",
+        "ruby": "[昨日:きのう][学校:がっ|こう]を[休:やす]んだ。というのは、[急:きゅう]に[高熱:こう|ねつ]が[出:で]たからだ。",
+        "textId": "Kemarin saya absen sekolah. Hal itu adalah karena saya tiba-tiba demam tinggi.",
+        "contextNote": "というのは〜からだ (menjelaskan alasan keterlambatan/absen)."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜といえば (Bicara tentang)",
+        "summary": "といえば = memancing asosiasi pikiran spontan.",
+        "distinctionId": "というのは / とは = mendefinisikan arti istilah secara objektif."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b24-04",
+        "type": "cloze",
+        "questionNumber": 116,
+        "questionJp": "「リモートワーク」というのは、オフィス以外の場所で働く（　　）。",
+        "questionRuby": "「リモートワーク」というのは、オフィス[以外:い|がい]の[場所:ば|しょ]で[働:はたら]く（　　）。",
+        "questionTranslation": "Yang dimaksud dengan 'Remote Work' adalah bekerja di tempat selain kantor.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "ことだ",
+            "textId": "Artinya adalah (〜ことだ)"
+          },
+          {
+            "key": "2",
+            "textJp": "ものだ",
+            "textId": "Sudah sewajarnya"
+          },
+          {
+            "key": "3",
+            "textJp": "わけだ",
+            "textId": "Berarti kesimpulannya"
+          },
+          {
+            "key": "4",
+            "textJp": "はずだ",
+            "textId": "Semestinya"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Pola pemberian definisi istilah: 〜というのは…ことだ."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b24-to-iu-to",
+    "chapterNumber": 24,
+    "chapterTitle": "第24課: 譲歩・前提・話題 (Pengandaian, Batasan & Topik)",
+    "category": "judgment",
+    "categoryLabel": "話題・連想",
+    "patternJp": "〜というと / 〜といえば / 〜といったら",
+    "patternKana": "というと / といえば / といったら",
+    "meaningId": "Kalau bicara soal... (hal khas yang langsung terlintas)",
+    "connection": "名詞 / 普通形 ＋ というと / といえば / といったら",
+    "coreConcept": "Digunakan ketika suatu kata atau topik disebut, lalu secara spontan memancing asosiasi khas atau representasi paling terkenal dari hal tersebut. Khusus 〜といったら juga dapat digunakan untuk mengungkapkan intensitas emosional yang luar biasa.",
+    "cautionNote": "〜といえば sering dipakai saat tiba-tiba teringat suatu topik di tengah obrolan ('Ngomong-ngomong soal itu...').",
+    "examples": [
+      {
+        "id": "ex-toiuto-1",
+        "textJp": "日本の春の風物詩というと、やはり桜のお花見でしょう。",
+        "ruby": "[日本:に|ほん]の[春:はる]の[風物詩:ふう|ぶつ|し]というと、やはり[桜:さくら]のお[花見:はな|み]でしょう。",
+        "textId": "Kalau bicara soal tradisi khas musim semi di Jepang, tentulah melihat mekarnya bunga Sakura.",
+        "contextNote": "Asosiasi representatif utama musim semi."
+      },
+      {
+        "id": "ex-toiuto-2",
+        "textJp": "北海道の真冬の寒さといったら、言葉では表せないほどだ。",
+        "ruby": "[北海道:ほっ|かい|どう]の[真冬:ま|ふゆ]の[寒:さむ]さといったら、[言葉:こと|ば]では[表:あらわ]せないほどだ。",
+        "textId": "Kalau bicara soal dinginnya puncak musim dingin di Hokkaido, sungguh luar biasa sampai tak terkatakan dengan kata-kata.",
+        "contextNote": "といったら untuk intensitas ekstrem."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜にかけては (Dalam hal keahlian)",
+        "summary": "にかけては = menonjolkan keahlian khusus di suatu bidang.",
+        "distinctionId": "というと / といえば = asosiasi umum yang langsung terlintas di benak saat mendengar suatu kata."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b24-05",
+        "type": "cloze",
+        "questionNumber": 117,
+        "questionJp": "イタリア料理（　　）、真っ先にピザやパスタが思い浮かぶ。",
+        "questionRuby": "イタリア[料理:りょう|り]（　　）、[真:ま]っ[先:さき]にピザやパスタが[思:おも]い[浮:う]かぶ。",
+        "questionTranslation": "Kalau bicara soal kuliner Italia, hal yang paling pertama terlintas adalah pizza dan pasta.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "といえば",
+            "textId": "Kalau bicara soal (〜といえば)"
+          },
+          {
+            "key": "2",
+            "textJp": "にすれば",
+            "textId": "Jika dari sudut pandang"
+          },
+          {
+            "key": "3",
+            "textJp": "といっても",
+            "textId": "Meskipun dibilang"
+          },
+          {
+            "key": "4",
+            "textJp": "にしたがって",
+            "textId": "Seiring dengan"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Pola asosiasi representasi utama suatu konsep: イタリア料理といえば."
+      }
+    ]
+  },
+
+  {
+    "id": "n3-b24-to-shitemo",
+    "chapterNumber": 24,
+    "chapterTitle": "第24課: 譲歩・前提・話題 (Pengandaian, Batasan & Topik)",
+    "category": "contrast",
+    "categoryLabel": "仮定・譲歩",
+    "patternJp": "〜としても",
+    "patternKana": "としても",
+    "meaningId": "Sekalipun / kalaupun diandaikan demikian...",
+    "connection": "動詞・イ形容詞・ナ形容詞・名詞普通形 ＋ としても\n※名詞・ナ形容詞 juga dapat langsung: だとしても",
+    "coreConcept": "Membuat pengandaian hipotesis konsesif: 'Kalaupun seandainya hal itu terjadi atau benar adanya, fakta atau keputusan pada kalimat pokok tetap tidak akan terpengaruh/berubah'.",
+    "cautionNote": "Mengandaikan kondisi teoritis atau kemungkinan di masa depan (sering diawali kata たとえ: たとえ〜としても).",
+    "examples": [
+      {
+        "id": "ex-toshitemo-1",
+        "textJp": "たとえ失敗したとしても、全力を尽くしたのなら後悔はない。",
+        "ruby": "たとえ[失敗:しっ|ぱい]したとしても、[全力:ぜん|りょく]を[尽:つ]くしたのなら[後悔:こう|かい]はない。",
+        "textId": "Sekalipun seandainya gagal, jika sudah mengerahkan segenap tenaga, maka tidak ada penyesalan.",
+        "contextNote": "Hipotesis konsesif berpasangan dengan たとえ."
+      },
+      {
+        "id": "ex-toshitemo-2",
+        "textJp": "今からタクシーに乗ったとしても、飛行機の時間には間に合わないだろう。",
+        "ruby": "[今:いま]からタクシーに[乗:の]ったとしても、[飛行機:ひ|こう|き]の[時間:じ|かん]には[間:ま]に[合:あ]わないだろう。",
+        "textId": "Kalaupun naik taksi dari sekarang, kemungkinan tetap tidak akan keburu waktu pesawat.",
+        "contextNote": "Tindakan pengandaian yang tidak mengubah hasil."
+      }
+    ],
+    "comparisons": [
+      {
+        "targetPattern": "〜にしても (Bahkan jika)",
+        "summary": "にしても = sering merujuk pada fakta nyata yang sudah ada.",
+        "distinctionId": "としても = murni pengandaian hipotesis teoritis."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-b24-01",
+        "type": "cloze",
+        "questionNumber": 118,
+        "questionJp": "たとえ反対（　　）、私は自分の信じる道を進むつもりだ。",
+        "questionRuby": "たとえ[反対:はん|たい]（　　）、[私:わたし]は[自分:じ|ぶん]の[信:しん]じる[道:みち]を[進:すす]むつもりだ。",
+        "questionTranslation": "Kalaupun seandainya ditentang, saya berniat untuk tetap maju di jalan yang saya yakini.",
+        "options": [
+          {
+            "key": "1",
+            "textJp": "されたとしても",
+            "textId": "Sekalipun seandainya ditentang (たとえ〜としても)"
+          },
+          {
+            "key": "2",
+            "textJp": "されたからには",
+            "textId": "Karena sudah ditentang"
+          },
+          {
+            "key": "3",
+            "textJp": "されるにつれて",
+            "textId": "Seiring ditentang"
+          },
+          {
+            "key": "4",
+            "textJp": "される一方だ",
+            "textId": "Makin terus ditentang"
+          }
+        ],
+        "correctKey": "1",
+        "explanation": "Pola pengandaian hipotesis berpasangan dengan kata たとえ: されたとしても."
+      }
+    ]
   }
 ];

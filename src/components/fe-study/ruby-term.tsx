@@ -68,7 +68,7 @@ export function RubyTerm({
         }
         className={`ruby-term mx-[0.5px] ${
           enableLookup
-            ? "cursor-pointer border-b border-dashed border-[var(--brand-primary)]/40 hover:border-[var(--brand-primary)] hover:text-[var(--brand-primary)] transition-all rounded-xs px-0.5 active:scale-95"
+            ? "cursor-pointer border-b border-dashed border-[var(--brand-primary)]/40 hover:border-[var(--brand-primary)] hover:text-[var(--brand-primary)] transition-all rounded-xs px-0.5 py-[1px] active:scale-95 active:bg-[var(--brand-primary)]/10 touch-manipulation"
             : ""
         }`}
         title={enableLookup ? `${kanji} (${furigana}) · Ketuk untuk melihat arti` : undefined}

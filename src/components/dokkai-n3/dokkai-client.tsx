@@ -136,36 +136,36 @@ export function DokkaiClient() {
   }, [activePassage.id]);
 
   return (
-    <div className="min-h-screen bg-[var(--background)] text-[var(--text-primary)] pb-24 font-sans">
+    <div className="min-h-screen bg-[var(--background)] text-[var(--text-primary)] pb-28 sm:pb-24 font-sans">
       {/* Top Header & Sticky Navigation */}
       <header className="sticky top-0 z-40 bg-[var(--surface)]/90 backdrop-blur-md border-b border-[var(--border)]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-between gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <a
               href="/tools/n3-suite"
-              className="p-2 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all flex items-center gap-1.5 text-xs font-bold"
+              className="p-2 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all flex items-center gap-1.5 text-xs font-bold shrink-0"
               title="Kembali ke JLPT N3 Suite Hub"
             >
               <ArrowLeft size={15} />
               <span className="hidden sm:inline">N3 Suite</span>
             </a>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[var(--brand-primary)]">
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[var(--brand-primary)] truncate">
                   新完全マスター N3
                 </span>
-                <span className="text-[11px] px-2 py-0.5 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] font-bold">
-                  読解 (Dokkai)
+                <span className="text-[10px] sm:text-[11px] px-1.5 sm:px-2 py-0.5 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] font-bold shrink-0">
+                  読解
                 </span>
               </div>
-              <h1 className="text-sm sm:text-base font-bold text-[var(--text-primary)] tracking-tight">
-                Reading Comprehension & Sentence Structure
+              <h1 className="text-xs sm:text-base font-bold text-[var(--text-primary)] tracking-tight truncate">
+                Reading Comprehension
               </h1>
             </div>
           </div>
 
           {/* Quick Actions & Toggles */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <a
               href="/tools/tango-n3"
               className="hidden md:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] text-xs font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--brand-primary)]/50 transition-all mr-1"
@@ -178,7 +178,7 @@ export function DokkaiClient() {
             <button
               type="button"
               onClick={() => setShowFurigana((prev) => !prev)}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-bold transition-all ${
+              className={`inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 sm:py-1.5 rounded-xl border text-[11px] sm:text-xs font-bold transition-all active:scale-95 ${
                 showFurigana
                   ? "bg-[var(--brand-primary)] text-white border-[var(--brand-primary)] shadow-sm"
                   : "bg-[var(--surface-soft)] text-[var(--text-secondary)] border-[var(--border)] hover:text-[var(--text-primary)]"
@@ -186,7 +186,8 @@ export function DokkaiClient() {
               title="Tampilkan / Sembunyikan Furigana (ルビ)"
             >
               <Languages size={13} />
-              <span>ルビ {showFurigana ? "ON" : "OFF"}</span>
+              <span className="hidden sm:inline">ルビ {showFurigana ? "ON" : "OFF"}</span>
+              <span className="sm:hidden">{showFurigana ? "ルビ" : "OFF"}</span>
             </button>
 
 
@@ -221,7 +222,7 @@ export function DokkaiClient() {
         </div>
 
         {/* Category Filter Pills Bar */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-2.5 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 pb-2.5 flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar text-[11px] sm:text-xs">
           <button
             type="button"
             onClick={() => setActiveCategoryFilter("all")}
@@ -309,10 +310,10 @@ export function DokkaiClient() {
       </header>
 
       {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-6">
+      <main className="max-w-7xl mx-auto px-3 sm:px-6 pt-4 sm:pt-6">
         {/* Passages Carousel Selector */}
-        <div className="mb-6 flex items-center justify-between gap-3 bg-[var(--surface)] p-3 rounded-2xl border border-[var(--border)]">
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+        <div className="mb-4 sm:mb-6 flex items-center justify-between gap-2 sm:gap-3 bg-[var(--surface)] p-2 sm:p-3 rounded-2xl border border-[var(--border)]">
+          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-1 -mx-0.5 px-0.5">
             {filteredPassages.map((p, idx) => {
               const isSelected = p.id === activePassage.id;
               const isCompleted = progress.completedPassageIds.includes(p.id);
@@ -322,7 +323,7 @@ export function DokkaiClient() {
                   key={p.id}
                   type="button"
                   onClick={() => setSelectedPassageId(p.id)}
-                  className={`px-3.5 py-1.5 rounded-xl border text-xs whitespace-nowrap transition-all flex items-center gap-1.5 ${
+                  className={`px-3 sm:px-3.5 py-2 sm:py-1.5 rounded-xl border text-[11px] sm:text-xs whitespace-nowrap transition-all flex items-center gap-1.5 active:scale-95 ${
                     isSelected
                       ? "bg-[var(--brand-primary)] text-white border-[var(--brand-primary)] font-bold shadow-sm"
                       : "bg-[var(--surface-soft)] border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--brand-primary)]/50"
@@ -357,25 +358,25 @@ export function DokkaiClient() {
         </div>
 
         {/* 2-Column Split Layout: Passage (Left) & Questions (Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
           {/* ========================================================= */}
           {/* LEFT COLUMN: PASSAGE CANVAS (7 Cols on LG)               */}
           {/* ========================================================= */}
-          <div className="lg:col-span-7 flex flex-col gap-5">
+          <div className="lg:col-span-7 flex flex-col gap-4 sm:gap-5">
             {/* Passage Card Container */}
-            <div className="p-5 sm:p-8 rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-md flex flex-col gap-5">
+            <div className="p-3.5 sm:p-8 rounded-2xl sm:rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-md flex flex-col gap-4 sm:gap-5">
               {/* Header Badges */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[var(--border)]">
-                <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-0.5 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] text-xs font-bold font-mono">
+              <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 pb-2.5 sm:pb-3 border-b border-[var(--border)]">
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <span className="px-2 sm:px-2.5 py-0.5 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] text-[10px] sm:text-xs font-bold font-mono">
                     {activePassage.categoryLabel}
                   </span>
-                  <span className="text-xs text-[var(--text-secondary)] font-medium">
+                  <span className="text-[10px] sm:text-xs text-[var(--text-secondary)] font-medium">
                     {activePassage.techniqueTag}
                   </span>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5 sm:gap-2">
                   {/* TTS Whole Passage Audio Speaker */}
                   <button
                     type="button"
@@ -387,7 +388,7 @@ export function DokkaiClient() {
                         speak(fullText, `dokkai-passage-${activePassage.id}`);
                       }
                     }}
-                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-bold transition-all ${
+                    className={`inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl border text-[11px] sm:text-xs font-bold transition-all active:scale-95 ${
                       activeSpeechId === `dokkai-passage-${activePassage.id}`
                         ? "bg-emerald-500 text-white border-emerald-500 shadow-sm animate-pulse"
                         : "bg-[var(--surface-soft)] text-[var(--text-secondary)] border-[var(--border)] hover:text-[var(--text-primary)]"
@@ -399,14 +400,15 @@ export function DokkaiClient() {
                     ) : (
                       <Volume2 size={14} />
                     )}
-                    <span>{activeSpeechId === `dokkai-passage-${activePassage.id}` ? "Stop" : "Audio Teks"}</span>
+                    <span className="hidden sm:inline">{activeSpeechId === `dokkai-passage-${activePassage.id}` ? "Stop" : "Audio Teks"}</span>
+                    <span className="sm:hidden">{activeSpeechId === `dokkai-passage-${activePassage.id}` ? "■" : "▶"}</span>
                   </button>
 
                   {/* Vocabulary Drawer Toggle */}
                   <button
                     type="button"
                     onClick={() => setShowVocabList((prev) => !prev)}
-                    className={`px-3 py-1.5 rounded-xl border text-xs font-bold transition-all flex items-center gap-1.5 ${
+                    className={`px-2.5 sm:px-3 py-1.5 rounded-xl border text-[11px] sm:text-xs font-bold transition-all flex items-center gap-1 sm:gap-1.5 active:scale-95 ${
                       showVocabList
                         ? "bg-[var(--brand-primary)] text-white border-[var(--brand-primary)]"
                         : "bg-[var(--surface-soft)] text-[var(--text-secondary)] border-[var(--border)] hover:text-[var(--text-primary)]"
@@ -414,22 +416,23 @@ export function DokkaiClient() {
                     title="Buka daftar kosakata teks ini"
                   >
                     <BookOpen size={13} />
-                    <span>Kosakata ({activePassage.vocabulary.length})</span>
+                    <span className="hidden sm:inline">Kosakata ({activePassage.vocabulary.length})</span>
+                    <span className="sm:hidden">{activePassage.vocabulary.length}</span>
                   </button>
                 </div>
               </div>
 
               {/* Title & Methodological Tip Box */}
               <div>
-                <h2 className="text-lg sm:text-xl font-extrabold text-[var(--text-primary)] tracking-tight mb-1 font-japanese">
+                <h2 className="text-base sm:text-xl font-extrabold text-[var(--text-primary)] tracking-tight mb-0.5 sm:mb-1 font-japanese leading-snug">
                   {activePassage.titleJp}
                 </h2>
-                <p className="text-xs sm:text-sm text-[var(--text-secondary)] font-medium mb-3">
+                <p className="text-[11px] sm:text-sm text-[var(--text-secondary)] font-medium mb-2.5 sm:mb-3">
                   {activePassage.titleId}
                 </p>
 
                 {/* Shin Kanzen Master Technique Callout Box */}
-                <div className="p-3.5 sm:p-4 rounded-2xl bg-blue-500/10 border border-blue-500/25 flex items-start gap-2.5 text-xs text-blue-700 dark:text-blue-300 leading-relaxed">
+                <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-blue-500/10 border border-blue-500/25 flex items-start gap-2 sm:gap-2.5 text-[11px] sm:text-xs text-blue-700 dark:text-blue-300 leading-relaxed">
                   <Lightbulb size={16} className="text-blue-500 shrink-0 mt-0.5" />
                   <div>
                     <b className="block text-blue-600 dark:text-blue-400 mb-0.5 uppercase tracking-wide text-[10px]">
@@ -441,12 +444,12 @@ export function DokkaiClient() {
               </div>
 
               {/* Japanese Passage Content (Sentence by Sentence) */}
-              <div className="p-5 sm:p-7 rounded-2xl bg-[var(--surface-soft)]/50 border border-[var(--border)] space-y-3.5 select-text">
-                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--brand-primary)] block mb-1">
+              <div className="p-3.5 sm:p-7 rounded-xl sm:rounded-2xl bg-[var(--surface-soft)]/50 border border-[var(--border)] space-y-3 sm:space-y-3.5 select-text">
+                <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--brand-primary)] block mb-0.5 sm:mb-1">
                   【本文 - Teks Bacaan】
                 </span>
 
-                <div className="text-[15px] sm:text-[17px] md:text-[18px] text-[var(--text-primary)] leading-[2.3] sm:leading-[2.5] tracking-[0.02em] font-japanese">
+                <div className="text-[14px] sm:text-[17px] md:text-[18px] text-[var(--text-primary)] leading-[2.1] sm:leading-[2.5] tracking-[0.02em] font-japanese">
                   {activePassage.sentences.map((sentence, idx) => {
                     const isClue = highlightedClueIndex === idx;
 
@@ -471,7 +474,7 @@ export function DokkaiClient() {
                         <button
                           type="button"
                           onClick={() => speak(sentence.textJp, `sentence-${sentence.id}`)}
-                          className={`inline-flex items-center justify-center w-5 h-5 ml-1 rounded-full align-middle transition-colors text-[var(--text-secondary)] hover:text-[var(--brand-primary)] hover:bg-[var(--surface)] ${
+                          className={`inline-flex items-center justify-center w-6 h-6 sm:w-5 sm:h-5 ml-1 rounded-full align-middle transition-colors text-[var(--text-secondary)] hover:text-[var(--brand-primary)] hover:bg-[var(--surface)] active:scale-90 ${
                             activeSpeechId === `sentence-${sentence.id}`
                               ? "bg-emerald-500 text-white animate-pulse"
                               : ""
@@ -548,7 +551,7 @@ export function DokkaiClient() {
               return (
                 <div
                   key={q.id}
-                  className="p-5 sm:p-6 rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-md flex flex-col gap-4"
+                  className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-md flex flex-col gap-3 sm:gap-4"
                 >
                   {/* Question Header */}
                   <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-[var(--border)]">
@@ -603,10 +606,10 @@ export function DokkaiClient() {
                           type="button"
                           onClick={() => handleSelectOption(q.id, opt.key, opt.isCorrect, q.clueSentenceIndex)}
                           disabled={isAnswered}
-                          className={`p-3.5 sm:p-4 rounded-2xl border text-left transition-all flex items-start gap-3 active:scale-[0.99] ${style}`}
+                          className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl border text-left transition-all flex items-start gap-2.5 sm:gap-3 active:scale-[0.99] ${style}`}
                         >
                           <span
-                            className={`w-6 h-6 rounded-lg border flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 ${
+                            className={`w-7 h-7 sm:w-6 sm:h-6 rounded-lg border flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 ${
                               isAnswered && opt.isCorrect
                                 ? "border-emerald-500 bg-emerald-500 text-white"
                                 : isSelected && !opt.isCorrect
@@ -695,21 +698,27 @@ export function DokkaiClient() {
               );
             })}
 
-            {/* Bottom Passage Navigation */}
-            <div className="flex items-center justify-between gap-3 pt-2">
+            {/* Bottom Passage Navigation — Sticky on mobile */}
+            <div className="fixed bottom-0 left-0 right-0 z-30 bg-[var(--surface)]/95 backdrop-blur-md border-t border-[var(--border)] p-3 sm:p-4 flex items-center justify-between gap-3 sm:static sm:bg-transparent sm:backdrop-blur-none sm:border-0 sm:pt-2 sm:pb-0">
               <button
                 type="button"
                 disabled={currentPassageIndex === 0}
                 onClick={() => {
                   if (currentPassageIndex > 0) {
                     setSelectedPassageId(passages[currentPassageIndex - 1].id);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
                   }
                 }}
-                className="px-4 py-2.5 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--surface-soft)] disabled:opacity-30 text-xs font-bold transition-all flex items-center gap-1.5"
+                className="px-3.5 sm:px-4 py-2.5 sm:py-2.5 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--surface-soft)] disabled:opacity-30 text-[11px] sm:text-xs font-bold transition-all flex items-center gap-1.5 active:scale-95 flex-1 sm:flex-none justify-center sm:justify-start"
               >
                 <ChevronLeft size={15} />
-                <span>Bab Sebelumnya</span>
+                <span>Sebelumnya</span>
               </button>
+
+              {/* Mobile-only progress indicator */}
+              <span className="text-[10px] font-mono font-bold text-[var(--text-secondary)] sm:hidden shrink-0">
+                {currentPassageIndex + 1}/{filteredPassages.length}
+              </span>
 
               <button
                 type="button"
@@ -717,11 +726,12 @@ export function DokkaiClient() {
                 onClick={() => {
                   if (currentPassageIndex < passages.length - 1) {
                     setSelectedPassageId(passages[currentPassageIndex + 1].id);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
                   }
                 }}
-                className="px-5 py-2.5 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white disabled:opacity-30 text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm active:scale-95"
+                className="px-4 sm:px-5 py-2.5 sm:py-2.5 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white disabled:opacity-30 text-[11px] sm:text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm active:scale-95 flex-1 sm:flex-none justify-center sm:justify-start"
               >
-                <span>Bab Berikutnya</span>
+                <span>Berikutnya</span>
                 <ChevronRight size={15} />
               </button>
             </div>

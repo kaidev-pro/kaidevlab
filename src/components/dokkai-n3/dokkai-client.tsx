@@ -174,6 +174,14 @@ export function DokkaiClient() {
               <BookOpen size={13} />
               <span>Tango (単語)</span>
             </a>
+            <a
+              href="/tools/bunpou-n3"
+              className="hidden md:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] text-xs font-bold text-[var(--text-secondary)] hover:text-emerald-600 hover:border-emerald-500/50 transition-all mr-1"
+              title="Buka Modul Tata Bahasa Shin Kanzen Bunpou N3"
+            >
+              <Sparkles size={13} className="text-emerald-500" />
+              <span>Bunpou (文法)</span>
+            </a>
             {/* Furigana Toggle */}
             <button
               type="button"

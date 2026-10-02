@@ -5,6 +5,7 @@ export interface UnifiedDayActivity {
   dokkai: number;
   tango: number;
   fe: number;
+  bunpou?: number;
   total: number;
 }
 
@@ -13,6 +14,7 @@ export interface UnifiedStudyStats {
   lastActiveDate: string | null;
   totalMasteredTerms: number;
   totalCompletedPassages: number;
+  totalStudiedPatterns?: number;
   activityHistory: Record<string, UnifiedDayActivity>;
 }
 
@@ -34,7 +36,7 @@ export function loadUnifiedActivityHistory(): Record<string, UnifiedDayActivity>
 }
 
 export function recordUnifiedActivity(
-  module: "dokkai" | "tango" | "fe",
+  module: "dokkai" | "tango" | "fe" | "bunpou",
   count = 1
 ): void {
   if (typeof window === "undefined") return;
@@ -46,11 +48,12 @@ export function recordUnifiedActivity(
       dokkai: 0,
       tango: 0,
       fe: 0,
+      bunpou: 0,
       total: 0,
     };
 
     current[module] = (current[module] || 0) + count;
-    current.total = (current.dokkai || 0) + (current.tango || 0) + (current.fe || 0);
+    current.total = (current.dokkai || 0) + (current.tango || 0) + (current.fe || 0) + (current.bunpou || 0);
 
     history[today] = current;
     localStorage.setItem(UNIFIED_STORAGE_KEY, JSON.stringify(history));

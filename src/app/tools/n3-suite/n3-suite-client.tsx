@@ -31,6 +31,8 @@ import {
 import { loadTangoProgress } from "@/lib/tango-n3-storage";
 import { loadDokkaiProgress } from "@/components/dokkai-n3/dokkai-storage";
 import { DOKKAI_PASSAGES } from "@/data/dokkai-n3/passages";
+import { loadBunpouProgress } from "@/components/bunpou-n3/bunpou-storage";
+import { BUNPOU_ITEMS } from "@/data/bunpou-n3/grammar-items";
 
 // ───────── Study Plan Logic ─────────
 const DAYS_JP = ["日", "月", "火", "水", "木", "金", "土"];
@@ -173,6 +175,7 @@ function determineCurrentPhase(masteredCount: number, dokkaiCompleted: number): 
 export function N3SuiteClient() {
   const [tangoStats, setTangoStats] = useState({ mastered: 0, total: 1800, chaptersUnlocked: 1, streak: 0, weakCount: 0 });
   const [dokkaiStats, setDokkaiStats] = useState({ completed: 0, total: DOKKAI_PASSAGES.length, accuracy: 0, bookmarked: 0 });
+  const [bunpouStats, setBunpouStats] = useState({ studied: 0, total: BUNPOU_ITEMS.length, accuracy: 0, bookmarked: 0 });
   const [showWeeklyDetail, setShowWeeklyDetail] = useState(false);
 
   useEffect(() => {
@@ -200,6 +203,16 @@ export function N3SuiteClient() {
       accuracy: acc,
       bookmarked: dProg.bookmarkedPassageIds?.length || 0,
     });
+
+    // Load Bunpou stats
+    const bProg = loadBunpouProgress();
+    const bAcc = bProg.totalAttempts > 0 ? Math.round((bProg.totalCorrect / bProg.totalAttempts) * 100) : 0;
+    setBunpouStats({
+      studied: bProg.studiedPatternIds?.length || 0,
+      total: BUNPOU_ITEMS.length,
+      accuracy: bAcc,
+      bookmarked: bProg.bookmarkedPatternIds?.length || 0,
+    });
   }, []);
 
   const today = new Date();
@@ -208,10 +221,11 @@ export function N3SuiteClient() {
   const todayPlan = weeklyPlan[dayIndex];
   const currentPhase = determineCurrentPhase(tangoStats.mastered, dokkaiStats.completed);
 
-  // Calculate daily cycle progress estimate
+  // Calculate daily cycle progress estimate across all 3 pillars
   const tangoPercent = Math.round((tangoStats.mastered / (tangoStats.total || 1)) * 100);
   const dokkaiPercent = Math.round((dokkaiStats.completed / (dokkaiStats.total || 1)) * 100);
-  const overallPercent = Math.round((tangoPercent * 0.5 + dokkaiPercent * 0.5));
+  const bunpouPercent = Math.round((bunpouStats.studied / (bunpouStats.total || 1)) * 100);
+  const overallPercent = Math.round((tangoPercent * 0.4 + dokkaiPercent * 0.3 + bunpouPercent * 0.3));
 
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--text-primary)] pb-24 font-sans">
@@ -767,44 +781,55 @@ export function N3SuiteClient() {
               </Link>
             </div>
 
-            {/* MODULE 3: BUNPOU N3 (NEXT PHASE) */}
-            <div className="p-6 sm:p-7 rounded-3xl bg-[var(--surface-soft)]/50 border border-[var(--border)] opacity-85 flex flex-col justify-between gap-6">
+            {/* MODULE 3: BUNPOU N3 (ACTIVE) */}
+            <div className="p-6 sm:p-7 rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-md flex flex-col justify-between gap-6 hover:border-emerald-500/50 transition-all group">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 flex items-center justify-center font-bold text-lg font-japanese">
                     文法
                   </span>
-                  <span className="px-2.5 py-0.5 rounded-full bg-[var(--surface)] text-[var(--text-secondary)] border border-[var(--border)] text-[11px] font-bold">
-                    Roadmap Fase Berikutnya
+                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[11px] font-bold">
+                    {bunpouStats.total} Pola Tersedia
                   </span>
                 </div>
 
                 <div>
-                  <h4 className="text-lg font-bold text-[var(--text-primary)]">
+                  <h4 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-emerald-600 transition-colors">
                     Shin Kanzen Bunpou N3
                   </h4>
-                  <p className="text-xs text-[var(--text-secondary)] font-mono font-semibold">
+                  <p className="text-xs text-emerald-600 font-mono font-semibold">
                     文法形式 · Tata Bahasa & Partikel
                   </p>
                 </div>
 
                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                   Pembedahan nuansa pola kalimat yang sering mengecoh (seperti 〜わけだ vs 〜わけではない, 〜ことに
-                  なっている vs 〜ことになった), latihan susun urutan kata (*seiretsu mondai*), dan partikel.
+                  なっている vs 〜ことになった), latihan susun urutan kata (*seiretsu mondai* ★), dan kuis sambungan.
                 </p>
 
-                <div className="p-3 rounded-2xl bg-[var(--surface)] border border-[var(--border)] text-xs text-[var(--text-secondary)]">
-                  <span>Target: Dimulai segera setelah modul Dokkai dikuasai dengan stabil.</span>
+                <div className="p-3 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] text-xs text-[var(--text-secondary)] space-y-1">
+                  <div className="flex items-center justify-between">
+                    <span>Dikuasai:</span>
+                    <b className="text-[var(--text-primary)]">
+                      {bunpouStats.studied} / {bunpouStats.total} Pola ({bunpouPercent}%)
+                    </b>
+                  </div>
+                  <div className="w-full h-1.5 rounded-full bg-[var(--border)] overflow-hidden">
+                    <div
+                      className="h-full bg-emerald-500 transition-all duration-500"
+                      style={{ width: `${bunpouPercent}%` }}
+                    />
+                  </div>
                 </div>
               </div>
 
-              <button
-                type="button"
-                disabled
-                className="w-full py-3 rounded-2xl bg-[var(--surface)] text-[var(--text-secondary)] border border-[var(--border)] text-xs font-bold cursor-not-allowed opacity-60"
+              <Link
+                href="/tools/bunpou-n3"
+                className="w-full py-3 rounded-2xl bg-[var(--surface-soft)] hover:bg-emerald-600 text-[var(--text-primary)] hover:text-white border border-[var(--border)] hover:border-emerald-600 text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-xs group-hover:shadow-sm"
               >
-                Akan Hadir di Fase Berikutnya
-              </button>
+                <span>Mulai Latihan Tata Bahasa</span>
+                <ArrowRight size={14} />
+              </Link>
             </div>
           </div>
         </div>

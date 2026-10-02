@@ -234,7 +234,7 @@ export function N3SuiteClient() {
         <div className="max-w-6xl mx-auto px-3 sm:px-6 py-2.5 sm:py-4 flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <Link
-              href="/learn"
+              href="/learn/"
               className="p-1.5 sm:p-2 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all shrink-0 active:scale-95 touch-manipulation"
               title="Kembali ke Dashboard Learn"
             >

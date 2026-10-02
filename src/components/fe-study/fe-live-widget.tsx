@@ -126,7 +126,7 @@ export function FeLiveWidget() {
       <div className="pt-3 border-t border-[var(--border)] flex items-center justify-between">
         <span className="text-[11px] text-[var(--text-secondary)]">{t.srs}</span>
         <a
-          href="/learn"
+          href="/learn/"
           className="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--brand-primary)] hover:text-[var(--brand-hover)] transition-colors group"
         >
           <span>{mastered > 0 ? t.continueLearning : t.openHub}</span>

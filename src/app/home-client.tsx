@@ -110,7 +110,7 @@ export default function HomeClient() {
                 <li key={item}>
                   <span />
                   {item.includes("FE") ? (
-                    <a href="/learn" className="hover:text-[var(--brand-primary)] underline decoration-[var(--border)] transition-colors font-medium">
+                    <a href="/learn/" className="hover:text-[var(--brand-primary)] underline decoration-[var(--border)] transition-colors font-medium">
                       {item} →
                     </a>
                   ) : (

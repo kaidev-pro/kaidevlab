@@ -1,12 +1,16 @@
 // Kaidevlab — Service Worker (Offline PWA & Ultra-fast Offline Caching)
-const CACHE_NAME = "kaidevlab-pwa-v17";
+const CACHE_NAME = "kaidevlab-pwa-v18";
+const IMAGE_CACHE = "kaidevlab-pwa-img-v1";
+const MAX_IMAGE_ENTRIES = 60;
 
 const PRECACHE_URLS = [
-  "/learn",
-  "/tools/n3-suite",
-  "/tools/fe-study",
-  "/tools/tango-n3",
-  "/tools/dokkai-n3",
+  "/",
+  "/learn/",
+  "/tools/n3-suite/",
+  "/tools/fe-study/",
+  "/tools/tango-n3/",
+  "/tools/dokkai-n3/",
+  "/tools/bunpou-n3/",
   "/favicon.ico",
   "/brand/kaidevlab-icon-192.png",
   "/brand/kaidevlab-icon-512.png",
@@ -18,30 +22,37 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches
       .open(CACHE_NAME)
-      .then((cache) => {
-        return cache.addAll(PRECACHE_URLS);
-      })
+      .then((cache) => cache.addAll(PRECACHE_URLS))
       .then(() => self.skipWaiting())
   );
 });
 
-// Activate Event: Clean up old caches immediately
+// Activate Event: Clean up old caches immediately (keep current + image cache)
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches
       .keys()
-      .then((keys) => {
-        return Promise.all(
+      .then((keys) =>
+        Promise.all(
           keys
-            .filter((key) => key !== CACHE_NAME)
+            .filter((key) => key !== CACHE_NAME && key !== IMAGE_CACHE)
             .map((key) => caches.delete(key))
-        );
-      })
+        )
+      )
       .then(() => self.clients.claim())
   );
 });
 
-// Fetch Event: Cache-First for immutable static assets, Network-first with fast timeout for HTML
+// Batasi jumlah entri cache gambar (media bisa sangat banyak)
+async function trimImageCache() {
+  const cache = await caches.open(IMAGE_CACHE);
+  const keys = await cache.keys();
+  if (keys.length > MAX_IMAGE_ENTRIES) {
+    await Promise.all(keys.slice(0, keys.length - MAX_IMAGE_ENTRIES).map((key) => cache.delete(key)));
+  }
+}
+
+// Fetch Event: Cache-First static immutable, SWR gambar, Network-first HTML
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
 
@@ -51,7 +62,6 @@ self.addEventListener("fetch", (event) => {
   }
 
   // 1. Next.js immutable static assets (_next/static/css, _next/static/chunks)
-  // These files are hashed and never change. Cache-First ensures instant (<10ms) loading on slow networks.
   if (url.pathname.startsWith("/_next/static/")) {
     event.respondWith(
       caches.match(event.request).then((cachedResponse) => {
@@ -72,7 +82,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // 2. Brand images, media, and icons -> Cache-first with network fallback
+  // 2. Brand images, media, and icons -> Stale-While-Revalidate + batas entri
   if (
     url.pathname.startsWith("/brand/") ||
     url.pathname.startsWith("/icons/") ||
@@ -83,18 +93,19 @@ self.addEventListener("fetch", (event) => {
     url.pathname.endsWith(".ico")
   ) {
     event.respondWith(
-      caches.match(event.request).then((cachedResponse) => {
-        if (cachedResponse) return cachedResponse;
-        return fetch(event.request).then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200) {
-            const responseClone = networkResponse.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, responseClone);
-            });
-          }
-          return networkResponse;
-        });
-      })
+      caches.open(IMAGE_CACHE).then((cache) =>
+        cache.match(event.request).then((cachedResponse) => {
+          const networkFetch = fetch(event.request)
+            .then((networkResponse) => {
+              if (networkResponse && networkResponse.status === 200) {
+                cache.put(event.request, networkResponse.clone()).then(trimImageCache);
+              }
+              return networkResponse;
+            })
+            .catch(() => cachedResponse);
+          return cachedResponse || networkFetch;
+        })
+      )
     );
     return;
   }
@@ -122,7 +133,12 @@ self.addEventListener("fetch", (event) => {
             clearTimeout(timer);
             if (!didResolve) {
               didResolve = true;
-              if (networkResponse && networkResponse.status === 200) {
+              // Jangan cache navigasi ber-query sensitif (mis. ?sync=)
+              const cacheable =
+                networkResponse &&
+                networkResponse.status === 200 &&
+                !url.search.includes("sync=");
+              if (cacheable) {
                 const responseClone = networkResponse.clone();
                 caches.open(CACHE_NAME).then((cache) => {
                   cache.put(event.request, responseClone);
@@ -140,7 +156,7 @@ self.addEventListener("fetch", (event) => {
                   resolve(cachedResponse);
                 } else {
                   // Fallback to offline precached entry point if matching route not found
-                  resolve(caches.match("/tools/tango-n3").then((fb) => fb || caches.match("/learn")));
+                  resolve(caches.match("/tools/tango-n3/").then((fb) => fb || caches.match("/learn/")));
                 }
               });
             }

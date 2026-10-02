@@ -36,25 +36,25 @@ export function MobileBottomNav() {
   const navItems = [
     {
       name: "Suite",
-      href: "/tools/n3-suite",
+      href: "/tools/n3-suite/",
       icon: Compass,
-      isActive: pathname === "/tools/n3-suite",
+      isActive: pathname === "/tools/n3-suite/",
     },
     {
       name: "Tango",
-      href: "/tools/tango-n3",
+      href: "/tools/tango-n3/",
       icon: BookOpen,
       isActive: pathname.startsWith("/tools/tango"),
     },
     {
       name: "Dokkai",
-      href: "/tools/dokkai-n3",
+      href: "/tools/dokkai-n3/",
       icon: FileText,
       isActive: pathname.startsWith("/tools/dokkai-n3"),
     },
     {
       name: "FE Study",
-      href: "/tools/fe-study",
+      href: "/tools/fe-study/",
       icon: Cpu,
       isActive: pathname.startsWith("/tools/fe-study"),
     },
@@ -90,6 +90,7 @@ export function MobileBottomNav() {
           <Link
             key={item.href}
             href={item.href}
+            prefetch={false}
             onClick={handleNavClick}
             className={`flex flex-col items-center justify-center py-1.5 px-2 rounded-xl text-[10px] font-bold transition-all relative ${
               item.isActive

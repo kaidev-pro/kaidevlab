@@ -49,7 +49,7 @@ export function LibraryClient() {
           Home
         </Link>
         <ChevronRight size={12} className="opacity-40" />
-        <Link href="/learn" className="hover:text-[var(--text-primary)] transition-colors">
+        <Link href="/learn/" className="hover:text-[var(--text-primary)] transition-colors">
           Learn
         </Link>
         <ChevronRight size={12} className="opacity-40" />
@@ -72,7 +72,7 @@ export function LibraryClient() {
         </div>
 
         <Link
-          href="/learn"
+          href="/learn/"
           className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-[var(--brand-primary)]/40 text-xs font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all shrink-0 self-start sm:self-auto"
         >
           <ArrowLeft className="w-3.5 h-3.5" />

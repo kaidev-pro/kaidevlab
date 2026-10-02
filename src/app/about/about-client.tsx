@@ -69,7 +69,7 @@ const contentByLocale: Record<string, AboutDictionary> = {
         {
           title: "FE Cognitive Gym",
           desc: "Interactive study gym & CBT simulator for Japan’s FE certification (基本情報技術者試験).",
-          link: "/learn",
+          link: "/learn/",
         },
         {
           title: "Kaidevlab",
@@ -139,7 +139,7 @@ const contentByLocale: Record<string, AboutDictionary> = {
         {
           title: "FE Cognitive Gym",
           desc: "Study gym interaktif & simulator CBT untuk ujian sertifikasi IT negara Jepang (基本情報技術者試験).",
-          link: "/learn",
+          link: "/learn/",
         },
         {
           title: "Kaidevlab",
@@ -209,7 +209,7 @@ const contentByLocale: Record<string, AboutDictionary> = {
         {
           title: "FE Cognitive Gym",
           desc: "日本の基本情報技術者試験（FE）対策のためのアクティブリコール＆CBTシミュレータ。",
-          link: "/learn",
+          link: "/learn/",
         },
         {
           title: "Kaidevlab",

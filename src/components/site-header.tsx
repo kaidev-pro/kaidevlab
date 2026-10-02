@@ -18,7 +18,7 @@ export function SiteHeader() {
 
   const navItems = [
     [t.nav.work, "/#work"],
-    [t.nav.learn, "/learn"],
+    [t.nav.learn, "/learn/"],
     [t.nav.labNotes, "/#notes"],
     [t.nav.about, "/#about"],
     [t.nav.contact, "/contact/"],

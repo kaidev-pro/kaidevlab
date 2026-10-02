@@ -83,7 +83,7 @@ export const projects: ProjectPreview[] = [
     logo: "/brand/kaidevlab-logo-dark.webp",
     tone: "education",
     signals: ["199 Flashcards", "75 CBT Soal", "20-Day Plan"],
-    liveUrl: "/learn",
+    liveUrl: "/learn/",
     coverImage: "/project-screenshots/fe-study-hub.webp",
     coverPosition: "center 30%",
   },

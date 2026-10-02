@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "FE Study Hub (基本情報技術者試験) — Kaidevlab Tools",
   description:
     "Interactive IT certification study tool for Japan's FE exam (基本情報技術者試験).",
+  alternates: { canonical: "/tools/fe-study/" },
 };
 
 export default function FeStudyToolPage() {

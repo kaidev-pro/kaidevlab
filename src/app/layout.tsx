@@ -38,7 +38,6 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
     title: "Kaidevlab",
   },
-  alternates: { canonical: "/" },
   openGraph: {
     title: "Kaidevlab — Kai’s Creative Technology Lab",
     description:

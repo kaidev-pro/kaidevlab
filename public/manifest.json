@@ -1,8 +1,8 @@
 {
-  "name": "FE Study Hub — 基本情報技術者試験",
-  "short_name": "FE Study",
-  "description": "Aplikasi belajar mandiri ujian negara FE Jepang (基本情報技術者試験) offline-ready untuk persiapan alih visa 技人国.",
-  "start_url": "/learn",
+  "name": "Kaidevlab Academy & Research Hub",
+  "short_name": "Kaidevlab",
+  "description": "Portal pembelajaran terpadu Kaidevlab: JLPT N3 Suite (Tango, Dokkai, Bunpou), Fundamental FE Exam, dan perpustakaan digital interaktif.",
+  "start_url": "/learn/",
   "display": "standalone",
   "background_color": "#061126",
   "theme_color": "#061126",

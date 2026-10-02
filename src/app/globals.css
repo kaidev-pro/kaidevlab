@@ -11,7 +11,7 @@
   --section-alt: #eaf4ff;
   --text-primary: #07162f;
   --text-secondary: #526987;
-  --text-tertiary: #6b829e;
+  --text-tertiary: #4f6a86;
   --brand-primary: #2563eb;
   --brand-hover: #1d55d4;
   --brand-glow: #4da8ff;
@@ -133,7 +133,7 @@
 .primary, .talk {
   border-color: transparent;
   color: white;
-  background: linear-gradient(105deg, var(--brand-primary), var(--brand-glow));
+  background: linear-gradient(105deg, var(--brand-primary), var(--brand-hover));
   box-shadow: 0 14px 34px rgba(37, 99, 235, 0.24);
 }
 .secondary {
@@ -143,6 +143,8 @@
 .primary:hover, .secondary:hover, .talk:hover, .notes-secondary:hover { transform: translateY(-2px); }
 .primary:hover, .talk:hover { color: white; background: var(--brand-hover); box-shadow: 0 16px 38px rgba(37, 99, 235, 0.3); }
 .secondary:hover { color: var(--brand-primary); border-color: var(--brand-glow); }
+[data-theme="dark"] .primary, [data-theme="dark"] .talk,
+[data-theme="dark"] .primary:hover, [data-theme="dark"] .talk:hover { color: #07162f; }
 .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.8rem 0 1rem; }
 
 /* Header */
@@ -179,7 +181,7 @@
 [data-theme="dark"] .brand-logo .logo-light { opacity: 0; }
 [data-theme="dark"] .brand-logo .logo-dark { opacity: 1; }
 .desktop-nav { display: flex; align-items: center; gap: 1.35rem; margin-left: auto; }
-.desktop-nav a { color: var(--text-secondary); font-size: 0.93rem; font-weight: 780; }
+.desktop-nav a { display: inline-flex; align-items: center; min-height: 24px; color: var(--text-secondary); font-size: 0.93rem; font-weight: 780; }
 .desktop-nav a:hover { color: var(--brand-primary); }
 .header-actions { display: flex; align-items: center; gap: 0.55rem; }
 .icon-button {
@@ -206,15 +208,7 @@
 
 .menu-toggle {
   display: none;
-  outline: none !important;
-  box-shadow: none !important;
   -webkit-tap-highlight-color: transparent !important;
-}
-.menu-toggle:focus,
-.menu-toggle:focus-visible,
-.menu-toggle:active {
-  outline: none !important;
-  box-shadow: none !important;
 }
 
 @media (hover: none) {
@@ -266,7 +260,7 @@
   padding-left: 0.85rem;
   border-left: 1px solid var(--border);
 }
-.footer-legal-links a { color: var(--text-secondary); font-size: 0.84rem; font-weight: 700; transition: color 0.2s ease; }
+.footer-legal-links a { display: inline-flex; align-items: center; min-height: 24px; color: var(--text-secondary); font-size: 0.84rem; font-weight: 700; transition: color 0.2s ease; }
 .footer-legal-links a:hover { color: var(--brand-primary); }
 .site-footer small { grid-column: 1 / -1; color: var(--text-secondary); }
 

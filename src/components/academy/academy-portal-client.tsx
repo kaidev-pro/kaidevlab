@@ -460,9 +460,9 @@ export function AcademyPortalClient() {
               <span className="text-[10px] font-mono font-bold text-emerald-500 uppercase tracking-wider block">
                 Track FE · Hari {activeFeDayNumber}
               </span>
-              <h4 className="font-bold text-[var(--text-primary)] text-sm leading-snug line-clamp-1">
+              <h3 className="font-bold text-[var(--text-primary)] text-sm leading-snug line-clamp-1">
                 {activeFeDeck.titleId.replace(/^Hari \d+:\s*/, "")}
-              </h4>
+              </h3>
               <p className="text-[11px] text-[var(--text-secondary)] line-clamp-2 leading-relaxed">
                 {activeFeDeck.descriptionId}
               </p>
@@ -481,9 +481,9 @@ export function AcademyPortalClient() {
               <span className="text-[10px] font-mono font-bold text-sky-500 uppercase tracking-wider block">
                 Track JLPT N3 · Bab {activeTangoChapter.badge}
               </span>
-              <h4 className="font-bold text-[var(--text-primary)] text-sm leading-snug line-clamp-1">
+              <h3 className="font-bold text-[var(--text-primary)] text-sm leading-snug line-clamp-1">
                 {activeTangoChapter.title}
-              </h4>
+              </h3>
               <p className="text-[11px] text-[var(--text-secondary)] line-clamp-2 leading-relaxed">
                 {activeTangoChapter.desc}
               </p>
@@ -502,9 +502,9 @@ export function AcademyPortalClient() {
               <span className="text-[10px] font-mono font-bold text-amber-500 uppercase tracking-wider block">
                 Spaced Repetition
               </span>
-              <h4 className="font-bold text-[var(--text-primary)] text-sm leading-snug">
+              <h3 className="font-bold text-[var(--text-primary)] text-sm leading-snug">
                 Antrean Review Harian
-              </h4>
+              </h3>
               <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
                 {totalDueReview > 0
                   ? `${totalDueReview} item telah jatuh tempo review untuk mempertahankan daya ingat jangka panjang.`
@@ -696,7 +696,7 @@ export function AcademyPortalClient() {
                   </div>
                   <div>
                     <h5 className="font-bold text-xs text-[var(--text-primary)] group-hover:text-amber-500 transition-colors line-clamp-1">
-                      {card.termId}
+                      {card.termEn}
                     </h5>
                     <p className="text-[11px] font-mono text-[var(--text-secondary)] line-clamp-1">
                       {card.termJp}
@@ -823,7 +823,7 @@ export function AcademyPortalClient() {
               </div>
               <a
                 href="/tools/n3-suite/"
-                className="w-full py-2.5 px-4 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all"
+                className="w-full py-2.5 px-4 rounded-xl bg-sky-700 hover:bg-sky-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all"
               >
                 <span>Buka JLPT N3 Suite</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -908,9 +908,9 @@ export function AcademyPortalClient() {
               <FileQuestion className="w-4 h-4" />
             </div>
             <div>
-              <h4 className="font-bold text-[var(--text-primary)] group-hover:text-emerald-500 transition-colors">
+              <h3 className="font-bold text-[var(--text-primary)] group-hover:text-emerald-500 transition-colors">
                 Kakomon CBT
-              </h4>
+              </h3>
               <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
                 Simulasi ujian CBT resmi 60 / 120 soal dengan batas waktu.
               </p>
@@ -926,9 +926,9 @@ export function AcademyPortalClient() {
               <Terminal className="w-4 h-4" />
             </div>
             <div>
-              <h4 className="font-bold text-[var(--text-primary)] group-hover:text-cyan-500 transition-colors">
+              <h3 className="font-bold text-[var(--text-primary)] group-hover:text-cyan-500 transition-colors">
                 Pseudocode Tracer
-              </h4>
+              </h3>
               <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
                 Simulator eksekusi baris pseudocode untuk soal 科目B.
               </p>
@@ -944,9 +944,9 @@ export function AcademyPortalClient() {
               <Layers className="w-4 h-4" />
             </div>
             <div>
-              <h4 className="font-bold text-[var(--text-primary)] group-hover:text-rose-500 transition-colors">
+              <h3 className="font-bold text-[var(--text-primary)] group-hover:text-rose-500 transition-colors">
                 Formula Lab
-              </h4>
+              </h3>
               <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
                 Kalkulator rumus MTBF, availability, dan subnetting CIDR.
               </p>
@@ -962,9 +962,9 @@ export function AcademyPortalClient() {
               <Bookmark className="w-4 h-4" />
             </div>
             <div>
-              <h4 className="font-bold text-[var(--text-primary)] group-hover:text-amber-500 transition-colors">
+              <h3 className="font-bold text-[var(--text-primary)] group-hover:text-amber-500 transition-colors">
                 Catatan Salah
-              </h4>
+              </h3>
               <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
                 Kompilasi soal-soal kuis yang pernah salah untuk evaluasi.
               </p>
@@ -1015,9 +1015,9 @@ export function AcademyPortalClient() {
                     <span className="text-[10px] font-mono font-bold text-emerald-500 uppercase block">
                       Rekomendasi Utama
                     </span>
-                    <h4 className="font-bold text-[var(--text-primary)] text-sm">
+                    <h3 className="font-bold text-[var(--text-primary)] text-sm">
                       FE Cognitive Gym: Hari {activeFeDayNumber}
-                    </h4>
+                    </h3>
                     <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
                       {activeFeDeck.titleId.replace(/^Hari \d+:\s*/, "")} (10 Konsep)
                     </p>
@@ -1034,9 +1034,9 @@ export function AcademyPortalClient() {
                     <span className="text-[10px] font-mono font-bold text-sky-500 uppercase block">
                       Target Kosakata
                     </span>
-                    <h4 className="font-bold text-[var(--text-primary)] text-sm">
+                    <h3 className="font-bold text-[var(--text-primary)] text-sm">
                       JLPT N3 Tango: Bab {activeTangoChapter.badge}
-                    </h4>
+                    </h3>
                     <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
                       {activeTangoChapter.title} (40 Kosakata)
                     </p>

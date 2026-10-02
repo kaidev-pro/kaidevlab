@@ -218,7 +218,7 @@ export function BunpouClient() {
 
             <div className="min-w-0">
               <div className="flex items-center gap-1.5">
-                <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-[10px] font-bold tracking-wider uppercase font-mono shrink-0">
+                <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 text-[10px] font-bold tracking-wider uppercase font-mono shrink-0">
                   文法 N3
                 </span>
                 <span className="text-[10px] text-[var(--text-secondary)] truncate hidden md:inline">
@@ -258,7 +258,7 @@ export function BunpouClient() {
               onClick={() => setShowFurigana((prev) => !prev)}
               className={`inline-flex items-center gap-1 px-2 sm:px-3 py-1.5 rounded-xl border text-[11px] sm:text-xs font-bold transition-all active:scale-95 touch-manipulation ${
                 showFurigana
-                  ? "bg-emerald-600 text-white border-emerald-600 shadow-sm"
+                  ? "bg-emerald-700 text-white border-emerald-700 shadow-sm"
                   : "bg-[var(--surface-soft)] text-[var(--text-secondary)] border-[var(--border)] hover:text-[var(--text-primary)]"
               }`}
               title="Tampilkan / Sembunyikan Furigana"
@@ -317,7 +317,7 @@ export function BunpouClient() {
             onClick={() => setActiveCategoryFilter("time")}
             className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all touch-manipulation active:scale-95 ${
               activeCategoryFilter === "time"
-                ? "bg-emerald-600 text-white border-emerald-600 font-bold shadow-xs"
+                ? "bg-emerald-700 text-white border-emerald-700 font-bold shadow-xs"
                 : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             }`}
           >
@@ -329,7 +329,7 @@ export function BunpouClient() {
             onClick={() => setActiveCategoryFilter("cause")}
             className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all touch-manipulation active:scale-95 ${
               activeCategoryFilter === "cause"
-                ? "bg-emerald-600 text-white border-emerald-600 font-bold shadow-xs"
+                ? "bg-emerald-700 text-white border-emerald-700 font-bold shadow-xs"
                 : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             }`}
           >
@@ -341,7 +341,7 @@ export function BunpouClient() {
             onClick={() => setActiveCategoryFilter("judgment")}
             className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all touch-manipulation active:scale-95 ${
               activeCategoryFilter === "judgment"
-                ? "bg-emerald-600 text-white border-emerald-600 font-bold shadow-xs"
+                ? "bg-emerald-700 text-white border-emerald-700 font-bold shadow-xs"
                 : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             }`}
           >
@@ -353,7 +353,7 @@ export function BunpouClient() {
             onClick={() => setActiveCategoryFilter("contrast")}
             className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all touch-manipulation active:scale-95 ${
               activeCategoryFilter === "contrast"
-                ? "bg-emerald-600 text-white border-emerald-600 font-bold shadow-xs"
+                ? "bg-emerald-700 text-white border-emerald-700 font-bold shadow-xs"
                 : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             }`}
           >
@@ -390,11 +390,11 @@ export function BunpouClient() {
                   onClick={() => setSelectedItemId(p.id)}
                   className={`px-3 py-2 sm:py-1.5 rounded-xl border text-[11px] sm:text-xs whitespace-nowrap transition-all flex items-center gap-1.5 active:scale-95 touch-manipulation ${
                     isSelected
-                      ? "bg-emerald-600 text-white border-emerald-600 font-bold shadow-sm"
+                      ? "bg-emerald-700 text-white border-emerald-700 font-bold shadow-sm"
                       : "bg-[var(--surface-soft)] border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-emerald-500/50"
                   }`}
                 >
-                  {isDone && <Check size={12} className={isSelected ? "text-white" : "text-emerald-500"} />}
+                  {isDone && <Check size={12} className={isSelected ? "text-white" : "text-emerald-600"} />}
                   <span>{p.patternJp}</span>
                 </button>
               );
@@ -411,7 +411,7 @@ export function BunpouClient() {
             </div>
             <div>
               <span>Akurasi: </span>
-              <b className="text-emerald-500">
+              <b className="text-emerald-700">
                 {progress.totalAttempts > 0
                   ? Math.round((progress.totalCorrect / progress.totalAttempts) * 100)
                   : 0}
@@ -432,7 +432,7 @@ export function BunpouClient() {
               }}
               className={`py-2 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 active:scale-98 touch-manipulation ${
                 activeTab === "learn"
-                  ? "bg-emerald-600 text-white shadow-sm"
+                  ? "bg-emerald-700 text-white shadow-sm"
                   : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               }`}
             >
@@ -447,7 +447,7 @@ export function BunpouClient() {
               }}
               className={`py-2 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 active:scale-98 touch-manipulation ${
                 activeTab === "quiz"
-                  ? "bg-emerald-600 text-white shadow-sm"
+                  ? "bg-emerald-700 text-white shadow-sm"
                   : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               }`}
             >
@@ -462,7 +462,7 @@ export function BunpouClient() {
               onClick={handleMarkAsStudied}
               className={`px-3.5 py-2 rounded-xl border text-xs font-bold transition-all flex items-center gap-1.5 active:scale-95 touch-manipulation ${
                 isStudied
-                  ? "bg-emerald-500/15 border-emerald-500/40 text-emerald-600 dark:text-emerald-400"
+                  ? "bg-emerald-500/15 border-emerald-500/40 text-emerald-700 dark:text-emerald-400"
                   : "bg-[var(--surface)] border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-emerald-500"
               }`}
             >
@@ -480,7 +480,7 @@ export function BunpouClient() {
               {/* Pattern Banner Card */}
               <div className="p-4 sm:p-6 rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-xs sm:shadow-sm space-y-3.5 sm:space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="px-2.5 py-0.5 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-[11px] font-bold font-mono">
+                  <span className="px-2.5 py-0.5 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 text-[11px] font-bold font-mono">
                     {activeItem.categoryLabel} · {activeItem.patternKana}
                   </span>
                   <span className="text-[11px] text-[var(--text-secondary)]">JLPT N3 Grammar</span>
@@ -490,7 +490,7 @@ export function BunpouClient() {
                   <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[var(--text-primary)] font-japanese tracking-wide">
                     {activeItem.patternJp}
                   </h2>
-                  <p className="text-sm sm:text-base md:text-lg font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">
+                  <p className="text-sm sm:text-base md:text-lg font-bold text-emerald-700 dark:text-emerald-400 mt-0.5">
                     {activeItem.meaningId}
                   </p>
                 </div>
@@ -542,7 +542,7 @@ export function BunpouClient() {
               <div className="p-4 sm:p-6 rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-xs sm:shadow-sm space-y-3.5 sm:space-y-4">
                 <div className="flex items-center justify-between border-b border-[var(--border)] pb-2.5 sm:pb-3">
                   <div className="flex items-center gap-1.5 sm:gap-2">
-                    <Sparkles size={16} className="text-emerald-500" />
+                    <Sparkles size={16} className="text-emerald-600" />
                     <h3 className="text-sm sm:text-base font-bold text-[var(--text-primary)]">
                       Contoh Kalimat Otentik (例文)
                     </h3>
@@ -561,7 +561,7 @@ export function BunpouClient() {
                       >
                         <div className="flex items-center justify-between gap-2">
                           <div className="flex items-center gap-1.5">
-                            <span className="w-5 h-5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-[10px] font-bold font-mono">
+                            <span className="w-5 h-5 rounded-full bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 flex items-center justify-center text-[10px] font-bold font-mono">
                               0{idx + 1}
                             </span>
                             {ex.contextNote && (
@@ -584,8 +584,8 @@ export function BunpouClient() {
                             }}
                             className={`p-2 rounded-xl border text-xs transition-all active:scale-90 touch-manipulation min-w-[36px] min-h-[36px] flex items-center justify-center ${
                               isExSpeaking
-                                ? "bg-emerald-600 text-white border-emerald-600 shadow-sm animate-pulse"
-                                : "bg-[var(--surface)] border-[var(--border)] text-[var(--text-secondary)] hover:text-emerald-600 hover:border-emerald-500"
+                                ? "bg-emerald-700 text-white border-emerald-700 shadow-sm animate-pulse"
+                                : "bg-[var(--surface)] border-[var(--border)] text-[var(--text-secondary)] hover:text-emerald-700 hover:border-emerald-500"
                             }`}
                             title="Dengarkan pelafalan kalimat"
                           >
@@ -619,7 +619,7 @@ export function BunpouClient() {
             <div className="space-y-4 sm:space-y-6">
               {activeItem.comparisons && activeItem.comparisons.length > 0 && (
                 <div className="p-4 sm:p-5 rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-xs sm:shadow-sm space-y-3.5 sm:space-y-4">
-                  <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold text-xs sm:text-sm border-b border-[var(--border)] pb-2.5">
+                  <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-bold text-xs sm:text-sm border-b border-[var(--border)] pb-2.5">
                     <GitCompare size={16} />
                     <span>Pembeda Nuansa yang Sering Mengecoh</span>
                   </div>
@@ -647,7 +647,7 @@ export function BunpouClient() {
 
               {/* Study Tip / Action Box */}
               <div className="p-4 sm:p-5 rounded-3xl bg-gradient-to-br from-emerald-500/10 to-transparent border border-emerald-500/25 space-y-2.5 sm:space-y-3">
-                <div className="flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider font-mono">
+                <div className="flex items-center gap-2 text-xs font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider font-mono">
                   <Lightbulb size={14} />
                   <span>Tips Belajar Bunpou:</span>
                 </div>
@@ -663,7 +663,7 @@ export function BunpouClient() {
                     playTapSound();
                     setActiveTab("quiz");
                   }}
-                  className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm active:scale-95 touch-manipulation"
+                  className="w-full py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm active:scale-95 touch-manipulation"
                 >
                   <span>Mulai Latihan Soal Bab Ini</span>
                   <ArrowRight size={13} />
@@ -688,7 +688,7 @@ export function BunpouClient() {
                   {/* Question Header */}
                   <div className="flex items-center justify-between border-b border-[var(--border)] pb-2.5 sm:pb-3">
                     <div className="flex items-center gap-1.5 sm:gap-2">
-                      <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center justify-center text-xs font-bold font-mono">
+                      <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20 flex items-center justify-center text-xs font-bold font-mono">
                         Q{q.questionNumber}
                       </span>
                       <span className="px-2 sm:px-2.5 py-0.5 rounded-full bg-[var(--surface-soft)] text-[var(--text-secondary)] text-[10px] sm:text-xs font-bold border border-[var(--border)]">
@@ -700,7 +700,7 @@ export function BunpouClient() {
                       <span
                         className={`px-2 sm:px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold flex items-center gap-1 ${
                           answered.isCorrect
-                            ? "bg-emerald-500/10 text-emerald-600 border border-emerald-500/30"
+                            ? "bg-emerald-500/10 text-emerald-700 border border-emerald-500/30"
                             : "bg-rose-500/10 text-rose-500 border border-rose-500/30"
                         }`}
                       >
@@ -745,7 +745,7 @@ export function BunpouClient() {
                             btnStyle = "opacity-60 bg-[var(--surface-soft)] border-[var(--border)]";
                           }
                         } else if (isChosen) {
-                          btnStyle = "bg-emerald-600 text-white border-emerald-600 font-bold";
+                          btnStyle = "bg-emerald-700 text-white border-emerald-700 font-bold";
                         }
 
                         return (
@@ -831,7 +831,7 @@ export function BunpouClient() {
                               className={`px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm font-japanese transition-all active:scale-95 touch-manipulation ${
                                 isPlaced
                                   ? "opacity-30 bg-[var(--surface-soft)] border-dashed border-[var(--border)] text-[var(--text-secondary)] cursor-not-allowed"
-                                  : "bg-[var(--surface)] border-[var(--border)] text-[var(--text-primary)] hover:border-emerald-500 hover:text-emerald-600 font-bold shadow-xs active:bg-emerald-50 dark:active:bg-emerald-950/20"
+                                  : "bg-[var(--surface)] border-[var(--border)] text-[var(--text-primary)] hover:border-emerald-500 hover:text-emerald-700 font-bold shadow-xs active:bg-emerald-50 dark:active:bg-emerald-950/20"
                               }`}
                             >
                               <span>{item}</span>
@@ -846,7 +846,7 @@ export function BunpouClient() {
                           type="button"
                           onClick={() => handleCheckSeiretsu(q)}
                           disabled={(seiretsuSlots[q.id] || []).length !== 4}
-                          className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm active:scale-95 touch-manipulation"
+                          className="px-4 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 disabled:opacity-40 text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm active:scale-95 touch-manipulation"
                         >
                           <Check size={14} />
                           <span>Periksa Urutan</span>
@@ -904,8 +904,8 @@ export function BunpouClient() {
             onClick={handleMarkAsStudied}
             className={`py-2 px-3 rounded-xl border text-[11px] font-bold transition-all flex items-center justify-center gap-1 active:scale-95 touch-manipulation shrink-0 ${
               isStudied
-                ? "bg-emerald-500/15 border-emerald-500/40 text-emerald-600 dark:text-emerald-400"
-                : "bg-emerald-600 text-white border-emerald-600 shadow-sm"
+                ? "bg-emerald-500/15 border-emerald-500/40 text-emerald-700 dark:text-emerald-400"
+                : "bg-emerald-700 text-white border-emerald-700 shadow-sm"
             }`}
           >
             <CheckCheck size={13} />

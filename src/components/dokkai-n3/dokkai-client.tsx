@@ -207,7 +207,7 @@ export function DokkaiClient() {
                 playTapSound();
                 openSyncModal();
               }}
-              className="p-2 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-500 hover:bg-amber-500/20 text-xs font-bold transition-all active:scale-95 flex items-center gap-1"
+              className="p-2 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-600 hover:bg-amber-500/20 text-xs font-bold transition-all active:scale-95 flex items-center gap-1"
               title="Habit Tracker & Sinkronisasi Perangkat"
             >
               <Flame size={15} className="fill-amber-500 animate-pulse" />
@@ -482,7 +482,7 @@ export function DokkaiClient() {
                         <button
                           type="button"
                           onClick={() => speak(sentence.textJp, `sentence-${sentence.id}`)}
-                          className={`inline-flex items-center justify-center w-6 h-6 sm:w-5 sm:h-5 ml-1 rounded-full align-middle transition-colors text-[var(--text-secondary)] hover:text-[var(--brand-primary)] hover:bg-[var(--surface)] active:scale-90 ${
+                          className={`inline-flex items-center justify-center w-6 h-6 ml-1 rounded-full align-middle transition-colors text-[var(--text-secondary)] hover:text-[var(--brand-primary)] hover:bg-[var(--surface)] active:scale-90 ${
                             activeSpeechId === `sentence-${sentence.id}`
                               ? "bg-emerald-500 text-white animate-pulse"
                               : ""

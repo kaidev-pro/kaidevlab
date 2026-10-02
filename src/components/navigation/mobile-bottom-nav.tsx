@@ -94,7 +94,7 @@ export function MobileBottomNav() {
             onClick={handleNavClick}
             className={`flex flex-col items-center justify-center py-1.5 px-2 rounded-xl text-[10px] font-bold transition-all relative ${
               item.isActive
-                ? "text-[var(--brand-primary)] bg-[var(--brand-primary)]/10 font-extrabold"
+                ? "text-[var(--brand-hover)] bg-[var(--brand-primary)]/10 font-extrabold"
                 : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             }`}
           >
@@ -126,10 +126,10 @@ export function MobileBottomNav() {
         className="flex flex-col items-center justify-center py-1.5 px-2 rounded-xl text-[10px] font-bold text-amber-500 bg-amber-500/10 hover:bg-amber-500/15 transition-all active:scale-95 relative border border-amber-500/25"
       >
         <div className="flex items-center gap-0.5">
-          <Flame size={16} className="fill-amber-500 text-amber-500 animate-pulse" />
-          <span className="font-extrabold text-[11px] font-mono">{streak}</span>
+          <Flame size={16} className="fill-amber-600 text-amber-600 animate-pulse" />
+          <span className="font-extrabold text-[11px] font-mono text-amber-700 dark:text-amber-400">{streak}</span>
         </div>
-        <span className="tracking-tight text-[9px] text-amber-600 dark:text-amber-400">Streak</span>
+        <span className="tracking-tight text-[9px] text-amber-700 dark:text-amber-400">Streak</span>
       </button>
     </nav>
   );

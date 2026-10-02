@@ -241,17 +241,17 @@ export function N3SuiteClient() {
               <ArrowLeft size={16} />
             </Link>
             <div className="min-w-0">
-              <div className="flex items-center gap-1.5 flex-wrap">
-                <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--brand-primary)]">
+              <div className="flex items-center gap-2">
+                <h1 className="text-sm sm:text-base font-bold text-[var(--text-primary)] tracking-tight font-sans">
                   JLPT N3 Suite
-                </span>
-                <span className="text-[9px] sm:text-[10px] px-1.5 py-0.2 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] font-bold">
+                </h1>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] font-bold font-japanese shrink-0">
                   新完全マスター
                 </span>
               </div>
-              <h1 className="text-xs sm:text-base font-bold text-[var(--text-primary)] tracking-tight truncate font-sans">
-                Pusat Pembelajaran N3 Terpadu
-              </h1>
+              <p className="text-[10px] sm:text-xs text-[var(--text-secondary)] hidden sm:block">
+                Pusat Pembelajaran Bahasa Jepang N3 Terpadu
+              </p>
             </div>
           </div>
 

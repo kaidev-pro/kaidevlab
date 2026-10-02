@@ -231,54 +231,54 @@ export function N3SuiteClient() {
     <div className="min-h-screen bg-[var(--background)] text-[var(--text-primary)] pb-24 font-sans">
       {/* Top Header */}
       <header className="sticky top-0 z-40 bg-[var(--surface)]/90 backdrop-blur-md border-b border-[var(--border)]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-2.5 sm:py-4 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <Link
               href="/learn"
-              className="p-2 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all"
+              className="p-1.5 sm:p-2 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all shrink-0 active:scale-95 touch-manipulation"
               title="Kembali ke Dashboard Learn"
             >
               <ArrowLeft size={16} />
             </Link>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--brand-primary)]">
-                  JLPT N3 Mastery Suite
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--brand-primary)]">
+                  JLPT N3 Suite
                 </span>
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] font-bold">
+                <span className="text-[9px] sm:text-[10px] px-1.5 py-0.2 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] font-bold">
                   新完全マスター
                 </span>
               </div>
-              <h1 className="text-sm sm:text-base font-bold text-[var(--text-primary)] tracking-tight">
-                Pusat Pembelajaran Bahasa Jepang N3 Terpadu
+              <h1 className="text-xs sm:text-base font-bold text-[var(--text-primary)] tracking-tight truncate font-sans">
+                Pusat Pembelajaran N3 Terpadu
               </h1>
             </div>
           </div>
 
           <Link
             href="/tools/fe-study"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] text-xs font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--brand-primary)]/50 transition-all"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] text-xs font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--brand-primary)]/50 transition-all shrink-0"
           >
-            <span>Buka FE Study Hub</span>
+            <span>Buka FE Study</span>
             <ChevronRight size={13} />
           </Link>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 space-y-10">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 space-y-8 sm:space-y-10">
         {/* Hero Banner */}
-        <div className="relative overflow-hidden rounded-3xl border border-[var(--border)] bg-gradient-to-br from-[var(--surface)] via-[var(--surface-soft)]/50 to-[var(--surface)] p-6 sm:p-10 shadow-lg">
-          <div className="relative z-10 max-w-2xl space-y-3">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-wider border border-blue-500/20">
+        <div className="relative overflow-hidden rounded-3xl border border-[var(--border)] bg-gradient-to-br from-[var(--surface)] via-[var(--surface-soft)]/50 to-[var(--surface)] p-5 sm:p-10 shadow-lg">
+          <div className="relative z-10 max-w-2xl space-y-2.5 sm:space-y-3">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[11px] sm:text-xs font-bold uppercase tracking-wider border border-blue-500/20">
               <Sparkles size={12} /> Kurikulum Resmi Shin Kanzen Master
             </span>
 
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-japanese leading-tight">
+            <h2 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-japanese leading-snug">
               日本語能力試験 N3 総合学習
             </h2>
 
-            <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
+            <p className="text-xs sm:text-base text-[var(--text-secondary)] leading-relaxed">
               Tingkatkan kemahiran bahasa Jepang N3 Anda dari level teori dasar menuju pemahaman wacana tingkat tinggi.
               Dirancang untuk mematangkan kosakata, analisis dekonstruksi kalimat majemuk, dan persiapan tata bahasa.
             </p>

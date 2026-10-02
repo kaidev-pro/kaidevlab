@@ -352,7 +352,7 @@ export function TangoN3Client() {
                     <span>Dokkai N3 (読解)</span>
                   </a>
                 </div>
-                <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[var(--text-primary)]">
+                <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-[var(--text-primary)] font-sans">
                   Shin Kanzen Master Tango Hub
                 </h1>
                 <p className="text-[var(--text-secondary)] text-xs sm:text-sm leading-relaxed">

@@ -63,7 +63,7 @@ export function LibraryClient() {
             <Layers className="w-3.5 h-3.5" />
             <span>{t.eyebrow}</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[var(--text-primary)] font-serif tracking-tight">
+          <h1 className="text-xl sm:text-2xl md:text-4xl font-extrabold text-[var(--text-primary)] font-sans tracking-tight">
             {t.title}
           </h1>
           <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">

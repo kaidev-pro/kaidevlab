@@ -334,7 +334,7 @@ export function AcademyPortalClient() {
             <span>{t.osBadge}</span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--text-primary)] font-serif">
+          <h1 className="text-xl sm:text-2xl md:text-4xl font-extrabold tracking-tight text-[var(--text-primary)] font-sans">
             {t.welcomePrefix} <span className="text-[var(--brand-primary)]">{userName}</span>.
           </h1>
 
@@ -438,7 +438,7 @@ export function AcademyPortalClient() {
               <Sparkles className="w-3.5 h-3.5" />
               <span>{t.todayMissionBadge}</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-extrabold text-[var(--text-primary)] font-serif">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-[var(--text-primary)] font-sans">
               {t.todayMissionTitle}
             </h2>
             <p className="text-xs text-[var(--text-secondary)]">
@@ -539,7 +539,7 @@ export function AcademyPortalClient() {
       {/* ==================================================== */}
       <section className="space-y-4">
         <div>
-          <h2 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] font-serif">
+          <h2 className="text-base sm:text-xl font-bold text-[var(--text-primary)] font-sans">
             {t.continueSectionTitle}
           </h2>
           <p className="text-xs text-[var(--text-secondary)] mt-0.5">
@@ -647,7 +647,7 @@ export function AcademyPortalClient() {
                 {totalDueReview} Item Jatuh Tempo Hari Ini
               </span>
             </div>
-            <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] font-serif">
+            <h3 className="text-base sm:text-xl font-bold text-[var(--text-primary)] font-sans">
               Penguatan Memori Jangka Panjang (Spaced Repetition)
             </h3>
             <p className="text-xs text-[var(--text-secondary)] max-w-2xl leading-relaxed">
@@ -744,7 +744,7 @@ export function AcademyPortalClient() {
       {/* ==================================================== */}
       <section className="space-y-4">
         <div>
-          <h2 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] font-serif">
+          <h2 className="text-base sm:text-xl font-bold text-[var(--text-primary)] font-sans">
             {t.tracksTitle}
           </h2>
           <p className="text-xs text-[var(--text-secondary)] mt-0.5">
@@ -890,7 +890,7 @@ export function AcademyPortalClient() {
       {/* ==================================================== */}
       <section className="space-y-4">
         <div>
-          <h2 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] font-serif">
+          <h2 className="text-base sm:text-xl font-bold text-[var(--text-primary)] font-sans">
             {t.studyToolsTitle}
           </h2>
           <p className="text-xs text-[var(--text-secondary)] mt-0.5">

@@ -87,16 +87,13 @@
   a:focus-visible, button:focus-visible { outline: 2px solid var(--brand-glow); outline-offset: 2px; }
   button { font: inherit; }
   p { margin: 0; color: var(--text-secondary); line-height: 1.72; }
-  h1, h2, h3 {
+  h1, h2, h3, h4, h5, h6 {
     margin: 0;
     color: var(--text-primary);
-    font-family: Georgia, "Times New Roman", serif;
-    font-weight: 500;
-    letter-spacing: -0.035em;
+    font-family: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
   }
-  h1 { font-size: clamp(3.1rem, 6vw, 6rem); line-height: 0.96; }
-  h2 { font-size: clamp(2.25rem, 4.2vw, 4rem); line-height: 1.02; }
-  h3 { font-size: clamp(1.45rem, 2vw, 2rem); line-height: 1.08; }
   ul { margin: 0; }
 }
 
@@ -559,7 +556,15 @@
 /* Page shells */
 .page-shell { min-height: calc(100vh - 180px); }
 .page-hero { max-width: 1050px; padding: clamp(4rem, 8vw, 7rem) 0 2.5rem; }
-.compact-page-hero h1 { font-size: clamp(3.1rem, 6vw, 6.2rem); }
+.page-hero h1,
+.compact-page-hero h1,
+.legal-page h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  font-size: clamp(2.2rem, 5.5vw, 5.5rem);
+  line-height: 1.02;
+}
 .compact-page-hero .lead { margin-top: 1.3rem; }
 
 /* Work page */

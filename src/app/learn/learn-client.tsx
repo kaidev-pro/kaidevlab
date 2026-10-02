@@ -687,7 +687,7 @@ export function LearnClient() {
               </span>
             </div>
 
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] font-serif">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] font-sans">
               {txt.title}
             </h1>
 
@@ -941,7 +941,7 @@ export function LearnClient() {
                     <span>{FE_CARDS.length} {txt.cardUnit} · {FE_DAILY_DECKS.length} {txt.dayUnit}</span>
                   </span>
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] font-serif">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[var(--text-primary)] font-sans">
                   {txt.dailyDecksTitle}
                 </h3>
                 <p className="text-xs md:text-sm text-[var(--text-secondary)] leading-relaxed">
@@ -1074,7 +1074,7 @@ export function LearnClient() {
 
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-center">
                     <div className="lg:col-span-2 flex flex-col gap-2">
-                      <h4 className="text-xl sm:text-2xl font-black text-[var(--text-primary)] font-serif leading-tight">
+                      <h4 className="text-lg sm:text-xl md:text-2xl font-black text-[var(--text-primary)] font-sans leading-tight">
                         {activeDayDeck.titleId}
                       </h4>
                       <p className="text-xs sm:text-sm font-mono text-[var(--brand-primary)] font-medium">

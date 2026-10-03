@@ -35,6 +35,12 @@ import { triggerHaptic } from "@/lib/haptics";
 import { playTapSound, playSuccessChime, playErrorBuzz } from "@/lib/global-sound";
 import { recordUnifiedActivity } from "@/lib/unified-study-storage";
 import { openSyncModal } from "@/lib/global-modals-store";
+import {
+  N3TopBar,
+  N3ContinueCard,
+  N3SecondaryAction,
+  N3MoreSection,
+} from "@/components/n3/n3-shell";
 
 export function DokkaiClient() {
   const [passages] = useState<DokkaiPassage[]>(DOKKAI_PASSAGES);
@@ -81,6 +87,9 @@ export function DokkaiClient() {
   const currentPassageIndex = useMemo(() => {
     return passages.findIndex((p) => p.id === activePassage.id);
   }, [passages, activePassage.id]);
+
+  const prevPassage = currentPassageIndex > 0 ? passages[currentPassageIndex - 1] : null;
+  const nextPassage = currentPassageIndex < passages.length - 1 ? passages[currentPassageIndex + 1] : null;
 
   const isBookmarked = progress.bookmarkedPassageIds.includes(activePassage.id);
   const isPassageCompleted = progress.completedPassageIds.includes(activePassage.id);
@@ -139,57 +148,18 @@ export function DokkaiClient() {
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--text-primary)] pb-28 sm:pb-24 font-sans">
       {/* Top Header & Sticky Navigation */}
-      <header className="sticky top-0 z-40 bg-[var(--surface)]/90 backdrop-blur-md border-b border-[var(--border)]">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-between gap-2 sm:gap-3">
-          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-            <a
-              href="/tools/n3-suite"
-              className="p-2 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all flex items-center gap-1.5 text-xs font-bold shrink-0"
-              title="Kembali ke JLPT N3 Suite Hub"
-            >
-              <ArrowLeft size={15} />
-              <span className="hidden sm:inline">N3 Suite</span>
-            </a>
-            <div className="min-w-0">
-              <div className="flex items-center gap-1.5 sm:gap-2">
-                <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[var(--brand-primary)] truncate">
-                  JLPT N3
-                </span>
-                <span className="text-[10px] sm:text-[11px] px-1.5 sm:px-2 py-0.5 rounded-full bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] font-bold shrink-0">
-                  読解
-                </span>
-              </div>
-              <h1 className="text-xs sm:text-base font-bold text-[var(--text-primary)] tracking-tight truncate">
-                N3 Dokkai (読解)
-              </h1>
-            </div>
-          </div>
-
-          {/* Quick Actions & Toggles */}
-          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-            <a
-              href="/tools/tango-n3"
-              className="hidden md:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] text-xs font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--brand-primary)]/50 transition-all mr-1"
-              title="Buka Modul Kosakata N3 Tango"
-            >
-              <BookOpen size={13} />
-              <span>Tango (単語)</span>
-            </a>
-            <a
-              href="/tools/bunpou-n3"
-              className="hidden md:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] text-xs font-bold text-[var(--text-secondary)] hover:text-emerald-600 hover:border-emerald-500/50 transition-all mr-1"
-              title="Buka Modul Tata Bahasa N3 Bunpou"
-            >
-              <Sparkles size={13} className="text-emerald-500" />
-              <span>Bunpou (文法)</span>
-            </a>
+      <N3TopBar
+        active="dokkai"
+        title="JLPT N3 Dokkai (読解) — Wacana & Pemahaman Bacaan"
+        tools={
+          <>
             {/* Furigana Toggle */}
             <button
               type="button"
               onClick={() => setShowFurigana((prev) => !prev)}
-              className={`inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 sm:py-1.5 rounded-xl border text-[11px] sm:text-xs font-bold transition-all active:scale-95 ${
+              className={`inline-flex items-center gap-1 sm:gap-1.5 px-2.5 py-1.5 rounded-xl border text-[11px] sm:text-xs font-bold transition-all active:scale-95 ${
                 showFurigana
-                  ? "bg-[var(--brand-primary)] text-white border-[var(--brand-primary)] shadow-sm"
+                  ? "bg-amber-600 text-white border-amber-600 shadow-sm"
                   : "bg-[var(--surface-soft)] text-[var(--text-secondary)] border-[var(--border)] hover:text-[var(--text-primary)]"
               }`}
               title="Tampilkan / Sembunyikan Furigana (ルビ)"
@@ -197,21 +167,6 @@ export function DokkaiClient() {
               <Languages size={13} />
               <span className="hidden sm:inline">ルビ {showFurigana ? "ON" : "OFF"}</span>
               <span className="sm:hidden">{showFurigana ? "ルビ" : "OFF"}</span>
-            </button>
-
-
-            {/* Sync & Streak Button */}
-            <button
-              type="button"
-              onClick={() => {
-                triggerHaptic("medium");
-                playTapSound();
-                openSyncModal();
-              }}
-              className="p-2 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-600 hover:bg-amber-500/20 text-xs font-bold transition-all active:scale-95 flex items-center gap-1"
-              title="Habit Tracker & Sinkronisasi Perangkat"
-            >
-              <Flame size={15} className="fill-amber-500 animate-pulse" />
             </button>
 
             {/* Bookmark Button */}
@@ -227,151 +182,53 @@ export function DokkaiClient() {
             >
               <Bookmark size={15} className={isBookmarked ? "fill-amber-500" : ""} />
             </button>
-          </div>
-        </div>
-
-        {/* Category Filter Pills Bar */}
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 pb-2.5 flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar text-[11px] sm:text-xs">
-          <button
-            type="button"
-            onClick={() => setActiveCategoryFilter("all")}
-            className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all ${
-              activeCategoryFilter === "all"
-                ? "bg-[var(--text-primary)] text-[var(--surface)] border-[var(--text-primary)] font-bold shadow-xs"
-                : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            Semua Bab ({passages.length})
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveCategoryFilter("technique")}
-            className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all ${
-              activeCategoryFilter === "technique"
-                ? "bg-[var(--brand-primary)] text-white border-[var(--brand-primary)] font-bold shadow-xs"
-                : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            Pilar 1: Teknik Dasar (基礎編)
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveCategoryFilter("short")}
-            className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all ${
-              activeCategoryFilter === "short"
-                ? "bg-[var(--brand-primary)] text-white border-[var(--brand-primary)] font-bold shadow-xs"
-                : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            短文 (Teks Pendek)
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveCategoryFilter("medium")}
-            className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all ${
-              activeCategoryFilter === "medium"
-                ? "bg-[var(--brand-primary)] text-white border-[var(--brand-primary)] font-bold shadow-xs"
-                : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            中文 (Teks Sedang)
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveCategoryFilter("long")}
-            className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all ${
-              activeCategoryFilter === "long"
-                ? "bg-[var(--brand-primary)] text-white border-[var(--brand-primary)] font-bold shadow-xs"
-                : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            長文 (Teks Panjang)
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveCategoryFilter("info_search")}
-            className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all ${
-              activeCategoryFilter === "info_search"
-                ? "bg-[var(--brand-primary)] text-white border-[var(--brand-primary)] font-bold shadow-xs"
-                : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            情報検索 (Pencarian Info)
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveCategoryFilter("bookmarks")}
-            className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all ${
-              activeCategoryFilter === "bookmarks"
-                ? "bg-amber-500 text-white border-amber-500 font-bold shadow-xs"
-                : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            Tersimpan ({progress.bookmarkedPassageIds.length})
-          </button>
-        </div>
-      </header>
+          </>
+        }
+      />
 
       {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-3 sm:px-6 pt-4 sm:pt-6">
-        {/* Passages Carousel Selector */}
-        <div className="mb-4 sm:mb-6 flex items-center justify-between gap-2 sm:gap-3 bg-[var(--surface)] p-2 sm:p-3 rounded-2xl border border-[var(--border)]">
-          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-1 -mx-0.5 px-0.5">
-            {filteredPassages.map((p, idx) => {
-              const isSelected = p.id === activePassage.id;
-              const isCompleted = progress.completedPassageIds.includes(p.id);
-
-              return (
-                <button
-                  key={p.id}
-                  type="button"
-                  onClick={() => setSelectedPassageId(p.id)}
-                  className={`px-3 sm:px-3.5 py-2 sm:py-1.5 rounded-xl border text-[11px] sm:text-xs whitespace-nowrap transition-all flex items-center gap-1.5 active:scale-95 ${
-                    isSelected
-                      ? "bg-[var(--brand-primary)] text-white border-[var(--brand-primary)] font-bold shadow-sm"
-                      : "bg-[var(--surface-soft)] border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--brand-primary)]/50"
-                  }`}
-                >
-                  {isCompleted && <Check size={12} className={isSelected ? "text-white" : "text-emerald-500"} />}
-                  <span>Bab {p.chapterNumber}</span>
-                  <span className="opacity-70 text-[10px] hidden sm:inline">({p.techniqueTag})</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Quick Stats Pill */}
-          <div className="hidden md:flex items-center gap-3 shrink-0 pl-3 border-l border-[var(--border)] text-xs text-[var(--text-secondary)]">
-            <div>
-              <span>Selesai: </span>
-              <b className="text-[var(--text-primary)]">
-                {progress.completedPassageIds.length} / {passages.length}
-              </b>
-            </div>
-            <div>
-              <span>Akurasi: </span>
-              <b className="text-emerald-500">
-                {progress.totalAttempts > 0
-                  ? Math.round((progress.totalCorrect / progress.totalAttempts) * 100)
-                  : 0}
-                %
-              </b>
-            </div>
-          </div>
-        </div>
+      <main className="max-w-7xl mx-auto px-3 sm:px-6 pt-5 sm:pt-8 space-y-6">
+        {/* Single Focused Target Card */}
+        <N3ContinueCard
+          accent="amber"
+          eyebrow={`Bab ${activePassage.chapterNumber} · ${activePassage.category.toUpperCase()} · ${activePassage.techniqueTag}`}
+          title={`${activePassage.titleJp} — ${activePassage.titleId}`}
+          subtitle={`Teknik: ${activePassage.techniqueDescription || "Analisis wacana & temukan petunjuk kalimat kunci"}`}
+          progress={Math.round((progress.completedPassageIds.length / (passages.length || 1)) * 100)}
+          progressLabel={`${progress.completedPassageIds.length}/${passages.length} wacana tuntas (${Math.round((progress.completedPassageIds.length / (passages.length || 1)) * 100)}%) · ${progress.totalAttempts > 0 ? Math.round((progress.totalCorrect / progress.totalAttempts) * 100) : 0}% akurasi`}
+          primary={{
+            id: "dokkai-primary-scroll-btn",
+            label: isPassageCompleted ? "Wacana Tuntas · Ulas Kembali ↓" : "Baca & Jawab Pertanyaan Sekarang ↓",
+            onClick: () => {
+              const el = document.getElementById("dokkai-passage-reading-card");
+              el?.scrollIntoView({ behavior: "smooth", block: "start" });
+            },
+          }}
+          secondary={
+            <>
+              {prevPassage && (
+                <N3SecondaryAction id="dokkai-prev-btn" onClick={() => setSelectedPassageId(prevPassage.id)}>
+                  ← Bab {prevPassage.chapterNumber}
+                </N3SecondaryAction>
+              )}
+              {nextPassage && (
+                <N3SecondaryAction id="dokkai-next-btn" onClick={() => setSelectedPassageId(nextPassage.id)}>
+                  Bab {nextPassage.chapterNumber} →
+                </N3SecondaryAction>
+              )}
+              <N3SecondaryAction id="dokkai-toggle-vocab-btn" onClick={() => setShowVocabList((prev) => !prev)}>
+                {showVocabList ? "Tutup Glosarium" : "Glosarium Kata"}
+              </N3SecondaryAction>
+            </>
+          }
+        />
 
         {/* 2-Column Split Layout: Passage (Left) & Questions (Right) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
           {/* ========================================================= */}
           {/* LEFT COLUMN: PASSAGE CANVAS (7 Cols on LG)               */}
           {/* ========================================================= */}
-          <div className="lg:col-span-7 flex flex-col gap-4 sm:gap-5">
+          <div id="dokkai-passage-reading-card" className="lg:col-span-7 flex flex-col gap-4 sm:gap-5">
             {/* Passage Card Container */}
             <div className="p-3.5 sm:p-8 rounded-2xl sm:rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-md flex flex-col gap-4 sm:gap-5">
               {/* Header Badges */}
@@ -746,6 +603,125 @@ export function DokkaiClient() {
             </div>
           </div>
         </div>
+
+        {/* Folded Passage Switcher & Category Filter */}
+        <N3MoreSection
+          id="dokkai-more-chapters"
+          label={`Ganti bab wacana & filter kategori (${passages.length} wacana)`}
+        >
+          <div className="space-y-4 p-4 rounded-3xl bg-[var(--surface)] border border-[var(--border)]">
+            <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar text-[11px] sm:text-xs">
+              <button
+                type="button"
+                onClick={() => setActiveCategoryFilter("all")}
+                className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all ${
+                  activeCategoryFilter === "all"
+                    ? "bg-[var(--text-primary)] text-[var(--surface)] border-[var(--text-primary)] font-bold shadow-xs"
+                    : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                }`}
+              >
+                Semua Bab ({passages.length})
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveCategoryFilter("technique")}
+                className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all ${
+                  activeCategoryFilter === "technique"
+                    ? "bg-amber-600 text-white border-amber-600 font-bold shadow-xs"
+                    : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                }`}
+              >
+                Pilar 1: Teknik Dasar
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveCategoryFilter("short")}
+                className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all ${
+                  activeCategoryFilter === "short"
+                    ? "bg-amber-600 text-white border-amber-600 font-bold shadow-xs"
+                    : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                }`}
+              >
+                短文 (Teks Pendek)
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveCategoryFilter("medium")}
+                className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all ${
+                  activeCategoryFilter === "medium"
+                    ? "bg-amber-600 text-white border-amber-600 font-bold shadow-xs"
+                    : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                }`}
+              >
+                中文 (Teks Sedang)
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveCategoryFilter("long")}
+                className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all ${
+                  activeCategoryFilter === "long"
+                    ? "bg-amber-600 text-white border-amber-600 font-bold shadow-xs"
+                    : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                }`}
+              >
+                長文 (Teks Panjang)
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveCategoryFilter("info_search")}
+                className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all ${
+                  activeCategoryFilter === "info_search"
+                    ? "bg-amber-600 text-white border-amber-600 font-bold shadow-xs"
+                    : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                }`}
+              >
+                情報検索 (Pencarian Info)
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveCategoryFilter("bookmarks")}
+                className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all ${
+                  activeCategoryFilter === "bookmarks"
+                    ? "bg-amber-500 text-white border-amber-500 font-bold shadow-xs"
+                    : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                }`}
+              >
+                Tersimpan ({progress.bookmarkedPassageIds.length})
+              </button>
+            </div>
+
+            {/* Passages Carousel Selector */}
+            <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-1">
+              {filteredPassages.map((p) => {
+                const isSelected = p.id === activePassage.id;
+                const isCompleted = progress.completedPassageIds.includes(p.id);
+
+                return (
+                  <button
+                    key={p.id}
+                    type="button"
+                    onClick={() => setSelectedPassageId(p.id)}
+                    className={`px-3 sm:px-3.5 py-2 sm:py-1.5 rounded-xl border text-[11px] sm:text-xs whitespace-nowrap transition-all flex items-center gap-1.5 active:scale-95 ${
+                      isSelected
+                        ? "bg-amber-600 text-white border-amber-600 font-bold shadow-sm"
+                        : "bg-[var(--surface-soft)] border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-amber-500/50"
+                    }`}
+                  >
+                    {isCompleted && <Check size={12} className={isSelected ? "text-white" : "text-emerald-500"} />}
+                    <span>Bab {p.chapterNumber}</span>
+                    <span className="opacity-70 text-[10px] hidden sm:inline">({p.techniqueTag})</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </N3MoreSection>
       </main>
 
       {/* Global Interactive Kanji Tap-to-Define Popover */}

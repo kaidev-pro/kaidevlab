@@ -44,6 +44,7 @@ import { triggerHaptic } from "@/lib/haptics";
 import { playTapSound, playSuccessChime, playErrorBuzz } from "@/lib/global-sound";
 import { recordUnifiedActivity } from "@/lib/unified-study-storage";
 import { openSyncModal } from "@/lib/global-modals-store";
+import { N3TopBar, N3ContinueCard, N3MoreSection, N3SecondaryAction } from "@/components/n3/n3-shell";
 
 export function BunpouClient() {
   const [items] = useState<BunpouItem[]>(BUNPOU_ITEMS);
@@ -242,56 +243,11 @@ export function BunpouClient() {
 
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--text-primary)] pb-28 sm:pb-16 font-sans">
-      {/* Top Header Sticky Bar */}
-      <header className="sticky top-0 z-30 bg-[var(--surface)]/95 backdrop-blur-md border-b border-[var(--border)] shadow-xs">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between gap-2">
-          {/* Back & Breadcrumb */}
-          <div className="flex items-center gap-2 min-w-0">
-            <Link
-              href="/tools/n3-suite"
-              className="p-1.5 sm:p-2 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-emerald-500/50 transition-all shrink-0 active:scale-95 touch-manipulation"
-              title="Kembali ke JLPT N3 Suite"
-            >
-              <ArrowLeft size={16} />
-            </Link>
-
-            <div className="min-w-0">
-              <div className="flex items-center gap-1.5">
-                <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 text-[10px] font-bold tracking-wider uppercase font-mono shrink-0">
-                  文法 N3
-                </span>
-                <span className="text-[10px] text-[var(--text-secondary)] truncate hidden md:inline">
-                  {activeItem.chapterTitle}
-                </span>
-              </div>
-              <h1 className="text-xs sm:text-sm md:text-base font-bold text-[var(--text-primary)] tracking-tight truncate max-w-[220px] xs:max-w-[320px] sm:max-w-none">
-                {activeItem.patternJp}
-                <span className="ml-1 text-[11px] font-normal text-[var(--text-secondary)] hidden sm:inline">
-                  — {activeItem.meaningId}
-                </span>
-              </h1>
-            </div>
-          </div>
-
-          {/* Controls Right */}
-          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-            {/* Suite Tabs (Tango, Dokkai) */}
-            <Link
-              href="/tools/tango-n3"
-              className="hidden lg:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] text-xs font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all"
-            >
-              <BookOpen size={13} />
-              <span>Tango</span>
-            </Link>
-            <Link
-              href="/tools/dokkai-n3"
-              className="hidden lg:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] text-xs font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all"
-            >
-              <Layers size={13} />
-              <span>Dokkai</span>
-            </Link>
-
-            {/* Furigana Toggle */}
+      <N3TopBar
+        active="bunpou"
+        title="JLPT N3 Bunpou (文法)"
+        tools={
+          <>
             <button
               type="button"
               onClick={() => setShowFurigana((prev) => !prev)}
@@ -306,22 +262,6 @@ export function BunpouClient() {
               <span className="hidden sm:inline">ルビ {showFurigana ? "ON" : "OFF"}</span>
               <span className="sm:hidden">{showFurigana ? "ルビ" : "OFF"}</span>
             </button>
-
-            {/* Sync & Habit Modal */}
-            <button
-              type="button"
-              onClick={() => {
-                triggerHaptic("medium");
-                playTapSound();
-                openSyncModal();
-              }}
-              className="p-1.5 sm:p-2 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-500 hover:bg-amber-500/20 text-xs font-bold transition-all active:scale-95 touch-manipulation"
-              title="Habit Tracker & Sinkronisasi"
-            >
-              <Flame size={15} className="fill-amber-500" />
-            </button>
-
-            {/* Bookmark Button */}
             <button
               type="button"
               onClick={handleToggleBookmark}
@@ -334,135 +274,42 @@ export function BunpouClient() {
             >
               <Bookmark size={15} className={isBookmarked ? "fill-amber-500" : ""} />
             </button>
-          </div>
-        </div>
+          </>
+        }
+      />
 
-        {/* Chapter & Filter Bar */}
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 pb-2.5 flex items-center gap-2">
-          {/* Quick Chapter Dropdown (Instant selection for all 24 chapters) */}
-          <div className="relative shrink-0">
-            <select
-              aria-label="Pilih Bab Bunpou N3"
-              value={activeChapterFilter}
-              onChange={(e) => {
-                const val = e.target.value;
-                if (val === "all" || val === "bookmarks") {
-                  handleSelectChapter(val);
-                } else {
-                  handleSelectChapter(Number(val));
-                }
-              }}
-              className="py-1 px-2.5 pr-7 rounded-xl border border-emerald-500/30 bg-[var(--surface-soft)] text-xs font-bold text-[var(--text-primary)] hover:border-emerald-500/60 focus:outline-hidden focus:ring-1 focus:ring-emerald-500 cursor-pointer appearance-none"
-            >
-              <option value="all">Semua Bab (116 Pola)</option>
-              <option value="bookmarks">Favorit ({progress.bookmarkedPatternIds.length})</option>
-              <optgroup label="24 Bab Bunpou N3">
-                {chapters.map((ch) => (
-                  <option key={ch.chapterNumber} value={ch.chapterNumber}>
-                    Bab {ch.chapterNumber}: {ch.chapterTitle.replace(/^第\d+課:\s*/, "")} ({ch.count})
-                  </option>
-                ))}
-              </optgroup>
-            </select>
-            <ChevronDown className="w-3.5 h-3.5 text-[var(--text-secondary)] pointer-events-none absolute right-2 top-1/2 -translate-y-1/2" />
-          </div>
-
-          {/* Horizontal Quick Pill Carousel */}
-          <div className="flex-1 flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 text-[11px] sm:text-xs min-w-0">
-            <button
-              type="button"
-              onClick={() => handleSelectChapter("all")}
-              className={`px-3 py-1 rounded-xl border font-bold whitespace-nowrap transition-all touch-manipulation active:scale-95 shrink-0 ${
-                activeChapterFilter === "all"
-                  ? "bg-emerald-700 text-white border-emerald-700 shadow-xs"
-                  : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-              }`}
-            >
-              Semua ({items.length})
-            </button>
-
-            {chapters.map((ch) => {
-              const isSelected = activeChapterFilter === ch.chapterNumber;
-              return (
-                <button
-                  key={ch.chapterNumber}
-                  type="button"
-                  onClick={() => handleSelectChapter(ch.chapterNumber)}
-                  className={`px-2.5 py-1 rounded-xl border font-bold whitespace-nowrap transition-all touch-manipulation active:scale-95 shrink-0 flex items-center gap-1 ${
-                    isSelected
-                      ? "bg-emerald-700 text-white border-emerald-700 shadow-xs"
-                      : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-emerald-500/40"
-                  }`}
-                  title={ch.chapterTitle}
-                >
-                  <span>Bab {ch.chapterNumber}</span>
-                  <span className="opacity-75 font-normal text-[10px]">({ch.count})</span>
-                </button>
-              );
-            })}
-
-            <button
-              type="button"
-              onClick={() => handleSelectChapter("bookmarks")}
-              className={`px-3 py-1 rounded-xl border font-bold whitespace-nowrap transition-all touch-manipulation active:scale-95 shrink-0 flex items-center gap-1 ${
-                activeChapterFilter === "bookmarks"
-                  ? "bg-amber-500 text-white border-amber-500 shadow-xs"
-                  : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-              }`}
-            >
-              <Bookmark size={11} className={activeChapterFilter === "bookmarks" ? "fill-white" : "fill-amber-500 text-amber-500"} />
-              <span>Favorit ({progress.bookmarkedPatternIds.length})</span>
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-3 sm:px-6 pt-3 sm:pt-6">
-        {/* Pattern Carousel Selector */}
-        <div className="mb-4 sm:mb-6 flex items-center justify-between gap-2 sm:gap-3 bg-[var(--surface)] p-2 sm:p-3 rounded-2xl border border-[var(--border)]">
-          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-1 -mx-0.5 px-0.5">
-            {filteredItems.map((p) => {
-              const isSelected = p.id === activeItem.id;
-              const isDone = progress.studiedPatternIds.includes(p.id);
-
-              return (
-                <button
-                  key={p.id}
-                  type="button"
-                  onClick={() => setSelectedItemId(p.id)}
-                  className={`px-3 py-2 sm:py-1.5 rounded-xl border text-[11px] sm:text-xs whitespace-nowrap transition-all flex items-center gap-1.5 active:scale-95 touch-manipulation ${
-                    isSelected
-                      ? "bg-emerald-700 text-white border-emerald-700 font-bold shadow-sm"
-                      : "bg-[var(--surface-soft)] border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-emerald-500/50"
-                  }`}
-                >
-                  {isDone && <Check size={12} className={isSelected ? "text-white" : "text-emerald-600"} />}
-                  <span>{p.patternJp}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Quick Mastery Pill Desktop */}
-          <div className="hidden md:flex items-center gap-3 shrink-0 pl-3 border-l border-[var(--border)] text-xs text-[var(--text-secondary)]">
-            <div>
-              <span>Dikuasai: </span>
-              <b className="text-[var(--text-primary)]">
-                {progress.studiedPatternIds.length} / {items.length}
-              </b>
-            </div>
-            <div>
-              <span>Akurasi: </span>
-              <b className="text-emerald-700">
-                {progress.totalAttempts > 0
-                  ? Math.round((progress.totalCorrect / progress.totalAttempts) * 100)
-                  : 0}
-                %
-              </b>
-            </div>
-          </div>
-        </div>
+      <main className="max-w-4xl mx-auto px-3 sm:px-6 pt-5 sm:pt-8 space-y-6">
+        {/* Single Focused Target Card */}
+        <N3ContinueCard
+          accent="emerald"
+          eyebrow={`Bab ${activeItem.chapterNumber} · ${activeItem.categoryLabel}`}
+          title={`${activeItem.patternJp} — ${activeItem.meaningId}`}
+          subtitle={activeItem.coreConcept}
+          progress={Math.round((progress.studiedPatternIds.length / (items.length || 1)) * 100)}
+          progressLabel={`${progress.studiedPatternIds.length}/${items.length} pola dikuasai (${Math.round((progress.studiedPatternIds.length / (items.length || 1)) * 100)}%) · ${progress.totalAttempts > 0 ? Math.round((progress.totalCorrect / progress.totalAttempts) * 100) : 0}% akurasi kuis`}
+          primary={{
+            id: "bunpou-primary-action-btn",
+            label: activeTab === "learn" ? "Lanjut Kuis & Bintang →" : "Kembali ke Materi & Rumus →",
+            onClick: () => setActiveTab(activeTab === "learn" ? "quiz" : "learn"),
+          }}
+          secondary={
+            <>
+              <N3SecondaryAction id="bunpou-mark-btn" onClick={handleMarkAsStudied}>
+                {isStudied ? "✓ Sudah Dikuasai" : "Tandai Dikuasai"}
+              </N3SecondaryAction>
+              {prevPattern && (
+                <N3SecondaryAction id="bunpou-prev-btn" onClick={() => goToPattern(prevPattern.id)}>
+                  ← {prevPattern.patternJp}
+                </N3SecondaryAction>
+              )}
+              {nextPattern && (
+                <N3SecondaryAction id="bunpou-next-btn" onClick={() => goToPattern(nextPattern.id)}>
+                  {nextPattern.patternJp} →
+                </N3SecondaryAction>
+              )}
+            </>
+          }
+        />
 
         {/* View Toggle Tabs (Mobile/Desktop friendly segmented control) */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 border-b border-[var(--border)] pb-3">
@@ -927,6 +774,70 @@ export function BunpouClient() {
             })}
           </div>
         )}
+
+        {/* Folded Chapter and Pattern Switcher */}
+        <N3MoreSection
+          id="bunpou-more-chapters"
+          label={`Ganti bab & cari dari 24 bab (${items.length} pola) lainnya`}
+        >
+          <div className="space-y-4 p-4 rounded-3xl bg-[var(--surface)] border border-[var(--border)]">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <span className="text-xs font-bold text-[var(--text-primary)]">
+                Pilih Bab:
+              </span>
+              <div className="relative">
+                <select
+                  aria-label="Pilih Bab Bunpou N3"
+                  value={activeChapterFilter}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    if (val === "all" || val === "bookmarks") {
+                      handleSelectChapter(val);
+                    } else {
+                      handleSelectChapter(Number(val));
+                    }
+                  }}
+                  className="py-1.5 px-3 pr-8 rounded-xl border border-emerald-500/30 bg-[var(--surface-soft)] text-xs font-bold text-[var(--text-primary)] hover:border-emerald-500/60 focus:outline-hidden cursor-pointer appearance-none w-full sm:w-auto"
+                >
+                  <option value="all">Semua Bab ({items.length} Pola)</option>
+                  <option value="bookmarks">Favorit ({progress.bookmarkedPatternIds.length})</option>
+                  <optgroup label="24 Bab Bunpou N3">
+                    {chapters.map((ch) => (
+                      <option key={ch.chapterNumber} value={ch.chapterNumber}>
+                        Bab {ch.chapterNumber}: {ch.chapterTitle.replace(/^第\d+課:\s*/, "")} ({ch.count})
+                      </option>
+                    ))}
+                  </optgroup>
+                </select>
+                <ChevronDown className="w-3.5 h-3.5 text-[var(--text-secondary)] pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2" />
+              </div>
+            </div>
+
+            {/* Pattern Carousel Selector */}
+            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
+              {filteredItems.map((p) => {
+                const isSelected = p.id === activeItem.id;
+                const isDone = progress.studiedPatternIds.includes(p.id);
+
+                return (
+                  <button
+                    key={p.id}
+                    type="button"
+                    onClick={() => goToPattern(p.id)}
+                    className={`px-3 py-1.5 rounded-xl border text-xs whitespace-nowrap transition-all flex items-center gap-1.5 active:scale-95 touch-manipulation ${
+                      isSelected
+                        ? "bg-emerald-700 text-white border-emerald-700 font-bold shadow-sm"
+                        : "bg-[var(--surface-soft)] border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-emerald-500/50"
+                    }`}
+                  >
+                    {isDone && <Check size={12} className={isSelected ? "text-white" : "text-emerald-600"} />}
+                    <span>{p.patternJp}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </N3MoreSection>
       </main>
 
       {/* Mobile Bottom Sticky Navigation Toolbar */}

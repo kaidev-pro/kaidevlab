@@ -19,8 +19,18 @@ import { openCommandPalette, openSyncModal } from "@/lib/global-modals-store";
 export function MobileBottomNav() {
   const pathname = usePathname();
   const [streak, setStreak] = useState<number>(0);
+  const [isLearnHost, setIsLearnHost] = useState(false);
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsLearnHost(window.location.hostname.startsWith("learn."));
+    }
+  }, []);
+
+  const isStudySection = pathname.startsWith("/tools/") || pathname.startsWith("/learn") || isLearnHost;
+
+  useEffect(() => {
+    if (!isStudySection) return;
     const updateStats = () => {
       const stats = getUnifiedStudyStats();
       setStreak(stats.globalStreak);
@@ -31,7 +41,11 @@ export function MobileBottomNav() {
     return () => {
       window.removeEventListener("kaidevlab:study_activity_recorded", updateStats);
     };
-  }, []);
+  }, [isStudySection]);
+
+  if (!isStudySection) {
+    return null;
+  }
 
   const navItems = [
     {

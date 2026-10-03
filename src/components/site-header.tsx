@@ -15,14 +15,31 @@ export function SiteHeader() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isLearnSubdomain, setIsLearnSubdomain] = useState(false);
 
-  const navItems = [
-    [t.nav.work, "/#work"],
-    [t.nav.learn, "/learn/"],
-    [t.nav.labNotes, "/#notes"],
-    [t.nav.about, "/#about"],
-    [t.nav.contact, "/contact/"],
-  ] as const;
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsLearnSubdomain(window.location.hostname.startsWith("learn."));
+    }
+  }, []);
+
+  const navItems = isLearnSubdomain
+    ? ([
+        ["Home", "/"],
+        ["JLPT N3 Suite", "/tools/n3-suite/"],
+        ["Tango N3", "/tools/tango-n3/"],
+        ["Bunpou N3", "/tools/bunpou-n3/"],
+        ["Dokkai N3", "/tools/dokkai-n3/"],
+        ["FE Study", "/tools/fe-study/"],
+        ["← Portofolio Utama", "https://kaidevlab.com"],
+      ] as const)
+    : ([
+        [t.nav.work, "/#work"],
+        [t.nav.learn, "https://learn.kaidevlab.com/"],
+        [t.nav.labNotes, "/#notes"],
+        [t.nav.about, "/#about"],
+        [t.nav.contact, "/contact/"],
+      ] as const);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -47,25 +64,32 @@ export function SiteHeader() {
 
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
-      <a className="brand-logo" href="/" aria-label="Kaidevlab home">
-        <Image
-          className="logo-light"
-          src="/brand/kaidevlab-logo-light.webp"
-          alt="Kaidevlab"
-          fill
-          sizes="220px"
-          priority
-        />
-        <Image
-          className="logo-dark"
-          src="/brand/kaidevlab-logo-dark.webp"
-          alt=""
-          aria-hidden="true"
-          fill
-          sizes="220px"
-          loading="lazy"
-        />
-      </a>
+      <div className="flex items-center gap-2">
+        <a className="brand-logo" href="/" aria-label="Kaidevlab home">
+          <Image
+            className="logo-light"
+            src="/brand/kaidevlab-logo-light.webp"
+            alt="Kaidevlab"
+            fill
+            sizes="220px"
+            priority
+          />
+          <Image
+            className="logo-dark"
+            src="/brand/kaidevlab-logo-dark.webp"
+            alt=""
+            aria-hidden="true"
+            fill
+            sizes="220px"
+            loading="lazy"
+          />
+        </a>
+        {isLearnSubdomain && (
+          <span className="hidden sm:inline-block text-[10px] font-mono font-extrabold px-1.5 py-0.5 rounded-md bg-[var(--brand-primary)]/15 text-[var(--brand-primary)] border border-[var(--brand-primary)]/30 tracking-wider">
+            LEARN
+          </span>
+        )}
+      </div>
 
       <nav className="desktop-nav" aria-label="Primary navigation">
         {navItems.map(([label, href]) => (
@@ -101,7 +125,9 @@ export function SiteHeader() {
         >
           {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
         </button>
-        <a className="talk desktop-talk" href="/contact/">{t.nav.letsTalk}</a>
+        <a className="talk desktop-talk" href={isLearnSubdomain ? "https://kaidevlab.com" : "/contact/"}>
+          {isLearnSubdomain ? "Portofolio ↗" : t.nav.letsTalk}
+        </a>
         <button
           className="icon-button menu-toggle"
           type="button"
@@ -121,7 +147,9 @@ export function SiteHeader() {
         {navItems.map(([label, href]) => (
           <a href={href} key={href} onClick={() => setMenuOpen(false)}>{label}</a>
         ))}
-        <a className="mobile-talk" href="/contact/" onClick={() => setMenuOpen(false)}>{t.nav.letsTalk}</a>
+        <a className="mobile-talk" href={isLearnSubdomain ? "https://kaidevlab.com" : "/contact/"} onClick={() => setMenuOpen(false)}>
+          {isLearnSubdomain ? "Kembali ke Portofolio Utama ↗" : t.nav.letsTalk}
+        </a>
       </nav>
     </header>
   );

@@ -25,6 +25,7 @@ import {
   GitCompare,
   Layers,
   ArrowRight,
+  ChevronDown,
 } from "lucide-react";
 import { BUNPOU_ITEMS } from "@/data/bunpou-n3/grammar-items";
 import { BunpouItem, BunpouCategory, BunpouQuestion } from "@/data/bunpou-n3/types";
@@ -47,7 +48,7 @@ import { openSyncModal } from "@/lib/global-modals-store";
 export function BunpouClient() {
   const [items] = useState<BunpouItem[]>(BUNPOU_ITEMS);
   const [selectedItemId, setSelectedItemId] = useState<string>(items[0]?.id || "");
-  const [activeCategoryFilter, setActiveCategoryFilter] = useState<"all" | BunpouCategory | "bookmarks">("all");
+  const [activeChapterFilter, setActiveChapterFilter] = useState<number | "all" | "bookmarks">("all");
   const [showFurigana, setShowFurigana] = useState(true);
   const [activeTab, setActiveTab] = useState<"learn" | "quiz">("learn");
 
@@ -58,6 +59,54 @@ export function BunpouClient() {
   const [seiretsuSlots, setSeiretsuSlots] = useState<Record<string, number[]>>({});
   // Cloze answers: questionId -> selectedKey
   const [clozeAnswers, setClozeAnswers] = useState<Record<string, string>>({});
+
+  // Chapter list computed from items
+  const chapters = useMemo(() => {
+    const map = new Map<number, { chapterNumber: number; chapterTitle: string; count: number }>();
+    for (const it of items) {
+      if (!map.has(it.chapterNumber)) {
+        map.set(it.chapterNumber, {
+          chapterNumber: it.chapterNumber,
+          chapterTitle: it.chapterTitle,
+          count: 0,
+        });
+      }
+      map.get(it.chapterNumber)!.count++;
+    }
+    return Array.from(map.values()).sort((a, b) => a.chapterNumber - b.chapterNumber);
+  }, [items]);
+
+  // Filtered items by chapter or bookmarks
+  const filteredItems = useMemo(() => {
+    if (activeChapterFilter === "bookmarks") {
+      return items.filter((it) => progress.bookmarkedPatternIds.includes(it.id));
+    }
+    if (activeChapterFilter === "all") {
+      return items;
+    }
+    return items.filter((it) => it.chapterNumber === activeChapterFilter);
+  }, [items, activeChapterFilter, progress.bookmarkedPatternIds]);
+
+  // Handle switching chapter filter & auto-select first item if needed
+  const handleSelectChapter = useCallback(
+    (ch: number | "all" | "bookmarks") => {
+      triggerHaptic("light");
+      playTapSound();
+      setActiveChapterFilter(ch);
+      let targetList: BunpouItem[];
+      if (ch === "bookmarks") {
+        targetList = items.filter((it) => progress.bookmarkedPatternIds.includes(it.id));
+      } else if (ch === "all") {
+        targetList = items;
+      } else {
+        targetList = items.filter((it) => it.chapterNumber === ch);
+      }
+      if (targetList.length > 0 && !targetList.some((it) => it.id === selectedItemId)) {
+        setSelectedItemId(targetList[0].id);
+      }
+    },
+    [items, progress.bookmarkedPatternIds, selectedItemId]
+  );
 
   // Active item
   const activeItem = useMemo(() => {
@@ -79,17 +128,6 @@ export function BunpouClient() {
   useEffect(() => {
     stop();
   }, [selectedItemId, stop]);
-
-  // Filtered items
-  const filteredItems = useMemo(() => {
-    if (activeCategoryFilter === "bookmarks") {
-      return items.filter((it) => progress.bookmarkedPatternIds.includes(it.id));
-    }
-    if (activeCategoryFilter === "all") {
-      return items;
-    }
-    return items.filter((it) => it.category === activeCategoryFilter);
-  }, [items, activeCategoryFilter, progress.bookmarkedPatternIds]);
 
   // Prev / Next Navigation
   const currentIndex = filteredItems.findIndex((it) => it.id === activeItem.id);
@@ -226,7 +264,7 @@ export function BunpouClient() {
                   {activeItem.chapterTitle}
                 </span>
               </div>
-              <h1 className="text-xs sm:text-sm md:text-base font-bold text-[var(--text-primary)] tracking-tight truncate max-w-[150px] xs:max-w-[200px] sm:max-w-none">
+              <h1 className="text-xs sm:text-sm md:text-base font-bold text-[var(--text-primary)] tracking-tight truncate max-w-[220px] xs:max-w-[320px] sm:max-w-none">
                 {activeItem.patternJp}
                 <span className="ml-1 text-[11px] font-normal text-[var(--text-secondary)] hidden sm:inline">
                   — {activeItem.meaningId}
@@ -299,79 +337,83 @@ export function BunpouClient() {
           </div>
         </div>
 
-        {/* Category Filters Bar */}
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 pb-2 flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar text-[11px] sm:text-xs">
-          <button
-            type="button"
-            onClick={() => setActiveCategoryFilter("all")}
-            className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all touch-manipulation active:scale-95 ${
-              activeCategoryFilter === "all"
-                ? "bg-[var(--text-primary)] text-[var(--surface)] border-[var(--text-primary)] font-bold shadow-xs"
-                : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            Semua ({items.length})
-          </button>
+        {/* Chapter & Filter Bar */}
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 pb-2.5 flex items-center gap-2">
+          {/* Quick Chapter Dropdown (Instant selection for all 24 chapters) */}
+          <div className="relative shrink-0">
+            <select
+              aria-label="Pilih Bab Bunpou N3"
+              value={activeChapterFilter}
+              onChange={(e) => {
+                const val = e.target.value;
+                if (val === "all" || val === "bookmarks") {
+                  handleSelectChapter(val);
+                } else {
+                  handleSelectChapter(Number(val));
+                }
+              }}
+              className="py-1 px-2.5 pr-7 rounded-xl border border-emerald-500/30 bg-[var(--surface-soft)] text-xs font-bold text-[var(--text-primary)] hover:border-emerald-500/60 focus:outline-hidden focus:ring-1 focus:ring-emerald-500 cursor-pointer appearance-none"
+            >
+              <option value="all">Semua Bab (116 Pola)</option>
+              <option value="bookmarks">Favorit ({progress.bookmarkedPatternIds.length})</option>
+              <optgroup label="24 Bab Bunpou N3">
+                {chapters.map((ch) => (
+                  <option key={ch.chapterNumber} value={ch.chapterNumber}>
+                    Bab {ch.chapterNumber}: {ch.chapterTitle.replace(/^第\d+課:\s*/, "")} ({ch.count})
+                  </option>
+                ))}
+              </optgroup>
+            </select>
+            <ChevronDown className="w-3.5 h-3.5 text-[var(--text-secondary)] pointer-events-none absolute right-2 top-1/2 -translate-y-1/2" />
+          </div>
 
-          <button
-            type="button"
-            onClick={() => setActiveCategoryFilter("time")}
-            className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all touch-manipulation active:scale-95 ${
-              activeCategoryFilter === "time"
-                ? "bg-emerald-700 text-white border-emerald-700 font-bold shadow-xs"
-                : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            Bab 1: 時間 (Waktu)
-          </button>
+          {/* Horizontal Quick Pill Carousel */}
+          <div className="flex-1 flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 text-[11px] sm:text-xs min-w-0">
+            <button
+              type="button"
+              onClick={() => handleSelectChapter("all")}
+              className={`px-3 py-1 rounded-xl border font-bold whitespace-nowrap transition-all touch-manipulation active:scale-95 shrink-0 ${
+                activeChapterFilter === "all"
+                  ? "bg-emerald-700 text-white border-emerald-700 shadow-xs"
+                  : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              }`}
+            >
+              Semua ({items.length})
+            </button>
 
-          <button
-            type="button"
-            onClick={() => setActiveCategoryFilter("cause")}
-            className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all touch-manipulation active:scale-95 ${
-              activeCategoryFilter === "cause"
-                ? "bg-emerald-700 text-white border-emerald-700 font-bold shadow-xs"
-                : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            Bab 2: 原因・理由 (Sebab)
-          </button>
+            {chapters.map((ch) => {
+              const isSelected = activeChapterFilter === ch.chapterNumber;
+              return (
+                <button
+                  key={ch.chapterNumber}
+                  type="button"
+                  onClick={() => handleSelectChapter(ch.chapterNumber)}
+                  className={`px-2.5 py-1 rounded-xl border font-bold whitespace-nowrap transition-all touch-manipulation active:scale-95 shrink-0 flex items-center gap-1 ${
+                    isSelected
+                      ? "bg-emerald-700 text-white border-emerald-700 shadow-xs"
+                      : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-emerald-500/40"
+                  }`}
+                  title={ch.chapterTitle}
+                >
+                  <span>Bab {ch.chapterNumber}</span>
+                  <span className="opacity-75 font-normal text-[10px]">({ch.count})</span>
+                </button>
+              );
+            })}
 
-          <button
-            type="button"
-            onClick={() => setActiveCategoryFilter("judgment")}
-            className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all touch-manipulation active:scale-95 ${
-              activeCategoryFilter === "judgment"
-                ? "bg-emerald-700 text-white border-emerald-700 font-bold shadow-xs"
-                : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            Bab 3: わけ・評価
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveCategoryFilter("contrast")}
-            className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all touch-manipulation active:scale-95 ${
-              activeCategoryFilter === "contrast"
-                ? "bg-emerald-700 text-white border-emerald-700 font-bold shadow-xs"
-                : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            Bab 4: 対比・逆接
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveCategoryFilter("bookmarks")}
-            className={`px-3 py-1 rounded-lg border font-medium whitespace-nowrap transition-all touch-manipulation active:scale-95 ${
-              activeCategoryFilter === "bookmarks"
-                ? "bg-amber-500 text-white border-amber-500 font-bold shadow-xs"
-                : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            Favorit ({progress.bookmarkedPatternIds.length})
-          </button>
+            <button
+              type="button"
+              onClick={() => handleSelectChapter("bookmarks")}
+              className={`px-3 py-1 rounded-xl border font-bold whitespace-nowrap transition-all touch-manipulation active:scale-95 shrink-0 flex items-center gap-1 ${
+                activeChapterFilter === "bookmarks"
+                  ? "bg-amber-500 text-white border-amber-500 shadow-xs"
+                  : "border-[var(--border)] bg-[var(--surface-soft)]/50 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              }`}
+            >
+              <Bookmark size={11} className={activeChapterFilter === "bookmarks" ? "fill-white" : "fill-amber-500 text-amber-500"} />
+              <span>Favorit ({progress.bookmarkedPatternIds.length})</span>
+            </button>
+          </div>
         </div>
       </header>
 

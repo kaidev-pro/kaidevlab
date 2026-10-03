@@ -54,6 +54,12 @@ import {
 } from "@/lib/cross-device-sync";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/context";
+import { loadDokkaiProgress } from "@/components/dokkai-n3/dokkai-storage";
+import { DOKKAI_PASSAGES } from "@/data/dokkai-n3/passages";
+import { loadBunpouProgress } from "@/components/bunpou-n3/bunpou-storage";
+import { BUNPOU_ITEMS } from "@/data/bunpou-n3/grammar-items";
+import { triggerHaptic } from "@/lib/haptics";
+import { playTapSound } from "@/lib/global-sound";
 
 const PORTAL_I18N = {
   id: {
@@ -145,7 +151,10 @@ export function AcademyPortalClient() {
 
   const [userName, setUserName] = useState("Kai");
   const [cadetId, setCadetId] = useState("KAI-PASS-7829");
+  const [focusTrack, setFocusTrack] = useState<"n3" | "all">("n3");
   const [tangoStats, setTangoStats] = useState({ mastered: 0, total: 1800, streak: 0, reviewCount: 0 });
+  const [bunpouStats, setBunpouStats] = useState({ mastered: 0, total: 116, reviewCount: 0 });
+  const [dokkaiStats, setDokkaiStats] = useState({ completed: 0, total: 13, reviewCount: 0 });
   const [feStats, setFeStats] = useState({ mastered: 0, total: 199, streak: 0, reviewCount: 0 });
   const [activeFeDayNumber, setActiveFeDayNumber] = useState(1);
   const [activeTangoChapterId, setActiveTangoChapterId] = useState("noun-general-1");
@@ -173,6 +182,8 @@ export function AcademyPortalClient() {
     try {
       const tProg = loadTangoProgress();
       const feProg = loadStudyProgress();
+      const dokkaiProg = loadDokkaiProgress();
+      const bunpouProg = loadBunpouProgress();
 
       setTangoProgress(tProg);
       setFeProgress(feProg);
@@ -182,6 +193,18 @@ export function AcademyPortalClient() {
         total: TANGO_TOTAL_CARDS,
         streak: tProg.streak || 0,
         reviewCount: tProg.reviewCardIds?.length || 0,
+      });
+
+      setBunpouStats({
+        mastered: bunpouProg.studiedPatternIds?.length || 0,
+        total: BUNPOU_ITEMS.length,
+        reviewCount: bunpouProg.bookmarkedPatternIds?.length || 0,
+      });
+
+      setDokkaiStats({
+        completed: dokkaiProg.completedPassageIds?.length || 0,
+        total: DOKKAI_PASSAGES.length,
+        reviewCount: dokkaiProg.bookmarkedPassageIds?.length || 0,
       });
 
       setFeStats({
@@ -205,6 +228,11 @@ export function AcademyPortalClient() {
         const savedName = localStorage.getItem("kaidevlab_candidate_name");
         if (savedName) setUserName(savedName);
 
+        const savedFocus = localStorage.getItem("kaidevlab_study_focus_track");
+        if (savedFocus === "n3" || savedFocus === "all") {
+          setFocusTrack(savedFocus);
+        }
+
         const savedId = localStorage.getItem("kaidevlab_cadet_id");
         if (savedId) {
           setCadetId(savedId);
@@ -218,6 +246,15 @@ export function AcademyPortalClient() {
       console.error("Failed to load learning stats", err);
     }
   }, []);
+
+  const handleToggleFocusTrack = (mode: "n3" | "all") => {
+    triggerHaptic("light");
+    playTapSound();
+    setFocusTrack(mode);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("kaidevlab_study_focus_track", mode);
+    }
+  };
 
   useEffect(() => {
     reloadStats();
@@ -258,9 +295,10 @@ export function AcademyPortalClient() {
     return count;
   }, [activeTangoChapter, tangoProgress]);
 
-  const totalMastered = tangoStats.mastered + feStats.mastered;
+  const totalMastered =
+    tangoStats.mastered + bunpouStats.mastered + dokkaiStats.completed + feStats.mastered;
   const globalStreak = Math.max(tangoStats.streak, feStats.streak, 1);
-  const totalDueReview = tangoStats.reviewCount + feStats.reviewCount;
+  const totalDueReview = tangoStats.reviewCount + bunpouStats.reviewCount + dokkaiStats.reviewCount + feStats.reviewCount;
 
   // Cadet Rank computation
   const cadetRank = useMemo(() => {
@@ -417,7 +455,7 @@ export function AcademyPortalClient() {
       <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-5 items-start">
         {/* ---------- LEFT: HARI INI (sticky di desktop) ---------- */}
         <section className="lg:col-span-2 lg:sticky lg:top-24 p-5 sm:p-7 rounded-3xl border-2 border-emerald-500/40 bg-gradient-to-br from-[var(--surface-primary)] via-[var(--surface-primary)] to-[#06241a]/20 shadow-md flex flex-col gap-5 relative overflow-hidden">
-          <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="space-y-1">
               <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 text-xs font-bold uppercase tracking-wider">
                 <Sparkles className="w-3.5 h-3.5" />
@@ -427,123 +465,253 @@ export function AcademyPortalClient() {
                 {t.todayMissionTitle}
               </h2>
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-[var(--surface-secondary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-secondary)] self-start shrink-0">
-              <Clock className="w-3.5 h-3.5 text-emerald-500" />
-              <span>{t.estTime}</span>
+            
+            {/* Mode Focus Switcher */}
+            <div className="flex items-center gap-1 p-1 rounded-xl bg-[var(--surface-secondary)]/90 border border-[var(--border-subtle)] text-xs font-bold">
+              <button
+                type="button"
+                onClick={() => handleToggleFocusTrack("n3")}
+                className={`px-3 py-1.5 rounded-lg transition-all ${
+                  focusTrack === "n3"
+                    ? "bg-sky-500 text-white font-extrabold shadow-sm"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                }`}
+              >
+                🎌 Fokus N3 Suite
+              </button>
+              <button
+                type="button"
+                onClick={() => handleToggleFocusTrack("all")}
+                className={`px-3 py-1.5 rounded-lg transition-all ${
+                  focusTrack === "all"
+                    ? "bg-emerald-500 text-slate-950 font-extrabold shadow-sm"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                }`}
+              >
+                ⚡ N3 + FE IT
+              </button>
             </div>
           </div>
 
-          {/* Urutan: Tango → Review → FE */}
+          {/* Mission Steps */}
           <div className="flex flex-col gap-2.5">
-            {/* ① Tango N3 */}
-            <a
-              href="/tools/tango-n3/"
-              className="group p-4 rounded-2xl bg-[var(--surface-secondary)]/60 border border-[var(--border-subtle)] hover:border-sky-500/50 transition-all flex items-center gap-3.5"
-            >
-              <div className="w-9 h-9 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center shrink-0">
-                <BookOpen className="w-4 h-4" />
-              </div>
-              <div className="flex-1 min-w-0 space-y-0.5">
-                <span className="text-[10px] font-mono font-bold text-sky-500 uppercase tracking-wider block">
-                  ① Track JLPT N3 · Bab {activeTangoChapter.badge}
-                </span>
-                <h3 className="font-bold text-[var(--text-primary)] text-sm leading-snug line-clamp-1">
-                  {activeTangoChapter.title}
-                </h3>
-                <p className="text-[11px] text-[var(--text-secondary)] line-clamp-1">
-                  {activeTangoChapterMasteredCount}/40 Kata · ±10 mnt
-                </p>
-              </div>
-              <span className={`shrink-0 text-[11px] font-extrabold flex items-center gap-1 ${activeTangoChapterMasteredCount >= 40 ? "text-emerald-500" : "text-sky-500"}`}>
-                {activeTangoChapterMasteredCount >= 40 ? (
-                  <>
-                    <CheckCircle2 className="w-4 h-4" />
-                    <span>Selesai</span>
-                  </>
-                ) : (
-                  <>
-                    <span>Lanjut</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                  </>
-                )}
-              </span>
-            </a>
+            {focusTrack === "n3" ? (
+              <>
+                {/* ① Tango N3 */}
+                <a
+                  href="/tools/tango-n3/"
+                  className="group p-4 rounded-2xl bg-[var(--surface-secondary)]/60 border border-[var(--border-subtle)] hover:border-sky-500/50 transition-all flex items-center gap-3.5"
+                >
+                  <div className="w-9 h-9 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center shrink-0">
+                    <BookOpen className="w-4 h-4" />
+                  </div>
+                  <div className="flex-1 min-w-0 space-y-0.5">
+                    <span className="text-[10px] font-mono font-bold text-sky-500 uppercase tracking-wider block">
+                      ① Track N3 Tango · Bab {activeTangoChapter.badge}
+                    </span>
+                    <h3 className="font-bold text-[var(--text-primary)] text-sm leading-snug line-clamp-1">
+                      {activeTangoChapter.title}
+                    </h3>
+                    <p className="text-[11px] text-[var(--text-secondary)] line-clamp-1">
+                      {activeTangoChapterMasteredCount}/40 Kata · Total {tangoStats.mastered}/1.800 dikuasai
+                    </p>
+                  </div>
+                  <span className={`shrink-0 text-[11px] font-extrabold flex items-center gap-1 ${activeTangoChapterMasteredCount >= 40 ? "text-emerald-500" : "text-sky-500"}`}>
+                    {activeTangoChapterMasteredCount >= 40 ? (
+                      <>
+                        <CheckCircle2 className="w-4 h-4" />
+                        <span>Selesai</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Lanjut</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                      </>
+                    )}
+                  </span>
+                </a>
 
-            {/* ② Review SRS */}
-            <a
-              href={
-                totalDueReview > 0
-                  ? tangoStats.reviewCount >= feStats.reviewCount
-                    ? "/tools/tango-n3/?tab=srs"
-                    : "/tools/fe-study/?tab=flashcards&mode=review"
-                  : "/tools/tango-n3/?tab=srs"
-              }
-              className="group p-4 rounded-2xl bg-[var(--surface-secondary)]/60 border border-[var(--border-subtle)] hover:border-amber-500/50 transition-all flex items-center gap-3.5"
-            >
-              <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${totalDueReview > 0 ? "bg-amber-500/10 text-amber-500" : "bg-emerald-500/10 text-emerald-500"}`}>
-                <RotateCcw className="w-4 h-4" />
-              </div>
-              <div className="flex-1 min-w-0 space-y-0.5">
-                <span className="text-[10px] font-mono font-bold text-amber-500 uppercase tracking-wider block">
-                  ② Spaced Repetition
-                </span>
-                <h3 className="font-bold text-[var(--text-primary)] text-sm leading-snug">
-                  Antrean Review Harian
-                </h3>
-                <p className="text-[11px] text-[var(--text-secondary)] line-clamp-1">
-                  {totalDueReview > 0
-                    ? `${totalDueReview} item jatuh tempo · ±5 mnt`
-                    : "Memori prima — tidak ada yang jatuh tempo"}
-                </p>
-              </div>
-              <span className={`shrink-0 text-[11px] font-extrabold flex items-center gap-1 ${totalDueReview > 0 ? "text-amber-500" : "text-emerald-500"}`}>
-                {totalDueReview > 0 ? (
-                  <>
-                    <span>{totalDueReview} Review</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                  </>
-                ) : (
-                  <>
-                    <CheckCircle2 className="w-4 h-4" />
-                    <span>Bersih</span>
-                  </>
-                )}
-              </span>
-            </a>
+                {/* ② Bunpou N3 */}
+                <a
+                  href="/tools/bunpou-n3/"
+                  className="group p-4 rounded-2xl bg-[var(--surface-secondary)]/60 border border-[var(--border-subtle)] hover:border-indigo-500/50 transition-all flex items-center gap-3.5"
+                >
+                  <div className="w-9 h-9 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center shrink-0">
+                    <Languages className="w-4 h-4" />
+                  </div>
+                  <div className="flex-1 min-w-0 space-y-0.5">
+                    <span className="text-[10px] font-mono font-bold text-indigo-500 uppercase tracking-wider block">
+                      ② Track N3 Bunpou · 24 Bab (116 Pola)
+                    </span>
+                    <h3 className="font-bold text-[var(--text-primary)] text-sm leading-snug line-clamp-1">
+                      Rumus Sambungan 接続 & Kuis Susun Bintang (★)
+                    </h3>
+                    <p className="text-[11px] text-[var(--text-secondary)] line-clamp-1">
+                      {bunpouStats.mastered}/{bunpouStats.total} Pola Dipelajari · {bunpouStats.reviewCount} Ditandai
+                    </p>
+                  </div>
+                  <span className={`shrink-0 text-[11px] font-extrabold flex items-center gap-1 ${bunpouStats.mastered >= bunpouStats.total ? "text-emerald-500" : "text-indigo-500"}`}>
+                    {bunpouStats.mastered >= bunpouStats.total ? (
+                      <>
+                        <CheckCircle2 className="w-4 h-4" />
+                        <span>Lengkap</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Buka Bunpou</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                      </>
+                    )}
+                  </span>
+                </a>
 
-            {/* ③ FE Exam */}
-            <a
-              href="/tools/fe-study/"
-              className="group p-4 rounded-2xl bg-[var(--surface-secondary)]/60 border border-[var(--border-subtle)] hover:border-emerald-500/50 transition-all flex items-center gap-3.5"
-            >
-              <div className="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center shrink-0">
-                <Terminal className="w-4 h-4" />
-              </div>
-              <div className="flex-1 min-w-0 space-y-0.5">
-                <span className="text-[10px] font-mono font-bold text-emerald-500 uppercase tracking-wider block">
-                  ③ Track FE · Hari {activeFeDayNumber}
-                </span>
-                <h3 className="font-bold text-[var(--text-primary)] text-sm leading-snug line-clamp-1">
-                  {activeFeDeck.titleId.replace(/^Hari \d+:\s*/, "")}
-                </h3>
-                <p className="text-[11px] text-[var(--text-secondary)] line-clamp-1">
-                  {activeFeDeckMasteredCount}/10 Konsep · ±10 mnt
-                </p>
-              </div>
-              <span className={`shrink-0 text-[11px] font-extrabold flex items-center gap-1 ${activeFeDeckMasteredCount >= 10 ? "text-emerald-500" : "text-emerald-500"}`}>
-                {activeFeDeckMasteredCount >= 10 ? (
-                  <>
-                    <CheckCircle2 className="w-4 h-4" />
-                    <span>Selesai</span>
-                  </>
-                ) : (
-                  <>
-                    <span>Lanjut</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                  </>
-                )}
-              </span>
-            </a>
+                {/* ③ Dokkai N3 */}
+                <a
+                  href="/tools/dokkai-n3/"
+                  className="group p-4 rounded-2xl bg-[var(--surface-secondary)]/60 border border-[var(--border-subtle)] hover:border-amber-500/50 transition-all flex items-center gap-3.5"
+                >
+                  <div className="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center shrink-0">
+                    <FileText className="w-4 h-4" />
+                  </div>
+                  <div className="flex-1 min-w-0 space-y-0.5">
+                    <span className="text-[10px] font-mono font-bold text-amber-500 uppercase tracking-wider block">
+                      ③ Track N3 Dokkai · 13 Teks Asli Ujian
+                    </span>
+                    <h3 className="font-bold text-[var(--text-primary)] text-sm leading-snug line-clamp-1">
+                      Analisis Paragraf & Latihan Pemahaman Soal
+                    </h3>
+                    <p className="text-[11px] text-[var(--text-secondary)] line-clamp-1">
+                      {dokkaiStats.completed}/{dokkaiStats.total} Teks Selesai · Format Asli JLPT
+                    </p>
+                  </div>
+                  <span className={`shrink-0 text-[11px] font-extrabold flex items-center gap-1 ${dokkaiStats.completed >= dokkaiStats.total ? "text-emerald-500" : "text-amber-500"}`}>
+                    {dokkaiStats.completed >= dokkaiStats.total ? (
+                      <>
+                        <CheckCircle2 className="w-4 h-4" />
+                        <span>Selesai</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Baca Teks</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                      </>
+                    )}
+                  </span>
+                </a>
+              </>
+            ) : (
+              <>
+                {/* ① Tango N3 */}
+                <a
+                  href="/tools/tango-n3/"
+                  className="group p-4 rounded-2xl bg-[var(--surface-secondary)]/60 border border-[var(--border-subtle)] hover:border-sky-500/50 transition-all flex items-center gap-3.5"
+                >
+                  <div className="w-9 h-9 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center shrink-0">
+                    <BookOpen className="w-4 h-4" />
+                  </div>
+                  <div className="flex-1 min-w-0 space-y-0.5">
+                    <span className="text-[10px] font-mono font-bold text-sky-500 uppercase tracking-wider block">
+                      ① Track JLPT N3 · Bab {activeTangoChapter.badge}
+                    </span>
+                    <h3 className="font-bold text-[var(--text-primary)] text-sm leading-snug line-clamp-1">
+                      {activeTangoChapter.title}
+                    </h3>
+                    <p className="text-[11px] text-[var(--text-secondary)] line-clamp-1">
+                      {activeTangoChapterMasteredCount}/40 Kata · ±10 mnt
+                    </p>
+                  </div>
+                  <span className={`shrink-0 text-[11px] font-extrabold flex items-center gap-1 ${activeTangoChapterMasteredCount >= 40 ? "text-emerald-500" : "text-sky-500"}`}>
+                    {activeTangoChapterMasteredCount >= 40 ? (
+                      <>
+                        <CheckCircle2 className="w-4 h-4" />
+                        <span>Selesai</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Lanjut</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                      </>
+                    )}
+                  </span>
+                </a>
+
+                {/* ② Review SRS */}
+                <a
+                  href={
+                    totalDueReview > 0
+                      ? tangoStats.reviewCount >= feStats.reviewCount
+                        ? "/tools/tango-n3/?tab=srs"
+                        : "/tools/fe-study/?tab=flashcards&mode=review"
+                      : "/tools/tango-n3/?tab=srs"
+                  }
+                  className="group p-4 rounded-2xl bg-[var(--surface-secondary)]/60 border border-[var(--border-subtle)] hover:border-amber-500/50 transition-all flex items-center gap-3.5"
+                >
+                  <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${totalDueReview > 0 ? "bg-amber-500/10 text-amber-500" : "bg-emerald-500/10 text-emerald-500"}`}>
+                    <RotateCcw className="w-4 h-4" />
+                  </div>
+                  <div className="flex-1 min-w-0 space-y-0.5">
+                    <span className="text-[10px] font-mono font-bold text-amber-500 uppercase tracking-wider block">
+                      ② Spaced Repetition
+                    </span>
+                    <h3 className="font-bold text-[var(--text-primary)] text-sm leading-snug">
+                      Antrean Review Harian
+                    </h3>
+                    <p className="text-[11px] text-[var(--text-secondary)] line-clamp-1">
+                      {totalDueReview > 0
+                        ? `${totalDueReview} item jatuh tempo · ±5 mnt`
+                        : "Memori prima — tidak ada yang jatuh tempo"}
+                    </p>
+                  </div>
+                  <span className={`shrink-0 text-[11px] font-extrabold flex items-center gap-1 ${totalDueReview > 0 ? "text-amber-500" : "text-emerald-500"}`}>
+                    {totalDueReview > 0 ? (
+                      <>
+                        <span>{totalDueReview} Review</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                      </>
+                    ) : (
+                      <>
+                        <CheckCircle2 className="w-4 h-4" />
+                        <span>Bersih</span>
+                      </>
+                    )}
+                  </span>
+                </a>
+
+                {/* ③ FE Exam */}
+                <a
+                  href="/tools/fe-study/"
+                  className="group p-4 rounded-2xl bg-[var(--surface-secondary)]/60 border border-[var(--border-subtle)] hover:border-emerald-500/50 transition-all flex items-center gap-3.5"
+                >
+                  <div className="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center shrink-0">
+                    <Terminal className="w-4 h-4" />
+                  </div>
+                  <div className="flex-1 min-w-0 space-y-0.5">
+                    <span className="text-[10px] font-mono font-bold text-emerald-500 uppercase tracking-wider block">
+                      ③ Track FE · Hari {activeFeDayNumber}
+                    </span>
+                    <h3 className="font-bold text-[var(--text-primary)] text-sm leading-snug line-clamp-1">
+                      {activeFeDeck.titleId.replace(/^Hari \d+:\s*/, "")}
+                    </h3>
+                    <p className="text-[11px] text-[var(--text-secondary)] line-clamp-1">
+                      {activeFeDeckMasteredCount}/10 Konsep · ±10 mnt
+                    </p>
+                  </div>
+                  <span className={`shrink-0 text-[11px] font-extrabold flex items-center gap-1 ${activeFeDeckMasteredCount >= 10 ? "text-emerald-500" : "text-emerald-500"}`}>
+                    {activeFeDeckMasteredCount >= 10 ? (
+                      <>
+                        <CheckCircle2 className="w-4 h-4" />
+                        <span>Selesai</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Lanjut</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                      </>
+                    )}
+                  </span>
+                </a>
+              </>
+            )}
           </div>
 
           {/* CTA */}
@@ -553,12 +721,11 @@ export function AcademyPortalClient() {
             className="w-full py-3.5 px-6 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 transition-all active:scale-[0.99]"
           >
             <Play className="w-4 h-4 fill-slate-950" />
-            <span>{t.primaryCta}</span>
+            <span>{focusTrack === "n3" ? "Mulai Belajar N3 Hari Ini" : t.primaryCta}</span>
             <span className="text-[11px] font-bold opacity-70">
-              {(activeTangoChapterMasteredCount >= 40 ? 1 : 0) +
-                (totalDueReview === 0 ? 1 : 0) +
-                (activeFeDeckMasteredCount >= 10 ? 1 : 0)}
-              /3 selesai
+              {focusTrack === "n3"
+                ? `${(activeTangoChapterMasteredCount >= 40 ? 1 : 0) + (bunpouStats.mastered > 0 ? 1 : 0) + (dokkaiStats.completed > 0 ? 1 : 0)}/3 selesai`
+                : `${(activeTangoChapterMasteredCount >= 40 ? 1 : 0) + (totalDueReview === 0 ? 1 : 0) + (activeFeDeckMasteredCount >= 10 ? 1 : 0)}/3 selesai`}
             </span>
             <ArrowRight className="w-4 h-4" />
           </button>
@@ -600,10 +767,14 @@ export function AcademyPortalClient() {
                     <div key={i} className="w-3.5 h-3.5 rounded-xs bg-[var(--border-subtle)]/40" />
                   ))}
             </div>
-            <div className="space-y-2 pt-2 border-t border-[var(--border-subtle)]/60">
+            <div className="space-y-2.5 pt-2 border-t border-[var(--border-subtle)]/60">
+              {/* N3 Tango */}
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-[11px]">
-                  <span className="text-[var(--text-tertiary)]">N3 Kosakata</span>
+                  <span className="text-[var(--text-secondary)] font-medium flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-sky-500 shrink-0" />
+                    <span>N3 Kosakata (Tango)</span>
+                  </span>
                   <span className="font-mono font-bold text-[var(--text-primary)]">
                     {tangoStats.mastered} / {tangoStats.total}
                   </span>
@@ -611,13 +782,56 @@ export function AcademyPortalClient() {
                 <div className="w-full h-1.5 rounded-full bg-[var(--surface-secondary)] overflow-hidden">
                   <div
                     className="h-full bg-sky-500 rounded-full transition-all"
-                    style={{ width: `${(tangoStats.mastered / (tangoStats.total || 1)) * 100}%` }}
+                    style={{ width: `${Math.min(100, (tangoStats.mastered / (tangoStats.total || 1)) * 100)}%` }}
                   />
                 </div>
               </div>
+
+              {/* N3 Bunpou */}
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-[11px]">
-                  <span className="text-[var(--text-tertiary)]">FE Konsep</span>
+                  <span className="text-[var(--text-secondary)] font-medium flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-indigo-500 shrink-0" />
+                    <span>N3 Tata Bahasa (116 Pola)</span>
+                  </span>
+                  <span className="font-mono font-bold text-[var(--text-primary)]">
+                    {bunpouStats.mastered} / {bunpouStats.total}
+                  </span>
+                </div>
+                <div className="w-full h-1.5 rounded-full bg-[var(--surface-secondary)] overflow-hidden">
+                  <div
+                    className="h-full bg-indigo-500 rounded-full transition-all"
+                    style={{ width: `${Math.min(100, (bunpouStats.mastered / (bunpouStats.total || 1)) * 100)}%` }}
+                  />
+                </div>
+              </div>
+
+              {/* N3 Dokkai */}
+              <div className="space-y-1">
+                <div className="flex items-center justify-between text-[11px]">
+                  <span className="text-[var(--text-secondary)] font-medium flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />
+                    <span>N3 Dokkai (13 Teks)</span>
+                  </span>
+                  <span className="font-mono font-bold text-[var(--text-primary)]">
+                    {dokkaiStats.completed} / {dokkaiStats.total}
+                  </span>
+                </div>
+                <div className="w-full h-1.5 rounded-full bg-[var(--surface-secondary)] overflow-hidden">
+                  <div
+                    className="h-full bg-amber-500 rounded-full transition-all"
+                    style={{ width: `${Math.min(100, (dokkaiStats.completed / (dokkaiStats.total || 1)) * 100)}%` }}
+                  />
+                </div>
+              </div>
+
+              {/* FE IT Fundamental */}
+              <div className="space-y-1">
+                <div className="flex items-center justify-between text-[11px]">
+                  <span className="text-[var(--text-secondary)] font-medium flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+                    <span>FE IT Fundamental</span>
+                  </span>
                   <span className="font-mono font-bold text-[var(--text-primary)]">
                     {feStats.mastered} / {feStats.total}
                   </span>
@@ -625,13 +839,15 @@ export function AcademyPortalClient() {
                 <div className="w-full h-1.5 rounded-full bg-[var(--surface-secondary)] overflow-hidden">
                   <div
                     className="h-full bg-emerald-500 rounded-full transition-all"
-                    style={{ width: `${(feStats.mastered / (feStats.total || 1)) * 100}%` }}
+                    style={{ width: `${Math.min(100, (feStats.mastered / (feStats.total || 1)) * 100)}%` }}
                   />
                 </div>
               </div>
-              <p className="text-[10px] text-[var(--text-tertiary)] font-mono pt-1">
-                {cadetRank.tier} · {cadetRank.title} · {totalMastered} {t.masteredSuffix}
-              </p>
+
+              <div className="pt-2 border-t border-[var(--border-subtle)]/60 flex items-center justify-between text-[10px] text-[var(--text-tertiary)] font-mono">
+                <span>{cadetRank.tier} · {cadetRank.title}</span>
+                <span className="text-[var(--text-secondary)] font-bold">{totalMastered} dikuasai</span>
+              </div>
             </div>
           </section>
 
@@ -697,9 +913,130 @@ export function AcademyPortalClient() {
 
           {/* 5. TRACKS RINGKAS */}
           <section className="space-y-2.5">
-            <h2 className="text-sm sm:text-base font-bold text-[var(--text-primary)] font-sans">
-              {t.tracksTitle}
-            </h2>
+            <div className="flex items-center justify-between">
+              <h2 className="text-sm sm:text-base font-bold text-[var(--text-primary)] font-sans">
+                {t.tracksTitle}
+              </h2>
+              <a
+                href="/tools/n3-suite/"
+                className="text-xs font-bold text-sky-500 hover:text-sky-400 flex items-center gap-1 transition-colors"
+              >
+                <span>Portal N3 Suite</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
+            {/* Master JLPT N3 Suite Banner */}
+            <a
+              href="/tools/n3-suite/"
+              className="p-3.5 rounded-2xl border border-sky-500/30 bg-gradient-to-r from-sky-500/10 via-[var(--surface-primary)] to-indigo-500/10 hover:border-sky-500/50 transition-all flex items-center gap-3.5 group shadow-xs"
+            >
+              <div className="w-9 h-9 rounded-xl bg-sky-500/15 text-sky-400 flex items-center justify-center shrink-0">
+                <Languages className="w-5 h-5" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-extrabold text-sm text-[var(--text-primary)] group-hover:text-sky-400 transition-colors">
+                      JLPT N3 Suite
+                    </h3>
+                    <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-sky-500/20 text-sky-400 uppercase tracking-wider font-mono">
+                      Kurikulum Penuh
+                    </span>
+                  </div>
+                  <span className="text-[11px] font-mono font-bold text-sky-400 shrink-0">
+                    {tangoStats.mastered + bunpouStats.mastered + dokkaiStats.completed} / {tangoStats.total + bunpouStats.total + dokkaiStats.total}
+                  </span>
+                </div>
+                <p className="text-[11px] text-[var(--text-secondary)] line-clamp-1 mt-0.5">
+                  1.800 Kosakata · 116 Pola Tata Bahasa · 13 Teks Dokkai Format Ujian
+                </p>
+              </div>
+              <ChevronRight className="w-4 h-4 text-[var(--text-tertiary)] group-hover:text-sky-400 transition-colors shrink-0" />
+            </a>
+
+            {/* Sub-Track: N3 Tango */}
+            <a
+              href="/tools/tango-n3/"
+              className="p-3 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-sky-500/40 transition-all flex items-center gap-3 group"
+            >
+              <div className="w-8 h-8 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center shrink-0">
+                <BookOpen className="w-4 h-4" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between gap-2">
+                  <h3 className="font-bold text-xs sm:text-sm text-[var(--text-primary)] group-hover:text-sky-500 transition-colors line-clamp-1">
+                    N3 Tango (Kosakata)
+                  </h3>
+                  <span className="text-[11px] font-mono font-bold text-[var(--text-secondary)] shrink-0">
+                    {tangoStats.mastered}/{tangoStats.total}
+                  </span>
+                </div>
+                <div className="w-full h-1 mt-1.5 rounded-full bg-[var(--surface-secondary)] overflow-hidden">
+                  <div
+                    className="h-full bg-sky-500 rounded-full transition-all"
+                    style={{ width: `${Math.min(100, (tangoStats.mastered / (tangoStats.total || 1)) * 100)}%` }}
+                  />
+                </div>
+              </div>
+              <ChevronRight className="w-4 h-4 text-[var(--text-tertiary)] group-hover:text-sky-500 transition-colors shrink-0" />
+            </a>
+
+            {/* Sub-Track: N3 Bunpou */}
+            <a
+              href="/tools/bunpou-n3/"
+              className="p-3 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-indigo-500/40 transition-all flex items-center gap-3 group"
+            >
+              <div className="w-8 h-8 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center shrink-0">
+                <Languages className="w-4 h-4" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between gap-2">
+                  <h3 className="font-bold text-xs sm:text-sm text-[var(--text-primary)] group-hover:text-indigo-500 transition-colors line-clamp-1">
+                    N3 Bunpou (Tata Bahasa)
+                  </h3>
+                  <span className="text-[11px] font-mono font-bold text-[var(--text-secondary)] shrink-0">
+                    {bunpouStats.mastered}/{bunpouStats.total}
+                  </span>
+                </div>
+                <div className="w-full h-1 mt-1.5 rounded-full bg-[var(--surface-secondary)] overflow-hidden">
+                  <div
+                    className="h-full bg-indigo-500 rounded-full transition-all"
+                    style={{ width: `${Math.min(100, (bunpouStats.mastered / (bunpouStats.total || 1)) * 100)}%` }}
+                  />
+                </div>
+              </div>
+              <ChevronRight className="w-4 h-4 text-[var(--text-tertiary)] group-hover:text-indigo-500 transition-colors shrink-0" />
+            </a>
+
+            {/* Sub-Track: N3 Dokkai */}
+            <a
+              href="/tools/dokkai-n3/"
+              className="p-3 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-amber-500/40 transition-all flex items-center gap-3 group"
+            >
+              <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center shrink-0">
+                <FileText className="w-4 h-4" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between gap-2">
+                  <h3 className="font-bold text-xs sm:text-sm text-[var(--text-primary)] group-hover:text-amber-500 transition-colors line-clamp-1">
+                    N3 Dokkai (Pemahaman Bacaan)
+                  </h3>
+                  <span className="text-[11px] font-mono font-bold text-[var(--text-secondary)] shrink-0">
+                    {dokkaiStats.completed}/{dokkaiStats.total}
+                  </span>
+                </div>
+                <div className="w-full h-1 mt-1.5 rounded-full bg-[var(--surface-secondary)] overflow-hidden">
+                  <div
+                    className="h-full bg-amber-500 rounded-full transition-all"
+                    style={{ width: `${Math.min(100, (dokkaiStats.completed / (dokkaiStats.total || 1)) * 100)}%` }}
+                  />
+                </div>
+              </div>
+              <ChevronRight className="w-4 h-4 text-[var(--text-tertiary)] group-hover:text-amber-500 transition-colors shrink-0" />
+            </a>
+
+            {/* Track FE */}
             <a
               href="/tools/fe-study/"
               className="p-3 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-emerald-500/40 transition-all flex items-center gap-3 group"
@@ -709,46 +1046,21 @@ export function AcademyPortalClient() {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-bold text-sm text-[var(--text-primary)] group-hover:text-emerald-500 transition-colors line-clamp-1">
-                    FE Study Hub
+                  <h3 className="font-bold text-xs sm:text-sm text-[var(--text-primary)] group-hover:text-emerald-500 transition-colors line-clamp-1">
+                    FE Study Hub (Fundamental IT)
                   </h3>
                   <span className="text-[11px] font-mono font-bold text-[var(--text-secondary)] shrink-0">
                     {feStats.mastered}/{feStats.total}
                   </span>
                 </div>
-                <div className="w-full h-1.5 mt-1.5 rounded-full bg-[var(--surface-secondary)] overflow-hidden">
+                <div className="w-full h-1 mt-1.5 rounded-full bg-[var(--surface-secondary)] overflow-hidden">
                   <div
                     className="h-full bg-emerald-500 rounded-full transition-all"
-                    style={{ width: `${(feStats.mastered / (feStats.total || 1)) * 100}%` }}
+                    style={{ width: `${Math.min(100, (feStats.mastered / (feStats.total || 1)) * 100)}%` }}
                   />
                 </div>
               </div>
               <ChevronRight className="w-4 h-4 text-[var(--text-tertiary)] group-hover:text-emerald-500 transition-colors shrink-0" />
-            </a>
-            <a
-              href="/tools/n3-suite/"
-              className="p-3 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-sky-500/40 transition-all flex items-center gap-3 group"
-            >
-              <div className="w-8 h-8 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center shrink-0">
-                <Languages className="w-4 h-4" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-bold text-sm text-[var(--text-primary)] group-hover:text-sky-500 transition-colors line-clamp-1">
-                    JLPT N3 Suite
-                  </h3>
-                  <span className="text-[11px] font-mono font-bold text-[var(--text-secondary)] shrink-0">
-                    {tangoStats.mastered}/{tangoStats.total}
-                  </span>
-                </div>
-                <div className="w-full h-1.5 mt-1.5 rounded-full bg-[var(--surface-secondary)] overflow-hidden">
-                  <div
-                    className="h-full bg-sky-500 rounded-full transition-all"
-                    style={{ width: `${(tangoStats.mastered / (tangoStats.total || 1)) * 100}%` }}
-                  />
-                </div>
-              </div>
-              <ChevronRight className="w-4 h-4 text-[var(--text-tertiary)] group-hover:text-sky-500 transition-colors shrink-0" />
             </a>
 
             {/* Collapsible Research Roadmap */}
@@ -809,11 +1121,65 @@ export function AcademyPortalClient() {
             <h2 className="text-sm sm:text-base font-bold text-[var(--text-primary)] font-sans">
               {t.studyToolsTitle}
             </h2>
-            <div className="grid grid-cols-2 gap-2.5 text-xs">
-              {/* Tool 1: Kakomon CBT */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs">
+              {/* Tool 1: Tango Flashcards SRS */}
+              <a
+                href="/tools/tango-n3/?tab=flashcards"
+                className="p-3 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-sky-500/40 hover:shadow-sm transition-all flex flex-col justify-between gap-2 group"
+              >
+                <div className="w-8 h-8 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center">
+                  <BookOpen className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-[var(--text-primary)] group-hover:text-sky-500 transition-colors">
+                    Flashcard SRS N3
+                  </h3>
+                  <p className="text-[11px] text-[var(--text-secondary)] mt-0.5 line-clamp-2">
+                    Hafalan kosakata SM-2 berspasi.
+                  </p>
+                </div>
+              </a>
+
+              {/* Tool 2: Bunpou Quiz Master */}
+              <a
+                href="/tools/bunpou-n3/?tab=quiz"
+                className="p-3 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-indigo-500/40 hover:shadow-sm transition-all flex flex-col justify-between gap-2 group"
+              >
+                <div className="w-8 h-8 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center">
+                  <Sparkles className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-[var(--text-primary)] group-hover:text-indigo-500 transition-colors">
+                    Bunpou Quiz
+                  </h3>
+                  <p className="text-[11px] text-[var(--text-secondary)] mt-0.5 line-clamp-2">
+                    Kuis susun bintang ★ & partikel.
+                  </p>
+                </div>
+              </a>
+
+              {/* Tool 3: Dokkai Reader */}
+              <a
+                href="/tools/dokkai-n3/"
+                className="p-3 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-amber-500/40 hover:shadow-sm transition-all flex flex-col justify-between gap-2 group"
+              >
+                <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center">
+                  <FileText className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-[var(--text-primary)] group-hover:text-amber-500 transition-colors">
+                    Dokkai Reader
+                  </h3>
+                  <p className="text-[11px] text-[var(--text-secondary)] mt-0.5 line-clamp-2">
+                    Baca teks furigana interaktif.
+                  </p>
+                </div>
+              </a>
+
+              {/* Tool 4: Kakomon CBT */}
               <a
                 href="/tools/fe-study/?tab=quiz"
-                className="p-3 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-emerald-500/40 hover:shadow-sm transition-all flex flex-col justify-between gap-2.5 group"
+                className="p-3 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-emerald-500/40 hover:shadow-sm transition-all flex flex-col justify-between gap-2 group"
               >
                 <div className="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
                   <FileQuestion className="w-4 h-4" />
@@ -822,16 +1188,16 @@ export function AcademyPortalClient() {
                   <h3 className="font-bold text-[var(--text-primary)] group-hover:text-emerald-500 transition-colors">
                     Kakomon CBT
                   </h3>
-                  <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
-                    Simulasi ujian CBT resmi 60 / 120 soal.
+                  <p className="text-[11px] text-[var(--text-secondary)] mt-0.5 line-clamp-2">
+                    Simulasi ujian CBT resmi FE.
                   </p>
                 </div>
               </a>
 
-              {/* Tool 2: Pseudocode Tracer */}
+              {/* Tool 5: Pseudocode Tracer */}
               <a
                 href="/tools/fe-study/?tab=tracer"
-                className="p-3 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-cyan-500/40 hover:shadow-sm transition-all flex flex-col justify-between gap-2.5 group"
+                className="p-3 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-cyan-500/40 hover:shadow-sm transition-all flex flex-col justify-between gap-2 group"
               >
                 <div className="w-8 h-8 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center">
                   <Terminal className="w-4 h-4" />
@@ -840,44 +1206,26 @@ export function AcademyPortalClient() {
                   <h3 className="font-bold text-[var(--text-primary)] group-hover:text-cyan-500 transition-colors">
                     Pseudocode Tracer
                   </h3>
-                  <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
-                    Simulator eksekusi baris pseudocode 科目B.
+                  <p className="text-[11px] text-[var(--text-secondary)] mt-0.5 line-clamp-2">
+                    Simulator eksekusi 科目B.
                   </p>
                 </div>
               </a>
 
-              {/* Tool 3: Formula Lab */}
-              <a
-                href="/tools/library/"
-                className="p-3 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-rose-500/40 hover:shadow-sm transition-all flex flex-col justify-between gap-2.5 group"
-              >
-                <div className="w-8 h-8 rounded-xl bg-rose-500/10 text-rose-500 flex items-center justify-center">
-                  <Layers className="w-4 h-4" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-[var(--text-primary)] group-hover:text-rose-500 transition-colors">
-                    Formula Lab
-                  </h3>
-                  <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
-                    Kalkulator MTBF, availability, CIDR.
-                  </p>
-                </div>
-              </a>
-
-              {/* Tool 4: Mistake Notebook */}
+              {/* Tool 6: Mistake Notebook */}
               <a
                 href="/tools/fe-study/?tab=mistakes"
-                className="p-3 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-amber-500/40 hover:shadow-sm transition-all flex flex-col justify-between gap-2.5 group"
+                className="p-3 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] hover:border-rose-500/40 hover:shadow-sm transition-all flex flex-col justify-between gap-2 group"
               >
-                <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-xl bg-rose-500/10 text-rose-500 flex items-center justify-center">
                   <Bookmark className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-[var(--text-primary)] group-hover:text-amber-500 transition-colors">
+                  <h3 className="font-bold text-[var(--text-primary)] group-hover:text-rose-500 transition-colors">
                     Catatan Salah
                   </h3>
-                  <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
-                    Kompilasi soal yang pernah salah.
+                  <p className="text-[11px] text-[var(--text-secondary)] mt-0.5 line-clamp-2">
+                    Kompilasi soal keliru & review.
                   </p>
                 </div>
               </a>
@@ -906,7 +1254,7 @@ export function AcademyPortalClient() {
                 <div className="flex items-center gap-2">
                   <Play className="w-4 h-4 text-emerald-500 fill-emerald-500" />
                   <h3 className="text-base font-bold text-[var(--text-primary)]">
-                    Pilih Sesi Belajar Hari Ini
+                    {focusTrack === "n3" ? "Pilih Sesi Belajar N3 Hari Ini" : "Pilih Sesi Belajar Hari Ini"}
                   </h3>
                 </div>
                 <button
@@ -919,43 +1267,106 @@ export function AcademyPortalClient() {
               </div>
 
               <div className="space-y-3 text-xs">
-                {/* Option 1: FE Day */}
-                <a
-                  href="/tools/fe-study/"
-                  className="p-4 rounded-2xl border border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500/20 flex items-center justify-between gap-3 transition-colors block"
-                >
-                  <div>
-                    <span className="text-[10px] font-mono font-bold text-emerald-500 uppercase block">
-                      Rekomendasi Utama
-                    </span>
-                    <h3 className="font-bold text-[var(--text-primary)] text-sm">
-                      FE Cognitive Gym: Hari {activeFeDayNumber}
-                    </h3>
-                    <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
-                      {activeFeDeck.titleId.replace(/^Hari \d+:\s*/, "")} (10 Konsep)
-                    </p>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-emerald-500 shrink-0" />
-                </a>
+                {focusTrack === "n3" ? (
+                  <>
+                    {/* Option 1: Tango N3 */}
+                    <a
+                      href="/tools/tango-n3/"
+                      className="p-4 rounded-2xl border border-sky-500/30 bg-sky-500/10 hover:bg-sky-500/20 flex items-center justify-between gap-3 transition-colors block"
+                    >
+                      <div>
+                        <span className="text-[10px] font-mono font-bold text-sky-500 uppercase block">
+                          ① Target Kosakata
+                        </span>
+                        <h3 className="font-bold text-[var(--text-primary)] text-sm">
+                          JLPT N3 Tango: Bab {activeTangoChapter.badge}
+                        </h3>
+                        <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
+                          {activeTangoChapter.title} (40 Kosakata · ±10 mnt)
+                        </p>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-sky-500 shrink-0" />
+                    </a>
 
-                {/* Option 2: Tango N3 */}
-                <a
-                  href="/tools/tango-n3/"
-                  className="p-4 rounded-2xl border border-sky-500/30 bg-sky-500/10 hover:bg-sky-500/20 flex items-center justify-between gap-3 transition-colors block"
-                >
-                  <div>
-                    <span className="text-[10px] font-mono font-bold text-sky-500 uppercase block">
-                      Target Kosakata
-                    </span>
-                    <h3 className="font-bold text-[var(--text-primary)] text-sm">
-                      JLPT N3 Tango: Bab {activeTangoChapter.badge}
-                    </h3>
-                    <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
-                      {activeTangoChapter.title} (40 Kosakata)
-                    </p>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-sky-500 shrink-0" />
-                </a>
+                    {/* Option 2: Bunpou N3 */}
+                    <a
+                      href="/tools/bunpou-n3/"
+                      className="p-4 rounded-2xl border border-indigo-500/30 bg-indigo-500/10 hover:bg-indigo-500/20 flex items-center justify-between gap-3 transition-colors block"
+                    >
+                      <div>
+                        <span className="text-[10px] font-mono font-bold text-indigo-500 uppercase block">
+                          ② Target Tata Bahasa
+                        </span>
+                        <h3 className="font-bold text-[var(--text-primary)] text-sm">
+                          JLPT N3 Bunpou: 116 Pola (24 Bab)
+                        </h3>
+                        <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
+                          Rumus Sambungan & Drill Soal Susun Bintang (★)
+                        </p>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-indigo-500 shrink-0" />
+                    </a>
+
+                    {/* Option 3: Dokkai N3 */}
+                    <a
+                      href="/tools/dokkai-n3/"
+                      className="p-4 rounded-2xl border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 flex items-center justify-between gap-3 transition-colors block"
+                    >
+                      <div>
+                        <span className="text-[10px] font-mono font-bold text-amber-500 uppercase block">
+                          ③ Target Membaca
+                        </span>
+                        <h3 className="font-bold text-[var(--text-primary)] text-sm">
+                          JLPT N3 Dokkai: 13 Teks Asli Ujian
+                        </h3>
+                        <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
+                          Analisis Paragraf & Latihan Pemahaman Dokkai
+                        </p>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-amber-500 shrink-0" />
+                    </a>
+                  </>
+                ) : (
+                  <>
+                    {/* Option 1: FE Day */}
+                    <a
+                      href="/tools/fe-study/"
+                      className="p-4 rounded-2xl border border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500/20 flex items-center justify-between gap-3 transition-colors block"
+                    >
+                      <div>
+                        <span className="text-[10px] font-mono font-bold text-emerald-500 uppercase block">
+                          Rekomendasi Utama
+                        </span>
+                        <h3 className="font-bold text-[var(--text-primary)] text-sm">
+                          FE Cognitive Gym: Hari {activeFeDayNumber}
+                        </h3>
+                        <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
+                          {activeFeDeck.titleId.replace(/^Hari \d+:\s*/, "")} (10 Konsep)
+                        </p>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-emerald-500 shrink-0" />
+                    </a>
+
+                    {/* Option 2: Tango N3 */}
+                    <a
+                      href="/tools/tango-n3/"
+                      className="p-4 rounded-2xl border border-sky-500/30 bg-sky-500/10 hover:bg-sky-500/20 flex items-center justify-between gap-3 transition-colors block"
+                    >
+                      <div>
+                        <span className="text-[10px] font-mono font-bold text-sky-500 uppercase block">
+                          Target Kosakata
+                        </span>
+                        <h3 className="font-bold text-[var(--text-primary)] text-sm">
+                          JLPT N3 Tango: Bab {activeTangoChapter.badge}
+                        </h3>
+                        <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
+                          {activeTangoChapter.title} (40 Kosakata)
+                        </p>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-sky-500 shrink-0" />
+                    </a>
+                  </>
+                )}
               </div>
             </motion.div>
           </div>

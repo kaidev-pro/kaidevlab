@@ -10,6 +10,7 @@ import {
   Cpu,
   Search,
   Flame,
+  Languages,
 } from "lucide-react";
 import { triggerHaptic } from "@/lib/haptics";
 import { playTapSound } from "@/lib/global-sound";
@@ -49,10 +50,10 @@ export function MobileBottomNav() {
 
   const navItems = [
     {
-      name: "Suite",
-      href: "/tools/n3-suite/",
+      name: "Hub",
+      href: isLearnHost ? "/" : "/learn/",
       icon: Compass,
-      isActive: pathname === "/tools/n3-suite/",
+      isActive: pathname === "/learn" || pathname === "/learn/" || (isLearnHost && pathname === "/"),
     },
     {
       name: "Tango",
@@ -61,10 +62,16 @@ export function MobileBottomNav() {
       isActive: pathname.startsWith("/tools/tango"),
     },
     {
+      name: "Bunpou",
+      href: "/tools/bunpou-n3/",
+      icon: Languages,
+      isActive: pathname.startsWith("/tools/bunpou"),
+    },
+    {
       name: "Dokkai",
       href: "/tools/dokkai-n3/",
       icon: FileText,
-      isActive: pathname.startsWith("/tools/dokkai-n3"),
+      isActive: pathname.startsWith("/tools/dokkai"),
     },
     {
       name: "FE Study",

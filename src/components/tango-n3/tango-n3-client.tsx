@@ -68,6 +68,15 @@ import { RubyTerm } from "@/components/fe-study/ruby-term";
 import { KanjiLookupModal } from "@/components/fe-study/kanji-lookup-modal";
 import { useJapaneseTts } from "@/lib/use-japanese-tts";
 
+function shuffleCards<T>(arr: T[]): T[] {
+  const clone = [...arr];
+  for (let i = clone.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [clone[i], clone[j]] = [clone[j], clone[i]];
+  }
+  return clone;
+}
+
 export function TangoN3Client() {
   const { speak, activeSpeechId } = useJapaneseTts();
   const [progress, setProgress] = useState<TangoProgress>(DEFAULT_TANGO_PROGRESS);
@@ -84,6 +93,7 @@ export function TangoN3Client() {
     nextChapter?: TangoChapter;
   } | null>(null);
   const [isChaptersAccordionExpanded, setIsChaptersAccordionExpanded] = useState(false);
+  const [interleavingEnabled, setInterleavingEnabled] = useState(true);
 
   useEffect(() => {
     setProgress(loadTangoProgress());
@@ -192,20 +202,71 @@ export function TangoN3Client() {
     setSessionType(type);
   }
 
-  // Smart Chapter Queue: Only studies unmastered cards unless explicitly restarting from beginning
+  // Smart Chapter Queue: Studies unmastered cards with optional 25% Interleaving Review from previous chapters
   function startChapterStudy(ch: TangoChapter, forceAll = false, type: "flashcard" | "quiz" = selectedStudyTab) {
     const chapterCards = TANGO_N3_CARDS.filter((c) => c.chapterId === ch.id);
     const unmastered = chapterCards.filter((c) => !progress.masteredCardIds.includes(c.id));
 
     // If not forcing all and there are unmastered cards, only load unmastered
-    const cardsToStudy = !forceAll && unmastered.length > 0 ? unmastered : chapterCards;
+    const baseCards = !forceAll && unmastered.length > 0 ? [...unmastered] : [...chapterCards];
 
-    const title =
+    const chIndex = TANGO_N3_CHAPTERS.findIndex((item) => item.id === ch.id);
+    let interleavedCards: TangoN3Card[] = [];
+
+    // Interleaving 25%: If studying chapter 2 or higher and interleaving is enabled
+    if (interleavingEnabled && chIndex > 0) {
+      const prevChapterIds = new Set(TANGO_N3_CHAPTERS.slice(0, chIndex).map((c) => c.id));
+      const prevCards = TANGO_N3_CARDS.filter((c) => prevChapterIds.has(c.chapterId));
+
+      if (prevCards.length > 0) {
+        // Target ~25% of current chapter batch (between 3 and 8 cards)
+        const targetCount = Math.min(8, Math.max(3, Math.round(baseCards.length * 0.25)));
+
+        const reviewCandidates = prevCards.filter((c) => progress.reviewCardIds.includes(c.id));
+        const unmasteredCandidates = prevCards.filter(
+          (c) => !progress.masteredCardIds.includes(c.id) && !progress.reviewCardIds.includes(c.id)
+        );
+        const masteredCandidates = prevCards.filter((c) => progress.masteredCardIds.includes(c.id));
+
+        const pool = [
+          ...shuffleCards(reviewCandidates),
+          ...shuffleCards(unmasteredCandidates),
+          ...shuffleCards(masteredCandidates),
+        ];
+
+        interleavedCards = pool.slice(0, targetCount);
+      }
+    }
+
+    // Interleave evenly so the learner experiences regular retrieval spikes
+    let finalDeck: TangoN3Card[] = [];
+    if (interleavedCards.length > 0) {
+      const step = Math.max(2, Math.floor(baseCards.length / (interleavedCards.length + 1)));
+      let intIdx = 0;
+      baseCards.forEach((c, idx) => {
+        finalDeck.push(c);
+        if ((idx + 1) % step === 0 && intIdx < interleavedCards.length) {
+          finalDeck.push(interleavedCards[intIdx++]);
+        }
+      });
+      while (intIdx < interleavedCards.length) {
+        finalDeck.push(interleavedCards[intIdx++]);
+      }
+    } else {
+      finalDeck = baseCards;
+    }
+
+    const baseTitle =
       unmastered.length === 0 || forceAll
-        ? `Bab ${ch.badge}: ${ch.title} (Semua ${chapterCards.length} Kata)`
+        ? `Bab ${ch.badge}: ${ch.title} (${baseCards.length} Kata)`
         : `Bab ${ch.badge}: ${ch.title} (Sisa ${unmastered.length} dari ${chapterCards.length} Kata)`;
 
-    startSession(title, cardsToStudy, type);
+    const title =
+      interleavedCards.length > 0
+        ? `${baseTitle} · +${interleavedCards.length} Interleaving Review`
+        : baseTitle;
+
+    startSession(title, finalDeck, type);
   }
 
   function startQuick10(type: "flashcard" | "quiz" = selectedStudyTab) {
@@ -604,7 +665,7 @@ export function TangoN3Client() {
                 return (
                   <div className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-[var(--surface-primary)] border-2 border-[var(--brand-primary)]/40 shadow-lg relative overflow-hidden">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 flex-wrap">
                         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-primary)] text-white text-xs font-black tracking-wider uppercase shadow-sm">
                           <Sparkles size={13} />
                           <span>Bab Aktif Hari Ini</span>
@@ -615,6 +676,12 @@ export function TangoN3Client() {
                         <span className="text-[11px] px-2 py-0.5 rounded-md bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-subtle)] font-medium">
                           {activeChapter.partTitle}
                         </span>
+                        {interleavingEnabled && chIndex > 0 && (
+                          <span className="inline-flex items-center gap-1 text-[11px] px-2.5 py-0.5 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 font-semibold">
+                            <Sparkles size={11} className="text-purple-500" />
+                            <span>+25% Interleave Active</span>
+                          </span>
+                        )}
                       </div>
                       {quizRecord?.passed && (
                         <span className="text-xs font-mono px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20 w-fit">
@@ -741,6 +808,53 @@ export function TangoN3Client() {
                   >
                     {progress.masteryModeEnabled ? <Lock className="w-3.5 h-3.5" /> : <Unlock className="w-3.5 h-3.5" />}
                     <span>{progress.masteryModeEnabled ? "Mode Bertahap ON" : "Mode Bebas ON"}</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Interleaving Review 25% Banner (Metode Dokter Cakra) */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-[var(--surface-primary)] border border-purple-500/25 bg-gradient-to-r from-purple-500/[0.04] to-transparent flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center gap-1.5 border border-purple-500/20">
+                      <Sparkles className="w-3.5 h-3.5 text-purple-500" />
+                      <span>25% Interleaving Review (Metode Dokter Cakra)</span>
+                    </span>
+                    {interleavingEnabled ? (
+                      <span className="text-[11px] text-purple-600 dark:text-purple-400 font-bold">
+                        Aktif
+                      </span>
+                    ) : (
+                      <span className="text-[11px] text-[var(--text-tertiary)] font-medium">
+                        Nonaktif
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-[var(--text-secondary)]">
+                    {interleavingEnabled
+                      ? "Menyisipkan 20-25% kata review dari bab-bab sebelumnya ke bab baru untuk mencegah lupa (anti-blocked practice)."
+                      : "Belajar hanya fokus kosakata bab yang dipilih tanpa campuran review bab lalu."}
+                  </p>
+                  <div className="text-[11px] font-mono text-[var(--text-tertiary)] pt-0.5">
+                    Rekomendasi Ujian: Melatih otak berpindah konteks dan menguatkan memori jangka panjang JLPT.
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      triggerHaptic("light");
+                      setInterleavingEnabled((prev) => !prev);
+                    }}
+                    className={`px-3 py-1.5 rounded-xl border text-xs font-bold transition-all flex items-center gap-1.5 active:scale-95 ${
+                      interleavingEnabled
+                        ? "bg-purple-600 text-white border-purple-600 shadow-xs"
+                        : "bg-[var(--surface-secondary)] border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                    }`}
+                  >
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>{interleavingEnabled ? "Interleave 25% ON" : "Interleave OFF"}</span>
                   </button>
                 </div>
               </div>

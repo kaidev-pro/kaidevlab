@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import {
   motion,
   AnimatePresence,
@@ -28,7 +28,7 @@ import {
   Bookmark,
   Zap,
 } from "lucide-react";
-import { TangoN3Card } from "@/data/tango-n3-data";
+import { TangoN3Card, TANGO_N3_CHAPTERS } from "@/data/tango-n3-data";
 import { CardRating } from "@/lib/tango-n3-storage";
 import { RubyTerm } from "@/components/fe-study/ruby-term";
 import { TangoSessionSummary } from "@/components/tango-n3/tango-session-summary";
@@ -184,12 +184,37 @@ export function TangoFlashcardView({
     }
   }, []);
 
+  const chapterBadgeMap = useMemo(() => {
+    const map = new Map<string, string>();
+    TANGO_N3_CHAPTERS.forEach((ch) => map.set(ch.id, ch.badge));
+    return map;
+  }, []);
+
+  const majorityChapterId = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const c of activeDeck) {
+      counts[c.chapterId] = (counts[c.chapterId] || 0) + 1;
+    }
+    let topId = "";
+    let maxCount = 0;
+    for (const [id, count] of Object.entries(counts)) {
+      if (count > maxCount) {
+        maxCount = count;
+        topId = id;
+      }
+    }
+    return topId;
+  }, [activeDeck]);
+
   const safeIndex = activeDeck.length > 0 ? Math.min(currentIndex, activeDeck.length - 1) : 0;
   const currentCard = activeDeck[safeIndex];
   const isMastered = currentCard ? masteredIds.includes(currentCard.id) : false;
   const isReview = currentCard ? reviewIds.includes(currentCard.id) : false;
   const isStarred = currentCard ? starredIds.includes(currentCard.id) : false;
   const isLastCard = activeDeck.length > 0 && safeIndex === activeDeck.length - 1;
+  const isInterleaved = Boolean(
+    activeDeck.length > 5 && currentCard && majorityChapterId && currentCard.chapterId !== majorityChapterId
+  );
 
   // Swipe motion tracking (Exact values from FE Study)
   const x = useMotionValue(0);
@@ -599,13 +624,19 @@ export function TangoFlashcardView({
                 >
                   {/* Header: Book Number + Part of Speech + Mastered Tag */}
                   <div className="flex items-center justify-between gap-2 border-b border-[var(--border)] pb-2.5">
-                    <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+                    <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-wrap">
                       <span className="font-mono text-xs font-bold px-2 py-0.5 rounded-md bg-[var(--brand-primary)]/10 text-[var(--brand-primary)]">
                         #{String(currentCard.bookNumber).padStart(4, "0")}
                       </span>
                       <span className="text-[11px] sm:text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[var(--surface-soft)] text-[var(--text-secondary)] border border-[var(--border)]">
                         {currentCard.partOfSpeech}
                       </span>
+                      {isInterleaved && (
+                        <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-600 dark:text-purple-400 border border-purple-500/30 shrink-0">
+                          <Sparkles size={11} className="text-purple-500" />
+                          <span>Interleave Bab {chapterBadgeMap.get(currentCard.chapterId) || currentCard.chapterId}</span>
+                        </span>
+                      )}
                       {isMastered && (
                         <span className="hidden xs:inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 font-medium shrink-0">
                           <CheckCircle2 size={11} /> Hafal
@@ -692,13 +723,19 @@ export function TangoFlashcardView({
                 >
                   {/* Header: Term Info & Audio */}
                   <div className="flex items-center justify-between pb-2 sm:pb-2.5 border-b border-[var(--border)] gap-2">
-                    <div className="truncate flex items-center gap-1.5 min-w-0">
+                    <div className="truncate flex items-center gap-1.5 min-w-0 flex-wrap">
                       <span className="font-mono text-xs font-bold px-2 py-0.5 rounded-md bg-[var(--brand-primary)]/10 text-[var(--brand-primary)]">
                         #{String(currentCard.bookNumber).padStart(4, "0")}
                       </span>
                       <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-[var(--surface-soft)] text-[var(--text-secondary)]">
                         {currentCard.partOfSpeech}
                       </span>
+                      {isInterleaved && (
+                        <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-600 dark:text-purple-400 border border-purple-500/30 shrink-0">
+                          <Sparkles size={10} className="text-purple-500" />
+                          <span>Interleave Bab {chapterBadgeMap.get(currentCard.chapterId) || currentCard.chapterId}</span>
+                        </span>
+                      )}
                       <button
                         type="button"
                         onClick={(e) => speakJapanese(currentCard.word, e)}

@@ -458,116 +458,7 @@ export function TangoN3Client() {
             </div>
           </div>
 
-          {/* Study Launcher Console (Pusat Aksi Belajar) */}
-          <div className="p-4 sm:p-5 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-primary)] shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
-            {/* Mode Switcher */}
-            <div className="flex items-center gap-2 w-full md:w-auto">
-              <span className="text-xs font-semibold text-[var(--text-tertiary)] shrink-0 hidden sm:inline">Mode:</span>
-              <div className="flex p-1 rounded-xl bg-[var(--surface-secondary)] border border-[var(--border-subtle)] w-full sm:w-auto">
-                <button
-                  onClick={() => setSelectedStudyTab("flashcard")}
-                  className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                    selectedStudyTab === "flashcard"
-                      ? "bg-[var(--surface-primary)] text-[var(--brand-primary)] shadow-xs"
-                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-                  }`}
-                >
-                  <Layers className="w-3.5 h-3.5" />
-                  <span>Flashcard</span>
-                </button>
-                <button
-                  onClick={() => setSelectedStudyTab("quiz")}
-                  className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                    selectedStudyTab === "quiz"
-                      ? "bg-[var(--surface-primary)] text-purple-600 dark:text-purple-400 shadow-xs"
-                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-                  }`}
-                >
-                  <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>Kuis CBT</span>
-                </button>
-              </div>
-            </div>
 
-            {/* Main Action Buttons */}
-            <div className="flex flex-wrap items-center gap-2 w-full md:w-auto justify-end">
-              <button
-                onClick={() => startQuick10(selectedStudyTab)}
-                className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-white text-xs font-bold shadow-sm hover:opacity-95 transition-all ${
-                  selectedStudyTab === "quiz" ? "bg-purple-600 hover:bg-purple-700" : "bg-[var(--brand-primary)]"
-                }`}
-              >
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Quick 10 Drill</span>
-              </button>
-
-              <button
-                onClick={() => startSession("Semua Kosakata", TANGO_N3_CARDS, selectedStudyTab)}
-                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl border border-[var(--border-subtle)] hover:bg-[var(--surface-secondary)] text-xs font-medium text-[var(--text-primary)] transition-colors"
-              >
-                <Layers className="w-3.5 h-3.5 text-[var(--text-tertiary)]" />
-                <span>Semua ({totalAvailable})</span>
-              </button>
-
-              {weakCards.length > 0 && (
-                <div className="inline-flex items-center gap-1">
-                  <button
-                    onClick={() => startSession(selectedStudyTab === "quiz" ? "Kuis Kata Sering Salah" : "Drill Kata Sering Salah", weakCards, selectedStudyTab)}
-                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 text-xs font-bold hover:bg-rose-500/20 transition-colors"
-                  >
-                    <ShieldAlert className="w-3.5 h-3.5 text-rose-500" />
-                    <span>Sering Salah ({weakCards.length})</span>
-                  </button>
-                  <button
-                    onClick={handleGraduateAllWeak}
-                    title="Tandai semua kata sering salah ini sudah hafal & bersihkan dari daftar"
-                    className="inline-flex items-center gap-1 px-2.5 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 text-xs font-bold transition-colors shadow-xs"
-                  >
-                    <CheckCheck className="w-3.5 h-3.5" />
-                    <span className="hidden sm:inline">Luluskan</span>
-                  </button>
-                </div>
-              )}
-
-              {reviewCount > 0 && (
-                <button
-                  onClick={() => {
-                    const toReview = TANGO_N3_CARDS.filter((c) => progress.reviewCardIds.includes(c.id));
-                    startSession(selectedStudyTab === "quiz" ? "Kuis Review Soal Sulit" : "Review Soal Sulit", toReview, selectedStudyTab);
-                  }}
-                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-xs font-bold hover:bg-amber-500/20 transition-colors"
-                >
-                  <AlertCircle className="w-3.5 h-3.5" />
-                  <span>Review Sulit ({reviewCount})</span>
-                </button>
-              )}
-
-              {progress.starredCardIds && progress.starredCardIds.length > 0 && (
-                <button
-                  onClick={() => {
-                    const starred = TANGO_N3_CARDS.filter((c) => progress.starredCardIds.includes(c.id));
-                    startSession(selectedStudyTab === "quiz" ? "Kuis Kartu Favorit" : "Kartu Favorit (⭐)", starred, selectedStudyTab);
-                  }}
-                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border border-yellow-500/20 text-xs font-bold hover:bg-yellow-500/20 transition-colors"
-                >
-                  <Star className="w-3.5 h-3.5 fill-yellow-500" />
-                  <span>Favorit ({progress.starredCardIds.length})</span>
-                </button>
-              )}
-
-              <button
-                onClick={() => setActiveViewTab("reading")}
-                className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border text-xs font-bold transition-colors ${
-                  activeViewTab === "reading"
-                    ? "bg-[var(--brand-primary)] text-white border-[var(--brand-primary)] shadow-xs"
-                    : "border-[var(--brand-primary)]/30 bg-[var(--brand-primary)]/5 text-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/10"
-                }`}
-              >
-                <BookOpen className="w-3.5 h-3.5" />
-                <span>Bacaan (20 Cerita)</span>
-              </button>
-            </div>
-          </div>
 
           {/* Section Navigation Tabs (Tab Navigasi Rapi) */}
           <div className="flex border-b border-[var(--border-subtle)] gap-2">
@@ -735,10 +626,10 @@ export function TangoN3Client() {
                           <button
                             type="button"
                             onClick={() => startChapterStudy(activeChapter, false, "quiz")}
-                            className="py-2 px-3 rounded-xl bg-[var(--surface-secondary)] hover:bg-[var(--surface-primary)] text-[var(--text-primary)] border border-[var(--border-subtle)] font-semibold text-xs transition-all flex items-center justify-center gap-1.5 active:scale-[0.98]"
+                            className="py-2 px-3 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 text-purple-600 dark:text-purple-400 border border-purple-500/30 font-semibold text-xs transition-all flex items-center justify-center gap-1.5 active:scale-[0.98]"
                           >
                             <CheckCircle2 className="w-3.5 h-3.5 text-purple-500" />
-                            <span>Kuis Bab</span>
+                            <span>Kuis 3 Arah</span>
                           </button>
 
                           <button
@@ -758,104 +649,134 @@ export function TangoN3Client() {
                         </div>
                       </div>
                     </div>
+
+                    {/* 3-Step Guided Learning Pathway */}
+                    <div className="pt-4 mt-4 border-t border-[var(--border-subtle)]">
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-[var(--text-secondary)] mb-2.5">
+                        <Target className="w-3.5 h-3.5 text-[var(--brand-primary)]" />
+                        <span>Alur Belajar Mandiri:</span>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        <div className="flex items-center gap-2 p-2.5 rounded-xl bg-[var(--surface-secondary)]/70 text-xs border border-[var(--border-subtle)]/50">
+                          <span className="w-5 h-5 rounded-full bg-[var(--brand-primary)] text-white flex items-center justify-center font-bold text-[10px] shrink-0">1</span>
+                          <div className="min-w-0">
+                            <p className="font-bold text-[var(--text-primary)] truncate">Hafalkan Kosakata</p>
+                            <p className="text-[10px] text-[var(--text-tertiary)] truncate">Flashcard + Audio TTS</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2 p-2.5 rounded-xl bg-[var(--surface-secondary)]/70 text-xs border border-[var(--border-subtle)]/50">
+                          <span className="w-5 h-5 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-[10px] shrink-0">2</span>
+                          <div className="min-w-0">
+                            <p className="font-bold text-[var(--text-primary)] truncate">Uji Refleks (Kuis)</p>
+                            <p className="text-[10px] text-[var(--text-tertiary)] truncate">Mode 3 Arah JLPT</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2 p-2.5 rounded-xl bg-[var(--surface-secondary)]/70 text-xs border border-[var(--border-subtle)]/50">
+                          <span className="w-5 h-5 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-[10px] shrink-0">3</span>
+                          <div className="min-w-0">
+                            <p className="font-bold text-[var(--text-primary)] truncate">Lulus Ujian Bab</p>
+                            <p className="text-[10px] text-[var(--text-tertiary)] truncate">Min. 80% ➔ Buka Bab Baru</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 );
               })()}
 
-              {/* Mastery Progression Banner */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-[var(--surface-primary)] border border-[var(--border-subtle)] flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] flex items-center gap-1.5">
-                      <ShieldCheck className="w-3.5 h-3.5" />
-                      <span>Sistem Pembelajaran Bertahap (Mastery Gate)</span>
-                    </span>
-                    {progress.masteryModeEnabled ? (
-                      <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold">
-                        Aktif
-                      </span>
-                    ) : (
-                      <span className="text-[11px] text-[var(--text-tertiary)] font-medium">
-                        Mode Bebas
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-xs text-[var(--text-secondary)]">
-                    {progress.masteryModeEnabled
-                      ? "Selesaikan bab dan lulus tes pemahaman (min. 80%) untuk membuka bab berikutnya."
-                      : "Semua bab terbuka bebas tanpa syarat tes kelulusan."}
-                  </p>
-                  <div className="text-[11px] font-mono text-[var(--text-tertiary)] pt-0.5">
-                    Progres:{" "}
-                    <strong className="text-[var(--text-primary)]">
-                      {(progress.unlockedChapterIds || ["ch-01"]).length} / {TANGO_N3_CHAPTERS.length} Bab Terbuka
-                    </strong>{" "}
-                    ·{" "}
-                    <strong className="text-emerald-600 dark:text-emerald-400">
-                      {Object.values(progress.chapterQuizScores || {}).filter((s) => s.passed).length} Bab Lulus Ujian
-                    </strong>
-                  </div>
+              {/* Quick Practice & Review Chips */}
+              <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 sm:p-4 rounded-2xl bg-[var(--surface-primary)] border border-[var(--border-subtle)] text-xs shadow-xs">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-amber-500" />
+                  <span className="font-bold text-[var(--text-primary)]">Latihan Tambahan:</span>
                 </div>
-
-                <div className="flex items-center gap-2 shrink-0">
+                <div className="flex flex-wrap items-center gap-2">
                   <button
-                    onClick={handleToggleMasteryMode}
-                    className={`px-3 py-1.5 rounded-xl border text-xs font-bold transition-all flex items-center gap-1.5 ${
-                      progress.masteryModeEnabled
-                        ? "bg-[var(--brand-primary)] text-white border-[var(--brand-primary)] shadow-xs"
-                        : "bg-[var(--surface-secondary)] border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-                    }`}
+                    onClick={() => startQuick10("quiz")}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 text-purple-600 dark:text-purple-400 font-bold border border-purple-500/20 transition-all active:scale-95 cursor-pointer"
                   >
-                    {progress.masteryModeEnabled ? <Lock className="w-3.5 h-3.5" /> : <Unlock className="w-3.5 h-3.5" />}
-                    <span>{progress.masteryModeEnabled ? "Mode Bertahap ON" : "Mode Bebas ON"}</span>
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>Quick 10 CBT</span>
                   </button>
+                  <button
+                    onClick={() => startSession("Semua 1.800 Kosakata", TANGO_N3_CARDS, "flashcard")}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[var(--surface-secondary)] hover:bg-[var(--surface-secondary)]/80 text-[var(--text-secondary)] font-medium border border-[var(--border-subtle)] transition-all active:scale-95 cursor-pointer"
+                  >
+                    <Layers className="w-3.5 h-3.5" />
+                    <span>Semua (1.800)</span>
+                  </button>
+                  {weakCards.length > 0 && (
+                    <button
+                      onClick={() => startSession("Drill Kata Sering Salah", weakCards, "quiz")}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 font-bold border border-rose-500/20 transition-all active:scale-95 cursor-pointer"
+                    >
+                      <ShieldAlert className="w-3.5 h-3.5 text-rose-500" />
+                      <span>Sering Salah ({weakCards.length})</span>
+                    </button>
+                  )}
+                  {reviewCount > 0 && (
+                    <button
+                      onClick={() => {
+                        const toReview = TANGO_N3_CARDS.filter((c) => progress.reviewCardIds.includes(c.id));
+                        startSession("Kuis Review Soal Sulit", toReview, "quiz");
+                      }}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 font-bold border border-amber-500/20 transition-all active:scale-95 cursor-pointer"
+                    >
+                      <AlertCircle className="w-3.5 h-3.5" />
+                      <span>Perlu Review ({reviewCount})</span>
+                    </button>
+                  )}
+                  {progress.starredCardIds && progress.starredCardIds.length > 0 && (
+                    <button
+                      onClick={() => {
+                        const starred = TANGO_N3_CARDS.filter((c) => progress.starredCardIds.includes(c.id));
+                        startSession("Kartu Favorit (⭐)", starred, "flashcard");
+                      }}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-600 dark:text-yellow-400 font-bold border border-yellow-500/20 transition-all active:scale-95 cursor-pointer"
+                    >
+                      <Star className="w-3.5 h-3.5 fill-yellow-500" />
+                      <span>Favorit ({progress.starredCardIds.length})</span>
+                    </button>
+                  )}
                 </div>
               </div>
 
-              {/* Interleaving Review 25% Banner (Metode Dokter Cakra) */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-[var(--surface-primary)] border border-purple-500/25 bg-gradient-to-r from-purple-500/[0.04] to-transparent flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center gap-1.5 border border-purple-500/20">
-                      <Sparkles className="w-3.5 h-3.5 text-purple-500" />
-                      <span>25% Interleaving Review (Metode Dokter Cakra)</span>
-                    </span>
-                    {interleavingEnabled ? (
-                      <span className="text-[11px] text-purple-600 dark:text-purple-400 font-bold">
-                        Aktif
-                      </span>
-                    ) : (
-                      <span className="text-[11px] text-[var(--text-tertiary)] font-medium">
-                        Nonaktif
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-xs text-[var(--text-secondary)]">
-                    {interleavingEnabled
-                      ? "Menyisipkan 20-25% kata review dari bab-bab sebelumnya ke bab baru untuk mencegah lupa (anti-blocked practice)."
-                      : "Belajar hanya fokus kosakata bab yang dipilih tanpa campuran review bab lalu."}
-                  </p>
-                  <div className="text-[11px] font-mono text-[var(--text-tertiary)] pt-0.5">
-                    Rekomendasi Ujian: Melatih otak berpindah konteks dan menguatkan memori jangka panjang JLPT.
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2 shrink-0">
+              {/* Compact Curriculum Settings Strip */}
+              <div className="flex flex-wrap items-center justify-between gap-3 p-3 sm:p-3.5 rounded-2xl bg-[var(--surface-secondary)]/50 border border-[var(--border-subtle)] text-xs text-[var(--text-secondary)]">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-bold text-[var(--text-primary)]">⚙️ Metode Belajar:</span>
+                  <button
+                    type="button"
+                    onClick={handleToggleMasteryMode}
+                    className={`px-2.5 py-1 rounded-xl border text-[11px] font-bold transition-all flex items-center gap-1 cursor-pointer active:scale-95 ${
+                      progress.masteryModeEnabled
+                        ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30"
+                        : "bg-[var(--surface-primary)] border-[var(--border-subtle)] text-[var(--text-tertiary)]"
+                    }`}
+                    title="Buka bab bertahap dengan lulus tes min. 80%"
+                  >
+                    {progress.masteryModeEnabled ? <Lock className="w-3 h-3 text-emerald-500" /> : <Unlock className="w-3 h-3" />}
+                    <span>{progress.masteryModeEnabled ? "Buka Bertahap ON" : "Mode Bebas ON"}</span>
+                  </button>
                   <button
                     type="button"
                     onClick={() => {
                       triggerHaptic("light");
-                      setInterleavingEnabled((prev) => !prev);
+                      setInterleavingEnabled((p) => !p);
                     }}
-                    className={`px-3 py-1.5 rounded-xl border text-xs font-bold transition-all flex items-center gap-1.5 active:scale-95 ${
+                    className={`px-2.5 py-1 rounded-xl border text-[11px] font-bold transition-all flex items-center gap-1 cursor-pointer active:scale-95 ${
                       interleavingEnabled
-                        ? "bg-purple-600 text-white border-purple-600 shadow-xs"
-                        : "bg-[var(--surface-secondary)] border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                        ? "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/30"
+                        : "bg-[var(--surface-primary)] border-[var(--border-subtle)] text-[var(--text-tertiary)]"
                     }`}
+                    title="Metode Dokter Cakra: Menyisipkan 20-25% kata bab sebelumnya ke bab baru agar tidak lupa"
                   >
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <span>{interleavingEnabled ? "Interleave 25% ON" : "Interleave OFF"}</span>
+                    <Sparkles className="w-3 h-3 text-purple-500" />
+                    <span>{interleavingEnabled ? "25% Interleave ON" : "Interleave OFF"}</span>
                   </button>
+                </div>
+                <div className="text-[11px] font-mono text-[var(--text-tertiary)]">
+                  Progres: <strong className="text-[var(--text-primary)]">{(progress.unlockedChapterIds || ["ch-01"]).length} / 46 Bab Terbuka</strong>
                 </div>
               </div>
 

@@ -31,7 +31,6 @@ export function SiteHeader() {
         ["Bunpou N3", "/tools/bunpou-n3/"],
         ["Dokkai N3", "/tools/dokkai-n3/"],
         ["FE Study", "/tools/fe-study/"],
-        ["← Portofolio Utama", "https://kaidevlab.com"],
       ] as const)
     : ([
         [t.nav.work, "/#work"],

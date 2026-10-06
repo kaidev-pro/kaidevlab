@@ -162,9 +162,9 @@ export function LanguageSwitcher({
   }
 
   return (
-    <div ref={containerRef} className={`relative inline-block ${className}`}>
+    <div ref={containerRef} className={`relative inline-flex items-center ${className || ""}`}>
       <div
-        className="language-pill-group items-center p-0.5 rounded-full border border-[var(--glass-border)] bg-[var(--surface-soft)] backdrop-blur-md shadow-xs transition-all"
+        className="flex items-center gap-0.5 p-0.5 rounded-full border border-[var(--border)] bg-[var(--surface-soft)] backdrop-blur-md shadow-xs transition-all h-[36px]"
         role="group"
         aria-label="Language selection"
       >
@@ -175,10 +175,10 @@ export function LanguageSwitcher({
               key={item.code}
               type="button"
               onClick={() => handleSelect(item.code as Locale)}
-              className={`px-2.5 py-1.5 rounded-full text-[11px] font-bold tracking-wider uppercase transition-all cursor-pointer ${
+              className={`h-[28px] px-2.5 flex items-center justify-center rounded-full text-[10.5px] font-extrabold tracking-wider uppercase transition-all cursor-pointer ${
                 active
-                  ? "bg-[var(--brand-primary)] text-white shadow-sm"
-                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface)]/60"
+                  ? "bg-[var(--brand-primary)] text-white shadow-xs"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface)]/70"
               }`}
               title={item.label}
             >

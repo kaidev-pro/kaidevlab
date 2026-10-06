@@ -4,6 +4,7 @@
 import Image from "next/image";
 import { Menu, Moon, Sun, X, Search } from "lucide-react";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { useLanguage } from "@/lib/i18n/context";
 import { LanguageSwitcher } from "./language-switcher";
 import { openCommandPalette } from "@/lib/global-modals-store";
@@ -12,6 +13,7 @@ import { playTapSound } from "@/lib/global-sound";
 
 export function SiteHeader() {
   const { t } = useLanguage();
+  const pathname = usePathname();
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -26,10 +28,10 @@ export function SiteHeader() {
   const navItems = isLearnSubdomain
     ? ([
         ["Home", "/"],
-        ["JLPT N3 Suite", "/tools/n3-suite/"],
-        ["Tango N3", "/tools/tango-n3/"],
-        ["Bunpou N3", "/tools/bunpou-n3/"],
-        ["Dokkai N3", "/tools/dokkai-n3/"],
+        ["N3 Suite", "/tools/n3-suite/"],
+        ["Tango", "/tools/tango-n3/"],
+        ["Bunpou", "/tools/bunpou-n3/"],
+        ["Dokkai", "/tools/dokkai-n3/"],
         ["FE Study", "/tools/fe-study/"],
       ] as const)
     : ([
@@ -39,6 +41,15 @@ export function SiteHeader() {
         [t.nav.about, "/#about"],
         [t.nav.contact, "/contact/"],
       ] as const);
+
+  const isLinkActive = (href: string) => {
+    if (!pathname) return false;
+    if (href === "/") return pathname === "/";
+    if (href.startsWith("http") || href.startsWith("/#")) return false;
+    const cleanHref = href.replace(/\/$/, "");
+    const cleanPath = pathname.replace(/\/$/, "");
+    return cleanPath === cleanHref || cleanPath.startsWith(cleanHref + "/");
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -70,7 +81,7 @@ export function SiteHeader() {
             src="/brand/kaidevlab-logo-light.webp"
             alt="Kaidevlab"
             fill
-            sizes="220px"
+            sizes="180px"
             priority
           />
           <Image
@@ -79,21 +90,30 @@ export function SiteHeader() {
             alt=""
             aria-hidden="true"
             fill
-            sizes="220px"
+            sizes="180px"
             loading="lazy"
           />
         </a>
         {isLearnSubdomain && (
-          <span className="hidden sm:inline-block text-[10px] font-mono font-extrabold px-1.5 py-0.5 rounded-md bg-[var(--brand-primary)]/15 text-[var(--brand-primary)] border border-[var(--brand-primary)]/30 tracking-wider">
+          <span className="hidden sm:inline-flex items-center text-[9px] font-mono font-extrabold px-1.5 py-0.5 rounded-md bg-[var(--brand-primary)]/12 text-[var(--brand-primary)] border border-[var(--brand-primary)]/25 tracking-wider">
             LEARN
           </span>
         )}
       </div>
 
       <nav className="desktop-nav" aria-label="Primary navigation">
-        {navItems.map(([label, href]) => (
-          <a href={href} key={href}>{label}</a>
-        ))}
+        {navItems.map(([label, href]) => {
+          const active = isLinkActive(href);
+          return (
+            <a
+              href={href}
+              key={href}
+              className={active ? "is-active" : undefined}
+            >
+              {label}
+            </a>
+          );
+        })}
       </nav>
 
       <div className="header-actions">
@@ -108,7 +128,7 @@ export function SiteHeader() {
           aria-label="Cari Cepat (Cmd + K)"
           title="Cari Cepat (Ctrl + K / Cmd + K)"
         >
-          <Search size={18} />
+          <Search size={16} />
         </button>
 
         <div className="hidden sm:block">
@@ -122,7 +142,7 @@ export function SiteHeader() {
           aria-label={theme === "dark" ? "Switch to Daylight Lab" : "Switch to Midnight Hologram"}
           title={theme === "dark" ? "Daylight Lab" : "Midnight Hologram"}
         >
-          {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
         </button>
         <a className="talk desktop-talk" href={isLearnSubdomain ? "https://kaidevlab.com" : "/contact/"}>
           {isLearnSubdomain ? "Portofolio ↗" : t.nav.letsTalk}
@@ -134,7 +154,7 @@ export function SiteHeader() {
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((value) => !value)}
         >
-          {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          {menuOpen ? <X size={18} /> : <Menu size={18} />}
         </button>
       </div>
 

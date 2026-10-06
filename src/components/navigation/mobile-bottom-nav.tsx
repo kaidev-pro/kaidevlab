@@ -20,15 +20,16 @@ import { openCommandPalette, openSyncModal } from "@/lib/global-modals-store";
 export function MobileBottomNav() {
   const pathname = usePathname();
   const [streak, setStreak] = useState<number>(0);
-  const [isLearnHost, setIsLearnHost] = useState(false);
+  const [isStudyHost, setIsStudyHost] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setIsLearnHost(window.location.hostname.startsWith("learn."));
+      const host = window.location.hostname;
+      setIsStudyHost(host.startsWith("study.") || host.startsWith("learn."));
     }
   }, []);
 
-  const isStudySection = pathname.startsWith("/tools/") || pathname.startsWith("/learn") || isLearnHost;
+  const isStudySection = pathname.startsWith("/tools/") || pathname.startsWith("/learn") || isStudyHost;
 
   useEffect(() => {
     if (!isStudySection) return;
@@ -51,9 +52,9 @@ export function MobileBottomNav() {
   const navItems = [
     {
       name: "Hub",
-      href: isLearnHost ? "/" : "/learn/",
+      href: isStudyHost ? "/" : "/learn/",
       icon: Compass,
-      isActive: pathname === "/learn" || pathname === "/learn/" || (isLearnHost && pathname === "/"),
+      isActive: pathname === "/learn" || pathname === "/learn/" || (isStudyHost && pathname === "/"),
     },
     {
       name: "Tango",

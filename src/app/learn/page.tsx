@@ -2,25 +2,25 @@ import type { Metadata } from "next";
 import { AcademyPortalClient } from "@/components/academy/academy-portal-client";
 
 export const metadata: Metadata = {
-  title: "Kaidevlab Academy & Research Hub — Portal Belajar & Perpustakaan",
+  title: "Kaidevlab Study — Portal Belajar & Riset Terpadu",
   description:
-    "Portal pembelajaran terpadu Kaidevlab. Jelajahi jalur belajar JLPT N3 Suite (Tango, Dokkai, Bunpou), Fundamental FE Exam, English for Engineers, dan perpustakaan digital interaktif.",
+    "Portal pembelajaran terpadu Kaidevlab Study. Jelajahi jalur belajar JLPT N3 Suite (Tango, Dokkai, Bunpou), Fundamental FE Exam, English for Engineers, dan perpustakaan digital interaktif.",
   alternates: { canonical: "/learn/" },
   openGraph: {
-    title: "Kaidevlab Academy & Research Hub — Portal Belajar & Perpustakaan",
+    title: "Kaidevlab Study — Portal Belajar & Riset Terpadu",
     description:
-      "Portal pembelajaran terpadu Kaidevlab: JLPT N3 Suite (Tango, Dokkai, Bunpou), Fundamental FE Exam, dan perpustakaan digital interaktif.",
-    url: "https://kaidevlab.com/learn/",
-    siteName: "Kaidevlab",
+      "Portal pembelajaran terpadu Kaidevlab Study: JLPT N3 Suite (Tango, Dokkai, Bunpou), Fundamental FE Exam, dan perpustakaan digital interaktif.",
+    url: "https://study.kaidevlab.com/",
+    siteName: "Kaidevlab Study",
     type: "website",
-    images: [{ url: "/media/kai-hero/kai-hero-poster.webp" }],
+    images: [{ url: "/brand/kaidevlab-study-logo-light.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kaidevlab Academy & Research Hub — Portal Belajar & Perpustakaan",
+    title: "Kaidevlab Study — Portal Belajar & Riset Terpadu",
     description:
-      "Portal pembelajaran terpadu Kaidevlab: JLPT N3 Suite, FE Exam, dan perpustakaan digital interaktif.",
-    images: [{ url: "/media/kai-hero/kai-hero-poster.webp" }],
+      "Portal pembelajaran terpadu Kaidevlab Study: JLPT N3 Suite, FE Exam, dan perpustakaan digital interaktif.",
+    images: [{ url: "/brand/kaidevlab-study-logo-light.png" }],
   },
 };
 

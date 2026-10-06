@@ -17,15 +17,16 @@ export function SiteHeader() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isLearnSubdomain, setIsLearnSubdomain] = useState(false);
+  const [isStudySubdomain, setIsStudySubdomain] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setIsLearnSubdomain(window.location.hostname.startsWith("learn."));
+      const host = window.location.hostname;
+      setIsStudySubdomain(host.startsWith("study.") || host.startsWith("learn."));
     }
   }, []);
 
-  const navItems = isLearnSubdomain
+  const navItems = isStudySubdomain
     ? ([
         ["Home", "/"],
         ["N3 Suite", "/tools/n3-suite/"],
@@ -36,7 +37,7 @@ export function SiteHeader() {
       ] as const)
     : ([
         [t.nav.work, "/#work"],
-        [t.nav.learn, "https://learn.kaidevlab.com/"],
+        [t.nav.learn, "https://study.kaidevlab.com/"],
         [t.nav.labNotes, "/#notes"],
         [t.nav.about, "/#about"],
         [t.nav.contact, "/contact/"],
@@ -75,30 +76,49 @@ export function SiteHeader() {
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
       <div className="flex items-center gap-2">
-        <a className="brand-logo" href="/" aria-label="Kaidevlab home">
-          <Image
-            className="logo-light"
-            src="/brand/kaidevlab-logo-light.webp"
-            alt="Kaidevlab"
-            fill
-            sizes="180px"
-            priority
-          />
-          <Image
-            className="logo-dark"
-            src="/brand/kaidevlab-logo-dark.webp"
-            alt=""
-            aria-hidden="true"
-            fill
-            sizes="180px"
-            loading="lazy"
-          />
+        <a className="brand-logo" href="/" aria-label={isStudySubdomain ? "Kaidevlab Study home" : "Kaidevlab home"}>
+          {isStudySubdomain ? (
+            <>
+              <Image
+                className="logo-light"
+                src="/brand/kaidevlab-study-logo-light.webp"
+                alt="Kaidevlab Study"
+                fill
+                sizes="180px"
+                priority
+              />
+              <Image
+                className="logo-dark"
+                src="/brand/kaidevlab-study-logo-dark.webp"
+                alt=""
+                aria-hidden="true"
+                fill
+                sizes="180px"
+                loading="lazy"
+              />
+            </>
+          ) : (
+            <>
+              <Image
+                className="logo-light"
+                src="/brand/kaidevlab-logo-light.webp"
+                alt="Kaidevlab"
+                fill
+                sizes="180px"
+                priority
+              />
+              <Image
+                className="logo-dark"
+                src="/brand/kaidevlab-logo-dark.webp"
+                alt=""
+                aria-hidden="true"
+                fill
+                sizes="180px"
+                loading="lazy"
+              />
+            </>
+          )}
         </a>
-        {isLearnSubdomain && (
-          <span className="hidden sm:inline-flex items-center text-[9px] font-mono font-extrabold px-1.5 py-0.5 rounded-md bg-[var(--brand-primary)]/12 text-[var(--brand-primary)] border border-[var(--brand-primary)]/25 tracking-wider">
-            LEARN
-          </span>
-        )}
       </div>
 
       <nav className="desktop-nav" aria-label="Primary navigation">
@@ -144,8 +164,8 @@ export function SiteHeader() {
         >
           {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
         </button>
-        <a className="talk desktop-talk" href={isLearnSubdomain ? "https://kaidevlab.com" : "/contact/"}>
-          {isLearnSubdomain ? "Portofolio ↗" : t.nav.letsTalk}
+        <a className="talk desktop-talk" href={isStudySubdomain ? "https://kaidevlab.com" : "/contact/"}>
+          {isStudySubdomain ? "Portofolio ↗" : t.nav.letsTalk}
         </a>
         <button
           className="icon-button menu-toggle"
@@ -166,8 +186,8 @@ export function SiteHeader() {
         {navItems.map(([label, href]) => (
           <a href={href} key={href} onClick={() => setMenuOpen(false)}>{label}</a>
         ))}
-        <a className="mobile-talk" href={isLearnSubdomain ? "https://kaidevlab.com" : "/contact/"} onClick={() => setMenuOpen(false)}>
-          {isLearnSubdomain ? "Kembali ke Portofolio Utama ↗" : t.nav.letsTalk}
+        <a className="mobile-talk" href={isStudySubdomain ? "https://kaidevlab.com" : "/contact/"} onClick={() => setMenuOpen(false)}>
+          {isStudySubdomain ? "Kembali ke Portofolio Utama ↗" : t.nav.letsTalk}
         </a>
       </nav>
     </header>

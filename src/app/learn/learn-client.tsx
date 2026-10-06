@@ -83,7 +83,7 @@ const LEARN_I18N = {
     modeStarred: "Drill Kartu Favorit",
     modeAll: "Semua Kartu FE",
     eyebrow: "Japan IT Certification Drill · 基本情報技術者試験",
-    title: "FE Cognitive Gym & Study Hub",
+    title: "FE IT Fundamental",
     trainMode: "Offline Transit Mode Ready (電車モード)",
     installApp: "Install App ke HP",
     tabFlashcards: "Flashcards",
@@ -101,7 +101,7 @@ const LEARN_I18N = {
     drillThisCard: "Drill Kartu Ini →",
     dailyEyebrow: "Rekomendasi Harian (Zero Friction)",
     dailyTitle: "Daily Quick Drill: 10 Kartu (5 Menit)",
-    dailyDesc: "Acak 10 istilah penting dari seluruh materi ujian. Dilengkapi efek suara empuk dan kontrol swipe jempol untuk belajar di kereta atau waktu santai.",
+    dailyDesc: "Latihan singkat dengan 10 istilah IT. Balik kartu untuk melihat penjelasan, lalu nilai ingatanmu.",
     dailyBtn: "Mulai 10 Kartu Sekarang",
     modulesEyebrow: "Kurikulum Resmi IPA",
     modulesTitle: "Pilih Modul Pembelajaran",
@@ -137,7 +137,7 @@ const LEARN_I18N = {
     modeStarred: "お気に入りカード",
     modeAll: "全FEカード",
     eyebrow: "国家試験・基本情報技術者試験 学習ドリル",
-    title: "FE Cognitive Gym & 学習ハブ",
+    title: "基本情報技術者試験（FE）",
     trainMode: "オフライン電車モード対応 (電車モード)",
     installApp: "ホーム画面に追加",
     tabFlashcards: "フラッシュカード",
@@ -155,7 +155,7 @@ const LEARN_I18N = {
     drillThisCard: "この単語をドリル →",
     dailyEyebrow: "毎日の学習習慣（ゼロフリクション）",
     dailyTitle: "デイリークイックドリル: 10枚 (5分)",
-    dailyDesc: "全試験範囲から重要10用語をランダム出題。音声フィードバックと快適なスワイプ操作で通勤電車でもサクサク学習。",
+    dailyDesc: "IT用語を10枚ずつ練習。カードを裏返して説明を読み、覚えているか確認しましょう。",
     dailyBtn: "今すぐ10枚ドリルを開始",
     modulesEyebrow: "IPA公式シラバス準拠",
     modulesTitle: "学習モジュールを選択",
@@ -191,7 +191,7 @@ const LEARN_I18N = {
     modeStarred: "Starred Cards",
     modeAll: "All FE Cards",
     eyebrow: "Japan IT Certification Drill · Fundamental IT Engineer Examination",
-    title: "FE Cognitive Gym & Study Hub",
+    title: "FE IT Fundamental",
     trainMode: "Offline Commuter Mode Ready (電車モード)",
     installApp: "Install App to Device",
     tabFlashcards: "Flashcards",
@@ -209,7 +209,7 @@ const LEARN_I18N = {
     drillThisCard: "Drill This Card →",
     dailyEyebrow: "Daily Habit (Zero Friction)",
     dailyTitle: "Daily Quick Drill: 10 Cards (5 Min)",
-    dailyDesc: "Random 10 high-yield exam terms. Features sound effects and smooth thumb swipe controls for quick transit study.",
+    dailyDesc: "Practice 10 IT terms. Flip each card for the explanation, then rate your recall.",
     dailyBtn: "Start 10 Cards Now",
     modulesEyebrow: "Official IPA Syllabus",
     modulesTitle: "Select Study Module",
@@ -394,6 +394,7 @@ export function LearnClient() {
   const [forceReviewAllDayDeck, setForceReviewAllDayDeck] = useState(false);
   const [speedMatchCards, setSpeedMatchCards] = useState<FECard[] | null>(null);
   const [speedMatchTitle, setSpeedMatchTitle] = useState<string>("");
+
   const [feRoadmapViewMode, setFeRoadmapViewMode] = useState<"path" | "grid">("path");
 
   const handleStartTierQuiz = (tierNumber: number, title: string) => {
@@ -583,6 +584,7 @@ export function LearnClient() {
 
   const currentDrillCards = sessionCards.length > 0 ? sessionCards : activeCards;
   const isDrillActive = Boolean(activeMode || selectedDayDeck);
+  useEffect(() => { if (isDrillActive || speedMatchCards) window.scrollTo({ top: 0, behavior: "instant" }); }, [isDrillActive, speedMatchCards]);
 
   return (
     <div className="w-full max-w-5xl mx-auto px-3.5 sm:px-4 py-5 sm:py-8 md:py-12 flex flex-col gap-6 sm:gap-8 md:gap-10 min-w-0 max-w-full">
@@ -692,23 +694,9 @@ export function LearnClient() {
               {txt.title}
             </h1>
 
-            {locale === "ja" ? (
-              <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                国家試験<b>「基本情報技術者試験（FE）」</b>および<b>技人国ビザ</b>取得のための自習型認知学習ジム。
-                認知科学（<i>アクティブリコール</i>、<i>チャンキング</i>、キタミ式直感アナロジー、Web Speech音声合成）に基づき設計されています。
-              </p>
-            ) : locale === "en" ? (
-              <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                Self-study cognitive gym for Japan’s national <b>Fundamental IT Engineer Examination (FE)</b> and <b>Engineer visa</b> qualification. 
-                Engineered with cognitive science: <i>Active Recall</i>, <i>Chunking</i>, Japanese TTS audio, and Kitami-style intuitive visual analogies.
-              </p>
-            ) : (
-              <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                Platform belajar mandiri untuk persiapan ujian nasional Jepang <b>FE (基本情報技術者試験)</b> dan syarat ganti visa <b>技人国</b>. 
-                Dirancang berbasis ilmu psikologi kognitif: <i>Active Recall</i>, <i>Chunking</i>, audio sintetis, dan analogi visual ala Kitami-shiki.
-              </p>
-            )}
-
+            <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed max-w-2xl">
+              {locale === "ja" ? "IT用語を覚え、過去問を解き、アルゴリズムを確認しましょう。自分のペースでFE試験に備えられます。" : locale === "en" ? "Learn Japanese IT terms, practice past exam questions, and work through algorithms at your own pace." : "Pelajari istilah IT Jepang, latihan soal ujian, dan telusuri algoritma dengan ritmemu sendiri."}
+            </p>
             {/* Offline & PWA Bar */}
             <div className="flex flex-wrap items-center gap-2.5 pt-1">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-500 text-xs font-semibold">

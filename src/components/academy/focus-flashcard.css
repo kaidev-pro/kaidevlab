@@ -1,0 +1,34 @@
+.focus-flashcard.focus-flip-card { padding: 0; min-height: 0; background: transparent; border: 0; perspective: 1400px; cursor: pointer; }
+.focus-card-turn { display: grid; transform-style: preserve-3d; transition: transform .42s cubic-bezier(.2,.65,.25,1); }
+.focus-flip-card.is-revealed .focus-card-turn { transform: rotateY(180deg); }
+.focus-card-face { grid-area: 1/1; min-width: 0; min-height: 370px; border: 1px solid var(--study-line); border-radius: 16px; background: var(--study-paper); backface-visibility: hidden; -webkit-backface-visibility: hidden; box-shadow: 0 8px 32px #10204406; }
+.focus-card-front { display: grid; }
+.focus-card-tap { padding: 25px 32px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; width: 100%; min-height: 370px; text-align: center; border-radius: inherit; }
+.focus-card-topline { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 16px; font-size: .65rem; font-weight: 600; letter-spacing: .08em; color: var(--study-muted); }
+.focus-card-topline > span:last-child { letter-spacing: 0; }
+.focus-card-word { font-size: clamp(2.3rem,5vw,4.5rem); font-weight: 700; letter-spacing: .02em; line-height: 1.5; color: var(--study-text); word-break: break-word; }
+.focus-card-hint { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; font-size: .8rem; color: var(--study-muted); }
+.focus-card-hint small { width: 100%; font-size: .65rem; color: var(--study-muted); opacity: .75; }
+.focus-card-back { transform: rotateY(180deg); padding: 25px 32px; display: flex; flex-direction: column; gap: 20px; cursor: default; }
+.focus-card-meaning > span { color: var(--study-muted); font-size: .9rem; }
+.focus-card-meaning h2 { padding: 0!important; margin: 7px 0 0!important; font-size: 1.45rem!important; text-align: left; line-height: 1.45; word-break: normal; }
+.focus-card-back .focus-example { margin: 0; text-align: left; }
+.focus-card-audio { align-self: flex-start; margin-top: auto; padding: 8px 0; }
+.focus-card-topline .study-text-button { font-size: .75rem; letter-spacing: 0; }
+.focus-rating-prompt { text-align: center; font-size: .8rem; margin: 20px 0 11px!important; }
+.focus-flip-card.is-revealed .focus-card-front,.focus-flip-card:not(.is-revealed) .focus-card-back { pointer-events: none; }
+@media (max-width: 700px) {
+  .focus-card-tap { padding: 22px; min-height: 330px; }
+  .focus-card-face { min-height: 330px; }
+  .focus-card-back { padding: 22px; gap: 18px; }
+  .focus-card-word { font-size: clamp(2.1rem,10vw,3.2rem); }
+  .focus-card-hint { font-size: .75rem; }
+  .focus-card-meaning h2 { font-size: 1.2rem!important; }
+  .focus-card-topline { font-size: .6rem; }
+  .focus-card-topline .study-text-button { font-size: .65rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .focus-card-turn,.focus-flip-card.is-revealed .focus-card-turn { transition: none; transform: none; }
+  .focus-card-back { transform: none; }
+  .focus-flip-card.is-revealed .focus-card-front,.focus-flip-card:not(.is-revealed) .focus-card-back { visibility: hidden; }
+}

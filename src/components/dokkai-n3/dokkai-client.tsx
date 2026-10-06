@@ -565,7 +565,7 @@ export function DokkaiClient() {
             })}
 
             {/* Bottom Passage Navigation — Sticky on mobile */}
-            <div className="fixed bottom-0 left-0 right-0 z-30 bg-[var(--surface)]/95 backdrop-blur-md border-t border-[var(--border)] p-3 sm:p-4 flex items-center justify-between gap-3 sm:static sm:bg-transparent sm:backdrop-blur-none sm:border-0 sm:pt-2 sm:pb-0">
+            <div className="study-module-controls fixed bottom-0 left-0 right-0 z-30 bg-[var(--surface)]/95 backdrop-blur-md border-t border-[var(--border)] p-3 sm:p-4 flex items-center justify-between gap-3 sm:static sm:bg-transparent sm:backdrop-blur-none sm:border-0 sm:pt-2 sm:pb-0">
               <button
                 type="button"
                 disabled={currentPassageIndex === 0}

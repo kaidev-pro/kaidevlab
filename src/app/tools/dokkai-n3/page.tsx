@@ -27,8 +27,8 @@ export const metadata: Metadata = {
 
 export default function DokkaiN3Page() {
   return (
-    <main className="min-h-screen w-full max-w-full overflow-x-hidden">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden">
       <DokkaiClient />
-    </main>
+    </div>
   );
 }

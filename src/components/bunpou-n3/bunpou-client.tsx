@@ -841,7 +841,7 @@ export function BunpouClient() {
       </main>
 
       {/* Mobile Bottom Sticky Navigation Toolbar */}
-      <nav className="fixed bottom-0 left-0 right-0 z-30 bg-[var(--surface)]/95 backdrop-blur-md border-t border-[var(--border)] px-3 py-2 sm:hidden pb-[calc(0.5rem+env(safe-area-inset-bottom,0px))] shadow-lg">
+      <nav className="study-module-controls fixed bottom-0 left-0 right-0 z-30 bg-[var(--surface)]/95 backdrop-blur-md border-t border-[var(--border)] px-3 py-2 sm:hidden pb-[calc(0.5rem+env(safe-area-inset-bottom,0px))] shadow-lg">
         <div className="flex items-center justify-between gap-2 max-w-md mx-auto">
           <button
             type="button"

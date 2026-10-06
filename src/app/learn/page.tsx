@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { AcademyPortalClient } from "@/components/academy/academy-portal-client";
+import { StudyDashboardClient } from "@/components/academy/study-dashboard-client";
 
 export const metadata: Metadata = {
   title: "Kaidevlab Study — Portal Belajar & Riset Terpadu",
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Kaidevlab Study — Portal Belajar & Riset Terpadu",
     description:
       "Portal pembelajaran terpadu Kaidevlab Study: JLPT N3 Suite (Tango, Dokkai, Bunpou), Fundamental FE Exam, dan perpustakaan digital interaktif.",
-    url: "https://study.kaidevlab.com/",
+    url: "https://learn.kaidevlab.com/",
     siteName: "Kaidevlab Study",
     type: "website",
     images: [{ url: "/brand/kaidevlab-study-logo-light.png" }],
@@ -26,8 +26,6 @@ export const metadata: Metadata = {
 
 export default function LearnPage() {
   return (
-    <main className="min-h-screen w-full max-w-full overflow-x-hidden">
-      <AcademyPortalClient />
-    </main>
+    <StudyDashboardClient />
   );
 }

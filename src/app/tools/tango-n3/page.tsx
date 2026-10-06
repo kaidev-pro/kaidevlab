@@ -37,8 +37,8 @@ export const metadata: Metadata = {
 
 export default function TangoN3Page() {
   return (
-    <main className="min-h-screen w-full max-w-full overflow-x-hidden">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden">
       <TangoN3Client />
-    </main>
+    </div>
   );
 }

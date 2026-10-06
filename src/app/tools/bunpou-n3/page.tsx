@@ -27,8 +27,8 @@ export const metadata: Metadata = {
 
 export default function BunpouN3Page() {
   return (
-    <main className="min-h-screen w-full max-w-full overflow-x-hidden bg-[var(--background)]">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[var(--background)]">
       <BunpouClient />
-    </main>
+    </div>
   );
 }

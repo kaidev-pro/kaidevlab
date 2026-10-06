@@ -34,7 +34,7 @@ export function N3TopBar({ active, title, tools }: N3TopBarProps) {
   const backHref = active === "suite" ? "/learn/" : "/tools/n3-suite/";
 
   return (
-    <header className="sticky top-0 z-40 bg-[var(--surface)]/95 backdrop-blur-md border-b border-[var(--border)]">
+    <header className="n3-topbar sticky top-0 z-40 bg-[var(--surface)]/95 backdrop-blur-md border-b border-[var(--border)]">
       <h1 className="sr-only">{title}</h1>
       <div className="max-w-6xl mx-auto px-2.5 sm:px-6 py-2 flex items-center gap-1.5 sm:gap-3">
         <Link
@@ -124,10 +124,10 @@ export function N3ContinueCard({
   children,
 }: N3ContinueCardProps) {
   const a = ACCENTS[accent];
-  const btnClass = `w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-white text-sm font-bold shadow-md hover:shadow-lg transition-all active:scale-[0.98] ${a.btn}`;
+  const btnClass = `n3-primary w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-white text-sm font-bold shadow-md hover:shadow-lg transition-all active:scale-[0.98] ${a.btn}`;
 
   return (
-    <section className={`p-5 sm:p-7 rounded-3xl bg-[var(--surface)] border-2 ${a.ring} shadow-sm space-y-4`}>
+    <section className={`n3-continue-card p-5 sm:p-7 rounded-3xl bg-[var(--surface)] border-2 ${a.ring} shadow-sm space-y-4`}>
       <div className="space-y-1.5">
         <p className={`text-[11px] font-bold uppercase tracking-wider ${a.text}`}>{eyebrow}</p>
         <h2 className="text-xl sm:text-2xl font-extrabold text-[var(--text-primary)] leading-snug">{title}</h2>
@@ -186,7 +186,7 @@ interface N3MoreSectionProps {
 export function N3MoreSection({ label = "Opsi & materi lainnya", id, children, defaultOpen = false }: N3MoreSectionProps) {
   const [open, setOpen] = useState(defaultOpen);
   return (
-    <section className="space-y-4">
+    <section className="n3-more-section space-y-4">
       <button
         id={id}
         type="button"

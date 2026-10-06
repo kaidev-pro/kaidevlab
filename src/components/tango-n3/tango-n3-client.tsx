@@ -82,6 +82,7 @@ export function TangoN3Client() {
   const { speak, activeSpeechId } = useJapaneseTts();
   const [progress, setProgress] = useState<TangoProgress>(DEFAULT_TANGO_PROGRESS);
   const [activeMode, setActiveMode] = useState<string | null>(null);
+  useEffect(() => { if (activeMode) window.scrollTo({ top: 0, behavior: "instant" }); }, [activeMode]);
   const [activeCards, setActiveCards] = useState<TangoN3Card[]>([]);
   const [sessionType, setSessionType] = useState<"flashcard" | "quiz">("flashcard");
   const [selectedStudyTab, setSelectedStudyTab] = useState<"flashcard" | "quiz">("flashcard");
@@ -315,7 +316,7 @@ export function TangoN3Client() {
     <div className="min-h-screen bg-[var(--background)] text-[var(--text-primary)] pb-24 font-sans">
       {/* Main Study Screen (Active Session) */}
       {activeMode ? (
-        <div className="w-full max-w-5xl mx-auto px-2.5 sm:px-4 py-2 sm:py-6 space-y-3 sm:space-y-6">
+        <div role="main" className="w-full max-w-5xl mx-auto px-2.5 sm:px-4 py-2 sm:py-6 space-y-3 sm:space-y-6">
           <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-2.5 sm:pb-3">
             <button
               onClick={() => setActiveMode(null)}

@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence, useMotionValue, useTransform, type Variants } from "framer-motion";
 import {
   RotateCcw,
+  Undo2,
   Sparkles,
   Volume2,
   CheckCircle2,
@@ -126,6 +127,16 @@ function createAudioFeedback() {
   };
 }
 
+interface UndoSnapshot {
+  queue: FECard[];
+  initialTotal: number;
+  masteredCount: number;
+  reviewCount: number;
+  mistakeCards: FECard[];
+  card: FECard;
+  rating: CardRating;
+}
+
 export function FlashcardView({
   cards,
   onRateCard,
@@ -136,8 +147,13 @@ export function FlashcardView({
   streak,
   onFinishSession,
 }: FlashcardViewProps) {
-  const [activeDeck, setActiveDeck] = useState<FECard[]>(cards);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [queue, setQueue] = useState<FECard[]>(cards);
+  const [initialTotal, setInitialTotal] = useState(cards.length);
+  const [masteredCount, setMasteredCount] = useState(0);
+  const [reviewCount, setReviewCount] = useState(0);
+  const [mistakeCards, setMistakeCards] = useState<FECard[]>([]);
+  const [undoHistory, setUndoHistory] = useState<UndoSnapshot[]>([]);
+
   const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
   const [isFlipped, setIsFlipped] = useState(false);
   const [showFurigana, setShowFurigana] = useState(true);
@@ -147,8 +163,12 @@ export function FlashcardView({
 
   // Reset card state whenever cards list changes
   useEffect(() => {
-    setActiveDeck(cards);
-    setCurrentIndex(0);
+    setQueue(cards);
+    setInitialTotal(cards.length);
+    setMasteredCount(0);
+    setReviewCount(0);
+    setMistakeCards([]);
+    setUndoHistory([]);
     setIsFlipped(false);
     setShowAnalogy(false);
   }, [cards]);
@@ -156,7 +176,7 @@ export function FlashcardView({
   // Reset analogy state whenever card changes
   useEffect(() => {
     setShowAnalogy(false);
-  }, [currentIndex]);
+  }, [queue]);
 
   const audioRef = useRef<ReturnType<typeof createAudioFeedback> | null>(null);
 
@@ -164,15 +184,14 @@ export function FlashcardView({
     audioRef.current = createAudioFeedback();
   }, []);
 
-  const safeIndex = activeDeck.length > 0 ? Math.min(currentIndex, activeDeck.length - 1) : 0;
-  const currentCard = activeDeck[safeIndex];
-  const isLastCard = activeDeck.length > 0 && safeIndex === activeDeck.length - 1;
+  const currentCard = queue[0];
 
   // Swipe motion tracking
   const x = useMotionValue(0);
   const rotateCard = useTransform(x, [-220, 220], [-14, 14]);
   const rightBadgeOpacity = useTransform(x, [35, 110], [0, 1]);
   const leftBadgeOpacity = useTransform(x, [-35, -110], [0, 1]);
+
   const handleFlip = useCallback(() => {
     triggerHaptic("light");
     if (soundEffects && audioRef.current) {
@@ -199,42 +218,67 @@ export function FlashcardView({
 
       onRateCard(currentCard.id, currentCard.category, rating);
 
-      const willRequeue = rating === "forgot";
-      if (willRequeue) {
-        setActiveDeck((prev) => [...prev, currentCard]);
-      }
+      // Snapshot for Quizlet Undo
+      setUndoHistory((prev) => [
+        ...prev.slice(-19),
+        {
+          queue,
+          initialTotal,
+          masteredCount,
+          reviewCount,
+          mistakeCards,
+          card: currentCard,
+          rating,
+        },
+      ]);
 
-      if (isLastCard && !willRequeue) {
-        if (onFinishSession) onFinishSession();
+      if (rating === "mastered") {
+        // Graduate card: card is removed from active session queue
+        const nextMastered = masteredCount + 1;
+        setMasteredCount(nextMastered);
+        const nextQueue = queue.slice(1);
+        setQueue(nextQueue);
+
+        if (nextQueue.length === 0) {
+          if (onFinishSession) onFinishSession();
+        } else {
+          setDirection(1);
+          setIsFlipped(false);
+        }
       } else {
+        // Re-queue card to the end until mastered
+        setReviewCount((prev) => prev + 1);
+        if (!mistakeCards.some((c) => c.id === currentCard.id)) {
+          setMistakeCards((prev) => [...prev, currentCard]);
+        }
+        const nextQueue = [...queue.slice(1), currentCard];
+        setQueue(nextQueue);
         setDirection(1);
         setIsFlipped(false);
-        setCurrentIndex((prev) => prev + 1);
       }
+
       x.set(0);
     },
-    [currentCard, isLastCard, onRateCard, onFinishSession, soundEffects, x]
+    [currentCard, initialTotal, masteredCount, mistakeCards, onFinishSession, onRateCard, queue, reviewCount, soundEffects, x]
   );
 
-  const handleNext = useCallback(() => {
-    if (currentIndex < activeDeck.length - 1) {
-      if (soundEffects && audioRef.current) audioRef.current.playFlip();
-      setDirection(1);
-      setIsFlipped(false);
-      setCurrentIndex((prev) => prev + 1);
-      x.set(0);
+  const handleUndo = useCallback(() => {
+    if (undoHistory.length === 0) return;
+    const last = undoHistory[undoHistory.length - 1];
+    setUndoHistory((prev) => prev.slice(0, prev.length - 1));
+    setQueue(last.queue);
+    setInitialTotal(last.initialTotal);
+    setMasteredCount(last.masteredCount);
+    setReviewCount(last.reviewCount);
+    setMistakeCards(last.mistakeCards);
+    setIsFlipped(false);
+    setDirection(-1);
+    x.set(0);
+    triggerHaptic("light");
+    if (soundEffects && audioRef.current) {
+      audioRef.current.playFlip();
     }
-  }, [currentIndex, activeDeck.length, soundEffects, x]);
-
-  const handlePrev = useCallback(() => {
-    if (currentIndex > 0) {
-      if (soundEffects && audioRef.current) audioRef.current.playFlip();
-      setDirection(-1);
-      setIsFlipped(false);
-      setCurrentIndex((prev) => prev - 1);
-      x.set(0);
-    }
-  }, [currentIndex, soundEffects, x]);
+  }, [undoHistory, soundEffects, x]);
 
   // Audio pronunciation via Web Speech API
   const speakJapanese = useCallback((text: string) => {
@@ -249,7 +293,7 @@ export function FlashcardView({
     window.speechSynthesis.speak(utterance);
   }, []);
 
-  // Keyboard navigation
+  // Keyboard navigation (Quizlet standard: ArrowRight = Mastered, ArrowLeft = Requeue, Z = Undo, Space = Flip)
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
@@ -259,10 +303,13 @@ export function FlashcardView({
         handleFlip();
       } else if (e.code === "ArrowRight") {
         e.preventDefault();
-        handleNext();
+        handleRate("mastered");
       } else if (e.code === "ArrowLeft") {
         e.preventDefault();
-        handlePrev();
+        handleRate("forgot");
+      } else if (e.key === "z" || e.key === "Z" || e.key === "u" || e.key === "U") {
+        e.preventDefault();
+        handleUndo();
       } else if (e.key === "f" || e.key === "F") {
         e.preventDefault();
         setShowFurigana((prev) => !prev);
@@ -279,7 +326,7 @@ export function FlashcardView({
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [handleFlip, handleNext, handlePrev, isFlipped, handleRate]);
+  }, [handleFlip, handleRate, handleUndo, isFlipped]);
 
   if (!currentCard) {
     return (
@@ -327,17 +374,34 @@ export function FlashcardView({
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto flex flex-col gap-5 sm:gap-6 select-none min-w-0 max-w-full">
-      {/* Top Controls & Mini Bar */}
-      <div className="flex items-center justify-between gap-4 text-xs font-medium text-[var(--text-secondary)]">
-        <div className="flex items-center gap-3">
-          <span className="font-mono text-sm font-semibold text-[var(--text-primary)]">
-            {currentIndex + 1} <span className="opacity-40">/ {activeDeck.length}</span>
+    <div className="w-full max-w-2xl mx-auto flex flex-col gap-4 sm:gap-6 select-none min-w-0 max-w-full">
+      {/* Top Controls & Mini Bar (Quizlet Dual-Bucket System) */}
+      <div className="flex items-center justify-between gap-2 text-xs font-medium text-[var(--text-secondary)]">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 flex-wrap">
+          {/* Quizlet Bucket: Hafal / Kuasai (Graduated) */}
+          <span
+            className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-[11px] sm:text-xs font-bold"
+            title="Sudah Hafal (Selesai sesi)"
+          >
+            <CheckCircle2 size={13} className="text-emerald-500" />
+            <span>{masteredCount}</span>
+            <span className="hidden sm:inline text-[10px] font-semibold opacity-80">Hafal</span>
           </span>
+
+          {/* Quizlet Bucket: Belum / Masih Belajar (Remaining in Queue) */}
+          <span
+            className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-[11px] sm:text-xs font-bold"
+            title="Masih Belajar (Tersisa dalam antrean)"
+          >
+            <RotateCcw size={12} className="text-amber-500" />
+            <span>{queue.length}</span>
+            <span className="hidden sm:inline text-[10px] font-semibold opacity-80">Belum</span>
+          </span>
+
           {streak > 0 && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-500 font-medium">
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-500 font-medium text-[11px] sm:text-xs">
               <Flame size={13} className="fill-amber-500 animate-pulse" />
-              {streak} Hari
+              <span>{streak}<span className="hidden sm:inline"> Hari</span></span>
             </span>
           )}
         </div>
@@ -390,9 +454,11 @@ export function FlashcardView({
       {/* Progress Line */}
       <div className="w-full h-1.5 bg-[var(--surface-soft)] rounded-full overflow-hidden">
         <motion.div
-          className="h-full bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-glow)]"
+          className="h-full bg-gradient-to-r from-emerald-500 to-[var(--brand-primary)]"
           initial={{ width: 0 }}
-          animate={{ width: `${((currentIndex + 1) / activeDeck.length) * 100}%` }}
+          animate={{
+            width: `${initialTotal > 0 ? (masteredCount / initialTotal) * 100 : 0}%`,
+          }}
           transition={{ duration: 0.35, ease: "easeOut" }}
         />
       </div>
@@ -418,14 +484,14 @@ export function FlashcardView({
               style={{ opacity: rightBadgeOpacity }}
               className="absolute top-4 sm:top-5 right-4 sm:right-5 z-40 pointer-events-none px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-emerald-500 text-white font-bold text-xs shadow-lg flex items-center gap-1 rotate-6"
             >
-              <CheckCircle2 size={14} /> KUASAI
+              <CheckCircle2 size={14} /> HAFAL
             </motion.div>
 
             <motion.div
               style={{ opacity: leftBadgeOpacity }}
-              className="absolute top-4 sm:top-5 left-4 sm:left-5 z-40 pointer-events-none px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-rose-500 text-white font-bold text-xs shadow-lg flex items-center gap-1 -rotate-6"
+              className="absolute top-4 sm:top-5 left-4 sm:left-5 z-40 pointer-events-none px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-amber-500 text-white font-bold text-xs shadow-lg flex items-center gap-1 -rotate-6"
             >
-              <AlertCircle size={14} /> LUPA
+              <RotateCcw size={14} /> BELUM
             </motion.div>
 
             {/* Draggable Swiping Container */}
@@ -441,9 +507,9 @@ export function FlashcardView({
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={0.65}
               onDragEnd={(e, info) => {
-                if (info.offset.x > 110) {
+                if (info.offset.x > 90 || info.velocity.x > 400) {
                   handleRate("mastered");
-                } else if (info.offset.x < -110) {
+                } else if (info.offset.x < -90 || info.velocity.x < -400) {
                   handleRate("forgot");
                 }
               }}
@@ -692,9 +758,9 @@ export function FlashcardView({
                   </div>
 
                   {/* Footer Notice */}
-                  <div className="text-center text-[10px] sm:text-[11px] text-[var(--text-secondary)] opacity-60 pt-2 border-t border-[var(--border)]">
-                    <span className="md:hidden">Pilih rating di bawah atau swipe</span>
-                    <span className="hidden md:inline">Beri penilaian (1: Lupa, 2: Ragu, 3: Kuasai) · [A] Toggle Analogi</span>
+                  <div className="text-center text-[10px] sm:text-[11px] text-[var(--text-secondary)] opacity-70 pt-2 border-t border-[var(--border)]">
+                    <span className="md:hidden">Swipe Kanan (Hafal) · Swipe Kiri (Belum)</span>
+                    <span className="hidden md:inline">Swipe Kanan (→ Hafal) · Swipe Kiri (← Belum) · [Z] Undo</span>
                   </div>
                 </div>
               </motion.div>
@@ -703,7 +769,7 @@ export function FlashcardView({
         </AnimatePresence>
       </div>
 
-      {/* Rating & Navigation Control Bar */}
+      {/* Rating & Navigation Control Bar (Quizlet Two-Bucket Mode) */}
       <div className="flex flex-col gap-3">
         {isFlipped ? (
           <motion.div
@@ -714,29 +780,29 @@ export function FlashcardView({
             <button
               type="button"
               onClick={() => handleRate("forgot")}
-              className="group flex flex-col items-center justify-center min-h-[50px] p-2.5 sm:p-3 rounded-xl border border-rose-500/30 hover:border-rose-500 bg-rose-500/5 hover:bg-rose-500/10 text-rose-500 transition-all shadow-sm active:scale-95"
+              className="group flex flex-col items-center justify-center min-h-[50px] p-2.5 sm:p-3 rounded-xl border border-rose-500/30 hover:border-rose-500 bg-rose-500/5 hover:bg-rose-500/10 text-rose-500 transition-all shadow-sm active:scale-95 cursor-pointer"
             >
               <div className="flex items-center gap-1 font-bold text-xs sm:text-sm">
-                <AlertCircle size={15} /> Lupa
+                <RotateCcw size={15} /> Belum
               </div>
-              <span className="text-[10px] opacity-75 mt-0.5">Ulangi <span className="hidden md:inline">(1)</span></span>
+              <span className="text-[10px] opacity-75 mt-0.5">Ulangi nanti <span className="hidden md:inline">(1)</span></span>
             </button>
 
             <button
               type="button"
               onClick={() => handleRate("unsure")}
-              className="group flex flex-col items-center justify-center min-h-[50px] p-2.5 sm:p-3 rounded-xl border border-amber-500/30 hover:border-amber-500 bg-amber-500/5 hover:bg-amber-500/10 text-amber-500 transition-all shadow-sm active:scale-95"
+              className="group flex flex-col items-center justify-center min-h-[50px] p-2.5 sm:p-3 rounded-xl border border-amber-500/30 hover:border-amber-500 bg-amber-500/5 hover:bg-amber-500/10 text-amber-500 transition-all shadow-sm active:scale-95 cursor-pointer"
             >
               <div className="flex items-center gap-1 font-bold text-xs sm:text-sm">
                 <HelpCircle size={15} /> Ragu
               </div>
-              <span className="text-[10px] opacity-75 mt-0.5">Belum yakin <span className="hidden md:inline">(2)</span></span>
+              <span className="text-[10px] opacity-75 mt-0.5">Ulangi nanti <span className="hidden md:inline">(2)</span></span>
             </button>
 
             <button
               type="button"
               onClick={() => handleRate("mastered")}
-              className="group flex flex-col items-center justify-center min-h-[50px] p-2.5 sm:p-3 rounded-xl border border-emerald-500/30 hover:border-emerald-500 bg-emerald-500/5 hover:bg-emerald-500/10 text-emerald-500 transition-all shadow-sm active:scale-95"
+              className="group flex flex-col items-center justify-center min-h-[50px] p-2.5 sm:p-3 rounded-xl border border-emerald-500/30 hover:border-emerald-500 bg-emerald-500/5 hover:bg-emerald-500/10 text-emerald-500 transition-all shadow-sm active:scale-95 cursor-pointer"
             >
               <div className="flex items-center gap-1 font-bold text-xs sm:text-sm">
                 <CheckCircle2 size={15} /> Kuasai!
@@ -748,19 +814,20 @@ export function FlashcardView({
           <div className="flex items-center justify-between gap-2">
             <button
               type="button"
-              onClick={handlePrev}
-              disabled={currentIndex === 0}
-              className="inline-flex items-center justify-center gap-1 px-3 sm:px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none transition-all active:scale-95 shrink-0"
-              title="Kartu Sebelumnya"
+              onClick={handleUndo}
+              disabled={undoHistory.length === 0}
+              className="inline-flex items-center justify-center gap-1.5 px-3 sm:px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none transition-all active:scale-95 shrink-0 cursor-pointer"
+              title="Urungkan Swipe Terakhir (Z)"
             >
-              <ChevronLeft size={16} />
-              <span className="hidden sm:inline">Sebelumnya</span>
+              <Undo2 size={16} />
+              <span className="hidden sm:inline">Undo</span>
+              <kbd className="hidden md:inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono bg-[var(--surface-soft)] text-[var(--text-secondary)] border border-[var(--border)]">Z</kbd>
             </button>
 
             <button
               type="button"
               onClick={handleFlip}
-              className="flex-1 max-w-[240px] inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white text-xs font-bold tracking-wide shadow-md hover:shadow-lg transition-all active:scale-95"
+              className="flex-1 max-w-[240px] inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-hover)] text-white text-xs font-bold tracking-wide shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer"
             >
               <RotateCcw size={14} />
               <span>Balik Kartu</span>
@@ -769,13 +836,13 @@ export function FlashcardView({
 
             <button
               type="button"
-              onClick={handleNext}
-              disabled={currentIndex === activeDeck.length - 1}
-              className="inline-flex items-center justify-center gap-1 px-3 sm:px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none transition-all active:scale-95 shrink-0"
-              title="Kartu Berikutnya"
+              onClick={() => handleRate("mastered")}
+              className="inline-flex items-center justify-center gap-1.5 px-3 sm:px-4 py-2.5 rounded-xl border border-emerald-500/30 hover:border-emerald-500 bg-emerald-500/5 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold transition-all active:scale-95 shrink-0 cursor-pointer"
+              title="Tandai Sudah Hafal (Swipe Kanan / →)"
             >
-              <span className="hidden sm:inline">Berikutnya</span>
-              <ChevronRight size={16} />
+              <span className="hidden sm:inline">Kuasai</span>
+              <CheckCircle2 size={16} />
+              <kbd className="hidden md:inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">→</kbd>
             </button>
           </div>
         )}

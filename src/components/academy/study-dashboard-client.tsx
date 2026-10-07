@@ -16,6 +16,7 @@ import {
   Monitor,
   Bookmark,
   Grid2X2,
+  Sparkles,
 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/context";
 import { loadTangoProgress } from "@/lib/tango-n3-storage";
@@ -35,6 +36,8 @@ import { DOKKAI_PASSAGES } from "@/data/dokkai-n3/passages";
 import { TANGO_TOTAL_CARDS, FE_TOTAL_CARDS } from "@/data/learn-stats";
 import { openSyncModal } from "@/lib/global-modals-store";
 import { FeCandidateIdCard } from "@/components/fe-study/fe-candidate-id-card";
+import { AuthOnboardingModal } from "@/components/auth/auth-onboarding-modal";
+import { getStoredAuth, pullStudyProgress } from "@/lib/auth-sync-client";
 import { StudyShell, StudyDialog } from "./study-shell";
 import { studyCopy, TRACK_LABELS } from "./study-copy";
 
@@ -73,6 +76,9 @@ export function StudyDashboardClient() {
   const [user, setUser] = useState("Kai");
   const [cadetId, setCadetId] = useState("KAI-PASS");
   const [profile, setProfile] = useState(false);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [authModalTab, setAuthModalTab] = useState<"login" | "register" | "profile">("register");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [ready, setReady] = useState(false);
   const [days, setDays] = useState<{ date: string; count: number }[]>([]);
   const [streak, setStreak] = useState(0);
@@ -150,7 +156,21 @@ export function StudyDashboardClient() {
     setStreak(currentStreak);
 
     try {
-      setUser(localStorage.getItem("kaidevlab_candidate_name") || "Kai");
+      const auth = getStoredAuth();
+      if (auth.isLoggedIn && auth.user) {
+        setIsLoggedIn(true);
+        setUser(auth.user.name);
+        setCadetId(auth.user.cadetId);
+      } else {
+        setIsLoggedIn(false);
+        setUser(localStorage.getItem("kaidevlab_candidate_name") || "Kai");
+        let id = localStorage.getItem("kaidevlab_cadet_id");
+        if (!id) {
+          id = `KAI-PASS-${Math.floor(1000 + Math.random() * 9000)}`;
+          localStorage.setItem("kaidevlab_cadet_id", id);
+        }
+        setCadetId(id);
+      }
 
       // Check URL query param or localStorage for active hub
       const urlParams =
@@ -166,13 +186,6 @@ export function StudyDashboardClient() {
           if (savedHub === "fe") setSelected("fe");
         }
       }
-
-      let id = localStorage.getItem("kaidevlab_cadet_id");
-      if (!id) {
-        id = `KAI-PASS-${Math.floor(1000 + Math.random() * 9000)}`;
-        localStorage.setItem("kaidevlab_cadet_id", id);
-      }
-      setCadetId(id);
     } catch {}
 
     setReady(true);
@@ -180,13 +193,24 @@ export function StudyDashboardClient() {
 
   useEffect(() => {
     refresh();
+    // Pull latest cloud study progress on mount if user is logged in
+    if (getStoredAuth().isLoggedIn) {
+      pullStudyProgress().then(() => {
+        refresh();
+      });
+    }
+
     window.addEventListener("focus", refresh);
     window.addEventListener("storage", refresh);
     window.addEventListener("kaidevlab:study_activity_recorded", refresh);
+    window.addEventListener("kaidevlab:auth_change", refresh);
+    window.addEventListener("kaidevlab:sync_status", refresh);
     return () => {
       window.removeEventListener("focus", refresh);
       window.removeEventListener("storage", refresh);
       window.removeEventListener("kaidevlab:study_activity_recorded", refresh);
+      window.removeEventListener("kaidevlab:auth_change", refresh);
+      window.removeEventListener("kaidevlab:sync_status", refresh);
     };
   }, [refresh]);
 
@@ -334,6 +358,34 @@ export function StudyDashboardClient() {
                 : "…"}
             </span>
             <div className="study-inline-actions">
+              {isLoggedIn ? (
+                <button
+                  type="button"
+                  className="study-cloud-sync-pill"
+                  onClick={() => {
+                    setAuthModalTab("profile");
+                    setAuthModalOpen(true);
+                  }}
+                  title="Profil Kadet & Cloud Sync Aktif"
+                >
+                  <span className="study-cloud-dot" />
+                  <strong>{user}</strong>
+                  <small>Synced</small>
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="study-login-cta-button"
+                  onClick={() => {
+                    setAuthModalTab("register");
+                    setAuthModalOpen(true);
+                  }}
+                  title="Daftar Akun / Masuk untuk Sinkronisasi Lintas Perangkat"
+                >
+                  <Sparkles size={14} />
+                  <span>Masuk / Daftar</span>
+                </button>
+              )}
               <button
                 className="study-icon-button"
                 onClick={() => setProfile(true)}
@@ -344,7 +396,14 @@ export function StudyDashboardClient() {
               </button>
               <button
                 className="study-icon-button"
-                onClick={openSyncModal}
+                onClick={() => {
+                  if (isLoggedIn) {
+                    setAuthModalTab("profile");
+                    setAuthModalOpen(true);
+                  } else {
+                    openSyncModal();
+                  }
+                }}
                 aria-label={c.sync}
                 title="Sinkronisasi Perangkat"
               >
@@ -353,6 +412,43 @@ export function StudyDashboardClient() {
             </div>
           </div>
         </section>
+
+        {/* Guest Multi-Device Sync Banner (if not logged in) */}
+        {!isLoggedIn && (
+          <div className="study-guest-sync-banner">
+            <div className="study-guest-banner-icon">
+              <Sparkles size={20} />
+            </div>
+            <div className="study-guest-banner-body">
+              <strong>Simpan & Sinkronkan Progres Lintas Perangkat</strong>
+              <p>
+                Belajar di smartphone dan lanjutkan di laptop tanpa kehilangan kartu yang telah dihafal, streak harian, dan skor CBT.
+              </p>
+            </div>
+            <div className="study-guest-banner-actions">
+              <button
+                type="button"
+                className="study-guest-banner-primary"
+                onClick={() => {
+                  setAuthModalTab("register");
+                  setAuthModalOpen(true);
+                }}
+              >
+                Buat Akun Kadet
+              </button>
+              <button
+                type="button"
+                className="study-guest-banner-secondary"
+                onClick={() => {
+                  setAuthModalTab("login");
+                  setAuthModalOpen(true);
+                }}
+              >
+                Sudah Punya Akun? Masuk
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* ========================================================= */}
         {/* DEDICATED TRACK HUB SWITCHER (Option 1: JLPT N3 vs FE Exam) */}
@@ -823,6 +919,16 @@ export function StudyDashboardClient() {
           />
         </StudyDialog>
       )}
+
+      <AuthOnboardingModal
+        isOpen={authModalOpen}
+        onClose={() => setAuthModalOpen(false)}
+        defaultTab={authModalTab}
+        onTrackChanged={(track) => {
+          if (track === "fe") switchHub("fe");
+          else if (track === "n3") switchHub("n3");
+        }}
+      />
     </StudyShell>
   );
 }

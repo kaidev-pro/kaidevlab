@@ -40,6 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# server database
+server/data/
+
 # tooling
 .superpowers/
 scratch/

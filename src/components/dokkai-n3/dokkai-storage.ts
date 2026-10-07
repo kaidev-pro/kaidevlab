@@ -40,6 +40,7 @@ export function saveDokkaiProgress(progress: DokkaiProgress): void {
   if (typeof window === "undefined") return;
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    window.dispatchEvent(new Event("kaidevlab:study_activity_recorded"));
   } catch (err) {
     console.error("Failed to save dokkai progress:", err);
   }

@@ -24,6 +24,10 @@ if ($LASTEXITCODE -ne 0) {
 Write-Host "Extracting and reloading Nginx on VPS..." -ForegroundColor Cyan
 ssh -o BatchMode=yes root@${vpsIp} "tar -xzf /tmp/out.tar.gz -C /var/www/kaidevlab/out/ && chown -R www-data:www-data /var/www/kaidevlab/out && systemctl reload nginx && rm /tmp/out.tar.gz"
 
+Write-Host "Syncing auth server and reloading PM2..." -ForegroundColor Cyan
+scp -o BatchMode=yes .\server\index.js root@${vpsIp}:/var/www/kaidevlab/server/index.js
+ssh -o BatchMode=yes root@${vpsIp} "pm2 reload kaidevlab-auth-sync || true"
+
 Remove-Item .\out.tar.gz -Force -ErrorAction SilentlyContinue
 
 Write-Host "Deploy to VPS successfully finished! Kaidevlab is live." -ForegroundColor Green

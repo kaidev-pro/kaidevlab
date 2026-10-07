@@ -205,8 +205,10 @@ export function generateFullBackup(): {
 
   const keys = [
     "kaidevlab_dokkai_n3_progress_v1",
+    "kaidevlab_bunpou_n3_progress_v1",
     "kaidevlab_tango_n3_progress_v1",
     "fe_study_progress_v1",
+    "fe_wrong_questions_v1",
     UNIFIED_STORAGE_KEY,
   ];
 

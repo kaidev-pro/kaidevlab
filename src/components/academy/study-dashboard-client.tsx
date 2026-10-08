@@ -41,6 +41,9 @@ import { getStoredAuth, pullStudyProgress } from "@/lib/auth-sync-client";
 import { N3_DAILY_JOURNEY_DAYS, N3JourneyDay } from "@/data/tango-n3/n3-daily-journey";
 import { loadN3JourneyProgress, N3JourneyProgress } from "@/lib/n3-journey-storage";
 import { N3DailyJourneyRunner } from "@/components/tango-n3/n3-daily-journey-runner";
+import { FE_DAILY_QUESTS, FEDailyQuest } from "@/data/fe-daily-quest";
+import { loadFEQuestProgress, FEQuestProgress } from "@/lib/fe-quest-storage";
+import { FEDailyQuestRunner } from "@/components/fe-study/fe-daily-quest-runner";
 import { StudyShell, StudyDialog } from "./study-shell";
 import { studyCopy, TRACK_LABELS } from "./study-copy";
 
@@ -98,6 +101,18 @@ export function StudyDashboardClient() {
   const [journeyModalOpen, setJourneyModalOpen] = useState(false);
   const [syllabusModalOpen, setSyllabusModalOpen] = useState(false);
 
+  // FE Daily Quest state
+  const [feQuestProgress, setFeQuestProgress] = useState<FEQuestProgress>({
+    currentDay: 1,
+    completedDays: [],
+    dayScores: {},
+    weaknessCardIds: [],
+    lastStudiedDate: "",
+  });
+  const [activeFEQuest, setActiveFEQuest] = useState<FEDailyQuest | null>(null);
+  const [feQuestModalOpen, setFeQuestModalOpen] = useState(false);
+  const [feSyllabusModalOpen, setFeSyllabusModalOpen] = useState(false);
+
   const refresh = useCallback(() => {
     const t = loadTangoProgress();
     const f = loadStudyProgress();
@@ -106,6 +121,7 @@ export function StudyDashboardClient() {
     const today = getTodayDateStr();
 
     setJourneyProgress(loadN3JourneyProgress());
+    setFeQuestProgress(loadFEQuestProgress());
 
     const dueTango = new Set(
       [...t.reviewCardIds, ...t.starredCardIds]
@@ -223,6 +239,7 @@ export function StudyDashboardClient() {
     window.addEventListener("kaidevlab:auth_change", refresh);
     window.addEventListener("kaidevlab:sync_status", refresh);
     window.addEventListener("kaidevlab:n3_journey_updated", refresh);
+    window.addEventListener("kaidevlab:fe_quest_updated", refresh);
     return () => {
       window.removeEventListener("focus", refresh);
       window.removeEventListener("storage", refresh);
@@ -230,6 +247,7 @@ export function StudyDashboardClient() {
       window.removeEventListener("kaidevlab:auth_change", refresh);
       window.removeEventListener("kaidevlab:sync_status", refresh);
       window.removeEventListener("kaidevlab:n3_journey_updated", refresh);
+      window.removeEventListener("kaidevlab:fe_quest_updated", refresh);
     };
   }, [refresh]);
 
@@ -357,6 +375,11 @@ export function StudyDashboardClient() {
   const currentJourneyDayData =
     N3_DAILY_JOURNEY_DAYS.find((d) => d.day === currentJourneyDayNumber) ||
     N3_DAILY_JOURNEY_DAYS[0];
+
+  const currentFEQuestNumber = feQuestProgress.currentDay || 1;
+  const currentFEQuestData =
+    FE_DAILY_QUESTS.find((q) => q.day === currentFEQuestNumber) ||
+    FE_DAILY_QUESTS[0];
 
   return (
     <StudyShell userName={user} onProfile={() => setProfile(true)}>
@@ -571,6 +594,57 @@ export function StudyDashboardClient() {
               >
                 <BookOpen size={15} />
                 <span>Silabus 30 Hari ({journeyProgress.completedDays.length}/30 Selesai)</span>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* ========================================================= */}
+        {/* FE INTEGRATED DAILY QUEST HERO CARD (If activeHub === 'fe') */}
+        {/* ========================================================= */}
+        {activeHub === "fe" && (
+          <div className="study-journey-hero" style={{ borderColor: "rgba(37, 99, 235, 0.35)", background: "linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(5, 150, 105, 0.06) 100%)" }}>
+            <div className="study-journey-top">
+              <span className="study-journey-tag" style={{ background: "#2563eb" }}>
+                <Sparkles size={14} />
+                <span>FE Daily Quest · Day {currentFEQuestData.day}</span>
+              </span>
+              <div className="study-journey-pills">
+                <span className="study-journey-pill">{currentFEQuestData.cardIds.length} Konsep IT</span>
+                <span className="study-journey-pill">1 Tracer Lab</span>
+                <span className="study-journey-pill">{currentFEQuestData.quizQuestionIds.length} CBT Kakomon</span>
+              </div>
+            </div>
+
+            <div className="study-journey-body">
+              <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "#2563eb", fontFamily: "monospace" }}>
+                {currentFEQuestData.themeTag}
+              </span>
+              <h3>{currentFEQuestData.titleId}</h3>
+              <p>{currentFEQuestData.descriptionId}</p>
+            </div>
+
+            <div className="study-journey-actions">
+              <button
+                type="button"
+                className="study-journey-btn-primary"
+                style={{ background: "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)" }}
+                onClick={() => {
+                  setActiveFEQuest(currentFEQuestData);
+                  setFeQuestModalOpen(true);
+                }}
+              >
+                <Play size={16} fill="currentColor" />
+                <span>Mulai Quest Day {currentFEQuestData.day} (~20 Menit)</span>
+              </button>
+
+              <button
+                type="button"
+                className="study-journey-btn-secondary"
+                onClick={() => setFeSyllabusModalOpen(true)}
+              >
+                <BookOpen size={15} />
+                <span>Silabus FE ({feQuestProgress.completedDays.length}/{FE_DAILY_QUESTS.length} Selesai)</span>
               </button>
             </div>
           </div>
@@ -1086,6 +1160,97 @@ export function StudyDashboardClient() {
                         <span className="text-[11px] text-[var(--study-muted)]">Terkunci</span>
                       ) : (
                         <span className="text-[11px] text-[var(--study-blue)] font-bold">Mulai</span>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </StudyDialog>
+      )}
+
+      {/* FE Daily Quest Runner Modal */}
+      {activeFEQuest && (
+        <FEDailyQuestRunner
+          quest={activeFEQuest}
+          isOpen={feQuestModalOpen}
+          onClose={() => setFeQuestModalOpen(false)}
+          onQuestCompleted={() => {
+            refresh();
+          }}
+        />
+      )}
+
+      {/* FE Syllabus Modal */}
+      {feSyllabusModalOpen && (
+        <StudyDialog
+          title="Silabus FE Exam · 7-Day Sprint & CBT Simulator"
+          onClose={() => setFeSyllabusModalOpen(false)}
+        >
+          <div className="space-y-4 max-h-[70vh] overflow-y-auto p-1">
+            <p className="text-xs text-[var(--study-muted)] leading-relaxed">
+              Sprint kurikulum terpadu IPA FE Exam: Setiap hari mengombinasikan Kartu Konsep IT Dasar, Simulasi Pseudocode 科目B, dan Soal Ujian Asli Kakomon.
+            </p>
+            <div className="space-y-2.5">
+              {FE_DAILY_QUESTS.map((fq) => {
+                const isCompleted = feQuestProgress.completedDays.includes(fq.day);
+                const isCurrent = feQuestProgress.currentDay === fq.day;
+                const isLocked = fq.day > feQuestProgress.currentDay;
+
+                return (
+                  <div
+                    key={fq.day}
+                    onClick={() => {
+                      if (!isLocked) {
+                        setActiveFEQuest(fq);
+                        setFeSyllabusModalOpen(false);
+                        setFeQuestModalOpen(true);
+                      }
+                    }}
+                    className={`p-3.5 rounded-2xl border transition-all flex items-center justify-between ${
+                      isLocked
+                        ? "opacity-50 border-[var(--study-line)] bg-[var(--study-soft)] cursor-not-allowed"
+                        : isCurrent
+                        ? "border-blue-600 bg-[var(--study-paper)] shadow-sm cursor-pointer hover:border-blue-600"
+                        : "border-[var(--study-line)] bg-[var(--study-paper)] cursor-pointer hover:border-blue-600"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <span
+                        className={`w-7 h-7 rounded-xl flex items-center justify-center text-xs font-black ${
+                          isCompleted
+                            ? "bg-emerald-500 text-white"
+                            : isCurrent
+                            ? "bg-blue-600 text-white"
+                            : "bg-[var(--study-soft)] text-[var(--study-muted)]"
+                        }`}
+                      >
+                        {isCompleted ? "✓" : fq.day}
+                      </span>
+                      <div>
+                        <strong className="text-xs block text-[var(--study-text)]">
+                          {fq.titleId}
+                        </strong>
+                        <span className="text-[10px] text-[var(--study-muted)] font-mono">
+                          {fq.themeTag} · {fq.durationMinutes} Menit
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      {isCompleted ? (
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                          Selesai
+                        </span>
+                      ) : isCurrent ? (
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/15 text-blue-600 dark:text-blue-400">
+                          Hari Ini
+                        </span>
+                      ) : isLocked ? (
+                        <span className="text-[11px] text-[var(--study-muted)]">Terkunci</span>
+                      ) : (
+                        <span className="text-[11px] text-blue-600 font-bold">Mulai</span>
                       )}
                     </div>
                   </div>

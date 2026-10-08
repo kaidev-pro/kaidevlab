@@ -278,109 +278,231 @@ body:has(.study-surface)::before{display:none}
 /* ========================================================= */
 /* N3 INTEGRATED DAILY JOURNEY CARD & SYLLABUS               */
 /* ========================================================= */
+/* ========================================================= */
+/* N3 & FE INTEGRATED JOURNEY HERO CARD (APPLE/LINEAR GRADE) */
+/* ========================================================= */
 .study-journey-hero {
-  border-radius: 24px;
-  background: linear-gradient(135deg, rgba(36, 91, 255, 0.08) 0%, rgba(245, 158, 11, 0.06) 100%);
-  border: 1px solid rgba(36, 91, 255, 0.25);
-  padding: 24px;
-  margin-bottom: 24px;
+  border-radius: 28px;
+  background: radial-gradient(130% 130% at 0% 0%, rgba(36, 91, 255, 0.12) 0%, rgba(245, 158, 11, 0.04) 55%, transparent 100%),
+              var(--study-paper);
+  border: 1px solid rgba(36, 91, 255, 0.22);
+  padding: 28px;
+  margin-bottom: 28px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 16px 40px -12px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+.study-journey-hero::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(36, 91, 255, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(40px);
+}
+
 .study-journey-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
+
 .study-journey-tag {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 5px 12px;
+  gap: 7px;
+  padding: 6px 14px;
   border-radius: 9999px;
-  background: #245bff;
+  background: linear-gradient(135deg, #245bff 0%, #1646df 100%);
   color: #ffffff;
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.02em;
+  box-shadow: 0 4px 12px rgba(36, 91, 255, 0.3);
 }
+
 .study-journey-pills {
   display: flex;
-  gap: 6px;
+  gap: 8px;
   flex-wrap: wrap;
 }
+
 .study-journey-pill {
-  padding: 4px 10px;
-  border-radius: 8px;
-  background: var(--study-paper);
+  padding: 5px 12px;
+  border-radius: 10px;
+  background: var(--study-soft);
   border: 1px solid var(--study-line);
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--study-text);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
 }
+
 .study-journey-body h3 {
-  font-size: 1.35rem;
-  font-weight: 800;
+  font-size: 1.45rem;
+  font-weight: 850;
   margin: 6px 0;
   color: var(--study-text);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
 }
+
 .study-journey-body p {
-  font-size: 0.82rem;
+  font-size: 0.86rem;
   color: var(--study-muted);
-  line-height: 1.5;
-  max-width: 650px;
+  line-height: 1.55;
+  max-width: 680px;
 }
+
 .study-journey-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-top: 18px;
+  gap: 12px;
+  margin-top: 22px;
 }
+
 .study-journey-btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  border-radius: 14px;
+  gap: 9px;
+  padding: 13px 26px;
+  border-radius: 16px;
   background: linear-gradient(135deg, #245bff 0%, #174ce7 100%);
   color: #ffffff !important;
   font-size: 0.88rem;
   font-weight: 800;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(36, 91, 255, 0.35);
-  transition: all 0.15s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(36, 91, 255, 0.38);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .study-journey-btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(36, 91, 255, 0.45);
+  transform: translateY(-1.5px) scale(1.01);
+  box-shadow: 0 8px 26px rgba(36, 91, 255, 0.5);
 }
+
+.study-journey-btn-primary:active {
+  transform: translateY(0) scale(0.98);
+}
+
 .study-journey-btn-secondary {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 12px 18px;
-  border-radius: 14px;
+  gap: 7px;
+  padding: 13px 20px;
+  border-radius: 16px;
   background: var(--study-paper);
   border: 1px solid var(--study-line);
   color: var(--study-text);
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
 }
+
 .study-journey-btn-secondary:hover {
   border-color: var(--study-blue);
+  background: var(--study-soft);
+  transform: translateY(-1px);
+}
+
+/* ========================================================= */
+/* 3D FLASHCARD PERSPECTIVE & INTERACTION                    */
+/* ========================================================= */
+.study-card-perspective {
+  perspective: 1200px;
+  -webkit-perspective: 1200px;
+}
+
+.study-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.48s cubic-bezier(0.34, 1.4, 0.64, 1);
+  transform-style: preserve-3d;
+}
+
+.study-card-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.study-card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 28px;
+}
+
+.study-card-back {
+  transform: rotateY(180deg);
+}
+
+/* Flashcard Stamps */
+.study-stamp-badge {
+  position: absolute;
+  top: 24px;
+  padding: 8px 20px;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+  z-index: 30;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.study-stamp-master {
+  right: 24px;
+  background: rgba(16, 185, 129, 0.95);
+  color: #ffffff;
+  border: 2px solid #34d399;
+  transform: rotate(8deg);
+}
+
+.study-stamp-repeat {
+  left: 24px;
+  background: rgba(245, 158, 11, 0.95);
+  color: #ffffff;
+  border: 2px solid #fbbf24;
+  transform: rotate(-8deg);
+}
+
+/* Roadmap Timeline */
+.study-roadmap-timeline {
+  position: relative;
+  padding-left: 24px;
+}
+
+.study-roadmap-timeline::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 16px;
+  bottom: 16px;
+  width: 2px;
+  background: linear-gradient(to bottom, #245bff, var(--study-line));
 }
 
 @media (max-width: 768px) {
   .study-journey-hero {
-    padding: 18px;
+    padding: 20px;
   }
   .study-journey-body h3 {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
   }
   .study-journey-actions {
     flex-direction: column;

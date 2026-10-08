@@ -551,6 +551,9 @@ export function StudyDashboardClient() {
         {/* ========================================================= */}
         {/* N3 INTEGRATED DAILY JOURNEY HERO CARD (If activeHub === 'n3') */}
         {/* ========================================================= */}
+        {/* ========================================================= */}
+        {/* N3 INTEGRATED DAILY JOURNEY HERO CARD (If activeHub === 'n3') */}
+        {/* ========================================================= */}
         {activeHub === "n3" && (
           <div className="study-journey-hero">
             <div className="study-journey-top">
@@ -559,6 +562,7 @@ export function StudyDashboardClient() {
                 <span>N3 Daily Journey · Day {currentJourneyDayData.day}</span>
               </span>
               <div className="study-journey-pills">
+                <span className="study-journey-pill">⚡ 25 Menit</span>
                 <span className="study-journey-pill">15 Tango</span>
                 <span className="study-journey-pill">2 Bunpou</span>
                 <span className="study-journey-pill">4 Kuis</span>
@@ -567,11 +571,27 @@ export function StudyDashboardClient() {
             </div>
 
             <div className="study-journey-body">
-              <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "var(--study-blue)", fontFamily: "monospace" }}>
+              <span style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--study-blue)", fontFamily: "monospace", letterSpacing: "0.04em" }}>
                 {currentJourneyDayData.themeTag}
               </span>
               <h3>{currentJourneyDayData.titleId}</h3>
               <p>{currentJourneyDayData.desc}</p>
+            </div>
+
+            {/* Track Progress Mini Bar */}
+            <div className="mt-4 pt-3 border-t border-[var(--study-line)]/60 max-w-lg">
+              <div className="flex items-center justify-between text-[11px] font-bold text-[var(--study-muted)] mb-1.5">
+                <span>Progres Silabus 30 Hari</span>
+                <span className="font-mono text-[var(--study-text)]">
+                  {journeyProgress.completedDays.length}/30 Hari ({Math.round((journeyProgress.completedDays.length / 30) * 100)}%)
+                </span>
+              </div>
+              <div className="w-full h-1.5 rounded-full bg-[var(--study-soft)] overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full transition-all duration-500"
+                  style={{ width: `${Math.max(4, (journeyProgress.completedDays.length / 30) * 100)}%` }}
+                />
+              </div>
             </div>
 
             <div className="study-journey-actions">
@@ -584,7 +604,7 @@ export function StudyDashboardClient() {
                 }}
               >
                 <Play size={16} fill="currentColor" />
-                <span>Mulai Belajar Day {currentJourneyDayData.day} (~25 Menit)</span>
+                <span>Mulai Belajar Day {currentJourneyDayData.day}</span>
               </button>
 
               <button
@@ -593,7 +613,7 @@ export function StudyDashboardClient() {
                 onClick={() => setSyllabusModalOpen(true)}
               >
                 <BookOpen size={15} />
-                <span>Silabus 30 Hari ({journeyProgress.completedDays.length}/30 Selesai)</span>
+                <span>Silabus 30 Hari</span>
               </button>
             </div>
           </div>
@@ -603,13 +623,14 @@ export function StudyDashboardClient() {
         {/* FE INTEGRATED DAILY QUEST HERO CARD (If activeHub === 'fe') */}
         {/* ========================================================= */}
         {activeHub === "fe" && (
-          <div className="study-journey-hero" style={{ borderColor: "rgba(37, 99, 235, 0.35)", background: "linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(5, 150, 105, 0.06) 100%)" }}>
+          <div className="study-journey-hero" style={{ borderColor: "rgba(37, 99, 235, 0.35)", background: "radial-gradient(130% 130% at 0% 0%, rgba(37, 99, 235, 0.12) 0%, rgba(16, 185, 129, 0.05) 55%, transparent 100%), var(--study-paper)" }}>
             <div className="study-journey-top">
-              <span className="study-journey-tag" style={{ background: "#2563eb" }}>
+              <span className="study-journey-tag" style={{ background: "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)" }}>
                 <Sparkles size={14} />
                 <span>FE Daily Quest · Day {currentFEQuestData.day}</span>
               </span>
               <div className="study-journey-pills">
+                <span className="study-journey-pill">⚡ 20 Menit</span>
                 <span className="study-journey-pill">{currentFEQuestData.cardIds.length} Konsep IT</span>
                 <span className="study-journey-pill">1 Tracer Lab</span>
                 <span className="study-journey-pill">{currentFEQuestData.quizQuestionIds.length} CBT Kakomon</span>
@@ -617,11 +638,27 @@ export function StudyDashboardClient() {
             </div>
 
             <div className="study-journey-body">
-              <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "#2563eb", fontFamily: "monospace" }}>
+              <span style={{ fontSize: "0.75rem", fontWeight: 800, color: "#2563eb", fontFamily: "monospace", letterSpacing: "0.04em" }}>
                 {currentFEQuestData.themeTag}
               </span>
               <h3>{currentFEQuestData.titleId}</h3>
               <p>{currentFEQuestData.descriptionId}</p>
+            </div>
+
+            {/* Track Progress Mini Bar */}
+            <div className="mt-4 pt-3 border-t border-[var(--study-line)]/60 max-w-lg">
+              <div className="flex items-center justify-between text-[11px] font-bold text-[var(--study-muted)] mb-1.5">
+                <span>Progres Sprint 7 Hari</span>
+                <span className="font-mono text-[var(--study-text)]">
+                  {feQuestProgress.completedDays.length}/{FE_DAILY_QUESTS.length} Hari ({Math.round((feQuestProgress.completedDays.length / FE_DAILY_QUESTS.length) * 100)}%)
+                </span>
+              </div>
+              <div className="w-full h-1.5 rounded-full bg-[var(--study-soft)] overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-r from-blue-600 to-emerald-500 rounded-full transition-all duration-500"
+                  style={{ width: `${Math.max(4, (feQuestProgress.completedDays.length / FE_DAILY_QUESTS.length) * 100)}%` }}
+                />
+              </div>
             </div>
 
             <div className="study-journey-actions">
@@ -635,7 +672,7 @@ export function StudyDashboardClient() {
                 }}
               >
                 <Play size={16} fill="currentColor" />
-                <span>Mulai Quest Day {currentFEQuestData.day} (~20 Menit)</span>
+                <span>Mulai Quest Day {currentFEQuestData.day}</span>
               </button>
 
               <button
@@ -644,7 +681,7 @@ export function StudyDashboardClient() {
                 onClick={() => setFeSyllabusModalOpen(true)}
               >
                 <BookOpen size={15} />
-                <span>Silabus FE ({feQuestProgress.completedDays.length}/{FE_DAILY_QUESTS.length} Selesai)</span>
+                <span>Silabus FE Sprint</span>
               </button>
             </div>
           </div>
@@ -1097,15 +1134,16 @@ export function StudyDashboardClient() {
           title="Silabus 30 Hari · JLPT N3 Integrated Journey"
           onClose={() => setSyllabusModalOpen(false)}
         >
-          <div className="space-y-4 max-h-[70vh] overflow-y-auto p-1">
+          <div className="space-y-4 max-h-[72vh] overflow-y-auto p-1">
             <p className="text-xs text-[var(--study-muted)] leading-relaxed">
-              Kurikulum bertahap: Setiap hari mengombinasikan 15 Kosakata Tematik, 2 Pola Tata Bahasa Bunpou, Latihan Soal, dan Wacana Dokkai kontekstual.
+              Roadmap kurikulum terpadu 30 Hari JLPT N3: Setiap hari mengombinasikan 15 Kosakata Tematik, 2 Pola Tata Bahasa Bunpou, Latihan Kuis, dan Sintesis Wacana Dokkai.
             </p>
-            <div className="space-y-2.5">
+            <div className="study-roadmap-timeline space-y-3 my-2">
               {N3_DAILY_JOURNEY_DAYS.map((jd) => {
                 const isCompleted = journeyProgress.completedDays.includes(jd.day);
                 const isCurrent = journeyProgress.currentDay === jd.day;
                 const isLocked = jd.day > journeyProgress.currentDay;
+                const isMilestone = jd.day % 7 === 0 || jd.day === 30;
 
                 return (
                   <div
@@ -1117,49 +1155,58 @@ export function StudyDashboardClient() {
                         setJourneyModalOpen(true);
                       }
                     }}
-                    className={`p-3.5 rounded-2xl border transition-all flex items-center justify-between ${
+                    className={`p-3.5 rounded-2xl border transition-all flex items-center justify-between relative ${
                       isLocked
-                        ? "opacity-50 border-[var(--study-line)] bg-[var(--study-soft)] cursor-not-allowed"
+                        ? "opacity-45 border-[var(--study-line)] bg-[var(--study-soft)] cursor-not-allowed"
                         : isCurrent
-                        ? "border-[var(--study-blue)] bg-[var(--study-paper)] shadow-sm cursor-pointer hover:border-[var(--study-blue)]"
-                        : "border-[var(--study-line)] bg-[var(--study-paper)] cursor-pointer hover:border-[var(--study-blue)]"
+                        ? "border-[var(--study-blue)] bg-[var(--study-paper)] shadow-md ring-2 ring-[var(--study-blue)]/20 cursor-pointer hover:border-[var(--study-blue)]"
+                        : "border-[var(--study-line)] bg-[var(--study-paper)] cursor-pointer hover:border-[var(--study-blue)] hover:shadow-xs"
                     }`}
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3.5">
                       <span
-                        className={`w-7 h-7 rounded-xl flex items-center justify-center text-xs font-black ${
+                        className={`w-8 h-8 rounded-xl flex items-center justify-center text-xs font-black shrink-0 transition-transform ${
                           isCompleted
-                            ? "bg-emerald-500 text-white"
+                            ? "bg-emerald-500 text-white shadow-xs"
                             : isCurrent
-                            ? "bg-[var(--study-blue)] text-white"
+                            ? "bg-[var(--study-blue)] text-white shadow-sm scale-105"
                             : "bg-[var(--study-soft)] text-[var(--study-muted)]"
                         }`}
                       >
                         {isCompleted ? "✓" : jd.day}
                       </span>
                       <div>
-                        <strong className="text-xs block text-[var(--study-text)]">
-                          Day {jd.day}: {jd.titleId}
-                        </strong>
+                        <div className="flex items-center gap-2">
+                          <strong className="text-xs block text-[var(--study-text)]">
+                            Day {jd.day}: {jd.titleId}
+                          </strong>
+                          {isMilestone && (
+                            <span className="px-2 py-0.5 rounded-full text-[9px] font-black bg-amber-500/15 text-amber-700 dark:text-amber-400 border border-amber-500/30">
+                              ⭐ Milestone
+                            </span>
+                          )}
+                        </div>
                         <span className="text-[10px] text-[var(--study-muted)] font-mono">
-                          {jd.themeTag} · {jd.durationMinutes} Menit
+                          {jd.themeTag} · {jd.durationMinutes} Menit · 15 Tango + Dokkai
                         </span>
                       </div>
                     </div>
 
                     <div className="flex items-center gap-2">
                       {isCompleted ? (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                        <span className="px-2.5 py-1 rounded-full text-[10px] font-black bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
                           Selesai
                         </span>
                       ) : isCurrent ? (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/15 text-blue-600 dark:text-blue-400">
+                        <span className="px-2.5 py-1 rounded-full text-[10px] font-black bg-blue-500/15 text-blue-600 dark:text-blue-400 animate-pulse">
                           Hari Ini
                         </span>
                       ) : isLocked ? (
-                        <span className="text-[11px] text-[var(--study-muted)]">Terkunci</span>
+                        <span className="text-[11px] text-[var(--study-muted)] flex items-center gap-1">
+                          🔒 Terkunci
+                        </span>
                       ) : (
-                        <span className="text-[11px] text-[var(--study-blue)] font-bold">Mulai</span>
+                        <span className="text-[11px] text-[var(--study-blue)] font-black">Mulai →</span>
                       )}
                     </div>
                   </div>
@@ -1188,15 +1235,16 @@ export function StudyDashboardClient() {
           title="Silabus FE Exam · 7-Day Sprint & CBT Simulator"
           onClose={() => setFeSyllabusModalOpen(false)}
         >
-          <div className="space-y-4 max-h-[70vh] overflow-y-auto p-1">
+          <div className="space-y-4 max-h-[72vh] overflow-y-auto p-1">
             <p className="text-xs text-[var(--study-muted)] leading-relaxed">
               Sprint kurikulum terpadu IPA FE Exam: Setiap hari mengombinasikan Kartu Konsep IT Dasar, Simulasi Pseudocode 科目B, dan Soal Ujian Asli Kakomon.
             </p>
-            <div className="space-y-2.5">
+            <div className="study-roadmap-timeline space-y-3 my-2">
               {FE_DAILY_QUESTS.map((fq) => {
                 const isCompleted = feQuestProgress.completedDays.includes(fq.day);
                 const isCurrent = feQuestProgress.currentDay === fq.day;
                 const isLocked = fq.day > feQuestProgress.currentDay;
+                const isBossFight = fq.day === 7;
 
                 return (
                   <div
@@ -1208,49 +1256,58 @@ export function StudyDashboardClient() {
                         setFeQuestModalOpen(true);
                       }
                     }}
-                    className={`p-3.5 rounded-2xl border transition-all flex items-center justify-between ${
+                    className={`p-3.5 rounded-2xl border transition-all flex items-center justify-between relative ${
                       isLocked
-                        ? "opacity-50 border-[var(--study-line)] bg-[var(--study-soft)] cursor-not-allowed"
+                        ? "opacity-45 border-[var(--study-line)] bg-[var(--study-soft)] cursor-not-allowed"
                         : isCurrent
-                        ? "border-blue-600 bg-[var(--study-paper)] shadow-sm cursor-pointer hover:border-blue-600"
-                        : "border-[var(--study-line)] bg-[var(--study-paper)] cursor-pointer hover:border-blue-600"
+                        ? "border-blue-600 bg-[var(--study-paper)] shadow-md ring-2 ring-blue-500/20 cursor-pointer hover:border-blue-600"
+                        : "border-[var(--study-line)] bg-[var(--study-paper)] cursor-pointer hover:border-blue-600 hover:shadow-xs"
                     }`}
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3.5">
                       <span
-                        className={`w-7 h-7 rounded-xl flex items-center justify-center text-xs font-black ${
+                        className={`w-8 h-8 rounded-xl flex items-center justify-center text-xs font-black shrink-0 transition-transform ${
                           isCompleted
-                            ? "bg-emerald-500 text-white"
+                            ? "bg-emerald-500 text-white shadow-xs"
                             : isCurrent
-                            ? "bg-blue-600 text-white"
+                            ? "bg-blue-600 text-white shadow-sm scale-105"
                             : "bg-[var(--study-soft)] text-[var(--study-muted)]"
                         }`}
                       >
                         {isCompleted ? "✓" : fq.day}
                       </span>
                       <div>
-                        <strong className="text-xs block text-[var(--study-text)]">
-                          {fq.titleId}
-                        </strong>
+                        <div className="flex items-center gap-2">
+                          <strong className="text-xs block text-[var(--study-text)]">
+                            {fq.titleId}
+                          </strong>
+                          {isBossFight && (
+                            <span className="px-2 py-0.5 rounded-full text-[9px] font-black bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 border border-indigo-500/30">
+                              🏆 Boss Fight
+                            </span>
+                          )}
+                        </div>
                         <span className="text-[10px] text-[var(--study-muted)] font-mono">
-                          {fq.themeTag} · {fq.durationMinutes} Menit
+                          {fq.themeTag} · {fq.durationMinutes} Menit · {fq.cardIds.length} IT Cards + CBT
                         </span>
                       </div>
                     </div>
 
                     <div className="flex items-center gap-2">
                       {isCompleted ? (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                        <span className="px-2.5 py-1 rounded-full text-[10px] font-black bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
                           Selesai
                         </span>
                       ) : isCurrent ? (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/15 text-blue-600 dark:text-blue-400">
+                        <span className="px-2.5 py-1 rounded-full text-[10px] font-black bg-blue-500/15 text-blue-600 dark:text-blue-400 animate-pulse">
                           Hari Ini
                         </span>
                       ) : isLocked ? (
-                        <span className="text-[11px] text-[var(--study-muted)]">Terkunci</span>
+                        <span className="text-[11px] text-[var(--study-muted)] flex items-center gap-1">
+                          🔒 Terkunci
+                        </span>
                       ) : (
-                        <span className="text-[11px] text-blue-600 font-bold">Mulai</span>
+                        <span className="text-[11px] text-blue-600 font-black">Mulai →</span>
                       )}
                     </div>
                   </div>

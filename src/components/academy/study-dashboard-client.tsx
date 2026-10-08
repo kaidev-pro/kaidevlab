@@ -38,6 +38,9 @@ import { openSyncModal } from "@/lib/global-modals-store";
 import { FeCandidateIdCard } from "@/components/fe-study/fe-candidate-id-card";
 import { AuthOnboardingModal } from "@/components/auth/auth-onboarding-modal";
 import { getStoredAuth, pullStudyProgress } from "@/lib/auth-sync-client";
+import { N3_DAILY_JOURNEY_DAYS, N3JourneyDay } from "@/data/tango-n3/n3-daily-journey";
+import { loadN3JourneyProgress, N3JourneyProgress } from "@/lib/n3-journey-storage";
+import { N3DailyJourneyRunner } from "@/components/tango-n3/n3-daily-journey-runner";
 import { StudyShell, StudyDialog } from "./study-shell";
 import { studyCopy, TRACK_LABELS } from "./study-copy";
 
@@ -83,12 +86,26 @@ export function StudyDashboardClient() {
   const [days, setDays] = useState<{ date: string; count: number }[]>([]);
   const [streak, setStreak] = useState(0);
 
+  // N3 Integrated Daily Journey state
+  const [journeyProgress, setJourneyProgress] = useState<N3JourneyProgress>({
+    currentDay: 1,
+    completedDays: [],
+    dayScores: {},
+    weaknessVocabIds: [],
+    lastStudiedDate: "",
+  });
+  const [activeJourneyDay, setActiveJourneyDay] = useState<N3JourneyDay | null>(null);
+  const [journeyModalOpen, setJourneyModalOpen] = useState(false);
+  const [syllabusModalOpen, setSyllabusModalOpen] = useState(false);
+
   const refresh = useCallback(() => {
     const t = loadTangoProgress();
     const f = loadStudyProgress();
     const b = loadBunpouProgress();
     const d = loadDokkaiProgress();
     const today = getTodayDateStr();
+
+    setJourneyProgress(loadN3JourneyProgress());
 
     const dueTango = new Set(
       [...t.reviewCardIds, ...t.starredCardIds]
@@ -205,12 +222,14 @@ export function StudyDashboardClient() {
     window.addEventListener("kaidevlab:study_activity_recorded", refresh);
     window.addEventListener("kaidevlab:auth_change", refresh);
     window.addEventListener("kaidevlab:sync_status", refresh);
+    window.addEventListener("kaidevlab:n3_journey_updated", refresh);
     return () => {
       window.removeEventListener("focus", refresh);
       window.removeEventListener("storage", refresh);
       window.removeEventListener("kaidevlab:study_activity_recorded", refresh);
       window.removeEventListener("kaidevlab:auth_change", refresh);
       window.removeEventListener("kaidevlab:sync_status", refresh);
+      window.removeEventListener("kaidevlab:n3_journey_updated", refresh);
     };
   }, [refresh]);
 
@@ -333,6 +352,11 @@ export function StudyDashboardClient() {
   ];
 
   const currentTools = activeHub === "n3" ? n3Tools : feTools;
+
+  const currentJourneyDayNumber = journeyProgress.currentDay || 1;
+  const currentJourneyDayData =
+    N3_DAILY_JOURNEY_DAYS.find((d) => d.day === currentJourneyDayNumber) ||
+    N3_DAILY_JOURNEY_DAYS[0];
 
   return (
     <StudyShell userName={user} onProfile={() => setProfile(true)}>
@@ -500,6 +524,57 @@ export function StudyDashboardClient() {
             )}
           </button>
         </div>
+
+        {/* ========================================================= */}
+        {/* N3 INTEGRATED DAILY JOURNEY HERO CARD (If activeHub === 'n3') */}
+        {/* ========================================================= */}
+        {activeHub === "n3" && (
+          <div className="study-journey-hero">
+            <div className="study-journey-top">
+              <span className="study-journey-tag">
+                <Sparkles size={14} />
+                <span>N3 Daily Journey · Day {currentJourneyDayData.day}</span>
+              </span>
+              <div className="study-journey-pills">
+                <span className="study-journey-pill">15 Tango</span>
+                <span className="study-journey-pill">2 Bunpou</span>
+                <span className="study-journey-pill">4 Kuis</span>
+                <span className="study-journey-pill">1 Dokkai</span>
+              </div>
+            </div>
+
+            <div className="study-journey-body">
+              <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "var(--study-blue)", fontFamily: "monospace" }}>
+                {currentJourneyDayData.themeTag}
+              </span>
+              <h3>{currentJourneyDayData.titleId}</h3>
+              <p>{currentJourneyDayData.desc}</p>
+            </div>
+
+            <div className="study-journey-actions">
+              <button
+                type="button"
+                className="study-journey-btn-primary"
+                onClick={() => {
+                  setActiveJourneyDay(currentJourneyDayData);
+                  setJourneyModalOpen(true);
+                }}
+              >
+                <Play size={16} fill="currentColor" />
+                <span>Mulai Belajar Day {currentJourneyDayData.day} (~25 Menit)</span>
+              </button>
+
+              <button
+                type="button"
+                className="study-journey-btn-secondary"
+                onClick={() => setSyllabusModalOpen(true)}
+              >
+                <BookOpen size={15} />
+                <span>Silabus 30 Hari ({journeyProgress.completedDays.length}/30 Selesai)</span>
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Daily Mission & Progress Grid */}
         <div className="study-daily-grid">
@@ -929,6 +1004,97 @@ export function StudyDashboardClient() {
           else if (track === "n3") switchHub("n3");
         }}
       />
+
+      {/* N3 Daily Journey Runner Modal */}
+      {activeJourneyDay && (
+        <N3DailyJourneyRunner
+          day={activeJourneyDay}
+          isOpen={journeyModalOpen}
+          onClose={() => setJourneyModalOpen(false)}
+          onDayCompleted={() => {
+            refresh();
+          }}
+        />
+      )}
+
+      {/* 30-Day Syllabus Modal */}
+      {syllabusModalOpen && (
+        <StudyDialog
+          title="Silabus 30 Hari · JLPT N3 Integrated Journey"
+          onClose={() => setSyllabusModalOpen(false)}
+        >
+          <div className="space-y-4 max-h-[70vh] overflow-y-auto p-1">
+            <p className="text-xs text-[var(--study-muted)] leading-relaxed">
+              Kurikulum bertahap: Setiap hari mengombinasikan 15 Kosakata Tematik, 2 Pola Tata Bahasa Bunpou, Latihan Soal, dan Wacana Dokkai kontekstual.
+            </p>
+            <div className="space-y-2.5">
+              {N3_DAILY_JOURNEY_DAYS.map((jd) => {
+                const isCompleted = journeyProgress.completedDays.includes(jd.day);
+                const isCurrent = journeyProgress.currentDay === jd.day;
+                const isLocked = jd.day > journeyProgress.currentDay;
+
+                return (
+                  <div
+                    key={jd.day}
+                    onClick={() => {
+                      if (!isLocked) {
+                        setActiveJourneyDay(jd);
+                        setSyllabusModalOpen(false);
+                        setJourneyModalOpen(true);
+                      }
+                    }}
+                    className={`p-3.5 rounded-2xl border transition-all flex items-center justify-between ${
+                      isLocked
+                        ? "opacity-50 border-[var(--study-line)] bg-[var(--study-soft)] cursor-not-allowed"
+                        : isCurrent
+                        ? "border-[var(--study-blue)] bg-[var(--study-paper)] shadow-sm cursor-pointer hover:border-[var(--study-blue)]"
+                        : "border-[var(--study-line)] bg-[var(--study-paper)] cursor-pointer hover:border-[var(--study-blue)]"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <span
+                        className={`w-7 h-7 rounded-xl flex items-center justify-center text-xs font-black ${
+                          isCompleted
+                            ? "bg-emerald-500 text-white"
+                            : isCurrent
+                            ? "bg-[var(--study-blue)] text-white"
+                            : "bg-[var(--study-soft)] text-[var(--study-muted)]"
+                        }`}
+                      >
+                        {isCompleted ? "✓" : jd.day}
+                      </span>
+                      <div>
+                        <strong className="text-xs block text-[var(--study-text)]">
+                          Day {jd.day}: {jd.titleId}
+                        </strong>
+                        <span className="text-[10px] text-[var(--study-muted)] font-mono">
+                          {jd.themeTag} · {jd.durationMinutes} Menit
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      {isCompleted ? (
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                          Selesai
+                        </span>
+                      ) : isCurrent ? (
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/15 text-blue-600 dark:text-blue-400">
+                          Hari Ini
+                        </span>
+                      ) : isLocked ? (
+                        <span className="text-[11px] text-[var(--study-muted)]">Terkunci</span>
+                      ) : (
+                        <span className="text-[11px] text-[var(--study-blue)] font-bold">Mulai</span>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </StudyDialog>
+      )}
     </StudyShell>
   );
 }

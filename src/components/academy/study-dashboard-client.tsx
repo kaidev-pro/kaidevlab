@@ -17,6 +17,13 @@ import {
   Bookmark,
   Grid2X2,
   Sparkles,
+  Languages,
+  Terminal,
+  Check,
+  Lock,
+  Zap,
+  Award,
+  Trophy,
 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/context";
 import { loadTangoProgress } from "@/lib/tango-n3-storage";
@@ -508,7 +515,9 @@ export function StudyDashboardClient() {
             className={`study-hub-btn ${activeHub === "n3" ? "is-active" : ""}`}
             onClick={() => switchHub("n3")}
           >
-            <span className="study-hub-flag">🇯🇵</span>
+            <span className="study-hub-icon-box is-n3" aria-hidden="true">
+              <Languages size={20} strokeWidth={2.2} />
+            </span>
             <div className="study-hub-btn-content">
               <strong>JLPT N3 Suite</strong>
               <small>
@@ -531,7 +540,9 @@ export function StudyDashboardClient() {
             className={`study-hub-btn ${activeHub === "fe" ? "is-active" : ""}`}
             onClick={() => switchHub("fe")}
           >
-            <span className="study-hub-flag">💻</span>
+            <span className="study-hub-icon-box is-fe" aria-hidden="true">
+              <Terminal size={20} strokeWidth={2.2} />
+            </span>
             <div className="study-hub-btn-content">
               <strong>FE Exam Academy</strong>
               <small>
@@ -551,9 +562,6 @@ export function StudyDashboardClient() {
         {/* ========================================================= */}
         {/* N3 INTEGRATED DAILY JOURNEY HERO CARD (If activeHub === 'n3') */}
         {/* ========================================================= */}
-        {/* ========================================================= */}
-        {/* N3 INTEGRATED DAILY JOURNEY HERO CARD (If activeHub === 'n3') */}
-        {/* ========================================================= */}
         {activeHub === "n3" && (
           <div className="study-journey-hero">
             <div className="study-journey-top">
@@ -562,7 +570,10 @@ export function StudyDashboardClient() {
                 <span>N3 Daily Journey · Day {currentJourneyDayData.day}</span>
               </span>
               <div className="study-journey-pills">
-                <span className="study-journey-pill">⚡ 25 Menit</span>
+                <span className="study-journey-pill inline-flex items-center gap-1.5">
+                  <Zap size={11} className="text-amber-500 fill-amber-500" />
+                  <span>25 Menit</span>
+                </span>
                 <span className="study-journey-pill">15 Tango</span>
                 <span className="study-journey-pill">2 Bunpou</span>
                 <span className="study-journey-pill">4 Kuis</span>
@@ -630,7 +641,10 @@ export function StudyDashboardClient() {
                 <span>FE Daily Quest · Day {currentFEQuestData.day}</span>
               </span>
               <div className="study-journey-pills">
-                <span className="study-journey-pill">⚡ 20 Menit</span>
+                <span className="study-journey-pill inline-flex items-center gap-1.5">
+                  <Zap size={11} className="text-amber-500 fill-amber-500" />
+                  <span>20 Menit</span>
+                </span>
                 <span className="study-journey-pill">{currentFEQuestData.cardIds.length} Konsep IT</span>
                 <span className="study-journey-pill">1 Tracer Lab</span>
                 <span className="study-journey-pill">{currentFEQuestData.quizQuestionIds.length} CBT Kakomon</span>
@@ -1173,7 +1187,7 @@ export function StudyDashboardClient() {
                             : "bg-[var(--study-soft)] text-[var(--study-muted)]"
                         }`}
                       >
-                        {isCompleted ? "✓" : jd.day}
+                        {isCompleted ? <Check size={14} strokeWidth={3} /> : jd.day}
                       </span>
                       <div>
                         <div className="flex items-center gap-2">
@@ -1181,8 +1195,9 @@ export function StudyDashboardClient() {
                             Day {jd.day}: {jd.titleId}
                           </strong>
                           {isMilestone && (
-                            <span className="px-2 py-0.5 rounded-full text-[9px] font-black bg-amber-500/15 text-amber-700 dark:text-amber-400 border border-amber-500/30">
-                              ⭐ Milestone
+                            <span className="px-2 py-0.5 rounded-full text-[9px] font-black bg-amber-500/15 text-amber-700 dark:text-amber-400 border border-amber-500/30 inline-flex items-center gap-1">
+                              <Award size={10} />
+                              <span>Milestone</span>
                             </span>
                           )}
                         </div>
@@ -1194,16 +1209,18 @@ export function StudyDashboardClient() {
 
                     <div className="flex items-center gap-2">
                       {isCompleted ? (
-                        <span className="px-2.5 py-1 rounded-full text-[10px] font-black bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
-                          Selesai
+                        <span className="px-2.5 py-1 rounded-full text-[10px] font-black bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 inline-flex items-center gap-1">
+                          <Check size={11} strokeWidth={2.5} />
+                          <span>Selesai</span>
                         </span>
                       ) : isCurrent ? (
                         <span className="px-2.5 py-1 rounded-full text-[10px] font-black bg-blue-500/15 text-blue-600 dark:text-blue-400 animate-pulse">
                           Hari Ini
                         </span>
                       ) : isLocked ? (
-                        <span className="text-[11px] text-[var(--study-muted)] flex items-center gap-1">
-                          🔒 Terkunci
+                        <span className="text-[11px] text-[var(--study-muted)] inline-flex items-center gap-1">
+                          <Lock size={11} />
+                          <span>Terkunci</span>
                         </span>
                       ) : (
                         <span className="text-[11px] text-[var(--study-blue)] font-black">Mulai →</span>
@@ -1274,7 +1291,7 @@ export function StudyDashboardClient() {
                             : "bg-[var(--study-soft)] text-[var(--study-muted)]"
                         }`}
                       >
-                        {isCompleted ? "✓" : fq.day}
+                        {isCompleted ? <Check size={14} strokeWidth={3} /> : fq.day}
                       </span>
                       <div>
                         <div className="flex items-center gap-2">
@@ -1282,8 +1299,9 @@ export function StudyDashboardClient() {
                             {fq.titleId}
                           </strong>
                           {isBossFight && (
-                            <span className="px-2 py-0.5 rounded-full text-[9px] font-black bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 border border-indigo-500/30">
-                              🏆 Boss Fight
+                            <span className="px-2 py-0.5 rounded-full text-[9px] font-black bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 border border-indigo-500/30 inline-flex items-center gap-1">
+                              <Trophy size={10} />
+                              <span>Boss Fight</span>
                             </span>
                           )}
                         </div>
@@ -1295,16 +1313,18 @@ export function StudyDashboardClient() {
 
                     <div className="flex items-center gap-2">
                       {isCompleted ? (
-                        <span className="px-2.5 py-1 rounded-full text-[10px] font-black bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
-                          Selesai
+                        <span className="px-2.5 py-1 rounded-full text-[10px] font-black bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 inline-flex items-center gap-1">
+                          <Check size={11} strokeWidth={2.5} />
+                          <span>Selesai</span>
                         </span>
                       ) : isCurrent ? (
                         <span className="px-2.5 py-1 rounded-full text-[10px] font-black bg-blue-500/15 text-blue-600 dark:text-blue-400 animate-pulse">
                           Hari Ini
                         </span>
                       ) : isLocked ? (
-                        <span className="text-[11px] text-[var(--study-muted)] flex items-center gap-1">
-                          🔒 Terkunci
+                        <span className="text-[11px] text-[var(--study-muted)] inline-flex items-center gap-1">
+                          <Lock size={11} />
+                          <span>Terkunci</span>
                         </span>
                       ) : (
                         <span className="text-[11px] text-blue-600 font-black">Mulai →</span>

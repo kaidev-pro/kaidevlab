@@ -21,6 +21,8 @@ import {
   Undo2,
   Check,
   Volume2,
+  Lightbulb,
+  Target,
 } from "lucide-react";
 import { FEDailyQuest } from "@/data/fe-daily-quest";
 import { FE_CARDS, FECard } from "@/data/fe-study-data";
@@ -438,13 +440,19 @@ export function FEDailyQuestRunner({
 
                                 {/* Kitami Visual Analogy */}
                                 <div className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-800 dark:text-amber-300">
-                                  <strong>💡 Analogi Kitami-shiki:</strong>{" "}
+                                  <strong className="inline-flex items-center gap-1.5 font-bold">
+                                    <Lightbulb size={13} className="text-amber-600 dark:text-amber-400" />
+                                    <span>Analogi Kitami-shiki:</span>
+                                  </strong>{" "}
                                   {currentCard.analogy}
                                 </div>
 
                                 {/* Exam Keywords */}
                                 <div className="p-2.5 rounded-xl bg-blue-500/10 border border-blue-500/20 text-xs text-blue-700 dark:text-blue-300">
-                                  <strong>🎯 Kata Kunci Ujian:</strong>{" "}
+                                  <strong className="inline-flex items-center gap-1.5 font-bold">
+                                    <Target size={13} className="text-blue-600 dark:text-blue-400" />
+                                    <span>Kata Kunci Ujian:</span>
+                                  </strong>{" "}
                                   {currentCard.keyDifferentiator}
                                 </div>
                               </motion.div>
@@ -783,7 +791,7 @@ export function FEDailyQuestRunner({
                     FE Quest Day {quest.day} Selesai!
                   </span>
                   <h2 className="text-2xl font-black text-[var(--text-primary)] mt-2">
-                    Hebat! Misi IT Exam Hari Ini Tuntas! 🚀
+                    Hebat! Misi IT Exam Hari Ini Tuntas!
                   </h2>
                   <p className="text-xs text-[var(--text-secondary)] max-w-md mx-auto mt-1">
                     Anda telah menguasai {quest.cardIds.length} konsep IT, menuntaskan algoritma 科目B, dan menyelesaikan simulasi CBT Kakomon.

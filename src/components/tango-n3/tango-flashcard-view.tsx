@@ -169,6 +169,7 @@ export function TangoFlashcardView({
   const [showFurigana, setShowFurigana] = useState(true);
   const [soundEffects, setSoundEffects] = useState(true);
   const [autoSpeakEnabled, setAutoSpeakEnabled] = useState(false);
+  const [recallMode, setRecallMode] = useState<"standard" | "reverse" | "audio">("standard");
   const [speechAvailable, setSpeechAvailable] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isSessionFinished, setIsSessionFinished] = useState(false);
@@ -259,15 +260,15 @@ export function TangoFlashcardView({
     [speechAvailable]
   );
 
-  // Auto-speak when new card appears if enabled
+  // Auto-speak when new card appears if enabled or in audio mode
   useEffect(() => {
-    if (autoSpeakEnabled && currentCard && !isSessionFinished) {
+    if ((autoSpeakEnabled || recallMode === "audio") && currentCard && !isSessionFinished) {
       const timer = setTimeout(() => {
         speakJapanese(currentCard.word);
       }, 200);
       return () => clearTimeout(timer);
     }
-  }, [currentCard, autoSpeakEnabled, isSessionFinished, speakJapanese]);
+  }, [currentCard, autoSpeakEnabled, recallMode, isSessionFinished, speakJapanese]);
 
   const handleFlip = useCallback(() => {
     triggerHaptic("light");
@@ -507,7 +508,52 @@ export function TangoFlashcardView({
         </div>
 
         {/* Action Toggles */}
-        <div className="flex items-center gap-1.5 sm:gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap justify-end">
+          {/* Active Recall Mode Switcher */}
+          <div className="inline-flex items-center p-0.5 rounded-lg border border-[var(--border)] bg-[var(--surface-soft)] text-[11px] font-bold">
+            <button
+              type="button"
+              onClick={() => setRecallMode("standard")}
+              className={`px-2 py-0.5 rounded-md transition-all ${
+                recallMode === "standard"
+                  ? "bg-[var(--surface)] text-[var(--text-primary)] shadow-xs"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              }`}
+              title="Tampilkan Huruf Jepang → Tebak Arti"
+            >
+              JP → ID
+            </button>
+            <button
+              type="button"
+              onClick={() => setRecallMode("reverse")}
+              className={`px-2 py-0.5 rounded-md transition-all ${
+                recallMode === "reverse"
+                  ? "bg-[var(--surface)] text-amber-600 dark:text-amber-400 shadow-xs"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              }`}
+              title="Tampilkan Arti Indonesia → Tebak Bahasa Jepang (Active Production)"
+            >
+              ID → JP
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setRecallMode("audio");
+                if (speechAvailable && currentCard) {
+                  speakJapanese(currentCard.word);
+                }
+              }}
+              className={`px-2 py-0.5 rounded-md transition-all ${
+                recallMode === "audio"
+                  ? "bg-[var(--surface)] text-purple-600 dark:text-purple-400 shadow-xs"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              }`}
+              title="Mode Choukai: Dengarkan Audio Tanpa Melihat Tulisan"
+            >
+              🎧 Audio
+            </button>
+          </div>
+
           {/* Auto-Speech Toggle */}
           <button
             type="button"
@@ -711,49 +757,89 @@ export function TangoFlashcardView({
                     </div>
                   </div>
 
-                  {/* Center Content: Term & Furigana (Exact typography from FE Study) */}
-                  <div className="flex flex-col items-center justify-center text-center my-auto py-2 sm:py-4">
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] font-sans leading-normal">
-                      <RubyTerm
-                        rubyText={currentCard.ruby}
-                        fallbackText={currentCard.word}
-                        showFurigana={showFurigana}
-                      />
-                    </h2>
-
-                    {/* Pronunciation Pill */}
-                    {speechAvailable && (
+                  {/* Center Content: Term & Furigana with Multi-Modal Modes */}
+                  {recallMode === "reverse" ? (
+                    <div className="flex flex-col items-center justify-center text-center my-auto py-2 sm:py-4">
+                      <span className="text-[10px] uppercase tracking-wider font-mono font-black px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 mb-3">
+                        Tebak Kata Jepang (Active Production)
+                      </span>
+                      <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--text-primary)] font-sans leading-tight">
+                        {currentCard.meaningId}
+                      </h2>
+                      {currentCard.meaningEn && (
+                        <p className="text-xs text-[var(--text-secondary)] mt-1.5 italic">
+                          ({currentCard.meaningEn})
+                        </p>
+                      )}
+                      <p className="text-[11px] text-[var(--text-secondary)] mt-3 opacity-80">
+                        Bayangkan huruf kanji & cara baca sebelum membalik kartu
+                      </p>
+                    </div>
+                  ) : recallMode === "audio" ? (
+                    <div className="flex flex-col items-center justify-center text-center my-auto py-2 sm:py-4">
+                      <span className="text-[10px] uppercase tracking-wider font-mono font-black px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-600 dark:text-purple-400 border border-purple-500/30 mb-3">
+                        Latihan Menyimak (Choukai Recall)
+                      </span>
                       <button
                         type="button"
                         onClick={(e) => speakJapanese(currentCard.word, e)}
-                        className={`mt-2 sm:mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[var(--border)] hover:border-[var(--brand-primary)] text-xs transition-colors ${
+                        className={`w-20 h-20 rounded-full border-2 flex items-center justify-center transition-all shadow-md active:scale-95 my-2 ${
                           isSpeaking
-                            ? "text-[var(--brand-primary)] border-[var(--brand-primary)] animate-pulse"
-                            : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                            ? "bg-purple-500 text-white border-purple-600 animate-pulse scale-105"
+                            : "bg-purple-500/15 border-purple-500/30 text-purple-600 dark:text-purple-400 hover:scale-105"
                         }`}
-                        title="Dengarkan Pengucapan Asli (A)"
+                        title="Dengarkan Ulang (Space / Klik)"
                       >
-                        <Volume2 size={13} />
-                        <span>Dengar Lafal</span>
+                        <Volume2 size={36} />
                       </button>
-                    )}
+                      <span className="text-xs font-bold text-[var(--text-secondary)] mt-2">
+                        {isSpeaking ? "Sedang Mengucapkan..." : "Ketuk untuk dengarkan ulang"}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center text-center my-auto py-2 sm:py-4">
+                      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] font-sans leading-normal">
+                        <RubyTerm
+                          rubyText={currentCard.ruby}
+                          fallbackText={currentCard.word}
+                          showFurigana={showFurigana}
+                        />
+                      </h2>
 
-                    {/* Collocation Teaser (連語) */}
-                    {currentCard.collocation && (
-                      <div className="mt-3 sm:mt-4 px-3 sm:px-4 py-2 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)] max-w-md w-full text-center">
-                        <div className="text-[10px] uppercase font-bold tracking-wider text-[var(--brand-primary)] mb-0.5">
-                          連語・コロケーション (Pasangan Kata)
+                      {/* Pronunciation Pill */}
+                      {speechAvailable && (
+                        <button
+                          type="button"
+                          onClick={(e) => speakJapanese(currentCard.word, e)}
+                          className={`mt-2 sm:mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[var(--border)] hover:border-[var(--brand-primary)] text-xs transition-colors ${
+                            isSpeaking
+                              ? "text-[var(--brand-primary)] border-[var(--brand-primary)] animate-pulse"
+                              : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                          }`}
+                          title="Dengarkan Pengucapan Asli (A)"
+                        >
+                          <Volume2 size={13} />
+                          <span>Dengar Lafal</span>
+                        </button>
+                      )}
+
+                      {/* Collocation Teaser (連語) */}
+                      {currentCard.collocation && (
+                        <div className="mt-3 sm:mt-4 px-3 sm:px-4 py-2 rounded-xl bg-[var(--surface-soft)] border border-[var(--border)] max-w-md w-full text-center">
+                          <div className="text-[10px] uppercase font-bold tracking-wider text-[var(--brand-primary)] mb-0.5">
+                            連語・コロケーション (Pasangan Kata)
+                          </div>
+                          <div className="text-xs sm:text-sm font-sans font-medium text-[var(--text-primary)]">
+                            <RubyTerm
+                              rubyText={currentCard.collocation.jpRuby}
+                              fallbackText={currentCard.collocation.jpRuby}
+                              showFurigana={showFurigana}
+                            />
+                          </div>
                         </div>
-                        <div className="text-xs sm:text-sm font-sans font-medium text-[var(--text-primary)]">
-                          <RubyTerm
-                            rubyText={currentCard.collocation.jpRuby}
-                            fallbackText={currentCard.collocation.jpRuby}
-                            showFurigana={showFurigana}
-                          />
-                        </div>
-                      </div>
-                    )}
-                  </div>
+                      )}
+                    </div>
+                  )}
 
                   {/* Footer Prompt */}
                   <div className="flex items-center justify-between text-[11px] sm:text-xs text-[var(--text-secondary)] pt-3 sm:pt-4 border-t border-[var(--border)]">
@@ -814,6 +900,22 @@ export function TangoFlashcardView({
 
                   {/* Center Content: Meaning + Collocation + Example */}
                   <div className="flex flex-col gap-2.5 sm:gap-3 my-auto overflow-y-auto pr-1 py-1 max-h-[230px] sm:max-h-none">
+                    {/* Reverse/Audio Highlight: Revealed Japanese Word & Furigana */}
+                    {(recallMode === "reverse" || recallMode === "audio") && (
+                      <div className="p-3 rounded-xl bg-[var(--brand-primary)]/10 border border-[var(--brand-primary)]/30 text-center">
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--brand-primary)] block mb-1">
+                          {recallMode === "reverse" ? "Kosakata Bahasa Jepang" : "Huruf Kanji & Furigana"}
+                        </span>
+                        <div className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)]">
+                          <RubyTerm
+                            rubyText={currentCard.ruby}
+                            fallbackText={currentCard.word}
+                            showFurigana={true}
+                          />
+                        </div>
+                      </div>
+                    )}
+
                     {/* Indonesian Meaning */}
                     <div>
                       <h3 className="text-lg sm:text-2xl font-bold text-[var(--brand-primary)] font-sans leading-snug">

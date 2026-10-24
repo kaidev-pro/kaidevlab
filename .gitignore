@@ -47,3 +47,6 @@ server/data/
 .superpowers/
 scratch/
 
+
+# agent context pack: transient writer lock
+.agent/LOCK

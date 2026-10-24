@@ -51,6 +51,9 @@ import { N3DailyJourneyRunner } from "@/components/tango-n3/n3-daily-journey-run
 import { FE_DAILY_QUESTS, FEDailyQuest } from "@/data/fe-daily-quest";
 import { loadFEQuestProgress, FEQuestProgress } from "@/lib/fe-quest-storage";
 import { FEDailyQuestRunner } from "@/components/fe-study/fe-daily-quest-runner";
+import { getN3SrsMetrics, getFeSrsMetrics, SrsMetrics } from "@/lib/daily-learning-engine";
+import { SrsDueReviewModal } from "@/components/academy/srs-due-review-modal";
+import { LeitnerMemoryVisualizer } from "@/components/academy/leitner-memory-visualizer";
 import { StudyShell, StudyDialog } from "./study-shell";
 import { studyCopy, TRACK_LABELS } from "./study-copy";
 
@@ -96,6 +99,11 @@ export function StudyDashboardClient() {
   const [days, setDays] = useState<{ date: string; count: number }[]>([]);
   const [streak, setStreak] = useState(0);
 
+  // SRS Leitner Due Reviews state
+  const [n3Srs, setN3Srs] = useState<SrsMetrics | null>(null);
+  const [feSrs, setFeSrs] = useState<SrsMetrics | null>(null);
+  const [srsModalOpen, setSrsModalOpen] = useState(false);
+
   // N3 Integrated Daily Journey state
   const [journeyProgress, setJourneyProgress] = useState<N3JourneyProgress>({
     currentDay: 1,
@@ -126,6 +134,9 @@ export function StudyDashboardClient() {
     const b = loadBunpouProgress();
     const d = loadDokkaiProgress();
     const today = getTodayDateStr();
+
+    setN3Srs(getN3SrsMetrics());
+    setFeSrs(getFeSrsMetrics());
 
     setJourneyProgress(loadN3JourneyProgress());
     setFeQuestProgress(loadFEQuestProgress());
@@ -388,6 +399,8 @@ export function StudyDashboardClient() {
     FE_DAILY_QUESTS.find((q) => q.day === currentFEQuestNumber) ||
     FE_DAILY_QUESTS[0];
 
+  const currentSrs = activeHub === "n3" ? n3Srs : feSrs;
+
   return (
     <StudyShell userName={user} onProfile={() => setProfile(true)}>
       <main id="study-main" className="study-main">
@@ -605,6 +618,41 @@ export function StudyDashboardClient() {
               </div>
             </div>
 
+            {/* SRS Due Review Callout */}
+            {n3Srs && n3Srs.dueCount > 0 ? (
+              <div className="p-3 sm:p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-4">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold shrink-0">
+                    <Zap size={16} fill="currentColor" />
+                  </span>
+                  <div>
+                    <strong className="text-xs sm:text-sm text-[var(--text-primary)] block font-black">
+                      ⚡ {n3Srs.dueCount} Kartu N3 Jatuh Tempo Hari Ini (SRS)
+                    </strong>
+                    <p className="text-[11px] text-[var(--text-secondary)]">
+                      Sikat memori lama dulu sebelum kurva lupa anjlok, baru kuasai materi baru!
+                    </p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSrsModalOpen(true)}
+                  className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-black font-black text-xs shadow-md transition-all shrink-0 active:scale-95"
+                >
+                  <Zap size={13} fill="currentColor" />
+                  <span>Review {n3Srs.dueCount} Kartu Dulu →</span>
+                </button>
+              </div>
+            ) : (
+              <div className="p-2.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-between gap-2 mt-4 text-xs">
+                <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-bold">
+                  <Check size={14} strokeWidth={2.5} />
+                  <span>Review Jatuh Tempo Bersih! Memori siap untuk materi baru.</span>
+                </div>
+                <span className="font-mono text-[11px] text-emerald-600 dark:text-emerald-500 font-bold">0 Pending</span>
+              </div>
+            )}
+
             <div className="study-journey-actions">
               <button
                 type="button"
@@ -617,6 +665,18 @@ export function StudyDashboardClient() {
                 <Play size={16} fill="currentColor" />
                 <span>Mulai Belajar Day {currentJourneyDayData.day}</span>
               </button>
+
+              {n3Srs && n3Srs.dueCount > 0 && (
+                <button
+                  type="button"
+                  onClick={() => setSrsModalOpen(true)}
+                  className="study-journey-btn-secondary"
+                  style={{ borderColor: "rgba(245, 158, 11, 0.4)", color: "var(--text-primary)" }}
+                >
+                  <Zap size={14} className="text-amber-500" />
+                  <span>Review ({n3Srs.dueCount})</span>
+                </button>
+              )}
 
               <button
                 type="button"
@@ -675,6 +735,41 @@ export function StudyDashboardClient() {
               </div>
             </div>
 
+            {/* SRS Due Review Callout */}
+            {feSrs && feSrs.dueCount > 0 ? (
+              <div className="p-3 sm:p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-4">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold shrink-0">
+                    <Zap size={16} fill="currentColor" />
+                  </span>
+                  <div>
+                    <strong className="text-xs sm:text-sm text-[var(--text-primary)] block font-black">
+                      ⚡ {feSrs.dueCount} Konsep IT Jatuh Tempo (SRS)
+                    </strong>
+                    <p className="text-[11px] text-[var(--text-secondary)]">
+                      Segarkan kembali istilah & analogi IT IPA Japan sebelum lupa.
+                    </p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSrsModalOpen(true)}
+                  className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-black font-black text-xs shadow-md transition-all shrink-0 active:scale-95"
+                >
+                  <Zap size={13} fill="currentColor" />
+                  <span>Review {feSrs.dueCount} Konsep Dulu →</span>
+                </button>
+              </div>
+            ) : (
+              <div className="p-2.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-between gap-2 mt-4 text-xs">
+                <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-bold">
+                  <Check size={14} strokeWidth={2.5} />
+                  <span>Review Konsep IT Bersih! Siap untuk quest hari ini.</span>
+                </div>
+                <span className="font-mono text-[11px] text-emerald-600 dark:text-emerald-500 font-bold">0 Pending</span>
+              </div>
+            )}
+
             <div className="study-journey-actions">
               <button
                 type="button"
@@ -688,6 +783,18 @@ export function StudyDashboardClient() {
                 <Play size={16} fill="currentColor" />
                 <span>Mulai Quest Day {currentFEQuestData.day}</span>
               </button>
+
+              {feSrs && feSrs.dueCount > 0 && (
+                <button
+                  type="button"
+                  onClick={() => setSrsModalOpen(true)}
+                  className="study-journey-btn-secondary"
+                  style={{ borderColor: "rgba(245, 158, 11, 0.4)", color: "var(--text-primary)" }}
+                >
+                  <Zap size={14} className="text-amber-500" />
+                  <span>Review ({feSrs.dueCount})</span>
+                </button>
+              )}
 
               <button
                 type="button"
@@ -892,6 +999,17 @@ export function StudyDashboardClient() {
             )}
           </section>
         </div>
+
+        {/* Leitner Long-Term Memory Box Visualizer */}
+        {currentSrs && (
+          <div className="mt-6">
+            <LeitnerMemoryVisualizer
+              distribution={currentSrs.distribution}
+              totalCards={activeHub === "n3" ? TANGO_TOTAL_CARDS : FE_TOTAL_CARDS}
+              hub={activeHub}
+            />
+          </div>
+        )}
 
         {/* Tracks Section (Jalur Belajar Khusus Hub Aktif) */}
         <section id="study-tracks" className="study-section">
@@ -1336,6 +1454,31 @@ export function StudyDashboardClient() {
             </div>
           </div>
         </StudyDialog>
+      )}
+
+      {/* SRS Due Review Modal */}
+      {currentSrs && (
+        <SrsDueReviewModal
+          isOpen={srsModalOpen}
+          onClose={() => {
+            setSrsModalOpen(false);
+            refresh();
+          }}
+          hub={activeHub}
+          dueCardIds={currentSrs.dueCardIds}
+          onFinishSession={() => {
+            refresh();
+          }}
+          onContinueToNewMaterial={() => {
+            if (activeHub === "n3") {
+              setActiveJourneyDay(currentJourneyDayData);
+              setJourneyModalOpen(true);
+            } else {
+              setActiveFEQuest(currentFEQuestData);
+              setFeQuestModalOpen(true);
+            }
+          }}
+        />
       )}
     </StudyShell>
   );

@@ -22,9 +22,23 @@ export interface StudyProgress {
   unlockedDeckDays: number[];
   dayQuizScores: Record<number, FeDayQuizScore>;
   masteryModeEnabled: boolean;
+  // Spaced Repetition (SRS Leitner Box 1..5)
+  cardMistakes?: Record<string, number>;
+  cardSuccessStreaks?: Record<string, number>;
+  cardLastReviewed?: Record<string, string>;
+  cardBox?: Record<string, number>;
+  cardNextReview?: Record<string, string>;
 }
 
 const STORAGE_KEY = "kaidevlab_fe_study_progress_v1";
+
+export const FE_SRS_BOX_INTERVALS: Record<number, number> = {
+  1: 1,  // Harian (1 hari)
+  2: 3,  // 3 hari
+  3: 7,  // Mingguan (7 hari)
+  4: 14, // 2 mingguan (14 hari)
+  5: 30, // Bulanan (30 hari)
+};
 
 export const DEFAULT_PROGRESS: StudyProgress = {
   masteredCardIds: [],
@@ -43,9 +57,20 @@ export const DEFAULT_PROGRESS: StudyProgress = {
   unlockedDeckDays: [1],
   dayQuizScores: {},
   masteryModeEnabled: true,
+  cardMistakes: {},
+  cardSuccessStreaks: {},
+  cardLastReviewed: {},
+  cardBox: {},
+  cardNextReview: {},
 };
 
-function getTodayString(): string {
+export function addDays(dateStr: string, days: number): string {
+  const d = new Date(dateStr);
+  d.setDate(d.getDate() + days);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+export function getTodayString(): string {
   const d = new Date();
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
@@ -179,13 +204,34 @@ export function recordCardReview(
   const masteredSet = new Set(current.masteredCardIds);
   const reviewSet = new Set(current.reviewCardIds);
 
+  // Update Spaced Repetition (SRS Leitner) data
+  const cardMistakes = { ...(current.cardMistakes || {}) };
+  const cardSuccessStreaks = { ...(current.cardSuccessStreaks || {}) };
+  const cardLastReviewed = { ...(current.cardLastReviewed || {}) };
+  const cardBox = { ...(current.cardBox || {}) };
+  const cardNextReview = { ...(current.cardNextReview || {}) };
+
+  cardLastReviewed[cardId] = today;
+
   if (rating === "mastered") {
     masteredSet.add(cardId);
     reviewSet.delete(cardId);
+    delete cardMistakes[cardId];
+    const prevStreak = cardSuccessStreaks[cardId] || 0;
+    cardSuccessStreaks[cardId] = prevStreak + 1;
+    const currentBox = cardBox[cardId] || 1;
+    const nextBox = Math.min(5, currentBox + 1);
+    cardBox[cardId] = nextBox;
+    const intervalDays = FE_SRS_BOX_INTERVALS[nextBox] || 1;
+    cardNextReview[cardId] = addDays(today, intervalDays);
   } else {
     // forgot atau unsure masuk ke antrean review
     reviewSet.add(cardId);
     masteredSet.delete(cardId);
+    cardMistakes[cardId] = (cardMistakes[cardId] || 0) + 1;
+    cardSuccessStreaks[cardId] = 0;
+    cardBox[cardId] = 1;
+    cardNextReview[cardId] = today; // review segera
   }
 
   const daily = current.dailyReviews ? { ...current.dailyReviews } : {};
@@ -199,6 +245,11 @@ export function recordCardReview(
     lastStudyDate: today,
     totalCardsReviewed: current.totalCardsReviewed + 1,
     dailyReviews: daily,
+    cardMistakes,
+    cardSuccessStreaks,
+    cardLastReviewed,
+    cardBox,
+    cardNextReview,
   };
 
   saveStudyProgress(updated);

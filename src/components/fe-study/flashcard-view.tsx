@@ -159,6 +159,7 @@ export function FlashcardView({
   const [showFurigana, setShowFurigana] = useState(true);
   const [showAnalogy, setShowAnalogy] = useState(false);
   const [soundEffects, setSoundEffects] = useState(true);
+  const [recallMode, setRecallMode] = useState<"standard" | "reverse">("standard");
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   // Reset card state whenever cards list changes
@@ -407,7 +408,35 @@ export function FlashcardView({
         </div>
 
         {/* Action Toggles */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap justify-end">
+          {/* Active Recall Mode Switcher */}
+          <div className="inline-flex items-center p-0.5 rounded-lg border border-[var(--border)] bg-[var(--surface-soft)] text-[11px] font-bold">
+            <button
+              type="button"
+              onClick={() => setRecallMode("standard")}
+              className={`px-2 py-0.5 rounded-md transition-all ${
+                recallMode === "standard"
+                  ? "bg-[var(--surface)] text-[var(--text-primary)] shadow-xs"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              }`}
+              title="Tampilkan Istilah IT → Tebak Definisi"
+            >
+              Istilah → Definisi
+            </button>
+            <button
+              type="button"
+              onClick={() => setRecallMode("reverse")}
+              className={`px-2 py-0.5 rounded-md transition-all ${
+                recallMode === "reverse"
+                  ? "bg-[var(--surface)] text-amber-600 dark:text-amber-400 shadow-xs"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              }`}
+              title="Tampilkan Definisi/Petunjuk → Tebak Istilah IT"
+            >
+              Definisi → Istilah
+            </button>
+          </div>
+
           {/* Sound FX Toggle */}
           <button
             type="button"
@@ -598,20 +627,37 @@ export function FlashcardView({
                     </div>
                   </div>
 
-                  {/* Center Content: Term & Furigana */}
-                  <div className="flex flex-col items-center justify-center text-center my-auto py-2 sm:py-4">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--text-primary)] font-sans leading-normal">
-                      <RubyTerm
-                        rubyText={currentCard.ruby}
-                        fallbackText={currentCard.termJp}
-                        showFurigana={showFurigana}
-                      />
-                    </h2>
+                  {/* Center Content: Term & Furigana or Reverse Clue */}
+                  {recallMode === "reverse" ? (
+                    <div className="flex flex-col items-center justify-center text-center my-auto py-2 sm:py-4">
+                      <span className="text-[10px] uppercase tracking-wider font-mono font-black px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 mb-2.5">
+                        Tebak Istilah IT (Active Production)
+                      </span>
+                      <p className="text-xs uppercase font-bold tracking-wider text-[var(--text-secondary)] mb-1">
+                        Kategori: {currentCard.subCategory}
+                      </p>
+                      <h3 className="text-sm sm:text-base md:text-lg font-semibold text-[var(--text-primary)] leading-relaxed max-w-lg">
+                        {currentCard.definitionId}
+                      </h3>
+                      <p className="text-[11px] text-[var(--text-secondary)] mt-3 opacity-80">
+                        Apa nama istilah IT Jepang / Inggris ini? (Balik untuk verifikasi)
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center text-center my-auto py-2 sm:py-4">
+                      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--text-primary)] font-sans leading-normal">
+                        <RubyTerm
+                          rubyText={currentCard.ruby}
+                          fallbackText={currentCard.termJp}
+                          showFurigana={showFurigana}
+                        />
+                      </h2>
 
-                    <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-[var(--text-secondary)] font-medium">
-                      {currentCard.termEn}
-                    </p>
-                  </div>
+                      <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-[var(--text-secondary)] font-medium">
+                        {currentCard.termEn}
+                      </p>
+                    </div>
+                  )}
 
                   {/* Footer Prompt */}
                   <div className="flex items-center justify-between text-[11px] sm:text-xs text-[var(--text-secondary)] pt-3 sm:pt-4 border-t border-[var(--border)]">
@@ -685,6 +731,25 @@ export function FlashcardView({
 
                   {/* Center Back: Explanation + Key Diff + Collapsible Analogy */}
                   <div className="flex flex-col gap-2.5 sm:gap-3 my-auto overflow-y-auto pr-1 py-1 max-h-[240px] sm:max-h-none">
+                    {/* Reverse Highlight: Revealed Concept Name */}
+                    {recallMode === "reverse" && (
+                      <div className="p-3 rounded-xl bg-[var(--brand-primary)]/10 border border-[var(--brand-primary)]/30 text-center">
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--brand-primary)] block mb-1">
+                          Istilah Sasaran
+                        </span>
+                        <div className="text-xl sm:text-2xl font-extrabold text-[var(--text-primary)]">
+                          <RubyTerm
+                            rubyText={currentCard.ruby}
+                            fallbackText={currentCard.termJp}
+                            showFurigana={true}
+                          />
+                        </div>
+                        <p className="text-xs text-[var(--brand-primary)] font-semibold mt-1">
+                          {currentCard.termEn}
+                        </p>
+                      </div>
+                    )}
+
                     <div>
                       <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[var(--text-secondary)] font-bold mb-1">
                         Definisi Inti
